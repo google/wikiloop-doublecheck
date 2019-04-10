@@ -22,6 +22,10 @@ module.exports = {
     'nuxt/no-cjs-in-config': 'off',
     semi: 'off',
     indent: 'off',
-    'no-console': 'off'
+    'no-console': 'off',
+    'quotes': 'off',
+    "space-before-function-paren": "off",
+    "prefer-const": "off",
+    "arrow-parens": "off"
   }
 }
