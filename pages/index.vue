@@ -19,7 +19,6 @@
           target="_blank"
           class="button--grey"
         >GitHub</a>
-        <span>{{ recentChanges }}</span>
       </div>
     </div>
   </section>
@@ -27,7 +26,6 @@
 
 <script>
 import Logo from '~/components/Logo.vue'
-const theData = 'TheData!';
 
 export default {
   components: {
@@ -36,8 +34,27 @@ export default {
   data() {
     return {
       title: 'WikiLoop project',
-      recentChanges: theData
+      recentChanges: []
     }
+  },
+  mounted() {
+
+    const url = 'https://stream.wikimedia.org/v2/stream/recentchange';
+    console.log(`Connecting to EventStreams at ${url}`);
+
+    const eventSource = new EventSource(url);
+    eventSource.onopen = function(event) {
+      console.log('--- Opened connection.');
+    };
+
+    eventSource.onerror = (event) => {
+      console.error('--- Encountered error', event);
+    };
+
+    eventSource.onmessage = (event) => {
+      console.log(event);
+      this.recentChanges = JSON.parse(event.data);
+    };
   }
 }
 </script>

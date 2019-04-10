@@ -2,7 +2,6 @@ const express = require('express')
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
 const app = express()
-
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js')
 config.dev = !(process.env.NODE_ENV === 'production')
@@ -23,7 +22,13 @@ async function start() {
 
   // Give nuxt middleware to express
   app.use(nuxt.render)
-
+  app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    res.header("Access-Control-Allow-Credentials", true);
+    next();
+  });
   // Listen the server
   app.listen(port, host)
   consola.ready({
