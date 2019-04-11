@@ -1,29 +1,49 @@
 <template>
   <section class="container">
-    <div class="">
+    <div class="w-100">
       <h1>
         {{ title }}
       </h1>
       <div>
-        <table class="table table-bordered">
+        <!--<div-->
+          <!--class="card col-4"-->
+          <!--v-for="recentChange of recentChanges"-->
+          <!--v-bind:key="recentChange.id"-->
+        <!--&gt;-->
+          <!--<div class="card-header">-->
+            <!--<div>-->
+              <!--{{ recentChange.title}}-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="card-body">-->
+            <!--<p>{{ recentChange.id }}</p>-->
+          <!--</div>-->
+        <!--</div>-->
+        <table class="table table-light table-responsive table-hover table-bordered">
           <tr>
-            <td>Page</td>
-            <td>Wiki</td>
-            <td>Bot</td>
-            <td>Type</td>
-            <td>Id</td>
-            <td>Author</td>
+            <th scope="col" class="col-6">Page</th>
+            <th scope="col" class="col-1">Wiki</th>
+            <th scope="col" class="col-1">Bot</th>
+            <th scope="col" class="col-1">Type</th>
+            <th scope="col" class="col-1">Id</th>
+            <th scope="col" class="col-2">Author</th>
           </tr>
           <tr
             v-for="recentChange of recentChanges"
             v-bind:key="recentChange.id"
           >
-            <td><a v-bind:href="recentChange.meta.uri">{{ recentChange.title }}</a></td>
-            <td>{{ recentChange.wiki }}</td>
-            <td>{{ recentChange.bot }}</td>
-            <td>{{ recentChange.type }}</td>
-            <td>{{ recentChange.id }}</td>
-            <td>{{ recentChange.user }}</td>
+            <th class="col-6" scope="row"><a v-bind:href="recentChange.meta.uri">{{ recentChange.title }}</a></th>
+            <td class="col-1">{{ recentChange.wiki }}</td>
+            <td class="col-1">{{ recentChange.bot }}</td>
+            <td class="col-1">{{ recentChange.type }}</td>
+            <td class="col-1">{{ recentChange.id }}</td>
+            <td class="col-1"><a v-bind:href="`${recentChange.server_url}/wiki/User:${recentChange.user}`">{{ recentChange.user }}</a>
+              <a
+                class="badge badge-info"
+                v-bind:href="`https://xtools.wmflabs.org/ec/${recentChange.server_name}/${recentChange.user}`"
+              >Xtools
+              </a>
+            </td>
           </tr>
         </table>
       </div>
@@ -31,7 +51,11 @@
   </section>
 </template>
 <script>
+import BootstrapVue from 'bootstrap-vue'
 export default {
+  comments: {
+    BootstrapVue
+  },
   data() {
     return {
       title: 'WikiLoop Battlefield',
@@ -51,20 +75,32 @@ export default {
       console.error('--- Encountered error', event);
     };
 
-    eventSource.onmessage = (event) => {
-      let filter = function(data) {
-        // let oresUrl = ` http://ores.wmflabs.org/v3/scores/enwiki/?models=draftquality|wp10&revids=` + data.id;
-        // const oresJson = await this.$axios.$get(oresUrl);
-        return (
+    const $ = require('jquery');
+    eventSource.onmessage = async (event) => {
+      let filter = async (data) => {
+        let ret = (
           data.wiki === "enwiki" &&
           data.bot === false &&
           data.type === "edit" &&
           data.namespace === 0
         );
-      }
+        if (ret) {
+          console.log(`Query!`);
+          let revId = data.id;
+          return new Promise((resolve, reject) => {
+            let url = `https://ores.wmflabs.org/v3/scores/enwiki/?models=damaging|goodfaith&revids=${revId}`;
+            console.log($);
+            $.get(url, function(data) {
+              console.log(data);
+              resolve(ret);
+            });
+          });
+        }
+        return ret;
+      };
 
       let newData = JSON.parse(event.data);
-      if (filter(newData)) {
+      if (await filter(newData)) {
         this.recentChanges.unshift(newData);
         this.recentChanges = this.recentChanges.slice(0, Math.min(this.recentChanges.length, 10));
         // console.log(newData);

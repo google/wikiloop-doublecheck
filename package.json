@@ -21,6 +21,7 @@
     "cross-env": "^5.2.0",
     "eventsource": "^1.0.7",
     "express": "^4.16.4",
+    "jquery": "^3.4.0",
     "nuxt": "^2.4.0"
   },
   "devDependencies": {

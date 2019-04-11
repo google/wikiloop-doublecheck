@@ -28,6 +28,10 @@ module.exports = {
     "prefer-const": "off",
     "arrow-parens": "off",
     "require-await": "off",
-    "vue/v-bind-style": "off"
+    "vue/singleline-html-element-content-newline": "off",
+    "vue/v-bind-style": "off",
+    "padded-blocks": "off",
+    "vue/multiline-html-element-content-newline": "off",
+    "vue/html-indent": "off",
   }
 }
