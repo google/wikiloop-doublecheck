@@ -4,9 +4,12 @@
       <h1>
         {{ title }}
       </h1>
+      <div v-if="!loaded" class="my-2 spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
       <div class="d-flex flex-wrap ">
         <div
-           class="col-lg-4 col-md-6 col-xs-12 p-2"
+           class="col-lg-6 col-md-6 col-xs-12 p-2 animated fadeIn"
            v-for="recentChange of recentChanges"
            v-bind:key="recentChange.id">
           <div class="card h-100">
@@ -18,10 +21,28 @@
                 <small>Editor: <a v-bind:href="`${recentChange.server_url}/wiki/User:${recentChange.user}`">{{ recentChange.user }}</a></small>
                 <!--<a class="badge badge-secondary" v-bind:href="`https://xtools.wmflabs.org/ec/${recentChange.server_name}/${recentChange.user}`">Xtools</a>-->
               </h6>
-              <div class="card-text flex-grow-1"></div>
-              <div>
-                <a href="#" class="card-link">Looks good</a>
-                <a href="#" class="card-link">Should revert</a>
+              <div class="card-text flex-grow-1">
+                <div class="row border">
+                  <div class="col-4 border"></div>
+                  <div class="col-4 border">goodfaith</div>
+                  <div class="col-4 border">damaging</div>
+                </div>
+                <div class="row border">
+                  <div class="col-4 border">result</div>
+                  <div class="col-4 border">{{ recentChange.ores.enwiki.scores[recentChange.revision.new].goodfaith.score.prediction}}</div>
+                  <div class="col-4 border">{{ recentChange.ores.enwiki.scores[recentChange.revision.new].damaging.score.prediction}}</div>
+                </div>
+                <div class="row border">
+                  <div class="col-4 border">prob</div>
+                  <div class="col-4 border">{{ recentChange.ores.enwiki.scores[recentChange.revision.new].goodfaith.score.probability.true.toLocaleString("en", {style: "percent"})}}</div>
+                  <div class="col-4 border">{{ recentChange.ores.enwiki.scores[recentChange.revision.new].damaging.score.probability.true.toLocaleString("en", {style: "percent"})}}</div>
+                </div>
+              </div>
+              <div class="mt-2">
+                <div class="btn-group">
+                <button href="#" class="btn btn-sm btn-outline-success">Looks good</button>
+                <button href="#" class="btn btn-sm btn-outline-danger">Should revert</button>
+                </div>
               </div>
             </div>
           </div>
@@ -65,7 +86,8 @@ export default {
   data() {
     return {
       title: 'WikiLoop Battlefield',
-      recentChanges: []
+      recentChanges: [],
+      loaded: false
     }
   },
   mounted() {
@@ -103,9 +125,10 @@ export default {
       let newData = JSON.parse(event.data);
       if (await filter(newData)) {
         this.recentChanges.unshift(newData);
-        if (this.recentChanges.length === 9) eventSource.close();
-        this.recentChanges = this.recentChanges.slice(0, Math.min(this.recentChanges.length, 9));
-        console.log(newData);
+        // if (this.recentChanges.length === 9) eventSource.close();
+        this.recentChanges = this.recentChanges.slice(0, Math.min(this.recentChanges.length, 8));
+        // console.log(newData);
+        this.loaded = true;
       }
     };
   }
