@@ -1,44 +1,44 @@
 <template>
   <section class="container">
-    <div>
-      <logo />
-      <h1 class="title">
+    <div class="">
+      <h1>
         {{ title }}
       </h1>
-      <h2 class="subtitle">
-        My kickass Nuxt.js project {{ title }}
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >GitHub</a>
+      <div>
+        <table class="table table-bordered">
+          <tr>
+            <td>Page</td>
+            <td>Wiki</td>
+            <td>Bot</td>
+            <td>Type</td>
+            <td>Id</td>
+            <td>Author</td>
+          </tr>
+          <tr
+            v-for="recentChange of recentChanges"
+            v-bind:key="recentChange.id"
+          >
+            <td><a v-bind:href="recentChange.meta.uri">{{ recentChange.title }}</a></td>
+            <td>{{ recentChange.wiki }}</td>
+            <td>{{ recentChange.bot }}</td>
+            <td>{{ recentChange.type }}</td>
+            <td>{{ recentChange.id }}</td>
+            <td>{{ recentChange.user }}</td>
+          </tr>
+        </table>
       </div>
     </div>
   </section>
 </template>
-
 <script>
-import Logo from '~/components/Logo.vue'
-
 export default {
-  components: {
-    Logo
-  },
   data() {
     return {
-      title: 'WikiLoop project',
+      title: 'WikiLoop Battlefield',
       recentChanges: []
     }
   },
   mounted() {
-
     const url = 'https://stream.wikimedia.org/v2/stream/recentchange';
     console.log(`Connecting to EventStreams at ${url}`);
 
@@ -52,8 +52,23 @@ export default {
     };
 
     eventSource.onmessage = (event) => {
-      console.log(event);
-      this.recentChanges = JSON.parse(event.data);
+      let filter = function(data) {
+        // let oresUrl = ` http://ores.wmflabs.org/v3/scores/enwiki/?models=draftquality|wp10&revids=` + data.id;
+        // const oresJson = await this.$axios.$get(oresUrl);
+        return (
+          data.wiki === "enwiki" &&
+          data.bot === false &&
+          data.type === "edit" &&
+          data.namespace === 0
+        );
+      }
+
+      let newData = JSON.parse(event.data);
+      if (filter(newData)) {
+        this.recentChanges.unshift(newData);
+        this.recentChanges = this.recentChanges.slice(0, Math.min(this.recentChanges.length, 10));
+        // console.log(newData);
+      }
     };
   }
 }
