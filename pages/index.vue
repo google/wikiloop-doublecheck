@@ -4,15 +4,35 @@
       <h1>
         {{ title }}
       </h1>
-      <div v-if="!loaded" class="my-2 spinner-border" role="status">
+      <h3 >
+        Fight vandalism together.
+      </h3>
+      <h3> Read <span class="up"></span> {{ revisionCounter }} revisions, {{ basicFilterCounter }} passed basic filter, displayed {{ showCounter }} revisions. </h3>
+      <div v-if="recentChanges.length === 0" class="my-2 spinner-border" role="status">
         <span class="sr-only">Loading...</span>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" v-model="requireBasicFilter">
+        <label class="form-check-label" for="defaultCheck1">Require basic filter (enwiki, type=edit, non-bot)
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" v-model="requireDamaging">
+        <label class="form-check-label" for="defaultCheck1">Require damaging
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="defaultCheck3" v-model="requireBadfaith">
+        <label class="form-check-label" for="defaultCheck2">Require badfaith
+        </label>
       </div>
       <div class="d-flex flex-wrap ">
         <div
-           class="col-lg-6 col-md-6 col-xs-12 p-2 animated fadeIn"
            v-for="recentChange of recentChanges"
-           v-bind:key="recentChange.id">
-          <div class="card h-100">
+           v-bind:key="recentChange.id"
+           class="col-lg-6 col-md-6 col-xs-12 p-2 animated fadeIn"
+>
+          <div class="card shadow-sm h-100">
             <div class="card-body d-flex flex-column">
               <h5 class="card-title">
                 <a v-bind:href="`${recentChange.server_url}/wiki/Special:Diff/${recentChange.revision.new}`">{{ recentChange.title }}</a>
@@ -23,25 +43,26 @@
               </h6>
               <div class="card-text flex-grow-1">
                 <div class="row border">
-                  <div class="col-4 border"></div>
-                  <div class="col-4 border">goodfaith</div>
+                  <div class="col-4 border" />
+                  <div class="col-4 border">badfaith</div>
                   <div class="col-4 border">damaging</div>
                 </div>
                 <div class="row border">
                   <div class="col-4 border">result</div>
-                  <div class="col-4 border">{{ recentChange.ores.enwiki.scores[recentChange.revision.new].goodfaith.score.prediction}}</div>
-                  <div class="col-4 border">{{ recentChange.ores.enwiki.scores[recentChange.revision.new].damaging.score.prediction}}</div>
+                  <div class="col-4 border">{{ !recentChange.ores.enwiki.scores[recentChange.revision.new].goodfaith.score.prediction }}</div>
+                  <div class="col-4 border">{{ recentChange.ores.enwiki.scores[recentChange.revision.new].damaging.score.prediction }}</div>
                 </div>
                 <div class="row border">
                   <div class="col-4 border">prob</div>
-                  <div class="col-4 border">{{ recentChange.ores.enwiki.scores[recentChange.revision.new].goodfaith.score.probability.true.toLocaleString("en", {style: "percent"})}}</div>
-                  <div class="col-4 border">{{ recentChange.ores.enwiki.scores[recentChange.revision.new].damaging.score.probability.true.toLocaleString("en", {style: "percent"})}}</div>
+                  <div class="col-4 border">{{ (1 - recentChange.ores.enwiki.scores[recentChange.revision.new].goodfaith.score.probability.true).toLocaleString("en", {style: "percent"}) }}</div>
+                  <div class="col-4 border">{{ recentChange.ores.enwiki.scores[recentChange.revision.new].damaging.score.probability.true.toLocaleString("en", {style: "percent"}) }}</div>
                 </div>
               </div>
               <div class="mt-2">
                 <div class="btn-group">
-                <button href="#" class="btn btn-sm btn-outline-success">Looks good</button>
-                <button href="#" class="btn btn-sm btn-outline-danger">Should revert</button>
+                  <button href="#" class="btn btn-sm btn-outline-success">Looks good</button>
+                  <button href="#" class="btn btn-sm btn-outline-secondary">Not sure</button>
+                  <button href="#" class="btn btn-sm btn-outline-danger">Should revert</button>
                 </div>
               </div>
             </div>
@@ -87,7 +108,13 @@ export default {
     return {
       title: 'WikiLoop Battlefield',
       recentChanges: [],
-      loaded: false
+      requireDamaging: true,
+      requireBadfaith: true,
+      requireBasicFilter: true,
+      revisionCounter: 0,
+      basicFilterCounter: 0,
+      showCounter: 0
+      // loaded: false
     }
   },
   mounted() {
@@ -105,6 +132,7 @@ export default {
 
     const $ = require('jquery');
     eventSource.onmessage = async (event) => {
+      this.revisionCounter += 1;
       let filter = async (data) => {
         let basicFilter = (
           data.wiki === "enwiki" &&
@@ -112,10 +140,16 @@ export default {
           data.type === "edit" &&
           data.namespace === 0
         );
-        if (basicFilter) {
+        if (basicFilter || !this.requireBasicFilter) {
+          this.basicFilterCounter += 1;
           let url = `https://ores.wmflabs.org/v3/scores/enwiki/?models=damaging|goodfaith&revids=${data.revision.new}`;
           let oresJson = await $.get(url);
-          newData.ores = oresJson;
+          data.ores = oresJson;
+          let damaging = data.ores.enwiki.scores[data.revision.new].damaging.score.prediction;
+          let badfaith = !data.ores.enwiki.scores[data.revision.new].goodfaith.score.prediction;
+          console.log(`damaging`, damaging, `badfaith`, badfaith);
+          return (damaging || !this.requireDamaging) &&
+            (badfaith || !this.requireBadfaith);
           // console.log(oresJson.enwiki.scores);
         }
 
@@ -124,11 +158,12 @@ export default {
 
       let newData = JSON.parse(event.data);
       if (await filter(newData)) {
+        this.showCounter += 1;
         this.recentChanges.unshift(newData);
         // if (this.recentChanges.length === 9) eventSource.close();
         this.recentChanges = this.recentChanges.slice(0, Math.min(this.recentChanges.length, 8));
         // console.log(newData);
-        this.loaded = true;
+        // this.loaded = true;
       }
     };
   }
