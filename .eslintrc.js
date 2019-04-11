@@ -26,6 +26,8 @@ module.exports = {
     'quotes': 'off',
     "space-before-function-paren": "off",
     "prefer-const": "off",
-    "arrow-parens": "off"
+    "arrow-parens": "off",
+    "require-await": "off",
+    "vue/v-bind-style": "off"
   }
 }
