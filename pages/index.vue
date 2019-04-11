@@ -4,48 +4,54 @@
       <h1>
         {{ title }}
       </h1>
-      <div>
-        <!--<div-->
-          <!--class="card col-4"-->
-          <!--v-for="recentChange of recentChanges"-->
-          <!--v-bind:key="recentChange.id"-->
-        <!--&gt;-->
-          <!--<div class="card-header">-->
-            <!--<div>-->
-              <!--{{ recentChange.title}}-->
-            <!--</div>-->
-          <!--</div>-->
-          <!--<div class="card-body">-->
-            <!--<p>{{ recentChange.id }}</p>-->
-          <!--</div>-->
-        <!--</div>-->
-        <table class="table table-light table-responsive table-hover table-bordered">
-          <tr>
-            <th scope="col" class="col-6">Page</th>
-            <th scope="col" class="col-1">Wiki</th>
-            <th scope="col" class="col-1">Bot</th>
-            <th scope="col" class="col-1">Type</th>
-            <th scope="col" class="col-1">Id</th>
-            <th scope="col" class="col-2">Author</th>
-          </tr>
-          <tr
-            v-for="recentChange of recentChanges"
-            v-bind:key="recentChange.id"
-          >
-            <th class="col-6" scope="row"><a v-bind:href="recentChange.meta.uri">{{ recentChange.title }}</a></th>
-            <td class="col-1">{{ recentChange.wiki }}</td>
-            <td class="col-1">{{ recentChange.bot }}</td>
-            <td class="col-1">{{ recentChange.type }}</td>
-            <td class="col-1">{{ recentChange.id }}</td>
-            <td class="col-1"><a v-bind:href="`${recentChange.server_url}/wiki/User:${recentChange.user}`">{{ recentChange.user }}</a>
-              <a
-                class="badge badge-info"
-                v-bind:href="`https://xtools.wmflabs.org/ec/${recentChange.server_name}/${recentChange.user}`"
-              >Xtools
-              </a>
-            </td>
-          </tr>
-        </table>
+      <div class="d-flex flex-wrap ">
+        <div
+           class="col-lg-4 col-md-6 col-xs-12 p-2"
+           v-for="recentChange of recentChanges"
+           v-bind:key="recentChange.id">
+          <div class="card h-100">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">
+                <a v-bind:href="`${recentChange.server_url}/wiki/Special:Diff/${recentChange.revision.new}`">{{ recentChange.title }}</a>
+              </h5>
+              <h6 class="card-subtitle mb-2 text-muted">
+                <small>Editor: <a v-bind:href="`${recentChange.server_url}/wiki/User:${recentChange.user}`">{{ recentChange.user }}</a></small>
+                <!--<a class="badge badge-secondary" v-bind:href="`https://xtools.wmflabs.org/ec/${recentChange.server_name}/${recentChange.user}`">Xtools</a>-->
+              </h6>
+              <div class="card-text flex-grow-1"></div>
+              <div>
+                <a href="#" class="card-link">Looks good</a>
+                <a href="#" class="card-link">Should revert</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--<table class="table table-light table-responsive table-hover table-bordered">-->
+          <!--<thead>-->
+            <!--<tr class="row">-->
+              <!--<th scope="col" class="col-6">Page by Author</th>-->
+              <!--<th scope="col" class="col-6">ORES</th>-->
+            <!--</tr>-->
+          <!--</thead>-->
+          <!--<tbody>-->
+            <!--<tr-->
+              <!--class="row"-->
+              <!--v-for="recentChange of recentChanges"-->
+              <!--v-bind:key="recentChange.id"-->
+            <!--&gt;-->
+              <!--<th class="col-6" scope="row">-->
+                <!--<a v-bind:href="recentChange.meta.uri">{{ recentChange.title }}</a><br/>-->
+                <!--<small>by User:<a v-bind:href="`${recentChange.server_url}/wiki/User:${recentChange.user}`">{{ recentChange.user }}</a></small>-->
+                <!--<a class="badge badge-secondary" v-bind:href="`https://xtools.wmflabs.org/ec/${recentChange.server_name}/${recentChange.user}`">Xtools</a>-->
+              <!--</th>-->
+              <!--<td class="col-6">-->
+                <!--Damaging: {{ recentChange.ores.enwiki.scores[recentChange.revision.new].damaging.score.prediction}}<br/>-->
+                <!--Goodfaith: {{ recentChange.ores.enwiki.scores[recentChange.revision.new].goodfaith.score.prediction}}-->
+              <!--</td>-->
+            <!--</tr>-->
+          <!--</tbody>-->
+        <!--</table>-->
       </div>
     </div>
   </section>
@@ -78,32 +84,28 @@ export default {
     const $ = require('jquery');
     eventSource.onmessage = async (event) => {
       let filter = async (data) => {
-        let ret = (
+        let basicFilter = (
           data.wiki === "enwiki" &&
           data.bot === false &&
           data.type === "edit" &&
           data.namespace === 0
         );
-        if (ret) {
-          console.log(`Query!`);
-          let revId = data.id;
-          return new Promise((resolve, reject) => {
-            let url = `https://ores.wmflabs.org/v3/scores/enwiki/?models=damaging|goodfaith&revids=${revId}`;
-            console.log($);
-            $.get(url, function(data) {
-              console.log(data);
-              resolve(ret);
-            });
-          });
+        if (basicFilter) {
+          let url = `https://ores.wmflabs.org/v3/scores/enwiki/?models=damaging|goodfaith&revids=${data.revision.new}`;
+          let oresJson = await $.get(url);
+          newData.ores = oresJson;
+          // console.log(oresJson.enwiki.scores);
         }
-        return ret;
+
+        return basicFilter;
       };
 
       let newData = JSON.parse(event.data);
       if (await filter(newData)) {
         this.recentChanges.unshift(newData);
-        this.recentChanges = this.recentChanges.slice(0, Math.min(this.recentChanges.length, 10));
-        // console.log(newData);
+        if (this.recentChanges.length === 9) eventSource.close();
+        this.recentChanges = this.recentChanges.slice(0, Math.min(this.recentChanges.length, 9));
+        console.log(newData);
       }
     };
   }
