@@ -24,6 +24,7 @@
     "express": "^4.16.4",
     "jquery": "^3.4.0",
     "nuxt": "^2.4.0",
+    "request": "^2.88.0",
     "request-promise": "^4.2.4"
   },
   "devDependencies": {
