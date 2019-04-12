@@ -1,4 +1,5 @@
-const pkg = require('./package')
+const pkg = require('./package');
+require(`dotenv`).config();
 
 module.exports = {
   mode: 'universal',
@@ -48,7 +49,10 @@ module.exports = {
     '@nuxtjs/axios',
     // Doc: https://bootstrap-vue.js.org/docs/
     'bootstrap-vue/nuxt',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    ['@nuxtjs/google-analytics', {
+      id: process.env.GA_ID
+    }]
   ],
   /*
    ** Axios module configuration
