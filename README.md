@@ -4,6 +4,7 @@ My study notes can be found at [http://notes.zzn.im](http://notes.zzn.im).
 
 > My kickass Nuxt.js project
 
+
 ## Build Setup
 
 ``` bash
