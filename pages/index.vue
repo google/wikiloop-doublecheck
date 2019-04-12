@@ -4,25 +4,29 @@
       <h1>
         {{ title }}
       </h1>
-      <h3 >
+      <div>
+        <diff-box>Hello</diff-box>
+      </div>
+      <h3>
         Fight vandalism together.
       </h3>
-      <h3> Read <span class="up"></span> {{ revisionCounter }} revisions, {{ basicFilterCounter }} passed basic filter, displayed {{ showCounter }} revisions. </h3>
+
+      <h3> Read {{ revisionCounter }} revisions, {{ basicFilterCounter }} passed basic filter, displayed {{ showCounter }} revisions. </h3>
       <div v-if="recentChanges.length === 0" class="my-2 spinner-border" role="status">
         <span class="sr-only">Loading...</span>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" v-model="requireBasicFilter">
+        <input id="defaultCheck1" v-model="requireBasicFilter" class="form-check-input" type="checkbox" value="">
         <label class="form-check-label" for="defaultCheck1">Require basic filter (enwiki, type=edit, non-bot)
         </label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" v-model="requireDamaging">
+        <input id="defaultCheck2" v-model="requireDamaging" class="form-check-input" type="checkbox" value="">
         <label class="form-check-label" for="defaultCheck1">Require damaging
         </label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="defaultCheck3" v-model="requireBadfaith">
+        <input id="defaultCheck3" v-model="requireBadfaith" class="form-check-input" type="checkbox" value="">
         <label class="form-check-label" for="defaultCheck2">Require badfaith
         </label>
       </div>
@@ -30,7 +34,7 @@
         <div
            v-for="recentChange of recentChanges"
            v-bind:key="recentChange.id"
-           class="col-lg-6 col-md-6 col-xs-12 p-2 animated fadeIn"
+           class="col-12 p-2 animated fadeIn"
 >
           <div class="card shadow-sm h-100">
             <div class="card-body d-flex flex-column">
@@ -41,6 +45,9 @@
                 <small>Editor: <a v-bind:href="`${recentChange.server_url}/wiki/User:${recentChange.user}`">{{ recentChange.user }}</a></small>
                 <!--<a class="badge badge-secondary" v-bind:href="`https://xtools.wmflabs.org/ec/${recentChange.server_name}/${recentChange.user}`">Xtools</a>-->
               </h6>
+              <div class="card-text">
+                <diff-box v-bind:diffContent="recentChange.diff.compare['*']" />
+              </div>
               <div class="card-text flex-grow-1">
                 <div class="row border">
                   <div class="col-4 border" />
@@ -100,9 +107,14 @@
 </template>
 <script>
 import BootstrapVue from 'bootstrap-vue'
+import DiffBox from '~/components/DiffBox.vue'
+
 export default {
   comments: {
     BootstrapVue
+  },
+  components: {
+    DiffBox
   },
   data() {
     return {
@@ -142,18 +154,24 @@ export default {
         );
         if (basicFilter || !this.requireBasicFilter) {
           this.basicFilterCounter += 1;
-          let url = `https://ores.wmflabs.org/v3/scores/enwiki/?models=damaging|goodfaith&revids=${data.revision.new}`;
-          let oresJson = await $.get(url);
+          let oresUrl = `https://ores.wmflabs.org/v3/scores/${data.wiki}/?models=damaging|goodfaith&revids=${data.revision.new}`;
+          let oresJson = await $.get(oresUrl);
           data.ores = oresJson;
           let damaging = data.ores.enwiki.scores[data.revision.new].damaging.score.prediction;
           let badfaith = !data.ores.enwiki.scores[data.revision.new].goodfaith.score.prediction;
           console.log(`damaging`, damaging, `badfaith`, badfaith);
-          return (damaging || !this.requireDamaging) &&
+
+          let vandalFilter = (damaging || !this.requireDamaging) &&
             (badfaith || !this.requireBadfaith);
+          let diffJson = await $.get("/api/diff");
+          console.log(`XXX diff=${data.revision.new}, diff=${diffJson}`, diffJson);
+          data.diff = diffJson;
+          // }
+          return vandalFilter;
           // console.log(oresJson.enwiki.scores);
         }
 
-        return basicFilter;
+        return false;
       };
 
       let newData = JSON.parse(event.data);
