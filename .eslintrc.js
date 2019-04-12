@@ -33,5 +33,6 @@ module.exports = {
     "padded-blocks": "off",
     "vue/multiline-html-element-content-newline": "off",
     "vue/html-indent": "off",
+    "vue/html-self-closing": "off"
   }
 }

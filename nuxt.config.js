@@ -72,5 +72,13 @@ module.exports = {
         })
       }
     }
-  }
-}
+  },
+
+  serverMiddleware: [
+    // Will register redirect-ssl npm package
+    // 'redirect-ssl',
+
+    // Will register file from project api directory to handle /api/* requires
+    { path: '/api', handler: '~/api/index.js' }
+  ]
+};
