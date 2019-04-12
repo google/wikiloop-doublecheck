@@ -159,14 +159,13 @@ export default {
           data.ores = oresJson;
           let damaging = data.ores.enwiki.scores[data.revision.new].damaging.score.prediction;
           let badfaith = !data.ores.enwiki.scores[data.revision.new].goodfaith.score.prediction;
-          console.log(`damaging`, damaging, `badfaith`, badfaith);
 
           let vandalFilter = (damaging || !this.requireDamaging) &&
             (badfaith || !this.requireBadfaith);
-          let diffJson = await $.get("/api/diff");
-          console.log(`XXX diff=${data.revision.new}, diff=${diffJson}`, diffJson);
-          data.diff = diffJson;
-          // }
+          if (vandalFilter) {
+            let diffJson = await $.get(`/api/diff?serverUrl=${data.server_url}&revId=${data.revision.new}`);
+            data.diff = diffJson;
+          }
           return vandalFilter;
           // console.log(oresJson.enwiki.scores);
         }
