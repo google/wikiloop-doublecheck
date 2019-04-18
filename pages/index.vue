@@ -25,14 +25,14 @@
             <a class="nav-link" href="#">Home</a>
           </li>
           <li class="nav-item active">
-            <a href="#" class="nav-link" v-b-modal.my-modal>Filters</a>
+            <a href="#" class="nav-link" v-b-modal.filter-modal>Filters</a>
             <!-- Modal Component -->
-            <b-modal id="my-modal" title="Filters">
-              <b-form-group label="Edit type">
-                <b-form-checkbox-group id="checkbox-group-2" name="flavour-2">
-                  <b-form-checkbox value="orange">bot</b-form-checkbox>
-                  <b-form-checkbox value="apple">article namespace</b-form-checkbox>
-                </b-form-checkbox-group>
+            <b-modal id="filter-modal" title="Filters">
+              <b-form-group label="Require">
+                  <b-form-checkbox v-model="requireNonBot" >non-bot</b-form-checkbox>
+                  <b-form-checkbox v-model="requireArticleNamespace" >article namespace</b-form-checkbox>
+                  <b-form-checkbox v-model="requireBadfaith" >bad-faith</b-form-checkbox>
+                  <b-form-checkbox v-model="requireDamaging">damaging</b-form-checkbox>
               </b-form-group>
             </b-modal>
           </li>
@@ -49,9 +49,10 @@
       <div
         v-for="recentChange of recentChanges"
         v-bind:key="recentChange.id"
-        class="col-12 p-2 animated fadeIn"
+        class="col-12 p-2"
       >
-        <div class="card shadow-sm h-100">
+        <div v-bind:class="{ 'border-danger': badfaith(recentChange), 'bg-gradient-danger': badfaith(recentChange), 'border-warning': damaging(recentChange), 'bg-gradient-danger': damaging(recentChange) }"
+             class="card shadow-sm h-100">
           <div class="card-body d-flex flex-column">
             <h5 class="card-title">
               <a v-bind:href="`${recentChange.server_url}/wiki/Special:Diff/${recentChange.revision.new}`">{{ recentChange.title }}</a>
@@ -59,10 +60,10 @@
             <h6 class="card-subtitle mb-2 text-muted">
               <small>by <a v-bind:href="`${recentChange.server_url}/wiki/User:${recentChange.user}`">{{ recentChange.user }}</a>
                 <span data-toggle="tooltip" data-placement="top" title="from WMF ORES score">
-                  <i v-bind:class="{ 'text-danger': badfaith(recentChange) }" class="fas fa-theater-masks"></i>: {{ (1 - recentChange.ores.enwiki.scores[recentChange.revision.new].goodfaith.score.probability.true).toLocaleString("en", {style: "percent"}) }},
+                  <i v-bind:class="{ 'text-danger': badfaith(recentChange) }" class="fas fa-theater-masks"></i>: {{ damagingPercent(recentChange) }},
                 </span>
                 <span data-toggle="tooltip" data-placement="top" title="from WMF ORES score">
-                  <i v-bind:class="{ 'text-danger': damaging(recentChange) }" class="fas fa-cloud-rain"></i>: {{ recentChange.ores.enwiki.scores[recentChange.revision.new].damaging.score.probability.true.toLocaleString("en", {style: "percent"}) }}
+                  <i v-bind:class="{ 'text-warning': damaging(recentChange) }" class="fas fa-cloud-rain"></i>: {{ badfaithPercent(recentChange) }}
                 </span>
               </small>
             </h6>
@@ -73,7 +74,7 @@
               <div class="btn-group">
                 <button href="#" class="btn btn-sm btn-outline-success">Looks good</button>
                 <button href="#" class="btn btn-sm btn-outline-secondary">Not sure</button>
-                <a v-bind:href="`https://en.wikipedia.org/w/index.php?title=${recentChange.title}&action=edit&undoafter=prev&undo=${recentChange.revision.new}`"
+                <a v-bind:href="`https://en.wikipedia.org/w/index.php?title=${recentChange.title}&action=edit&undoafter=${recentChange.revision.old}&undo=${recentChange.revision.new}`"
                   class="btn btn-sm btn-outline-danger" target="_blank">Should revert</a>
               </div>
             </div>
@@ -98,9 +99,12 @@ export default {
     return {
       title: 'WikiLoop Battlefield',
       recentChanges: [],
+      requireEnWiki: false,
       requireDamaging: false,
       requireBadfaith: false,
-      requireBasicFilter: true,
+      // requireBasicFilter: true,
+      requireArticleNamespace: true,
+      requireNonBot: true,
       revisionCounter: 0,
       basicFilterCounter: 0,
       showCounter: 0,
@@ -110,13 +114,20 @@ export default {
   },
   methods: {
     damaging: function (recentChange) {
-      console.log(`XXX recentChange`, recentChange);
       let wiki = recentChange.wiki;
       return recentChange.ores[wiki].scores[recentChange.revision.new].damaging.score.prediction;
+    },
+    damagingPercent: function (recentChange) {
+      let wiki = recentChange.wiki;
+      return (1 - recentChange.ores[wiki].scores[recentChange.revision.new].goodfaith.score.probability.true).toLocaleString("en", { style: "percent" });
     },
     badfaith: function (recentChange) {
       let wiki = recentChange.wiki;
       return !recentChange.ores[wiki].scores[recentChange.revision.new].goodfaith.score.prediction;
+    },
+    badfaithPercent: function (recentChange) {
+      let wiki = recentChange.wiki;
+      return recentChange.ores[wiki].scores[recentChange.revision.new].damaging.score.probability.true.toLocaleString("en", { style: "percent" });
     }
   },
   mounted() {
@@ -138,10 +149,10 @@ export default {
       this.revisionCounter += 1;
       let filter = async (data) => {
         let basicFilter = (
-          data.wiki === "enwiki" &&
-          data.bot === false &&
+          (data.wiki === "enwiki" || !this.requireEnWiki) &&
+          (data.bot === false || !this.requireNonBot) &&
           data.type === "edit" &&
-          data.namespace === 0
+          (data.namespace === 0 || !this.requireArticleNamespace)
         );
         if (basicFilter || !this.requireBasicFilter) {
           this.basicFilterCounter += 1;

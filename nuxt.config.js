@@ -62,6 +62,14 @@ module.exports = {
     // See https://github.com/nuxt-community/axios-module#options
   },
 
+  bootstrapVue: {
+    config: {
+      // Custom config options here
+      "enable-gradients": true,
+      "enable-transitions": true
+    }
+  },
+
   /*
    ** Build configuration
    */
