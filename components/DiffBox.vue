@@ -1,6 +1,6 @@
 <template>
   <div>
-      <table v-html="diffContent"></table>
+      <table class="w-100" v-html="diffContent"></table>
   </div>
 </template>
 
