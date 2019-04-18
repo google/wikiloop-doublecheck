@@ -1,106 +1,84 @@
+<!--eslint-disable-->
 <template>
-  <section class="container">
-    <div class="w-100">
-      <h1>
-        {{ title }}
-      </h1>
-      <div>
-        <diff-box>Hello</diff-box>
-      </div>
-      <h3>
-        Fight vandalism together.
-      </h3>
 
-      <h3> Read {{ revisionCounter }} revisions, {{ basicFilterCounter }} passed basic filter, displayed {{ showCounter }} revisions. </h3>
-      <div v-if="recentChanges.length === 0" class="my-2 spinner-border" role="status">
-        <span class="sr-only">Loading...</span>
+  <section>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <div class="container">
+      <a class="navbar-brand" href="#">Battlefield <sup>beta</sup></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse"
+              data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+              aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <b-form-checkbox
+        id="checkbox-pause"
+        v-model="pause"
+        name="checkbox-pause"
+        value="true"
+        unchecked-value="false"
+      >
+        Pause
+      </b-form-checkbox>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item active">
+            <a href="#" class="nav-link" v-b-modal.my-modal>Filters</a>
+            <!-- Modal Component -->
+            <b-modal id="my-modal" title="Filters">
+              <b-form-group label="Edit type">
+                <b-form-checkbox-group id="checkbox-group-2" name="flavour-2">
+                  <b-form-checkbox value="orange">bot</b-form-checkbox>
+                  <b-form-checkbox value="apple">article namespace</b-form-checkbox>
+                </b-form-checkbox-group>
+              </b-form-group>
+            </b-modal>
+          </li>
+        </ul>
+        <form class="form-inline mx-1 w-100 d-flex">
+          <input class="form-control mr-sm-2 flex-grow-1" type="search" placeholder="Search"
+                 aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
       </div>
-      <div class="form-check">
-        <input id="defaultCheck1" v-model="requireBasicFilter" class="form-check-input" type="checkbox" value="">
-        <label class="form-check-label" for="defaultCheck1">Require basic filter (enwiki, type=edit, non-bot)
-        </label>
       </div>
-      <div class="form-check">
-        <input id="defaultCheck2" v-model="requireDamaging" class="form-check-input" type="checkbox" value="">
-        <label class="form-check-label" for="defaultCheck1">Require damaging
-        </label>
-      </div>
-      <div class="form-check">
-        <input id="defaultCheck3" v-model="requireBadfaith" class="form-check-input" type="checkbox" value="">
-        <label class="form-check-label" for="defaultCheck2">Require badfaith
-        </label>
-      </div>
-      <div class="d-flex flex-wrap ">
-        <div
-           v-for="recentChange of recentChanges"
-           v-bind:key="recentChange.id"
-           class="col-12 p-2 animated fadeIn"
->
-          <div class="card shadow-sm h-100">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">
-                <a v-bind:href="`${recentChange.server_url}/wiki/Special:Diff/${recentChange.revision.new}`">{{ recentChange.title }}</a>
-              </h5>
-              <h6 class="card-subtitle mb-2 text-muted">
-                <small>Editor: <a v-bind:href="`${recentChange.server_url}/wiki/User:${recentChange.user}`">{{ recentChange.user }}</a></small>
-                <!--<a class="badge badge-secondary" v-bind:href="`https://xtools.wmflabs.org/ec/${recentChange.server_name}/${recentChange.user}`">Xtools</a>-->
-              </h6>
-              <div class="card-text">
-                <diff-box v-bind:diffContent="recentChange.diff.compare['*']" />
-              </div>
-              <div class="card-text flex-grow-1">
-                <div class="row border">
-                  <div class="col-4 border" />
-                  <div class="col-4 border">badfaith</div>
-                  <div class="col-4 border">damaging</div>
-                </div>
-                <div class="row border">
-                  <div class="col-4 border">result</div>
-                  <div class="col-4 border">{{ !recentChange.ores.enwiki.scores[recentChange.revision.new].goodfaith.score.prediction }}</div>
-                  <div class="col-4 border">{{ recentChange.ores.enwiki.scores[recentChange.revision.new].damaging.score.prediction }}</div>
-                </div>
-                <div class="row border">
-                  <div class="col-4 border">prob</div>
-                  <div class="col-4 border">{{ (1 - recentChange.ores.enwiki.scores[recentChange.revision.new].goodfaith.score.probability.true).toLocaleString("en", {style: "percent"}) }}</div>
-                  <div class="col-4 border">{{ recentChange.ores.enwiki.scores[recentChange.revision.new].damaging.score.probability.true.toLocaleString("en", {style: "percent"}) }}</div>
-                </div>
-              </div>
-              <div class="mt-2">
-                <div class="btn-group">
-                  <button href="#" class="btn btn-sm btn-outline-success">Looks good</button>
-                  <button href="#" class="btn btn-sm btn-outline-secondary">Not sure</button>
-                  <button href="#" class="btn btn-sm btn-outline-danger">Should revert</button>
-                </div>
+    </nav>
+    <div class="container" style="margin-top:60px">
+      <div
+        v-for="recentChange of recentChanges"
+        v-bind:key="recentChange.id"
+        class="col-12 p-2 animated fadeIn"
+      >
+        <div class="card shadow-sm h-100">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">
+              <a v-bind:href="`${recentChange.server_url}/wiki/Special:Diff/${recentChange.revision.new}`">{{ recentChange.title }}</a>
+            </h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+              <small>by <a v-bind:href="`${recentChange.server_url}/wiki/User:${recentChange.user}`">{{ recentChange.user }}</a>
+                <span data-toggle="tooltip" data-placement="top" title="from WMF ORES score">
+                  <i v-bind:class="{ 'text-danger': badfaith(recentChange) }" class="fas fa-theater-masks"></i>: {{ (1 - recentChange.ores.enwiki.scores[recentChange.revision.new].goodfaith.score.probability.true).toLocaleString("en", {style: "percent"}) }},
+                </span>
+                <span data-toggle="tooltip" data-placement="top" title="from WMF ORES score">
+                  <i v-bind:class="{ 'text-danger': damaging(recentChange) }" class="fas fa-cloud-rain"></i>: {{ recentChange.ores.enwiki.scores[recentChange.revision.new].damaging.score.probability.true.toLocaleString("en", {style: "percent"}) }}
+                </span>
+              </small>
+            </h6>
+            <div class="card-text w-100">
+              <diff-box v-bind:diffContent="recentChange.diff.compare['*']" />
+            </div>
+            <div class="mt-4 d-flex justify-content-center">
+              <div class="btn-group">
+                <button href="#" class="btn btn-sm btn-outline-success">Looks good</button>
+                <button href="#" class="btn btn-sm btn-outline-secondary">Not sure</button>
+                <a v-bind:href="`https://en.wikipedia.org/w/index.php?title=${recentChange.title}&action=edit&undoafter=prev&undo=${recentChange.revision.new}`"
+                  class="btn btn-sm btn-outline-danger" target="_blank">Should revert</a>
               </div>
             </div>
           </div>
         </div>
-
-        <!--<table class="table table-light table-responsive table-hover table-bordered">-->
-          <!--<thead>-->
-            <!--<tr class="row">-->
-              <!--<th scope="col" class="col-6">Page by Author</th>-->
-              <!--<th scope="col" class="col-6">ORES</th>-->
-            <!--</tr>-->
-          <!--</thead>-->
-          <!--<tbody>-->
-            <!--<tr-->
-              <!--class="row"-->
-              <!--v-for="recentChange of recentChanges"-->
-              <!--v-bind:key="recentChange.id"-->
-            <!--&gt;-->
-              <!--<th class="col-6" scope="row">-->
-                <!--<a v-bind:href="recentChange.meta.uri">{{ recentChange.title }}</a><br/>-->
-                <!--<small>by User:<a v-bind:href="`${recentChange.server_url}/wiki/User:${recentChange.user}`">{{ recentChange.user }}</a></small>-->
-                <!--<a class="badge badge-secondary" v-bind:href="`https://xtools.wmflabs.org/ec/${recentChange.server_name}/${recentChange.user}`">Xtools</a>-->
-              <!--</th>-->
-              <!--<td class="col-6">-->
-                <!--Damaging: {{ recentChange.ores.enwiki.scores[recentChange.revision.new].damaging.score.prediction}}<br/>-->
-                <!--Goodfaith: {{ recentChange.ores.enwiki.scores[recentChange.revision.new].goodfaith.score.prediction}}-->
-              <!--</td>-->
-            <!--</tr>-->
-          <!--</tbody>-->
-        <!--</table>-->
       </div>
     </div>
   </section>
@@ -120,13 +98,25 @@ export default {
     return {
       title: 'WikiLoop Battlefield',
       recentChanges: [],
-      requireDamaging: true,
-      requireBadfaith: true,
+      requireDamaging: false,
+      requireBadfaith: false,
       requireBasicFilter: true,
       revisionCounter: 0,
       basicFilterCounter: 0,
-      showCounter: 0
+      showCounter: 0,
+      pause: false
       // loaded: false
+    }
+  },
+  methods: {
+    damaging: function (recentChange) {
+      console.log(`XXX recentChange`, recentChange);
+      let wiki = recentChange.wiki;
+      return recentChange.ores[wiki].scores[recentChange.revision.new].damaging.score.prediction;
+    },
+    badfaith: function (recentChange) {
+      let wiki = recentChange.wiki;
+      return !recentChange.ores[wiki].scores[recentChange.revision.new].goodfaith.score.prediction;
     }
   },
   mounted() {
@@ -144,6 +134,7 @@ export default {
 
     const $ = require('jquery');
     eventSource.onmessage = async (event) => {
+      if (this.pause) return;
       this.revisionCounter += 1;
       let filter = async (data) => {
         let basicFilter = (
@@ -188,34 +179,12 @@ export default {
 </script>
 
 <style>
-  .container {
-    margin: 0 auto;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+  .diff-context {
+    word-break: break-all;
+    width: 50%;
   }
-
-  .title {
-    font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    display: block;
-    font-weight: 300;
-    font-size: 100px;
-    color: #35495e;
-    letter-spacing: 1px;
-  }
-
-  .subtitle {
-    font-weight: 300;
-    font-size: 42px;
-    color: #526488;
-    word-spacing: 5px;
-    padding-bottom: 15px;
-  }
-
-  .links {
-    padding-top: 15px;
+  .diff-deletedline,.diff-addedline {
+    word-break: break-all;
+    width: 50%
   }
 </style>
