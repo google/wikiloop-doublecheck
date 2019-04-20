@@ -1,11 +1,11 @@
 const express = require('express');
 const app = express();
 const rp = require(`request-promise`);
+
 const asyncHandler = fn => (req, res, next) =>
   Promise
     .resolve(fn(req, res, next))
     .catch(next);
-
 
 app.get('/', (req, res, next) => {
   res.send('API root')
