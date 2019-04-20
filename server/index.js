@@ -6,6 +6,40 @@ const app = express()
 const config = require('../nuxt.config.js')
 config.dev = !(process.env.NODE_ENV === 'production')
 
+function mediaWikiListener() {
+  console.log(`Starting mediaWikiListener.`);
+
+  return new Promise(async (resolve, reject) => {
+    const MongoClient = require('mongodb').MongoClient;
+
+    // Use connect method to connect to the Server
+    let db = (await MongoClient.connect(process.env.MONGODB_URL))
+          .db(process.env.MONGODB_DB);
+
+    console.log(`MediaWikiListener started`);
+    const EventSource = require('eventsource');
+    const url = 'https://stream.wikimedia.org/v2/stream/recentchange';
+
+    console.log(`Connecting to EventStreams at ${url}`);
+
+    const eventSource = new EventSource(url);
+    eventSource.onopen = function(event) {
+      console.log('--- Opened connection.');
+    };
+
+    eventSource.onerror = function(event) {
+      console.error('--- Encountered error', event);
+    };
+
+    eventSource.onmessage = async function(event) {
+      let data = JSON.parse(event.data);
+      console.log(`server received`, data);
+      data._id = (`${data.wiki}-${data.id}`);
+      await db.collection(`MediaWikiRecentChange`).insertOne(data);
+    };
+
+  });
+}
 async function start() {
   // Init Nuxt.js
   const nuxt = new Nuxt(config)
@@ -29,5 +63,7 @@ async function start() {
     message: `Server listening on http://${host}:${port}`,
     badge: true
   })
+
+  mediaWikiListener();
 }
 start()
