@@ -13,7 +13,7 @@ function mediaWikiListener() {
     const MongoClient = require('mongodb').MongoClient;
 
     // Use connect method to connect to the Server
-    let db = (await MongoClient.connect(process.env.MONGODB_URL))
+    let db = (await MongoClient.connect(process.env.MONGODB_URI, { useNewUrlParser: true }))
           .db(process.env.MONGODB_DB);
 
     console.log(`MediaWikiListener started`);
@@ -33,9 +33,19 @@ function mediaWikiListener() {
 
     eventSource.onmessage = async function(event) {
       let data = JSON.parse(event.data);
-      console.log(`server received`, data);
+      console.log(`server received`, data.wiki, data.id, data.meta.uri);
       data._id = (`${data.wiki}-${data.id}`);
-      await db.collection(`MediaWikiRecentChange`).insertOne(data);
+      if (data.type === "edit") {
+        try {
+          await db.collection(`MediaWikiRecentChange`).insertOne(data);
+        } catch (e) {
+          if (e.name === "MongoError" && e.code === 11000) {
+            console.warn(`Duplicated Key Found`, e);
+          } else {
+            console.error(e);
+          }
+        }
+      }
     };
 
   });
