@@ -53,7 +53,11 @@ module.exports = {
     '@nuxtjs/pwa',
     ['@nuxtjs/google-analytics', {
       id: process.env.GA_ID
-    }]
+    }],
+    {
+      src: 'nuxt-universal-cookies',
+      options: {}
+    }
   ],
   /*
    ** Axios module configuration

@@ -33,14 +33,14 @@ function mediaWikiListener() {
 
     eventSource.onmessage = async function(event) {
       let data = JSON.parse(event.data);
-      console.log(`server received`, data.wiki, data.id, data.meta.uri);
+      // console.log(`server received`, data.wiki, data.id, data.meta.uri);
       data._id = (`${data.wiki}-${data.id}`);
       if (data.type === "edit") {
         try {
           await db.collection(`MediaWikiRecentChange`).insertOne(data);
         } catch (e) {
           if (e.name === "MongoError" && e.code === 11000) {
-            console.warn(`Duplicated Key Found`, e);
+            console.warn(`Duplicated Key Found`, e.errmsg);
           } else {
             console.error(e);
           }
