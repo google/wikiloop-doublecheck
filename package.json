@@ -1,7 +1,7 @@
 {
-  "name": "learn-vue-nuxt",
+  "name": "wikiloop-battlefield",
   "version": "1.0.0",
-  "description": "My kickass Nuxt.js project",
+  "description": "My little project for fighting vandalism",
   "author": "Zainan Victor Zhou",
   "private": true,
   "scripts": {
