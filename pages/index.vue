@@ -29,6 +29,7 @@
             <!-- Modal Component -->
             <b-modal id="filter-modal" title="Filters">
               <b-form-group label="Require">
+                <b-form-checkbox v-model="requireEnWiki" >en-wiki</b-form-checkbox>
                   <b-form-checkbox v-model="requireNonBot" >non-bot</b-form-checkbox>
                   <b-form-checkbox v-model="requireArticleNamespace" >article namespace</b-form-checkbox>
                   <b-form-checkbox v-model="requireBadfaith" >bad-faith</b-form-checkbox>
@@ -72,10 +73,15 @@
             </div>
             <div class="mt-4 d-flex justify-content-center">
               <div class="btn-group">
-                <button href="#" class="btn btn-sm btn-outline-success">Looks good</button>
-                <button href="#" class="btn btn-sm btn-outline-secondary">Not sure</button>
-                <a v-bind:href="`https://en.wikipedia.org/w/index.php?title=${recentChange.title}&action=edit&undoafter=${recentChange.revision.old}&undo=${recentChange.revision.new}`"
-                  class="btn btn-sm btn-outline-danger" target="_blank">Should revert</a>
+                <button
+                  v-on:click="interactionBtn(`LooksGood`, recentChange)"
+                  class="btn btn-sm btn-outline-success">Looks good</button>
+                <button
+                  v-on:click="interactionBtn(`NotSure`, recentChange)"
+                  class="btn btn-sm btn-outline-secondary">Not sure</button>
+                <button
+                  v-on:click="interactionBtn(`ShouldRevert`, recentChange)"
+                  class="btn btn-sm btn-outline-danger" target="_blank">Should revert</button>
               </div>
             </div>
           </div>
@@ -99,10 +105,9 @@ export default {
     return {
       title: 'WikiLoop Battlefield',
       recentChanges: [],
-      requireEnWiki: false,
-      requireDamaging: false,
-      requireBadfaith: false,
-      // requireBasicFilter: true,
+      requireEnWiki: true,
+      requireDamaging: true,
+      requireBadfaith: true,
       requireArticleNamespace: true,
       requireNonBot: true,
       revisionCounter: 0,
@@ -128,6 +133,18 @@ export default {
     badfaithPercent: function (recentChange) {
       let wiki = recentChange.wiki;
       return recentChange.ores[wiki].scores[recentChange.revision.new].damaging.score.probability.true.toLocaleString("en", { style: "percent" });
+    },
+    interactionBtn: async function(judgement, recentChange) {
+      let url = `https://en.wikipedia.org/w/index.php?title=${recentChange.title}&action=edit&undoafter=${recentChange.revision.old}&undo=${recentChange.revision.new}`;
+      let gaId = this.$cookies.get("_ga");
+      console.log(`gaId`, gaId);
+      let ret = await this.$axios.$post(`/api/interaction`, {
+        gaId: gaId,
+        judgement: judgement,
+        recentChange: recentChange
+      });
+      console.log(`interaction ret:`, ret);
+      if (judgement === `ShouldRevert`) window.open(url, '_blank');
     }
   },
   mounted() {
@@ -149,12 +166,14 @@ export default {
       this.revisionCounter += 1;
       let filter = async (data) => {
         let basicFilter = (
+          data.type === "edit" &&
+          // List should be a subset of from https://www.mediawiki.org/wiki/ORES/Support_table
+          [`enwiki`, `frwiki`, `ruwiki`, `wikidatawiki`].indexOf(data.wiki) >= 0 &&
           (data.wiki === "enwiki" || !this.requireEnWiki) &&
           (data.bot === false || !this.requireNonBot) &&
-          data.type === "edit" &&
           (data.namespace === 0 || !this.requireArticleNamespace)
         );
-        if (basicFilter || !this.requireBasicFilter) {
+        if (basicFilter) {
           this.basicFilterCounter += 1;
           let oresUrl = `https://ores.wmflabs.org/v3/scores/${data.wiki}/?models=damaging|goodfaith&revids=${data.revision.new}`;
           let oresJson = await $.get(oresUrl);

@@ -19,8 +19,10 @@
     "@nuxtjs/google-analytics": "^2.2.0",
     "@nuxtjs/pwa": "^2.6.0",
     "@types/mongodb": "^3.1.24",
+    "body-parser": "^1.18.3",
     "bootstrap": "^4.1.3",
     "bootstrap-vue": "^2.0.0-rc.11",
+    "cookie-parser": "^1.4.4",
     "cross-env": "^5.2.0",
     "dotenv": "^7.0.0",
     "eventsource": "^1.0.7",
@@ -28,6 +30,7 @@
     "jquery": "^3.4.0",
     "mongodb": "^3.2.3",
     "nuxt": "^2.4.0",
+    "nuxt-universal-cookies": "0.0.5",
     "request": "^2.88.0",
     "request-promise": "^4.2.4"
   },
