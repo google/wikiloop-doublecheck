@@ -25,7 +25,6 @@
             <a class="nav-link" href="#">Home</a>
           </li>
           <li class="nav-item active">
-            <a href="#" class="nav-link" v-b-modal.filter-modal>Filters</a>
             <!-- Modal Component -->
             <b-modal id="filter-modal" title="Filters">
               <b-form-group label="Require">
@@ -47,6 +46,13 @@
       </div>
     </nav>
     <div class="container" style="margin-top:60px">
+      <h3>
+        {{showCounter}} out of {{revisionCounter}} revisions matches <span class="btn btn-outline-primary" v-b-modal.filter-modal>filters</span>
+        or you can  <span class="btn btn-outline-primary" v-on:click="pause = !pause">pause it</span>
+      </h3>
+      <div class="m-auto" v-if="recentChanges.length === 0">
+        <h1 class="m-auto">Please wait for your first vandal edits....</h1>
+      </div>
       <div
         v-for="recentChange of recentChanges"
         v-bind:key="recentChange.id"
@@ -216,5 +222,8 @@ export default {
   .diff-deletedline,.diff-addedline {
     word-break: break-all;
     width: 50%
+  }
+  .blue-link {
+    color:blue
   }
 </style>
