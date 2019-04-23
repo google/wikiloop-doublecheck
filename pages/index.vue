@@ -143,10 +143,10 @@ export default {
       return recentChange.ores[wiki].scores[recentChange.revision.new].damaging.score.probability.true.toLocaleString("en", { style: "percent" });
     },
     interactionBtn: async function(judgement, recentChange) {
-      let url = `https://en.wikipedia.org/w/index.php?title=${recentChange.title}&action=edit&undoafter=${recentChange.revision.old}&undo=${recentChange.revision.new}`;
+      let url = `${recentChange.server_url}/w/index.php?title=${recentChange.title}&action=edit&undoafter=${recentChange.revision.old}&undo=${recentChange.revision.new}`;
       let gaId = this.$cookies.get("_ga");
       console.log(`gaId`, gaId);
-      let ret = await $.get(`/api/interaction`, {
+      let ret = await $.post(`/api/interaction`, {
         gaId: gaId,
         judgement: judgement,
         recentChange: recentChange
