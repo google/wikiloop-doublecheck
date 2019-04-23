@@ -32,15 +32,21 @@ function mediaWikiListener() {
     };
 
     eventSource.onmessage = async function(event) {
-      let data = JSON.parse(event.data);
+      let recentChange = JSON.parse(event.data);
       // console.log(`server received`, data.wiki, data.id, data.meta.uri);
-      data._id = (`${data.wiki}-${data.id}`);
-      if (data.type === "edit") {
+      recentChange._id = (`${recentChange.wiki}-${recentChange.id}`);
+      if (recentChange.type === "edit") {
         // Currently only support these wikis.
-        if (["enwiki", "frwiki", "ruwiki"].indexOf(data.wiki) >= 0) {
+        if (["enwiki", "frwiki", "ruwiki"].indexOf(recentChange.wiki) >= 0) {
           try {
             await db.collection(`MediaWikiRecentChange`).insertOne({
-              _id: data._id
+              _id: recentChange._id,
+              id: recentChange.id,
+              ores: recentChange.ores,
+              revision: recentChange.revision,
+              title: recentChange.title,
+              user: recentChange.user,
+              wiki: recentChange.wiki
             });
           } catch (e) {
             if (e.name === "MongoError" && e.code === 11000) {

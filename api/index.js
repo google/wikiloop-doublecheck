@@ -35,13 +35,9 @@ app.post('/interaction', asyncHandler(async (req, res) => {
     judgement: req.body.judgement,
     recentChange: {
       id: recentChange.id,
-      namespace: recentChange.namespace,
       ores: recentChange.ores,
       revision: recentChange.revision,
-      timestamp: recentChange.timestamp,
       title: recentChange.title,
-      type: recentChange.type,
-      uri: recentChange.meta.uri,
       user: recentChange.user,
       wiki: recentChange.wiki
     }
