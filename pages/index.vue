@@ -31,8 +31,8 @@
                 <b-form-checkbox v-model="requireEnWiki" >en-wiki</b-form-checkbox>
                   <b-form-checkbox v-model="requireNonBot" >non-bot</b-form-checkbox>
                   <b-form-checkbox v-model="requireArticleNamespace" >article namespace</b-form-checkbox>
-                  <b-form-checkbox v-model="requireBadfaith" >bad-faith</b-form-checkbox>
-                  <b-form-checkbox v-model="requireDamaging">damaging</b-form-checkbox>
+                  <b-form-checkbox v-model="requireBadfaith" >bad-faith (by WMF ORES™ score)</b-form-checkbox>
+                  <b-form-checkbox v-model="requireDamaging">damaging (by WMF ORES™ score)</b-form-checkbox>
               </b-form-group>
             </b-modal>
           </li>
@@ -51,7 +51,7 @@
         or you can  <span class="btn btn-outline-primary" v-on:click="pause = !pause">pause it</span>
       </h3>
       <div class="m-auto" v-if="recentChanges.length === 0">
-        <h1 class="m-auto">Please wait for your first vandal edits....</h1>
+        <h1 class="m-auto">Please wait for the first vandal edit to show up....</h1>
       </div>
       <div
         v-for="recentChange of recentChanges"
@@ -100,6 +100,8 @@
 import BootstrapVue from 'bootstrap-vue'
 import DiffBox from '~/components/DiffBox.vue'
 
+const $ = require('jquery');
+
 export default {
   comments: {
     BootstrapVue
@@ -144,7 +146,7 @@ export default {
       let url = `https://en.wikipedia.org/w/index.php?title=${recentChange.title}&action=edit&undoafter=${recentChange.revision.old}&undo=${recentChange.revision.new}`;
       let gaId = this.$cookies.get("_ga");
       console.log(`gaId`, gaId);
-      let ret = await this.$axios.$post(`/api/interaction`, {
+      let ret = await $.get(`/api/interaction`, {
         gaId: gaId,
         judgement: judgement,
         recentChange: recentChange
@@ -166,7 +168,6 @@ export default {
       console.error('--- Encountered error', event);
     };
 
-    const $ = require('jquery');
     eventSource.onmessage = async (event) => {
       if (this.pause) return;
       this.revisionCounter += 1;
@@ -174,7 +175,7 @@ export default {
         let basicFilter = (
           data.type === "edit" &&
           // List should be a subset of from https://www.mediawiki.org/wiki/ORES/Support_table
-          [`enwiki`, `frwiki`, `ruwiki`, `wikidatawiki`].indexOf(data.wiki) >= 0 &&
+          [`enwiki`, `frwiki`, `ruwiki`].indexOf(data.wiki) >= 0 &&
           (data.wiki === "enwiki" || !this.requireEnWiki) &&
           (data.bot === false || !this.requireNonBot) &&
           (data.namespace === 0 || !this.requireArticleNamespace)

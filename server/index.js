@@ -36,15 +36,21 @@ function mediaWikiListener() {
       // console.log(`server received`, data.wiki, data.id, data.meta.uri);
       data._id = (`${data.wiki}-${data.id}`);
       if (data.type === "edit") {
-        try {
-          await db.collection(`MediaWikiRecentChange`).insertOne(data);
-        } catch (e) {
-          if (e.name === "MongoError" && e.code === 11000) {
-            console.warn(`Duplicated Key Found`, e.errmsg);
-          } else {
-            console.error(e);
+        // Currently only support these wikis.
+        if (["enwiki", "frwiki", "ruwiki"].indexOf(data.wiki) >= 0) {
+          try {
+            await db.collection(`MediaWikiRecentChange`).insertOne({
+              _id: data._id
+            });
+          } catch (e) {
+            if (e.name === "MongoError" && e.code === 11000) {
+              console.warn(`Duplicated Key Found`, e.errmsg);
+            } else {
+              console.error(e);
+            }
           }
         }
+
       }
     };
 
