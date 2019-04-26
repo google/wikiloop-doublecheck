@@ -46,7 +46,7 @@ function mediaWikiListener() {
             console.log(JSON.stringify(oresJson, null, 2));
             let damaging = oresJson[recentChange.wiki].scores[recentChange.revision.new].damaging.score.probability.true;
             let badfaith = oresJson[recentChange.wiki].scores[recentChange.revision.new].goodfaith.score.probability.false;
-            // console.log(recentChange);
+            console.log(recentChange);
             await db.collection(`MediaWikiRecentChange`).insertOne({
               _id: recentChange._id,
               id: recentChange.id,
