@@ -43,9 +43,10 @@ function mediaWikiListener() {
           try {
             let oresUrl = `https://ores.wmflabs.org/v3/scores/${recentChange.wiki}/?models=damaging|goodfaith&revids=${recentChange.revision.new}`;
             let oresJson = await rp.get(oresUrl, { json: true });
-            let damaging = oresJson[recentChange.wiki].scores[recentChange.revision.new].damaging.score.prediction;
-            let badfaith = !oresJson[recentChange.wiki].scores[recentChange.revision.new].goodfaith.score.prediction;
-            console.log(recentChange);
+            console.log(JSON.stringify(oresJson, null, 2));
+            let damaging = oresJson[recentChange.wiki].scores[recentChange.revision.new].damaging.score.probability.true;
+            let badfaith = oresJson[recentChange.wiki].scores[recentChange.revision.new].goodfaith.score.probability.false;
+            // console.log(recentChange);
             await db.collection(`MediaWikiRecentChange`).insertOne({
               _id: recentChange._id,
               id: recentChange.id,
