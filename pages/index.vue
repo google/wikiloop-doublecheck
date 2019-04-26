@@ -31,8 +31,8 @@
                 <b-form-checkbox v-model="requireEnWiki" >en-wiki</b-form-checkbox>
                   <b-form-checkbox v-model="requireNonBot" >non-bot</b-form-checkbox>
                   <b-form-checkbox v-model="requireArticleNamespace" >article namespace</b-form-checkbox>
-                  <b-form-checkbox v-model="requireBadfaith" >bad-faith (by WMF ORES™ score)</b-form-checkbox>
-                  <b-form-checkbox v-model="requireDamaging">damaging (by WMF ORES™ score)</b-form-checkbox>
+                  <b-form-checkbox v-model="requireBadfaith" >bad-faith (by WMF ORES score)</b-form-checkbox>
+                  <b-form-checkbox v-model="requireDamaging">damaging (by WMF ORES score)</b-form-checkbox>
               </b-form-group>
             </b-modal>
           </li>

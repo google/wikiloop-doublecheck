@@ -1,7 +1,9 @@
-const express = require('express')
-const consola = require('consola')
-const { Nuxt, Builder } = require('nuxt')
-const app = express()
+const express = require('express');
+const consola = require('consola');
+const { Nuxt, Builder } = require('nuxt');
+const app = express();
+const rp = require(`request-promise`);
+
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js')
 config.dev = !(process.env.NODE_ENV === 'production')
@@ -39,14 +41,23 @@ function mediaWikiListener() {
         // Currently only support these wikis.
         if (["enwiki", "frwiki", "ruwiki"].indexOf(recentChange.wiki) >= 0) {
           try {
+            let oresUrl = `https://ores.wmflabs.org/v3/scores/${recentChange.wiki}/?models=damaging|goodfaith&revids=${recentChange.revision.new}`;
+            let oresJson = await rp.get(oresUrl, { json: true });
+            let damaging = oresJson[recentChange.wiki].scores[recentChange.revision.new].damaging.score.prediction;
+            let badfaith = !oresJson[recentChange.wiki].scores[recentChange.revision.new].goodfaith.score.prediction;
+            console.log(recentChange);
             await db.collection(`MediaWikiRecentChange`).insertOne({
               _id: recentChange._id,
               id: recentChange.id,
-              ores: recentChange.ores,
               revision: recentChange.revision,
               title: recentChange.title,
               user: recentChange.user,
-              wiki: recentChange.wiki
+              wiki: recentChange.wiki,
+              timestamp: recentChange.timestamp,
+              ores: {
+                damaging: damaging,
+                badfaith: badfaith
+              }
             });
           } catch (e) {
             if (e.name === "MongoError" && e.code === 11000) {
