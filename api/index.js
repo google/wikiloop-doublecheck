@@ -3,6 +3,7 @@ const app = express();
 const rp = require(`request-promise`);
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+
 app.use(cookieParser());
 app.use(bodyParser());
 
@@ -15,6 +16,7 @@ app.get('/', (req, res, next) => {
   res.send('API root')
 });
 
+// TODO add cache
 app.get('/diff', asyncHandler(async (req, res) => {
   console.log(`req.query`, req.query);
   let diffApiUrl = `${req.query.serverUrl}/w/api.php?action=compare&fromrev=${req.query.revId}&torelative=prev&format=json`;
