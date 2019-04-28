@@ -50,43 +50,43 @@
         {{showCounter}} out of {{revisionCounter}} revisions matches <span class="btn btn-outline-primary" v-b-modal.filter-modal>filters</span>
         or you can  <span class="btn btn-outline-primary" v-on:click="pause = !pause">pause it</span>
       </h3>
-      <div class="m-auto" v-if="recentChanges.length === 0">
+      <div class="m-auto" v-if="newRecentChanges.length === 0">
         <h1 class="m-auto">Please wait for the first vandal edit to show up....</h1>
       </div>
       <div
-        v-for="recentChange of recentChanges"
-        v-bind:key="recentChange.id"
+        v-for="newRecentChange of newRecentChanges"
+        v-bind:key="newRecentChange.id"
         class="col-12 p-2"
       >
-        <div v-bind:class="{ 'border-danger': badfaith(recentChange), 'bg-gradient-danger': badfaith(recentChange), 'border-warning': damaging(recentChange), 'bg-gradient-danger': damaging(recentChange) }"
+        <div v-bind:class="{ 'border-danger': badfaith(newRecentChange), 'bg-gradient-danger': badfaith(newRecentChange), 'border-warning': damaging(newRecentChange), 'bg-gradient-danger': damaging(newRecentChange) }"
              class="card shadow-sm h-100">
           <div class="card-body d-flex flex-column">
             <h5 class="card-title">
-              <a v-bind:href="`${recentChange.server_url}/wiki/Special:Diff/${recentChange.revision.new}`">{{ recentChange.title }}</a>
+              <a v-bind:href="`${getUrlBase(newRecentChange)}/wiki/Special:Diff/${newRecentChange.revision.new}`">{{ newRecentChange.title }}</a>
             </h5>
             <h6 class="card-subtitle mb-2 text-muted">
-              <small>by <a v-bind:href="`${recentChange.server_url}/wiki/User:${recentChange.user}`">{{ recentChange.user }}</a>
+              <small>by <a v-bind:href="`${getUrlBase(newRecentChange)}/wiki/User:${newRecentChange.user}`">{{ newRecentChange.user }}</a>
                 <span data-toggle="tooltip" data-placement="top" title="from WMF ORES score">
-                  <i v-bind:class="{ 'text-danger': badfaith(recentChange) }" class="fas fa-theater-masks"></i>: {{ damagingPercent(recentChange) }},
+                  <i v-bind:class="{ 'text-danger': badfaith(newRecentChange) }" class="fas fa-theater-masks"></i>: {{ damagingPercent(newRecentChange) }},
                 </span>
                 <span data-toggle="tooltip" data-placement="top" title="from WMF ORES score">
-                  <i v-bind:class="{ 'text-warning': damaging(recentChange) }" class="fas fa-cloud-rain"></i>: {{ badfaithPercent(recentChange) }}
+                  <i v-bind:class="{ 'text-warning': damaging(newRecentChange) }" class="fas fa-cloud-rain"></i>: {{ badfaithPercent(newRecentChange) }}
                 </span>
               </small>
             </h6>
             <div class="card-text w-100">
-              <diff-box v-bind:diffContent="recentChange.diff.compare['*']" />
+              <diff-box v-bind:diffContent="newRecentChange.diff.compare['*']" />
             </div>
             <div class="mt-4 d-flex justify-content-center">
               <div class="btn-group">
                 <button
-                  v-on:click="interactionBtn(`LooksGood`, recentChange)"
+                  v-on:click="interactionBtn(`LooksGood`, newRecentChange)"
                   class="btn btn-sm btn-outline-success">Looks good</button>
                 <button
-                  v-on:click="interactionBtn(`NotSure`, recentChange)"
+                  v-on:click="interactionBtn(`NotSure`, newRecentChange)"
                   class="btn btn-sm btn-outline-secondary">Not sure</button>
                 <button
-                  v-on:click="interactionBtn(`ShouldRevert`, recentChange)"
+                  v-on:click="interactionBtn(`ShouldRevert`, newRecentChange)"
                   class="btn btn-sm btn-outline-danger" target="_blank">Should revert</button>
               </div>
             </div>
@@ -97,8 +97,9 @@
   </section>
 </template>
 <script>
-import BootstrapVue from 'bootstrap-vue'
-import DiffBox from '~/components/DiffBox.vue'
+import BootstrapVue from 'bootstrap-vue';
+import DiffBox from '~/components/DiffBox.vue';
+import socket from '~/plugins/socket.io.js';
 
 const $ = require('jquery');
 
@@ -113,6 +114,7 @@ export default {
     return {
       title: 'WikiLoop Battlefield',
       recentChanges: [],
+      newRecentChanges: [],
       requireEnWiki: true,
       requireDamaging: true,
       requireBadfaith: true,
@@ -126,91 +128,46 @@ export default {
     }
   },
   methods: {
-    damaging: function (recentChange) {
-      let wiki = recentChange.wiki;
-      return recentChange.ores[wiki].scores[recentChange.revision.new].damaging.score.prediction;
+    getUrlBase: function (newRecentChange) {
+      let lang = {
+        'enwiki': 'en',
+        'frwiki': 'fr',
+        'ruwiki': 'ru'
+      };
+      return `http://${lang[newRecentChange.wiki]}.wikipedia.org`;
     },
-    damagingPercent: function (recentChange) {
-      let wiki = recentChange.wiki;
-      return (1 - recentChange.ores[wiki].scores[recentChange.revision.new].goodfaith.score.probability.true).toLocaleString("en", { style: "percent" });
+    damaging: function (newRecentChange) {
+      return newRecentChange.ores.damaging > 0.67;
     },
-    badfaith: function (recentChange) {
-      let wiki = recentChange.wiki;
-      return !recentChange.ores[wiki].scores[recentChange.revision.new].goodfaith.score.prediction;
+    damagingPercent: function (newRecentChange) {
+      return newRecentChange.ores.damaging;
     },
-    badfaithPercent: function (recentChange) {
-      let wiki = recentChange.wiki;
-      return recentChange.ores[wiki].scores[recentChange.revision.new].damaging.score.probability.true.toLocaleString("en", { style: "percent" });
+    badfaith: function (newRecentChange) {
+      return newRecentChange.ores.badfaith > 0.67;
     },
-    interactionBtn: async function(judgement, recentChange) {
-      let url = `${recentChange.server_url}/w/index.php?title=${recentChange.title}&action=edit&undoafter=${recentChange.revision.old}&undo=${recentChange.revision.new}`;
+    badfaithPercent: function (newRecentChange) {
+      return newRecentChange.ores.badfaith;
+    },
+    interactionBtn: async function(judgement, newRecentChange) {
+      let url = `${this.getUrlBase(newRecentChange)}/w/index.php?title=${newRecentChange.title}&action=edit&undoafter=${newRecentChange.revision.old}&undo=${newRecentChange.revision.new}`;
       let gaId = this.$cookies.get("_ga");
       console.log(`gaId`, gaId);
       let ret = await $.post(`/api/interaction`, {
         gaId: gaId,
         judgement: judgement,
-        recentChange: recentChange
+        newRecentChange: newRecentChange
       });
       console.log(`interaction ret:`, ret);
       if (judgement === `ShouldRevert`) window.open(url, '_blank');
     }
   },
   mounted() {
-    const url = 'https://stream.wikimedia.org/v2/stream/recentchange';
-    console.log(`Connecting to EventStreams at ${url}`);
-
-    const eventSource = new EventSource(url);
-    eventSource.onopen = function(event) {
-      console.log('--- Opened connection.');
-    };
-
-    eventSource.onerror = (event) => {
-      console.error('--- Encountered error', event);
-    };
-
-    eventSource.onmessage = async (event) => {
-      if (this.pause) return;
-      this.revisionCounter += 1;
-      let filter = async (data) => {
-        let basicFilter = (
-          data.type === "edit" &&
-          // List should be a subset of from https://www.mediawiki.org/wiki/ORES/Support_table
-          [`enwiki`, `frwiki`, `ruwiki`].indexOf(data.wiki) >= 0 &&
-          (data.wiki === "enwiki" || !this.requireEnWiki) &&
-          (data.bot === false || !this.requireNonBot) &&
-          (data.namespace === 0 || !this.requireArticleNamespace)
-        );
-        if (basicFilter) {
-          this.basicFilterCounter += 1;
-          let oresUrl = `https://ores.wmflabs.org/v3/scores/${data.wiki}/?models=damaging|goodfaith&revids=${data.revision.new}`;
-          let oresJson = await $.get(oresUrl);
-          data.ores = oresJson;
-          let damaging = data.ores.enwiki.scores[data.revision.new].damaging.score.prediction;
-          let badfaith = !data.ores.enwiki.scores[data.revision.new].goodfaith.score.prediction;
-
-          let vandalFilter = (damaging || !this.requireDamaging) &&
-            (badfaith || !this.requireBadfaith);
-          if (vandalFilter) {
-            let diffJson = await $.get(`/api/diff?serverUrl=${data.server_url}&revId=${data.revision.new}`);
-            data.diff = diffJson;
-          }
-          return vandalFilter;
-          // console.log(oresJson.enwiki.scores);
-        }
-
-        return false;
-      };
-
-      let newData = JSON.parse(event.data);
-      if (await filter(newData)) {
-        this.showCounter += 1;
-        this.recentChanges.unshift(newData);
-        // if (this.recentChanges.length === 9) eventSource.close();
-        this.recentChanges = this.recentChanges.slice(0, Math.min(this.recentChanges.length, 8));
-        // console.log(newData);
-        // this.loaded = true;
-      }
-    };
+    socket.on('recent-change', async (newRecentChange) => {
+      console.log(newRecentChange);
+      let diffJson = await $.get(`/api/diff?serverUrl=${this.getUrlBase(newRecentChange)}/&revId=${newRecentChange.revision.new}`);
+      newRecentChange.diff = diffJson;
+      this.newRecentChanges.push(newRecentChange);
+    });
   }
 }
 </script>

@@ -27,12 +27,15 @@
     "dotenv": "^7.0.0",
     "eventsource": "^1.0.7",
     "express": "^4.16.4",
+    "http": "0.0.0",
     "jquery": "^3.4.0",
     "mongodb": "^3.2.3",
     "nuxt": "^2.4.0",
     "nuxt-universal-cookies": "0.0.5",
     "request": "^2.88.0",
-    "request-promise": "^4.2.4"
+    "request-promise": "^4.2.4",
+    "socket.io": "^2.2.0",
+    "socket.io-client": "^2.2.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.9",

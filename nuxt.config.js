@@ -40,7 +40,9 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [
+    '@/plugins/socket.io.js'
+  ],
 
   /*
    ** Nuxt.js modules
@@ -91,7 +93,8 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
-    }
+    },
+    vendor: ['socket.io-client']
   },
 
   serverMiddleware: [

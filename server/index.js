@@ -1,8 +1,15 @@
+const http = require('http');
 const express = require('express');
 const consola = require('consola');
 const { Nuxt, Builder } = require('nuxt');
 const app = express();
+const server = http.Server(app);
+const io = require('socket.io')(server);
 const rp = require(`request-promise`);
+
+io.on('connection', () => {
+  console.log('a user is connected');
+});
 
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js')
@@ -43,11 +50,13 @@ function mediaWikiListener() {
           try {
             let oresUrl = `https://ores.wmflabs.org/v3/scores/${recentChange.wiki}/?models=damaging|goodfaith&revids=${recentChange.revision.new}`;
             let oresJson = await rp.get(oresUrl, { json: true });
-            console.log(JSON.stringify(oresJson, null, 2));
             let damaging = oresJson[recentChange.wiki].scores[recentChange.revision.new].damaging.score.probability.true;
             let badfaith = oresJson[recentChange.wiki].scores[recentChange.revision.new].goodfaith.score.probability.false;
-            console.log(recentChange);
-            await db.collection(`MediaWikiRecentChange`).insertOne({
+            recentChange.ores = {
+              damaging: damaging,
+              badfaith: badfaith
+            };
+            let doc = {
               _id: recentChange._id,
               id: recentChange.id,
               revision: recentChange.revision,
@@ -55,11 +64,10 @@ function mediaWikiListener() {
               user: recentChange.user,
               wiki: recentChange.wiki,
               timestamp: recentChange.timestamp,
-              ores: {
-                damaging: damaging,
-                badfaith: badfaith
-              }
-            });
+              ores: recentChange.ores
+            };
+            io.sockets.emit('recent-change', doc);
+            await db.collection(`MediaWikiRecentChange`).insertOne(doc);
           } catch (e) {
             if (e.name === "MongoError" && e.code === 11000) {
               console.warn(`Duplicated Key Found`, e.errmsg);
@@ -92,7 +100,8 @@ async function start() {
   app.use(nuxt.render)
 
   // Listen the server
-  app.listen(port, host)
+  // app.listen(port, host)
+  server.listen(port, host);
   consola.ready({
     message: `Server listening on http://${host}:${port}`,
     badge: true
