@@ -50,10 +50,15 @@ function mediaWikiListener() {
           try {
             let oresUrl = `https://ores.wmflabs.org/v3/scores/${recentChange.wiki}/?models=damaging|goodfaith&revids=${recentChange.revision.new}`;
             let oresJson = await rp.get(oresUrl, { json: true });
-            let damaging = oresJson[recentChange.wiki].scores[recentChange.revision.new].damaging.score.probability.true;
-            let badfaith = oresJson[recentChange.wiki].scores[recentChange.revision.new].goodfaith.score.probability.false;
+            let damagingScore = oresJson[recentChange.wiki].scores[recentChange.revision.new].damaging.score.probability.true;
+            let badfaithScore = oresJson[recentChange.wiki].scores[recentChange.revision.new].goodfaith.score.probability.false;
+            let damaging = oresJson[recentChange.wiki].scores[recentChange.revision.new].damaging.score.prediction;
+            let badfaith = !oresJson[recentChange.wiki].scores[recentChange.revision.new].goodfaith.score.prediction;
+            console.log(`XXX ores`, JSON.stringify(oresJson, null, 2));
             recentChange.ores = {
+              damagingScore: damagingScore,
               damaging: damaging,
+              badfaithScore: badfaithScore,
               badfaith: badfaith
             };
             let doc = {
@@ -64,8 +69,11 @@ function mediaWikiListener() {
               user: recentChange.user,
               wiki: recentChange.wiki,
               timestamp: recentChange.timestamp,
-              ores: recentChange.ores
+              ores: recentChange.ores,
+              namespace: recentChange.namespace,
+              nonbot: !recentChange.bot
             };
+            console.log(`XXX doc = ${JSON.stringify(doc, null, 2)}`);
             io.sockets.emit('recent-change', doc);
             await db.collection(`MediaWikiRecentChange`).insertOne(doc);
           } catch (e) {
