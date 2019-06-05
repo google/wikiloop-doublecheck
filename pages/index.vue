@@ -149,7 +149,7 @@ export default {
       return newRecentChange.ores.badfaith;
     },
     interactionBtn: async function(judgement, newRecentChange) {
-      let url = `${this.getUrlBase(newRecentChange)}/w/index.php?title=${newRecentChange.title}&action=edit&undoafter=${newRecentChange.revision.old}&undo=${newRecentChange.revision.new}`;
+      let url = `${this.getUrlBase(newRecentChange)}/w/index.php?title=${newRecentChange.title}&action=edit&undoafter=${newRecentChange.revision.old}&undo=${newRecentChange.revision.new}&summary=Reverted%20with%20[[:m:WikiLoop Battlefield]]`;
       let gaId = this.$cookies.get("_ga");
       console.log(`gaId`, gaId);
       let ret = await $.post(`/api/interaction`, {
