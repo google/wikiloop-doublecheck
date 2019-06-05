@@ -163,10 +163,23 @@ export default {
   },
   mounted() {
     socket.on('recent-change', async (newRecentChange) => {
-      console.log(newRecentChange);
-      let diffJson = await $.get(`/api/diff?serverUrl=${this.getUrlBase(newRecentChange)}/&revId=${newRecentChange.revision.new}`);
-      newRecentChange.diff = diffJson;
-      this.newRecentChanges.push(newRecentChange);
+      this.revisionCounter++;
+      if (
+        (!this.requireArticleNamespace || newRecentChange.namespace === 0) &&
+        (!this.requireNonBot || newRecentChange.nonbot === 0) &&
+        (!this.requireEnWiki || newRecentChange.wiki === 'enwiki') &&
+        (!this.requireDamaging || newRecentChange.ores.damaging) &&
+        (!this.requireBadfaith || newRecentChange.ores.badfaith)
+      ) {
+        this.showCounter++;
+        console.log(`showing newRecentChange ${JSON.stringify(newRecentChange)}`);
+        let diffJson = await $.get(`/api/diff?serverUrl=${this.getUrlBase(newRecentChange)}/&revId=${newRecentChange.revision.new}`);
+        newRecentChange.diff = diffJson;
+        this.newRecentChanges.push(newRecentChange);
+      } else {
+        console.log(`not showing newRecentChange ${JSON.stringify(newRecentChange)}`);
+      }
+
     });
   }
 }
