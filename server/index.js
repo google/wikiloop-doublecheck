@@ -6,7 +6,8 @@ const app = express();
 const server = http.Server(app);
 const io = require('socket.io')(server);
 const rp = require(`request-promise`);
-
+let docCounter = 0;
+let allDocCounter = 0;
 io.on('connection', () => {
   console.log('a user is connected');
 });
@@ -41,6 +42,7 @@ function mediaWikiListener() {
     };
 
     eventSource.onmessage = async function(event) {
+      allDocCounter++;
       let recentChange = JSON.parse(event.data);
       // console.log(`server received`, data.wiki, data.id, data.meta.uri);
       recentChange._id = (`${recentChange.wiki}-${recentChange.id}`);
@@ -73,7 +75,8 @@ function mediaWikiListener() {
               namespace: recentChange.namespace,
               nonbot: !recentChange.bot
             };
-            console.log(`XXX doc = ${JSON.stringify(doc, null, 2)}`);
+            docCounter++;
+            console.log(`#${docCounter} / ${allDocCounter} doc = ${JSON.stringify(doc, null, 2)}`);
             io.sockets.emit('recent-change', doc);
             await db.collection(`MediaWikiRecentChange`).insertOne(doc);
           } catch (e) {
