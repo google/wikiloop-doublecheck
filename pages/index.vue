@@ -149,35 +149,37 @@ export default {
       return newRecentChange.ores.badfaith;
     },
     interactionBtn: async function(judgement, newRecentChange) {
-      let url = `${this.getUrlBase(newRecentChange)}/w/index.php?title=${newRecentChange.title}&action=edit&undoafter=${newRecentChange.revision.old}&undo=${newRecentChange.revision.new}&summary=Reverted%20with%20[[:m:WikiLoop Battlefield]]`;
+      let url = `${this.getUrlBase(newRecentChange)}/w/index.php?title=${newRecentChange.title}&action=edit&undoafter=${newRecentChange.revision.old}&undo=${newRecentChange.revision.new}&summary=Reverted%20with%20[[:m:WikiLoop Battlefield]] tool (https://battlefield.wikiloop.org).`;
       let gaId = this.$cookies.get("_ga");
       console.log(`gaId`, gaId);
-      let ret = await $.post(`/api/interaction`, {
+      let postBody = {
         gaId: gaId,
         judgement: judgement,
         newRecentChange: newRecentChange
-      });
-      console.log(`interaction ret:`, ret);
+      };
+      console.log(`postBody`, postBody);
       if (judgement === `ShouldRevert`) window.open(url, '_blank');
+      let ret = await $.post(`/api/interaction`, postBody);
+      console.log(`interaction ret:`, ret);
     }
   },
   mounted() {
     socket.on('recent-change', async (newRecentChange) => {
       this.revisionCounter++;
       if (
-        (!this.requireArticleNamespace || newRecentChange.namespace === 0) &&
-        (!this.requireNonBot || newRecentChange.nonbot === 0) &&
-        (!this.requireEnWiki || newRecentChange.wiki === 'enwiki') &&
-        (!this.requireDamaging || newRecentChange.ores.damaging) &&
-        (!this.requireBadfaith || newRecentChange.ores.badfaith)
+        (newRecentChange.namespace === 0 || !this.requireArticleNamespace) &&
+        (newRecentChange.nonbot === true || !this.requireNonBot) &&
+        (newRecentChange.wiki === 'enwiki' || !this.requireEnWiki) &&
+        (newRecentChange.ores.damaging || !this.requireDamaging) &&
+        (newRecentChange.ores.badfaith || !this.requireBadfaith)
       ) {
         this.showCounter++;
-        console.log(`showing newRecentChange ${JSON.stringify(newRecentChange)}`);
+        console.warn(`doshowing newRecentChange ${JSON.stringify(newRecentChange)}`);
         let diffJson = await $.get(`/api/diff?serverUrl=${this.getUrlBase(newRecentChange)}/&revId=${newRecentChange.revision.new}`);
         newRecentChange.diff = diffJson;
         this.newRecentChanges.push(newRecentChange);
       } else {
-        console.log(`not showing newRecentChange ${JSON.stringify(newRecentChange)}`);
+        console.log(`notshowing newRecentChange ${JSON.stringify(newRecentChange)}`);
       }
 
     });

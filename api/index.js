@@ -31,17 +31,17 @@ app.post('/interaction', asyncHandler(async (req, res) => {
   let db = (await MongoClient.connect(process.env.MONGODB_URI, { useNewUrlParser: true }))
     .db(process.env.MONGODB_DB);
   let userGaId = req.body.gaId;
-  let recentChange = req.body.recentChange;
+  let newRecentChange = req.body.newRecentChange;
   await db.collection(`Interaction`).insertOne({
     userGaId: userGaId,
     judgement: req.body.judgement,
     recentChange: {
-      id: recentChange.id,
-      ores: recentChange.ores,
-      revision: recentChange.revision,
-      title: recentChange.title,
-      user: recentChange.user,
-      wiki: recentChange.wiki
+      id: newRecentChange.id,
+      ores: newRecentChange.ores,
+      revision: newRecentChange.revision,
+      title: newRecentChange.title,
+      user: newRecentChange.user,
+      wiki: newRecentChange.wiki
     }
   });
   res.send(`ok`);
