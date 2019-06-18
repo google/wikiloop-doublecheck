@@ -77,13 +77,16 @@
               <div class="btn-group">
                 <button
                   v-on:click="interactionBtn(`LooksGood`, newRecentChange)"
-                  class="btn btn-sm btn-outline-success">Looks good</button>
+                  class="btn btn-sm btn-outline-success"
+                  v-bind:class="{ 'btn-success':newRecentChange.judgement === 'LooksGood', 'btn-outline-success':newRecentChange.judgement !== 'LooksGood' }">Looks good</button>
                 <button
                   v-on:click="interactionBtn(`NotSure`, newRecentChange)"
+                  v-bind:class="{ 'btn-secondary':newRecentChange.judgement === 'NotSure', 'btn-outline-secondary':newRecentChange.judgement !== 'NotSure' }"
                   class="btn btn-sm btn-outline-secondary">Not sure</button>
                 <button
                   v-on:click="interactionBtn(`ShouldRevert`, newRecentChange)"
-                  class="btn btn-sm btn-outline-danger" target="_blank">Should revert</button>
+                  v-bind:class="{ 'btn-danger':newRecentChange.judgement === 'ShouldRevert', 'btn-outline-danger':newRecentChange.judgement !== 'ShouldRevert' }"
+                  class="btn btn-sm" target="_blank">Should revert</button>
               </div>
             </div>
           </div>
@@ -157,6 +160,7 @@ export default {
       console.log(`postBody`, postBody);
       if (judgement === `ShouldRevert`) window.open(url, '_blank');
       let ret = await $.post(`/api/interaction`, postBody);
+      newRecentChange.judgement = judgement;
       console.log(`interaction ret:`, ret);
     }
   },
@@ -174,7 +178,7 @@ export default {
         console.warn(`doshowing newRecentChange ${JSON.stringify(newRecentChange)}`);
         let diffJson = await $.get(`/api/diff?serverUrl=${this.getUrlBase(newRecentChange)}/&revId=${newRecentChange.revision.new}`);
         newRecentChange.diff = diffJson;
-        this.newRecentChanges.push(newRecentChange);
+        this.newRecentChanges.unshift(newRecentChange);
       } else {
         console.log(`notshowing newRecentChange ${JSON.stringify(newRecentChange)}`);
       }
