@@ -8,8 +8,14 @@ const io = require('socket.io')(server);
 const rp = require(`request-promise`);
 let docCounter = 0;
 let allDocCounter = 0;
-io.on('connection', () => {
-  console.log('a user is connected');
+io.on('connection', function(socket) {
+  console.log(`XXX connected `, Object.keys(io.sockets.connected).length);
+  io.sockets.emit('client-activity', { liveUserCount: Object.keys(io.sockets.connected).length });
+  socket.on('disconnect', function() {
+
+    io.sockets.emit('client-activity', { liveUserCount: Object.keys(io.sockets.connected).length });
+    console.warn(`XXX disconnected `, Object.keys(io.sockets.connected).length);
+  });
 });
 
 // Import and Set Nuxt.js options
@@ -56,7 +62,6 @@ function mediaWikiListener() {
             let badfaithScore = oresJson[recentChange.wiki].scores[recentChange.revision.new].goodfaith.score.probability.false;
             let damaging = oresJson[recentChange.wiki].scores[recentChange.revision.new].damaging.score.prediction;
             let badfaith = !oresJson[recentChange.wiki].scores[recentChange.revision.new].goodfaith.score.prediction;
-            console.log(`XXX ores`, JSON.stringify(oresJson, null, 2));
             recentChange.ores = {
               damagingScore: damagingScore,
               damaging: damaging,
