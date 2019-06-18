@@ -37,11 +37,7 @@
             </b-modal>
           </li>
         </ul>
-        <form class="form-inline mx-1 w-100 d-flex">
-          <input class="form-control mr-sm-2 flex-grow-1" type="search" placeholder="Search"
-                 aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        <div>Online: {{ liveUserCount }}</div>
       </div>
       </div>
     </nav>
@@ -122,6 +118,7 @@ export default {
       requireNonBot: true,
       revisionCounter: 0,
       basicFilterCounter: 0,
+      liveUserCount: 1,
       showCounter: 0,
       pause: false
       // loaded: false
@@ -137,16 +134,16 @@ export default {
       return `http://${lang[newRecentChange.wiki]}.wikipedia.org`;
     },
     damaging: function (newRecentChange) {
-      return newRecentChange.ores.damaging > 0.67;
-    },
-    damagingPercent: function (newRecentChange) {
       return newRecentChange.ores.damaging;
     },
+    damagingPercent: function (newRecentChange) {
+      return newRecentChange.ores.damagingScore;
+    },
     badfaith: function (newRecentChange) {
-      return newRecentChange.ores.badfaith > 0.67;
+      return newRecentChange.ores.badfaith;
     },
     badfaithPercent: function (newRecentChange) {
-      return newRecentChange.ores.badfaith;
+      return newRecentChange.ores.badfaithScore;
     },
     interactionBtn: async function(judgement, newRecentChange) {
       let url = `${this.getUrlBase(newRecentChange)}/w/index.php?title=${newRecentChange.title}&action=edit&undoafter=${newRecentChange.revision.old}&undo=${newRecentChange.revision.new}&summary=Reverted%20with%20[[:m:WikiLoop Battlefield]] tool (https://battlefield.wikiloop.org).`;
@@ -181,7 +178,10 @@ export default {
       } else {
         console.log(`notshowing newRecentChange ${JSON.stringify(newRecentChange)}`);
       }
-
+    });
+    socket.on('client-activity', async (clientActivity) => {
+      console.log(`client activity: ${clientActivity}`);
+      this.liveUserCount = clientActivity.liveUserCount;
     });
   }
 }
