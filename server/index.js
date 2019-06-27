@@ -6,10 +6,15 @@ const app = express();
 const server = http.Server(app);
 const io = require('socket.io')(server);
 const rp = require(`request-promise`);
+
+var log4js = require('log4js');
+var logger = log4js.getLogger();
+logger.level = 'debug';
+
 let docCounter = 0;
 let allDocCounter = 0;
 io.on('connection', function(socket) {
-  console.log(`XXX connected `, Object.keys(io.sockets.connected).length);
+  logger.debug(`XXX connected `, Object.keys(io.sockets.connected).length);
   io.sockets.emit('client-activity', { liveUserCount: Object.keys(io.sockets.connected).length });
   socket.on('disconnect', function() {
 
@@ -23,7 +28,7 @@ const config = require('../nuxt.config.js')
 config.dev = !(process.env.NODE_ENV === 'production')
 
 function mediaWikiListener() {
-  console.log(`Starting mediaWikiListener.`);
+  logger.debug(`Starting mediaWikiListener.`);
 
   return new Promise(async (resolve, reject) => {
     const MongoClient = require('mongodb').MongoClient;
@@ -32,15 +37,15 @@ function mediaWikiListener() {
     let db = (await MongoClient.connect(process.env.MONGODB_URI, { useNewUrlParser: true }))
           .db(process.env.MONGODB_DB);
 
-    console.log(`MediaWikiListener started`);
+    logger.debug(`MediaWikiListener started`);
     const EventSource = require('eventsource');
     const url = 'https://stream.wikimedia.org/v2/stream/recentchange';
 
-    console.log(`Connecting to EventStreams at ${url}`);
+    logger.debug(`Connecting to EventStreams at ${url}`);
 
     const eventSource = new EventSource(url);
     eventSource.onopen = function(event) {
-      console.log('--- Opened connection.');
+      logger.debug('--- Opened connection.');
     };
 
     eventSource.onerror = function(event) {
@@ -50,7 +55,7 @@ function mediaWikiListener() {
     eventSource.onmessage = async function(event) {
       allDocCounter++;
       let recentChange = JSON.parse(event.data);
-      // console.log(`server received`, data.wiki, data.id, data.meta.uri);
+      // logger.debug(`server received`, data.wiki, data.id, data.meta.uri);
       recentChange._id = (`${recentChange.wiki}-${recentChange.id}`);
       if (recentChange.type === "edit") {
         // Currently only support these wikis.
@@ -81,7 +86,7 @@ function mediaWikiListener() {
               nonbot: !recentChange.bot
             };
             docCounter++;
-            console.log(`#${docCounter} / ${allDocCounter} doc = ${JSON.stringify(doc, null, 2)}`);
+            logger.debug(`#${docCounter} / ${allDocCounter} doc = ${JSON.stringify(doc, null, 2)}`);
             io.sockets.emit('recent-change', doc);
             await db.collection(`MediaWikiRecentChange`).insertOne(doc);
           } catch (e) {
