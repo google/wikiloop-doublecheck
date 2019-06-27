@@ -27,6 +27,60 @@ io.on('connection', function(socket) {
 const config = require('../nuxt.config.js')
 config.dev = !(process.env.NODE_ENV === 'production')
 
+
+// -------------- FROM API ----------------
+
+let apiRouter = express();
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+
+apiRouter.use(cookieParser());
+apiRouter.use(bodyParser());
+
+const asyncHandler = fn => (req, res, next) =>
+    Promise
+        .resolve(fn(req, res, next))
+        .catch(next);
+
+apiRouter.get('/', (req, res, next) => {
+  res.send('API root')
+});
+
+// TODO add cache
+apiRouter.get('/diff', asyncHandler(async (req, res) => {
+  logger.debug(`req.query`, req.query);
+  let diffApiUrl = `${req.query.serverUrl}/w/api.php?action=compare&fromrev=${req.query.revId}&torelative=prev&format=json`;
+  let diffJson = await rp.get(diffApiUrl, { json: true });
+  res.send(diffJson);
+}));
+
+apiRouter.post('/interaction', asyncHandler(async (req, res) => {
+  logger.debug(`Interaction req`, req.cookies, req.body);
+  const MongoClient = require('mongodb').MongoClient;
+  // Use connect method to connect to the Server
+  let db = (await MongoClient.connect(process.env.MONGODB_URI, { useNewUrlParser: true }))
+      .db(process.env.MONGODB_DB);
+  let userGaId = req.body.gaId;
+  let newRecentChange = req.body.newRecentChange;
+  await db.collection(`Interaction`).insertOne({
+    userGaId: userGaId,
+    judgement: req.body.judgement,
+    recentChange: {
+      id: newRecentChange.id,
+      ores: newRecentChange.ores,
+      revision: newRecentChange.revision,
+      title: newRecentChange.title,
+      user: newRecentChange.user,
+      wiki: newRecentChange.wiki
+    }
+  });
+  res.send(`ok`);
+}));
+
+app.use(`/api`, apiRouter);
+
+// ----------------------------------------
+
 function mediaWikiListener() {
   logger.debug(`Starting mediaWikiListener.`);
 
