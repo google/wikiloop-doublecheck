@@ -175,17 +175,20 @@ export default {
         (newRecentChange.ores.badfaith || !this.requireBadfaith)
       ) {
         this.showCounter++;
-        console.warn(`doshowing newRecentChange ${JSON.stringify(newRecentChange)}`);
+        // console.warn(`doshowing newRecentChange ${JSON.stringify(newRecentChange)}`);
         let diffJson = await $.get(`/api/diff?serverUrl=${this.getUrlBase(newRecentChange)}/&revId=${newRecentChange.revision.new}`);
         newRecentChange.diff = diffJson;
         this.newRecentChanges.unshift(newRecentChange);
       } else {
-        console.log(`notshowing newRecentChange ${JSON.stringify(newRecentChange)}`);
+        // console.log(`notshowing newRecentChange ${JSON.stringify(newRecentChange)}`);
       }
     });
     socket.on('client-activity', async (clientActivity) => {
       console.log(`client activity: ${clientActivity}`);
       this.liveUserCount = clientActivity.liveUserCount;
+    });
+    socket.on('interaction', async (interaction) => {
+      console.log(`interaction: ${JSON.stringify(interaction, null, 2)}`);
     });
   }
 }

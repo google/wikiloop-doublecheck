@@ -62,7 +62,7 @@ apiRouter.post('/interaction', asyncHandler(async (req, res) => {
       .db(process.env.MONGODB_DB);
   let userGaId = req.body.gaId;
   let newRecentChange = req.body.newRecentChange;
-  await db.collection(`Interaction`).insertOne({
+  let doc = {
     userGaId: userGaId,
     judgement: req.body.judgement,
     recentChange: {
@@ -73,7 +73,9 @@ apiRouter.post('/interaction', asyncHandler(async (req, res) => {
       user: newRecentChange.user,
       wiki: newRecentChange.wiki
     }
-  });
+  };
+  await db.collection(`Interaction`).insertOne(doc);
+  io.sockets.emit('interaction', doc);
   res.send(`ok`);
 }));
 
