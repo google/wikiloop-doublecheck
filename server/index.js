@@ -2,9 +2,8 @@ const http = require('http');
 const express = require('express');
 const consola = require('consola');
 const { Nuxt, Builder } = require('nuxt');
-const app = express();
-const server = http.Server(app);
-const io = require('socket.io')(server);
+const MongoClient = require('mongodb').MongoClient;
+
 const rp = require(`request-promise`);
 
 var log4js = require('log4js');
@@ -13,86 +12,70 @@ logger.level = 'debug';
 
 let docCounter = 0;
 let allDocCounter = 0;
-io.on('connection', function(socket) {
-  logger.debug(`XXX connected `, Object.keys(io.sockets.connected).length);
-  io.sockets.emit('client-activity', { liveUserCount: Object.keys(io.sockets.connected).length });
-  socket.on('disconnect', function() {
-
-    io.sockets.emit('client-activity', { liveUserCount: Object.keys(io.sockets.connected).length });
-    console.warn(`XXX disconnected `, Object.keys(io.sockets.connected).length);
-  });
-});
 
 // Import and Set Nuxt.js options
-const config = require('../nuxt.config.js')
-config.dev = !(process.env.NODE_ENV === 'production')
+const config = require('../nuxt.config.js');
+config.dev = !(process.env.NODE_ENV === 'production');
 
 
 // -------------- FROM API ----------------
+function setupApiRequestListener(db, io, app) {
+  let apiRouter = express();
+  const cookieParser = require('cookie-parser');
+  const bodyParser = require('body-parser');
 
-let apiRouter = express();
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
+  apiRouter.use(cookieParser());
+  apiRouter.use(bodyParser());
 
-apiRouter.use(cookieParser());
-apiRouter.use(bodyParser());
+  const asyncHandler = fn => (req, res, next) =>
+      Promise
+          .resolve(fn(req, res, next))
+          .catch(next);
 
-const asyncHandler = fn => (req, res, next) =>
-    Promise
-        .resolve(fn(req, res, next))
-        .catch(next);
+  apiRouter.get('/', (req, res, next) => {
+    res.send('API root')
+  });
 
-apiRouter.get('/', (req, res, next) => {
-  res.send('API root')
-});
+  // TODO add cache
+  apiRouter.get('/diff', asyncHandler(async (req, res) => {
+    logger.debug(`req.query`, req.query);
+    let diffApiUrl = `${req.query.serverUrl}/w/api.php?action=compare&fromrev=${req.query.revId}&torelative=prev&format=json`;
+    let diffJson = await rp.get(diffApiUrl, { json: true });
+    res.send(diffJson);
+  }));
 
-// TODO add cache
-apiRouter.get('/diff', asyncHandler(async (req, res) => {
-  logger.debug(`req.query`, req.query);
-  let diffApiUrl = `${req.query.serverUrl}/w/api.php?action=compare&fromrev=${req.query.revId}&torelative=prev&format=json`;
-  let diffJson = await rp.get(diffApiUrl, { json: true });
-  res.send(diffJson);
-}));
+  apiRouter.post('/interaction', asyncHandler(async (req, res) => {
+    logger.debug(`Interaction req`, req.cookies, req.body);
 
-apiRouter.post('/interaction', asyncHandler(async (req, res) => {
-  logger.debug(`Interaction req`, req.cookies, req.body);
-  const MongoClient = require('mongodb').MongoClient;
-  // Use connect method to connect to the Server
-  let db = (await MongoClient.connect(process.env.MONGODB_URI, { useNewUrlParser: true }))
-      .db(process.env.MONGODB_DB);
-  let userGaId = req.body.gaId;
-  let newRecentChange = req.body.newRecentChange;
-  let doc = {
-    userGaId: userGaId,
-    judgement: req.body.judgement,
-    recentChange: {
-      id: newRecentChange.id,
-      ores: newRecentChange.ores,
-      revision: newRecentChange.revision,
-      title: newRecentChange.title,
-      user: newRecentChange.user,
-      wiki: newRecentChange.wiki
-    }
-  };
-  await db.collection(`Interaction`).insertOne(doc);
-  io.sockets.emit('interaction', doc);
-  res.send(`ok`);
-}));
+    let userGaId = req.body.gaId;
+    let newRecentChange = req.body.newRecentChange;
+    let doc = {
+      userGaId: userGaId,
+      judgement: req.body.judgement,
+      recentChange: {
+        id: newRecentChange.id,
+        ores: newRecentChange.ores,
+        revision: newRecentChange.revision,
+        title: newRecentChange.title,
+        user: newRecentChange.user,
+        wiki: newRecentChange.wiki
+      }
+    };
+    await db.collection(`Interaction`).insertOne(doc);
+    io.sockets.emit('interaction', doc);
+    res.send(`ok`);
+  }));
 
-app.use(`/api`, apiRouter);
+  app.use(`/api`, apiRouter);
+}
+
 
 // ----------------------------------------
 
-function mediaWikiListener() {
+function setupMediaWikiListener(db, io) {
   logger.debug(`Starting mediaWikiListener.`);
 
   return new Promise(async (resolve, reject) => {
-    const MongoClient = require('mongodb').MongoClient;
-
-    // Use connect method to connect to the Server
-    let db = (await MongoClient.connect(process.env.MONGODB_URI, { useNewUrlParser: true }))
-          .db(process.env.MONGODB_DB);
-
     logger.debug(`MediaWikiListener started`);
     const EventSource = require('eventsource');
     const url = 'https://stream.wikimedia.org/v2/stream/recentchange';
@@ -159,7 +142,24 @@ function mediaWikiListener() {
 
   });
 }
+function setupIoSocketListener(io) {
+  io.on('connection', function(socket) {
+    logger.debug(`XXX connected `, Object.keys(io.sockets.connected).length);
+    io.sockets.emit('client-activity', { liveUserCount: Object.keys(io.sockets.connected).length });
+    socket.on('disconnect', function() {
+
+      io.sockets.emit('client-activity', { liveUserCount: Object.keys(io.sockets.connected).length });
+      console.warn(`XXX disconnected `, Object.keys(io.sockets.connected).length);
+    });
+  });
+}
+
 async function start() {
+
+  const app = express();
+  const server = http.Server(app);
+  const io = require('socket.io')(server);
+
   // Init Nuxt.js
   const nuxt = new Nuxt(config)
 
@@ -172,7 +172,14 @@ async function start() {
   } else {
     await nuxt.ready()
   }
+  // Use connect method to connect to the Server
+  let db = (await MongoClient.connect(process.env.MONGODB_URI, { useNewUrlParser: true }))
+      .db(process.env.MONGODB_DB);
 
+  setupIoSocketListener(io);
+  setupMediaWikiListener(db, io);
+  setupApiRequestListener(db, io, app);
+  
   // Give nuxt middleware to express
   app.use(nuxt.render)
 
@@ -184,6 +191,6 @@ async function start() {
     badge: true
   })
 
-  mediaWikiListener();
+
 }
 start()
