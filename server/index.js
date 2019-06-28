@@ -52,17 +52,48 @@ function setupApiRequestListener(db, io, app) {
     let doc = {
       userGaId: userGaId,
       judgement: req.body.judgement,
+      timestamp: req.body.timestamp,
       recentChange: {
+        _id: newRecentChange._id,
         id: newRecentChange.id,
-        ores: newRecentChange.ores,
-        revision: newRecentChange.revision,
         title: newRecentChange.title,
+        namespace: newRecentChange.namespace,
+        revision: newRecentChange.revision,
+        ores: newRecentChange.ores,
         user: newRecentChange.user,
-        wiki: newRecentChange.wiki
+        wiki: newRecentChange.wiki,
+        timestamp: newRecentChange.timestamp,
       }
     };
     await db.collection(`Interaction`).insertOne(doc);
+    // Add counts
+    let aggrRet = await db.collection(`Interaction`).aggregate(    [
+          {
+            "$match" : {
+              "recentChange.id" : newRecentChange.id,
+              "recentChange.wiki" : newRecentChange.wiki
+            }
+          },
+          {
+            "$group" : {
+              "_id" : "$judgement",
+              "judgement" : {
+                "$sum" : 1.0
+              }
+            }
+          }
+        ],
+        {
+          "allowDiskUse" : false
+        }).toArray();
+    console.log(`XXXX Aggregate Judgement =  ${aggrRet}`);
+    let judgementCounts = {};
+    aggrRet.forEach(ret => {
+      judgementCounts[ret._id] = ret.judgement;
+    });
+    doc.judgementCounts = judgementCounts;
     io.sockets.emit('interaction', doc);
+
     res.send(`ok`);
   }));
 
@@ -125,7 +156,7 @@ function setupMediaWikiListener(db, io) {
               nonbot: !recentChange.bot
             };
             docCounter++;
-            logger.debug(`#${docCounter} / ${allDocCounter} doc = ${JSON.stringify(doc, null, 2)}`);
+            logger.debug(`#${docCounter} / ${allDocCounter}`);
             io.sockets.emit('recent-change', doc);
             await db.collection(`MediaWikiRecentChange`).insertOne(doc);
           } catch (e) {
@@ -144,12 +175,11 @@ function setupMediaWikiListener(db, io) {
 }
 function setupIoSocketListener(io) {
   io.on('connection', function(socket) {
-    logger.debug(`XXX connected `, Object.keys(io.sockets.connected).length);
+    logger.debug(`New client connected `, Object.keys(io.sockets.connected).length);
     io.sockets.emit('client-activity', { liveUserCount: Object.keys(io.sockets.connected).length });
     socket.on('disconnect', function() {
-
       io.sockets.emit('client-activity', { liveUserCount: Object.keys(io.sockets.connected).length });
-      console.warn(`XXX disconnected `, Object.keys(io.sockets.connected).length);
+      console.warn(`One client disconnected `, Object.keys(io.sockets.connected).length);
     });
   });
 }
@@ -179,7 +209,7 @@ async function start() {
   setupIoSocketListener(io);
   setupMediaWikiListener(db, io);
   setupApiRequestListener(db, io, app);
-  
+
   // Give nuxt middleware to express
   app.use(nuxt.render)
 
