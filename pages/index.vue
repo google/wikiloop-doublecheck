@@ -46,47 +46,50 @@
         {{showCounter}} out of {{revisionCounter}} revisions matches <span class="btn btn-outline-primary" v-b-modal.filter-modal>filters</span>
         or you can  <span class="btn btn-outline-primary" v-on:click="pause = !pause">pause it</span>
       </h3>
-      <div class="m-auto" v-if="newRecentChanges.length === 0">
+      <div class="m-auto" v-if="newRecentChangDbIds.length === 0">
         <h1 class="m-auto">Please wait for the first vandal edit to show up....</h1>
       </div>
       <div
-        v-for="newRecentChange of newRecentChanges"
-        v-bind:key="newRecentChange.id"
+        v-for="newRecentChangDbId of newRecentChangDbIds"
+        v-bind:key="newRecentChangDbId"
         class="col-12 p-2"
       >
-        <div v-bind:class="{ 'border-danger': badfaith(newRecentChange), 'bg-gradient-danger': badfaith(newRecentChange), 'border-warning': damaging(newRecentChange), 'bg-gradient-danger': damaging(newRecentChange) }"
+        <div v-bind:class="{ 'border-danger': badfaith(newRecentChangDbId), 'bg-gradient-danger': badfaith(newRecentChangDbId), 'border-warning': damaging(newRecentChangDbId), 'bg-gradient-danger': damaging(newRecentChangDbId) }"
              class="card shadow-sm h-100">
           <div class="card-body d-flex flex-column">
             <h5 class="card-title">
-              <a v-bind:href="`${getUrlBase(newRecentChange)}/wiki/Special:Diff/${newRecentChange.revision.new}`">{{ newRecentChange.title }}</a>
+              <a v-bind:href="`${getUrlBase(dbIdToRecentChangeMap[newRecentChangDbId])}/wiki/Special:Diff/${dbIdToRecentChangeMap[newRecentChangDbId].revision.new}`">{{ dbIdToRecentChangeMap[newRecentChangDbId].title }}</a>
             </h5>
             <h6 class="card-subtitle mb-2 text-muted">
-              <small>by <a v-bind:href="`${getUrlBase(newRecentChange)}/wiki/User:${newRecentChange.user}`">{{ newRecentChange.user }}</a>
+              <small>by <a v-bind:href="`${getUrlBase(dbIdToRecentChangeMap[newRecentChangDbId])}/wiki/User:${dbIdToRecentChangeMap[newRecentChangDbId].user}`">{{ dbIdToRecentChangeMap[newRecentChangDbId].user }}</a>
                 <span data-toggle="tooltip" data-placement="top" title="from WMF ORES score">
-                  <i v-bind:class="{ 'text-danger': badfaith(newRecentChange) }" class="fas fa-theater-masks"></i>: {{ damagingPercent(newRecentChange) }},
+                  <i v-bind:class="{ 'text-danger': badfaith(newRecentChangDbId) }" class="fas fa-theater-masks"></i>: {{ damagingPercent(newRecentChangDbId) }},
                 </span>
                 <span data-toggle="tooltip" data-placement="top" title="from WMF ORES score">
-                  <i v-bind:class="{ 'text-warning': damaging(newRecentChange) }" class="fas fa-cloud-rain"></i>: {{ badfaithPercent(newRecentChange) }}
+                  <i v-bind:class="{ 'text-warning': damaging(newRecentChangDbId) }" class="fas fa-cloud-rain"></i>: {{ badfaithPercent(newRecentChangDbId) }}
                 </span>
               </small>
             </h6>
             <div class="card-text w-100">
-              <diff-box v-bind:diffContent="newRecentChange.diff.compare['*']" />
+              <diff-box v-bind:diffContent="dbIdToRecentChangeMap[newRecentChangDbId].diff.compare['*']" />
             </div>
             <div class="mt-4 d-flex justify-content-center">
               <div class="btn-group">
                 <button
-                  v-on:click="interactionBtn(`LooksGood`, newRecentChange)"
-                  class="btn btn-sm btn-outline-success"
-                  v-bind:class="{ 'btn-success':newRecentChange.judgement === 'LooksGood', 'btn-outline-success':newRecentChange.judgement !== 'LooksGood' }">Looks good</button>
+                  v-on:click="interactionBtn(`LooksGood`, newRecentChangDbId)"
+                  class="btn btn-sm"
+                  v-bind:class="{ 'btn-success':dbIdToRecentChangeMap[newRecentChangDbId].judgement === 'LooksGood', 'btn-outline-success':dbIdToRecentChangeMap[newRecentChangDbId].judgement !== 'LooksGood' }"
+                >Looks good {{getJudgementCount(newRecentChangDbId, `LooksGood`)}}</button>
                 <button
-                  v-on:click="interactionBtn(`NotSure`, newRecentChange)"
-                  v-bind:class="{ 'btn-secondary':newRecentChange.judgement === 'NotSure', 'btn-outline-secondary':newRecentChange.judgement !== 'NotSure' }"
-                  class="btn btn-sm btn-outline-secondary">Not sure</button>
+                  v-on:click="interactionBtn(`NotSure`, newRecentChangDbId)"
+                  v-bind:class="{ 'btn-secondary':dbIdToRecentChangeMap[newRecentChangDbId].judgement === 'NotSure', 'btn-outline-secondary':dbIdToRecentChangeMap[newRecentChangDbId].judgement !== 'NotSure' }"
+                  class="btn btn-sm"
+                >Not sure {{getJudgementCount(newRecentChangDbId, `NotSure`)}}</button>
                 <button
-                  v-on:click="interactionBtn(`ShouldRevert`, newRecentChange)"
-                  v-bind:class="{ 'btn-danger':newRecentChange.judgement === 'ShouldRevert', 'btn-outline-danger':newRecentChange.judgement !== 'ShouldRevert' }"
-                  class="btn btn-sm" target="_blank">Should revert</button>
+                  v-on:click="interactionBtn(`ShouldRevert`, newRecentChangDbId)"
+                  v-bind:class="{ 'btn-danger':dbIdToRecentChangeMap[newRecentChangDbId].judgement === 'ShouldRevert', 'btn-outline-danger':dbIdToRecentChangeMap[newRecentChangDbId].judgement !== 'ShouldRevert' }"
+                  class="btn btn-sm" target="_blank"
+                >Should revert {{getJudgementCount(newRecentChangDbId, `ShouldRevert`)}}</button>
               </div>
             </div>
           </div>
@@ -113,7 +116,8 @@ export default {
     return {
       title: 'WikiLoop Battlefield',
       recentChanges: [],
-      newRecentChanges: [],
+      newRecentChangDbIds: [],
+      dbIdToRecentChangeMap: {},
       requireEnWiki: true,
       requireDamaging: true,
       requireBadfaith: true,
@@ -128,6 +132,14 @@ export default {
     }
   },
   methods: {
+    getJudgementCount: function (dbId, judge) {
+      let newRecentChange = this.dbIdToRecentChangeMap[dbId];
+      if (newRecentChange.judgementCounts) {
+        return newRecentChange.judgementCounts[judge] ? `(${newRecentChange.judgementCounts[judge]})`: ``;
+      } else {
+        return "";
+      }
+    },
     getUrlBase: function (newRecentChange) {
       let lang = {
         'enwiki': 'en',
@@ -136,26 +148,38 @@ export default {
       };
       return `http://${lang[newRecentChange.wiki]}.wikipedia.org`;
     },
-    damaging: function (newRecentChange) {
-      return newRecentChange.ores.damaging;
+    damaging: function (newRecentChangeId) {
+      return this.dbIdToRecentChangeMap[newRecentChangeId].ores.damaging;
     },
-    damagingPercent: function (newRecentChange) {
-      return newRecentChange.ores.damagingScore;
+    damagingPercent: function (newRecentChangeId) {
+      return this.dbIdToRecentChangeMap[newRecentChangeId].ores.damagingScore;
     },
-    badfaith: function (newRecentChange) {
-      return newRecentChange.ores.badfaith;
+    badfaith: function (newRecentChangeId) {
+      return this.dbIdToRecentChangeMap[newRecentChangeId].ores.badfaith;
     },
-    badfaithPercent: function (newRecentChange) {
-      return newRecentChange.ores.badfaithScore;
+    badfaithPercent: function (newRecentChangeId) {
+      return this.dbIdToRecentChangeMap[newRecentChangeId].ores.badfaithScore;
     },
-    interactionBtn: async function(judgement, newRecentChange) {
+    interactionBtn: async function(judgement, newRecentChangeId) {
+      let newRecentChange = this.dbIdToRecentChangeMap[newRecentChangeId];
       let url = `${this.getUrlBase(newRecentChange)}/w/index.php?title=${newRecentChange.title}&action=edit&undoafter=${newRecentChange.revision.old}&undo=${newRecentChange.revision.new}&summary=Reverted%20with%20[[:m:WikiLoop Battlefield]] tool (https://battlefield.wikiloop.org).`;
       let gaId = this.$cookies.get("_ga");
       console.log(`gaId`, gaId);
       let postBody = {
         gaId: gaId,
         judgement: judgement,
-        newRecentChange: newRecentChange
+        timestamp: Math.floor(new Date().getTime()/1000),
+        newRecentChange: {
+          _id: newRecentChange._id,
+          title: newRecentChange.title,
+          namespace: newRecentChange.namespace,
+          id: newRecentChange.id,
+          revision: newRecentChange.revision,
+          ores: newRecentChange.ores,
+          user: newRecentChange.user,
+          wiki: newRecentChange.wiki,
+          timestamp: newRecentChange.timestamp
+        }
       };
       console.log(`postBody`, postBody);
       if (judgement === `ShouldRevert`) window.open(url, '_blank');
@@ -175,12 +199,12 @@ export default {
         (newRecentChange.ores.badfaith || !this.requireBadfaith)
       ) {
         this.showCounter++;
-        // console.warn(`doshowing newRecentChange ${JSON.stringify(newRecentChange)}`);
-        let diffJson = await $.get(`/api/diff?serverUrl=${this.getUrlBase(newRecentChange)}/&revId=${newRecentChange.revision.new}`);
+        let diffApiUrl = `/api/diff?serverUrl=${this.getUrlBase(newRecentChange)}/&revId=${newRecentChange.revision.new}`;
+        let diffJson = await this.$axios.$get(diffApiUrl);
         newRecentChange.diff = diffJson;
-        this.newRecentChanges.unshift(newRecentChange);
+        this.dbIdToRecentChangeMap[newRecentChange._id] = newRecentChange;
+        this.newRecentChangDbIds.unshift(newRecentChange._id); // TODO the list becomes larger and larger as time goes....
       } else {
-        // console.log(`notshowing newRecentChange ${JSON.stringify(newRecentChange)}`);
       }
     });
     socket.on('client-activity', async (clientActivity) => {
@@ -188,7 +212,14 @@ export default {
       this.liveUserCount = clientActivity.liveUserCount;
     });
     socket.on('interaction', async (interaction) => {
-      console.log(`interaction: ${JSON.stringify(interaction, null, 2)}`);
+      console.log(`Received interaction: ${JSON.stringify(interaction, null, 2)}`);
+      let dbId = interaction.recentChange._id;
+      let newRecentChange = this.dbIdToRecentChangeMap[dbId];
+      if (newRecentChange) {
+        newRecentChange.judgementCounts = interaction.judgementCounts;
+      } else {
+        console.warn(`Some interaction for dbId=${dbId} is on changes not visible on this session, ignored....`);
+      }
     });
   }
 }
