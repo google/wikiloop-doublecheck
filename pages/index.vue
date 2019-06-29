@@ -61,13 +61,17 @@
               <a v-bind:href="`${getUrlBase(dbIdToRecentChangeMap[newRecentChangDbId])}/wiki/Special:Diff/${dbIdToRecentChangeMap[newRecentChangDbId].revision.new}`">{{ dbIdToRecentChangeMap[newRecentChangDbId].title }}</a>
             </h5>
             <h6 class="card-subtitle mb-2 text-muted">
-              <small>by <a v-bind:href="`${getUrlBase(dbIdToRecentChangeMap[newRecentChangDbId])}/wiki/User:${dbIdToRecentChangeMap[newRecentChangDbId].user}`">{{ dbIdToRecentChangeMap[newRecentChangDbId].user }}</a>
-                <span data-toggle="tooltip" data-placement="top" title="from WMF ORES score">
-                  <i v-bind:class="{ 'text-danger': badfaith(newRecentChangDbId) }" class="fas fa-theater-masks"></i>: {{ damagingPercent(newRecentChangDbId) }},
-                </span>
-                <span data-toggle="tooltip" data-placement="top" title="from WMF ORES score">
-                  <i v-bind:class="{ 'text-warning': damaging(newRecentChangDbId) }" class="fas fa-cloud-rain"></i>: {{ badfaithPercent(newRecentChangDbId) }}
-                </span>
+              <small>
+                <div>by <a v-bind:href="`${getUrlBase(dbIdToRecentChangeMap[newRecentChangDbId])}/wiki/User:${dbIdToRecentChangeMap[newRecentChangDbId].user}`">{{ dbIdToRecentChangeMap[newRecentChangDbId].user }}</a></div>
+                <div>
+                  <span data-toggle="tooltip" data-placement="top" title="from WMF ORES score">
+                    <i v-bind:class="{ 'text-danger': badfaith(newRecentChangDbId) }" class="fas fa-theater-masks"></i>: {{ damagingPercent(newRecentChangDbId) }},
+                  </span>
+                  <span data-toggle="tooltip" data-placement="top" title="from WMF ORES score">
+                    <i v-bind:class="{ 'text-warning': damaging(newRecentChangDbId) }" class="fas fa-cloud-rain"></i>: {{ badfaithPercent(newRecentChangDbId) }}
+                  </span>
+                </div>
+                <div><i class="fas fa-clock"></i> <timeago :datetime="getTimeString(newRecentChangDbId)" :auto-update="60"></timeago></div>
               </small>
             </h6>
             <div class="card-text w-100">
@@ -102,12 +106,15 @@
 import BootstrapVue from 'bootstrap-vue';
 import DiffBox from '~/components/DiffBox.vue';
 import socket from '~/plugins/socket.io.js';
+import VueTimeago from 'vue-timeago'
+
 
 const $ = require('jquery');
 
 export default {
   comments: {
-    BootstrapVue
+    BootstrapVue,
+    VueTimeago
   },
   components: {
     DiffBox
@@ -132,6 +139,10 @@ export default {
     }
   },
   methods: {
+    getTimeString: function(dbId) {
+      let newRecentChange = this.dbIdToRecentChangeMap[dbId];
+      return new Date(newRecentChange.timestamp * 1000).toString();
+    },
     getJudgementCount: function (dbId, judge) {
       let newRecentChange = this.dbIdToRecentChangeMap[dbId];
       if (newRecentChange.judgementCounts) {
@@ -152,13 +163,13 @@ export default {
       return this.dbIdToRecentChangeMap[newRecentChangeId].ores.damaging;
     },
     damagingPercent: function (newRecentChangeId) {
-      return this.dbIdToRecentChangeMap[newRecentChangeId].ores.damagingScore;
+      return `${Math.floor(this.dbIdToRecentChangeMap[newRecentChangeId].ores.damagingScore * 100)}%` ;
     },
     badfaith: function (newRecentChangeId) {
       return this.dbIdToRecentChangeMap[newRecentChangeId].ores.badfaith;
     },
     badfaithPercent: function (newRecentChangeId) {
-      return this.dbIdToRecentChangeMap[newRecentChangeId].ores.badfaithScore;
+      return `${Math.floor(this.dbIdToRecentChangeMap[newRecentChangeId].ores.badfaithScore * 100)}%` ;
     },
     interactionBtn: async function(judgement, newRecentChangeId) {
       let newRecentChange = this.dbIdToRecentChangeMap[newRecentChangeId];
