@@ -54,11 +54,21 @@
         v-bind:key="newRecentChangDbId"
         class="col-12 p-2"
       >
-        <div v-bind:class="{ 'border-danger': badfaith(newRecentChangDbId), 'bg-gradient-danger': badfaith(newRecentChangDbId), 'border-warning': damaging(newRecentChangDbId), 'bg-gradient-danger': damaging(newRecentChangDbId) }"
+        <div v-bind:class="{
+        'border-danger': badfaith(newRecentChangDbId),
+        'border-warning': damaging(newRecentChangDbId),
+        'bg-light': isOverridden(newRecentChangDbId)
+        }"
              class="card shadow-sm h-100">
           <div class="card-body d-flex flex-column">
-            <h5 class="card-title">
-              <a v-bind:href="`${getUrlBase(dbIdToRecentChangeMap[newRecentChangDbId])}/wiki/Special:Diff/${dbIdToRecentChangeMap[newRecentChangDbId].revision.new}`">{{ dbIdToRecentChangeMap[newRecentChangDbId].title }}</a>
+            <h5 class="card-title ">
+              <div class="d-flex">
+                <div class="flex-grow-1">
+                  <a v-bind:href="`${getUrlBase(dbIdToRecentChangeMap[newRecentChangDbId])}/wiki/Special:Diff/${dbIdToRecentChangeMap[newRecentChangDbId].revision.new}`">{{ dbIdToRecentChangeMap[newRecentChangDbId].title }}</a>
+                </div>
+                <div v-if="isOverridden(newRecentChangDbId)"> Overriden </div>
+              </div>
+
             </h5>
             <h6 class="card-subtitle mb-2 text-muted">
               <small>
@@ -72,6 +82,7 @@
                   </span>
                 </div>
                 <div><i class="fas fa-clock"></i> <timeago :datetime="getTimeString(newRecentChangDbId)" :auto-update="60"></timeago></div>
+
               </small>
             </h6>
             <div class="card-text w-100">
@@ -125,6 +136,7 @@ export default {
       recentChanges: [],
       newRecentChangDbIds: [],
       dbIdToRecentChangeMap: {},
+      titleToDbIds: {},
       requireEnWiki: true,
       requireDamaging: true,
       requireBadfaith: true,
@@ -139,6 +151,10 @@ export default {
     }
   },
   methods: {
+    isOverridden: function(dbId) {
+      let newRecentChange = this.dbIdToRecentChangeMap[dbId];
+      return newRecentChange.overriden;
+    },
     getTimeString: function(dbId) {
       let newRecentChange = this.dbIdToRecentChangeMap[dbId];
       return new Date(newRecentChange.timestamp * 1000).toString();
@@ -193,7 +209,7 @@ export default {
         }
       };
       console.log(`postBody`, postBody);
-      if (judgement === `ShouldRevert`) window.open(url, '_blank');
+      if (judgement === `ShouldRevert` && !this.isOverridden(newRecentChange._id)) window.open(url, '_blank');
       let ret = await $.post(`/api/interaction`, postBody);
       newRecentChange.judgement = judgement;
       console.log(`interaction ret:`, ret);
@@ -201,6 +217,17 @@ export default {
   },
   mounted() {
     socket.on('recent-change', async (newRecentChange) => {
+      let title = newRecentChange.title;
+      if (this.titleToDbIds[title]) {
+        let existingDbIds = this.titleToDbIds[title];
+        console.log(`existingDbIds = ${JSON.stringify(existingDbIds, null, 2)}`);
+        for (let dbId of existingDbIds) {
+          let recentChange = this.dbIdToRecentChangeMap[dbId];
+          if (newRecentChange.timestamp > recentChange.timestamp)
+            recentChange.overriden = true;
+        }
+      }
+
       this.revisionCounter++;
       if (
         (newRecentChange.namespace === 0 || !this.requireArticleNamespace) &&
@@ -215,6 +242,8 @@ export default {
         newRecentChange.diff = diffJson;
         this.dbIdToRecentChangeMap[newRecentChange._id] = newRecentChange;
         this.newRecentChangDbIds.unshift(newRecentChange._id); // TODO the list becomes larger and larger as time goes....
+        if (!this.titleToDbIds[newRecentChange.title]) this.titleToDbIds[newRecentChange.title] = [];
+        this.titleToDbIds[newRecentChange.title].push(newRecentChange._id);
       } else {
       }
     });
@@ -237,6 +266,9 @@ export default {
 </script>
 
 <style>
+  .bg-darker-light {
+    background-color: #F5F5F5;
+  }
   .diff-context {
     word-break: break-all;
     width: 50%;

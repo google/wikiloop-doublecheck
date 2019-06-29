@@ -73,8 +73,6 @@ module.exports = {
   bootstrapVue: {
     config: {
       // Custom config options here
-      "enable-gradients": true,
-      "enable-transitions": true
     }
   },
 
