@@ -41,7 +41,8 @@ module.exports = {
    ** Plugins to load before mounting the App
    */
   plugins: [
-    '@/plugins/socket.io.js'
+    '@/plugins/socket.io.js',
+    '@/plugins/timeago.js'
   ],
 
   /*

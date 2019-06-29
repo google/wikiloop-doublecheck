@@ -3,7 +3,7 @@ const express = require('express');
 const consola = require('consola');
 const { Nuxt, Builder } = require('nuxt');
 const MongoClient = require('mongodb').MongoClient;
-
+const ua = require('universal-analytics');
 const rp = require(`request-promise`);
 
 var log4js = require('log4js');
@@ -33,7 +33,10 @@ function setupApiRequestListener(db, io, app) {
           .catch(next);
 
   apiRouter.get('/', (req, res, next) => {
-    res.send('API root')
+    res.send('API root');
+    req.visitor
+        .event({ec: "api", ea: "/"})
+        .send();
   });
 
   // TODO add cache
@@ -42,6 +45,10 @@ function setupApiRequestListener(db, io, app) {
     let diffApiUrl = `${req.query.serverUrl}/w/api.php?action=compare&fromrev=${req.query.revId}&torelative=prev&format=json`;
     let diffJson = await rp.get(diffApiUrl, { json: true });
     res.send(diffJson);
+    req.visitor
+        .event({ec: "api", ea: "/diff"})
+        .send();
+
   }));
 
   apiRouter.post('/interaction', asyncHandler(async (req, res) => {
@@ -66,7 +73,7 @@ function setupApiRequestListener(db, io, app) {
       }
     };
     await db.collection(`Interaction`).insertOne(doc);
-    // Add counts
+
     let aggrRet = await db.collection(`Interaction`).aggregate(    [
           {
             "$match" : {
@@ -75,6 +82,7 @@ function setupApiRequestListener(db, io, app) {
             }
           },
           {
+            // Counts group by Judgement
             "$group" : {
               "_id" : "$judgement",
               "judgement" : {
@@ -86,7 +94,7 @@ function setupApiRequestListener(db, io, app) {
         {
           "allowDiskUse" : false
         }).toArray();
-    console.log(`XXXX Aggregate Judgement =  ${aggrRet}`);
+
     let judgementCounts = {};
     aggrRet.forEach(ret => {
       judgementCounts[ret._id] = ret.judgement;
@@ -95,12 +103,14 @@ function setupApiRequestListener(db, io, app) {
     io.sockets.emit('interaction', doc);
 
     res.send(`ok`);
+    req.visitor
+        .event({ec: "api", ea: "/interaction"})
+        .event("judgement", req.body.judgement)
+        .send();
   }));
 
   app.use(`/api`, apiRouter);
 }
-
-
 // ----------------------------------------
 
 function setupMediaWikiListener(db, io) {
@@ -206,6 +216,8 @@ async function start() {
   let db = (await MongoClient.connect(process.env.MONGODB_URI, { useNewUrlParser: true }))
       .db(process.env.MONGODB_DB);
 
+  // Setup Google Analytics
+  app.use(ua.middleware(process.env.GA_ID, {cookieName: '_ga'}));
   setupIoSocketListener(io);
   setupMediaWikiListener(db, io);
   setupApiRequestListener(db, io, app);
