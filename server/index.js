@@ -72,7 +72,12 @@ function setupApiRequestListener(db, io, app) {
         timestamp: newRecentChange.timestamp,
       }
     };
-    await db.collection(`Interaction`).insertOne(doc);
+
+    await db.collection(`Interaction`).findOneAndReplace({
+      userGaId: userGaId,
+      "recentChange.id": newRecentChange.id,
+      "recentChange.wiki": newRecentChange.wiki
+    }, doc, {upsert: true});
 
     let aggrRet = await db.collection(`Interaction`).aggregate(    [
           {
