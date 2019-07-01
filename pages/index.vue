@@ -4,12 +4,7 @@
   <section>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
       <div class="container">
-      <a class="navbar-brand" href="#">Battlefield <sup>beta</sup></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse"
-              data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-              aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <a class="navbar-brand" href="https://meta.wikimedia.org/wiki/WikiProject_WikiLoop">Battlefield <sup>beta</sup></a>
       <b-form-checkbox
         id="checkbox-pause"
         v-model="pause"
@@ -19,26 +14,14 @@
       >
         Pause
       </b-form-checkbox>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home</a>
-          </li>
-          <li class="nav-item active">
-            <!-- Modal Component -->
-            <b-modal id="filter-modal" title="Filters">
-              <b-form-group label="Require">
-                <b-form-checkbox v-model="requireEnWiki" >en-wiki</b-form-checkbox>
-                  <b-form-checkbox v-model="requireNonBot" >non-bot</b-form-checkbox>
-                  <b-form-checkbox v-model="requireArticleNamespace" >article namespace</b-form-checkbox>
-                  <b-form-checkbox v-model="requireBadfaith" >bad-faith (by WMF ORES score)</b-form-checkbox>
-                  <b-form-checkbox v-model="requireDamaging">damaging (by WMF ORES score)</b-form-checkbox>
-              </b-form-group>
-            </b-modal>
-          </li>
-        </ul>
-        <div>Online: {{ liveUserCount }}</div>
-      </div>
+      <div>Online: {{ liveUserCount }}</div>
+        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+        <b-collapse id="nav-collapse" is-nav>
+          <b-navbar-nav>
+            <b-nav-item href="https://meta.wikimedia.org/wiki/WikiProject_WikiLoop">Doc</b-nav-item>
+            <b-nav-item href="https://github.com/xinbenlv/wikiloop-battlefield-vue">Code</b-nav-item>
+          </b-navbar-nav>
+        </b-collapse>
       </div>
     </nav>
     <div class="container" style="margin-top:60px">
@@ -111,14 +94,23 @@
         </div>
       </div>
     </div>
+    <b-modal id="filter-modal" title="Filters">
+      <b-form-group label="Require">
+        <b-form-checkbox v-model="requireEnWiki" >en-wiki</b-form-checkbox>
+        <b-form-checkbox v-model="requireNonBot" >non-bot</b-form-checkbox>
+        <b-form-checkbox v-model="requireArticleNamespace" >article namespace</b-form-checkbox>
+        <b-form-checkbox v-model="requireBadfaith" >bad-faith (by WMF ORES score)</b-form-checkbox>
+        <b-form-checkbox v-model="requireDamaging">damaging (by WMF ORES score)</b-form-checkbox>
+      </b-form-group>
+    </b-modal>
   </section>
+
 </template>
 <script>
 import BootstrapVue from 'bootstrap-vue';
 import DiffBox from '~/components/DiffBox.vue';
 import socket from '~/plugins/socket.io.js';
 import VueTimeago from 'vue-timeago'
-
 
 const $ = require('jquery');
 
