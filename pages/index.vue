@@ -125,7 +125,6 @@ export default {
   data() {
     return {
       title: 'WikiLoop Battlefield',
-      recentChanges: [],
       newRecentChangDbIds: [],
       dbIdToRecentChangeMap: {},
       titleToDbIds: {},
@@ -141,6 +140,10 @@ export default {
       pause: false
       // loaded: false
     }
+  },
+  async asyncData ({ $axios }) {
+    const data = await $axios.$get(`/api/latest?serverUrl=http://en.wikipedia.org/`);
+    return { initRecentChanges: data };
   },
   methods: {
     isOverridden: function(dbId) {
@@ -205,10 +208,8 @@ export default {
       let ret = await $.post(`/api/interaction`, postBody);
       newRecentChange.judgement = judgement;
       console.log(`interaction ret:`, ret);
-    }
-  },
-  mounted() {
-    socket.on('recent-change', async (newRecentChange) => {
+    },
+    maybeShowRecentChange: async function(newRecentChange) {
       let title = newRecentChange.title;
       if (this.titleToDbIds[title]) {
         let existingDbIds = this.titleToDbIds[title];
@@ -222,11 +223,11 @@ export default {
 
       this.revisionCounter++;
       if (
-        (newRecentChange.namespace === 0 || !this.requireArticleNamespace) &&
-        (newRecentChange.nonbot === true || !this.requireNonBot) &&
-        (newRecentChange.wiki === 'enwiki' || !this.requireEnWiki) &&
-        (newRecentChange.ores.damaging || !this.requireDamaging) &&
-        (newRecentChange.ores.badfaith || !this.requireBadfaith)
+              (newRecentChange.namespace === 0 || !this.requireArticleNamespace) &&
+              (newRecentChange.nonbot === true || !this.requireNonBot) &&
+              (newRecentChange.wiki === 'enwiki' || !this.requireEnWiki) &&
+              (newRecentChange.ores.damaging || !this.requireDamaging) &&
+              (newRecentChange.ores.badfaith || !this.requireBadfaith)
       ) {
         this.showCounter++;
         let diffApiUrl = `/api/diff?serverUrl=${this.getUrlBase(newRecentChange)}/&revId=${newRecentChange.revision.new}`;
@@ -237,7 +238,16 @@ export default {
         if (!this.titleToDbIds[newRecentChange.title]) this.titleToDbIds[newRecentChange.title] = [];
         this.titleToDbIds[newRecentChange.title].push(newRecentChange._id);
       } else {
+        // Do nothing for not showing recent changes.
       }
+    }
+  },
+  mounted() {
+    // Use the init recent chang to fill the screen
+    this.initRecentChanges.forEach((async (rc) => await this.maybeShowRecentChange(rc)));
+
+    socket.on('recent-change', async (newRecentChange) => {
+      await this.maybeShowRecentChange(newRecentChange);
     });
     socket.on('client-activity', async (clientActivity) => {
       console.log(`client activity: ${clientActivity}`);
