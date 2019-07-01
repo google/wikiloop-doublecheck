@@ -4,7 +4,7 @@
   <section>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
       <div class="container">
-      <a class="navbar-brand" href="https://meta.wikimedia.org/wiki/WikiProject_WikiLoop">Battlefield <sup>beta</sup></a>
+      <a class="navbar-brand" href="https://github.com/xinbenlv/wikiloop-battlefield-vue">Battlefield <sup>v{{version}}</sup></a>
       <b-form-checkbox
         id="checkbox-pause"
         v-model="pause"
@@ -14,12 +14,12 @@
       >
         Pause
       </b-form-checkbox>
-      <div>Online: {{ liveUserCount }}</div>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
-            <b-nav-item href="https://meta.wikimedia.org/wiki/WikiProject_WikiLoop">Doc</b-nav-item>
-            <b-nav-item href="https://github.com/xinbenlv/wikiloop-battlefield-vue">Code</b-nav-item>
+            <b-nav-item href="https://meta.wikimedia.org/wiki/WikiProject_WikiLoop">Our WikiProject</b-nav-item>
+            <b-nav-item href="https://github.com/xinbenlv/wikiloop-battlefield-vue/issues">Issues</b-nav-item>
+            <b-nav-item href="#">Online: {{ liveUserCount }}</b-nav-item>
           </b-navbar-nav>
         </b-collapse>
       </div>
@@ -142,8 +142,9 @@ export default {
     }
   },
   async asyncData ({ $axios }) {
-    const data = await $axios.$get(`/api/latest?serverUrl=http://en.wikipedia.org/`);
-    return { initRecentChanges: data };
+    const initRecentChanges = await $axios.$get(`/api/latest?serverUrl=http://en.wikipedia.org/`);
+    const version = await $axios.$get(`/api/version`);
+    return { initRecentChanges, version };
   },
   methods: {
     isOverridden: function(dbId) {
@@ -184,7 +185,7 @@ export default {
     },
     interactionBtn: async function(judgement, newRecentChangeId) {
       let newRecentChange = this.dbIdToRecentChangeMap[newRecentChangeId];
-      let url = `${this.getUrlBase(newRecentChange)}/w/index.php?title=${newRecentChange.title}&action=edit&undoafter=${newRecentChange.revision.old}&undo=${newRecentChange.revision.new}&summary=Reverted%20with%20[[:m:WikiLoop Battlefield]] tool (https://battlefield.wikiloop.org).`;
+      let url = `${this.getUrlBase(newRecentChange)}/w/index.php?title=${newRecentChange.title}&action=edit&undoafter=${newRecentChange.revision.old}&undo=${newRecentChange.revision.new}&summary=Reverted%20with%20[[:m:WikiLoop Battlefield]](v${this.version}) at battlefield.wikiloop.org .`;
       let gaId = this.$cookies.get("_ga");
       console.log(`gaId`, gaId);
       let postBody = {

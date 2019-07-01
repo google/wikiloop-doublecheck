@@ -1,7 +1,7 @@
 {
   "name": "wikiloop-battlefield",
-  "version": "1.0.0",
-  "description": "My little project for fighting vandalism",
+  "version": "1.0.0-alpha-1",
+  "description": "A web app for Wikipedians to fight vandalism together.",
   "author": "Zainan Victor Zhou",
   "private": true,
   "scripts": {
