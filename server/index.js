@@ -58,6 +58,40 @@ async function getJudgementCounts(db, newRecentChange) {
   return judgementCounts;
 }
 
+async function queryMarkedRecentChangee(db, myGaId) {
+  let recentChanges;
+  let interactions = await db.collection(`Interaction`).find({}, {
+    sort: [["timestamp", -1]]
+  })
+  // .limit(1)  // TODO add limit when performance becomes a problem, a typical case that RDB is better than NonRDB
+      .toArray();
+  let dbIds = interactions.map(rc => `${rc.recentChange.wiki}-${rc.recentChange.id}`);
+  recentChanges = await db.collection(`MediaWikiRecentChange`)
+      .find(
+          {"_id": {$in: dbIds}})
+      // .limit(1)  // TODO add limit when performance becomes a problem, a typical case that RDB is better than NonRDB
+      .toArray();
+
+  recentChanges = await Promise.all(recentChanges.map(async (rc) => {
+    // TODO improve performance.
+    rc.judgementCounts = await getJudgementCounts(db, rc);
+    return rc;
+  }));
+
+  // Add my judgement
+  if (myGaId) {
+    let myInteractionMap = {};
+    let myInteractions = await db.collection(`Interaction`).find({userGaId: myGaId}).toArray();
+    myInteractions.forEach(interaction => {
+      myInteractionMap[interaction.recentChange._id] = interaction;
+    });
+    recentChanges.forEach(rc => {
+      if (myInteractionMap[rc._id]) rc.judgement = myInteractionMap[rc._id].judgement;
+    });
+  }
+  return recentChanges;
+}
+
 // -------------- FROM API ----------------
 function setupApiRequestListener(db, io, app) {
   let apiRouter = express();
@@ -130,39 +164,28 @@ function setupApiRequestListener(db, io, app) {
         .send();
   }));
 
-  apiRouter.get("/marked", asyncHandler(async (req, res) => {
-    let interactions = await db.collection(`Interaction`).find({}, {
-      sort: [["timestamp", -1]]
-    })
-    // .limit(1)  // TODO add limit when performance becomes a problem, a typical case that RDB is better than NonRDB
-    .toArray();
-    let recentChanges = await db.collection(`MediaWikiRecentChange`)
-    .find(
-        {"_id": {$in: interactions.map(rc => `${rc.recentChange.wiki}-${rc.recentChange.id}`)}})
-    // .limit(1)  // TODO add limit when performance becomes a problem, a typical case that RDB is better than NonRDB
-    .toArray();
-
-    recentChanges = await Promise.all(recentChanges.map(async (rc) => {
-      // TODO improve performance.
-      rc.judgementCounts = await getJudgementCounts(db, rc);
-      return rc;
-    }));
-
-    // Add my judgement
+  apiRouter.get("/marked.csv", asyncHandler(async (req, res) => {
     let myGaId = req.body.gaId || req.cookies._ga;
-    if (myGaId) {
-      let myInteractionMap = {};
-      let myInteractions = await db.collection(`Interaction`).find({userGaId: myGaId}).toArray();
-      myInteractions.forEach(interaction => {
-        myInteractionMap[interaction.recentChange._id] = interaction;
-      });
-      recentChanges.forEach(rc => {
-        if (myInteractionMap[rc._id]) rc.judgement = myInteractionMap[rc._id].judgement;
-      });
-    }
+    let recentChanges = await queryMarkedRecentChangee(db, myGaId);
+    res.setHeader('Content-Type', 'text/csv');
+    res.setHeader('Content-Disposition', 'attachment; filename=\"' + 'download-' + Date.now() + '.csv\"');
+    // res.send(recentChanges);
+    const stringify = require('csv-stringify');
+    let ret = [[`RevId`, `Wiki`, `OresDamagingScore`, `OresBadfaithScore`, `ShouldRevert`, `NotSure`, `LooksGood`]]
+        .concat(recentChanges.map(rc => [
+          rc.id, rc.wiki, rc.ores.damagingScore, rc.ores.badfaithScore,
+          rc.judgementCounts.ShouldRevert || 0, rc.judgementCounts.NotSure || 0, rc.judgementCounts.LooksGood || 0
+        ]));
+    stringify(ret, {header: false})
+        .pipe(res);
+  }));
 
+  apiRouter.get("/marked", asyncHandler(async (req, res) => {
+    let myGaId = req.body.gaId || req.cookies._ga;
+    let recentChanges = await queryMarkedRecentChangee(db, myGaId);
     res.send(recentChanges);
   }));
+
   apiRouter.get('/stats', asyncHandler(async (req, res) => {
     let myGaId = req.body.gaId || req.cookies._ga;
 
