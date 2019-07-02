@@ -133,7 +133,7 @@ function setupApiRequestListener(db, io, app) {
 
     // Getting a list of latest revisions related to the filter (Lang of Wiki), and their related diff
     // TODO Consider use https://nodejs.org/api/url.html#url_url_searchparams to compose a standard one. this contains too many parameters
-    let queryUrl = `${req.query.serverUrl}/w/api.php?action=query&list=recentchanges&prop=info&format=json&rcnamespace=0&rclimit=50&rctype=edit&rctoponly=true&rcprop=user|userid|comment|flags|timestamp|ids|title&rcshow=!bot`;
+    let queryUrl = `${req.query.serverUrl}/w/api.php?action=query&list=recentchanges&prop=info&format=json&rcnamespace=0&rclimit=100&rctype=edit&rctoponly=true&rcprop=user|userid|comment|flags|timestamp|ids|title&rcshow=!bot`;
     // https://en.wikipedia.org/w/api.php?action=query&list=recentchanges&prop=info&format=json&rcnamespace=0&rclimit=50&rctype=edit&rctoponly=true&rcprop=user|userid|comment|flags|timestamp|ids|title&rcshow=!bot
     let recentChangesJson = await rp.get(queryUrl, { json: true });
     /** Sample response
@@ -255,7 +255,7 @@ function setupApiRequestListener(db, io, app) {
         user: rawRecentChange.user,
         ores: computeOresField(oresResultJson, wiki, rawRecentChange.revid),
         wiki: `${wiki}`, // TODO verify
-        timestamp: Math.floor(new Date(rawRecentChange.timestamp).getTime()), // TODO check the exact format of timestamp. maybe use an interface?
+        timestamp: Math.floor(new Date(rawRecentChange.timestamp).getTime() / 1000), // TODO check the exact format of timestamp. maybe use an interface?
         namespace: 0, // we already query the server with "rcnamespace=0" filter
         nonbot: true // we already query the server with "rcprop=!bot" filter
       };
