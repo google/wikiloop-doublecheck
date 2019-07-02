@@ -89,7 +89,7 @@ async function queryMarkedRecentChangee(db, myGaId) {
       if (myInteractionMap[rc._id]) rc.judgement = myInteractionMap[rc._id].judgement;
     });
   }
-  return recentChanges;
+  return recentChanges.reverse();
 }
 
 // -------------- FROM API ----------------
@@ -355,7 +355,7 @@ function setupApiRequestListener(db, io, app) {
             nonbot: true // we already query the server with "rcprop=!bot" filter
           };
         });
-    res.send(recentChanges);
+    res.send(recentChanges.reverse());
     req.visitor
         .event({ec: "api", ea: "/latest"})
         .send();
