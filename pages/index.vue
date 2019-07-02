@@ -121,10 +121,13 @@
       },
 
       maybeShowRecentChange: async function (newRecentChange) {
+        if (this.dbIdToRecentChangeMap[newRecentChange._id]) {
+          // ignore existing recent change. - could be prefetched
+          return;
+        }
         let title = newRecentChange.title;
         if (this.titleToDbIds[title]) {
           let existingDbIds = this.titleToDbIds[title];
-          console.log(`existingDbIds = ${JSON.stringify(existingDbIds, null, 2)}`);
           for (let dbId of existingDbIds) {
             let recentChange = this.dbIdToRecentChangeMap[dbId];
             if (newRecentChange.timestamp > recentChange.timestamp) {
