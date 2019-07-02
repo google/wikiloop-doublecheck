@@ -22,7 +22,7 @@
     </nav>
     <div class="container small-screen-padding" style="margin-top:60px">
       <div v-for="recentChange of markedRecentChanges"
-           v-bind:key="recentChanges._id"
+           v-bind:key="recentChange._id"
            class="col-12 p-2"
       >
         <RecentChangeCard :item="recentChange"></RecentChangeCard>
@@ -40,22 +40,25 @@
       RecentChangeCard
     },
     data() {
-      return {}
+      return {
+        markedRecentChanges: []
+      }
     },
     async asyncData({$axios}) {
-      const markedRecentChanges = await $axios.$get(`/api/marked`);
+      const prefetchMarked = await $axios.$get(`/api/marked`);
       const version = await $axios.$get(`/api/version`);
       const stats = await $axios.$get(`/api/stats`);
-      return { markedRecentChanges, version, stats };
+      return { prefetchMarked, version, stats };
     },
     methods: {},
-    beforeMount() {
+    beforeCreate() {
       this.getUrlBase = utility.getUrlBase.bind(this); // now you can call this.getUrlBase() (in your functions/template)
       this.fetchDiff = utility.fetchDiff.bind(this); // now you can call this.fetchDiff() (in your functions/template)
-
     },
     mounted() {
-      this.markedRecentChanges.forEach((async (rc) => await this.fetchDiff(rc)));
+      Promise.all(this.prefetchMarked.map((async (rc) => await this.fetchDiff(rc)))).then(() => {
+        this.markedRecentChanges = this.prefetchMarked;
+      });
     }
   }
 </script>

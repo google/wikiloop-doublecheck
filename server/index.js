@@ -30,9 +30,38 @@ function computeOresField(oresJson, wiki, revsionId) {
   }
 }
 
+async function getJudgementCounts(db, newRecentChange) {
+  let judgementCounts = {};
+  let aggrRet = await db.collection(`Interaction`).aggregate([
+        {
+          "$match": {
+            "recentChange.id": newRecentChange.id.toString(),
+            "recentChange.wiki": newRecentChange.wiki
+          }
+        },
+        {
+          // Counts group by Judgement
+          "$group": {
+            "_id": "$judgement",
+            "judgement": {
+              "$sum": 1.0
+            }
+          }
+        }
+      ],
+      {
+        "allowDiskUse": false
+      }).toArray();
+  aggrRet.forEach(ret => {
+    judgementCounts[ret._id] = ret.judgement;
+  });
+  return judgementCounts;
+}
+
 // -------------- FROM API ----------------
 function setupApiRequestListener(db, io, app) {
   let apiRouter = express();
+
   const cookieParser = require('cookie-parser');
   const bodyParser = require('body-parser');
 
@@ -91,32 +120,7 @@ function setupApiRequestListener(db, io, app) {
       "recentChange.wiki": newRecentChange.wiki
     }, doc, {upsert: true});
 
-    let aggrRet = await db.collection(`Interaction`).aggregate([
-          {
-            "$match": {
-              "recentChange.id": newRecentChange.id,
-              "recentChange.wiki": newRecentChange.wiki
-            }
-          },
-          {
-            // Counts group by Judgement
-            "$group": {
-              "_id": "$judgement",
-              "judgement": {
-                "$sum": 1.0
-              }
-            }
-          }
-        ],
-        {
-          "allowDiskUse": false
-        }).toArray();
-
-    let judgementCounts = {};
-    aggrRet.forEach(ret => {
-      judgementCounts[ret._id] = ret.judgement;
-    });
-    doc.judgementCounts = judgementCounts;
+    doc.judgementCounts = await getJudgementCounts(db, newRecentChange);
     io.sockets.emit('interaction', doc);
 
     res.send(`ok`);
@@ -126,8 +130,38 @@ function setupApiRequestListener(db, io, app) {
         .send();
   }));
 
-  apiRouter.get('/marked', asyncHandler(async (req, res) => {
-    res.send([]);
+  apiRouter.get("/marked", asyncHandler(async (req, res) => {
+    let interactions = await db.collection(`Interaction`).find({}, {
+      sort: [["timestamp", -1]]
+    })
+    // .limit(1)  // TODO add limit when performance becomes a problem, a typical case that RDB is better than NonRDB
+    .toArray();
+    let recentChanges = await db.collection(`MediaWikiRecentChange`)
+    .find(
+        {"_id": {$in: interactions.map(rc => `${rc.recentChange.wiki}-${rc.recentChange.id}`)}})
+    // .limit(1)  // TODO add limit when performance becomes a problem, a typical case that RDB is better than NonRDB
+    .toArray();
+
+    recentChanges = await Promise.all(recentChanges.map(async (rc) => {
+      // TODO improve performance.
+      rc.judgementCounts = await getJudgementCounts(db, rc);
+      return rc;
+    }));
+
+    // Add my judgement
+    let myGaId = req.body.gaId || req.cookies._ga;
+    if (myGaId) {
+      let myInteractionMap = {};
+      let myInteractions = await db.collection(`Interaction`).find({userGaId: myGaId}).toArray();
+      myInteractions.forEach(interaction => {
+        myInteractionMap[interaction.recentChange._id] = interaction;
+      });
+      recentChanges.forEach(rc => {
+        if (myInteractionMap[rc._id]) rc.judgement = myInteractionMap[rc._id].judgement;
+      });
+    }
+
+    res.send(recentChanges);
   }));
   apiRouter.get('/stats', asyncHandler(async (req, res) => {
     let myGaId = req.body.gaId || req.cookies._ga;
@@ -393,6 +427,15 @@ function setupIoSocketListener(io) {
 async function start() {
 
   const app = express();
+  if (!process.env.PROD) {
+    const logRequestStart = (req, res, next) => {
+      logger.debug(`${req.method} ${req.originalUrl}`);
+      next();
+    };
+    app.use(logRequestStart);
+  }
+
+
   const server = http.Server(app);
   const io = require('socket.io')(server);
 
