@@ -4,18 +4,17 @@
   <section>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="https://github.com/xinbenlv/wikiloop-battlefield-vue">Battlefield <sup>v{{version}}</sup></a>
+        <a class="navbar-brand" href="https://github.com/xinbenlv/wikiloop-battlefield-vue">WikiLoop Battlefield<sup>v{{version}}</sup></a>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
-            <b-nav-item href="https://meta.wikimedia.org/wiki/WikiProject_WikiLoop">Our WikiProject
-            </b-nav-item>
-            <b-nav-item href="https://github.com/xinbenlv/wikiloop-battlefield-vue/issues">Issues
-            </b-nav-item>
+            <b-nav-item class="active" href="/">Home</b-nav-item>
             <b-nav-item href="/marked">Marked</b-nav-item>
             <b-nav-item href="/api/stats">Stats (<i class="fas fa-smile-wink"></i> {{stats.totalMyJudgement}}/ <i
                 class="fas fa-globe-europe"></i> {{stats.totalJudgement}})
             </b-nav-item>
+            <b-nav-item href="https://meta.wikimedia.org/wiki/WikiProject_WikiLoop">About</b-nav-item>
+            <b-nav-item href="https://github.com/xinbenlv/wikiloop-battlefield-vue/issues">Issues</b-nav-item>
             <b-nav-item href="#">Online: {{ liveUserCount }}</b-nav-item>
           </b-navbar-nav>
         </b-collapse>
