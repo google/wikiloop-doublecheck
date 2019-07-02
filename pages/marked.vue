@@ -20,11 +20,17 @@
       </div>
     </nav>
     <div class="container small-screen-padding" style="margin-top:60px">
+      <h4>You can also download a CSV file <a href="/api/marked.csv">here</a> </h4>
       <div v-for="recentChange of markedRecentChanges"
            v-bind:key="recentChange._id"
            class="col-12 p-2"
       >
         <RecentChangeCard :item="recentChange"></RecentChangeCard>
+      </div>
+      <div v-if="!markedRecentChanges || markedRecentChanges.length === 0">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
       </div>
     </div>
   </section>
