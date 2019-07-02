@@ -1,6 +1,6 @@
 {
   "name": "wikiloop-battlefield",
-  "version": "1.0.0-alpha-3",
+  "version": "1.0.0-alpha-4",
   "description": "A web app for Wikipedians to fight vandalism together.",
   "author": "Zainan Victor Zhou",
   "private": true,
@@ -19,6 +19,7 @@
     "@nuxtjs/google-analytics": "^2.2.0",
     "@nuxtjs/pwa": "^2.6.0",
     "@types/mongodb": "^3.1.24",
+    "apicache": "^1.4.0",
     "body-parser": "^1.18.3",
     "bootstrap": "^4.1.3",
     "bootstrap-vue": "^2.0.0-rc.24",

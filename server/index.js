@@ -58,7 +58,7 @@ async function getJudgementCounts(db, newRecentChange) {
   return judgementCounts;
 }
 
-async function queryMarkedRecentChangee(db, myGaId) {
+async function queryMarkedRecentChange(db, myGaId) {
   let recentChanges;
   let interactions = await db.collection(`Interaction`).find({}, {
     sort: [["timestamp", -1]]
@@ -96,8 +96,11 @@ async function queryMarkedRecentChangee(db, myGaId) {
 function setupApiRequestListener(db, io, app) {
   let apiRouter = express();
 
+
   const cookieParser = require('cookie-parser');
   const bodyParser = require('body-parser');
+  const apicache = require('apicache');
+  let cache = apicache.middleware;
 
   apiRouter.use(cookieParser());
   apiRouter.use(bodyParser());
@@ -114,8 +117,7 @@ function setupApiRequestListener(db, io, app) {
         .send();
   });
 
-  // TODO add cache
-  apiRouter.get('/diff', asyncHandler(async (req, res) => {
+  apiRouter.get('/diff', cache('5 minutes'), asyncHandler(async (req, res) => {
     logger.debug(`req.query`, req.query);
     let diffApiUrl = `${req.query.serverUrl}/w/api.php?action=compare&fromrev=${req.query.revId}&torelative=prev&format=json`;
     let diffJson = await rp.get(diffApiUrl, {json: true});
@@ -166,7 +168,7 @@ function setupApiRequestListener(db, io, app) {
 
   apiRouter.get("/marked.csv", asyncHandler(async (req, res) => {
     let myGaId = req.body.gaId || req.cookies._ga;
-    let recentChanges = await queryMarkedRecentChangee(db, myGaId);
+    let recentChanges = await queryMarkedRecentChange(db, myGaId);
     res.setHeader('Content-Type', 'text/csv');
     res.setHeader('Content-Disposition', 'attachment; filename=\"' + 'download-' + Date.now() + '.csv\"');
     // res.send(recentChanges);
@@ -182,7 +184,7 @@ function setupApiRequestListener(db, io, app) {
 
   apiRouter.get("/marked", asyncHandler(async (req, res) => {
     let myGaId = req.body.gaId || req.cookies._ga;
-    let recentChanges = await queryMarkedRecentChangee(db, myGaId);
+    let recentChanges = await queryMarkedRecentChange(db, myGaId);
     res.send(recentChanges);
   }));
 

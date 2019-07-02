@@ -8,14 +8,13 @@
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
-            <b-nav-item href="https://meta.wikimedia.org/wiki/WikiProject_WikiLoop">Our WikiProject
-            </b-nav-item>
-            <b-nav-item href="https://github.com/xinbenlv/wikiloop-battlefield-vue/issues">Issues
-            </b-nav-item>
-            <b-nav-item class="active" href="/marked">Marked</b-nav-item>
+            <b-nav-item class="active" href="/">Home</b-nav-item>
+            <b-nav-item href="/marked">Marked</b-nav-item>
             <b-nav-item href="/api/stats">Stats (<i class="fas fa-smile-wink"></i> {{stats.totalMyJudgement}}/ <i
                 class="fas fa-globe-europe"></i> {{stats.totalJudgement}})
             </b-nav-item>
+            <b-nav-item href="https://meta.wikimedia.org/wiki/WikiProject_WikiLoop">About</b-nav-item>
+            <b-nav-item href="https://github.com/xinbenlv/wikiloop-battlefield-vue/issues">Issues</b-nav-item>
           </b-navbar-nav>
         </b-collapse>
       </div>
