@@ -5,30 +5,22 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
       <div class="container">
       <a class="navbar-brand" href="https://github.com/xinbenlv/wikiloop-battlefield-vue">Battlefield <sup>v{{version}}</sup></a>
-      <b-form-checkbox
-        id="checkbox-pause"
-        v-model="pause"
-        name="checkbox-pause"
-        value="true"
-        unchecked-value="false"
-      >
-        Pause
-      </b-form-checkbox>
-        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-        <b-collapse id="nav-collapse" is-nav>
-          <b-navbar-nav>
-            <b-nav-item href="https://meta.wikimedia.org/wiki/WikiProject_WikiLoop">Our WikiProject</b-nav-item>
-            <b-nav-item href="https://github.com/xinbenlv/wikiloop-battlefield-vue/issues">Issues</b-nav-item>
-            <b-nav-item href="#">Online: {{ liveUserCount }}</b-nav-item>
-          </b-navbar-nav>
-        </b-collapse>
+      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+      <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav>
+          <b-nav-item href="https://meta.wikimedia.org/wiki/WikiProject_WikiLoop">Our WikiProject</b-nav-item>
+          <b-nav-item href="https://github.com/xinbenlv/wikiloop-battlefield-vue/issues">Issues</b-nav-item>
+
+          <b-nav-item href="/api/stats">Stats (<i class="fas fa-smile-wink"></i>{{stats.totalMyJudgement}}/<i class="fas fa-globe-europe"></i>{{stats.totalJudgement}})</b-nav-item>
+          <b-nav-item href="#">Online: {{ liveUserCount }}</b-nav-item>
+        </b-navbar-nav>
+      </b-collapse>
       </div>
     </nav>
-    <div class="container" style="margin-top:60px">
-      <h3>
-        {{showCounter}} out of {{revisionCounter}} revisions matches <span class="btn btn-outline-primary" v-b-modal.filter-modal>filters</span>
-        or you can  <span class="btn btn-outline-primary" v-on:click="pause = !pause">pause it</span>
-      </h3>
+    <div class="container small-screen-padding" style="margin-top:60px">
+      <h5>
+        {{showCounter}} out of {{revisionCounter}} revisions matches <span class="btn btn-sm btn-outline-primary" v-b-modal.filter-modal>filters</span>
+      </h5>
       <div class="m-auto" v-if="newRecentChangDbIds.length === 0">
         <h1 class="m-auto">Please wait for the first vandal edit to show up....</h1>
       </div>
@@ -43,7 +35,7 @@
         'bg-light': isOverridden(newRecentChangDbId)
         }"
              class="card shadow-sm h-100">
-          <div class="card-body d-flex flex-column">
+          <div class="card-body d-flex flex-column small-screen-padding">
             <h5 class="card-title ">
               <div class="d-flex">
                 <div class="flex-grow-1">
@@ -53,10 +45,14 @@
               </div>
 
             </h5>
+
+            <h6>
+              <small><i class="fas fa-clock"></i> <timeago :datetime="getTimeString(newRecentChangDbId)" :auto-update="60"></timeago></small>
+            </h6>
             <h6 class="card-subtitle mb-2 text-muted">
-              <small>
-                <div>by <a v-bind:href="`${getUrlBase(dbIdToRecentChangeMap[newRecentChangDbId])}/wiki/User:${dbIdToRecentChangeMap[newRecentChangDbId].user}`">{{ dbIdToRecentChangeMap[newRecentChangDbId].user }}</a></div>
-                <div>
+              <small class="row">
+                <div class="col-sm-12 col-6">by <a v-bind:href="`${getUrlBase(dbIdToRecentChangeMap[newRecentChangDbId])}/wiki/User:${dbIdToRecentChangeMap[newRecentChangDbId].user}`">{{ dbIdToRecentChangeMap[newRecentChangDbId].user }}</a></div>
+                <div class="col-sm-12 col-6">
                   <span data-toggle="tooltip" data-placement="top" title="from WMF ORES score">
                     <i v-bind:class="{ 'text-danger': badfaith(newRecentChangDbId) }" class="fas fa-theater-masks"></i>: {{ damagingPercent(newRecentChangDbId) }},
                   </span>
@@ -64,11 +60,10 @@
                     <i v-bind:class="{ 'text-warning': damaging(newRecentChangDbId) }" class="fas fa-cloud-rain"></i>: {{ badfaithPercent(newRecentChangDbId) }}
                   </span>
                 </div>
-                <div><i class="fas fa-clock"></i> <timeago :datetime="getTimeString(newRecentChangDbId)" :auto-update="60"></timeago></div>
-
               </small>
+
             </h6>
-            <div class="card-text w-100">
+            <div class="card-text w-100 pl-sm-0">
               <diff-box v-bind:diffContent="dbIdToRecentChangeMap[newRecentChangDbId].diff.compare['*']" />
             </div>
             <div class="mt-4 d-flex justify-content-center">
@@ -150,7 +145,8 @@ export default {
   async asyncData ({ $axios }) {
     const initRecentChanges = await $axios.$get(`/api/latest?serverUrl=http://en.wikipedia.org/`);
     const version = await $axios.$get(`/api/version`);
-    return { initRecentChanges, version };
+    const stats = await $axios.$get(`/api/stats`);
+    return { initRecentChanges, version, stats };
   },
   methods: {
     isOverridden: function(dbId) {
@@ -282,6 +278,11 @@ export default {
       this.liveUserCount = clientActivity.liveUserCount;
     });
     socket.on('interaction', async (interaction) => {
+      this.stats.totalJudgement ++;
+      let myGaId = this.$cookies.get("_ga");
+      if (interaction.userGaId === myGaId) {
+        this.stats.totalMyJudgement++;
+      }
       console.log(`Received interaction: ${JSON.stringify(interaction, null, 2)}`);
       let dbId = interaction.recentChange._id;
       let newRecentChange = this.dbIdToRecentChangeMap[dbId];
@@ -309,5 +310,11 @@ export default {
   }
   .blue-link {
     color:blue
+  }
+  @media (max-width: 576px) {
+    .small-screen-padding {
+      padding-left: 6px;
+      padding-right: 6px;
+    }
   }
 </style>
