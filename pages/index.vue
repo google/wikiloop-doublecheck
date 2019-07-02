@@ -101,6 +101,11 @@
         <b-form-checkbox v-model="requireArticleNamespace" >article namespace</b-form-checkbox>
         <b-form-checkbox v-model="requireBadfaith" >bad-faith (by WMF ORES score)</b-form-checkbox>
         <b-form-checkbox v-model="requireDamaging">damaging (by WMF ORES score)</b-form-checkbox>
+        <span for="thresold">Threshold: </span>
+        <button v-on:click="changeThreshold(0.1)" class="btn btn-sm"><i class="fas fa-chevron-up"></i></button>
+        <span id="thresold"> {{threshold || "(default)" }}</span>
+        <button v-on:click="changeThreshold(-0.1)" class="btn btn-sm"><i class="fas fa-chevron-down"></i></button>
+        <button v-on:click="resetThreshold()" class="btn btn-sm"><i class="fas fa-reset"></i></button>
       </b-form-group>
     </b-modal>
   </section>
@@ -133,6 +138,7 @@ export default {
       requireBadfaith: true,
       requireArticleNamespace: true,
       requireNonBot: true,
+      threshold: null,
       revisionCounter: 0,
       basicFilterCounter: 0,
       liveUserCount: 1,
@@ -210,6 +216,22 @@ export default {
       newRecentChange.judgement = judgement;
       console.log(`interaction ret:`, ret);
     },
+    meetThreshold: function(newRecentChange) {
+      if (this.threshold !== null)
+        return (newRecentChange.ores.damagingScore >= this.threshold ||  !this.requireDamaging) &&
+                (newRecentChange.ores.badfaithScore >= this.threshold || !this.requireBadfaith);
+      else return (newRecentChange.ores.damaging || !this.requireDamaging) &&
+        (newRecentChange.ores.badfaith || !this.requireBadfaith);
+    },
+    resetThreshold: function() {
+      this.threshold = null;
+    },
+    changeThreshold: function(change) {
+      if (this.threshold === null) this.threshold = 0.7;
+      this.threshold += change;
+      if (this.threshold >= 1.0) this.threshold = 1.0;
+      else if (this.threshold <= 0) this.threshold = 0.0;
+    },
     maybeShowRecentChange: async function(newRecentChange) {
       let title = newRecentChange.title;
       if (this.titleToDbIds[title]) {
@@ -227,8 +249,7 @@ export default {
               (newRecentChange.namespace === 0 || !this.requireArticleNamespace) &&
               (newRecentChange.nonbot === true || !this.requireNonBot) &&
               (newRecentChange.wiki === 'enwiki' || !this.requireEnWiki) &&
-              (newRecentChange.ores.damaging || !this.requireDamaging) &&
-              (newRecentChange.ores.badfaith || !this.requireBadfaith)
+              this.meetThreshold(newRecentChange)
       ) {
         this.showCounter++;
         let diffApiUrl = `/api/diff?serverUrl=${this.getUrlBase(newRecentChange)}/&revId=${newRecentChange.revision.new}`;
