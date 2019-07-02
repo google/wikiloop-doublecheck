@@ -126,6 +126,9 @@ function setupApiRequestListener(db, io, app) {
         .send();
   }));
 
+  apiRouter.get('/marked', asyncHandler(async (req, res) => {
+    res.send([]);
+  }));
   apiRouter.get('/stats', asyncHandler(async (req, res) => {
     let myGaId = req.body.gaId || req.cookies._ga;
 
