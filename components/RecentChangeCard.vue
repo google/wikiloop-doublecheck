@@ -36,28 +36,29 @@
         </small>
 
       </h6>
-      <div class="card-text w-100 pl-sm-0">
-        <diff-box v-bind:diffContent="item.diff.compare['*']"/>
+      <div class="card-text w-100 pl-sm-0" >
+        <diff-box v-if="item.diff && item.diff.compare && item.diff.compare['*']" v-bind:diffContent="item.diff.compare['*']"/>
+        <h5 v-else>Diff not available. Usually caused by revision deleted or page deleted. See it directly on <a :href="`${getUrlBase(item)}/w/index.php?title=${item.title}&diff=${item.id}&oldid=prev&diffmode=source`">the site</a>. </h5>
       </div>
       <div class="mt-4 d-flex justify-content-center">
         <div class="btn-group">
           <button
-              v-on:click="interactionBtn(`LooksGood`, dbId)"
+              v-on:click="interactionBtn(`LooksGood`)"
               class="btn btn-sm"
               v-bind:class="{ 'btn-success':item.judgement === 'LooksGood', 'btn-outline-success':item.judgement !== 'LooksGood' }"
-          >Looks good {{getJudgementCount(dbId, `LooksGood`)}}
+          >Looks good {{getJudgementCount(`LooksGood`)}}
           </button>
           <button
-              v-on:click="interactionBtn(`NotSure`, dbId)"
+              v-on:click="interactionBtn(`NotSure`)"
               v-bind:class="{ 'btn-secondary':item.judgement === 'NotSure', 'btn-outline-secondary':item.judgement !== 'NotSure' }"
               class="btn btn-sm"
-          >Not sure {{getJudgementCount(dbId, `NotSure`)}}
+          >Not sure {{getJudgementCount(`NotSure`)}}
           </button>
           <button
-              v-on:click="interactionBtn(`ShouldRevert`, dbId)"
+              v-on:click="interactionBtn(`ShouldRevert`)"
               v-bind:class="{ 'btn-danger':item.judgement === 'ShouldRevert', 'btn-outline-danger':item.judgement !== 'ShouldRevert' }"
               class="btn btn-sm" target="_blank"
-          >Should revert {{getJudgementCount(dbId, `ShouldRevert`)}}
+          >Should revert {{getJudgementCount(`ShouldRevert`)}}
           </button>
         </div>
       </div>
@@ -130,9 +131,9 @@
         return `${Math.floor(this.item.ores.badfaithScore * 100)}%`;
       },
     },
-    beforeMount: function () {
-      this.getUrlBase = utility.getUrlBase.bind(this); // now you can call this.foo() (in your functions/template)
-    }
+    beforeMount() {
+      this.getUrlBase = utility.getUrlBase.bind(this); // now you can call this.getUrlBase() (in your functions/template)
+    },
   }
 </script>
 
