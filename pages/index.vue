@@ -214,6 +214,12 @@ export default {
       if (judgement === `ShouldRevert` && !this.isOverridden(newRecentChange._id)) window.open(url, '_blank');
       let ret = await $.post(`/api/interaction`, postBody);
       newRecentChange.judgement = judgement;
+      this.$bvToast.toast(
+        `Your judgement for ${newRecentChange.title} at revision ${newRecentChange.id} is logged.`, {
+        title: 'Congrats!',
+        autoHideDelay: 3000,
+        appendToast: true
+      });
       console.log(`interaction ret:`, ret);
     },
     meetThreshold: function(newRecentChange) {
