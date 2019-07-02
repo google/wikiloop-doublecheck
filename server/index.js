@@ -1,7 +1,7 @@
 const http = require('http');
 const express = require('express');
 const consola = require('consola');
-const { Nuxt, Builder } = require('nuxt');
+const {Nuxt, Builder} = require('nuxt');
 const MongoClient = require('mongodb').MongoClient;
 const ua = require('universal-analytics');
 const rp = require(`request-promise`);
@@ -55,7 +55,7 @@ function setupApiRequestListener(db, io, app) {
   apiRouter.get('/diff', asyncHandler(async (req, res) => {
     logger.debug(`req.query`, req.query);
     let diffApiUrl = `${req.query.serverUrl}/w/api.php?action=compare&fromrev=${req.query.revId}&torelative=prev&format=json`;
-    let diffJson = await rp.get(diffApiUrl, { json: true });
+    let diffJson = await rp.get(diffApiUrl, {json: true});
     res.send(diffJson);
     req.visitor
         .event({ec: "api", ea: "/diff"})
@@ -91,25 +91,25 @@ function setupApiRequestListener(db, io, app) {
       "recentChange.wiki": newRecentChange.wiki
     }, doc, {upsert: true});
 
-    let aggrRet = await db.collection(`Interaction`).aggregate(    [
+    let aggrRet = await db.collection(`Interaction`).aggregate([
           {
-            "$match" : {
-              "recentChange.id" : newRecentChange.id,
-              "recentChange.wiki" : newRecentChange.wiki
+            "$match": {
+              "recentChange.id": newRecentChange.id,
+              "recentChange.wiki": newRecentChange.wiki
             }
           },
           {
             // Counts group by Judgement
-            "$group" : {
-              "_id" : "$judgement",
-              "judgement" : {
-                "$sum" : 1.0
+            "$group": {
+              "_id": "$judgement",
+              "judgement": {
+                "$sum": 1.0
               }
             }
           }
         ],
         {
-          "allowDiskUse" : false
+          "allowDiskUse": false
         }).toArray();
 
     let judgementCounts = {};
@@ -131,7 +131,13 @@ function setupApiRequestListener(db, io, app) {
 
     logger.debug(`req.query`, req.query);
     let allInteractions = await db.collection(`Interaction`)
-        .find({}, {userGaId:1,judgement:1, "recentChange.id":1, "recentChang.title":1, "recentChange.wiki":1}).toArray();
+        .find({}, {
+          userGaId: 1,
+          judgement: 1,
+          "recentChange.id": 1,
+          "recentChang.title": 1,
+          "recentChange.wiki": 1
+        }).toArray();
     let revSet = {};
     allInteractions.forEach(i => revSet[i.recentChange.id] = true);
     let ret = {
@@ -141,7 +147,7 @@ function setupApiRequestListener(db, io, app) {
     };
 
     if (myGaId) {
-      let myInteractions = allInteractions.filter(i=> i.userGaId === myGaId);
+      let myInteractions = allInteractions.filter(i => i.userGaId === myGaId);
       let myRevSet = {};
       myInteractions.forEach(i => myRevSet[i.recentChange.id] = true);
       ret.totalMyJudgement = myInteractions.length;
@@ -164,7 +170,7 @@ function setupApiRequestListener(db, io, app) {
     // TODO Consider use https://nodejs.org/api/url.html#url_url_searchparams to compose a standard one. this contains too many parameters
     let queryUrl = `${req.query.serverUrl}/w/api.php?action=query&list=recentchanges&prop=info&format=json&rcnamespace=0&rclimit=100&rctype=edit&rctoponly=true&rcprop=user|userid|comment|flags|timestamp|ids|title&rcshow=!bot`;
     // https://en.wikipedia.org/w/api.php?action=query&list=recentchanges&prop=info&format=json&rcnamespace=0&rclimit=50&rctype=edit&rctoponly=true&rcprop=user|userid|comment|flags|timestamp|ids|title&rcshow=!bot
-    let recentChangesJson = await rp.get(queryUrl, { json: true });
+    let recentChangesJson = await rp.get(queryUrl, {json: true});
     /** Sample response
      {
        "batchcomplete":"",
@@ -208,9 +214,9 @@ function setupApiRequestListener(db, io, app) {
      */
 
     let oresUrl = `https://ores.wmflabs.org/v3/scores/${wiki}/?models=damaging|goodfaith&revids=${
-      recentChangesJson.query.recentchanges // from recentChangesJson result
-          .map(rawRecentChange => rawRecentChange.revid).join('|')
-    }`;
+        recentChangesJson.query.recentchanges // from recentChangesJson result
+            .map(rawRecentChange => rawRecentChange.revid).join('|')
+        }`;
 
     /**
      {
@@ -269,26 +275,26 @@ function setupApiRequestListener(db, io, app) {
       }
      * */
 
-    let oresResultJson = await rp.get(oresUrl, { json: true });
+    let oresResultJson = await rp.get(oresUrl, {json: true});
 
     let recentChanges = recentChangesJson.query.recentchanges  // from recentChangesJson result
         .map(rawRecentChange => {
-      return {
-        _id: `${wiki}-${rawRecentChange.rcid}`,
-        id: rawRecentChange.rcid,
-        revision: {
-          new: rawRecentChange.revid,
-          old: rawRecentChange.old_revid
-        },
-        title: rawRecentChange.title,
-        user: rawRecentChange.user,
-        ores: computeOresField(oresResultJson, wiki, rawRecentChange.revid),
-        wiki: `${wiki}`, // TODO verify
-        timestamp: Math.floor(new Date(rawRecentChange.timestamp).getTime() / 1000), // TODO check the exact format of timestamp. maybe use an interface?
-        namespace: 0, // we already query the server with "rcnamespace=0" filter
-        nonbot: true // we already query the server with "rcprop=!bot" filter
-      };
-    });
+          return {
+            _id: `${wiki}-${rawRecentChange.rcid}`,
+            id: rawRecentChange.rcid,
+            revision: {
+              new: rawRecentChange.revid,
+              old: rawRecentChange.old_revid
+            },
+            title: rawRecentChange.title,
+            user: rawRecentChange.user,
+            ores: computeOresField(oresResultJson, wiki, rawRecentChange.revid),
+            wiki: `${wiki}`, // TODO verify
+            timestamp: Math.floor(new Date(rawRecentChange.timestamp).getTime() / 1000), // TODO check the exact format of timestamp. maybe use an interface?
+            namespace: 0, // we already query the server with "rcnamespace=0" filter
+            nonbot: true // we already query the server with "rcprop=!bot" filter
+          };
+        });
     res.send(recentChanges);
     req.visitor
         .event({ec: "api", ea: "/latest"})
@@ -305,6 +311,7 @@ function setupApiRequestListener(db, io, app) {
   });
   app.use(`/api`, apiRouter);
 }
+
 // ----------------------------------------
 
 function setupMediaWikiListener(db, io) {
@@ -318,15 +325,15 @@ function setupMediaWikiListener(db, io) {
     logger.debug(`Connecting to EventStreams at ${url}`);
 
     const eventSource = new EventSource(url);
-    eventSource.onopen = function(event) {
+    eventSource.onopen = function (event) {
       logger.debug('--- Opened connection.');
     };
 
-    eventSource.onerror = function(event) {
+    eventSource.onerror = function (event) {
       console.error('--- Encountered error', event);
     };
 
-    eventSource.onmessage = async function(event) {
+    eventSource.onmessage = async function (event) {
       allDocCounter++;
       let recentChange = JSON.parse(event.data);
       // logger.debug(`server received`, data.wiki, data.id, data.meta.uri);
@@ -336,7 +343,7 @@ function setupMediaWikiListener(db, io) {
         if (["enwiki", "frwiki", "ruwiki"].indexOf(recentChange.wiki) >= 0) {
           try {
             let oresUrl = `https://ores.wmflabs.org/v3/scores/${recentChange.wiki}/?models=damaging|goodfaith&revids=${recentChange.revision.new}`;
-            let oresJson = await rp.get(oresUrl, { json: true });
+            let oresJson = await rp.get(oresUrl, {json: true});
             recentChange.ores = computeOresField(oresJson, recentChange.wiki, recentChange.revision.new);
             let doc = {
               _id: recentChange._id,
@@ -368,12 +375,13 @@ function setupMediaWikiListener(db, io) {
 
   });
 }
+
 function setupIoSocketListener(io) {
-  io.on('connection', function(socket) {
+  io.on('connection', function (socket) {
     logger.debug(`New client connected `, Object.keys(io.sockets.connected).length);
-    io.sockets.emit('client-activity', { liveUserCount: Object.keys(io.sockets.connected).length });
-    socket.on('disconnect', function() {
-      io.sockets.emit('client-activity', { liveUserCount: Object.keys(io.sockets.connected).length });
+    io.sockets.emit('client-activity', {liveUserCount: Object.keys(io.sockets.connected).length});
+    socket.on('disconnect', function () {
+      io.sockets.emit('client-activity', {liveUserCount: Object.keys(io.sockets.connected).length});
       console.warn(`One client disconnected `, Object.keys(io.sockets.connected).length);
     });
   });
@@ -388,7 +396,7 @@ async function start() {
   // Init Nuxt.js
   const nuxt = new Nuxt(config)
 
-  const { host, port } = nuxt.options.server
+  const {host, port} = nuxt.options.server
 
   // Build only in dev mode
   if (config.dev) {
@@ -398,7 +406,7 @@ async function start() {
     await nuxt.ready()
   }
   // Use connect method to connect to the Server
-  let db = (await MongoClient.connect(process.env.MONGODB_URI, { useNewUrlParser: true }))
+  let db = (await MongoClient.connect(process.env.MONGODB_URI, {useNewUrlParser: true}))
       .db(process.env.MONGODB_DB);
 
   // Setup Google Analytics
@@ -420,4 +428,5 @@ async function start() {
 
 
 }
+
 start()
