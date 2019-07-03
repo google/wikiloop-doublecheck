@@ -18,7 +18,7 @@
 
       <h6>
         <small><i class="fas fa-clock"></i>
-          <timeago :datetime="getTimeString(dbId)" :auto-update="60"></timeago>
+          <timeago :datetime="getTimeString()" :auto-update="60"></timeago>
         </small>
       </h6>
       <h6 class="card-subtitle mb-2 text-muted">
@@ -75,7 +75,6 @@
       DiffBox
     },
     props: {
-      dbId: String,
       item: Object,
     },
     methods: {
