@@ -45,10 +45,10 @@
         <b-form-checkbox v-model="requireDamaging">damaging (by WMF ORES score)</b-form-checkbox>
         <span for="thresold">Threshold: </span>
         <button v-on:click="changeThreshold(0.1)" class="btn btn-sm"><i class="fas fa-chevron-up"></i></button>
-        <span id="thresold"> {{threshold || "(default)" }}</span>
+        <span id="thresold"> {{ threshold ? threshold.toFixed(2) : "(default)" }}</span>
         <button v-on:click="changeThreshold(-0.1)" class="btn btn-sm"><i class="fas fa-chevron-down"></i>
         </button>
-        <button v-on:click="resetThreshold()" class="btn btn-sm"><i class="fas fa-reset"></i></button>
+        <button v-on:click="resetThreshold()" class="btn btn-sm"><i class="fas fa-sync-alt"></i></button>
       </b-form-group>
     </b-modal>
   </section>
@@ -118,7 +118,7 @@
       },
       changeThreshold: function (change) {
         if (this.threshold === null) this.threshold = 0.7;
-        this.threshold += change;
+        this.threshold = (this.threshold + change);
         if (this.threshold >= 1.0) {
           this.threshold = 1.0;
         } else if (this.threshold <= 0) this.threshold = 0.0;
