@@ -33,8 +33,7 @@
           v-bind:key="newRecentChangDbId"
           class="col-12 p-2"
       >
-        <RecentChangeCard :dbId="newRecentChangDbId"
-                          :item="dbIdToRecentChangeMap[newRecentChangDbId]"></RecentChangeCard>
+        <RecentChangeCard :item="dbIdToRecentChangeMap[newRecentChangDbId]"></RecentChangeCard>
       </div>
     </div>
     <b-modal id="filter-modal" title="Filters">
@@ -71,6 +70,11 @@
     },
     components: {
       RecentChangeCard
+    },
+    computed: {
+      getRecentChange: function(dbId) {
+        return this.dbIdToRecentChangeMap[dbId];
+      }
     },
     data() {
       return {
@@ -177,7 +181,8 @@
         let dbId = interaction.recentChange._id;
         let newRecentChange = this.dbIdToRecentChangeMap[dbId];
         if (newRecentChange) {
-          newRecentChange.judgementCounts = interaction.judgementCounts;
+          this.$set(newRecentChange, 'judgement', interaction.judgement);
+          this.$set(newRecentChange, 'judgementCounts', interaction.judgementCounts);
         } else {
           console.warn(`Some interaction for dbId=${dbId} is on changes not visible on this session, ignored....`);
         }
