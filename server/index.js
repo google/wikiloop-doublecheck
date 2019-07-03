@@ -128,6 +128,22 @@ function setupApiRequestListener(db, io, app) {
 
   }));
 
+  apiRouter.get('/recentChanges', cache('5 minutes'), asyncHandler(async (req, res) => {
+    logger.debug(`req.query`, req.query);
+
+    // let diffApiUrl = `${req.query.serverUrl}/w/api.php?action=compare&fromrev=${req.query.revId}&torelative=prev&format=json`;
+    // let diffJson = await rp.get(diffApiUrl, {json: true});
+    res.send(req.query);
+
+  }));
+
+  apiRouter.get('/recentChanges/:id', cache('5 minutes'), asyncHandler(async (req, res) => {
+    console.log(`req.params`, req.params);
+    let queryUrl = `${req.query.serverUrl}/w/api.php?action=query&list=recentchanges&prop=info&format=json&rcnamespace=0&rclimit=100&rctype=edit&rctoponly=true&rcprop=user|userid|comment|flags|timestamp|ids|title&rcshow=!bot`;
+
+    res.send(req.params);
+  }));
+
   apiRouter.post('/interaction', asyncHandler(async (req, res) => {
     logger.debug(`Interaction req`, req.cookies, req.body);
 
