@@ -23,7 +23,7 @@
     <div class="container small-screen-padding" style="margin-top:60px">
       <h5>
         {{showCounter}} out of {{revisionCounter}} revisions matches <span
-          class="btn btn-sm btn-outline-primary" v-b-modal.filter-modal>filters</span>
+          class="btn btn-sm btn-outline-primary" v-b-modal.filter-modal>filters</span> or <span v-on:click="pause = !pause" class="btn btn-sm btn-outline-primary">pause</span> it.
       </h5>
       <div class="m-auto" v-if="newRecentChangDbIds.length === 0">
         <h1 class="m-auto">Please wait for the first vandal edit to show up....</h1>
@@ -81,6 +81,7 @@
         title: 'WikiLoop Battlefield',
         newRecentChangDbIds: [],
         dbIdToRecentChangeMap: {},
+        bufferNewRecentChange: {},
         titleToDbIds: {},
         requireEnWiki: true,
         requireDamaging: true,
@@ -165,7 +166,13 @@
       // Use the init recent chang to fill the screen
       this.initRecentChanges.forEach((async (rc) => await this.maybeShowRecentChange(rc)));
       socket.on('recent-change', async (newRecentChange) => {
-        await this.maybeShowRecentChange(newRecentChange);
+        // This is a hack fix of an existing Vue caveat: a new data will not have "reactivity"
+        // if not being added to Vue data. https://vuejs.org/v2/guide/list.html#Caveats
+        // Related bug https://github.com/xinbenlv/wikiloop-battlefield-vue/issues/22
+        // By assigning it to a Vue data, it gets reactivity and we are good. But it's a hack...
+        // Until Vue fixes this....
+        this.bufferNewRecentChange = newRecentChange;
+        await this.maybeShowRecentChange(this.bufferNewRecentChange);
       });
       socket.on('client-activity', async (clientActivity) => {
         console.log(`client activity: ${clientActivity}`);
@@ -177,7 +184,6 @@
         if (interaction.userGaId === myGaId) {
           this.stats.totalMyJudgement++;
         }
-        console.log(`Received interaction: ${JSON.stringify(interaction, null, 2)}`);
         let dbId = interaction.recentChange._id;
         let newRecentChange = this.dbIdToRecentChangeMap[dbId];
         if (newRecentChange) {
