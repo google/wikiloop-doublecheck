@@ -2,8 +2,7 @@
   "name": "wikiloop-battlefield",
   "version": "1.0.0-alpha-4",
   "description": "A web app for Wikipedians to fight vandalism together.",
-  "author": "Zainan Victor Zhou",
-  "private": true,
+  "author": "Zainan Victor Zhou <zzn@google.com>",
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
     "build": "nuxt build",
@@ -64,5 +63,6 @@
     "nodemon": "^1.18.9",
     "prettier": "^1.16.4",
     "vue-jest": "^3.0.3"
-  }
+  },
+    "license" : "Apache-2.0"
 }
