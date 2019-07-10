@@ -107,7 +107,6 @@
       },
       interactionBtn: async function (judgement) {
         let recentChange = this.item;
-        let url = `${this.getUrlBase(recentChange)}/w/index.php?title=${recentChange.title}&action=edit&undoafter=${recentChange.revision.old}&undo=${recentChange.revision.new}&summary=Reverted%20with%20[[:m:WikiLoop Battlefield]](v${this.version}) at battlefield.wikiloop.org .`;
         let gaId = this.$cookies.get("_ga");
         console.log(`gaId`, gaId);
         let postBody = {
@@ -127,7 +126,11 @@
           }
         };
         console.log(`postBody`, postBody);
-        if (judgement === `ShouldRevert` && !this.item.overriden) window.open(url, '_blank');
+        if (judgement === `ShouldRevert` && !this.item.overriden) {
+          const version = await this.$axios.$get(`/api/version`);
+          let url = `${this.getUrlBase(recentChange)}/w/index.php?title=${recentChange.title}&action=edit&undoafter=${recentChange.revision.old}&undo=${recentChange.revision.new}&summary=Identified as test/vandalism using [[:m:WikiLoop Battlefield]](version ${version}) at battlefield.wikiloop.org.`;
+          window.open(url, '_blank');
+        }
         let ret = await $.post(`/api/interaction`, postBody);
         this.item.judgement = judgement;
         this.$bvToast.toast(
