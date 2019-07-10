@@ -384,7 +384,8 @@ function setupApiRequestListener(db, io, app) {
             wiki: `${wiki}`, // TODO verify
             timestamp: Math.floor(new Date(rawRecentChange.timestamp).getTime() / 1000), // TODO check the exact format of timestamp. maybe use an interface?
             namespace: 0, // we already query the server with "rcnamespace=0" filter
-            nonbot: true // we already query the server with "rcprop=!bot" filter
+            nonbot: true, // we already query the server with "rcprop=!bot" filter
+            comment: rawRecentChange.comment,
           };
         });
     res.send(recentChanges.reverse());
@@ -447,12 +448,13 @@ function setupMediaWikiListener(db, io) {
               timestamp: recentChange.timestamp,
               ores: recentChange.ores,
               namespace: recentChange.namespace,
-              nonbot: !recentChange.bot
+              nonbot: !recentChange.bot,
             };
             docCounter++;
             logger.debug(`#${docCounter} / ${allDocCounter}`);
-            io.sockets.emit('recent-change', doc);
             await db.collection(`MediaWikiRecentChange`).insertOne(doc);
+            doc.comment = recentChange.comment;
+            io.sockets.emit('recent-change', doc);
           } catch (e) {
             if (e.name === "MongoError" && e.code === 11000) {
               console.warn(`Duplicated Key Found`, e.errmsg);

@@ -24,34 +24,41 @@
       <h5 class="card-title ">
         <div class="d-flex">
           <div class="flex-grow-1">
-            <a v-bind:href="`${getUrlBase(item)}/wiki/Special:Diff/${item.revision.new}`">{{ item.title }}</a>
+            [[<a :href="`${getUrlBase(item)}/wiki/${item.title}`">{{ item.title }}</a>]] <sup><a v-bind:href="`${getUrlBase(item)}/wiki/Special:Diff/${item.revision.new}`"><small>rev.{{item.revision.new}}</small></a></sup>
+            <span class="small">{{ item.summary }}</span>
           </div>
           <div v-if="item.overriden"> Overriden</div>
         </div>
-
       </h5>
-
-      <h6>
-        <small><i class="fas fa-clock"></i>
-          <timeago :datetime="getTimeString()" :auto-update="60"></timeago>
-        </small>
-      </h6>
-      <h6 class="card-subtitle mb-2 text-muted">
-        <small class="row">
-          <div class="col-sm-12 col-6">by <a
-              v-bind:href="`${getUrlBase(item)}/wiki/User:${item.user}`">{{ item.user }}</a></div>
-          <div class="col-sm-12 col-6">
-                  <span data-toggle="tooltip" data-placement="top" title="from WMF ORES score">
-                    <i v-bind:class="{ 'text-danger': item.ores.badfaith }" class="fas fa-theater-masks"></i>: {{ damagingPercent() }},
-                  </span>
-            <span data-toggle="tooltip" data-placement="top" title="from WMF ORES score">
-                    <i v-bind:class="{ 'text-warning': item.ores.damaging }" class="fas fa-cloud-rain"></i>: {{ badfaithPercent() }}
-                  </span>
+      <div class="card-subtitle mb-2 text-muted">
+        <div class="row p-2">
+          <div class="col-lg-3">
+            <i class="fas fa-clock"></i> <timeago :datetime="getTimeString()" :auto-update="60"></timeago>
           </div>
-        </small>
-
-      </h6>
+          <div class="col-lg-3">
+            <small><span>by <a v-bind:href="`${getUrlBase(item)}/wiki/User:${item.user}`">{{ item.user }}</a></span></small>
+          </div>
+          <div class="col-lg-3">
+            <span  data-toggle="tooltip" data-placement="top" title="Damaging Score by WMF ORES">
+              <i v-bind:class="{ 'text-danger': item.ores.badfaith }" class="fas fa-theater-masks"></i>: <a :href="`https://ores.wmflabs.org/v3/scores/enwiki/?revids=${item.revision.new}`">{{ damagingPercent() }}</a>
+            </span>
+          </div>
+          <div class="col-lg-3">
+            <span data-toggle="tooltip" data-placement="top" title="Bad-faith Score by WMF ORES (here Bad-faith = 100% - Goodfaith)">
+              <i v-bind:class="{ 'text-warning': item.ores.damaging }" class="fas fa-cloud-rain"></i>:  <a :href="`https://ores.wmflabs.org/v3/scores/enwiki/?revids=${item.revision.new}`">{{ badfaithPercent() }}</a>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="card-subtitle mb-2 text-muted">
+      <div class="row p-2">
+        <div class="col-12"><b>Edit summary:</b>
+          <span>{{item.comment || "(empty)}"}}</span>
+        </div>
+      </div>
+      </div>
       <div class="card-text w-100 pl-sm-0" >
+      <!-- TODO (zzn): use dynamic loading -->
         <diff-box v-if="item.diff && item.diff.compare && item.diff.compare['*']" v-bind:diffContent="item.diff.compare['*']"/>
         <h5 v-else>Diff not available. Usually caused by revision deleted or page deleted. See it directly on <a :href="`${getUrlBase(item)}/w/index.php?title=${item.title}&diff=${item.id}&oldid=prev&diffmode=source`">the site</a>. </h5>
       </div>
@@ -170,5 +177,9 @@
   }
   .bg-darker-light {
     background-color: #F5F5F5;
+  }
+
+  #metainfo {
+    font-size:12px;
   }
 </style>

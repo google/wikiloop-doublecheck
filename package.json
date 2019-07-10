@@ -1,6 +1,6 @@
 {
   "name": "wikiloop-battlefield",
-  "version": "1.0.0-alpha-4",
+  "version": "1.0.0-alpha-5",
   "description": "A web app for Wikipedians to fight vandalism together.",
   "author": "Zainan Victor Zhou <zzn@google.com>",
   "scripts": {
