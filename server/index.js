@@ -452,9 +452,11 @@ function setupMediaWikiListener(db, io) {
             };
             docCounter++;
             logger.debug(`#${docCounter} / ${allDocCounter}`);
-            await db.collection(`MediaWikiRecentChange`).insertOne(doc);
             doc.comment = recentChange.comment;
             io.sockets.emit('recent-change', doc);
+            delete doc.comment;
+            await db.collection(`MediaWikiRecentChange`).insertOne(doc);
+
           } catch (e) {
             if (e.name === "MongoError" && e.code === 11000) {
               console.warn(`Duplicated Key Found`, e.errmsg);
