@@ -44,6 +44,162 @@ function computeOresField(oresJson, wiki, revsionId) {
   }
 }
 
+async function getNewJudgementCounts(db, myGaId, wikiRevId = null) {
+  let matchFilter = {};
+  if (wikiRevId) {
+    matchFilter.wikiRevId = wikiRevId;
+  }
+
+
+  return await db.collection(`Interaction`).aggregate(   [
+        {
+          "$group" : {
+            "_id" : {
+              "wikiRevId" : "$wikiRevId"
+            },
+            "wikiRevId" : {
+              "$first" : "$wikiRevId"
+            },
+            "judgements" : {
+              "$push" : {
+                "judgement" : "$judgement",
+                "userGaId" : "$userGaId",
+                "timestamp" : "$timestamp"
+              }
+            },
+            "totalCounts" : {
+              "$sum" : 1
+            },
+            "shouldRevertCounts" : {
+              "$sum" : {
+                "$cond" : [
+                  {
+                    "$eq" : [
+                      "$judgement",
+                      "ShouldRevert"
+                    ]
+                  },
+                  1,
+                  2
+                ]
+              }
+            },
+            "notSureCounts" : {
+              "$sum" : {
+                "$cond" : [
+                  {
+                    "$eq" : [
+                      "$judgement",
+                      "NotSure"
+                    ]
+                  },
+                  1,
+                  2
+                ]
+              }
+            },
+            "looksGoodCounts" : {
+              "$sum" : {
+                "$cond" : [
+                  {
+                    "$eq" : [
+                      "$judgement",
+                      "LooksGood"
+                    ]
+                  },
+                  1,
+                  2
+                ]
+              }
+            },
+            "lastTimestamp" : {
+              "$max" : "$timestamp"
+            },
+            "recentChange" : {
+              "$first" : "$recentChange"
+            }
+          }
+        },
+        {
+          "$project" : {
+            "wikiRevId" : "$_id.wikiRevId",
+            "judgements" : "$judgements",
+            "lastTimestamp" : 1.0,
+            "recentChange" : 1.0,
+            "counts.Total" : "$totalCounts",
+            "counts.ShouldRevert" : "$shouldRevertCounts",
+            "counts.NotSure" : "$notSureCounts",
+            "counts.LooksGood" : "$looksGoodCounts"
+          }
+        },
+        {
+          "$sort" : {
+            "counts.lastTimeStamp" : -1.0
+          }
+        },
+        {
+          $match: {
+            "recentChange.ores": {$exists: true},
+            "recentChange.wiki": {$exists: true},
+            "lastTimestamp": {$exists: true}
+          }
+        }
+      ],
+      {
+        "allowDiskUse": true
+      }).toArray();
+
+  /**
+   * Example of output schema:
+   {
+      "_id":{
+        "wikiRevId":"enwiki:905704873"
+      },
+
+      "lastTimestamp":"1562791937",
+      "recentChange":{
+        "_id":"enwiki-1169325920",
+        "id":"1169325920",
+        "title":"Financial endowment",
+        "namespace":"0",
+        "revision":{
+          "new":"905704873",
+          "old":"900747399"
+        },
+        "ores":{
+          "damagingScore":"0.8937388482947232",
+          "damaging":"true",
+          "badfaithScore":"0.8787846798198944",
+          "badfaith":"true"
+        },
+        "user":"<userId or IP>>",
+        "wiki":"enwiki",
+        "timestamp":"1562791912"
+      },
+      "wikiRevId":"enwiki:905704873",
+      "judgements":[
+        {
+          "judgement":"ShouldRevert",
+          "userGaId":"<userGaId>",
+          "timestamp":"1562791937"
+        }
+      ],
+      "counts":{
+        "Total":1,
+        "ShouldRevert":1,
+        "NotSure":0,
+        "LooksGood":0
+      }
+   }
+   */
+}
+
+/**
+ * @deprecated use getNewJudgementCounts
+ * @param db
+ * @param newRecentChange
+ * @returns {Promise<void>}
+ */
 async function getJudgementCounts(db, newRecentChange) {
   let judgementCounts = {};
   let aggrRet = await db.collection(`Interaction`).aggregate([
@@ -72,6 +228,12 @@ async function getJudgementCounts(db, newRecentChange) {
   return judgementCounts;
 }
 
+/**
+ * @deprecated use queryMarkedRevisions
+ * @param db
+ * @param myGaId
+ * @returns {Promise<any[]>}
+ */
 async function queryMarkedRecentChange(db, myGaId) {
   let recentChanges;
   let interactions = await db.collection(`Interaction`).find({}, {
@@ -79,6 +241,7 @@ async function queryMarkedRecentChange(db, myGaId) {
   })
   // .limit(1)  // TODO add limit when performance becomes a problem, a typical case that RDB is better than NonRDB
       .toArray();
+
   let dbIds = interactions.map(rc => `${rc.recentChange.wiki}-${rc.recentChange.id}`);
   recentChanges = await db.collection(`MediaWikiRecentChange`)
       .find(
@@ -139,7 +302,6 @@ function setupApiRequestListener(db, io, app) {
     req.visitor
         .event({ec: "api", ea: "/diff"})
         .send();
-
   }));
 
   apiRouter.get('/recentChanges', cache('5 minutes'), asyncHandler(async (req, res) => {
@@ -165,6 +327,7 @@ function setupApiRequestListener(db, io, app) {
     let newRecentChange = req.body.newRecentChange;
     let doc = {
       userGaId: userGaId,
+      wikiRevId: `${newRecentChange.wiki}:${newRecentChange.revision.new}`,
       judgement: req.body.judgement,
       timestamp: req.body.timestamp,
       recentChange: {
@@ -196,6 +359,38 @@ function setupApiRequestListener(db, io, app) {
         .send();
   }));
 
+  apiRouter.get("/markedRevs.csv", asyncHandler(async (req, res) => {
+    let newJudgementCounts = await getNewJudgementCounts(db);
+    res.setHeader('Content-Type', 'text/csv');
+    res.setHeader('Content-Disposition', 'attachment; filename=\"' + 'download-' + Date.now() + '.csv\"');
+    console.log(`newJudgementCounts ${JSON.stringify(newJudgementCounts, null, 2)}`);
+    const stringify = require('csv-stringify');
+    let ret = [[
+          `WikiRevId`,
+          `LastTimestamp`,
+          `OresDamagingScore`,
+          `OresBadfaithScore`,
+          `ShouldRevert`,
+          `NotSure`,
+          `LooksGood`
+        ]]
+        .concat(newJudgementCounts.map((newJudgementCount) => [
+          newJudgementCount.wikiRevId,
+          newJudgementCount.lastTimestamp,
+          newJudgementCount.recentChange.ores ? newJudgementCount.recentChange.ores.damagingScore: "null",
+          newJudgementCount.recentChange.ores ? newJudgementCount.recentChange.ores.badfaithScore: "null",
+          newJudgementCount.counts.ShouldRevert,
+          newJudgementCount.counts.NotSure,
+          newJudgementCount.counts.LooksGood,
+          // newJudgementCount.judgements
+        ]));
+    stringify(ret, {header: false})
+        .pipe(res);
+  }));
+
+  /**
+   * @deprecated
+   */
   apiRouter.get("/marked.csv", asyncHandler(async (req, res) => {
     let myGaId = req.body.gaId || req.cookies._ga;
     let recentChanges = await queryMarkedRecentChange(db, myGaId);
@@ -203,15 +398,22 @@ function setupApiRequestListener(db, io, app) {
     res.setHeader('Content-Disposition', 'attachment; filename=\"' + 'download-' + Date.now() + '.csv\"');
     // res.send(recentChanges);
     const stringify = require('csv-stringify');
-    let ret = [[`RevId`, `Wiki`, `OresDamagingScore`, `OresBadfaithScore`, `ShouldRevert`, `NotSure`, `LooksGood`]]
+    let ret = [[`WikiRevId`, `OresDamagingScore`, `OresBadfaithScore`, `ShouldRevert`, `NotSure`, `LooksGood`]]
         .concat(recentChanges.map(rc => [
-          rc.id, rc.wiki, rc.ores.damagingScore, rc.ores.badfaithScore,
+          rc.wikiRevId, rc.ores.damagingScore, rc.ores.badfaithScore,
           rc.judgementCounts.ShouldRevert || 0, rc.judgementCounts.NotSure || 0, rc.judgementCounts.LooksGood || 0
         ]));
     stringify(ret, {header: false})
         .pipe(res);
   }));
 
+  apiRouter.get("/markedRevs", asyncHandler(async (req, res) => {
+    res.send(await getNewJudgementCounts(db));
+  }));
+
+  /**
+   * @deprecated
+   */
   apiRouter.get("/marked", asyncHandler(async (req, res) => {
     let myGaId = req.body.gaId || req.cookies._ga;
     let recentChanges = await queryMarkedRecentChange(db, myGaId);
@@ -253,6 +455,9 @@ function setupApiRequestListener(db, io, app) {
         .send();
   }));
 
+  /** Get the latest recentChangee
+   * @deprecated
+   */
   apiRouter.get('/latest', asyncHandler(async (req, res) => {
     logger.debug(`req.query`, req.query);
 
@@ -395,6 +600,147 @@ function setupApiRequestListener(db, io, app) {
 
   }));
 
+  apiRouter.get('/latestRevs', asyncHandler(async (req, res) => {
+    let wiki = "enwiki";  // TODO: support multiple different wiki in the cases. Currently only support ENwiki.
+
+    // Getting a list of latest revisions related to the filter (Lang of Wiki), and their related diff
+    // TODO Consider use https://nodejs.org/api/url.html#url_url_searchparams to compose a standard one. this contains too many parameters
+    let queryUrl = `${req.query.serverUrl}/w/api.php?action=query&list=recentchanges&prop=info&format=json&rcnamespace=0&rclimit=100&rctype=edit&rctoponly=true&rcprop=user|userid|comment|flags|timestamp|ids|title&rcshow=!bot`;
+    // https://en.wikipedia.org/w/api.php?action=query&list=recentchanges&prop=info&format=json&rcnamespace=0&rclimit=50&rctype=edit&rctoponly=true&rcprop=user|userid|comment|flags|timestamp|ids|title&rcshow=!bot
+    let recentChangesJson = await rp.get(queryUrl, {json: true});
+    /** Sample response
+     {
+       "batchcomplete":"",
+       "continue":{
+          "rccontinue":"20190701214931|1167038199",
+          "continue":"-||info"
+       },
+       "query":{
+          "recentchanges":[
+             {
+                "type":"edit",
+                "ns":0,
+                "title":"Multiprocessor system architecture",
+                "pageid":58955273,
+                "revid":904396518,
+                "old_revid":904395753,
+                "rcid":1167038198,
+                "user":"Dhtwiki",
+                "userid":9475572,
+                "timestamp":"2019-07-01T21:49:32Z",
+                "comment":"Putting images at bottom, side by side, to prevent impinging on References section"
+             }
+             // ...
+          ]
+       }
+     }
+
+     Converting to
+     {
+        _id: recentChange._id,
+        id: recentChange.id,
+        revision: recentChange.revision,
+        title: recentChange.title,
+        user: recentChange.user,
+        wiki: recentChange.wiki,
+        timestamp: recentChange.timestamp,
+        ores: recentChange.ores,
+        namespace: recentChange.namespace,
+        nonbot: !recentChange.bot
+      }
+     */
+
+    let oresUrl = `https://ores.wmflabs.org/v3/scores/${wiki}/?models=damaging|goodfaith&revids=${
+        recentChangesJson.query.recentchanges // from recentChangesJson result
+            .map(rawRecentChange => rawRecentChange.revid).join('|')
+        }`;
+
+    /**
+     {
+        enwiki:{
+          models:{
+            damaging:{
+              version:"0.5.0"
+            },
+            goodfaith:{
+              version:"0.5.0"
+            }
+          },
+          scores:{
+            904398217:{
+              damaging:{
+                score:{
+                  prediction:false,
+                  probability:{
+                    false:0.8201493218128969,
+                    true:0.1798506781871031
+                  }
+                }
+              },
+              goodfaith:{
+                score:{
+                  prediction:true,
+                  probability:{
+                    false:0.09864511980935009,
+                    true:0.9013548801906499
+                  }
+                }
+              }
+            },
+            904398221:{
+              damaging:{
+                score:{
+                  prediction:false,
+                  probability:{
+                    false:0.9593284228949122,
+                    true:0.04067157710508781
+                  }
+                }
+              },
+              goodfaith:{
+                score:{
+                  prediction:true,
+                  probability:{
+                    false:0.01102952942780866,
+                    true:0.9889704705721913
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+     * */
+
+    let oresResultJson = await rp.get(oresUrl, {json: true});
+
+    let recentChanges = recentChangesJson.query.recentchanges  // from recentChangesJson result
+        .map(rawRecentChange => {
+          return {
+            _id: `${wiki}-${rawRecentChange.rcid}`,
+            id: rawRecentChange.rcid,
+            wikiRevId: `${wiki}:${rawRecentChange.revid}`,
+            revision: {
+              new: rawRecentChange.revid,
+              old: rawRecentChange.old_revid
+            },
+            title: rawRecentChange.title,
+            user: rawRecentChange.user,
+            ores: computeOresField(oresResultJson, wiki, rawRecentChange.revid),
+            wiki: `${wiki}`, // TODO verify
+            timestamp: Math.floor(new Date(rawRecentChange.timestamp).getTime() / 1000), // TODO check the exact format of timestamp. maybe use an interface?
+            namespace: 0, // we already query the server with "rcnamespace=0" filter
+            nonbot: true, // we already query the server with "rcprop=!bot" filter
+            comment: rawRecentChange.comment,
+          };
+        });
+    res.send(recentChanges.reverse());
+    req.visitor
+        .event({ec: "api", ea: "/latestRevs"})
+        .send();
+
+  }));
+
   apiRouter.get('/version', (req, res, next) => {
     var packageson = require('./../package.json');
     res.send(packageson.version);
@@ -455,7 +801,8 @@ function setupMediaWikiListener(db, io) {
             doc.comment = recentChange.comment;
             io.sockets.emit('recent-change', doc);
             delete doc.comment;
-            await db.collection(`MediaWikiRecentChange`).insertOne(doc);
+            // TODO add
+            // await db.collection(`MediaWikiRecentChange`).insertOne(doc);
 
           } catch (e) {
             if (e.name === "MongoError" && e.code === 11000) {
