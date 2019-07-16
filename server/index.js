@@ -165,6 +165,7 @@ function setupApiRequestListener(db, io, app) {
     let newRecentChange = req.body.newRecentChange;
     let doc = {
       userGaId: userGaId,
+      wikiRevId: `${newRecentChange.wiki}:${newRecentChange.revision.new}`,
       judgement: req.body.judgement,
       timestamp: req.body.timestamp,
       recentChange: {
