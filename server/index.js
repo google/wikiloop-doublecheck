@@ -21,6 +21,8 @@ const rp = require(`request-promise`);
 
 var log4js = require('log4js');
 var logger = log4js.getLogger();
+
+var apiLogger = log4js.getLogger(`api`);
 logger.level = 'debug';
 
 let docCounter = 0;
@@ -392,7 +394,9 @@ function setupApiRequestListener(db, io, app) {
 
   apiRouter.use(cookieParser());
   apiRouter.use(bodyParser());
+  const onlyGet = (req, res) => res.method === `GET`;
 
+  apiRouter.use(cache('1 week', onlyGet));
   const asyncHandler = fn => (req, res, next) =>
       Promise
           .resolve(fn(req, res, next))
@@ -405,7 +409,7 @@ function setupApiRequestListener(db, io, app) {
         .send();
   });
 
-  apiRouter.get('/diff/:wikiRevId', cache('5 minutes'), asyncHandler(async (req, res) => {
+  apiRouter.get('/diff/:wikiRevId', asyncHandler(async (req, res) => {
     logger.debug(`req.query`, req.query);
     let wikiRevId = req.params.wikiRevId;
     let wiki = wikiRevId.split(':')[0];
@@ -418,7 +422,7 @@ function setupApiRequestListener(db, io, app) {
         .send();
   }));
 
-  apiRouter.get('/diff', cache('5 minutes'), asyncHandler(async (req, res) => {
+  apiRouter.get('/diff', asyncHandler(async (req, res) => {
     logger.debug(`req.query`, req.query);
     let diffApiUrl = `${req.query.serverUrl}/w/api.php?action=compare&fromrev=${req.query.revId}&torelative=prev&format=json`;
     let diffJson = await rp.get(diffApiUrl, {json: true});
@@ -428,7 +432,7 @@ function setupApiRequestListener(db, io, app) {
         .send();
   }));
 
-  apiRouter.get('/recentChanges', cache('5 minutes'), asyncHandler(async (req, res) => {
+  apiRouter.get('/recentChanges', asyncHandler(async (req, res) => {
     logger.debug(`req.query`, req.query);
 
     // let diffApiUrl = `${req.query.serverUrl}/w/api.php?action=compare&fromrev=${req.query.revId}&torelative=prev&format=json`;
@@ -437,7 +441,7 @@ function setupApiRequestListener(db, io, app) {
 
   }));
 
-  apiRouter.get('/ores/:wikiRevId', cache('5 minutes'), asyncHandler(async (req, res) => {
+  apiRouter.get('/ores/:wikiRevId', asyncHandler(async (req, res) => {
     let wikiRevId = req.params.wikiRevId;
     let wiki = wikiRevId.split(':')[0];
     let revId = wikiRevId.split(':')[1];
@@ -456,8 +460,7 @@ function setupApiRequestListener(db, io, app) {
         .send();
   }));
 
-  apiRouter.get('/revision/:wikiRevId', cache('5 minutes'), asyncHandler(async (req, res) => {
-    console.log(`Req: /revision/:wikiRevId`, req.params);
+  apiRouter.get('/revision/:wikiRevId', asyncHandler(async (req, res) => {
     let wikiRevId = req.params.wikiRevId;
     let revisions = await fetchRevisions(wikiRevId.split(':')[0], [wikiRevId.split(':')[1]]);
     if (revisions.length === 1) {
@@ -475,8 +478,28 @@ function setupApiRequestListener(db, io, app) {
         .send();
   }));
 
-  apiRouter.get('/interaction/:wikiRevId', cache('5 minutes'), asyncHandler(async (req, res) => {
-    console.log(`Req: /interaction/:wikiRevId`, req.params);
+  /**
+   * Get a list of `revisions`
+   */
+  apiRouter.get('/revisions', asyncHandler(async (req, res) => {
+    let wikiRevId = req.params.wikiRevId;
+    let revisions = await fetchRevisions(wikiRevId.split(':')[0], [wikiRevId.split(':')[1]]);
+    if (revisions.length === 1) {
+      res.send(revisions[0] );
+    } else if (revisions.length === 0) {
+      res.status(404);
+      res.send(`Can't find revisions`);
+    } else {
+      res.status(500);
+      res.send(`Something is wrong`);
+    }
+
+    req.visitor
+        .event({ec: "api", ea: "/revision/:wikiRevId"})
+        .send();
+  }));
+
+  apiRouter.get('/interaction/:wikiRevId', asyncHandler(async (req, res) => {
     let wikiRevId = req.params.wikiRevId;
     let interactions = await getNewJudgementCounts(db, [wikiRevId]);
     if (interactions.length >= 1) {
@@ -532,7 +555,7 @@ function setupApiRequestListener(db, io, app) {
       wikiRevId: wikiRevId,
     }, doc, {upsert: true});
     logger.info(`Interaction cache clearing for ${wikiRevId}`);
-    apicache.clear(`/interaction/${wikiRevId}`);
+    apicache.clear(req.originalUrl);
     logger.info(`Done cache cleared for ${wikiRevId}`);
     let storedInteractions = await getNewJudgementCounts(db, [wikiRevId]);
     let storedInteraction = storedInteractions[0];
@@ -592,7 +615,6 @@ function setupApiRequestListener(db, io, app) {
     let newJudgementCounts = await getNewJudgementCounts(db);
     res.setHeader('Content-Type', 'text/csv');
     res.setHeader('Content-Disposition', 'attachment; filename=\"' + 'download-' + Date.now() + '.csv\"');
-    console.log(`newJudgementCounts ${JSON.stringify(newJudgementCounts, null, 2)}`);
     const stringify = require('csv-stringify');
     let ret = [[
           `WikiRevId`,
@@ -696,7 +718,6 @@ function setupApiRequestListener(db, io, app) {
    * @deprecated
    */
   apiRouter.get('/latest', asyncHandler(async (req, res) => {
-    logger.debug(`req.query`, req.query);
 
     let wiki = "enwiki";  // TODO: support multiple different wiki in the cases. Currently only support ENwiki.
 
@@ -1100,12 +1121,19 @@ async function start() {
 
   // Setup Google Analytics
   app.use(ua.middleware(process.env.GA_ID, {cookieName: '_ga'}));
+  app.use(function (req, res, next) {
+    apiLogger.debug('req.originalUrl:', req.originalUrl);
+    apiLogger.debug('req.params:', req.params);
+    apiLogger.debug('req.query:', req.query);
+    next();
+  });
+
   setupIoSocketListener(io);
   setupMediaWikiListener(db, io);
   setupApiRequestListener(db, io, app);
 
   // Give nuxt middleware to express
-  app.use(nuxt.render)
+  app.use(nuxt.render);
 
   // Listen the server
   // app.listen(port, host)

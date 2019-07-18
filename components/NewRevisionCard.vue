@@ -166,8 +166,7 @@
           let url = `${this.getUrlBaseByWiki(this.revision.wiki)}/w/index.php?title=${this.revision.title}&action=edit&undoafter=${this.revision.parentid}&undo=${this.revision.revid}&summary=Identified as test/vandalism using [[:m:WikiLoop Battlefield]](version ${version}) at battlefield.wikiloop.org.`;
           window.open(url, '_blank');
         }
-        let ret = await $.post(`/api/interaction/${this.wikiRevId}`, postBody);
-
+        await this.$axios.$post(`/api/interaction/${this.wikiRevId}`, postBody);
         this.$bvToast.toast(
             `Your judgement for ${this.revision.title} at revision ${this.revision.revid} is logged.`, {
               title: 'Congrats!',
