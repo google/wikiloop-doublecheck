@@ -158,15 +158,10 @@ async function fetchRevisions(wiki, revIds = []) {
   }
 }
 
-async function getNewJudgementCounts(db, wikiRevIds = []) {
-  let matchFilter = {};
-  if (wikiRevIds && wikiRevIds.length > 0) {
-    matchFilter.wikiRevId = {$in: wikiRevIds};
-  }
-
+async function getNewJudgementCounts(db, matcher = {}, offset = 0, limit = 10) {
   return await db.collection(`Interaction`).aggregate([
         {
-          $match: matchFilter
+          $match: matcher
         },
         {
           "$group" : {
@@ -260,7 +255,10 @@ async function getNewJudgementCounts(db, wikiRevIds = []) {
       ],
       {
         "allowDiskUse": true
-      }).toArray();
+      })
+      .skip(offset)
+      .limit(limit)
+      .toArray();
 
   /**
    * Example of output schema:
@@ -501,7 +499,7 @@ function setupApiRequestListener(db, io, app) {
 
   apiRouter.get('/interaction/:wikiRevId', asyncHandler(async (req, res) => {
     let wikiRevId = req.params.wikiRevId;
-    let interactions = await getNewJudgementCounts(db, [wikiRevId]);
+    let interactions = await getNewJudgementCounts(db,  {wikiRevId: {$in: [wikiRevId]}});
     if (interactions.length >= 1) {
       res.send(interactions[0] );
     } else {
@@ -522,6 +520,16 @@ function setupApiRequestListener(db, io, app) {
     }
     req.visitor
         .event({ec: "api", ea: "/interaction/:wikiRevId"})
+        .send();
+  }));
+
+  apiRouter.get('/interactions', asyncHandler(async (req, res) => {
+    let limit = req.query.limit || 10;
+    let offset = req.query.offset || 0;
+    let interactions = await getNewJudgementCounts(db, {}, offset, limit);
+    res.send(interactions);
+    req.visitor
+        .event({ec: "api", ea: "/interactions"})
         .send();
   }));
 

@@ -36,13 +36,13 @@
     </nav>
     <div class="container small-screen-padding" style="margin-top:60px">
       <h4>You can also download a CSV file <a href="/api/markedRevs.csv">here</a> </h4>
-      <div v-for="markedRevision of markdRevisions"
-           v-bind:key="markedRevision.wikiRevId"
+      <div v-for="interactions of interactions"
+           v-bind:key="interactions.wikiRevId"
            class="col-12 p-2"
       >
-        <NewRevisionCard :wikiRevId="markedRevision.wikiRevId"></NewRevisionCard>
+        <NewRevisionCard :wikiRevId="interactions.wikiRevId"></NewRevisionCard>
       </div>
-      <div v-if="!markdRevisions || markdRevisions.length === 0">
+      <div v-if="!interactions || interactions.length === 0">
         <div class="spinner-border" role="status">
           <span class="sr-only">Loading...</span>
         </div>
@@ -59,10 +59,10 @@
       NewRevisionCard
     },
     async asyncData({$axios}) {
-      const markdRevisions = await $axios.$get(`/api/markedRevs`);
+      const interactions = await $axios.$get(`/api/interactions`);
       const version = await $axios.$get(`/api/version`);
       const stats = await $axios.$get(`/api/stats`);
-      return { markdRevisions, version, stats };
+      return { interactions, version, stats };
     },
   }
 </script>
