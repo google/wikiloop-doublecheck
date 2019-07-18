@@ -36,13 +36,13 @@
     </nav>
     <div class="container small-screen-padding" style="margin-top:60px">
       <h4>You can also download a CSV file <a href="/api/marked.csv">here</a> </h4>
-      <div v-for="recentChange of markedRecentChanges"
-           v-bind:key="recentChange._id"
+      <div v-for="markedRevision of markdRevisions"
+           v-bind:key="markedRevision.wikiRevId"
            class="col-12 p-2"
       >
-        <RecentChangeCard :item="recentChange"></RecentChangeCard>
+        <NewRevisionCard :wikiRevId="markedRevision.wikiRevId"></NewRevisionCard>
       </div>
-      <div v-if="!markedRecentChanges || markedRecentChanges.length === 0">
+      <div v-if="!markdRevisions || markdRevisions.length === 0">
         <div class="spinner-border" role="status">
           <span class="sr-only">Loading...</span>
         </div>
@@ -52,34 +52,18 @@
 
 </template>
 <script>
-  import RecentChangeCard from '~/components/RecentChangeCard.vue';
-  import utility from '../shared/utility';
+  import NewRevisionCard from '~/components/NewRevisionCard.vue';
 
   export default {
     components: {
-      RecentChangeCard
-    },
-    data() {
-      return {
-        markedRecentChanges: []
-      }
+      NewRevisionCard
     },
     async asyncData({$axios}) {
-      const prefetchMarked = await $axios.$get(`/api/marked`);
+      const markdRevisions = await $axios.$get(`/api/markedRevs`);
       const version = await $axios.$get(`/api/version`);
       const stats = await $axios.$get(`/api/stats`);
-      return { prefetchMarked, version, stats };
+      return { markdRevisions, version, stats };
     },
-    methods: {},
-    beforeCreate() {
-      this.getUrlBase = utility.getUrlBase.bind(this); // now you can call this.getUrlBase() (in your functions/template)
-      this.fetchDiff = utility.fetchDiff.bind(this); // now you can call this.fetchDiff() (in your functions/template)
-    },
-    mounted() {
-      Promise.all(this.prefetchMarked.map((async (rc) => await this.fetchDiff(rc)))).then(() => {
-        this.markedRecentChanges = this.prefetchMarked;
-      });
-    }
   }
 </script>
 

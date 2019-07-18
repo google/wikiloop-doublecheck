@@ -49,6 +49,9 @@
           class="col-12 p-2"
       >
         <RecentChangeCard :item="dbIdToRecentChangeMap[newRecentChangDbId]"></RecentChangeCard>
+          <NewRevisionCard
+            :wikiRevId="`${dbIdToRecentChangeMap[newRecentChangDbId].wiki}:${dbIdToRecentChangeMap[newRecentChangDbId].revision.new}`"
+            ></NewRevisionCard>
       </div>
     </div>
     <b-modal id="filter-modal" title="Filters">
@@ -73,6 +76,7 @@
   import socket from '~/plugins/socket.io.js';
   import BootstrapVue from 'bootstrap-vue';
   import RecentChangeCard from '~/components/RecentChangeCard.vue';
+  import NewRevisionCard from '~/components/NewRevisionCard.vue';
   import VueTimeago from 'vue-timeago';
   import utility from '../shared/utility';
 
@@ -84,7 +88,8 @@
       VueTimeago
     },
     components: {
-      RecentChangeCard
+      RecentChangeCard,
+      NewRevisionCard
     },
     computed: {
       getRecentChange: function(dbId) {
@@ -113,7 +118,7 @@
       }
     },
     async asyncData({$axios}) {
-      const initRecentChanges = await $axios.$get(`/api/latest?serverUrl=http://en.wikipedia.org/`);
+      const initRecentChanges = await $axios.$get(`/api/latestRevs?serverUrl=http://en.wikipedia.org/`);
       const version = await $axios.$get(`/api/version`);
       const stats = await $axios.$get(`/api/stats`);
       return {initRecentChanges, version, stats};

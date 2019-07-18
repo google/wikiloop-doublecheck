@@ -60,7 +60,7 @@
       <div class="card-text w-100 pl-sm-0" >
       <!-- TODO (zzn): use dynamic loading -->
         <diff-box v-if="item.diff && item.diff.compare && item.diff.compare['*']" v-bind:diffContent="item.diff.compare['*']"/>
-        <h5 v-else>Diff not available. Usually caused by revision deleted or page deleted. See it directly on <a :href="`${getUrlBase(item)}/w/index.php?title=${item.title}&diff=${item.id}&oldid=prev&diffmode=source`">the site</a>. </h5>
+        <h5 v-else>Diff not available. You can load it <div v-on:click="loadDiff()" class="btn btn-outline-primary btn-small">here</div>, and sometimes it's caused by revision deleted or page deleted. See it directly on <a :href="`${getUrlBase(item)}/w/index.php?title=${item.title}&diff=${item.id}&oldid=prev&diffmode=source`">the site</a>. </h5>
       </div>
       <div class="mt-4 d-flex justify-content-center">
         <div class="btn-group">
@@ -100,6 +100,9 @@
       item: Object,
     },
     methods: {
+      loadDiff: async function() {
+        this.item.diff = await this.fetchDiffWithWikiRevId(this.item.wikiRevId);
+      },
       getTimeString: function () {
         let newRecentChange = this.item;
         return new Date(newRecentChange.timestamp * 1000).toString();
@@ -157,6 +160,8 @@
     },
     beforeMount() {
       this.getUrlBase = utility.getUrlBase.bind(this); // now you can call this.getUrlBase() (in your functions/template)
+      this.getUrlBaseByWiki = utility.getUrlBaseByWiki.bind(this); // now you can call this.getUrlBase() (in your functions/template)
+      this.fetchDiffWithWikiRevId = utility.fetchDiffWithWikiRevId.bind(this); // now you can call this.getUrlBase() (in your functions/template)
     },
   }
 </script>

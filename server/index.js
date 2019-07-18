@@ -11,7 +11,6 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-
 const http = require('http');
 const express = require('express');
 const consola = require('consola');
@@ -31,12 +30,13 @@ let allDocCounter = 0;
 const config = require('../nuxt.config.js');
 config.dev = !(process.env.NODE_ENV === 'production');
 
-function computeOresField(oresJson, wiki, revsionId) {
-  let damagingScore = oresJson[wiki].scores[revsionId].damaging.score.probability.true;
-  let badfaithScore = oresJson[wiki].scores[revsionId].goodfaith.score.probability.false;
-  let damaging = oresJson[wiki].scores[revsionId].damaging.score.prediction;
-  let badfaith = !oresJson[wiki].scores[revsionId].goodfaith.score.prediction;
+function computeOresField(oresJson, wiki, revId) {
+  let damagingScore = oresJson[wiki].scores[revId].damaging.score.probability.true;
+  let badfaithScore = oresJson[wiki].scores[revId].goodfaith.score.probability.false;
+  let damaging = oresJson[wiki].scores[revId].damaging.score.prediction;
+  let badfaith = !oresJson[wiki].scores[revId].goodfaith.score.prediction;
   return {
+    wikiRevId: `${wiki}:${revId}`,
     damagingScore: damagingScore,
     damaging: damaging,
     badfaithScore: badfaithScore,
@@ -44,14 +44,127 @@ function computeOresField(oresJson, wiki, revsionId) {
   }
 }
 
-async function getNewJudgementCounts(db, myGaId, wikiRevId = null) {
+// TODO: merged with shared/utility
+function getUrlBaseByWiki(wiki) {
+  let wikiToLang = {
+    'enwiki': 'en',
+    'frwiki': 'fr',
+    'ruwiki': 'ru'
+  };
+  return `http://${wikiToLang[wiki]}.wikipedia.org`;
+}
+
+async function fetchOres(wiki, revIds) {
+  let oresUrl = `https://ores.wmflabs.org/v3/scores/${wiki}/?models=damaging|goodfaith&revids=${revIds.join('|')}`;
+  let oresResultJson = await rp.get(oresUrl, {json: true});
+  return revIds.map(revId => computeOresField(oresResultJson, wiki, revId));
+}
+
+async function fetchRevisions(wiki, revIds = []) {
+  if (revIds.length > 0) {
+    const fetchUrl = new URL(`${getUrlBaseByWiki(wiki)}/w/api.php`);
+    let params = {
+      "action": "query",
+      "format": "json",
+      "prop": "revisions|info",
+      "indexpageids": 1,
+      "revids": revIds.join('|'),
+      "rvprop": "ids|timestamp|flags|user|tags|size|comment",
+      "rvslots": "main"
+    };
+    Object.keys(params).forEach(key => {
+      fetchUrl.searchParams.set(key, params[key]);
+    });
+    let retJson = await rp.get(fetchUrl, {json: true});
+    if (retJson.query.badrevids) {
+      return []; // does not find
+    }
+    else {
+      /** Example
+      {
+          "batchcomplete": "",
+          "query": {
+              "pageids": [
+                  "16377",
+                  "103072"
+              ],
+              "pages": {
+                  "16377": {
+                      "pageid": 16377,
+                      "ns": 104,
+                      "title": "API:Query",
+                      "revisions": [
+                          {
+                              "revid": 3319487,
+                              "parentid": 3319442,
+                              "minor": "",
+                              "user": "Shirayuki",
+                              "timestamp": "2019-07-16T22:08:58Z",
+                              "size": 15845,
+                              "comment": "",
+                              "tags": []
+                          }
+                      ],
+                      "contentmodel": "wikitext",
+                      "pagelanguage": "en",
+                      "pagelanguagehtmlcode": "en",
+                      "pagelanguagedir": "ltr",
+                      "touched": "2019-07-17T03:10:17Z",
+                      "lastrevid": 3319487,
+                      "length": 15845
+                  },
+                  "103072": {
+                      "pageid": 103072,
+                      "ns": 104,
+                      "title": "API:Lists/All",
+                      "revisions": [
+                          {
+                              "revid": 2287599,
+                              "parentid": 2287488,
+                              "user": "Wargo",
+                              "timestamp": "2016-11-17T16:49:59Z",
+                              "size": 924,
+                              "comment": "Undo revision 2287488 by [[Special:Contributions/Jkmartindale|Jkmartindale]] ([[User talk:Jkmartindale|talk]])",
+                              "tags": []
+                          }
+                      ],
+                      "contentmodel": "wikitext",
+                      "pagelanguage": "en",
+                      "pagelanguagehtmlcode": "en",
+                      "pagelanguagedir": "ltr",
+                      "touched": "2019-07-18T04:14:03Z",
+                      "lastrevid": 2287599,
+                      "length": 924
+                  }
+              }
+          }
+      }
+       */
+      let revIdToRevision = {};
+      for (let pageId of retJson.query.pageids) {
+        for (let revision of retJson.query.pages[pageId].revisions) {
+          revIdToRevision[revision.revid] = revision;
+          revIdToRevision[revision.revid].title = retJson.query.pages[pageId].title;
+          revIdToRevision[revision.revid].wiki = wiki;
+          revIdToRevision[revision.revid].wikiRevId = `${wiki}:${revision.revid}`;
+          revIdToRevision[revision.revid].pageLatestRevId = retJson.query.pages[pageId].lastrevid;
+        }
+      }
+      return revIds.map(revId => revIdToRevision[revId]);
+    }
+  }
+}
+
+async function getNewJudgementCounts(db, wikiRevIds = []) {
   let matchFilter = {};
-  if (wikiRevId) {
-    matchFilter.wikiRevId = wikiRevId;
+  if (wikiRevIds && wikiRevIds.length > 0) {
+    matchFilter.wikiRevId = {$in: wikiRevIds};
   }
 
-
   return await db.collection(`Interaction`).aggregate(   [
+        {
+          $match: matchFilter
+        },
         {
           "$group" : {
             "_id" : {
@@ -139,9 +252,9 @@ async function getNewJudgementCounts(db, myGaId, wikiRevId = null) {
         },
         {
           $match: {
-            "recentChange.ores": {$exists: true},
-            "recentChange.wiki": {$exists: true},
-            "lastTimestamp": {$exists: true}
+            "recentChange.ores": {$exists: true, $ne:null},
+            "recentChange.wiki": {$exists: true, $ne:null},
+            "lastTimestamp": {$exists: true, $ne:null}
           }
         }
       ],
@@ -294,6 +407,19 @@ function setupApiRequestListener(db, io, app) {
         .send();
   });
 
+  apiRouter.get('/diff/:wikiRevId', cache('5 minutes'), asyncHandler(async (req, res) => {
+    logger.debug(`req.query`, req.query);
+    let wikiRevId = req.params.wikiRevId;
+    let wiki = wikiRevId.split(':')[0];
+    let revId = wikiRevId.split(':')[1];
+    let diffApiUrl = `${getUrlBaseByWiki(wiki)}/w/api.php?action=compare&fromrev=${revId}&torelative=prev&format=json`;
+    let diffJson = await rp.get(diffApiUrl, {json: true});
+    res.send(diffJson);
+    req.visitor
+        .event({ec: "api", ea: "/diff/:wikiRevId"})
+        .send();
+  }));
+
   apiRouter.get('/diff', cache('5 minutes'), asyncHandler(async (req, res) => {
     logger.debug(`req.query`, req.query);
     let diffApiUrl = `${req.query.serverUrl}/w/api.php?action=compare&fromrev=${req.query.revId}&torelative=prev&format=json`;
@@ -313,13 +439,36 @@ function setupApiRequestListener(db, io, app) {
 
   }));
 
-  apiRouter.get('/recentChanges/:id', cache('5 minutes'), asyncHandler(async (req, res) => {
-    console.log(`req.params`, req.params);
-    let queryUrl = `${req.query.serverUrl}/w/api.php?action=query&list=recentchanges&prop=info&format=json&rcnamespace=0&rclimit=100&rctype=edit&rctoponly=true&rcprop=user|userid|comment|flags|timestamp|ids|title&rcshow=!bot`;
-
-    res.send(req.params);
+  apiRouter.get('/ores/:wikiRevId', cache('5 minutes'), asyncHandler(async (req, res) => {
+    let wikiRevId = req.params.wikiRevId;
+    let wiki = wikiRevId.split(':')[0];
+    let revId = wikiRevId.split(':')[1];
+    res.send(await fetchOres(wiki, [revId]));
   }));
 
+  apiRouter.get('/revision/:wikiRevId', cache('5 minutes'), asyncHandler(async (req, res) => {
+    console.log(`Req: /interaction/:wikiRevId`, req.params);
+    let wikiRevId = req.params.wikiRevId;
+    let revisions = await fetchRevisions(wikiRevId.split(':')[0], [wikiRevId.split(':')[1]]);
+    res.send(revisions);
+    req.visitor
+        .event({ec: "api", ea: "/revision/:wikiRevId"})
+        .send();
+  }));
+
+  apiRouter.get('/interaction/:wikiRevId', cache('5 minutes'), asyncHandler(async (req, res) => {
+    console.log(`Req: /interaction/:wikiRevId`, req.params);
+    let wikiRevId = req.params.wikiRevId;
+    let interactions = await getNewJudgementCounts(db, [wikiRevId]);
+    res.send(interactions);
+    req.visitor
+        .event({ec: "api", ea: "/interaction/:wikiRevId"})
+        .send();
+  }));
+
+  /**
+   * @deprecated
+   */
   apiRouter.post('/interaction', asyncHandler(async (req, res) => {
     logger.debug(`Interaction req`, req.cookies, req.body);
 
@@ -406,6 +555,7 @@ function setupApiRequestListener(db, io, app) {
     stringify(ret, {header: false})
         .pipe(res);
   }));
+
 
   apiRouter.get("/markedRevs", asyncHandler(async (req, res) => {
     res.send(await getNewJudgementCounts(db));
