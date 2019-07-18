@@ -71,7 +71,10 @@
                 v-on:click="interactionBtn(`NotSure`)"
                 v-bind:class="{ 'btn-secondary':getMyJudgement() ===`NotSure`, 'btn-outline-secondary':getMyJudgement() !==`NotSure` }"
                 class="btn btn-sm"
-            >Not sure {{getJudgementCount(`NotSure`)}}
+            >Not sure
+            <template v-if="!interaction"><span class="sr-only"></span></template>
+            <template v-else>{{getJudgementCount(`NotSure`)}}</template>
+
             </button>
             <button
                 v-on:click="interactionBtn(`ShouldRevert`)"
@@ -82,13 +85,10 @@
           </div>
         </div>
       </div>
-      <div v-else>
-        loading...
-        <div><h1>WikiRevId:</h1>{{wikiRevId}}</div>
-        <div><h2>Interaction:</h2>{{interaction}}</div>
-        <div><h3>Revision:</h3>{{revision}}</div>
-        <div><h3>Ores:</h3>{{ores}}</div>
-        <div><h3>Diff:</h3>{{diff}}</div>
+      <div v-else class="card-body d-flex flex-column small-screen-padding">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
       </div>
     </div>
   </section>
@@ -112,7 +112,6 @@
         diff: null,
         interaction: null,
         revision: null,
-        myJudgement: null
       }
     },
     methods: {
@@ -139,15 +138,14 @@
           return null;
         }
       },
-      interactionBtn: async function (judgement) {
+      interactionBtn: async function (myJudgement) {
         let revision = this.revision;
         let gaId = this.$cookies.get("_ga");
-        this.myJudgement = judgement;
         let postBody = {
           gaId: gaId, // Deprecated
           userGaId: gaId,
-          judgement: this.myJudgement,
-          timestamp: Math.floor(new Date().getTime() / 1000),
+          judgement: myJudgement,
+          timestamp: Math.floor(new Date().getTime() / 1000), // timestamp for interaction
           wikiRevId: revision.wikiRevId,
           newRecentChange: {
             title: revision.title,
@@ -159,10 +157,11 @@
             ores: this.ores,
             user: revision.user,
             wiki: revision.wiki,
-            timestamp: revision.timestamp
+            timestamp: new Date(revision.timestamp).getTime()/1000
           }
         };
-        if (judgement === `ShouldRevert` && !this.isOverriden()) {
+
+        if (myJudgement === `ShouldRevert` && !this.isOverriden()) {
           const version = await this.$axios.$get(`/api/version`);
           let url = `${this.getUrlBaseByWiki(this.revision.wiki)}/w/index.php?title=${this.revision.title}&action=edit&undoafter=${this.revision.parentid}&undo=${this.revision.revid}&summary=Identified as test/vandalism using [[:m:WikiLoop Battlefield]](version ${version}) at battlefield.wikiloop.org.`;
           window.open(url, '_blank');
