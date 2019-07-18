@@ -148,6 +148,7 @@ async function fetchRevisions(wiki, revIds = []) {
           revIdToRevision[revision.revid].wiki = wiki;
           revIdToRevision[revision.revid].wikiRevId = `${wiki}:${revision.revid}`;
           revIdToRevision[revision.revid].pageLatestRevId = retJson.query.pages[pageId].lastrevid;
+          revIdToRevision[revision.revid].namespace = revision.ns;
         }
       }
       return revIds.map(revId => revIdToRevision[revId]);
@@ -161,100 +162,109 @@ async function getNewJudgementCounts(db, wikiRevIds = []) {
     matchFilter.wikiRevId = {$in: wikiRevIds};
   }
 
-  return await db.collection(`Interaction`).aggregate(   [
+  return await db.collection(`Interaction`).aggregate([
         {
           $match: matchFilter
         },
         {
-          "$group" : {
-            "_id" : {
-              "wikiRevId" : "$wikiRevId"
+          "$group": {
+            "_id": {
+              "wikiRevId": "$wikiRevId"
             },
-            "wikiRevId" : {
-              "$first" : "$wikiRevId"
+            "wikiRevId": {
+              "$first": "$wikiRevId"
             },
-            "judgements" : {
-              "$push" : {
-                "judgement" : "$judgement",
-                "userGaId" : "$userGaId",
-                "timestamp" : "$timestamp"
+            "judgements": {
+              "$push": {
+                "judgement": "$judgement",
+                "userGaId": "$userGaId",
+                "timestamp": "$timestamp"
               }
             },
-            "totalCounts" : {
-              "$sum" : 1
+            "totalCounts": {
+              "$sum": 1
             },
-            "shouldRevertCounts" : {
-              "$sum" : {
-                "$cond" : [
+            "shouldRevertCounts": {
+              "$sum": {
+                "$cond": [
                   {
-                    "$eq" : [
+                    "$eq": [
                       "$judgement",
                       "ShouldRevert"
                     ]
                   },
                   1,
-                  2
+                  0
                 ]
               }
             },
-            "notSureCounts" : {
-              "$sum" : {
-                "$cond" : [
+            "notSureCounts": {
+              "$sum": {
+                "$cond": [
                   {
-                    "$eq" : [
+                    "$eq": [
                       "$judgement",
                       "NotSure"
                     ]
                   },
                   1,
-                  2
+                  0
                 ]
               }
             },
-            "looksGoodCounts" : {
-              "$sum" : {
-                "$cond" : [
+            "looksGoodCounts": {
+              "$sum": {
+                "$cond": [
                   {
-                    "$eq" : [
+                    "$eq": [
                       "$judgement",
                       "LooksGood"
                     ]
                   },
                   1,
-                  2
+                  0
                 ]
               }
             },
-            "lastTimestamp" : {
-              "$max" : "$timestamp"
+            "lastTimestamp": {
+              "$max": "$timestamp"
             },
-            "recentChange" : {
-              "$first" : "$recentChange"
+            "recentChange": {
+              "$first": "$recentChange"
             }
           }
         },
         {
-          "$project" : {
-            "wikiRevId" : "$_id.wikiRevId",
-            "judgements" : "$judgements",
-            "lastTimestamp" : 1.0,
-            "recentChange" : 1.0,
-            "counts.Total" : "$totalCounts",
-            "counts.ShouldRevert" : "$shouldRevertCounts",
-            "counts.NotSure" : "$notSureCounts",
-            "counts.LooksGood" : "$looksGoodCounts"
+          "$project": {
+            "wikiRevId": "$_id.wikiRevId",
+            "judgements": "$judgements",
+            "lastTimestamp": 1.0,
+            "recentChange": 1.0,
+            "counts.Total": "$totalCounts",
+            "counts.ShouldRevert": "$shouldRevertCounts",
+            "counts.NotSure": "$notSureCounts",
+            "counts.LooksGood": "$looksGoodCounts"
           }
         },
         {
-          "$sort" : {
-            "counts.lastTimeStamp" : -1.0
+          "$sort": {
+            "counts.lastTimeStamp": -1.0
           }
         },
         {
-          $match: {
-            "recentChange.ores": {$exists: true, $ne:null},
-            "recentChange.wiki": {$exists: true, $ne:null},
-            "lastTimestamp": {$exists: true, $ne:null}
+          "$match": {
+            "recentChange.ores": {
+              "$exists": true,
+              "$ne": null
+            },
+            "recentChange.wiki": {
+              "$exists": true,
+              "$ne": null
+            },
+            "lastTimestamp": {
+              "$exists": true,
+              "$ne": null
+            }
           }
         }
       ],
@@ -443,14 +453,35 @@ function setupApiRequestListener(db, io, app) {
     let wikiRevId = req.params.wikiRevId;
     let wiki = wikiRevId.split(':')[0];
     let revId = wikiRevId.split(':')[1];
-    res.send(await fetchOres(wiki, [revId]));
+    let ret = await fetchOres(wiki, [revId]);
+    if (ret.length === 1) {
+      res.send(ret[0] );
+    } else if (ret.length === 0) {
+      res.status(404);
+      res.send(`Can't find ores`);
+    } else {
+      res.status(500);
+      res.send(`Something is wrong`);
+    }
+    req.visitor
+        .event({ec: "api", ea: "/ores/:wikiRevId"})
+        .send();
   }));
 
   apiRouter.get('/revision/:wikiRevId', cache('5 minutes'), asyncHandler(async (req, res) => {
-    console.log(`Req: /interaction/:wikiRevId`, req.params);
+    console.log(`Req: /revision/:wikiRevId`, req.params);
     let wikiRevId = req.params.wikiRevId;
     let revisions = await fetchRevisions(wikiRevId.split(':')[0], [wikiRevId.split(':')[1]]);
-    res.send(revisions);
+    if (revisions.length === 1) {
+      res.send(revisions[0] );
+    } else if (revisions.length === 0) {
+      res.status(404);
+      res.send(`Can't find revisions`);
+    } else {
+      res.status(500);
+      res.send(`Something is wrong`);
+    }
+
     req.visitor
         .event({ec: "api", ea: "/revision/:wikiRevId"})
         .send();
@@ -460,7 +491,11 @@ function setupApiRequestListener(db, io, app) {
     console.log(`Req: /interaction/:wikiRevId`, req.params);
     let wikiRevId = req.params.wikiRevId;
     let interactions = await getNewJudgementCounts(db, [wikiRevId]);
-    res.send(interactions);
+    if (interactions.length >= 1) {
+      res.send(interactions[0] );
+    } else {
+      res.send(null);
+    }
     req.visitor
         .event({ec: "api", ea: "/interaction/:wikiRevId"})
         .send();
