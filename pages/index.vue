@@ -48,7 +48,7 @@
           v-bind:key="newRecentChangDbId"
           class="col-12 p-2"
       >
-        <RecentChangeCard :item="dbIdToRecentChangeMap[newRecentChangDbId]"></RecentChangeCard>
+<!--        <RecentChangeCard :item="dbIdToRecentChangeMap[newRecentChangDbId]"></RecentChangeCard>-->
           <NewRevisionCard
             :wikiRevId="`${dbIdToRecentChangeMap[newRecentChangDbId].wiki}:${dbIdToRecentChangeMap[newRecentChangDbId].revision.new}`"
             ></NewRevisionCard>
@@ -99,6 +99,7 @@
     data() {
       return {
         title: 'WikiLoop Battlefield',
+        wikiRevIds:[],
         newRecentChangDbIds: [],
         dbIdToRecentChangeMap: {},
         bufferNewRecentChange: {},
@@ -197,21 +198,6 @@
       socket.on('client-activity', async (clientActivity) => {
         console.log(`client activity: ${clientActivity}`);
         this.liveUserCount = clientActivity.liveUserCount;
-      });
-      socket.on('interaction', async (interaction) => {
-        this.stats.totalJudgement++;
-        let myGaId = this.$cookies.get("_ga");
-        if (interaction.userGaId === myGaId) {
-          this.stats.totalMyJudgement++;
-        }
-        let dbId = interaction.recentChange._id;
-        let newRecentChange = this.dbIdToRecentChangeMap[dbId];
-        if (newRecentChange) {
-          this.$set(newRecentChange, 'judgement', interaction.judgement);
-          this.$set(newRecentChange, 'judgementCounts', interaction.judgementCounts);
-        } else {
-          console.warn(`Some interaction for dbId=${dbId} is on changes not visible on this session, ignored....`);
-        }
       });
     }
   }

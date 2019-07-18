@@ -35,7 +35,7 @@
       </div>
     </nav>
     <div class="container small-screen-padding" style="margin-top:60px">
-      <h4>You can also download a CSV file <a href="/api/marked.csv">here</a> </h4>
+      <h4>You can also download a CSV file <a href="/api/markedRevs.csv">here</a> </h4>
       <div v-for="markedRevision of markdRevisions"
            v-bind:key="markedRevision.wikiRevId"
            class="col-12 p-2"

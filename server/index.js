@@ -167,28 +167,28 @@ async function getNewJudgementCounts(db, wikiRevIds = []) {
           $match: matchFilter
         },
         {
-          "$group": {
-            "_id": {
-              "wikiRevId": "$wikiRevId"
+          "$group" : {
+            "_id" : {
+              "wikiRevId" : "$wikiRevId"
             },
-            "wikiRevId": {
-              "$first": "$wikiRevId"
+            "wikiRevId" : {
+              "$first" : "$wikiRevId"
             },
-            "judgements": {
-              "$push": {
-                "judgement": "$judgement",
-                "userGaId": "$userGaId",
-                "timestamp": "$timestamp"
+            "judgements" : {
+              "$push" : {
+                "judgement" : "$judgement",
+                "userGaId" : "$userGaId",
+                "timestamp" : "$timestamp"
               }
             },
-            "totalCounts": {
-              "$sum": 1
+            "totalCounts" : {
+              "$sum" : 1
             },
-            "shouldRevertCounts": {
-              "$sum": {
-                "$cond": [
+            "shouldRevertCounts" : {
+              "$sum" : {
+                "$cond" : [
                   {
-                    "$eq": [
+                    "$eq" : [
                       "$judgement",
                       "ShouldRevert"
                     ]
@@ -198,11 +198,11 @@ async function getNewJudgementCounts(db, wikiRevIds = []) {
                 ]
               }
             },
-            "notSureCounts": {
-              "$sum": {
-                "$cond": [
+            "notSureCounts" : {
+              "$sum" : {
+                "$cond" : [
                   {
-                    "$eq": [
+                    "$eq" : [
                       "$judgement",
                       "NotSure"
                     ]
@@ -212,11 +212,11 @@ async function getNewJudgementCounts(db, wikiRevIds = []) {
                 ]
               }
             },
-            "looksGoodCounts": {
-              "$sum": {
-                "$cond": [
+            "looksGoodCounts" : {
+              "$sum" : {
+                "$cond" : [
                   {
-                    "$eq": [
+                    "$eq" : [
                       "$judgement",
                       "LooksGood"
                     ]
@@ -226,44 +226,32 @@ async function getNewJudgementCounts(db, wikiRevIds = []) {
                 ]
               }
             },
-            "lastTimestamp": {
-              "$max": "$timestamp"
-            },
-            "recentChange": {
-              "$first": "$recentChange"
+            "lastTimestamp" : {
+              "$max" : "$timestamp"
             }
           }
         },
         {
-          "$project": {
-            "wikiRevId": "$_id.wikiRevId",
-            "judgements": "$judgements",
-            "lastTimestamp": 1.0,
-            "recentChange": 1.0,
-            "counts.Total": "$totalCounts",
-            "counts.ShouldRevert": "$shouldRevertCounts",
-            "counts.NotSure": "$notSureCounts",
-            "counts.LooksGood": "$looksGoodCounts"
+          "$project" : {
+            "wikiRevId" : "$_id.wikiRevId",
+            "judgements" : "$judgements",
+            "lastTimestamp" : 1.0,
+            "counts.Total" : "$totalCounts",
+            "counts.ShouldRevert" : "$shouldRevertCounts",
+            "counts.NotSure" : "$notSureCounts",
+            "counts.LooksGood" : "$looksGoodCounts"
           }
         },
         {
-          "$sort": {
-            "counts.lastTimeStamp": -1.0
+          "$sort" : {
+            "counts.lastTimeStamp" : -1.0
           }
         },
         {
-          "$match": {
-            "recentChange.ores": {
-              "$exists": true,
-              "$ne": null
-            },
-            "recentChange.wiki": {
-              "$exists": true,
-              "$ne": null
-            },
-            "lastTimestamp": {
-              "$exists": true,
-              "$ne": null
+          "$match" : {
+            "lastTimestamp" : {
+              "$exists" : true,
+              "$ne" : null
             }
           }
         }
@@ -494,14 +482,71 @@ function setupApiRequestListener(db, io, app) {
     if (interactions.length >= 1) {
       res.send(interactions[0] );
     } else {
-      res.send(null);
+      res.send({
+        "_id": {
+          "wikiRevId": wikiRevId
+        },
+        "wikiRevId": wikiRevId,
+        "judgements": [
+        ],
+        "counts": {
+          "Total": 0,
+          "ShouldRevert": 0,
+          "NotSure": 0,
+          "LooksGood": 0
+        }
+      });
     }
     req.visitor
         .event({ec: "api", ea: "/interaction/:wikiRevId"})
         .send();
   }));
 
+  apiRouter.post('/interaction/:wikiRevId', asyncHandler(async (req, res) => {
+    let userGaId = req.body.gaId;
+    let wikiRevId = req.params.wikiRevId;
+    /**
+    {
+      gaId: gaId,
+      judgement: this.myJudgement,
+      timestamp: Math.floor(new Date().getTime() / 1000),
+      wikiRevId: revision.wikiRevId,
+      newRecentChange: {
+        title: revision.title,
+        namespace: revision.namespace,
+        revision: {
+          new: revision.revid,
+          old: revision.parentid,
+        },
+        ores: this.ores,
+        user: revision.user,
+        wiki: revision.wiki,
+        timestamp: revision.timestamp
+      }
+    }
+    */
+
+    let doc = req.body;
+    await db.collection(`Interaction`).findOneAndReplace({
+      userGaId: userGaId,
+      wikiRevId: wikiRevId,
+    }, doc, {upsert: true});
+    logger.info(`Interaction cache clearing for ${wikiRevId}`);
+    apicache.clear(`/interaction/${wikiRevId}`);
+    logger.info(`Done cache cleared for ${wikiRevId}`);
+    let storedInteractions = await getNewJudgementCounts(db, [wikiRevId]);
+    let storedInteraction = storedInteractions[0];
+    io.sockets.emit('interaction', storedInteraction);
+
+    res.send(`ok`);
+    req.visitor
+        .event({ec: "api", ea: "/interaction"})
+        .event("judgement", req.body.judgement)
+        .send();
+  }));
+
   /**
+   * TODO fix it.
    * @deprecated
    */
   apiRouter.post('/interaction', asyncHandler(async (req, res) => {
@@ -606,35 +651,42 @@ function setupApiRequestListener(db, io, app) {
   }));
 
   apiRouter.get('/stats', asyncHandler(async (req, res) => {
-    let myGaId = req.body.gaId || req.cookies._ga;
+    // let myGaId = req.body.gaId || req.cookies._ga;
+    //
+    // logger.debug(`req.query`, req.query);
+    // let allInteractions = await db.collection(`Interaction`)
+    //     .find({}, {
+    //       userGaId: 1,
+    //       judgement: 1,
+    //       "recentChange.id": 1,
+    //       "recentChang.title": 1,
+    //       "recentChange.wiki": 1
+    //     }).toArray();
+    // let revSet = {};
+    // allInteractions.forEach(i => revSet[i.recentChange.id] = true);
+    // let ret = {
+    //   totalJudgement: allInteractions.length,
+    //   totalRevJudged: Object.keys(revSet).length,
+    //   totalShouldRevert: allInteractions.filter(i => i.judgement === "ShouldRevert").length,
+    // };
+    //
+    // if (myGaId) {
+    //   let myInteractions = allInteractions.filter(i => i.userGaId === myGaId);
+    //   let myRevSet = {};
+    //   myInteractions.forEach(i => myRevSet[i.recentChange.id] = true);
+    //   ret.totalMyJudgement = myInteractions.length;
+    //   ret.totalMyRevJudged = Object.keys(myRevSet).length;
+    //   ret.totalMyShouldRevert = myInteractions.filter(i => i.judgement === "ShouldRevert").length;
+    // }
 
-    logger.debug(`req.query`, req.query);
-    let allInteractions = await db.collection(`Interaction`)
-        .find({}, {
-          userGaId: 1,
-          judgement: 1,
-          "recentChange.id": 1,
-          "recentChang.title": 1,
-          "recentChange.wiki": 1
-        }).toArray();
-    let revSet = {};
-    allInteractions.forEach(i => revSet[i.recentChange.id] = true);
-    let ret = {
-      totalJudgement: allInteractions.length,
-      totalRevJudged: Object.keys(revSet).length,
-      totalShouldRevert: allInteractions.filter(i => i.judgement === "ShouldRevert").length,
-    };
-
-    if (myGaId) {
-      let myInteractions = allInteractions.filter(i => i.userGaId === myGaId);
-      let myRevSet = {};
-      myInteractions.forEach(i => myRevSet[i.recentChange.id] = true);
-      ret.totalMyJudgement = myInteractions.length;
-      ret.totalMyRevJudged = Object.keys(myRevSet).length;
-      ret.totalMyShouldRevert = myInteractions.filter(i => i.judgement === "ShouldRevert").length;
-    }
-
-    res.send(ret);
+    res.send(
+      //TODO fix this
+      {
+        totalJudgement: 0,
+        totalRevJudged: 0,
+        totalShouldRevert: 0,
+      }
+    );
     req.visitor
         .event({ec: "api", ea: "/stats"})
         .send();

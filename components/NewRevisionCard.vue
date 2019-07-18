@@ -64,18 +64,18 @@
             <button
                 v-on:click="interactionBtn(`LooksGood`)"
                 class="btn btn-sm"
-                v-bind:class="{ 'btn-success':getJudgementCount(`LooksGood`) > 0, 'btn-outline-success': getJudgementCount(`LooksGood`) === 0 }"
+                v-bind:class="{ 'btn-success':getMyJudgement() ===`LooksGood`, 'btn-outline-success': getMyJudgement() !==`LooksGood` }"
             >Looks good {{getJudgementCount(`LooksGood`)}}
             </button>
             <button
                 v-on:click="interactionBtn(`NotSure`)"
-                v-bind:class="{ 'btn-secondary':getJudgementCount(`NotSure`) > 0, 'btn-outline-secondary':getJudgementCount(`NotSure`) === 0 }"
+                v-bind:class="{ 'btn-secondary':getMyJudgement() ===`NotSure`, 'btn-outline-secondary':getMyJudgement() !==`NotSure` }"
                 class="btn btn-sm"
             >Not sure {{getJudgementCount(`NotSure`)}}
             </button>
             <button
                 v-on:click="interactionBtn(`ShouldRevert`)"
-                v-bind:class="{ 'btn-danger':getJudgementCount(`ShouldRevert`) > 0, 'btn-outline-danger':getJudgementCount(`ShouldRevert`) === 0 }"
+                v-bind:class="{ 'btn-danger':getMyJudgement() ===`ShouldRevert`, 'btn-outline-danger':getMyJudgement() !== `ShouldRevert` }"
                 class="btn btn-sm" target="_blank"
             >Should revert {{getJudgementCount(`ShouldRevert`)}}
             </button>
@@ -97,6 +97,7 @@
 <script>
   import utility from '~/shared/utility';
   import DiffBox from '~/components/DiffBox.vue';
+  import socket from '~/plugins/socket.io.js';
 
   export default {
     components: {
@@ -127,13 +128,24 @@
       isOverriden: function () {
         return this.revision.pageLatestRevId > this.revision.revid;
       },
+      getMyJudgement: function() {
+        if (this.interaction) {
+          let myGaId = this.$cookies.get("_ga");
+          let result = this.interaction.judgements.filter(j => j.userGaId === myGaId);
+          if (result.length === 1) {
+            return result[0].judgement;
+          } else return null;
+        } else {
+          return null;
+        }
+      },
       interactionBtn: async function (judgement) {
         let revision = this.revision;
         let gaId = this.$cookies.get("_ga");
-        console.log(`gaId`, gaId);
         this.myJudgement = judgement;
         let postBody = {
-          gaId: gaId,
+          gaId: gaId, // Deprecated
+          userGaId: gaId,
           judgement: this.myJudgement,
           timestamp: Math.floor(new Date().getTime() / 1000),
           wikiRevId: revision.wikiRevId,
@@ -150,13 +162,12 @@
             timestamp: revision.timestamp
           }
         };
-        console.log(`postBody`, postBody);
         if (judgement === `ShouldRevert` && !this.isOverriden()) {
           const version = await this.$axios.$get(`/api/version`);
           let url = `${this.getUrlBaseByWiki(this.revision.wiki)}/w/index.php?title=${this.revision.title}&action=edit&undoafter=${this.revision.parentid}&undo=${this.revision.revid}&summary=Identified as test/vandalism using [[:m:WikiLoop Battlefield]](version ${version}) at battlefield.wikiloop.org.`;
           window.open(url, '_blank');
         }
-        let ret = await $.post(`/api/interaction`, postBody);
+        let ret = await $.post(`/api/interaction/${this.wikiRevId}`, postBody);
 
         this.$bvToast.toast(
             `Your judgement for ${this.revision.title} at revision ${this.revision.revid} is logged.`, {
@@ -164,7 +175,6 @@
               autoHideDelay: 3000,
               appendToast: true
             });
-        console.log(`interaction ret:`, ret);
       },
       damagingPercent: function () {
         return `${this.ores ? Math.floor(parseFloat(this.ores.damagingScore) * 100) : "??"}%`;
@@ -185,9 +195,13 @@
       }
       if (!this.ores) {
         this.ores = await this.$axios.$get(`/api/ores/${this.wikiRevId}`);
-        console.log(`mount fetched ores = `, this.ores);
       }
-      // console.log(`mount fetched revision = `, this.revision);
+
+      socket.on('interaction', async (interaction) => {
+        if(interaction.wikiRevId === this.wikiRevId) {
+          this.interaction = interaction;
+        }
+      });
     },
     beforeCreate() {
       this.getUrlBaseByWiki = utility.getUrlBaseByWiki.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
