@@ -104,7 +104,22 @@
       DiffBox
     },
     props: {
-      wikiRevId: String,
+      wikiRevId: {
+        type: String,
+        required: true
+      },
+      oresProp: {
+        type: Object,
+        default: null
+      },
+      revisionProp: {
+        type: Object,
+        default: null
+      },
+      interactionProp: {
+        type: Object,
+        default: null
+      },
     },
     data() {
       return {
@@ -147,7 +162,7 @@
           judgement: myJudgement,
           timestamp: Math.floor(new Date().getTime() / 1000), // timestamp for interaction
           wikiRevId: revision.wikiRevId,
-          newRecentChange: {
+          recentChange: {
             title: revision.title,
             namespace: revision.namespace,
             revision: {
@@ -181,18 +196,14 @@
         return `${this.ores ? Math.floor(parseFloat(this.ores.badfaithScore) * 100) : "??"}%`;
       },
     },
-    async mounted() {
-      if (!this.interaction) {
-        this.interaction = await this.$axios.$get(`/api/interaction/${this.wikiRevId}`);
-      }
-      if (!this.revision) {
-        this.revision = await this.$axios.$get(`/api/revision/${this.wikiRevId}`);
-      }
+    async beforeMount() {
+      console.log(`Mounted NewRevisionCard wikiRevId=${this.wikiRevId}, Set props: interactionProp:${this.interactionProp!=null}, revisionProp:${this.revisionProp!=null}, oresProp:${this.oresProp!=null}`);
+      this.interaction = this.interactionProp || await this.$axios.$get(`/api/interaction/${this.wikiRevId}`);
+      this.revision = this.revisionProp || await this.$axios.$get(`/api/revision/${this.wikiRevId}`);
+      this.ores = this.oresProp || await this.$axios.$get(`/api/ores/${this.wikiRevId}`);
+
       if (!this.diff) {
         this.diff = await this.$axios.$get(`/api/diff/${this.wikiRevId}`);
-      }
-      if (!this.ores) {
-        this.ores = await this.$axios.$get(`/api/ores/${this.wikiRevId}`);
       }
 
       socket.on('interaction', async (interaction) => {
@@ -208,6 +219,27 @@
   }
 
 </script>
-<style>
 
+<style>
+  .diff-context {
+    word-break: break-all;
+    width: 50%;
+  }
+
+  .diff-deletedline, .diff-addedline {
+    word-break: break-all;
+    width: 50%
+  }
+
+  .blue-link {
+    color: blue
+  }
+  .bg-darker-light {
+    background-color: #F5F5F5;
+  }
+
+  #metainfo {
+    font-size:12px;
+  }
 </style>
+

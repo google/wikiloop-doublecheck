@@ -225,6 +225,9 @@ async function getNewJudgementCounts(db, matcher = {}, offset = 0, limit = 10) {
             },
             "lastTimestamp" : {
               "$max" : "$timestamp"
+            },
+            "recentChange": {
+              "$first": "$recentChange"
             }
           }
         },
@@ -232,7 +235,8 @@ async function getNewJudgementCounts(db, matcher = {}, offset = 0, limit = 10) {
           "$project" : {
             "wikiRevId" : "$_id.wikiRevId",
             "judgements" : "$judgements",
-            "lastTimestamp" : 1.0,
+            "recentChange" : 1,
+            "lastTimestamp" : 1,
             "counts.Total" : "$totalCounts",
             "counts.ShouldRevert" : "$shouldRevertCounts",
             "counts.NotSure" : "$notSureCounts",
@@ -240,18 +244,26 @@ async function getNewJudgementCounts(db, matcher = {}, offset = 0, limit = 10) {
           }
         },
         {
-          "$sort" : {
-            "counts.lastTimeStamp" : -1.0
-          }
-        },
-        {
           "$match" : {
+            "recentChange.ores" : {
+              "$exists" : true,
+              "$ne" : null
+            },
+            "recentChange.wiki" : {
+              "$exists" : true,
+              "$ne" : null
+            },
             "lastTimestamp" : {
               "$exists" : true,
               "$ne" : null
             }
           }
-        }
+        },
+        {
+          "$sort" : {
+            "lastTimeStamp" : -1
+          }
+        },
       ],
       {
         "allowDiskUse": true
@@ -524,8 +536,8 @@ function setupApiRequestListener(db, io, app) {
   }));
 
   apiRouter.get('/interactions', asyncHandler(async (req, res) => {
-    let limit = req.query.limit || 10;
-    let offset = req.query.offset || 0;
+    let limit = parseInt(req.query.limit) || 10;
+    let offset = parseInt(req.query.offset) || 0;
     let interactions = await getNewJudgementCounts(db, {}, offset, limit);
     res.send(interactions);
     req.visitor
@@ -542,7 +554,7 @@ function setupApiRequestListener(db, io, app) {
       judgement: this.myJudgement,
       timestamp: Math.floor(new Date().getTime() / 1000),
       wikiRevId: revision.wikiRevId,
-      newRecentChange: {
+      recentChange: {
         title: revision.title,
         namespace: revision.namespace,
         revision: {
@@ -620,7 +632,8 @@ function setupApiRequestListener(db, io, app) {
   }));
 
   apiRouter.get("/markedRevs.csv", asyncHandler(async (req, res) => {
-    let newJudgementCounts = await getNewJudgementCounts(db);
+    let newJudgementCounts = await getNewJudgementCounts(
+        db, {}, 0, 10000000/* as many as possible to download all */);
     res.setHeader('Content-Type', 'text/csv');
     res.setHeader('Content-Disposition', 'attachment; filename=\"' + 'download-' + Date.now() + '.csv\"');
     const stringify = require('csv-stringify');
