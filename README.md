@@ -1,6 +1,6 @@
 # WikiLoop Battlefield: Fight vandalism on Wikipedia together
 
-[![WikiLoop Logo](./assets/wikiloop-logo.svg)](https://meta.wikimedia.org/wiki/WikiProject_WikiLoop)
+[![WikiLoop Logo](./assets/wikiloop-battlefield-logo.svg)](https://meta.wikimedia.org/wiki/WikiProject_WikiLoop)
 
 [![CircleCI](https://circleci.com/gh/google/wikiloop-battlefield/tree/master.svg?style=svg)](https://circleci.com/gh/google/wikiloop-battlefield/tree/master) 
 [![GitHub watchers](https://img.shields.io/github/watchers/google/wikiloop-battlefield.svg?label=Watch&style=social)](https://img.shields.io/github/watchers/google/wikiloop-battlefield.svg?label=Watch&style=social)
