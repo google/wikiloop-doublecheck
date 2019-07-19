@@ -29,6 +29,8 @@ jobs:
           name: Run jest with output report
           command: npm run test-report
           environment:
-            JEST_JUNIT_OUTPUT: "test/jest-unit-test-results.xml"
+            JEST_JUNIT_OUTPUT: "reports/junit/js-test-results.xml"
       - store_test_results:
-          path: test/jest-unit-test-results.xml
+          path: reports/junit
+      - store_artifacts:
+          path: reports/junit
