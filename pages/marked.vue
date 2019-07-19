@@ -53,16 +53,31 @@
 </template>
 <script>
   import NewRevisionCard from '~/components/NewRevisionCard.vue';
-
   export default {
     components: {
       NewRevisionCard
     },
     async asyncData({$axios}) {
       const interactions = await $axios.$get(`/api/interactions`);
+      const revisions = await $axios.$get(
+          `/api/revisions`, {
+            params: {
+              wiki: 'enwiki', // TODO update this when we support multiple wikis
+              revIds: interactions.map(interaction => interaction.wikiRevId.split(':')[1])
+            }
+          }
+      );
+      const ores = await $axios.$get(
+          `/api/ores`, {
+            params: {
+              wiki: 'enwiki', // TODO update this when we support multiple wikis
+              revIds: interactions.map(interaction => interaction.wikiRevId.split(':')[1])
+            }
+          }
+      );
       const version = await $axios.$get(`/api/version`);
       const stats = await $axios.$get(`/api/stats`);
-      return { interactions, version, stats };
+      return { interactions, version, stats, revisions, ores };
     },
   }
 </script>
