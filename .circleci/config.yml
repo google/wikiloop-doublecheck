@@ -26,6 +26,9 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run:
-          name: Tests
-          command: npm test
-
+          name: Run jest with output report
+          command: npm run jest-report
+          environment:
+            JEST_JUNIT_OUTPUT: "test/jest-unit-test-results.xml"
+      - store_test_results:
+          path: /test/jest-unit-test-results.xml
