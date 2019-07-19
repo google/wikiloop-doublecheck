@@ -697,42 +697,33 @@ function setupApiRequestListener(db, io, app) {
   }));
 
   apiRouter.get('/stats', asyncHandler(async (req, res) => {
-    // let myGaId = req.body.gaId || req.cookies._ga;
-    //
-    // logger.debug(`req.query`, req.query);
-    // let allInteractions = await db.collection(`Interaction`)
-    //     .find({}, {
-    //       userGaId: 1,
-    //       judgement: 1,
-    //       "recentChange.id": 1,
-    //       "recentChang.title": 1,
-    //       "recentChange.wiki": 1
-    //     }).toArray();
-    // let revSet = {};
-    // allInteractions.forEach(i => revSet[i.recentChange.id] = true);
-    // let ret = {
-    //   totalJudgement: allInteractions.length,
-    //   totalRevJudged: Object.keys(revSet).length,
-    //   totalShouldRevert: allInteractions.filter(i => i.judgement === "ShouldRevert").length,
-    // };
-    //
-    // if (myGaId) {
-    //   let myInteractions = allInteractions.filter(i => i.userGaId === myGaId);
-    //   let myRevSet = {};
-    //   myInteractions.forEach(i => myRevSet[i.recentChange.id] = true);
-    //   ret.totalMyJudgement = myInteractions.length;
-    //   ret.totalMyRevJudged = Object.keys(myRevSet).length;
-    //   ret.totalMyShouldRevert = myInteractions.filter(i => i.judgement === "ShouldRevert").length;
-    // }
+    let myGaId = req.body.gaId || req.cookies._ga;
 
-    res.send(
-      //TODO fix this
-      {
-        totalJudgement: 0,
-        totalRevJudged: 0,
-        totalShouldRevert: 0,
-      }
-    );
+    logger.debug(`req.query`, req.query);
+    let allInteractions = await db.collection(`Interaction`)
+        .find({}, {
+          userGaId: 1,
+          judgement: 1,
+          wikiRevId: 1,
+        }).toArray();
+    let revSet = {};
+    allInteractions.forEach(item => revSet[item.wikiRevId] = true);
+    let ret = {
+      totalJudgement: allInteractions.length,
+      totalRevJudged: Object.keys(revSet).length,
+      totalShouldRevert: allInteractions.filter(i => i.judgement === "ShouldRevert").length,
+    };
+
+    if (myGaId) {
+      let myInteractions = allInteractions.filter(i => i.userGaId === myGaId);
+      let myRevSet = {};
+      myInteractions.forEach(item => myRevSet[item.wikiRevId] = true);
+      ret.totalMyJudgement = myInteractions.length;
+      ret.totalMyRevJudged = Object.keys(myRevSet).length;
+      ret.totalMyShouldRevert = myInteractions.filter(item => item.judgement === "ShouldRevert").length;
+    }
+
+    res.send(ret);
     req.visitor
         .event({ec: "api", ea: "/stats"})
         .send();

@@ -188,6 +188,7 @@
               autoHideDelay: 3000,
               appendToast: true
             });
+        document.dispatchEvent(new Event("stats-update"));
       },
       damagingPercent: function () {
         return `${this.ores ? Math.floor(parseFloat(this.ores.damagingScore) * 100) : "??"}%`;

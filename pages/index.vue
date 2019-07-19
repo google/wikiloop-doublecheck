@@ -199,6 +199,10 @@
         console.log(`client activity: ${clientActivity}`);
         this.liveUserCount = clientActivity.liveUserCount;
       });
+      document.addEventListener('stats-update', async () => {
+        console.log(`stats-update:`);
+        this.stats = await this.$axios.$get(`/api/stats`);
+      });
     }
   }
 </script>
