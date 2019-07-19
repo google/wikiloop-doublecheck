@@ -29,8 +29,6 @@ This is a project of web app built to allow people to fight vandalism collaborat
 
 We welcome contributions! See [our contribution policy](CONTRIBUTING.md). Please checkout [our stack diagram](https://stackshare.io/project-wikiloop/battlefield) to get familiar with required with technologies we depend on.
 
-<a frameborder="0" data-theme="light" data-layers="2,3,4,1" data-stack-embed="true" href="https://embed.stackshare.io/stacks/embed/7e5b6b934c500dfce8fe7c60f80203"/></a><script async src="https://cdn1.stackshare.io/javascripts/client-code.js" charset="utf-8"></script>
-
 ### Install
 
 Prerequisite: [git](https://git-scm.com), [nodejs](https://nodejs.org), [npm](https://npmjs.com)  
