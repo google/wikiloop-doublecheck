@@ -27,29 +27,21 @@ This is a project of web app built to allow people to fight vandalism collaborat
 ![GitHub package.json version (branch)](https://img.shields.io/github/package-json/v/google/wikiloop-battlefield/master.svg) 
 [![Tech Stack](https://img.shields.io/badge/tech-stack-blue.svg)](https://stackshare.io/project-wikiloop/battlefield)
 
-We welcome contributions! See [our contribution policy](CONTRIBUTING.md).
+We welcome contributions! See [our contribution policy](CONTRIBUTING.md). Please checkout [our stack diagram](https://stackshare.io/project-wikiloop/battlefield) to get familiar with required with technologies we depend on.
 
-### Install & Setup development environment
+### Install
 
-* Step 1, you should install `node`([NodeJS](https://nodejs.org)), `npm`, and we recommend `nvm` to manage versions of your NodeJS runtime and environment.
-
-* Step 2, fork and clone this repository. If you are new to [Git](https://git-scm.com/) and [Github](https://github.com), follow [this Git helloworld instruction](https://guides.github.com/activities/hello-world/) by Github
-
-Example of a command to clone a copy.
+Prerequisite: [git](https://git-scm.com), [nodejs](https://nodejs.org), [npm](https://npmjs.com)  
 
 ```sh
-git clone https://github.com/xinbenlv/wikiloop-battlefield-vue
-```
-
-* Step 3, standard npm install
-```sh
-cd <dir of your git cloned repository>
+git clone git@github.com:google/wikiloop-battlefield.git
+cd wikiloop-battlefield
 npm install 
 ```
 
-* Step 4, setup `.env` file
+### Setup Environment for local development
 
-You should have create a `.env` file containing environment variables needed by this project used by [`dotenv`](https://www.npmjs.com/package/dotenv). A template has been provided in the `template.env`. Once set, you should do `cp template.env .env` to create such file in the exact name. 
+You should create a `.env` file containing environment variables needed by this project used by [`dotenv`](https://www.npmjs.com/package/dotenv). A template has been provided in the `template.env`. Once set, you should do `cp template.env .env` to create such file in the exact name. 
 
 ### Tests
 
