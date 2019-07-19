@@ -31,4 +31,4 @@ jobs:
           environment:
             JEST_JUNIT_OUTPUT: "test/jest-unit-test-results.xml"
       - store_test_results:
-          path: /test/jest-unit-test-results.xml
+          path: test/jest-unit-test-results.xml
