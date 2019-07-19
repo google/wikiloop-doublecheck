@@ -33,10 +33,10 @@ const config = require('../nuxt.config.js');
 config.dev = !(process.env.NODE_ENV === 'production');
 
 function computeOresField(oresJson, wiki, revId) {
-  let damagingScore = oresJson[wiki].scores[revId].damaging.score.probability.true;
-  let badfaithScore = oresJson[wiki].scores[revId].goodfaith.score.probability.false;
-  let damaging = oresJson[wiki].scores[revId].damaging.score.prediction;
-  let badfaith = !oresJson[wiki].scores[revId].goodfaith.score.prediction;
+  let damagingScore = oresJson.damagingScore || oresJson[wiki].scores[revId].damaging.score.probability.true;
+  let badfaithScore = oresJson.badfaithScore || oresJson[wiki].scores[revId].goodfaith.score.probability.false;
+  let damaging = oresJson.damaging || oresJson[wiki].scores[revId].damaging.score.prediction;
+  let badfaith = oresJson.badfaith || !oresJson[wiki].scores[revId].goodfaith.score.prediction;
   return {
     wikiRevId: `${wiki}:${revId}`,
     damagingScore: damagingScore,
@@ -511,7 +511,12 @@ function setupApiRequestListener(db, io, app) {
 
   apiRouter.get('/interaction/:wikiRevId', asyncHandler(async (req, res) => {
     let wikiRevId = req.params.wikiRevId;
-    let interactions = await getNewJudgementCounts(db,  {wikiRevId: {$in: [wikiRevId]}});
+    let interactions = await getNewJudgementCounts(db,
+    // {
+    //   wikiRevId: {$in: [wikiRevId]}
+    // },
+        { "wikiRevId": {"$in":[wikiRevId]} }
+        );
     if (interactions.length >= 1) {
       res.send(interactions[0] );
     } else {
@@ -574,10 +579,8 @@ function setupApiRequestListener(db, io, app) {
       userGaId: userGaId,
       wikiRevId: wikiRevId,
     }, doc, {upsert: true});
-    logger.info(`Interaction cache clearing for ${wikiRevId}`);
     apicache.clear(req.originalUrl);
-    logger.info(`Done cache cleared for ${wikiRevId}`);
-    let storedInteractions = await getNewJudgementCounts(db, [wikiRevId]);
+    let storedInteractions = await getNewJudgementCounts(db, {wikiRevId: {$in : [wikiRevId]}});
     let storedInteraction = storedInteractions[0];
     io.sockets.emit('interaction', storedInteraction);
 
