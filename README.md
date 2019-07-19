@@ -1,10 +1,25 @@
-# WikiLoop Battlefiled: Fight vandalisim on WP together
+# WikiLoop Battlefiled: Fight vandalisim on Wikipedia together
+[![CircleCI](https://circleci.com/gh/google/wikiloop-battlefield/tree/master.svg?style=svg)](https://circleci.com/gh/google/wikiloop-battlefield/tree/master) 
 
-[![CircleCI](https://circleci.com/gh/google/wikiloop-battlefield/tree/master.svg?style=svg)](https://circleci.com/gh/google/wikiloop-battlefield/tree/master)
  
 This is a project of Webapp built to allow people to fight vandalism together. See [[[m:WikiProject_WikiLoop]]](https://meta.wikimedia.org/wiki/WikiProject_WikiLoop) for more introduction. The readme in this repository focus on development of the software itself.
 
-## Developers Instruction
+## Status
+
+![Uptime Robot status](https://img.shields.io/uptimerobot/status/m783127048-3a1e3c13cdc8e36abba87357.svg?label=prod)![Prod Site Uptime Robot ratio (30 days)](https://img.shields.io/uptimerobot/ratio/m783127048-3a1e3c13cdc8e36abba87357.svg?label=prod%20uptime) 
+![Dev Uptime Robot status](https://img.shields.io/uptimerobot/status/m783127051-01afa8e12cb12e059a95f54c.svg?label=dev)
+![Dev Site Uptime Robot ratio (30 days)](https://img.shields.io/uptimerobot/ratio/m783127051-01afa8e12cb12e059a95f54c.svg?label=dev%20uptime)
+
+## Contributor Instruction
+
+We welcome contributions! See [our contribution policy](CONTRIBUTING.md).
+
+![GitHub](https://img.shields.io/github/license/google/wikiloop-battlefield.svg)
+![GitHub contributors](https://img.shields.io/github/contributors/google/wikiloop-battlefield.svg)
+![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/google/wikiloop-battlefield.svg)
+![GitHub package.json version (branch)](https://img.shields.io/github/package-json/v/google/wikiloop-battlefield/master.svg) 
+[![Tech Stack](https://img.shields.io/badge/tech-stack-blue.svg)](https://stackshare.io/project-wikiloop/battlefield)
+
 
 ### Install & Setup development environment
 
@@ -40,5 +55,7 @@ npm test
 circleci local execute build
 ```
 
-### Reference
-The project is based on [VueJS](https://vuejs.org/) and its framework [NuxtJS](https://nuxtjs.org/). To see a full stack diagram for this project. Go to our [StackShare page](day https://stackshare.io/project-wikiloop/battlefield) to learn other technology our stack is based at.
+![GitHub watchers](https://img.shields.io/github/watchers/google/wikiloop-battlefield.svg?label=Watch&style=social)
+![GitHub watchers](https://img.shields.io/github/watchers/google/wikiloop-battlefield.svg?label=Fork&style=social)
+![GitHub watchers](https://img.shields.io/github/watchers/google/wikiloop-battlefield.svg?label=Star&style=social)
+![GitHub followers](https://img.shields.io/github/followers/xinbenlv.svg?label=Follow&style=social)
