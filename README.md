@@ -19,7 +19,7 @@ This is a project of web app built to allow people to fight vandalism collaborat
 [![Dev Uptime Robot status](https://img.shields.io/uptimerobot/status/m783127051-01afa8e12cb12e059a95f54c.svg?label=dev)](http://dev.battlefield.wikiloop.org/?utm_source=github&utm_medium=markdown&utm_campaign=repo_readme_up_badge)
 [![Dev Site Uptime Robot ratio (30 days)](https://img.shields.io/uptimerobot/ratio/m783127051-01afa8e12cb12e059a95f54c.svg?label=dev%20uptime)](http://dev.battlefield.wikiloop.org/?utm_source=github&utm_medium=markdown&utm_campaign=repo_readme_up_ratio_badge)
 
-## Contributor Instruction
+## Quick Start
 
 ![GitHub](https://img.shields.io/github/license/google/wikiloop-battlefield.svg)
 ![GitHub contributors](https://img.shields.io/github/contributors/google/wikiloop-battlefield.svg)
@@ -33,24 +33,47 @@ We welcome contributions! See [our contribution policy](CONTRIBUTING.md). Please
 
 Prerequisite: [git](https://git-scm.com), [nodejs](https://nodejs.org), [npm](https://npmjs.com)  
 
-```sh
+```bash
 git clone git@github.com:google/wikiloop-battlefield.git
 cd wikiloop-battlefield
 npm install 
 ```
 
-### Setup Environment for local development
+### Setup
 
 You should create a `.env` file containing environment variables needed by this project used by [`dotenv`](https://www.npmjs.com/package/dotenv). A template has been provided in the `template.env`. Once set, you should do `cp template.env .env` to create such file in the exact name. 
 
-### Tests
+### Run
 
-Prerequisite: [Docker](https://www.docker.com/), [CircleCI](http://circleci.com)
+Prerequisite: [NuxtJS](https://nuxtjs.org) with [VueJS](https://vuejs.org) and [ExpressJS](https://expressjs.com).
 
-```sh
+To run a local dev instance, which gives you hot reload and a devtool ([Vue DevTool](https://github.com/vuejs/vue-devtools)) friendly instance:
+
+```bash
+npm run dev
+``` 
+
+To build and run a local instance with like a prod:
+
+```bash
+npm run build
+npm start
+```
+
+### Test
+
+Prerequisite: [Docker](https://www.docker.com/), [Jest](http://jestjs.io)
+
+```bash
 npm test
 ```
 
-```sh
+### Continuous Integration
+
+Prerequisite: [CircleCI](https://circleci.com)
+
+We run our continuous integration with CircleCI. To run continuous integration locally:
+
+```bash
 circleci local execute build
 ```
