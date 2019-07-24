@@ -90,7 +90,7 @@
               <button v-if="enableRevertRedirect()"
                       v-on:click="redirectToRevert()"
                       class="btn btn-outline-primary">
-                Go revert it
+                Go
               </button>
             </transition>
 
@@ -208,6 +208,14 @@
               appendToast: true
             });
         document.dispatchEvent(new Event("stats-update"));
+        this.$ga.event({
+          eventCategory: 'interaction',
+          eventAction: 'judgement',
+          eventLabel: myJudgement,
+          eventValue: {
+            wikiRevId: this.wikiRevId
+          }
+        });
       },
       damagingPercent: function () {
         return `${this.ores ? Math.floor(parseFloat(this.ores.damagingScore) * 100) : "??"}%`;
@@ -235,6 +243,15 @@
       socket.on('interaction', async (interaction) => {
         if(interaction.wikiRevId === this.wikiRevId) {
           this.interaction = interaction;
+        }
+      });
+    },
+    async mounted() {
+      this.$ga.event({
+        eventCategory: 'display',
+        eventAction: 'NewRevisionCard',
+        eventValue: {
+          wikiRevId: this.wikiRevId
         }
       });
     },
