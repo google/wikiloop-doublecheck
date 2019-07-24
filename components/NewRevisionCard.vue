@@ -167,7 +167,15 @@
         }
       },
       enableRevertRedirect: function() {
-        return this.myJudgement === `ShouldRevert` && !this.isOverriden()
+        this.$ga.event({
+          eventCategory: 'wp-edit',
+          eventAction: 'go-revert',
+          eventValue: {
+            wikiRevId: this.wikiRevId
+          }
+        });
+        return this.myJudgement === `ShouldRevert` && !this.isOverriden();
+
       },
       redirectToRevert: async function() {
         if (this.myJudgement === `ShouldRevert` && !this.isOverriden()) {
