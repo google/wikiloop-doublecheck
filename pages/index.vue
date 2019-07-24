@@ -121,7 +121,9 @@
         basicFilterCounter: 0,
         liveUserCount: 1,
         showCounter: 0,
-        pause: false
+        stale: false,
+        pause: false,
+        timer: null,
         // loaded: false
       }
     },
@@ -132,8 +134,15 @@
       return {initRecentChanges, version, stats};
     },
     methods: {
+      refreshTimer: function() {
+        clearTimeout(this.timer);
+        this.timer = setTimeout(()=>{
+          this.stale = true;
+        }, 15000);  // we at least allow 1 new card each 15 seconds.
+      },
       meetThreshold: function (newRecentChange) {
-        if (this.threshold !== null) {
+        if (this.stale) return true;
+        else if (this.threshold !== null) {
           return (newRecentChange.ores.damagingScore >= this.threshold || !this.requireDamaging) &&
               (newRecentChange.ores.badfaithScore >= this.threshold || !this.requireBadfaith);
         } else {
@@ -175,12 +184,15 @@
             (newRecentChange.wiki === 'enwiki' || !this.requireEnWiki) &&
             this.meetThreshold(newRecentChange)
         ) {
+          this.stale = false; // resets the stale
           this.showCounter++;
           await this.fetchDiff(newRecentChange);
           this.dbIdToRecentChangeMap[newRecentChange._id] = newRecentChange;
           this.newRecentChangDbIds.unshift(newRecentChange._id); // TODO the list becomes larger and larger as time goes....
           if (!this.titleToDbIds[newRecentChange.title]) this.titleToDbIds[newRecentChange.title] = [];
           this.titleToDbIds[newRecentChange.title].push(newRecentChange._id);
+          this.refreshTimer();
+
         } else {
           // Do nothing for not showing recent changes.
         }
