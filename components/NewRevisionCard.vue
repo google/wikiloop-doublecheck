@@ -211,6 +211,12 @@
         this.diff = await this.$axios.$get(`/api/diff/${this.wikiRevId}`);
       }
 
+      socket.on('recent-change', async (newRecentChange) => {
+        // TODO(xinbenlv@, #40): if performance becomes a concern, revisit this approach.
+        if(newRecentChange.wiki === this.revision.wiki && newRecentChange.title === this.revision.title) {
+          this.revision.pageLatestRevId = Math.max(newRecentChange.revision.new, this.revision.revid);
+        }
+      });
       socket.on('interaction', async (interaction) => {
         if(interaction.wikiRevId === this.wikiRevId) {
           this.interaction = interaction;
