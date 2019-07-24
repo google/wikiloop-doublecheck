@@ -20,21 +20,25 @@
         </h5>
         <div class="card-subtitle mb-2 text-muted">
           <div class="row p-2">
-            <div class="col-lg-3">
-              <i class="fas fa-clock"></i>
+            <div class="col-lg-2">
+              <i class="fas fa-pen"></i> edited
               <timeago :datetime="getTimeString()" :auto-update="60"></timeago>
             </div>
-            <div class="col-lg-3">
+            <div v-if="interaction && interaction.lastTimestamp" class="col-lg-2">
+              <i class="fas fa-flag"></i> marked
+              <timeago :datetime="new Date(interaction.lastTimestamp * 1000).toString()" :auto-update="60"></timeago>
+            </div>
+            <div class="col-lg-2">
               <small><span>by <a v-bind:href="`${getUrlBaseByWiki(revision.wiki)}/wiki/User:${revision.user}`">{{ revision.user }}</a></span>
               </small>
             </div>
-            <div v-if="ores" class="col-lg-3">
+            <div v-if="ores" class="col-lg-2">
               <span data-toggle="tooltip" data-placement="top" title="Damaging Score by WMF ORES">
                 <i v-bind:class="{ 'text-danger': ores ? ores.badfaith : false }" class="fas fa-theater-masks"></i>: <a
                   :href="`https://ores.wmflabs.org/v3/scores/enwiki/?revids=${revision.revid}`">{{ damagingPercent() }}</a>
               </span>
             </div>
-            <div v-if="ores" class="col-lg-3">
+            <div v-if="ores" class="col-lg-2">
               <span data-toggle="tooltip" data-placement="top"
                     title="Bad-faith Score by WMF ORES (here Bad-faith = 100% - Goodfaith)">
                 <i v-bind:class="{ 'text-warning': ores ? ores.damaging: false }" class="fas fa-cloud-rain"></i>:  <a
