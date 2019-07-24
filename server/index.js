@@ -16,7 +16,7 @@ const express = require('express');
 const consola = require('consola');
 const {Nuxt, Builder} = require('nuxt');
 const MongoClient = require('mongodb').MongoClient;
-const ua = require('universal-analytics');
+const universalAnalytics = require('universal-analytics');
 const rp = require(`request-promise`);
 
 var log4js = require('log4js');
@@ -397,13 +397,8 @@ function setupApiRequestListener(db, io, app) {
   let apiRouter = express();
 
 
-  const cookieParser = require('cookie-parser');
-  const bodyParser = require('body-parser');
   const apicache = require('apicache');
   let cache = apicache.middleware;
-
-  apiRouter.use(cookieParser());
-  apiRouter.use(bodyParser());
   const onlyGet = (req, res) => res.method === `GET`;
 
   apiRouter.use(cache('1 week', onlyGet));
@@ -1106,9 +1101,18 @@ function setupIoSocketListener(io) {
 async function start() {
 
   const app = express();
+  const cookieParser = require('cookie-parser');
+  const bodyParser = require('body-parser');
+  app.use(cookieParser());
+  app.use(bodyParser());
+  // Setup Google Analytics
+  app.use(universalAnalytics.middleware(process.env.GA_ID, {cookieName: '_ga'}));
+
   if (!process.env.PROD) {
     const logRequestStart = (req, res, next) => {
       logger.debug(`${req.method} ${req.originalUrl}`);
+      logger.debug(`Cookie: `, req.cookies);
+      // logger.debug(`Everything else: `, req);
       next();
     };
     app.use(logRequestStart);
@@ -1134,8 +1138,6 @@ async function start() {
   let db = (await MongoClient.connect(process.env.MONGODB_URI, {useNewUrlParser: true}))
       .db(process.env.MONGODB_DB);
 
-  // Setup Google Analytics
-  app.use(ua.middleware(process.env.GA_ID, {cookieName: '_ga'}));
   app.use(function (req, res, next) {
     apiLogger.debug('req.originalUrl:', req.originalUrl);
     apiLogger.debug('req.params:', req.params);
