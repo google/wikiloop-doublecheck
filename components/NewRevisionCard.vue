@@ -86,6 +86,14 @@
                 class="btn btn-sm" target="_blank"
             >Should revert {{getJudgementCount(`ShouldRevert`)}}
             </button>
+            <transition name="fade">
+              <button v-if="enableRevertRedirect()"
+                      v-on:click="redirectToRevert()"
+                      class="btn btn-outline-primary">
+                Go revert it
+              </button>
+            </transition>
+
           </div>
         </div>
       </div>
@@ -131,6 +139,7 @@
         diff: null,
         interaction: null,
         revision: null,
+        myJudgement: null,
       }
     },
     methods: {
@@ -157,7 +166,18 @@
           return null;
         }
       },
+      enableRevertRedirect: function() {
+        return this.myJudgement === `ShouldRevert` && !this.isOverriden()
+      },
+      redirectToRevert: async function() {
+        if (this.myJudgement === `ShouldRevert` && !this.isOverriden()) {
+          const version = await this.$axios.$get(`/api/version`);
+          let url = `${this.getUrlBaseByWiki(this.revision.wiki)}/w/index.php?title=${this.revision.title}&action=edit&undoafter=${this.revision.parentid}&undo=${this.revision.revid}&summary=Identified as test/vandalism using [[:m:WikiLoop Battlefield]](version ${version}) at battlefield.wikiloop.org.`;
+          window.open(url, '_blank');
+        }
+      },
       interactionBtn: async function (myJudgement) {
+        this.myJudgement = myJudgement;
         let revision = this.revision;
         let gaId = this.$cookies.get("_ga");
         let postBody = {
@@ -180,11 +200,6 @@
           }
         };
 
-        if (myJudgement === `ShouldRevert` && !this.isOverriden()) {
-          const version = await this.$axios.$get(`/api/version`);
-          let url = `${this.getUrlBaseByWiki(this.revision.wiki)}/w/index.php?title=${this.revision.title}&action=edit&undoafter=${this.revision.parentid}&undo=${this.revision.revid}&summary=Identified as test/vandalism using [[:m:WikiLoop Battlefield]](version ${version}) at battlefield.wikiloop.org.`;
-          window.open(url, '_blank');
-        }
         await this.$axios.$post(`/api/interaction/${this.wikiRevId}`, postBody);
         this.$bvToast.toast(
             `Your judgement for ${this.revision.title} at revision ${this.revision.revid} is logged.`, {
