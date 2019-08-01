@@ -77,3 +77,7 @@ We run our continuous integration with CircleCI. To run continuous integration l
 ```bash
 circleci local execute build
 ```
+
+## Credit
+- Primary Project Lead: Zainan Zhou <zzn@google.com>
+- We appreciate the courtesy of [Dr. Andrew G. West](http://www.andrew-g-west.com/) for providing us the read access to [STiki](https://en.wikipedia.org/wiki/Wikipedia:STiki) vandalism detection scores .

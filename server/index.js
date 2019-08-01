@@ -391,6 +391,68 @@ async function queryMarkedRecentChange(db, myGaId) {
   }
   return recentChanges.reverse();
 }
+// -------------- FROM STIKI API -------------
+function setupSTikiApiLisenter(app) {
+  let stikiRouter = express();
+  const mysql = require('mysql2');
+
+  const asyncHandler = fn => (req, res, next) =>
+      Promise
+          .resolve(fn(req, res, next))
+          .catch(next);
+
+  // create the pool
+  const pool = mysql.createPool(process.env.STIKI_MYSQL);
+  // now get a Promise wrapped instance of that pool
+  const promisePool = pool.promise();
+
+  stikiRouter.get('/stiki', asyncHandler(async (req, res) => {
+    logger.debug(`req.query`, req.query);
+    let revIds = JSON.parse(req.query.revIds);
+    const [rows, _fields] = await promisePool.query(`SELECT R_ID, SCORE FROM scores_stiki WHERE R_ID in (${revIds.join(',')})`);
+    res.send(rows);
+    req.visitor
+        .event({ec: "api", ea: "/scores"})
+        .send();
+  }));
+
+  stikiRouter.get('/stiki/:wikiRevId', asyncHandler(async (req, res) => {
+    let revIds = req.query.revIds;
+    logger.debug(`req.query`, req.query);
+    let wikiRevId = req.params.wikiRevId;
+    let _wiki = wikiRevId.split(':')[0];
+    let revId = wikiRevId.split(':')[1];
+    const [rows, _fields] = await promisePool.query(`SELECT R_ID, SCORE FROM scores_stiki WHERE R_ID = ${revId}`);
+    res.send(rows);
+    req.visitor
+        .event({ec: "api", ea: "/scores/:wikiRevId"})
+        .send();
+  }));
+
+  stikiRouter.get('/cbng/:wikiRevId', asyncHandler(async (req, res) => {
+    logger.debug(`req.query`, req.query);
+    let wikiRevId = req.params.wikiRevId;
+    let _wiki = wikiRevId.split(':')[0];
+    let revId = wikiRevId.split(':')[1];
+    const [rows, _fields] = await promisePool.query(`SELECT R_ID, SCORE FROM cbng WHERE R_ID = ${revId}`);
+    res.send(rows);
+    req.visitor
+        .event({ec: "api", ea: "/cbng/:wikiRevId"})
+        .send();
+  }));
+
+  stikiRouter.get('/cbng', asyncHandler(async (req, res) => {
+    logger.debug(`req.query`, req.query);
+    let revIds = JSON.parse(req.query.revIds);
+    const [rows, _fields] = await promisePool.query(`SELECT R_ID, SCORE FROM scores_cbng WHERE R_ID in (${revIds.join(',')})`);
+    res.send(rows);
+    req.visitor
+        .event({ec: "api", ea: "/scores"})
+        .send();
+  }));
+
+  app.use(`/extra`, stikiRouter);
+}
 
 // -------------- FROM API ----------------
 function setupApiRequestListener(db, io, app) {
@@ -1104,9 +1166,9 @@ async function start() {
   const cookieParser = require('cookie-parser');
   const bodyParser = require('body-parser');
   app.use(cookieParser());
-  app.use(bodyParser());
   // Setup Google Analytics
   app.use(universalAnalytics.middleware(process.env.GA_ID, {cookieName: '_ga'}));
+  app.use(bodyParser());
 
   if (!process.env.PROD) {
     const logRequestStart = (req, res, next) => {
@@ -1148,6 +1210,7 @@ async function start() {
   setupIoSocketListener(io);
   setupMediaWikiListener(db, io);
   setupApiRequestListener(db, io, app);
+  await setupSTikiApiLisenter(app);
 
   // Give nuxt middleware to express
   app.use(nuxt.render);
