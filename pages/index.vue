@@ -213,6 +213,7 @@
         // Until Vue fixes this....
         this.bufferNewRecentChange = newRecentChange;
         await this.maybeShowRecentChange(this.bufferNewRecentChange);
+        this.stats = await this.$axios.$get(`/api/stats`);
       });
       socket.on('client-activity', async (clientActivity) => {
         console.log(`client activity: ${clientActivity}`);
