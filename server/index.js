@@ -786,6 +786,22 @@ function setupApiRequestListener(db, io, app) {
         .send();
   }));
 
+  {
+    const Avatars = require('@dicebear/avatars').default;
+    const sprites = require('@dicebear/avatars-male-sprites').default;
+    let avatars = new Avatars(sprites({}));
+
+    // TODO build batch api for avatar until performance is an issue. We have cache anyway should be fine.
+    apiRouter.get("/avatar/:seed", asyncHandler(async (req, res) => {
+
+      let svg = avatars.create(req.params.seed);
+      res.send(svg);
+      req.visitor
+          .event({ec: "api", ea: "/avatar/:seed"})
+          .send();
+    }));
+  }
+
   /** Get the latest recentChangee
    * @deprecated
    */

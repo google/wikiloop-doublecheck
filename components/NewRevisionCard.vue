@@ -114,7 +114,9 @@
               <td class="col-4">Time</td>
             </tr>
             <tr class="row" v-for="judgement of interaction.judgements">
-              <td class="col-4">{{judgement.userGaId}}</td>
+              <td class="col-4">
+                <object class="avatar-object" v-bind:data="`/api/avatar/${judgement.userGaId}`" ></object>
+              </td>
               <td class="col-4">{{judgement.judgement}}</td>
               <td class="col-4">{{new Date(judgement.timestamp * 1000).toISOString()}} <br/> (<timeago :datetime="new Date(interaction.lastTimestamp * 1000).toString()" :auto-update="60"></timeago>)</td>
             </tr>
@@ -354,6 +356,12 @@
 
   #metainfo {
     font-size:12px;
+  }
+
+  .avatar-object {
+    width: 48px;
+    height: 48px;
+    margin: -12px;
   }
 </style>
 
