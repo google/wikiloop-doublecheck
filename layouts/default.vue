@@ -31,17 +31,17 @@
         </b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
-            <b-nav-item class="active" href="/">Home</b-nav-item>
-            <b-nav-item href="/marked">Marked</b-nav-item>
-            <b-nav-item href="/api/stats">Stats</b-nav-item>
-            <b-nav-item href="/leaderboard">Leaderboard</b-nav-item>
-            <b-nav-item href="https://meta.wikimedia.org/wiki/WikiProject_WikiLoop">About</b-nav-item>
-            <b-nav-item href="https://github.com/google/wikiloop-battlefield/issues">Report Issues</b-nav-item>
-            <b-nav-item href="#">Online: {{ liveUserCount }}</b-nav-item>
+            <b-nav-item class="active" href="/"><i class="fas fa-home"></i> Home</b-nav-item>
+            <b-nav-item href="https://meta.wikimedia.org/wiki/WikiProject_WikiLoop"><i class="fas fa-info"></i> About</b-nav-item>
+            <b-nav-item href="/api/stats"><i class="fas fa-thermometer-three-quarters"></i> Stats</b-nav-item>
+            <b-nav-item href="/marked"><i class="fas fa-history"></i> History</b-nav-item>
+            <b-nav-item href="/leaderboard"><i class="fas fa-trophy"></i> Leaders</b-nav-item>
+            <b-nav-item href="https://github.com/google/wikiloop-battlefield/issues"><i class="fas fa-bug"></i> Issues</b-nav-item>
           </b-navbar-nav>
           <b-navbar-nav class="ml-auto">
+            <b-nav-item right href="#"><i class="fas fa-users"></i> Online ({{ liveUserCount }})</b-nav-item>
             <b-nav-item right>
-              <span>Me </span><object class="avatar-navbar" v-bind:data="`/api/avatar/${$cookies.get('_ga')}`" ></object>
+              <object class="avatar-navbar" v-bind:data="`/api/avatar/${$cookies.get('_ga')}`" ></object>Me
             </b-nav-item>
           </b-navbar-nav>
         </b-collapse>

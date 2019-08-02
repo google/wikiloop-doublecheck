@@ -753,6 +753,65 @@ function setupApiRequestListener(db, io, app) {
     res.send(recentChanges);
   }));
 
+
+  /**
+   * Return a list of all leader
+   * Pseudo SQL
+   *
+   *
+   * ```SQL
+   *   SELECT user, count(*) FROM Interaction GROUP BY user ORDER by user;
+   * ````
+   */
+  apiRouter.get('/leaderboard', asyncHandler(async (req, res) => {
+    let myGaId = req.body.gaId || req.cookies._ga;
+
+    // TO-FUTURE-DO consider adding pagination if performance is a problem. We don't expect this list to be more than
+    // 10K records anytime soon
+    let ret = await db.collection("Interaction").aggregate(
+        [
+          {
+            "$match": {
+              "userGaId": {$ne: null}
+            }
+          },
+          {
+            "$group" : {
+              "_id" : {
+                "userGaId" : "$userGaId"
+              },
+              "count" : {
+                "$sum" : 1
+              },
+              "lastTimestamp" : {
+                "$max" : "$timestamp"
+              }
+            }
+          },
+          {
+            "$sort" : {
+              "count" : -1
+            }
+          },
+          {
+            "$project" : {
+              "userGaId" : "$_id.userGaId",
+              "count" : 1,
+              "lastTimestamp" : 1
+            }
+          }
+        ],
+        {
+          "allowDiskUse" : false
+        }
+    ).toArray();
+    res.send(ret);
+    req.visitor
+        .event({ec: "api", ea: "/leaderboard"})
+        .send();
+  }));
+
+
   apiRouter.get('/stats', asyncHandler(async (req, res) => {
     let myGaId = req.body.gaId || req.cookies._ga;
 
@@ -1094,6 +1153,7 @@ function setupApiRequestListener(db, io, app) {
         .event({ec: "api", ea: "/"})
         .send();
   });
+
   app.use(`/api`, apiRouter);
 }
 
