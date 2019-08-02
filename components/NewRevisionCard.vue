@@ -106,11 +106,19 @@
 
           </div>
         </div>
-        <div class="mt-4 d-flex justify-content-center" id="mark_list">
-          <div v-if="interaction && interaction.lastTimestamp" class="col-lg-12">
-            <i class="fas fa-flag"></i> marked
-            <timeago :datetime="new Date(interaction.lastTimestamp * 1000).toString()" :auto-update="60"></timeago>
-          </div>
+        <div v-if="interaction && interaction.judgements.length > 0" class="col-lg-12">
+          <table class="b-table table mt-2 w-100">
+            <tr class="row">
+              <td class="col-4">User</td>
+              <td class="col-4">Label</td>
+              <td class="col-4">Time</td>
+            </tr>
+            <tr class="row" v-for="judgement of interaction.judgements">
+              <td class="col-4">{{judgement.userGaId}}</td>
+              <td class="col-4">{{judgement.judgement}}</td>
+              <td class="col-4">{{new Date(judgement.timestamp * 1000).toISOString()}} <br/> (<timeago :datetime="new Date(interaction.lastTimestamp * 1000).toString()" :auto-update="60"></timeago>)</td>
+            </tr>
+          </table>
         </div>
       </div>
       <div v-else class="card-body d-flex flex-column small-screen-padding">
