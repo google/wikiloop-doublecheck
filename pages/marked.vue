@@ -30,6 +30,7 @@
             </b-nav-item>
             <b-nav-item href="https://meta.wikimedia.org/wiki/WikiProject_WikiLoop">About</b-nav-item>
             <b-nav-item href="https://github.com/xinbenlv/wikiloop-battlefield-vue/issues">Issues</b-nav-item>
+            <b-nav-item><object class="avatar-navbar" v-bind:data="`/api/avatar/${$cookies.get('_ga')}`" ></object></b-nav-item>
           </b-navbar-nav>
         </b-collapse>
       </div>
@@ -128,5 +129,10 @@
       padding-left: 6px;
       padding-right: 6px;
     }
+  }
+  .avatar-navbar {
+    width: 48px;
+    height: 48px;
+    margin: -18px;
   }
 </style>

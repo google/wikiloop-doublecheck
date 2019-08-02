@@ -29,7 +29,8 @@
           </div>
         </div>
         <a class="navbar-brand" href="#">WikiLoop Battlefield</a>
-        <b-navbar-toggle  target="nav-collapse"></b-navbar-toggle>
+        <b-navbar-toggle  target="nav-collapse">
+        </b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
             <b-nav-item class="active" href="/">Home</b-nav-item>
@@ -38,8 +39,13 @@
                 class="fas fa-globe-europe"></i> {{stats.totalJudgement}})
             </b-nav-item>
             <b-nav-item href="https://meta.wikimedia.org/wiki/WikiProject_WikiLoop">About</b-nav-item>
-            <b-nav-item href="https://github.com/google/wikiloop-battlefield/issues">Issues</b-nav-item>
+            <b-nav-item href="https://github.com/google/wikiloop-battlefield/issues">Report Issues</b-nav-item>
             <b-nav-item href="#">Online: {{ liveUserCount }}</b-nav-item>
+          </b-navbar-nav>
+          <b-navbar-nav class="ml-auto">
+            <b-nav-item right>
+             <span>Me</span><object class="avatar-navbar" v-bind:data="`/api/avatar/${$cookies.get('_ga')}`" ></object>
+            </b-nav-item>
           </b-navbar-nav>
         </b-collapse>
       </div>
@@ -233,5 +239,12 @@
       padding-left: 6px;
       padding-right: 6px;
     }
+  }
+
+  .avatar-navbar {
+    width: 48px;
+    height: 48px;
+    margin-top: -18px;
+    margin-bottom: -18px;
   }
 </style>
