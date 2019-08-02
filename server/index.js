@@ -434,7 +434,7 @@ function setupSTikiApiLisenter(app) {
     let wikiRevId = req.params.wikiRevId;
     let _wiki = wikiRevId.split(':')[0];
     let revId = wikiRevId.split(':')[1];
-    const [rows, _fields] = await promisePool.query(`SELECT R_ID, SCORE FROM cbng WHERE R_ID = ${revId}`);
+    const [rows, _fields] = await promisePool.query(`SELECT R_ID, SCORE FROM scores_cbng WHERE R_ID = ${revId}`);
     res.send(rows);
     req.visitor
         .event({ec: "api", ea: "/cbng/:wikiRevId"})

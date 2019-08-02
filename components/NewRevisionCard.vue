@@ -24,25 +24,35 @@
               <i class="fas fa-pen"></i> edited
               <timeago :datetime="getTimeString()" :auto-update="60"></timeago>
             </div>
-            <div v-if="interaction && interaction.lastTimestamp" class="col-lg-2">
-              <i class="fas fa-flag"></i> marked
-              <timeago :datetime="new Date(interaction.lastTimestamp * 1000).toString()" :auto-update="60"></timeago>
-            </div>
             <div class="col-lg-2">
               <small><span>by <a v-bind:href="`${getUrlBaseByWiki(revision.wiki)}/wiki/User:${revision.user}`">{{ revision.user }}</a></span>
               </small>
             </div>
             <div v-if="ores" class="col-lg-2">
               <span data-toggle="tooltip" data-placement="top" title="Damaging Score by WMF ORES">
-                <i v-bind:class="{ 'text-danger': ores ? ores.badfaith : false }" class="fas fa-theater-masks"></i>: <a
+                <i v-bind:class="{ 'text-danger': ores ? ores.badfaith : false }" class="fas fa-cloud-rain"></i> ORES Damaging: <a
                   :href="`https://ores.wmflabs.org/v3/scores/enwiki/?revids=${revision.revid}`">{{ damagingPercent() }}</a>
               </span>
             </div>
             <div v-if="ores" class="col-lg-2">
               <span data-toggle="tooltip" data-placement="top"
                     title="Bad-faith Score by WMF ORES (here Bad-faith = 100% - Goodfaith)">
-                <i v-bind:class="{ 'text-warning': ores ? ores.damaging: false }" class="fas fa-cloud-rain"></i>:  <a
+                <i v-bind:class="{ 'text-warning': ores ? ores.damaging: false }" class="fas fa-theater-masks"></i> ORES Bad-faith:  <a
                   :href="`https://ores.wmflabs.org/v3/scores/enwiki/?revids=${revision.revid}`">{{ badfaithPercent() }}</a>
+              </span>
+            </div>
+            <div v-if="stiki" class="col-lg-2">
+              <span data-toggle="tooltip" data-placement="top"
+                    title="Vandalism Score by STiki">
+                <i v-bind:class="{ 'text-warning': stiki && stiki > 0.5 ? true : false }" class="fas fa-theater-masks"></i> STiki:  <a
+                  :href="`/extra/stiki/${wikiRevId}`">{{ stikiPercent() }}</a>
+              </span>
+            </div>
+            <div v-if="stiki" class="col-lg-2">
+              <span data-toggle="tooltip" data-placement="top"
+                    title="Vandalism Score by ClueBotNG">
+                <i v-bind:class="{ 'text-warning': cbng && cbng > 0.5 ? true : false }" class="fas fa-theater-masks"></i> ClueBotNG:  <a
+                  :href="`/extra/cbng/${wikiRevId}`">{{ cbngPercent() }}</a>
               </span>
             </div>
           </div>
@@ -96,6 +106,12 @@
 
           </div>
         </div>
+        <div class="mt-4 d-flex justify-content-center" id="mark_list">
+          <div v-if="interaction && interaction.lastTimestamp" class="col-lg-12">
+            <i class="fas fa-flag"></i> marked
+            <timeago :datetime="new Date(interaction.lastTimestamp * 1000).toString()" :auto-update="60"></timeago>
+          </div>
+        </div>
       </div>
       <div v-else class="card-body d-flex flex-column small-screen-padding">
         <div class="spinner-border" role="status">
@@ -132,6 +148,15 @@
         type: Object,
         default: null
       },
+      stikiProp: {
+        type: Number,
+        default: null
+      },
+      cbngProp: {
+        type: Number,
+        default: null
+      },
+
     },
     data() {
       return {
@@ -140,11 +165,34 @@
         interaction: null,
         revision: null,
         myJudgement: null,
+        stikiRetryRemains: 3,
+        stiki: null,
+        cbng: null,
       }
     },
     methods: {
       loadDiff: async function () {
         this.diff = await this.fetchDiffWithWikiRevId(this.wikiRevId);
+      },
+      loadStiki: async function() {
+        console.log(`Load Stiki`);
+        let stikiRemote = this.stikiProp || await this.$axios.$get(`/extra/stiki/${this.wikiRevId}`);
+        if (stikiRemote.length) {
+          this.stiki = parseFloat(stikiRemote[0].SCORE);
+        } else {
+          if (this.stikiRetryRemains) setTimeout(this.loadStiki, 5000);
+        }
+        this.stikiRetryRemains --;
+      },
+      loadCbng: async function() {
+        console.log(`Load CBNG for ${this.wikiRevId}`);
+        let cbngRemote = this.stikiProp || await this.$axios.$get(`/extra/cbng/${this.wikiRevId}`);
+        if (cbngRemote.length) {
+          this.cbng = parseFloat(cbngRemote[0].SCORE);
+        } else {
+          if (this.cbngRetryRemains) setTimeout(this.loadCbng, 5000);
+        }
+        this.cbngRetryRemains --;
       },
       getTimeString: function () {
         return new Date(this.revision.timestamp).toString();
@@ -226,18 +274,25 @@
         });
       },
       damagingPercent: function () {
-        return `${this.ores ? Math.floor(parseFloat(this.ores.damagingScore) * 100) : "??"}%`;
+        return `${this.ores !== null ? Math.floor(parseFloat(this.ores.damagingScore) * 100) : "??"}%`;
       },
       badfaithPercent: function () {
-        return `${this.ores ? Math.floor(parseFloat(this.ores.badfaithScore) * 100) : "??"}%`;
+        return `${this.ores !== null ? Math.floor(parseFloat(this.ores.badfaithScore) * 100) : "??"}%`;
       },
+      stikiPercent: function() {
+        return `${this.stiki !== null ? Math.floor(parseFloat(this.stiki) * 100) : "??"}%`;
+      },
+      cbngPercent: function() {
+        return `${this.cbng !== null ? Math.floor(parseFloat(this.cbng) * 100) : "??"}%`;
+      }
     },
     async beforeMount() {
       console.log(`Mounted NewRevisionCard wikiRevId=${this.wikiRevId}, Set props: interactionProp:${this.interactionProp!=null}, revisionProp:${this.revisionProp!=null}, oresProp:${this.oresProp!=null}`);
       this.interaction = this.interactionProp || await this.$axios.$get(`/api/interaction/${this.wikiRevId}`);
       this.revision = this.revisionProp || await this.$axios.$get(`/api/revision/${this.wikiRevId}`);
       this.ores = this.oresProp || await this.$axios.$get(`/api/ores/${this.wikiRevId}`);
-
+      await this.loadStiki();
+      await this.loadCbng();
       if (!this.diff) {
         this.diff = await this.$axios.$get(`/api/diff/${this.wikiRevId}`);
       }
