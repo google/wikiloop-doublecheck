@@ -115,7 +115,11 @@
             </tr>
             <tr class="row" v-for="judgement of interaction.judgements">
               <td class="col-4">
-                <object class="avatar-object" v-bind:data="`/api/avatar/${judgement.userGaId}`" ></object> <span v-if="$cookies.get('_ga') === judgement.userGaId ">(Me)</span>
+                <router-link :to="`/marked/?userGaId=${judgement.userGaId}`" replace>
+                  <object class="avatar-object" v-bind:data="`/api/avatar/${judgement.userGaId}`" ></object>
+                  <span v-if="$cookies.get('_ga') === judgement.userGaId ">Me</span>
+                  <span v-else>Someone</span>
+                </router-link>
               </td>
               <td class="col-4">{{judgement.judgement}}</td>
               <td class="col-4">{{new Date(judgement.timestamp * 1000).toISOString()}} <br/> (<timeago :datetime="new Date(interaction.lastTimestamp * 1000).toString()" :auto-update="60"></timeago>)</td>
@@ -267,12 +271,6 @@
         };
 
         await this.$axios.$post(`/api/interaction/${this.wikiRevId}`, postBody);
-        this.$bvToast.toast(
-            `Your judgement for ${this.revision.title} at revision ${this.revision.revid} is logged.`, {
-              title: 'Congrats!',
-              autoHideDelay: 3000,
-              appendToast: true
-            });
         document.dispatchEvent(new Event("stats-update"));
         this.$ga.event({
           eventCategory: 'interaction',

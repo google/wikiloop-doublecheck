@@ -17,8 +17,9 @@
 <template>
 
   <section>
-    <div class="container small-screen-padding" style="margin-top:60px">
-      <h4>You can also download a CSV file <a href="/api/markedRevs.csv">here</a></h4>
+    <div class="container small-screen-padding" style="margin-top:80px">
+      <h4 v-if="$router.history.current.query.userGaId === $cookies.get('_ga')">My History</h4>
+      <h4 v-else >History</h4>
       <div v-for="wikiRevId of wikiRevIds"
            v-bind:key="wikiRevId"
            class="col-12 p-2"
@@ -30,10 +31,10 @@
             :revisionProp="wikiRevIdToInfo[wikiRevId].revision"
         ></NewRevisionCard>
       </div>
-      <div class="col-12 p-2">
+      <div class="col-12 p-2" v-if="!isEnd">
         <button class="btn btn-outline-primary btn-block my-3" v-on:click="loadMore()">Load More</button>
       </div>
-      <div v-if="!wikiRevIds || wikiRevIds.length === 0">
+      <div class="col-12 p-2" v-if="!isEnd">
         <div class="spinner-border" role="status">
           <span class="sr-only">Loading...</span>
         </div>
@@ -54,41 +55,52 @@
         offset: 0,
         limit: 10,
         wikiRevIds: [],
-        wikiRevIdToInfo: {}
+        wikiRevIdToInfo: {},
+        isEnd: false,
       };
     },
     methods: {
       loadMore: async function () {
-        const interactionsFetched = await this.$axios.$get(`/api/interactions`, {
-          params: {
-            offset: this.offset,
-            limit: this.limit,
-          }
-        });
-        this.offset += this.limit;
-        const revisionsFetched = await this.$axios.$get(
-            `/api/revisions`, {
-              params: {
-                wiki: 'enwiki', // TODO update this when we support multiple wikis
-                revIds: interactionsFetched.map(interaction => interaction.wikiRevId.split(':')[1])
+        let params = {
+          offset: this.offset,
+          limit: this.limit,
+        };
+        if (this.$router.history.current.query.userGaId) {
+          params.userGaIds = [this.$router.history.current.query.userGaId];
+        } else if (this.$router.history.current.query.wikiRevIds) {
+          params.wikiRevIds = this.$router.history.current.query.wikiRevIds;
+        }
+
+        const interactionsFetched = await this.$axios.$get(`/api/interactions`, { params: params });
+        if (interactionsFetched.length) {
+          this.offset += interactionsFetched.length;
+          const revisionsFetched = await this.$axios.$get(
+              `/api/revisions`, {
+                params: {
+                  wiki: 'enwiki', // TODO update this when we support multiple wikis
+                  revIds: interactionsFetched.map(interaction => interaction.wikiRevId.split(':')[1])
+                }
               }
-            }
-        );
-        const oresFetched = await this.$axios.$get(
-            `/api/ores`, {
-              params: {
-                wiki: 'enwiki', // TODO update this when we support multiple wikis
-                revIds: interactionsFetched.map(interaction => interaction.wikiRevId.split(':')[1])
+          );
+          const oresFetched = await this.$axios.$get(
+              `/api/ores`, {
+                params: {
+                  wiki: 'enwiki', // TODO update this when we support multiple wikis
+                  revIds: interactionsFetched.map(interaction => interaction.wikiRevId.split(':')[1])
+                }
               }
-            }
-        );
-        interactionsFetched.forEach(interaction => {
-          this.wikiRevIds.push(interaction.wikiRevId);
-          this.wikiRevIdToInfo[interaction.wikiRevId] = {};
-          this.wikiRevIdToInfo[interaction.wikiRevId].interaction = interaction;
-        });
-        revisionsFetched.forEach(item => this.wikiRevIdToInfo[item.wikiRevId].revision = item);
-        oresFetched.forEach(item => this.wikiRevIdToInfo[item.wikiRevId].ores = item);
+          );
+          interactionsFetched.forEach(interaction => {
+            this.wikiRevIds.push(interaction.wikiRevId);
+            this.wikiRevIdToInfo[interaction.wikiRevId] = {};
+            this.wikiRevIdToInfo[interaction.wikiRevId].interaction = interaction;
+          });
+          revisionsFetched.forEach(item => this.wikiRevIdToInfo[item.wikiRevId].revision = item);
+          oresFetched.forEach(item => this.wikiRevIdToInfo[item.wikiRevId].ores = item);
+        }
+        else {
+          this.isEnd = true;
+        }
       },
     },
     async asyncData({$axios}) {

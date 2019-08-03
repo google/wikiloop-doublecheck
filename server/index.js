@@ -391,9 +391,16 @@ async function queryMarkedRecentChange(db, myGaId) {
   }
   return recentChanges.reverse();
 }
+
 // -------------- FROM STIKI API -------------
 function setupSTikiApiLisenter(app) {
   let stikiRouter = express();
+
+  const apicache = require('apicache');
+  let cache = apicache.middleware;
+  const onlyGet = (req, res) => res.method === `GET`;
+  stikiRouter.use(cache('1 week', onlyGet));
+
   const mysql = require('mysql2');
 
   const asyncHandler = fn => (req, res, next) =>
@@ -600,7 +607,15 @@ function setupApiRequestListener(db, io, app) {
   apiRouter.get('/interactions', asyncHandler(async (req, res) => {
     let limit = parseInt(req.query.limit) || 10;
     let offset = parseInt(req.query.offset) || 0;
-    let interactions = await getNewJudgementCounts(db, {}, offset, limit);
+    let matcher = {};
+    if (req.query.wikiRevIds) {
+      matcher.wikiRevId = { $in: req.query.wikiRevIds }
+    }
+    if (req.query.userGaIds) {
+      matcher.userGaId = { $in: req.query.userGaIds }
+    }
+
+    let interactions = await getNewJudgementCounts(db, matcher, offset, limit);
     res.send(interactions);
     req.visitor
         .event({ec: "api", ea: "/interactions"})
@@ -639,6 +654,12 @@ function setupApiRequestListener(db, io, app) {
     apicache.clear(req.originalUrl);
     let storedInteractions = await getNewJudgementCounts(db, {wikiRevId: {$in : [wikiRevId]}});
     let storedInteraction = storedInteractions[0];
+
+    storedInteraction.newJudgement = {
+      userGaId:  doc.userGaId,
+      judgement: doc.judgement,
+      timestamp: doc.timestamp
+    };
     io.sockets.emit('interaction', storedInteraction);
 
     res.send(`ok`);
@@ -753,7 +774,6 @@ function setupApiRequestListener(db, io, app) {
     res.send(recentChanges);
   }));
 
-
   /**
    * Return a list of all leader
    * Pseudo SQL
@@ -852,7 +872,7 @@ function setupApiRequestListener(db, io, app) {
 
     // TODO build batch api for avatar until performance is an issue. We have cache anyway should be fine.
     apiRouter.get("/avatar/:seed", asyncHandler(async (req, res) => {
-
+      logger.debug(`avatar requested with seed`, req.params.seed);
       let svg = avatars.create(req.params.seed);
       res.send(svg);
       req.visitor

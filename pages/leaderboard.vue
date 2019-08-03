@@ -34,7 +34,11 @@
               {{index + 1}}
             </td>
             <td scope="col">
-              <object class="avatar-object" v-bind:data="`/api/avatar/${leader._id.userGaId}`" ></object> <span v-if="$cookies.get('_ga') === leader.userGaId ">(Me)</span>
+              <router-link :to="`/marked/?userGaId=${leader.userGaId}`" replace>
+                <object class="avatar-object" v-bind:data="`/api/avatar/${leader.userGaId}`" ></object>
+                <span v-if="$cookies.get('_ga') === leader.userGaId ">Me</span>
+                <span v-else>Someone</span>
+              </router-link>
             </td>
             <td scope="col">{{leader.count}}</td>
             <td scope="col">{{new Date(leader.lastTimestamp * 1000).toISOString()}} <br/> (<timeago :datetime="new Date(leader.lastTimestamp * 1000).toString()"></timeago>)</td>

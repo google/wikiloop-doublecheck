@@ -32,16 +32,20 @@
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
             <b-nav-item class="active" href="/"><i class="fas fa-home"></i> Home</b-nav-item>
-            <b-nav-item href="https://meta.wikimedia.org/wiki/WikiProject_WikiLoop"><i class="fas fa-info"></i> About</b-nav-item>
-            <b-nav-item href="/api/stats"><i class="fas fa-thermometer-three-quarters"></i> Stats</b-nav-item>
-            <b-nav-item href="/marked"><i class="fas fa-history"></i> History</b-nav-item>
+            <b-nav-item href="/marked"><i class="fas fa-history"></i> History ({{stats ? stats.totalJudgement : 0}})</b-nav-item>
+            <b-nav-item href="/api/markedRevs.csv"><i class="fas fa-cloud-download-alt"></i> Download</b-nav-item>
             <b-nav-item href="/leaderboard"><i class="fas fa-trophy"></i> Leaders</b-nav-item>
-            <b-nav-item href="https://github.com/google/wikiloop-battlefield/issues"><i class="fas fa-bug"></i> Issues</b-nav-item>
+            <b-nav-item-dropdown text="About" right>
+              <b-dropdown-item href="https://github.com/google/wikiloop-battlefield/issues">Issues</b-dropdown-item>
+              <b-dropdown-item href="https://github.com/google/wikiloop-battlefield">Code </b-dropdown-item>
+              <b-dropdown-item href="https://meta.wikimedia.org/wiki/WikiProject_WikiLoop">WikiProject</b-dropdown-item>
+              <b-dropdown-item href="/api/stats">Stats</b-dropdown-item>
+            </b-nav-item-dropdown>
           </b-navbar-nav>
           <b-navbar-nav class="ml-auto">
             <b-nav-item right href="#"><i class="fas fa-users"></i> Online ({{ liveUserCount }})</b-nav-item>
-            <b-nav-item right>
-              <object class="avatar-navbar" v-bind:data="`/api/avatar/${$cookies.get('_ga')}`" ></object>Me
+            <b-nav-item :href="`/marked/?userGaId=${$cookies.get('_ga')}`" right>
+                <object class="avatar-navbar" v-bind:data="`/api/avatar/${$cookies.get('_ga')}`" ></object>Me
             </b-nav-item>
           </b-navbar-nav>
         </b-collapse>
@@ -57,25 +61,40 @@
   export default {
     data() {
       return {
-        liveUserCount: 1
+        liveUserCount: 1,
+        stats: 0
       }
     },
     async asyncData({$axios}) {
       const version = await $axios.$get(`/api/version`);
-      const stats = await $axios.$get(`/api/stats`);
-      return {version, stats};
+      return {version};
     },
 
-    mounted() {
-      socket.on('recent-change', async (newRecentChange) => {
-        this.stats = await this.$axios.$get(`/api/stats`);
-      });
+    async mounted() {
+      this.stats = await this.$axios.$get(`/api/stats`);
       socket.on('client-activity', async (clientActivity) => {
         this.liveUserCount = clientActivity.liveUserCount;
       });
       document.addEventListener('stats-update', async () => {
         console.log(`stats-update:`);
         this.stats = await this.$axios.$get(`/api/stats`);
+      });
+      socket.on('interaction', async (interaction) => {
+        if (interaction.newJudgement.userGaId === this.$cookies.get('_ga')) {
+          this.$bvToast.toast(
+              `Your judgement for ${interaction.recentChange.title} for revision ${interaction.wikiRevId} is logged.`, {
+                title: 'Your Judgement',
+                autoHideDelay: 3000,
+                appendToast: true
+              });
+        } else {
+          this.$bvToast.toast(
+              `A judgement for ${interaction.recentChange.title} for revision ${interaction.wikiRevId} is logged.`, {
+                title: 'New Judgement',
+                autoHideDelay: 3000,
+                appendToast: true
+              });
+        }
       });
     }
 }

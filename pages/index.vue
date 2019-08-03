@@ -55,7 +55,6 @@
 <script>
   import socket from '~/plugins/socket.io.js';
   import BootstrapVue from 'bootstrap-vue';
-  import RecentChangeCard from '~/components/RecentChangeCard.vue';
   import NewRevisionCard from '~/components/NewRevisionCard.vue';
   import VueTimeago from 'vue-timeago';
   import utility from '../shared/utility';
@@ -68,7 +67,6 @@
       VueTimeago
     },
     components: {
-      RecentChangeCard,
       NewRevisionCard
     },
     computed: {
@@ -186,7 +184,6 @@
         // Until Vue fixes this....
         this.bufferNewRecentChange = newRecentChange;
         await this.maybeShowRecentChange(this.bufferNewRecentChange);
-        this.stats = await this.$axios.$get(`/api/stats`);
       });
       socket.on('client-activity', async (clientActivity) => {
         console.log(`client activity: ${clientActivity}`);
