@@ -10,7 +10,7 @@
 
 This is a project of web app built to allow people to fight vandalism collaboratively. See [[[m:WikiProject_WikiLoop]]](https://meta.wikimedia.org/wiki/WikiProject_WikiLoop) for more introduction. The documentation in this repository focus on development of the software itself.
 
-[![Vandalism Example](./assets/demo-fast.gif)](http://battlefield.wikiloop.org/?utm_source=github&utm_medium=markdown&utm_campaign=repo_readme_img)
+[![Vandalism Example](./assets/demo-1.2.0-beta.gif)](http://battlefield.wikiloop.org/?utm_source=github&utm_medium=markdown&utm_campaign=repo_readme_img)
 
 ## Website Status
 
