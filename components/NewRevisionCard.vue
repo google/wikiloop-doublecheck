@@ -96,13 +96,14 @@
                 class="btn btn-sm" target="_blank"
             >Should revert {{getJudgementCount(`ShouldRevert`)}}
             </button>
-            <transition name="fade">
-              <button v-if="enableRevertRedirect()"
-                      v-on:click="redirectToRevert()"
-                      class="btn btn-outline-primary">
-                Go
-              </button>
-            </transition>
+<!--            TODO(xinbenlv, #57 https://github.com/google/wikiloop-battlefield/issues/57): temp disable revert per Grahamwp@'s report-->
+<!--            <transition name="fade">-->
+<!--              <button v-if="enableRevertRedirect()"-->
+<!--                      v-on:click="redirectToRevert()"-->
+<!--                      class="btn btn-outline-primary">-->
+<!--                Go-->
+<!--              </button>-->
+<!--            </transition>-->
 
           </div>
         </div>
