@@ -1,4 +1,8 @@
 {
+  "description": "A web app for Wikipedians to fight vandalism together.",
+  "repository": "git@github.com:google/wikiloop-battlefield.git",
+  "logo": "https://raw.githubusercontent.com/google/wikiloop-battlefield/master/assets/wikiloop-battlefield-logo.png",
+  "keywords": ["wikiloop", "wikipedia", "wikiloop-battlefield", "counter-vandalism", "anti-vandalism", "vandalism"],
   "addons": [
     "mongolab"
   ],
