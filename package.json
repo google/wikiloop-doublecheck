@@ -45,6 +45,7 @@
     "socket.io": "^2.2.0",
     "socket.io-client": "^2.2.0",
     "universal-analytics": "^0.4.20",
+    "vue-router": "^3.1.1",
     "vue-timeago": "^5.1.2"
   },
   "devDependencies": {
@@ -71,9 +72,9 @@
     "prettier": "^1.16.4",
     "vue-jest": "^3.0.3"
   },
-  "engines" : {
-    "node" : "10.16.0",
-    "npm" : "6.10.0"
+  "engines": {
+    "node": "10.16.0",
+    "npm": "6.10.0"
   },
   "license": "Apache-2.0"
 }
