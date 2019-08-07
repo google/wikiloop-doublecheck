@@ -13,22 +13,30 @@
   ],
   "env": {
     "AXIOS_BASE_URL": {
-      "required": true
+      "required": true,
+      "description": "The api base URI that the client will make request against. This needs to be updated to the heroku url of your heroku app. If you don't know what heroku app url is, you can use `http://dev.battlefield.wikiloop.org` whereas the api will be our dev instance.",
+      "value": "http://<your-heroku-app>.herokuapp.com"
     },
     "GA_ID": {
-      "required": true
+      "required": true,
+      "description": "The Google Analytics ID. Feel free to use the dev one we provided.",
+      "value": "UA-122681777-3"
     },
     "HOST": {
-      "required": true
+      "required": true,
+      "value": "0.0.0.0"
     },
     "MONGODB_URI": {
-      "required": true
+      "required": false,
+      "description": "The MongoDB URI, you can leave it empty because once the addon of mlab is enabled, it will create one for you"
     },
     "NODE_ENV": {
-      "required": true
+      "required": false,
+      "value": "production"
     },
     "NPM_CONFIG_PRODUCTION": {
-      "required": true
+      "required": false,
+      "value": true
     }
   },
   "formation": {

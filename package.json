@@ -72,7 +72,8 @@
     "jest-junit": "^6.4.0",
     "nodemon": "^1.18.9",
     "prettier": "^1.16.4",
-    "vue-jest": "^3.0.3"
+    "vue-jest": "^3.0.3",
+    "webpack-hot-middleware": "^2.25.0"
   },
   "engines": {
     "node": "10.16.0",

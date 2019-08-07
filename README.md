@@ -7,6 +7,7 @@
 ![GitHub forkers](https://img.shields.io/github/forks/google/wikiloop-battlefield.svg?label=Fork&style=social)
 ![GitHub starers](https://img.shields.io/github/stars/google/wikiloop-battlefield.svg?label=Star&style=social)
 ![GitHub followers](https://img.shields.io/github/followers/xinbenlv.svg?label=Follow&style=social)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 This is a project of web app built to allow people to fight vandalism collaboratively. See [[[m:WikiProject_WikiLoop]]](https://meta.wikimedia.org/wiki/WikiProject_WikiLoop) for more introduction. The documentation in this repository focus on development of the software itself.
 
