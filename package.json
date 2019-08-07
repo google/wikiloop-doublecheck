@@ -3,6 +3,7 @@
   "version": "1.2.0-beta",
   "description": "A web app for Wikipedians to fight vandalism together.",
   "author": "Zainan Victor Zhou <zzn@google.com>",
+  "repository": "git@github.com:google/wikiloop-battlefield.git",
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
     "build": "nuxt build",
