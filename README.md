@@ -2,12 +2,14 @@
 
 [![WikiLoop Logo](./assets/wikiloop-battlefield-logo.svg)](https://meta.wikimedia.org/wiki/WikiProject_WikiLoop)
 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 [![CircleCI](https://circleci.com/gh/google/wikiloop-battlefield/tree/master.svg?style=svg)](https://circleci.com/gh/google/wikiloop-battlefield/tree/master) 
 [![GitHub watchers](https://img.shields.io/github/watchers/google/wikiloop-battlefield.svg?label=Watch&style=social)](https://img.shields.io/github/watchers/google/wikiloop-battlefield.svg?label=Watch&style=social)
 ![GitHub forkers](https://img.shields.io/github/forks/google/wikiloop-battlefield.svg?label=Fork&style=social)
 ![GitHub starers](https://img.shields.io/github/stars/google/wikiloop-battlefield.svg?label=Star&style=social)
 ![GitHub followers](https://img.shields.io/github/followers/xinbenlv.svg?label=Follow&style=social)
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 
 This is a project of web app built to allow people to fight vandalism collaboratively. See [[[m:WikiProject_WikiLoop]]](https://meta.wikimedia.org/wiki/WikiProject_WikiLoop) for more introduction. The documentation in this repository focus on development of the software itself.
 
@@ -21,7 +23,7 @@ This is a project of web app built to allow people to fight vandalism collaborat
 [![Dev Site Uptime Robot ratio (30 days)](https://img.shields.io/uptimerobot/ratio/m783127051-01afa8e12cb12e059a95f54c.svg?label=dev%20uptime)](http://dev.battlefield.wikiloop.org/?utm_source=github&utm_medium=markdown&utm_campaign=repo_readme_up_ratio_badge)
 
 ## Quick Start
-
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 ![GitHub](https://img.shields.io/github/license/google/wikiloop-battlefield.svg)
 ![GitHub contributors](https://img.shields.io/github/contributors/google/wikiloop-battlefield.svg)
 ![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/google/wikiloop-battlefield.svg)
@@ -29,7 +31,12 @@ This is a project of web app built to allow people to fight vandalism collaborat
 [![Tech Stack](https://img.shields.io/badge/tech-stack-blue.svg)](https://stackshare.io/project-wikiloop/battlefield)
 
 We welcome contributions! See [our contribution policy](CONTRIBUTING.md). Please checkout [our stack diagram](https://stackshare.io/project-wikiloop/battlefield) to get familiar with required with technologies we depend on.
+### Deploy a Dev Instance on Heroku
 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+![Demo: Deploy to Heroku](./assets/demo-deploy-to-heroku-btn.gif)
+ 
 ### Install
 
 Prerequisite: [git](https://git-scm.com), [nodejs](https://nodejs.org), [npm](https://npmjs.com)  

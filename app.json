@@ -14,8 +14,8 @@
   "env": {
     "AXIOS_BASE_URL": {
       "required": true,
-      "description": "The api base URI that the client will make request against. This needs to be updated to the heroku url of your heroku app. If you don't know what heroku app url is, you can use `http://dev.battlefield.wikiloop.org` whereas the api will be our dev instance.",
-      "value": "http://<your-heroku-app>.herokuapp.com"
+      "description": "The api base URI that the client will make request against. Replace the `<your-heroku-app-name>` with the `app name` you've just entered on top of the this page. If you don't know what heroku app url is, you can use `http://dev.battlefield.wikiloop.org` whereas the api will be our dev instance.",
+      "value": "https://<your-heroku-app-name>.herokuapp.com"
     },
     "GA_ID": {
       "required": true,
@@ -40,6 +40,7 @@
       "quantity": 1
     }
   },
+  "success_url": "/",
   "name": "wikiloop-battlefield",
   "scripts": {
   },
