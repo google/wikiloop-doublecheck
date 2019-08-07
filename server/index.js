@@ -33,10 +33,10 @@ const config = require('../nuxt.config.js');
 config.dev = !(process.env.NODE_ENV === 'production');
 
 function computeOresField(oresJson, wiki, revId) {
-  let damagingScore = oresJson.damagingScore || oresJson[wiki].scores[revId].damaging.score.probability.true;
-  let badfaithScore = oresJson.badfaithScore || oresJson[wiki].scores[revId].goodfaith.score.probability.false;
-  let damaging = oresJson.damaging || oresJson[wiki].scores[revId].damaging.score.prediction;
-  let badfaith = oresJson.badfaith || !oresJson[wiki].scores[revId].goodfaith.score.prediction;
+  let damagingScore = oresJson.damagingScore || (oresJson[wiki].scores[revId].damaging.score && oresJson[wiki].scores[revId].damaging.score.probability.true);
+  let badfaithScore = oresJson.badfaithScore || (oresJson[wiki].scores[revId].goodfaith.score && oresJson[wiki].scores[revId].goodfaith.score.probability.false);
+  let damaging = oresJson.damaging || (oresJson[wiki].scores[revId].damaging.score && oresJson[wiki].scores[revId].damaging.score.prediction);
+  let badfaith = oresJson.badfaith || (oresJson[wiki].scores[revId].goodfaith.score && !oresJson[wiki].scores[revId].goodfaith.score.prediction);
   return {
     wikiRevId: `${wiki}:${revId}`,
     damagingScore: damagingScore,
@@ -1166,6 +1166,33 @@ function setupApiRequestListener(db, io, app) {
 
   }));
 
+  apiRouter.get('/flags', (req, res, next) => {
+    let useStiki = (process.env.STIKI_MYSQL && process.env.STIKI_MYSQL.length > 0) || false;
+    res.send({
+      useStiki: useStiki
+    });
+    req.visitor
+        .event({ec: "api", ea: "/"})
+        .send();
+  });
+
+  apiRouter.get('/mediawiki', asyncHandler(async (req, res) => {
+    // TODO add sanitize if we see abuse.
+    apiLogger.debug('req.params:', req.params);
+    apiLogger.debug('req.query:', req.query);
+    const fetchUrl = new URL(`${getUrlBaseByWiki(req.query.wiki)}/w/api.php`);
+    let params = JSON.parse(req.query.apiQuery);
+
+    Object.keys(params).forEach(key => {
+      fetchUrl.searchParams.set(key, params[key]);
+    });
+    let retJson = await rp.get(fetchUrl, {json: true});
+    res.send(retJson);
+    req.visitor
+        .event({ec: "mediawiki", ea: "/"})
+        .send();
+  }));
+
   apiRouter.get('/version', (req, res, next) => {
     var packageson = require('./../package.json');
     res.send(packageson.version);
@@ -1306,7 +1333,9 @@ async function start() {
   setupIoSocketListener(io);
   setupMediaWikiListener(db, io);
   setupApiRequestListener(db, io, app);
-  await setupSTikiApiLisenter(app);
+  if (process.env.STIKI_MYSQL) {
+    await setupSTikiApiLisenter(app);
+  }
 
   // Give nuxt middleware to express
   app.use(nuxt.render);

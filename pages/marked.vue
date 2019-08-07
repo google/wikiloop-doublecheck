@@ -18,7 +18,7 @@
 
   <section>
     <div class="container small-screen-padding" style="margin-top:80px">
-      <h4 v-if="$router.history.current.query.userGaId === $cookies.get('_ga')">My History</h4>
+      <h4 v-if="$router.history.current.query.userGaId === $cookiez.get('_ga')">My History</h4>
       <h4 v-else >History</h4>
       <div v-for="wikiRevId of wikiRevIds"
            v-bind:key="wikiRevId"

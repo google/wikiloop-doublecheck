@@ -96,14 +96,13 @@
                 class="btn btn-sm" target="_blank"
             >Should revert {{getJudgementCount(`ShouldRevert`)}}
             </button>
-<!--            TODO(xinbenlv, #57 https://github.com/google/wikiloop-battlefield/issues/57): temp disable revert per Grahamwp@'s report-->
-<!--            <transition name="fade">-->
-<!--              <button v-if="enableRevertRedirect()"-->
-<!--                      v-on:click="redirectToRevert()"-->
-<!--                      class="btn btn-outline-primary">-->
-<!--                Go-->
-<!--              </button>-->
-<!--            </transition>-->
+            <transition name="fade">
+              <button v-if="enableRevertRedirect()"
+                      v-on:click="redirectToRevert()"
+                      class="btn btn-outline-primary">
+                Go
+              </button>
+            </transition>
 
           </div>
         </div>
@@ -118,7 +117,7 @@
               <td class="col-4">
                 <router-link :to="`/marked/?userGaId=${judgement.userGaId}`" replace>
                   <object class="avatar-object" v-bind:data="`/api/avatar/${judgement.userGaId}`" ></object>
-                  <span v-if="$cookies.get('_ga') === judgement.userGaId ">Me</span>
+                  <span v-if="$cookiez.get('_ga') === judgement.userGaId ">Me</span>
                   <span v-else>Someone</span>
                 </router-link>
               </td>
@@ -191,7 +190,17 @@
       },
       loadStiki: async function() {
         console.log(`Load Stiki`);
-        let stikiRemote = this.stikiProp || await this.$axios.$get(`/extra/stiki/${this.wikiRevId}`);
+        let stikiRemote;
+        if (this.stikiProp) {
+          stikiRemote = this.stikiProp;
+        } else {
+          try {
+            await this.$axios.$get(`/extra/stiki/${this.wikiRevId}`);
+          } catch(err) {
+            // ignoring
+            stikiRemote = [];
+          }
+        }
         if (stikiRemote.length) {
           this.stiki = parseFloat(stikiRemote[0].SCORE);
         } else {
@@ -201,7 +210,17 @@
       },
       loadCbng: async function() {
         console.log(`Load CBNG for ${this.wikiRevId}`);
-        let cbngRemote = this.stikiProp || await this.$axios.$get(`/extra/cbng/${this.wikiRevId}`);
+        let cbngRemote;
+        if (this.cbngProp) {
+          cbngRemote = this.cbngProp;
+        } else {
+          try {
+            await this.$axios.$get(`/extra/cbng/${this.wikiRevId}`);
+          } catch(err) {
+            // ignoring
+            cbngRemote = [];
+          }
+        }
         if (cbngRemote.length) {
           this.cbng = parseFloat(cbngRemote[0].SCORE);
         } else {
@@ -220,7 +239,7 @@
       },
       getMyJudgement: function() {
         if (this.interaction) {
-          let myGaId = this.$cookies.get("_ga");
+          let myGaId = this.$cookiez.get("_ga");
           let result = this.interaction.judgements.filter(j => j.userGaId === myGaId);
           if (result.length === 1) {
             return result[0].judgement;
@@ -238,19 +257,34 @@
           }
         });
         return this.myJudgement === `ShouldRevert` && !this.isOverriden();
-
       },
       redirectToRevert: async function() {
         if (this.myJudgement === `ShouldRevert` && !this.isOverriden()) {
           const version = await this.$axios.$get(`/api/version`);
-          let url = `${this.getUrlBaseByWiki(this.revision.wiki)}/w/index.php?title=${this.revision.title}&action=edit&undoafter=${this.revision.parentid}&undo=${this.revision.revid}&summary=Identified as test/vandalism using [[:m:WikiLoop Battlefield]](version ${version}) at battlefield.wikiloop.org.`;
-          window.open(url, '_blank');
+          let revertUrl = `${this.getUrlBaseByWiki(this.revision.wiki)}/w/index.php?title=${this.revision.title}&action=edit&undoafter=${this.revision.parentid}&undo=${this.revision.revid}&summary=Identified as test/vandalism using [[:m:WikiLoop Battlefield]](version ${version}) at battlefield.wikiloop.org.`;
+          let historyUrl = `${this.getUrlBaseByWiki(this.revision.wiki)}/w/index.php?title=${this.revision.title}action=history`;
+          let result = await this.$axios.$get(`/api/mediawiki`, {params: {
+            wiki: this.revision.wiki,
+            apiQuery: {
+              action: "query",
+              format: "json",
+              prop: "revisions",
+              titles: this.revision.title,
+              rvlimit: 10,
+            }
+          }});
+          let revisions = Object.values(result.query.pages)[0].revisions;
+          if (revisions[1].user === revisions[0].user) {
+            window.open(historyUrl, '_blank');
+          } else {
+            window.open(revertUrl, '_blank');
+          }
         }
       },
       interactionBtn: async function (myJudgement) {
         this.myJudgement = myJudgement;
         let revision = this.revision;
-        let gaId = this.$cookies.get("_ga");
+        let gaId = this.$cookiez.get("_ga");
         let postBody = {
           gaId: gaId, // Deprecated
           userGaId: gaId,
@@ -300,8 +334,10 @@
       this.interaction = this.interactionProp || await this.$axios.$get(`/api/interaction/${this.wikiRevId}`);
       this.revision = this.revisionProp || await this.$axios.$get(`/api/revision/${this.wikiRevId}`);
       this.ores = this.oresProp || await this.$axios.$get(`/api/ores/${this.wikiRevId}`);
-      await this.loadStiki();
-      await this.loadCbng();
+      if (this.$store.state.flags && this.$store.state.flags.useStiki) {
+        await this.loadStiki();
+        await this.loadCbng();
+      }
       if (!this.diff) {
         this.diff = await this.$axios.$get(`/api/diff/${this.wikiRevId}`);
       }

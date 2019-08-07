@@ -71,10 +71,7 @@ module.exports = {
     ['@nuxtjs/google-analytics', {
       id: process.env.GA_ID
     }],
-    {
-      src: 'nuxt-universal-cookies',
-      options: {}
-    }
+    ['cookie-universal-nuxt', { alias: 'cookiez' }],
   ],
   /*
    ** Axios module configuration

@@ -44,8 +44,8 @@
           </b-navbar-nav>
           <b-navbar-nav class="ml-auto">
             <b-nav-item right href="#"><i class="fas fa-users"></i> Online ({{ liveUserCount }})</b-nav-item>
-            <b-nav-item :href="`/marked/?userGaId=${$cookies.get('_ga')}`" right>
-                <object class="avatar-navbar" v-bind:data="`/api/avatar/${$cookies.get('_ga')}`" ></object>Me
+            <b-nav-item :href="`/marked/?userGaId=${$cookiez.get('_ga')}`" right>
+                <object class="avatar-navbar" v-bind:data="`/api/avatar/${$cookiez.get('_ga')}`" ></object>Me
             </b-nav-item>
           </b-navbar-nav>
         </b-collapse>
@@ -80,7 +80,7 @@
         this.stats = await this.$axios.$get(`/api/stats`);
       });
       socket.on('interaction', async (interaction) => {
-        if (interaction.newJudgement.userGaId === this.$cookies.get('_ga')) {
+        if (interaction.newJudgement.userGaId === this.$cookiez.get('_ga')) {
           this.$bvToast.toast(
               `Your judgement for ${interaction.recentChange.title} for revision ${interaction.wikiRevId} is logged.`, {
                 title: 'Your Judgement',

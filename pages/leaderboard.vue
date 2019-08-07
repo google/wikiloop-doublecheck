@@ -29,14 +29,14 @@
         </thead>
         <tbody>
           <template  v-for="(leader, index) in leaderboard">
-          <tr v-bind:class="{ 'table-success': $cookies.get('_ga') == leader.userGaId }">
+          <tr v-bind:class="{ 'table-success': $cookiez.get('_ga') == leader.userGaId }">
             <td scope="col">
               {{index + 1}}
             </td>
             <td scope="col">
               <router-link :to="`/marked/?userGaId=${leader.userGaId}`" replace>
                 <object class="avatar-object" v-bind:data="`/api/avatar/${leader.userGaId}`" ></object>
-                <span v-if="$cookies.get('_ga') === leader.userGaId ">Me</span>
+                <span v-if="$cookiez.get('_ga') === leader.userGaId ">Me</span>
                 <span v-else>Someone</span>
               </router-link>
             </td>
