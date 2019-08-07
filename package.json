@@ -71,5 +71,9 @@
     "prettier": "^1.16.4",
     "vue-jest": "^3.0.3"
   },
+  "engines" : {
+    "node" : "10.16.0",
+    "npm" : "6.10.0"
+  },
   "license": "Apache-2.0"
 }
