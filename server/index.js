@@ -47,7 +47,7 @@ const logReqPerf = function (req, res, next) {
   const startNs = process.hrtime.bigint();
   res.on(`finish`, () => {
     const endNs = process.hrtime.bigint();
-    perfLogger.info(``, {
+    perfLogger.info(` log for ${req.method} ${req.originalUrl}`, {
       method: req.method,
       originalUrl: req.originalUrl,
       gaId: req.cookies_ga,
