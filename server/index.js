@@ -52,7 +52,6 @@ const logReqPerf = function (req, res, next) {
       original_url: req.originalUrl,
       ga_id: req.cookies._ga,
       time_lapse_ns: endNs - startNs,
-      time_lapse_ms: (endNs - startNs) / 1e6,
       start_ns: startNs,
       end_ns: endNs
     });

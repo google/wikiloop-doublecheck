@@ -26,7 +26,8 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
+      { hid: 'description', name: 'description', content: pkg.description },
+      { uptimerobot_verify_uuid: '89d70f81-d069-43cf-ad7f-b932f7e3a24b'}, // a random uuid for verification purpose
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
