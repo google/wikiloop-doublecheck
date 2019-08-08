@@ -19,11 +19,16 @@ const MongoClient = require('mongodb').MongoClient;
 const universalAnalytics = require('universal-analytics');
 const rp = require(`request-promise`);
 
-var log4js = require('log4js');
-var logger = log4js.getLogger();
+const logger = new (require('heroku-logger').Logger)({
+  level: process.env.LOG_LEVEL || 'debug',
+  prefix: 'index'
+});
 
-var apiLogger = log4js.getLogger(`api`);
-logger.level = 'debug';
+const apiLogger = new (require('heroku-logger').Logger)({
+  level: process.env.LOG_LEVEL || 'debug',
+  prefix: 'api'
+});
+
 
 let docCounter = 0;
 let allDocCounter = 0;
