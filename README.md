@@ -23,7 +23,6 @@ This is a project of web app built to allow people to fight vandalism collaborat
 [![Dev Site Uptime Robot ratio (30 days)](https://img.shields.io/uptimerobot/ratio/m783127051-01afa8e12cb12e059a95f54c.svg?label=dev%20uptime)](http://dev.battlefield.wikiloop.org/?utm_source=github&utm_medium=markdown&utm_campaign=repo_readme_up_ratio_badge)
 
 ## Quick Start
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 ![GitHub](https://img.shields.io/github/license/google/wikiloop-battlefield.svg)
 ![GitHub contributors](https://img.shields.io/github/contributors/google/wikiloop-battlefield.svg)
 ![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/google/wikiloop-battlefield.svg)
