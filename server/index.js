@@ -21,14 +21,43 @@ const rp = require(`request-promise`);
 
 const logger = new (require('heroku-logger').Logger)({
   level: process.env.LOG_LEVEL || 'debug',
+  delimiter: " | ",
   prefix: 'index'
 });
 
 const apiLogger = new (require('heroku-logger').Logger)({
   level: process.env.LOG_LEVEL || 'debug',
+  delimiter: " | ",
   prefix: 'api'
 });
 
+const perfLogger = new (require('heroku-logger').Logger)({
+  level: process.env.LOG_LEVEL || 'debug',
+  delimiter: " | ",
+  prefix: 'perf'
+});
+
+const logReqPerf = function (req, res, next) {
+  // Credit for inspiration: http://www.sheshbabu.com/posts/measuring-response-times-of-express-route-handlers/
+  logger.debug(`Perf Log Request`, {
+    method: req.method,
+    originalUrl: req.originalUrl,
+    gaId: req.cookies_ga,
+  });
+  const startNs = process.hrtime.bigint();
+  res.on(`finish`, () => {
+    const endNs = process.hrtime.bigint();
+    perfLogger.info(``, {
+      method: req.method,
+      originalUrl: req.originalUrl,
+      gaId: req.cookies_ga,
+      timeLapseNs: endNs - startNs,
+      startNs: startNs,
+      endNs: endNs
+    });
+  });
+  next();
+};
 
 let docCounter = 0;
 let allDocCounter = 0;
@@ -1297,17 +1326,7 @@ async function start() {
   // Setup Google Analytics
   app.use(universalAnalytics.middleware(process.env.GA_ID, {cookieName: '_ga'}));
   app.use(bodyParser());
-
-  if (!process.env.PROD) {
-    const logRequestStart = (req, res, next) => {
-      logger.debug(`${req.method} ${req.originalUrl}`);
-      logger.debug(`Cookie: `, req.cookies);
-      // logger.debug(`Everything else: `, req);
-      next();
-    };
-    app.use(logRequestStart);
-  }
-
+  app.use(logReqPerf);
 
   const server = http.Server(app);
   const io = require('socket.io')(server);
