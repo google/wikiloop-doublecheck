@@ -39,21 +39,22 @@ const perfLogger = new (require('heroku-logger').Logger)({
 
 const logReqPerf = function (req, res, next) {
   // Credit for inspiration: http://www.sheshbabu.com/posts/measuring-response-times-of-express-route-handlers/
-  logger.debug(`Perf Log Request`, {
+  logger.debug(` log request starts for ${req.method} ${req.originalUrl}`, {
     method: req.method,
-    originalUrl: req.originalUrl,
-    gaId: req.cookies_ga,
+    original_url: req.originalUrl,
+    ga_id: req.cookies._ga,
   });
   const startNs = process.hrtime.bigint();
   res.on(`finish`, () => {
     const endNs = process.hrtime.bigint();
-    perfLogger.info(` log for ${req.method} ${req.originalUrl}`, {
+    perfLogger.info(` log response ends for ${req.method} ${req.originalUrl}`, {
       method: req.method,
-      originalUrl: req.originalUrl,
-      gaId: req.cookies_ga,
-      timeLapseNs: endNs - startNs,
-      startNs: startNs,
-      endNs: endNs
+      original_url: req.originalUrl,
+      ga_id: req.cookies._ga,
+      time_lapse_ns: endNs - startNs,
+      time_lapse_ms: (endNs - startNs) / 1e6,
+      start_ns: startNs,
+      end_ns: endNs
     });
   });
   next();
