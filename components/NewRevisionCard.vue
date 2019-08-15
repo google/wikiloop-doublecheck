@@ -276,9 +276,24 @@
           let revisions = Object.values(result.query.pages)[0].revisions;
           if (revisions[1].user === revisions[0].user) {
             window.open(historyUrl, '_blank');
+            this.$ga.event({
+              eventCategory: 'interaction',
+              eventAction: 'go-to-history',
+              eventValue: {
+                wikiRevId: this.wikiRevId
+              }
+            });
           } else {
             window.open(revertUrl, '_blank');
+            this.$ga.event({
+              eventCategory: 'interaction',
+              eventAction: 'go-to-revert',
+              eventValue: {
+                wikiRevId: this.wikiRevId
+              }
+            });
           }
+
         }
       },
       interactionBtn: async function (myJudgement) {

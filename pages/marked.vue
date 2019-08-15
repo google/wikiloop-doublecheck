@@ -113,6 +113,9 @@
     },
     async beforeMount() {
       await this.loadMore();
+    },
+    mounted() {
+      this.$ga.page('/marked.vue'); // track page
     }
   }
 </script>

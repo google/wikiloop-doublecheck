@@ -64,6 +64,9 @@
     async asyncData({$axios}) {
       const leaderboard = await $axios.$get(`/api/leaderboard`);
       return { leaderboard };
+    },
+    mounted() {
+      this.$ga.page('/leaderboard.vue'); // track page
     }
   }
 </script>

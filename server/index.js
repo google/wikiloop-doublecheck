@@ -868,7 +868,6 @@ function setupApiRequestListener(db, io, app) {
 
   apiRouter.get('/stats', asyncHandler(async (req, res) => {
     let myGaId = req.body.gaId || req.cookies._ga;
-
     logger.debug(`req.query`, req.query);
     let allInteractions = await db.collection(`Interaction`)
         .find({}, {
@@ -1284,7 +1283,7 @@ function setupMediaWikiListener(db, io) {
               nonbot: !recentChange.bot,
             };
             docCounter++;
-            logger.debug(`#${docCounter} / ${allDocCounter}`);
+            logger.debug(` Counters: ${docCounter} / ${allDocCounter}`);
             doc.comment = recentChange.comment;
             io.sockets.emit('recent-change', doc);
             delete doc.comment;

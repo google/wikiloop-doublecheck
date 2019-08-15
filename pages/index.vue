@@ -174,6 +174,7 @@
       this.fetchDiff = utility.fetchDiff.bind(this); // now you can call this.fetchDiff() (in your functions/template)
     },
     mounted() {
+      this.$ga.page('/index.vue'); // track page
       // Use the init recent chang to fill the screen
       this.initRecentChanges.forEach((async (rc) => await this.maybeShowRecentChange(rc)));
       socket.on('recent-change', async (newRecentChange) => {
