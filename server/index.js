@@ -95,7 +95,7 @@ function getUrlBaseByWiki(wiki) {
     'frwiki': 'fr',
     'ruwiki': 'ru'
   };
-  return `http://${wikiToLang[wiki]}.wikipedia.org`;
+  return `https://${wikiToLang[wiki]}.wikipedia.org`; // Require HTTPS to conduct the write edits
 }
 
 async function fetchOres(wiki, revIds) {
@@ -1254,7 +1254,7 @@ function setupMediaWikiListener(db, io) {
     };
 
     eventSource.onerror = function (event) {
-      console.error('--- Encountered error', event);
+      logger.error('--- Encountered error', event);
     };
 
     eventSource.onmessage = async function (event) {
@@ -1291,9 +1291,9 @@ function setupMediaWikiListener(db, io) {
 
           } catch (e) {
             if (e.name === "MongoError" && e.code === 11000) {
-              console.warn(`Duplicated Key Found`, e.errmsg);
+              logger.warn(`Duplicated Key Found`, e.errmsg);
             } else {
-              console.error(e);
+              logger.error(e);
             }
           }
         }
@@ -1310,7 +1310,7 @@ function setupIoSocketListener(io) {
     io.sockets.emit('client-activity', {liveUserCount: Object.keys(io.sockets.connected).length});
     socket.on('disconnect', function () {
       io.sockets.emit('client-activity', {liveUserCount: Object.keys(io.sockets.connected).length});
-      console.warn(`One client disconnected `, Object.keys(io.sockets.connected).length);
+      logger.warn(`One client disconnected `, Object.keys(io.sockets.connected).length);
     });
   });
 }
@@ -1340,7 +1340,7 @@ function setupAuthApi(app) {
   passport.use(new MediaWikiStrategy({
         consumerKey: process.env.MEDIAWIKI_CONSUMER_KEY,
         consumerSecret: process.env.MEDIAWIKI_CONSUMER_SECRET,
-        callbackURL: `${process.env.AXIOS_BASE_URL}/auth/mediawiki/callback`
+        callbackURL: `http://localhost:3000/auth/mediawiki/callback`
       },
       function(token, tokenSecret, profile, done) {
         profile.oauth = {
@@ -1376,26 +1376,28 @@ function setupAuthApi(app) {
   }
 
   app.get(`/api/auth/revert/:wikiRevId`, ensureAuthenticated,  asyncHandler(async (req, res) => {
-
-    let token = await oauthFetch( 'https://en.wikipedia.org/w/api.php',     {
+    let wiki = req.params.wikiRevId.split(':')[0];
+    let revId = req.params.wikiRevId.split(':')[1];
+    let apiUrl = `${getUrlBaseByWiki(wiki)}/w/api.php`;
+    let revInfo = await fetchRevisions(wiki, [revId]); // assuming request succeeded;
+    let token = (await oauthFetch( apiUrl,     {
       "action": "query",
       "format": "json",
       "meta": "tokens"
-    }, {}, req.user.oauth).query.tokens.csrftoken;
-    oauthFetch( 'https://en.wikipedia.org/w/api.php', {
+    }, {}, req.user.oauth)).query.tokens.csrftoken;  // assuming request succeeded;
+    oauthFetch( apiUrl, {
         "action": "edit",
         "format": "json",
-        "title": "User:Xinbenlv/sandbox",
+        "title": revInfo[0].title,
         "tags": "WikiLoop Battlefield",
-        "undo": "812242070",
-        "undoafter": "812242070",
+        "undo": revId,
         "token": token
       }, { method: 'POST' }, req.user.oauth ).then( function ( data ) {
       res.setHeader('Content-Type', 'application/json');
       res.status( 200 );
       res.send( JSON.stringify( data ) );
-    } );
-    logger.debug(`Conducting revert`);
+    } );  // assuming request succeeded;
+    logger.debug(`conducted revert for wikiRevId=${req.params.wikiRevId}`);
   }));
 }
 
