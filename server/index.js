@@ -1340,7 +1340,7 @@ function setupAuthApi(app) {
   passport.use(new MediaWikiStrategy({
         consumerKey: process.env.MEDIAWIKI_CONSUMER_KEY,
         consumerSecret: process.env.MEDIAWIKI_CONSUMER_SECRET,
-        callbackURL: `http://localhost:3000/auth/mediawiki/callback`
+        callbackURL: `${process.env.AXIOS_BASE_URL}:3000/auth/mediawiki/callback`
       },
       function(token, tokenSecret, profile, done) {
         profile.oauth = {
