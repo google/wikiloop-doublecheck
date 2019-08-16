@@ -1340,7 +1340,7 @@ function setupAuthApi(app) {
   passport.use(new MediaWikiStrategy({
         consumerKey: process.env.MEDIAWIKI_CONSUMER_KEY,
         consumerSecret: process.env.MEDIAWIKI_CONSUMER_SECRET,
-        callbackURL: `${process.env.AXIOS_BASE_URL}:3000/auth/mediawiki/callback`
+        callbackURL: `${process.env.AXIOS_BASE_URL}/auth/mediawiki/callback`
       },
       function(token, tokenSecret, profile, done) {
         profile.oauth = {
@@ -1354,12 +1354,28 @@ function setupAuthApi(app) {
       }
   ));
 
-  app.get('/auth/mediawiki', passport.authenticate('mediawiki'), asyncHandler(async (req, res) => {
-    logger.debug(`LOGIN ensureAuthenticated=`, req.isAuthenticated());
+  app.use((req, res, next) => {
+    if (req.isAuthenticated() && req.user) {
+      res.locals.isAuthenticated = req.isAuthenticated();
+      res.locals.user = {
+        id: req.user.id,
+        username: req.user._json.username,
+        grants: req.user._json.grants
+      };
+      logger.debug(`res.locals.user = ${JSON.stringify(res.locals.user, null ,2)}`);
+    }
+    next();
+  });
+
+  app.get('/auth/mediawiki/login', passport.authenticate('mediawiki'));
+
+  app.get('/auth/mediawiki/logout', asyncHandler(async (req, res) => {
+    req.logout();
+    res.redirect('/');
   }));
 
   app.get('/auth/mediawiki/callback',
-      passport.authenticate('mediawiki', { failureRedirect: '/login' }),
+      passport.authenticate('mediawiki', { failureRedirect: '/auth/mediawiki/login' }),
       function(req, res) {
         // Successful authentication, redirect home.
         logger.debug(` Successful authentication, redirect home. req.isAuthenticated()=`, req.isAuthenticated());
