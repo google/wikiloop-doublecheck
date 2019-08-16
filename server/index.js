@@ -18,7 +18,10 @@ const {Nuxt, Builder} = require('nuxt');
 const MongoClient = require('mongodb').MongoClient;
 const universalAnalytics = require('universal-analytics');
 const rp = require(`request-promise`);
-
+const asyncHandler = fn => (req, res, next) =>
+    Promise
+        .resolve(fn(req, res, next))
+        .catch(next);
 const logger = new (require('heroku-logger').Logger)({
   level: process.env.LOG_LEVEL || 'debug',
   delimiter: " | ",
@@ -61,7 +64,12 @@ const logReqPerf = function (req, res, next) {
 
 let docCounter = 0;
 let allDocCounter = 0;
+function isEmpty(value) {
+  return typeof value == 'string' && !value.trim() || typeof value == 'undefined' || value === null;
+}
 
+const useStiki = isEmpty(process.env.STIKI_MYSQL);
+const useOauth = isEmpty(process.env.MEDIAWIKI_CONSUMER_SECRET) && isEmpty(process.env.MEDIAWIKI_CONSUMER_KEY);
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js');
 config.dev = !(process.env.NODE_ENV === 'production');
@@ -437,11 +445,6 @@ function setupSTikiApiLisenter(app) {
 
   const mysql = require('mysql2');
 
-  const asyncHandler = fn => (req, res, next) =>
-      Promise
-          .resolve(fn(req, res, next))
-          .catch(next);
-
   // create the pool
   const pool = mysql.createPool(process.env.STIKI_MYSQL);
   // now get a Promise wrapped instance of that pool
@@ -505,10 +508,6 @@ function setupApiRequestListener(db, io, app) {
   const onlyGet = (req, res) => res.method === `GET`;
 
   apiRouter.use(cache('1 week', onlyGet));
-  const asyncHandler = fn => (req, res, next) =>
-      Promise
-          .resolve(fn(req, res, next))
-          .catch(next);
 
   apiRouter.get('/', (req, res, next) => {
     res.send('API root');
@@ -1200,9 +1199,9 @@ function setupApiRequestListener(db, io, app) {
   }));
 
   apiRouter.get('/flags', (req, res, next) => {
-    let useStiki = (process.env.STIKI_MYSQL && process.env.STIKI_MYSQL.length > 0) || false;
     res.send({
-      useStiki: useStiki
+      useStiki: useStiki,
+      useOauth: useOauth
     });
     req.visitor
         .event({ec: "api", ea: "/"})
@@ -1316,6 +1315,90 @@ function setupIoSocketListener(io) {
   });
 }
 
+function setupAuthApi(app) {
+  const passport = require(`passport`);
+  const oauthFetch = require('oauth-fetch-json');
+  const session = require('express-session');
+  app.use(session({
+    secret: 'keyboard cat',
+    resave: true,
+    saveUninitialized: true,
+  }));
+  app.use(passport.initialize());
+  app.use(passport.session());
+
+  const MediaWikiStrategy = require('passport-mediawiki-oauth').OAuthStrategy;
+
+  passport.serializeUser(function(user, done) {
+    done(null, user);
+  });
+
+  passport.deserializeUser(function(user, done) {
+    done(null, user);
+  });
+
+  passport.use(new MediaWikiStrategy({
+        consumerKey: process.env.MEDIAWIKI_CONSUMER_KEY,
+        consumerSecret: process.env.MEDIAWIKI_CONSUMER_SECRET,
+        callbackURL: `${process.env.AXIOS_BASE_URL}/auth/mediawiki/callback`
+      },
+      function(token, tokenSecret, profile, done) {
+        profile.oauth = {
+          consumer_key: process.env.MEDIAWIKI_CONSUMER_KEY,
+          consumer_secret: process.env.MEDIAWIKI_CONSUMER_SECRET,
+
+          token: token,
+          token_secret: tokenSecret
+        };
+        done(null, profile);
+      }
+  ));
+
+  app.get('/auth/mediawiki', passport.authenticate('mediawiki'), asyncHandler(async (req, res) => {
+    logger.debug(`LOGIN ensureAuthenticated=`, req.isAuthenticated());
+  }));
+
+  app.get('/auth/mediawiki/callback',
+      passport.authenticate('mediawiki', { failureRedirect: '/login' }),
+      function(req, res) {
+        // Successful authentication, redirect home.
+        logger.debug(` Successful authentication, redirect home. req.isAuthenticated()=`, req.isAuthenticated());
+        res.redirect('/');
+      });
+
+  function ensureAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+      return next();
+    } else {
+      res.status( 401 );
+      res.send( 'Login required for this endpoint' );
+    }
+  }
+
+  app.get(`/api/auth/revert/:wikiRevId`, ensureAuthenticated,  asyncHandler(async (req, res) => {
+
+    let token = await oauthFetch( 'https://en.wikipedia.org/w/api.php',     {
+      "action": "query",
+      "format": "json",
+      "meta": "tokens"
+    }, {}, req.user.oauth).query.tokens.csrftoken;
+    oauthFetch( 'https://en.wikipedia.org/w/api.php', {
+        "action": "edit",
+        "format": "json",
+        "title": "User:Xinbenlv/sandbox",
+        "tags": "WikiLoop Battlefield",
+        "undo": "812242070",
+        "undoafter": "812242070",
+        "token": token
+      }, { method: 'POST' }, req.user.oauth ).then( function ( data ) {
+      res.setHeader('Content-Type', 'application/json');
+      res.status( 200 );
+      res.send( JSON.stringify( data ) );
+    } );
+    logger.debug(`Conducting revert`);
+  }));
+}
+
 async function start() {
 
   const app = express();
@@ -1352,10 +1435,11 @@ async function start() {
     apiLogger.debug('req.query:', req.query);
     next();
   });
-
+  if (useOauth) setupAuthApi(app);
   setupIoSocketListener(io);
   setupMediaWikiListener(db, io);
   setupApiRequestListener(db, io, app);
+
   if (process.env.STIKI_MYSQL) {
     await setupSTikiApiLisenter(app);
   }
