@@ -7,11 +7,11 @@
 [![CircleCI](https://circleci.com/gh/google/wikiloop-battlefield/tree/master.svg?style=svg)](https://circleci.com/gh/google/wikiloop-battlefield/tree/master) 
 [![GitHub watchers](https://img.shields.io/github/watchers/google/wikiloop-battlefield.svg?label=Watch&style=social)](https://img.shields.io/github/watchers/google/wikiloop-battlefield.svg?label=Watch&style=social)
 ![GitHub forkers](https://img.shields.io/github/forks/google/wikiloop-battlefield.svg?label=Fork&style=social)
-![GitHub starers](https://img.shields.io/github/stars/google/wikiloop-battlefield.svg?label=Star&style=social)
+![GitHub stargazers](https://img.shields.io/github/stars/google/wikiloop-battlefield.svg?label=Star&style=social)
 ![GitHub followers](https://img.shields.io/github/followers/xinbenlv.svg?label=Follow&style=social)
 
 
-This is a project of web app built to allow people to fight vandalism collaboratively. See [[[m:WikiProject_WikiLoop]]](https://meta.wikimedia.org/wiki/WikiProject_WikiLoop) for more introduction. The documentation in this repository focus on development of the software itself.
+This is a web app project built to allow people to fight vandalism on Wikipedia collaboratively. See [[[m:WikiProject_WikiLoop]]](https://meta.wikimedia.org/wiki/WikiProject_WikiLoop) for more introduction. The documentation in this repository focuses on development of the software itself.
 
 [![Vandalism Example](./assets/demo-1.2.0-beta.gif)](http://battlefield.wikiloop.org/?utm_source=github&utm_medium=markdown&utm_campaign=repo_readme_img)
 
@@ -29,7 +29,7 @@ This is a project of web app built to allow people to fight vandalism collaborat
 ![GitHub package.json version (branch)](https://img.shields.io/github/package-json/v/google/wikiloop-battlefield/master.svg) 
 [![Tech Stack](https://img.shields.io/badge/tech-stack-blue.svg)](https://stackshare.io/project-wikiloop/battlefield)
 
-We welcome contributions! See [our contribution policy](CONTRIBUTING.md). Please checkout [our stack diagram](https://stackshare.io/project-wikiloop/battlefield) to get familiar with required with technologies we depend on.
+We welcome contributions! See [our contribution policy](CONTRIBUTING.md). Please check out [our stack diagram](https://stackshare.io/project-wikiloop/battlefield) to get familiar with the technologies we depend on.
 ### Deploy a Dev Instance on Heroku
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
@@ -87,4 +87,4 @@ circleci local execute build
 
 ## Credit
 - Primary Project Lead: Zainan Zhou <zzn@google.com>
-- We appreciate the courtesy of [Dr. Andrew G. West](http://www.andrew-g-west.com/) for providing us the read access to [STiki](https://en.wikipedia.org/wiki/Wikipedia:STiki) vandalism detection scores .
+- We appreciate the courtesy of [Dr. Andrew G. West](http://www.andrew-g-west.com/) for providing us with read access to [STiki](https://en.wikipedia.org/wiki/Wikipedia:STiki) vandalism detection scores.
