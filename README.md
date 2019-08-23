@@ -58,7 +58,15 @@ To run a local dev instance, which gives you hot reload and a devtool ([Vue DevT
 
 ```bash
 npm run dev
-``` 
+```
+
+You must also start a MongoDB server locally. To do so, install MongoDB Server 4 from [the website](https://www.mongodb.com/download-center/community), and then run the following in another command line. This will run your local MongoDB server at http://localhost:27017:
+
+```
+mongod
+```
+
+You can go to the dev website at http://localhost:3000.
 
 To build and run a local instance with like a prod:
 
