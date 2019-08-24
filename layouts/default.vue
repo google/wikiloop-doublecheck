@@ -85,14 +85,14 @@
       socket.on('interaction', async (interaction) => {
         if (interaction.newJudgement.userGaId === this.$cookiez.get('_ga')) {
           this.$bvToast.toast(
-              `Your judgement for ${interaction.recentChange.title} for revision ${interaction.wikiRevId} is logged.`, {
+              `Your judgement for ${interaction.recentChange.title} for revision ${interaction.wikiRevId} has been logged.`, {
                 title: 'Your Judgement',
                 autoHideDelay: 3000,
                 appendToast: true
               });
         } else {
           this.$bvToast.toast(
-              `A judgement for ${interaction.recentChange.title} for revision ${interaction.wikiRevId} is logged.`, {
+              `A judgement for ${interaction.recentChange.title} for revision ${interaction.wikiRevId} has been logged.`, {
                 title: 'New Judgement',
                 autoHideDelay: 3000,
                 appendToast: true
