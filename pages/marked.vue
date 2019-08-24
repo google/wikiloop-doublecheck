@@ -31,10 +31,7 @@
             :revisionProp="wikiRevIdToInfo[wikiRevId].revision"
         ></NewRevisionCard>
       </div>
-      <div class="col-12 p-2" v-if="!isEnd">
-        <button class="btn btn-outline-primary btn-block my-3" v-on:click="loadMore()">Load More</button>
-      </div>
-      <div class="col-12 p-2" v-if="!isEnd">
+      <div class="col-12 p-2" v-if="!isEnd && loading">
         <div class="spinner-border" role="status">
           <span class="sr-only">Loading...</span>
         </div>
@@ -46,6 +43,9 @@
 <script>
   import NewRevisionCard from '~/components/NewRevisionCard.vue';
 
+  // Margin (in pixels) above the bottom of the screen at which new history entries begin to load.
+  const SCROLL_OFFSET = 50;
+  
   export default {
     components: {
       NewRevisionCard
@@ -57,10 +57,12 @@
         wikiRevIds: [],
         wikiRevIdToInfo: {},
         isEnd: false,
+        loading: false
       };
     },
     methods: {
       loadMore: async function () {
+        this.loading = true;
         let params = {
           offset: this.offset,
           limit: this.limit,
@@ -101,7 +103,17 @@
         else {
           this.isEnd = true;
         }
+        this.loading = false;
       },
+      handleScroll: function(e) {
+        if (!this.isEnd &&
+            !this.loading &&
+            (document.documentElement.scrollTop + window.innerHeight >=
+              document.documentElement.offsetHeight - SCROLL_OFFSET)) {
+          this.loading = true;
+          this.loadMore();
+        }
+      }
     },
     async asyncData({$axios}) {
       const version = await $axios.$get(`/api/version`);
@@ -116,6 +128,16 @@
     },
     mounted() {
       this.$ga.page('/marked.vue'); // track page
+    },
+    created() {
+      if (process.client) { 
+        window.addEventListener('scroll', this.handleScroll);
+      }
+    },
+    destroyed() {
+      if (process.client) { 
+        window.removeEventListener('scroll', this.handleScroll);
+      }
     }
   }
 </script>
