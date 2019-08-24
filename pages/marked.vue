@@ -31,7 +31,7 @@
             :revisionProp="wikiRevIdToInfo[wikiRevId].revision"
         ></NewRevisionCard>
       </div>
-      <div class="col-12 p-2" v-if="!isEnd">
+      <div class="col-12 p-2" v-if="!isEnd && loading">
         <div class="spinner-border" role="status">
           <span class="sr-only">Loading...</span>
         </div>
