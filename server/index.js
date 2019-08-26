@@ -56,7 +56,6 @@ const logReqPerf = function (req, res, next) {
 
 let docCounter = 0;
 let allDocCounter = 0;
-const { useOauth, isEmpty } = require('../common');
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js');
 config.dev = !(process.env.NODE_ENV === 'production');
