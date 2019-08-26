@@ -19,15 +19,15 @@ const {Nuxt, Builder} = require('nuxt');
 const MongoClient = require('mongodb').MongoClient;
 const universalAnalytics = require('universal-analytics');
 const rp = require(`request-promise`);
+const {logger, getUrlBaseByWiki} = require('./common');
+const {root} = require('./routes/root');
+const {diff, diffWikiRevId} = require('./routes/diff');
+
 const asyncHandler = fn => (req, res, next) =>
     Promise
         .resolve(fn(req, res, next))
         .catch(next);
-const logger = new (require('heroku-logger').Logger)({
-  level: process.env.LOG_LEVEL || 'debug',
-  delimiter: " | ",
-  prefix: 'index'
-});
+
 
 const apiLogger = new (require('heroku-logger').Logger)({
   level: process.env.LOG_LEVEL || 'debug',
@@ -88,16 +88,6 @@ function computeOresField(oresJson, wiki, revId) {
     badfaithScore: badfaithScore,
     badfaith: badfaith
   }
-}
-
-// TODO: merged with shared/utility
-function getUrlBaseByWiki(wiki) {
-  let wikiToLang = {
-    'enwiki': 'en',
-    'frwiki': 'fr',
-    'ruwiki': 'ru'
-  };
-  return `https://${wikiToLang[wiki]}.wikipedia.org`; // Require HTTPS to conduct the write edits
 }
 
 async function fetchOres(wiki, revIds) {
@@ -511,35 +501,11 @@ function setupApiRequestListener(db, io, app) {
 
   apiRouter.use(cache('1 week', onlyGet));
 
-  apiRouter.get('/', (req, res, next) => {
-    res.send('API root');
-    req.visitor
-        .event({ec: "api", ea: "/"})
-        .send();
-  });
+  apiRouter.get('/', root);
 
-  apiRouter.get('/diff/:wikiRevId', asyncHandler(async (req, res) => {
-    logger.debug(`req.query`, req.query);
-    let wikiRevId = req.params.wikiRevId;
-    let wiki = wikiRevId.split(':')[0];
-    let revId = wikiRevId.split(':')[1];
-    let diffApiUrl = `${getUrlBaseByWiki(wiki)}/w/api.php?action=compare&fromrev=${revId}&torelative=prev&format=json`;
-    let diffJson = await rp.get(diffApiUrl, {json: true});
-    res.send(diffJson);
-    req.visitor
-        .event({ec: "api", ea: "/diff/:wikiRevId"})
-        .send();
-  }));
+  apiRouter.get('/diff/:wikiRevId', asyncHandler(diffWikiRevId));
 
-  apiRouter.get('/diff', asyncHandler(async (req, res) => {
-    logger.debug(`req.query`, req.query);
-    let diffApiUrl = `${req.query.serverUrl}/w/api.php?action=compare&fromrev=${req.query.revId}&torelative=prev&format=json`;
-    let diffJson = await rp.get(diffApiUrl, {json: true});
-    res.send(diffJson);
-    req.visitor
-        .event({ec: "api", ea: "/diff"})
-        .send();
-  }));
+  apiRouter.get('/diff', asyncHandler(diff));
 
   apiRouter.get('/recentChanges', asyncHandler(async (req, res) => {
     logger.debug(`req.query`, req.query);
