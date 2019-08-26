@@ -18,7 +18,8 @@ const consola = require('consola');
 const {Nuxt, Builder} = require('nuxt');
 const universalAnalytics = require('universal-analytics');
 const rp = require('request-promise');
-const {db, logger, apiLogger, getUrlBaseByWiki, computeOresField, fetchRevisions, useOauth} = require('./common');
+const mongoose = require('mongoose');
+const {logger, apiLogger, getUrlBaseByWiki, computeOresField, fetchRevisions, useOauth} = require('./common');
 const routes = require('./routes');
 const asyncHandler = fn => (req, res, next) =>
     Promise
@@ -420,6 +421,8 @@ async function start() {
     await nuxt.ready()
   }
 
+  await mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, dbName: process.env.MONGODB_DB} );
+
   app.use(function (req, res, next) {
     apiLogger.debug('req.originalUrl:', req.originalUrl);
     apiLogger.debug('req.params:', req.params);
@@ -428,8 +431,8 @@ async function start() {
   });
   if (useOauth) setupAuthApi(app);
   setupIoSocketListener(io);
-  setupMediaWikiListener(db, io);
-  setupApiRequestListener(db, io, app);
+  setupMediaWikiListener(mongoose.connection.db, io);
+  setupApiRequestListener(mongoose.connection.db, io, app);
 
   if (process.env.STIKI_MYSQL) {
     await setupSTikiApiLisenter(app);

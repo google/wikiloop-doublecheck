@@ -1,10 +1,3 @@
-const MongoClient = require('mongodb').MongoClient;
-let db;
-(async () => {
-    db = (await MongoClient.connect(process.env.MONGODB_URI, { useNewUrlParser: true }))
-    .db(process.env.MONGODB_DB);
-})();
-
 const logger = new (require('heroku-logger').Logger)({
     level: process.env.LOG_LEVEL || 'debug',
     delimiter: " | ",
@@ -303,7 +296,6 @@ function isEmpty(value) {
 const useOauth = !isEmpty(process.env.MEDIAWIKI_CONSUMER_SECRET) && !isEmpty(process.env.MEDIAWIKI_CONSUMER_KEY);
 
 module.exports = {
-    db,
     logger,
     apiLogger,
     getUrlBaseByWiki,

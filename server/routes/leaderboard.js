@@ -1,10 +1,10 @@
-const { db } = require('../common');
+const mongoose = require('mongoose');
 module.exports = async (req, res) => {
     let myGaId = req.body.gaId || req.cookies._ga;
 
     // TO-FUTURE-DO consider adding pagination if performance is a problem. We don't expect this list to be more than
     // 10K records anytime soon
-    let ret = await db.collection("Interaction").aggregate(
+    let ret = await mongoose.connection.db.collection("Interaction").aggregate(
         [
             {
                 "$match": {

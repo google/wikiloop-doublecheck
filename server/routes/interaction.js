@@ -1,7 +1,8 @@
-const { db, logger, getNewJudgementCounts } = require('../common');
+const mongoose = require('mongoose');
+const { logger, getNewJudgementCounts } = require('../common');
 const getInteraction = async (req, res) => {
     let wikiRevId = req.params.wikiRevId;
-    let interactions = await getNewJudgementCounts(db,
+    let interactions = await getNewJudgementCounts(mongoose.connection.db,
         // {
         //   wikiRevId: {$in: [wikiRevId]}
         // },
@@ -41,7 +42,7 @@ const listInteractions = async (req, res) => {
         matcher.userGaId = { $in: req.query.userGaIds }
     }
 
-    let interactions = await getNewJudgementCounts(db, matcher, offset, limit);
+    let interactions = await getNewJudgementCounts(mongoose.connection.db, matcher, offset, limit);
     res.send(interactions);
     req.visitor
         .event({ ec: "api", ea: "/interactions" })
@@ -73,12 +74,12 @@ const updateInteraction = async (req, res) => {
     */
 
     let doc = req.body;
-    await db.collection(`Interaction`).findOneAndReplace({
+    await mongoose.connection.db.collection(`Interaction`).findOneAndReplace({
         userGaId: userGaId,
         wikiRevId: wikiRevId,
     }, doc, { upsert: true });
     apicache.clear(req.originalUrl);
-    let storedInteractions = await getNewJudgementCounts(db, { wikiRevId: { $in: [wikiRevId] } });
+    let storedInteractions = await getNewJudgementCounts(mongoose.connection.db, { wikiRevId: { $in: [wikiRevId] } });
     let storedInteraction = storedInteractions[0];
 
     storedInteraction.newJudgement = {
@@ -118,13 +119,13 @@ const interaction = async (req, res) => {
         }
     };
 
-    await db.collection(`Interaction`).findOneAndReplace({
+    await mongoose.connection.db.collection(`Interaction`).findOneAndReplace({
         userGaId: userGaId,
         "recentChange.id": newRecentChange.id,
         "recentChange.wiki": newRecentChange.wiki
     }, doc, { upsert: true });
 
-    doc.judgementCounts = await getJudgementCounts(db, newRecentChange);
+    doc.judgementCounts = await getJudgementCounts(mongoose.connection.db, newRecentChange);
     io.sockets.emit('interaction', doc);
 
     res.send(`ok`);

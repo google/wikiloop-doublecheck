@@ -1,4 +1,5 @@
-const { db, getNewJudgementCounts } = require('../common');
+const mongoose = require('mongoose');
+const { getNewJudgementCounts } = require('../common');
 
 /**
  * @deprecated use getNewJudgementCounts
@@ -77,7 +78,7 @@ async function queryMarkedRecentChange(db, myGaId) {
 
 const markedRevsCsv = async (req, res) => {
     let newJudgementCounts = await getNewJudgementCounts(
-        db, {}, 0, 10000000/* as many as possible to download all */);
+        mongoose.connection.db, {}, 0, 10000000/* as many as possible to download all */);
     res.setHeader('Content-Type', 'text/csv');
     res.setHeader('Content-Disposition', 'attachment; filename=\"' + 'download-' + Date.now() + '.csv\"');
     const stringify = require('csv-stringify');

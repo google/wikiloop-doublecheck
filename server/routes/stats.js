@@ -1,9 +1,10 @@
-const { db, logger } = require('../common');
+const mongoose = require('mongoose');
+const { logger } = require('../common');
 
 module.exports = async (req, res) => {
     let myGaId = req.body.gaId || req.cookies._ga;
     logger.debug(`req.query`, req.query);
-    let allInteractions = await db.collection(`Interaction`)
+    let allInteractions = await mongoose.connection.db.collection(`Interaction`)
         .find({}, {
             userGaId: 1,
             judgement: 1,
