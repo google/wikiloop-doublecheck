@@ -86,5 +86,8 @@ circleci local execute build
 ```
 
 ## Credit
-- Primary Project Lead: Zainan Zhou <zzn@google.com>
+- Primary Project Lead: Zainan Zhou <zzn@google.com> @xinbenlv
+- Contributors:
+  - Ashwin Ramaswami(@epicfaace)
+
 - We appreciate the courtesy of [Dr. Andrew G. West](http://www.andrew-g-west.com/) for providing us with read access to [STiki](https://en.wikipedia.org/wiki/Wikipedia:STiki) vandalism detection scores.
