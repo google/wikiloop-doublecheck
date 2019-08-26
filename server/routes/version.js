@@ -1,6 +1,7 @@
 module.exports = (req, res, next) => {
-    res.send('API root');
+    var packageson = require('./../../package.json');
+    res.send(packageson.version);
     req.visitor
         .event({ ec: "api", ea: "/" })
         .send();
-};
+}

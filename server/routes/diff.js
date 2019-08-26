@@ -1,5 +1,5 @@
 const rp = require(`request-promise`);
-const {logger, getUrlBaseByWiki} = require('../common');
+const { logger, getUrlBaseByWiki } = require('../common');
 
 const diffWikiRevId = async (req, res) => {
     logger.debug(`req.query`, req.query);
