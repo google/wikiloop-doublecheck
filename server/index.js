@@ -71,7 +71,6 @@ function isEmpty(value) {
 
 const useStiki = !isEmpty(process.env.STIKI_MYSQL);
 const useOauth = !isEmpty(process.env.MEDIAWIKI_CONSUMER_SECRET) && !isEmpty(process.env.MEDIAWIKI_CONSUMER_KEY);
-console.log(`XXX process.env.MEDIAWIKI_CONSUMER_SECRET = ${process.env.MEDIAWIKI_CONSUMER_SECRET}, process.env.MEDIAWIKI_CONSUMER_KEY = ${process.env.MEDIAWIKI_CONSUMER_KEY}`)
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js');
 config.dev = !(process.env.NODE_ENV === 'production');
