@@ -1,5 +1,4 @@
 const { fetchRevisions } = require('../common');
-const rp = require('request-promise');
 
 const revision = async (req, res) => {
     let revIds = req.query.revIds;

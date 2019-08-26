@@ -1,5 +1,7 @@
+const apicache = require('apicache');
 const mongoose = require('mongoose');
 const { logger, getNewJudgementCounts } = require('../common');
+
 const getInteraction = async (req, res) => {
     let wikiRevId = req.params.wikiRevId;
     let interactions = await getNewJudgementCounts(mongoose.connection.db,
@@ -50,6 +52,7 @@ const listInteractions = async (req, res) => {
 };
 
 const updateInteraction = async (req, res) => {
+    const io = require('socket.io')(req.connection.server);
     let userGaId = req.body.gaId;
     let wikiRevId = req.params.wikiRevId;
     /**
@@ -97,6 +100,7 @@ const updateInteraction = async (req, res) => {
 };
 
 const interaction = async (req, res) => {
+    const io = require('socket.io')(req.connection.server);
     logger.debug(`Interaction req`, req.cookies, req.body);
 
     let userGaId = req.body.gaId;

@@ -1,3 +1,5 @@
+const rp = require('request-promise');
+
 const logger = new (require('heroku-logger').Logger)({
     level: process.env.LOG_LEVEL || 'debug',
     delimiter: " | ",

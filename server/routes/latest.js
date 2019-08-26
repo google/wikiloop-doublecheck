@@ -1,4 +1,5 @@
 const rp = require('request-promise');
+const { computeOresField } = require('../common');
 
 const latest = async (req, res) => {
 
