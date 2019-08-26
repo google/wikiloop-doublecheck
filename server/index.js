@@ -407,6 +407,7 @@ async function start() {
 
   const server = http.Server(app);
   const io = require('socket.io')(server);
+  app.set('socketio', io);
 
   // Init Nuxt.js
   const nuxt = new Nuxt(config)

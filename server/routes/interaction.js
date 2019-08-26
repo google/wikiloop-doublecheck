@@ -52,7 +52,7 @@ const listInteractions = async (req, res) => {
 };
 
 const updateInteraction = async (req, res) => {
-    const io = require('socket.io')(req.connection.server);
+    const io = req.app.get('socketio');
     let userGaId = req.body.gaId;
     let wikiRevId = req.params.wikiRevId;
     /**
@@ -100,7 +100,7 @@ const updateInteraction = async (req, res) => {
 };
 
 const interaction = async (req, res) => {
-    const io = require('socket.io')(req.connection.server);
+    const io = req.app.get('socketio');
     logger.debug(`Interaction req`, req.cookies, req.body);
 
     let userGaId = req.body.gaId;
