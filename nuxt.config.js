@@ -78,7 +78,7 @@ module.exports = {
    ** Axios module configuration
    */
   axios: {
-    baseURL: process.env.AXIOS_BASE_URL,
+    baseURL: process.env.NODE_ENV == "production" ? '' : process.env.AXIOS_BASE_URL,
     // See https://github.com/nuxt-community/axios-module#options
   },
 

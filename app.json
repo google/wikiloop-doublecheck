@@ -12,19 +12,10 @@
     }
   ],
   "env": {
-    "AXIOS_BASE_URL": {
-      "required": true,
-      "description": "The api base URI that the client will make request against. Replace the `<your-heroku-app-name>` with the `app name` you've just entered on top of the this page. If you don't know what heroku app url is, you can use `http://dev.battlefield.wikiloop.org` whereas the api will be our dev instance.",
-      "value": "https://<your-heroku-app-name>.herokuapp.com"
-    },
     "GA_ID": {
       "required": true,
       "description": "The Google Analytics ID. Feel free to use the dev one we provided.",
       "value": "UA-122681777-3"
-    },
-    "HOST": {
-      "required": true,
-      "value": "0.0.0.0"
     },
     "NODE_ENV": {
       "required": true,
