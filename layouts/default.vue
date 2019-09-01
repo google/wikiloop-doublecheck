@@ -44,9 +44,9 @@
           </b-navbar-nav>
           <b-navbar-nav class="ml-auto">
             <b-nav-item right href="#"><i class="fas fa-users"></i> Online ({{ liveUserCount }})</b-nav-item>
-            <b-nav-item :href="`/auth/mediawiki/login`" right>
-              Login {{$cookiez.get(`mediawikiwikiUserName`)}}
-            </b-nav-item>
+<!--            <b-nav-item :href="`/auth/mediawiki/login`" right>-->
+<!--              Login {{$cookiez.get(`mediawikiwikiUserName`)}}-->
+<!--            </b-nav-item>-->
             <b-nav-item :href="`/marked/?userGaId=${$cookiez.get('_ga')}`" right>
                 <object class="avatar-navbar" v-bind:data="`/api/avatar/${$cookiez.get('_ga')}`" ></object>Me
             </b-nav-item>
