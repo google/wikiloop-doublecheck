@@ -301,7 +301,11 @@ const latestRevs = async (req, res) => {
     .timing(`/api/latestRevs - ores`, 'Response delay for /api/latestRevs ores', oresResponseTime.getTime() - recentChangeResponseTime.getTime())
     .timing(`/api/latestRevs - post-processing`, 'Response delay for /api/latestRevs post-processing', endTime.getTime() - oresResponseTime.getTime())
     .send();
+
   perfLogger.info(`Response delay for /api/latestRevs = ${endTime.getTime() - startTime.getTime()}`);
+  perfLogger.info(`Response delay for /api/latestRevs recentChange = ${recentChangeResponseTime.getTime() - startTime.getTime()}`);
+  perfLogger.info(`Response delay for /api/latestRevs ores = ${oresResponseTime.getTime() - recentChangeResponseTime.getTime()}`);
+  perfLogger.info(`Response delay for /api/latestRevs post-processing = ${endTime.getTime() - oresResponseTime.getTime()}`);
 };
 module.exports = {
   latest,
