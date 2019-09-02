@@ -16,8 +16,12 @@ const rp = require('request-promise');
 var log4js = require('log4js');
 var logger = log4js.getLogger(`default`);
 logger.level = process.env.LOG_LEVEL || 'debug';
+
 var apiLogger = log4js.getLogger(`api`);
 apiLogger.level = process.env.LOG_LEVEL || 'debug';
+
+var perfLogger = log4js.getLogger(`perf`);
+perfLogger.level = process.env.LOG_LEVEL || 'debug';
 
 // TODO: merged with shared/utility
 function getUrlBaseByWiki(wiki) {
@@ -307,6 +311,7 @@ const useOauth = !isEmpty(process.env.MEDIAWIKI_CONSUMER_SECRET) && !isEmpty(pro
 module.exports = {
     logger,
     apiLogger,
+    perfLogger,
     getUrlBaseByWiki,
     computeOresField,
     fetchRevisions,

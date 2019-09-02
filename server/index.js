@@ -19,16 +19,12 @@ const {Nuxt, Builder} = require('nuxt');
 const universalAnalytics = require('universal-analytics');
 const rp = require('request-promise');
 const mongoose = require('mongoose');
-const {logger, apiLogger, getUrlBaseByWiki, computeOresField, fetchRevisions, useOauth} = require('./common');
+const {logger, apiLogger, perfLogger, getUrlBaseByWiki, computeOresField, fetchRevisions, useOauth} = require('./common');
 const routes = require('./routes');
 const asyncHandler = fn => (req, res, next) =>
     Promise
         .resolve(fn(req, res, next))
         .catch(next);
-
-var log4js = require('log4js');
-var perfLogger = log4js.getLogger(`perf`);
-perfLogger.level = process.env.LOG_LEVEL || 'debug';
 
 const logReqPerf = function (req, res, next) {
   // Credit for inspiration: http://www.sheshbabu.com/posts/measuring-response-times-of-express-route-handlers/

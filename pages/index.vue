@@ -206,7 +206,9 @@
         this.loading = false;
 
         var endTime = new Date();
-        this.$ga.time("Initial Load Timing", "", endTime.getTime() - startTime.getTime());
+        this.$ga.time("Initial Load Timing", "Client delay for /api/lastRevs", endTime.getTime() - startTime.getTime());
+        console.log(`Initial Load delay for /api/latestRevs = ${endTime.getTime() - startTime.getTime()}`);
+
       });
     }
   }

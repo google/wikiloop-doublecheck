@@ -13,7 +13,7 @@
 // limitations under the License.
 
 const rp = require('request-promise');
-const { computeOresField } = require('../common');
+const { computeOresField, perfLogger } = require('../common');
 
 const latest = async (req, res) => {
 
@@ -156,6 +156,7 @@ const latest = async (req, res) => {
 
 };
 const latestRevs = async (req, res) => {
+  let startTime = new Date();
   let wiki = "enwiki";  // TODO: support multiple different wiki in the cases. Currently only support ENwiki.
 
   // Getting a list of latest revisions related to the filter (Lang of Wiki), and their related diff
@@ -290,10 +291,13 @@ const latestRevs = async (req, res) => {
       };
     });
   res.send(recentChanges.reverse());
+
+  let endTime = new Date();
   req.visitor
     .event({ ec: "api", ea: "/latestRevs" })
+    .timing(`/api/latestRevs`, 'Response delay for /api/latestRevs', endTime.getTime() - startTime.getTime())
     .send();
-
+  perfLogger.info(`Response delay for /api/latestRevs = ${endTime.getTime() - startTime.getTime()}`);
 };
 module.exports = {
   latest,
