@@ -73,13 +73,16 @@ module.exports = {
     'bootstrap-vue/nuxt',
     '@nuxtjs/pwa',
     ['@nuxtjs/google-analytics', {
-      id: process.env.GA_ID
+      asyncID: function (ctx) {
+        return ctx.app.$env.GA_ID_NEW;
+      }
     }],
     ['cookie-universal-nuxt', { alias: 'cookiez' }],
     ['nuxt-env', {
       keys: [
         'HOST',
         'PORT',
+        'GA_ID'
       ]
     }]
   ],
