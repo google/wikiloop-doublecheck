@@ -17,7 +17,7 @@
 <template>
 
   <section>
-    <div class="container small-screen-padding" style="margin-top:60px">
+    <div v-if="!loading" class="container small-screen-padding" style="margin-top:60px">
       <h5>
         {{showCounter}} out of {{revisionCounter}} revisions matches <span
           class="btn btn-sm btn-outline-primary" v-b-modal.filter-modal>filters</span> or <span v-on:click="pause = !pause" class="btn btn-sm btn-outline-primary">pause</span> it.
@@ -33,6 +33,11 @@
             :wikiRevId="`${dbIdToRecentChangeMap[newRecentChangDbId].wiki}:${dbIdToRecentChangeMap[newRecentChangDbId].revision.new}`"
             ></NewRevisionCard>
       </div>
+    </div>
+    <div v-if="loading" class="container small-screen-padding d-flex justify-content-center" style="margin-top:60px">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div> Loading ... initial loading maybe a bit slow, it will come, eventually ...
     </div>
     <b-modal id="filter-modal" title="Filters">
       <b-form-group label="Require">
@@ -93,14 +98,15 @@
         stale: false,
         pause: false,
         timer: null,
+        loading: false,
+        initRecentChanges: []
         // loaded: false
       }
     },
     async asyncData({$axios}) {
-      const initRecentChanges = await $axios.$get(`/api/latestRevs?serverUrl=http://en.wikipedia.org/`);
       const version = await $axios.$get(`/api/version`);
       const stats = await $axios.$get(`/api/stats`);
-      return {initRecentChanges, version, stats};
+      return {version, stats};
     },
     methods: {
       refreshTimer: function() {
@@ -171,10 +177,11 @@
       this.getUrlBase = utility.getUrlBase.bind(this); // now you can call this.getUrlBase() (in your functions/template)
       this.fetchDiff = utility.fetchDiff.bind(this); // now you can call this.fetchDiff() (in your functions/template)
     },
-    mounted() {
+    async mounted() {
+      var startTime = new Date();
       this.$ga.page('/index.vue'); // track page
-      // Use the init recent chang to fill the screen
-      this.initRecentChanges.forEach((async (rc) => await this.maybeShowRecentChange(rc)));
+      this.loading = true;
+
       socket.on('recent-change', async (newRecentChange) => {
         // This is a hack fix of an existing Vue caveat: a new data will not have "reactivity"
         // if not being added to Vue data. https://vuejs.org/v2/guide/list.html#Caveats
@@ -185,12 +192,21 @@
         await this.maybeShowRecentChange(this.bufferNewRecentChange);
       });
       socket.on('client-activity', async (clientActivity) => {
-        console.log(`client activity: ${clientActivity}`);
+        console.log(`client activity: ${JSON.stringify(clientActivity)}`);
         this.liveUserCount = clientActivity.liveUserCount;
       });
       document.addEventListener('stats-update', async () => {
         console.log(`stats-update:`);
         this.stats = await this.$axios.$get(`/api/stats`);
+      });
+
+      this.$axios.$get(`/api/latestRevs?serverUrl=http://en.wikipedia.org/`).then((result) => {
+        this.initRecentChanges = result;
+        result.forEach((async (rc) => await this.maybeShowRecentChange(rc)));
+        this.loading = false;
+
+        var endTime = new Date();
+        this.$ga.time("Initial Load Timing", "", endTime.getTime() - startTime.getTime());
       });
     }
   }

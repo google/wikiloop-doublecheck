@@ -13,18 +13,11 @@
 // limitations under the License.
 
 const rp = require('request-promise');
-
-const logger = new (require('heroku-logger').Logger)({
-    level: process.env.LOG_LEVEL || 'debug',
-    delimiter: " | ",
-    prefix: 'index'
-});
-
-const apiLogger = new (require('heroku-logger').Logger)({
-    level: process.env.LOG_LEVEL || 'debug',
-    delimiter: " | ",
-    prefix: 'api'
-});
+var log4js = require('log4js');
+var logger = log4js.getLogger(`default`);
+logger.level = process.env.LOG_LEVEL || 'debug';
+var apiLogger = log4js.getLogger(`api`);
+apiLogger.level = process.env.LOG_LEVEL || 'debug';
 
 // TODO: merged with shared/utility
 function getUrlBaseByWiki(wiki) {

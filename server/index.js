@@ -26,11 +26,9 @@ const asyncHandler = fn => (req, res, next) =>
         .resolve(fn(req, res, next))
         .catch(next);
 
-const perfLogger = new (require('heroku-logger').Logger)({
-  level: process.env.LOG_LEVEL || 'debug',
-  delimiter: " | ",
-  prefix: 'perf'
-});
+var log4js = require('log4js');
+var perfLogger = log4js.getLogger(`perf`);
+perfLogger.level = process.env.LOG_LEVEL || 'debug';
 
 const logReqPerf = function (req, res, next) {
   // Credit for inspiration: http://www.sheshbabu.com/posts/measuring-response-times-of-express-route-handlers/
