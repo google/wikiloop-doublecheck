@@ -116,7 +116,7 @@
         }, 15000);  // we at least allow 1 new card each 15 seconds.
       },
       meetThreshold: function (newRecentChange) {
-        if (this.stale) return true;
+        if (this.stale || !('ores' in newRecentChange)) return true;
         else if (this.threshold !== null) {
           return (newRecentChange.ores.damagingScore >= this.threshold || !this.requireDamaging) &&
               (newRecentChange.ores.badfaithScore >= this.threshold || !this.requireBadfaith);

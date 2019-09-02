@@ -189,11 +189,6 @@ function setupApiRequestListener(db, io, app) {
   // TODO build batch api for avatar until performance is an issue. We have cache anyway should be fine.
   apiRouter.get("/avatar/:seed", asyncHandler(routes.avatar));
 
-  /** Get the latest recentChange
-   * @deprecated
-   */
-  apiRouter.get('/latest', asyncHandler(routes.latest));
-
   apiRouter.get('/latestRevs', asyncHandler(routes.latestRevs));
 
   apiRouter.get('/flags', routes.flags);
