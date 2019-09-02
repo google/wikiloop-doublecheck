@@ -25,6 +25,10 @@
       "required": true,
       "value": "false"
     },
+    "HOST": {
+      "required": true,
+      "value": "0.0.0.0"
+    }
   },
   "formation": {
     "web": {

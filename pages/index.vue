@@ -172,8 +172,6 @@
       this.fetchDiff = utility.fetchDiff.bind(this); // now you can call this.fetchDiff() (in your functions/template)
     },
     async mounted() {
-      console.log(`DEBUG XXX start index!`);
-      console.log(`DEBUG XXX index.vue app.$env = ${this.$env.AXIOS_BASE_URL}`);
       this.stats = await this.$axios.$get(`/api/stats`);
       this.$ga.page('/index.vue'); // track page
       // Use the init recent chang to fill the screen
