@@ -113,49 +113,8 @@ const updateInteraction = async (req, res) => {
         .send();
 };
 
-const interaction = async (req, res) => {
-    const io = req.app.get('socketio');
-    logger.debug(`Interaction req`, req.cookies, req.body);
-
-    let userGaId = req.body.gaId;
-    let newRecentChange = req.body.newRecentChange;
-    let doc = {
-        userGaId: userGaId,
-        wikiRevId: `${newRecentChange.wiki}:${newRecentChange.revision.new}`,
-        judgement: req.body.judgement,
-        timestamp: req.body.timestamp,
-        recentChange: {
-            _id: newRecentChange._id,
-            id: newRecentChange.id,
-            title: newRecentChange.title,
-            namespace: newRecentChange.namespace,
-            revision: newRecentChange.revision,
-            ores: newRecentChange.ores,
-            user: newRecentChange.user,
-            wiki: newRecentChange.wiki,
-            timestamp: newRecentChange.timestamp,
-        }
-    };
-
-    await mongoose.connection.db.collection(`Interaction`).findOneAndReplace({
-        userGaId: userGaId,
-        "recentChange.id": newRecentChange.id,
-        "recentChange.wiki": newRecentChange.wiki
-    }, doc, { upsert: true });
-
-    doc.judgementCounts = await getJudgementCounts(mongoose.connection.db, newRecentChange);
-    io.sockets.emit('interaction', doc);
-
-    res.send(`ok`);
-    req.visitor
-        .event({ ec: "api", ea: "/interaction" })
-        .event("judgement", req.body.judgement)
-        .send();
-};
-
 module.exports = {
     getInteraction,
     listInteractions,
-    updateInteraction,
-    interaction
+    updateInteraction
 };

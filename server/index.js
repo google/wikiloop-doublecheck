@@ -151,26 +151,9 @@ function setupApiRequestListener(db, io, app) {
 
   apiRouter.post('/interaction/:wikiRevId', asyncHandler(routes.updateInteraction));
 
-  /**
-   * TODO fix it.
-   * @deprecated
-   */
-  apiRouter.post('/interaction', asyncHandler(routes.interaction));
-
   apiRouter.get("/markedRevs.csv", asyncHandler(routes.markedRevsCsv));
 
-  /**
-   * @deprecated
-   */
-  apiRouter.get("/marked.csv", asyncHandler(routes.markedCsv));
-
-
   apiRouter.get("/markedRevs", asyncHandler(routes.markedRevs));
-
-  /**
-   * @deprecated
-   */
-  apiRouter.get("/marked", asyncHandler(routes.marked));
 
   /**
    * Return a list of all leader
