@@ -56,6 +56,7 @@ module.exports = {
    ** Plugins to load before mounting the App
    */
   plugins: [
+    '@/plugins/axios.js',
     '@/plugins/socket.io.js',
     '@/plugins/timeago.js'
   ],
@@ -78,7 +79,6 @@ module.exports = {
    ** Axios module configuration
    */
   axios: {
-    baseURL: process.env.NODE_ENV == "production" ? '' : process.env.AXIOS_BASE_URL,
     // See https://github.com/nuxt-community/axios-module#options
   },
 
