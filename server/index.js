@@ -257,7 +257,7 @@ function setupMediaWikiListener(db, io) {
               nonbot: !recentChange.bot,
             };
             docCounter++;
-            logger.debug(` Counters: ${docCounter} / ${allDocCounter}`);
+            // logger.debug(` Counters: ${docCounter} / ${allDocCounter}`);
             doc.comment = recentChange.comment;
             io.sockets.emit('recent-change', doc);
             delete doc.comment;
@@ -315,7 +315,7 @@ function setupAuthApi(app) {
   passport.use(new MediaWikiStrategy({
         consumerKey: process.env.MEDIAWIKI_CONSUMER_KEY,
         consumerSecret: process.env.MEDIAWIKI_CONSUMER_SECRET,
-        callbackURL: `${process.env.AXIOS_BASE_URL}/auth/mediawiki/callback`
+        callbackURL: `/auth/mediawiki/callback` // TODO probably need to set HOST and PORT
       },
       function(token, tokenSecret, profile, done) {
         profile.oauth = {

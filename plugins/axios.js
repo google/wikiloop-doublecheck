@@ -6,7 +6,7 @@ export default ({ $axios, app }) => {
         if (process.client) {
             config.baseURL = "";
         } else {
-            config.baseURL = app.$env.AXIOS_BASE_URL;
+            config.baseURL = `http://${app.$env.HOS}:${app.$env.PORT}`;
         }
         console.log(`DEBUG XXX after rewrite config.baseURL = ${config.baseURL }`);
     });

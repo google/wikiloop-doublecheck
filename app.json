@@ -24,7 +24,7 @@
     "NPM_CONFIG_PRODUCTION": {
       "required": true,
       "value": "false"
-    }
+    },
   },
   "formation": {
     "web": {
