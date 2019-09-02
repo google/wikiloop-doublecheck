@@ -257,7 +257,7 @@ function setupMediaWikiListener(db, io) {
               nonbot: !recentChange.bot,
             };
             docCounter++;
-            // logger.debug(` Counters: ${docCounter} / ${allDocCounter}`);
+            logger.debug(` Counters: ${docCounter} / ${allDocCounter}`);
             doc.comment = recentChange.comment;
             io.sockets.emit('recent-change', doc);
             delete doc.comment;

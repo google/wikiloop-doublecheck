@@ -171,8 +171,7 @@
       this.getUrlBase = utility.getUrlBase.bind(this); // now you can call this.getUrlBase() (in your functions/template)
       this.fetchDiff = utility.fetchDiff.bind(this); // now you can call this.fetchDiff() (in your functions/template)
     },
-    async mounted() {
-      this.stats = await this.$axios.$get(`/api/stats`);
+    mounted() {
       this.$ga.page('/index.vue'); // track page
       // Use the init recent chang to fill the screen
       this.initRecentChanges.forEach((async (rc) => await this.maybeShowRecentChange(rc)));
