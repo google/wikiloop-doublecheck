@@ -78,7 +78,8 @@ module.exports = {
     ['cookie-universal-nuxt', { alias: 'cookiez' }],
     ['nuxt-env', {
       keys: [
-        'AXIOS_BASE_URL',
+        'HOST',
+        'PORT',
       ]
     }]
   ],
