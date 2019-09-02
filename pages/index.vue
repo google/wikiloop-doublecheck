@@ -59,8 +59,6 @@
   import VueTimeago from 'vue-timeago';
   import utility from '../shared/utility';
 
-  const $ = require('jquery');
-
   export default {
     comments: {
       BootstrapVue,
