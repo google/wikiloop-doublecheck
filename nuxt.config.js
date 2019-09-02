@@ -15,6 +15,8 @@
 const pkg = require('./package');
 require(`dotenv`).config();
 
+console.log(`=================================`);
+console.log(`nuxt.config.js is being executed!`);
 module.exports = {
   mode: 'universal',
 
@@ -74,11 +76,17 @@ module.exports = {
       id: process.env.GA_ID
     }],
     ['cookie-universal-nuxt', { alias: 'cookiez' }],
+    ['nuxt-env', {
+      keys: [
+        'AXIOS_BASE_URL',
+      ]
+    }]
   ],
   /*
    ** Axios module configuration
    */
   axios: {
+    baseURL: process.env.AXIOS_BASE_URL,
     // See https://github.com/nuxt-community/axios-module#options
   },
 
@@ -87,7 +95,6 @@ module.exports = {
       // Custom config options here
     }
   },
-
   /*
    ** Build configuration
    */
@@ -95,3 +102,6 @@ module.exports = {
     vendor: ['socket.io-client']
   }
 };
+
+console.log(`nuxt.config.js is done executed!`);
+console.log(`=================================`);

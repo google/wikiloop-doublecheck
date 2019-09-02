@@ -59,8 +59,6 @@
   import VueTimeago from 'vue-timeago';
   import utility from '../shared/utility';
 
-  const $ = require('jquery');
-
   export default {
     comments: {
       BootstrapVue,
@@ -173,7 +171,10 @@
       this.getUrlBase = utility.getUrlBase.bind(this); // now you can call this.getUrlBase() (in your functions/template)
       this.fetchDiff = utility.fetchDiff.bind(this); // now you can call this.fetchDiff() (in your functions/template)
     },
-    mounted() {
+    async mounted() {
+      console.log(`DEBUG XXX start index!`);
+      console.log(`DEBUG XXX index.vue app.$env = ${this.$env.AXIOS_BASE_URL}`);
+      this.stats = await this.$axios.$get(`/api/stats`);
       this.$ga.page('/index.vue'); // track page
       // Use the init recent chang to fill the screen
       this.initRecentChanges.forEach((async (rc) => await this.maybeShowRecentChange(rc)));

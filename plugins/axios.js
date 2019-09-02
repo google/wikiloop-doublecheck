@@ -1,5 +1,13 @@
-export default ({ $axios, $env }) => {
+export default ({ $axios, app }) => {
     $axios.onRequest(config => {
-        console.log(`AXIOS Config ${JSON.stringify(config, null, 2)}`);
+        console.log(`DEBUG XXX before rewrite config.baseURL = ${config.baseURL }`);
+        console.log(`DEBUG XXX is client: ${process.client}`);
+        console.log(`DEBUG XXX is server: ${process.server}`);
+        if (process.client) {
+            config.baseURL = "";
+        } else {
+            config.baseURL = app.$env.AXIOS_BASE_URL;
+        }
+        console.log(`DEBUG XXX after rewrite config.baseURL = ${config.baseURL }`);
     });
 }
