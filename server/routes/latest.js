@@ -164,6 +164,7 @@ const latestRevs = async (req, res) => {
   let queryUrl = `${req.query.serverUrl}/w/api.php?action=query&list=recentchanges&prop=info&format=json&rcnamespace=0&rclimit=100&rctype=edit&rctoponly=true&rcprop=user|userid|comment|flags|timestamp|ids|title&rcshow=!bot`;
   // https://en.wikipedia.org/w/api.php?action=query&list=recentchanges&prop=info&format=json&rcnamespace=0&rclimit=50&rctype=edit&rctoponly=true&rcprop=user|userid|comment|flags|timestamp|ids|title&rcshow=!bot
   let recentChangesJson = await rp.get(queryUrl, { json: true });
+  let recentChangeResponseTime = new Date();
   /** Sample response
    {
      "batchcomplete":"",
@@ -269,7 +270,7 @@ const latestRevs = async (req, res) => {
    * */
 
   let oresResultJson = await rp.get(oresUrl, { json: true });
-
+  let oresResponseTime = new Date();
   let recentChanges = recentChangesJson.query.recentchanges  // from recentChangesJson result
     .map(rawRecentChange => {
       return {
@@ -296,6 +297,9 @@ const latestRevs = async (req, res) => {
   req.visitor
     .event({ ec: "api", ea: "/latestRevs" })
     .timing(`/api/latestRevs`, 'Response delay for /api/latestRevs', endTime.getTime() - startTime.getTime())
+    .timing(`/api/latestRevs - recentChange`, 'Response delay for /api/latestRevs recentChange', recentChangeResponseTime.getTime() - startTime.getTime())
+    .timing(`/api/latestRevs - ores`, 'Response delay for /api/latestRevs ores', oresResponseTime.getTime() - recentChangeResponseTime.getTime())
+    .timing(`/api/latestRevs - post-processing`, 'Response delay for /api/latestRevs post-processing', endTime.getTime() - oresResponseTime.getTime())
     .send();
   perfLogger.info(`Response delay for /api/latestRevs = ${endTime.getTime() - startTime.getTime()}`);
 };
