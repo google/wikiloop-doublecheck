@@ -16,7 +16,7 @@ const rp = require('request-promise');
 const { computeOresField } = require('../common');
 
 async function fetchOres(wiki, revIds) {
-    let oresUrl = `https://ores.wmflabs.org/v3/scores/${wiki}/?models=damaging|goodfaith&revids=${revIds.join('|')}`;
+    let oresUrl = `https://ores.wikimedia.org/v3/scores/${wiki}/?models=damaging|goodfaith&revids=${revIds.join('|')}`;
     let oresResultJson = await rp.get(oresUrl, { json: true });
     return revIds.map(revId => computeOresField(oresResultJson, wiki, revId));
 }
