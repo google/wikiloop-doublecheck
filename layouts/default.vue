@@ -26,7 +26,7 @@
             </svg></a>
           </div>
         </div>
-        <a class="navbar-brand" href="#">WikiLoop Battlefield</a>
+        <a class="navbar-brand" href="#">WikiLoop Battlefield Super</a>
         <b-navbar-toggle  target="nav-collapse">
         </b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>
