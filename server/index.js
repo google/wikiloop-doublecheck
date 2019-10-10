@@ -213,7 +213,7 @@ function setupMediaWikiListener(db, io) {
         // Currently only support these wikis.
         if (["enwiki", "frwiki", "ruwiki"].indexOf(recentChange.wiki) >= 0) {
           try {
-            let oresUrl = `https://ores.wmflabs.org/v3/scores/${recentChange.wiki}/?models=damaging|goodfaith&revids=${recentChange.revision.new}`;
+            let oresUrl = `https://ores.wikimedia.org/v3/scores/${recentChange.wiki}/?models=damaging|goodfaith&revids=${recentChange.revision.new}`;
             let oresJson = await rp.get(oresUrl, {json: true});
             recentChange.ores = computeOresField(oresJson, recentChange.wiki, recentChange.revision.new);
             let doc = {

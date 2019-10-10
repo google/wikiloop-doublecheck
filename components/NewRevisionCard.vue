@@ -47,14 +47,14 @@
             <div v-if="ores" class="col-lg-2">
               <span data-toggle="tooltip" data-placement="top" title="Damaging Score by WMF ORES">
                 <i v-bind:class="{ 'text-danger': ores ? ores.badfaith : false }" class="fas fa-cloud-rain"></i> ORES Damaging: <a
-                  :href="`https://ores.wmflabs.org/v3/scores/enwiki/?revids=${revision.revid}`">{{ damagingPercent() }}</a>
+                  :href="`https://ores.wikimedia.org/v3/scores/enwiki/?revids=${revision.revid}`">{{ damagingPercent() }}</a>
               </span>
             </div>
             <div v-if="ores" class="col-lg-2">
               <span data-toggle="tooltip" data-placement="top"
                     title="Bad-faith Score by WMF ORES (here Bad-faith = 100% - Goodfaith)">
                 <i v-bind:class="{ 'text-warning': ores ? ores.damaging: false }" class="fas fa-theater-masks"></i> ORES Bad-faith:  <a
-                  :href="`https://ores.wmflabs.org/v3/scores/enwiki/?revids=${revision.revid}`">{{ badfaithPercent() }}</a>
+                  :href="`https://ores.wikimedia.org/v3/scores/enwiki/?revids=${revision.revid}`">{{ badfaithPercent() }}</a>
               </span>
             </div>
             <div v-if="stiki" class="col-lg-2">
