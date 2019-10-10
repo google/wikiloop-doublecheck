@@ -82,12 +82,9 @@
         }
       }
     },
-    async beforeMount() {
+    async mounted() {
       this.commitFlagsFromUrlQuery(this.$route.query);
       this.stats = await this.$axios.$get(`/api/stats`);
-    },
-
-    async mounted() {
       socket.on('client-activity', async (clientActivity) => {
         this.liveUserCount = clientActivity.liveUserCount;
       });
