@@ -287,7 +287,7 @@ function setupAuthApi(app) {
   passport.use(new MediaWikiStrategy({
         consumerKey: process.env.MEDIAWIKI_CONSUMER_KEY,
         consumerSecret: process.env.MEDIAWIKI_CONSUMER_SECRET,
-        callbackURL: `/auth/mediawiki/callback` // TODO probably need to set HOST and PORT
+        callbackURL: `${process.env.OAUTH_CALLBACK_ENDPOINT}/auth/mediawiki/callback` // TODO probably need to set HOST and PORT
       },
       function(token, tokenSecret, profile, done) {
         profile.oauth = {

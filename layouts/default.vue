@@ -44,9 +44,9 @@
           </b-navbar-nav>
           <b-navbar-nav class="ml-auto">
             <b-nav-item right href="#"><i class="fas fa-users"></i> Online ({{ liveUserCount }})</b-nav-item>
-<!--            <b-nav-item :href="`/auth/mediawiki/login`" right>-->
-<!--              Login {{$cookiez.get(`mediawikiwikiUserName`)}}-->
-<!--            </b-nav-item>-->
+            <b-nav-item v-if="$store.state.flags.enableLogin" href="/auth/mediawiki/login" right>
+              Login
+            </b-nav-item>
             <b-nav-item :href="`/marked/?userGaId=${$cookiez.get('_ga')}`" right>
                 <object class="avatar-navbar" v-bind:data="`/api/avatar/${$cookiez.get('_ga')}`" ></object>Me
             </b-nav-item>
@@ -72,9 +72,22 @@
       const version = await $axios.$get(`/api/version`);
       return {version};
     },
+    methods: {
+      commitFlagsFromUrlQuery: function(query) {
+        for (let k in query) {
+          let v = query[k];
+          if (v === "1" | v === "true") v = true; // convert to native boolean
+          else if (v==="0" || v==="false") v = false;
+          this.$store.commit(`setFlag`, {key: k, value: v});
+        }
+      }
+    },
+    async beforeMount() {
+      this.commitFlagsFromUrlQuery(this.$route.query);
+      this.stats = await this.$axios.$get(`/api/stats`);
+    },
 
     async mounted() {
-      this.stats = await this.$axios.$get(`/api/stats`);
       socket.on('client-activity', async (clientActivity) => {
         this.liveUserCount = clientActivity.liveUserCount;
       });

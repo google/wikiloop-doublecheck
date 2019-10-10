@@ -13,22 +13,24 @@
 // limitations under the License.
 
 export const state = () => ({
-  flags: null
+    flags: {}
 });
 
 export const mutations = {
-  setFlags (state, flagObject) {
-    state.flags = flagObject;
-  },
-  clearFlags (state, ) {
-    state.flags = null
-  },
-
+    setFlags (state, flagObject) {
+        state.flags = flagObject;
+    },
+    clearFlags (state, ) {
+        state.flags = {}
+    },
+    setFlag (state, kv) {
+        state.flags[kv.key] = kv.value;
+    },
 };
 
 export const actions = {
-  async nuxtServerInit({ commit, state }) {
-    const flags = await this.$axios.$get(`/api/flags`);
-    commit('setFlags', flags);
-  }
+    async nuxtServerInit({ commit, state }) {
+        const flags = await this.$axios.$get(`/api/flags`);
+        commit('setFlags', flags);
+    }
 };

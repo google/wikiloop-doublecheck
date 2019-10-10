@@ -206,7 +206,7 @@
       },
       loadStiki: async function() {
         console.log(`Load Stiki`);
-        let stikiRemote;
+        let stikiRemote = [];
         if (this.stikiProp) {
           stikiRemote = this.stikiProp;
         } else {
@@ -226,7 +226,7 @@
       },
       loadCbng: async function() {
         console.log(`Load CBNG for ${this.wikiRevId}`);
-        let cbngRemote;
+        let cbngRemote = [];
         if (this.cbngProp) {
           cbngRemote = this.cbngProp;
         } else {
