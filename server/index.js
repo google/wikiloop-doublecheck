@@ -219,7 +219,15 @@ function setupMediaWikiListener(db, io) {
         if (["enwiki", "frwiki", "ruwiki"].indexOf(recentChange.wiki) >= 0) {
           try {
             let oresUrl = `https://ores.wikimedia.org/v3/scores/${recentChange.wiki}/?models=damaging|goodfaith&revids=${recentChange.revision.new}`;
-            let oresJson = await rp.get(oresUrl, {json: true});
+            let oresJson;
+            try {
+              oresJson = await rp.get(oresUrl, {json: true});
+            } catch(e) {
+              if (e.StatusCodeError === 429) {
+                  logger.warn(`ORES hits connection limit `, e.errmsg);
+              }
+              return;
+            }
             recentChange.ores = computeOresField(oresJson, recentChange.wiki, recentChange.revision.new);
             let doc = {
               _id: recentChange._id,
@@ -356,20 +364,23 @@ function setupAuthApi(app) {
   }
 
   app.get(`/api/auth/revert/:wikiRevId`, ensureAuthenticated,  asyncHandler(async (req, res) => {
+    logger.info(`Receive auth revert request`, req.params);
     let wiki = req.params.wikiRevId.split(':')[0];
     let revId = req.params.wikiRevId.split(':')[1];
     let apiUrl = `${getUrlBaseByWiki(wiki)}/w/api.php`;
-    let revInfo = await fetchRevisions(wiki, [revId])[wiki]; // assuming request succeeded
+    let revInfo = (await fetchRevisions([req.params.wikiRevId]))[wiki]; // assuming request succeeded
     let token = (await oauthFetch( apiUrl,     {
       "action": "query",
       "format": "json",
       "meta": "tokens"
     }, {}, req.user.oauth)).query.tokens.csrftoken;  // assuming request succeeded;
+    // Documentation: https://www.mediawiki.org/wiki/API:Edit#API_documentation
     oauthFetch( apiUrl, {
         "action": "edit",
         "format": "json",
-        "title": revInfo[0].title,
+        "title": revInfo[0].title, // TODO(zzn): assuming only 1 revision is being reverted
         "tags": "WikiLoop Battlefield",
+        "summary": `Identified as test/vandalism and undid revision ${revId} by [[User:${revInfo[0].user}]] with [[m:WikiLoop Battlefield]](v${require('./../package.json').version}). See it or provide your opinion at ${process.env.OAUTH_CALLBACK_ENDPOINT}/marked?wikiRevId=${req.params.wikiRevId}`,
         "undo": revId,
         "token": token
       }, { method: 'POST' }, req.user.oauth ).then( function ( data ) {

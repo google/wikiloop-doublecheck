@@ -277,7 +277,7 @@
       redirectToRevert: async function() {
         if (this.myJudgement === `ShouldRevert` && !this.isOverriden()) {
           const version = await this.$axios.$get(`/api/version`);
-          let revertUrl = `${this.getUrlBaseByWiki(this.revision.wiki)}/w/index.php?title=${this.revision.title}&action=edit&undoafter=${this.revision.parentid}&undo=${this.revision.revid}&summary=Identified as test/vandalism using [[:m:WikiLoop Battlefield]](version ${version}) at battlefield.wikiloop.org.`;
+          let revertUrl = `${this.getUrlBaseByWiki(this.revision.wiki)}/w/index.php?title=${this.revision.title}&action=edit&undoafter=${this.revision.parentid}&undo=${this.revision.revid}&summary=Identified as test/vandalism using [[:m:WikiLoop Battlefield]](version ${version}). See it or provide your opinion at http://battlefield.wikiloop.org/marked?wikiRevId=${this.wikiRevId}`;
           let historyUrl = `${this.getUrlBaseByWiki(this.revision.wiki)}/w/index.php?title=${this.revision.title}&action=history`;
           let result = await this.$axios.$get(`/api/mediawiki`, {params: {
             wiki: this.revision.wiki,
