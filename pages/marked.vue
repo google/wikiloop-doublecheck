@@ -45,7 +45,7 @@
 
   // Margin (in pixels) above the bottom of the screen at which new history entries begin to load.
   const SCROLL_OFFSET = 50;
-  
+
   export default {
     components: {
       NewRevisionCard
@@ -123,19 +123,17 @@
         stats,
       };
     },
-    async beforeMount() {
+    async mounted() {
+      this.$ga.page('/marked.vue'); // track page
       await this.loadMore();
     },
-    mounted() {
-      this.$ga.page('/marked.vue'); // track page
-    },
     created() {
-      if (process.client) { 
+      if (process.client) {
         window.addEventListener('scroll', this.handleScroll);
       }
     },
     destroyed() {
-      if (process.client) { 
+      if (process.client) {
         window.removeEventListener('scroll', this.handleScroll);
       }
     }
