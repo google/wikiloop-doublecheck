@@ -20,4 +20,7 @@ export const mutations = {
     setProfile (state, value) {
         state.profile = value;
     },
+    clearProfile (state) {
+        state.profile = null;
+    },
 };

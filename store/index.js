@@ -13,7 +13,9 @@
 // limitations under the License.
 
 export const state = () => ({
-    flags: {}
+    flags: {},
+    version: null,
+    sessionId: null,
 });
 
 export const mutations = {
@@ -26,19 +28,30 @@ export const mutations = {
     setFlag (state, kv) {
         state.flags[kv.key] = kv.value;
     },
+    setVersion (stat, version) {
+        state.version = version;
+    },
+    setSessionId (stat, sessionId) {
+        state.sessionId = sessionId;
+    }
 };
 
 export const actions = {
     async nuxtServerInit({ commit, state }, { req }) {
-
         const flags = await this.$axios.$get(`/api/flags`);
         commit('setFlags', flags);
-
-        console.log(`nuxtServerInit req.session.id`, req.session.id);
-        // req.session is not defined
-        if (req.locals && req.locals.user) {
+        const version = await this.$axios.$get(`/api/version`);
+        commit('setVersion', version);
+        if (req.session && req.session.id) {
+            commit('setSessionId', req.session.id);
+            console.log(`nuxtServerInit req.session.id`, req.session.id);
+        }
+        if (req.user) {
             console.log(`nuxtServerInit store state setProfile req.user`, req.user);
-            commit('user/setProfile', req.locals.user)
+            commit('user/setProfile', req.user);
+        } else {
+            console.log(`nuxtServerInit store state clearProfile because req.user is not defined`);
+            commit('user/clearProfile');
         }
     }
 };

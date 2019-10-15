@@ -284,7 +284,7 @@ function setupAuthApi(app) {
       maxAge: 90*24*60*60*1000
      },
     secret: 'keyboard cat like a random stuff',
-    resave: true,
+    resave: false,
     saveUninitialized: true,
     store: mongoDBStore,
   }));

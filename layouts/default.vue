@@ -44,11 +44,14 @@
           </b-navbar-nav>
           <b-navbar-nav class="ml-auto">
             <b-nav-item right href="#"><i class="fas fa-users"></i> Online ({{ liveUserCount }})</b-nav-item>
-            <b-nav-item v-if="$store.state.flags.enableLogin" href="/auth/mediawiki/login" right>
+            <b-nav-item v-if="$store.state.flags.enableLogin && !($store.state.user.profile)" href="/auth/mediawiki/login" right>
               Login
             </b-nav-item>
+            <b-nav-item v-if="$store.state.flags.enableLogin && ($store.state.user.profile)" href="/auth/mediawiki/logout" right>
+              Logout
+            </b-nav-item>
             <b-nav-item :href="`/marked/?userGaId=${$cookiez.get('_ga')}`" right>
-                <object class="avatar-navbar" v-bind:data="`/api/avatar/${$cookiez.get('_ga')}`" ></object>Me
+                <object class="avatar-navbar" v-bind:data="`/api/avatar/${$cookiez.get('_ga')}`" ></object>Me{{$store.state.user.profile ? `(${$store.state.user.profile.displayName})`:''}}
             </b-nav-item>
           </b-navbar-nav>
         </b-collapse>
@@ -71,7 +74,7 @@
     async asyncData({$axios}) {
       const version = await $axios.$get(`/api/version`);
       return {version};
-    },
+    }, // TODO(zzn) fetch from store
     methods: {
       commitFlagsFromUrlQuery: function(query) {
         for (let k in query) {
