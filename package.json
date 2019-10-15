@@ -6,6 +6,7 @@
   "repository": "git@github.com:google/wikiloop-battlefield.git",
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
+    "prod": "npm run build && npm run start",
     "build": "nuxt build",
     "start": "cross-env NODE_ENV=production node server/index.js",
     "generate": "nuxt generate",
