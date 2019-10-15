@@ -78,7 +78,7 @@
         if (this.offset == 0 && params.wikiRevIds && params.wikiRevIds.length) {
           let fetchedWikiRevIds = new Set(interactionsFetched.map(interaction => interaction.wikiRevId));
           for (let wikiRevId of params.wikiRevIds) {
-            if (!fetchedWikiRevIds.has(fetchedWikiRevIds)) {
+            if (!fetchedWikiRevIds.has(wikiRevId)) {
               // Add WikiRevIds that is not stored with an interaction
               interactionsFetched.push({
                 "wikiRevId": wikiRevId,
