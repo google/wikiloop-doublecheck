@@ -42,8 +42,13 @@ const logReqPerf = function (req, res, next) {
       ga_id: req.cookies._ga,
       time_lapse_ns: endNs - startNs,
       start_ns: startNs,
-      end_ns: endNs
+      end_ns: endNs,
     });
+    if (req.session) {
+      perfLogger.info(` log request session info for ${req.method} ${req.originalUrl}:`, {
+        session_id: req.session.id
+      });
+    }
   });
   next();
 };
@@ -266,10 +271,22 @@ function setupAuthApi(app) {
   const passport = require(`passport`);
   const oauthFetch = require('oauth-fetch-json');
   const session = require('express-session');
+
+  var MongoDBStore = require('connect-mongodb-session')(session);
+  var mongoDBStore = new MongoDBStore({
+    uri: process.env.MONGODB_URI,
+    collection: 'Sessions'
+  });
+
   app.use(session({
-    secret: 'keyboard cat',
+    cookie: {
+      // 90 days
+      maxAge: 90*24*60*60*1000
+     },
+    secret: 'keyboard cat like a random stuff',
     resave: true,
     saveUninitialized: true,
+    store: mongoDBStore,
   }));
   app.use(passport.initialize());
   app.use(passport.session());
@@ -309,7 +326,7 @@ function setupAuthApi(app) {
         username: req.user._json.username,
         grants: req.user._json.grants
       };
-      logger.debug(`res.locals.user = ${JSON.stringify(res.locals.user, null ,2)}`);
+      logger.debug(`Setting res.locals.user = ${JSON.stringify(res.locals.user, null ,2)}`);
     }
     next();
   });

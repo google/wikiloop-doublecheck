@@ -29,8 +29,16 @@ export const mutations = {
 };
 
 export const actions = {
-    async nuxtServerInit({ commit, state }) {
+    async nuxtServerInit({ commit, state }, { req }) {
+
         const flags = await this.$axios.$get(`/api/flags`);
         commit('setFlags', flags);
+
+        console.log(`nuxtServerInit req.session.id`, req.session.id);
+        // req.session is not defined
+        if (req.locals && req.locals.user) {
+            console.log(`nuxtServerInit store state setProfile req.user`, req.user);
+            commit('user/setProfile', req.locals.user)
+        }
     }
 };
