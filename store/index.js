@@ -28,10 +28,10 @@ export const mutations = {
     setFlag (state, kv) {
         state.flags[kv.key] = kv.value;
     },
-    setVersion (stat, version) {
+    setVersion(state, version) {
         state.version = version;
     },
-    setSessionId (stat, sessionId) {
+    setSessionId (state, sessionId) {
         state.sessionId = sessionId;
     }
 };
