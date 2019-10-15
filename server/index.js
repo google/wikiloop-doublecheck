@@ -359,7 +359,7 @@ function setupAuthApi(app) {
     let wiki = req.params.wikiRevId.split(':')[0];
     let revId = req.params.wikiRevId.split(':')[1];
     let apiUrl = `${getUrlBaseByWiki(wiki)}/w/api.php`;
-    let revInfo = await fetchRevisions(wiki, [revId]); // assuming request succeeded;
+    let revInfo = await fetchRevisions(wiki, [revId])[wiki]; // assuming request succeeded
     let token = (await oauthFetch( apiUrl,     {
       "action": "query",
       "format": "json",

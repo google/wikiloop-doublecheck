@@ -69,26 +69,44 @@
         };
         if (this.$router.history.current.query.userGaId) {
           params.userGaIds = [this.$router.history.current.query.userGaId];
+        } else if (this.$router.history.current.query.userGaIds) {
+          params.userGaIds = this.$router.history.current.query.userGaIds.split('|');
         } else if (this.$router.history.current.query.wikiRevIds) {
-          params.wikiRevIds = this.$router.history.current.query.wikiRevIds;
+          params.wikiRevIds = this.$router.history.current.query.wikiRevIds.split('|');
         }
-
         const interactionsFetched = await this.$axios.$get(`/api/interactions`, { params: params });
+        if (this.offset == 0 && params.wikiRevIds && params.wikiRevIds.length) {
+          let fetchedWikiRevIds = new Set(interactionsFetched.map(interaction => interaction.wikiRevId));
+          for (let wikiRevId of params.wikiRevIds) {
+            if (!fetchedWikiRevIds.has(fetchedWikiRevIds)) {
+              // Add WikiRevIds that is not stored with an interaction
+              interactionsFetched.push({
+                "wikiRevId": wikiRevId,
+                "judgements": [], // empty
+                "recentChange": 0,
+                "lastTimestamp": 0,
+                "counts": {
+                  Total: 0,
+                  NotSure: 0,
+                  ShouldRevert: 0,
+                },
+              });
+            }
+          }
+        }
         if (interactionsFetched.length) {
           this.offset += interactionsFetched.length;
           const revisionsFetched = await this.$axios.$get(
               `/api/revisions`, {
                 params: {
-                  wiki: 'enwiki', // TODO update this when we support multiple wikis
-                  revIds: interactionsFetched.map(interaction => interaction.wikiRevId.split(':')[1])
+                  wikiRevIds: interactionsFetched.map(interaction => interaction.wikiRevId)
                 }
               }
           );
           const oresFetched = await this.$axios.$get(
               `/api/ores`, {
                 params: {
-                  wiki: 'enwiki', // TODO update this when we support multiple wikis
-                  revIds: interactionsFetched.map(interaction => interaction.wikiRevId.split(':')[1])
+                  wikiRevIds: interactionsFetched.map(interaction => interaction.wikiRevId)
                 }
               }
           );
@@ -97,8 +115,8 @@
             this.wikiRevIdToInfo[interaction.wikiRevId] = {};
             this.wikiRevIdToInfo[interaction.wikiRevId].interaction = interaction;
           });
-          revisionsFetched.forEach(item => this.wikiRevIdToInfo[item.wikiRevId].revision = item);
-          oresFetched.forEach(item => this.wikiRevIdToInfo[item.wikiRevId].ores = item);
+          revisionsFetched['enwiki'].forEach(item => this.wikiRevIdToInfo[item.wikiRevId].revision = item);
+          oresFetched['enwiki'].forEach(item => this.wikiRevIdToInfo[item.wikiRevId].ores = item);
         }
         else {
           this.isEnd = true;

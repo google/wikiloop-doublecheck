@@ -13,18 +13,23 @@
 // limitations under the License.
 
 const rp = require('request-promise');
-const { computeOresField } = require('../common');
+const { computeOresField, wikiRevIdsGroupByWiki } = require('../common');
 
-async function fetchOres(wiki, revIds) {
-    let oresUrl = `https://ores.wikimedia.org/v3/scores/${wiki}/?models=damaging|goodfaith&revids=${revIds.join('|')}`;
-    let oresResultJson = await rp.get(oresUrl, { json: true });
-    return revIds.map(revId => computeOresField(oresResultJson, wiki, revId));
+async function fetchOres(wikiRevIds) {
+    let wikiToRevIdList = wikiRevIdsGroupByWiki(wikiRevIds);
+    let oresResults = {};
+    for (let wiki in wikiToRevIdList) {
+        let revIds = wikiToRevIdList[wiki];
+        let oresUrl = `https://ores.wikimedia.org/v3/scores/${wiki}/?models=damaging|goodfaith&revids=${revIds.join('|')}`;
+        let oresResultJson = await rp.get(oresUrl, { json: true });
+        oresResults[wiki] = revIds.map(revId => computeOresField(oresResultJson, wiki, revId));
+    }
+    return oresResults;
 }
 
 const ores = async (req, res) => {
-    let revIds = req.query.revIds;
-    let wiki = req.query.wiki;
-    let ret = await fetchOres(wiki, revIds);
+    let wikiRevIds = req.query.wikiRevIds;
+    let ret = await fetchOres(wikiRevIds);
     res.send(ret);
     req.visitor
         .event({ ec: "api", ea: "/ores" })
@@ -33,17 +38,16 @@ const ores = async (req, res) => {
 
 const oresWikiRevId = async (req, res) => {
     let wikiRevId = req.params.wikiRevId;
-    let wiki = wikiRevId.split(':')[0];
-    let revId = wikiRevId.split(':')[1];
-    let ret = await fetchOres(wiki, [revId]);
-    if (ret.length === 1) {
-        res.send(ret[0]);
-    } else if (ret.length === 0) {
+    let wiki = req.params.wikiRevId.split(':')[0];
+    let ret = await fetchOres([wikiRevId]);
+    if (ret[wiki].length === 1) {
+        res.send(ret[wiki][0]);
+    } else if (ret[wiki].length === 0) {
         res.status(404);
         res.send(`Can't find ores`);
     } else {
         res.status(500);
-        res.send(`Something is wrong`);
+        res.send(`Something is wrong inside of oresWikiRevId, ret = `, ret);
     }
     req.visitor
         .event({ ec: "api", ea: "/ores/:wikiRevId" })

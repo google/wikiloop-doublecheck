@@ -365,10 +365,17 @@
       this.interaction = this.interactionProp || await this.$axios.$get(`/api/interaction/${this.wikiRevId}`);
       this.revision = this.revisionProp || await this.$axios.$get(`/api/revision/${this.wikiRevId}`);
       this.ores = this.oresProp || await this.$axios.$get(`/api/ores/${this.wikiRevId}`);
-      if (this.$store.state.flags && this.$store.state.flags.useStiki) {
+      if (this.stikiProp) {
+        this.stiki = this.stikiProp;
+      } else if (this.$store.state.flags.useStiki) {
         await this.loadStiki();
-        await this.loadCbng();
       }
+      if (this.cbngProp) {
+        this.cbngProp = this.cbngProp;
+      } else if (this.$store.state.flags.useStiki/*Cbng shares the same flag with STiki*/) {
+        await this.loadCbng();
+      } // TODO(xinbenlv) merge duplicated logic
+
       if (!this.diff) {
         this.diff = await this.$axios.$get(`/api/diff/${this.wikiRevId}`);
       }

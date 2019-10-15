@@ -47,8 +47,12 @@ function computeOresField(oresJson, wiki, revId) {
     }
 }
 
-async function fetchRevisions(wiki, revIds = []) {
-    if (revIds.length > 0) {
+async function fetchRevisions(wikiRevIds) {
+    let wikiToRevIdList = wikiRevIdsGroupByWiki(wikiRevIds);
+
+    let wikiToRevisionList = {};
+    for (let wiki in wikiToRevIdList) {
+        let revIds= wikiToRevIdList[wiki];
         const fetchUrl = new URL(`${getUrlBaseByWiki(wiki)}/w/api.php`);
         let params = {
             "action": "query",
@@ -64,7 +68,7 @@ async function fetchRevisions(wiki, revIds = []) {
         });
         let retJson = await rp.get(fetchUrl, { json: true });
         if (retJson.query.badrevids) {
-            return []; // does not find
+            wikiToRevisionList[wiki] = []; // does not find
         }
         else {
             /** Example
@@ -138,9 +142,10 @@ async function fetchRevisions(wiki, revIds = []) {
                     revIdToRevision[revision.revid].namespace = revision.ns;
                 }
             }
-            return revIds.map(revId => revIdToRevision[revId]);
+            wikiToRevisionList[wiki] =  revIds.map(revId => revIdToRevision[revId]);
         }
     }
+    return wikiToRevisionList;
 }
 
 async function getNewJudgementCounts(db, matcher = {}, offset = 0, limit = 10) {
@@ -308,6 +313,19 @@ function isEmpty(value) {
 
 const useOauth = !isEmpty(process.env.MEDIAWIKI_CONSUMER_SECRET) && !isEmpty(process.env.MEDIAWIKI_CONSUMER_KEY);
 
+function wikiRevIdsGroupByWiki(wikiRevIds) {
+    let wikiToRevIdList = {};
+    wikiRevIds.forEach((wikiRevId) => {
+        let wiki = wikiRevId.split(':')[0];
+        let revId = wikiRevId.split(':')[1];
+        if (!(wiki in wikiToRevIdList)) {
+            wikiToRevIdList[wiki] = [];
+        }
+        wikiToRevIdList[wiki].push(revId);
+    });
+    return wikiToRevIdList;
+}
+
 module.exports = {
     logger,
     apiLogger,
@@ -317,5 +335,6 @@ module.exports = {
     fetchRevisions,
     getNewJudgementCounts,
     useOauth,
-    isEmpty
+    isEmpty,
+    wikiRevIdsGroupByWiki
 };
