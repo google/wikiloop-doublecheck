@@ -35,10 +35,10 @@
           </b-navbar-nav>
           <b-navbar-nav class="ml-auto">
             <b-nav-item right href="#"><i class="fas fa-users"></i> Online ({{ liveUserCount }})</b-nav-item>
-            <b-nav-item v-if="$store.state.flags.enableLogin && !($store.state.user.profile)" href="/auth/mediawiki/login" right>
+            <b-nav-item v-if="!($store.state.user.profile)" href="/auth/mediawiki/login" right>
               Login
             </b-nav-item>
-            <b-nav-item v-if="$store.state.flags.enableLogin && ($store.state.user.profile)" href="/auth/mediawiki/logout" right>
+            <b-nav-item v-if="($store.state.user.profile)" href="/auth/mediawiki/logout" right>
               Logout
             </b-nav-item>
             <b-nav-item :href="`/marked/?userGaId=${$cookiez.get('_ga')}`" right>
