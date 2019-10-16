@@ -113,11 +113,19 @@
             >Should revert {{getJudgementCount(`ShouldRevert`)}}
             </button>
             <transition name="fade">
-              <button v-if="enableRevertRedirect()"
-                      v-on:click="redirectToRevert()"
-                      class="btn btn-outline-primary">
-                Go
-              </button>
+              <template v-if="enableRevertRedirect()">
+                <button v-if="$store.state.user && $store.state.user.profile"
+                        v-on:click="directRevert()"
+                        class="btn btn-outline-primary">
+                  Revert Now
+                </button>
+                <button v-else
+                        v-on:click="redirectToRevert()"
+                        class="btn btn-outline-primary">
+                  Jump to Revert
+                </button>
+              </template>
+
             </transition>
 
           </div>
@@ -273,6 +281,52 @@
           }
         });
         return this.myJudgement === `ShouldRevert` && !this.isOverriden();
+      },
+      directRevert: async function() {
+      try {
+        this.$ga.event({
+          eventCategory: 'interaction',
+          eventAction: 'direct-revert-initiate',
+          eventValue: {
+            wikiRevId: this.wikiRevId
+          }
+        });
+        let ret = await this.$axios.$get(`/api/auth/revert/${this.wikiRevId}`);
+        if (ret && ret.edit && ret.edit.result ===`Success`) {
+          this.$bvToast.toast(
+                  `Congrats! you've successfully reverted ${this.wikiRevId}`, {
+                    title: 'Revert succeeded!',
+                    autoHideDelay: 3000,
+                    appendToast: true
+                  });
+          this.$ga.event({
+            eventCategory: 'interaction',
+            eventAction: 'direct-revert-success',
+            eventValue: {
+              wikiRevId: this.wikiRevId
+            }
+          });
+        } else {
+          console.warn(`Direct revert result unknown`, ret);
+          this.$ga.event({
+            eventCategory: 'interaction',
+            eventAction: 'direct-revert-unknown',
+            eventValue: {
+              wikiRevId: this.wikiRevId
+            }
+          });
+        }
+
+      } catch(e) {
+        // TODO show failure message.
+        this.$ga.event({
+          eventCategory: 'interaction',
+          eventAction: 'direct-revert-failure',
+          eventValue: {
+            wikiRevId: this.wikiRevId
+          }
+        });
+      }
       },
       redirectToRevert: async function() {
         if (this.myJudgement === `ShouldRevert` && !this.isOverriden()) {
