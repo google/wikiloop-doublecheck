@@ -428,15 +428,19 @@ async function start() {
     apiLogger.debug('req.query:', req.query);
     next();
   });
-  if (useOauth) setupAuthApi(app);
+  let pathRoute = express();
+  if (useOauth) setupAuthApi(pathRoute);
   setupIoSocketListener(io);
   setupMediaWikiListener(mongoose.connection.db, io);
-  setupApiRequestListener(mongoose.connection.db, io, app);
+  // setupApiRequestListener(mongoose.connection.db, io, app);
+  setupApiRequestListener(mongoose.connection.db, io, pathRoute);
 
   if (process.env.STIKI_MYSQL) {
-    await setupSTikiApiLisenter(app);
+    await setupSTikiApiLisenter(pathRoute);
   }
 
+  app.use(`/wikiloop`, pathRoute); // For WMF toolforge
+  app.use(`/`, pathRoute);
   // Give nuxt middleware to express
   app.use(nuxt.render);
 
