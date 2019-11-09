@@ -11,14 +11,14 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+const wikiToLang = {
+  'enwiki': 'en',
+  'frwiki': 'fr',
+  'ruwiki': 'ru'
+};
 
-export default {
+module.exports = {
   getUrlBaseByWiki: function(wiki) {
-    let wikiToLang = {
-      'enwiki': 'en',
-      'frwiki': 'fr',
-      'ruwiki': 'ru'
-    };
     return `http://${wikiToLang[wiki]}.wikipedia.org`;
   },
   /**
@@ -27,12 +27,7 @@ export default {
    * @returns {string}
    */
   getUrlBase: function (newRecentChange) {
-    let lang = {
-      'enwiki': 'en',
-      'frwiki': 'fr',
-      'ruwiki': 'ru'
-    };
-    return `http://${lang[newRecentChange.wiki]}.wikipedia.org`;
+    return `http://${wikiToLang[newRecentChange.wiki]}.wikipedia.org`;
   },
   /**
    * @deprecated use fetchDiffWithWikiRevId
@@ -57,4 +52,4 @@ export default {
     let diffJson = await this.$axios.$get(diffApiUrl);
     return diffJson;
   },
-}
+};
