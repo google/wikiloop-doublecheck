@@ -11,44 +11,29 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-const wikiToLang = {
-  'enwiki': 'en',
-  'frwiki': 'fr',
-  'ruwiki': 'ru'
+
+// TODO(xinbenlv): merge with urlMap on the server side.
+// blocked by https://github.com/google/wikiloop-battlefield/issues/105
+const _wikiToDomain = {
+  "enwiki": "en.wikipedia.org",
+  "frwiki": "fr.wikipedia.org",
+  "dewiki": "de.wikipedia.org",
+  "wikidatawiki": "wikidata.org",
 };
 
-module.exports = {
+export default {
   getUrlBaseByWiki: function(wiki) {
-    return `http://${wikiToLang[wiki]}.wikipedia.org`;
-  },
-  /**
-   * @deprecated use getUrlBaseByWiki
-   * @param newRecentChange
-   * @returns {string}
-   */
-  getUrlBase: function (newRecentChange) {
-    return `http://${wikiToLang[newRecentChange.wiki]}.wikipedia.org`;
-  },
-  /**
-   * @deprecated use fetchDiffWithWikiRevId
-   * @param recentChange
-   * @returns {Promise<void>}
-   */
-  fetchDiff: async function(recentChange) {
-    let diffApiUrl = `/api/diff?serverUrl=${this.getUrlBase(recentChange)}/&revId=${recentChange.revision.new}`;
-    let diffJson = await this.$axios.$get(diffApiUrl);
-    recentChange.diff = diffJson;
+    return `http://${_wikiToDomain[wiki]}.wikipedia.org`;
   },
 
   /**
-   * @deprecated
    * @param wikiRevId a string of wiki:revId
    * @returns {Promise<String>}
    */
   fetchDiffWithWikiRevId: async function(wikiRevId) {
     let wiki = wikiRevId.split(`:`)[0];
     let revId = wikiRevId.split(`:`)[1];
-    let diffApiUrl = `/api/diff?serverUrl=${this.getUrlBaseByWiki(wiki)}/&revId=${revId}`;
+    let diffApiUrl = `/api/diff/${wiki}:${revId}`;
     let diffJson = await this.$axios.$get(diffApiUrl);
     return diffJson;
   },

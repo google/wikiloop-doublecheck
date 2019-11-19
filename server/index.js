@@ -216,7 +216,8 @@ function setupMediaWikiListener(db, io) {
       recentChange._id = (`${recentChange.wiki}-${recentChange.id}`);
       if (recentChange.type === "edit") {
         // Currently only support these wikis.
-        if (["enwiki", "frwiki", "ruwiki"].indexOf(recentChange.wiki) >= 0) {
+        if (["enwiki", "frwiki", "dewiki", "wikidatawiki"].indexOf(recentChange.wiki) >= 0) {
+          if (recentChange.wiki == "wikidatawiki" && Math.random() <= 0.9) return; // ignore 90% of wikidata
           try {
             let oresUrl = `https://ores.wikimedia.org/v3/scores/${recentChange.wiki}/?models=damaging|goodfaith&revids=${recentChange.revision.new}`;
             let oresJson;
@@ -257,7 +258,9 @@ function setupMediaWikiListener(db, io) {
             }
           }
         }
-
+        else {
+          logger.debug(`Ignoring revision from wiki=${recentChange.wiki}`);
+        }
       }
     };
 

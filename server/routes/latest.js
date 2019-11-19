@@ -12,18 +12,24 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-const {getUrlBaseByWiki} = require("../../shared/utility");
+const wikiToDomain = require("../urlMap").wikiToDomain;
+const supportedUrlList = require("../urlMap").supportedUrlList;
 
 const rp = require('request-promise');
-const { computeOresField, perfLogger } = require('../common');
+const { perfLogger } = require('../common');
 
 const latestRevs = async (req, res) => {
   let startTime = new Date();
-  console.log(`XXX latestRevs`, req.query);
-  let wiki = dewiki;
+  if (req.query.wiki && Object.keys(wikiToDomain).indexOf(req.query.wiki) < 0) {
+    res.status(400);
+    res.send(`Bad serverUrl, we only support ${Object.keys(wikiToDomain)}`);
+    return;
+  }
+  let wiki = req.query.wiki || `frwiki`; // Default to french wiki
+
   // Getting a list of latest revisions related to the filter (Lang of Wiki), and their related diff
   // TODO Consider use https://nodejs.org/api/url.html#url_url_searchparams to compose a standard one. this contains too many parameters
-  let queryUrl = `${getUrlBaseByWiki(wiki)}/w/api.php?action=query&list=recentchanges&prop=info&format=json&rcnamespace=0&rclimit=5&rctype=edit&rctoponly=true&rcprop=user|userid|comment|flags|timestamp|ids|title&rcshow=!bot`;
+  let queryUrl = `http://${wikiToDomain[wiki]}/w/api.php?action=query&list=recentchanges&prop=info&format=json&rcnamespace=0&rclimit=5&rctype=edit&rctoponly=true&rcprop=user|userid|comment|flags|timestamp|ids|title&rcshow=!bot`;
   // https://en.wikipedia.org/w/api.php?action=query&list=recentchanges&prop=info&format=json&rcnamespace=0&rclimit=50&rctype=edit&rctoponly=true&rcprop=user|userid|comment|flags|timestamp|ids|title&rcshow=!bot
   let recentChangesJson = await rp.get(queryUrl, { json: true });
   let recentChangeResponseTime = new Date();

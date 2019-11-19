@@ -12,15 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+const wikiToDomain = require("../urlMap").wikiToDomain;
+
 const rp = require(`request-promise`);
-const { logger, getUrlBaseByWiki } = require('../common');
+const { logger } = require('../common');
 
 const diffWikiRevId = async (req, res) => {
     logger.debug(`req.query`, req.query);
     let wikiRevId = req.params.wikiRevId;
     let wiki = wikiRevId.split(':')[0];
     let revId = wikiRevId.split(':')[1];
-    let diffApiUrl = `${getUrlBaseByWiki(wiki)}/w/api.php?action=compare&fromrev=${revId}&torelative=prev&format=json`;
+    let diffApiUrl = `http://${wikiToDomain[wiki]}/w/api.php?action=compare&fromrev=${revId}&torelative=prev&format=json`;
     let diffJson = await rp.get(diffApiUrl, { json: true });
     res.send(diffJson);
     req.visitor
@@ -28,9 +30,15 @@ const diffWikiRevId = async (req, res) => {
         .send();
 };
 
+/**
+ * @deprecated
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const diff = async (req, res) => {
     logger.debug(`req.query`, req.query);
-    let diffApiUrl = `${req.query.serverUrl}/w/api.php?action=compare&fromrev=${req.query.revId}&torelative=prev&format=json`;
+    let diffApiUrl = `http${wikiToDomain[req.query.wiki]}/w/api.php?action=compare&fromrev=${req.query.revId}&torelative=prev&format=json`;
     let diffJson = await rp.get(diffApiUrl, { json: true });
     res.send(diffJson);
     req.visitor

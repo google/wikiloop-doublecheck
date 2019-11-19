@@ -156,12 +156,12 @@
         if (
             (newRecentChange.namespace === 0 || !this.requireArticleNamespace) &&
             (newRecentChange.nonbot === true || !this.requireNonBot) &&
-            (newRecentChange.wiki === 'enwiki' || !this.requireEnWiki) &&
+            ([`enwiki`, `frwiki`, `dewiki`, `wikidatawiki`].indexOf(newRecentChange.wiki) >= 0 || !this.requireEnWiki) &&
             this.meetThreshold(newRecentChange)
         ) {
           this.stale = false; // resets the stale
           this.showCounter++;
-          await this.fetchDiff(newRecentChange);
+          await this.fetchDiffWithWikiRevId(newRecentChange.wikiRevId);
           this.dbIdToRecentChangeMap[newRecentChange._id] = newRecentChange;
           this.newRecentChangDbIds.unshift(newRecentChange._id); // TODO the list becomes larger and larger as time goes....
           if (!this.titleToDbIds[newRecentChange.title]) this.titleToDbIds[newRecentChange.title] = [];
@@ -174,8 +174,8 @@
       }
     },
     beforeMount() {
-      this.getUrlBase = utility.getUrlBase.bind(this); // now you can call this.getUrlBase() (in your functions/template)
-      this.fetchDiff = utility.fetchDiff.bind(this); // now you can call this.fetchDiff() (in your functions/template)
+      this.getUrlBaseByWiki = utility.getUrlBaseByWiki.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
+      this.fetchDiffWithWikiRevId = utility.fetchDiffWithWikiRevId.bind(this); // now you can call this.fetchDiff() (in your functions/template)
     },
     async mounted() {
       var startTime = new Date();
@@ -188,8 +188,8 @@
         // Related bug https://github.com/google/wikiloop-battlefield/issues/22
         // By assigning it to a Vue data, it gets reactivity and we are good. But it's a hack...
         // Until Vue fixes this....
-        this.bufferNewRecentChange = newRecentChange;
-        await this.maybeShowRecentChange(this.bufferNewRecentChange);
+        // XXX this.bufferNewRecentChange = newRecentChange;
+        // XXX await this.maybeShowRecentChange(this.bufferNewRecentChange);
       });
       socket.on('client-activity', async (clientActivity) => {
         console.log(`client activity: ${JSON.stringify(clientActivity)}`);
@@ -200,7 +200,7 @@
         this.stats = await this.$axios.$get(`/api/stats`);
       });
 
-      this.$axios.$get(`/api/latestRevs?serverUrl=http://en.wikipedia.org/`).then((result) => {
+      this.$axios.$get(`/api/latestRevs?wiki=frwiki`).then((result) => {
         this.initRecentChanges = result;
         result.forEach((async (rc) => await this.maybeShowRecentChange(rc)));
         this.loading = false;
