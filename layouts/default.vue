@@ -22,10 +22,18 @@
         </b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
-            <b-nav-item class="active" href="/" ><i class="fas fa-home"></i> Home</b-nav-item>
-            <b-nav-item href="/marked"><i class="fas fa-history"></i> History ({{stats ? stats.totalJudgement : 0}})</b-nav-item>
-            <b-nav-item href="/api/markedRevs.csv"><i class="fas fa-cloud-download-alt"></i> Download</b-nav-item>
-            <b-nav-item href="/leaderboard"><i class="fas fa-trophy"></i> Leaders</b-nav-item>
+            <b-nav-item href="/" class="active" v-b-tooltip.hover title="Home">
+              <i class="fas fa-home"></i>
+            </b-nav-item>
+            <b-nav-item href="/marked" v-b-tooltip.hover title="History">
+              <i class="fas fa-history"></i> ({{stats ? stats.totalJudgement : 0}})</b-nav-item>
+            <b-nav-item href="#" v-b-tooltip.hover title="Online Users"><i class="fas fa-users"></i> ({{ liveUserCount }})</b-nav-item>
+            <b-nav-item href="/api/markedRevs.csv" v-b-tooltip.hover title="Download">
+              <i class="fas fa-cloud-download-alt"></i>
+            </b-nav-item>
+            <b-nav-item href="/leaderboard" v-b-tooltip.hover title="Leaderboard">
+              <i class="fas fa-trophy"></i>
+            </b-nav-item>
             <b-nav-item-dropdown text="About" right>
               <b-dropdown-item href="https://github.com/google/wikiloop-battlefield/issues">Issues</b-dropdown-item>
               <b-dropdown-item href="https://github.com/google/wikiloop-battlefield">Code </b-dropdown-item>
@@ -34,7 +42,6 @@
             </b-nav-item-dropdown>
           </b-navbar-nav>
           <b-navbar-nav class="ml-auto">
-            <b-nav-item right href="#"><i class="fas fa-users"></i> Online ({{ liveUserCount }})</b-nav-item>
             <b-nav-item v-if="!($store.state.user.profile)" href="/auth/mediawiki/login" right>
               Login
             </b-nav-item>
@@ -48,7 +55,6 @@
         </b-collapse>
       </div>
     </nav>
-
     <nuxt />
   </div>
 </template>

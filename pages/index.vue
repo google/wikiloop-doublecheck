@@ -17,7 +17,7 @@
 <template>
 
   <section>
-    <div v-if="!loading" class="container small-screen-padding" style="margin-top:60px">
+    <div v-if="!loading" class="container small-screen-padding" style="margin-top:80px">
       <h5>
         {{showCounter}} out of {{revisionCounter}} revisions matches <span
           class="btn btn-sm btn-outline-primary" v-b-modal.filter-modal>filters</span> or <span v-on:click="pause = !pause" class="btn btn-sm btn-outline-primary">pause</span> it.

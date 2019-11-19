@@ -32,7 +32,7 @@ const revisionWikiRevId = async (req, res) => {
         res.send(revisions[0]);
     } else if (revisions.length === 0) {
         res.status(404);
-        res.send(`Can't find revisions`);
+        res.send(`Can't find revisions`); // TODO(xinbenlv) Handle this case
     } else {
         res.status(500);
         res.send(`Something is wrong`);
