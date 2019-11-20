@@ -120,7 +120,6 @@
         clearTimeout(this.timer);
         this.timer = setTimeout(()=>{
           this.stale = true;
-          console.log(`XXX Stale again!`); // TODO(xinbenlv): remove this after development
         }, 7000);  // we at least allow 1 new card each 7 seconds.
       },
       meetThreshold: function (newRecentChange) {
@@ -195,9 +194,6 @@
         // if not being added to Vue data. https://vuejs.org/v2/guide/list.html#Caveats
         // Related bug https://github.com/google/wikiloop-battlefield/issues/22
         // By assigning it to a Vue data, it gets reactivity and we are good. But it's a hack...
-        // Until Vue fixes this....
-        console.log(`XXX recent-change eventstream`, newRecentChange);
-        console.log(`XXX recent-change eventstream is dewiki`, newRecentChange.wiki ==="dewiki", "actual wiki", newRecentChange.wiki);
         this.bufferNewRecentChange = newRecentChange;
         await this.maybeShowRecentChange(this.bufferNewRecentChange);
       });
