@@ -12,14 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-const { apiLogger, getUrlBaseByWiki } = require('../common');
+const { apiLogger } = require('../common');
+const wikiToDomain = require("../urlMap").wikiToDomain;
 const rp = require('request-promise');
 
 module.exports = async (req, res) => {
   // TODO add sanitize if we see abuse.
   apiLogger.debug('req.params:', req.params);
   apiLogger.debug('req.query:', req.query);
-  const fetchUrl = new URL(`${getUrlBaseByWiki(req.query.wiki)}/w/api.php`);
+  const fetchUrl = new URL(`http://${wikiToDomain[req.query.wiki]}/w/api.php`);
   let params = JSON.parse(req.query.apiQuery);
 
   Object.keys(params).forEach(key => {

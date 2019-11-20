@@ -23,7 +23,7 @@ const _wikiToDomain = {
 
 export default {
   getUrlBaseByWiki: function(wiki) {
-    return `http://${_wikiToDomain[wiki]}.wikipedia.org`;
+    return `http://${_wikiToDomain[wiki]}`;
   },
 
   /**

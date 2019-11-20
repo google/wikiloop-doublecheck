@@ -21,7 +21,13 @@
       <h5>
         {{showCounter}} out of {{revisionCounter}} revisions matches <span
           class="btn btn-sm btn-outline-primary" v-b-modal.filter-modal>filters</span> or <span v-on:click="pause = !pause" class="btn btn-sm btn-outline-primary">pause</span> it.
+        <b-form-select v-model="subscribeWiki" class="mb-3">
+          <option :value="`enwiki`">English</option>
+          <option :value="`frwiki`">French</option>
+          <option :value="`dewiki`">Germany</option>
+        </b-form-select>
       </h5>
+
       <div class="m-auto" v-if="newRecentChangDbIds.length === 0">
         <h1 class="m-auto">Please wait for the first vandal edit to show up....</h1>
       </div>
