@@ -99,7 +99,8 @@
         pause: false,
         timer: null,
         loading: false,
-        initRecentChanges: []
+        initRecentChanges: [],
+        subscribeWiki: 'dewiki'
         // loaded: false
       }
     },
@@ -113,7 +114,8 @@
         clearTimeout(this.timer);
         this.timer = setTimeout(()=>{
           this.stale = true;
-        }, 15000);  // we at least allow 1 new card each 15 seconds.
+          console.log(`XXX Stale again!`); // TODO(xinbenlv): remove this after development
+        }, 7000);  // we at least allow 1 new card each 7 seconds.
       },
       meetThreshold: function (newRecentChange) {
         if (this.stale || !('ores' in newRecentChange)) return true;
@@ -156,7 +158,7 @@
         if (
             (newRecentChange.namespace === 0 || !this.requireArticleNamespace) &&
             (newRecentChange.nonbot === true || !this.requireNonBot) &&
-            ([`enwiki`, `frwiki`, `dewiki`, `wikidatawiki`].indexOf(newRecentChange.wiki) >= 0 || !this.requireEnWiki) &&
+            (this.subscribeWiki === newRecentChange.wiki || !this.requireEnWiki) &&
             this.meetThreshold(newRecentChange)
         ) {
           this.stale = false; // resets the stale
@@ -188,8 +190,10 @@
         // Related bug https://github.com/google/wikiloop-battlefield/issues/22
         // By assigning it to a Vue data, it gets reactivity and we are good. But it's a hack...
         // Until Vue fixes this....
-        // XXX this.bufferNewRecentChange = newRecentChange;
-        // XXX await this.maybeShowRecentChange(this.bufferNewRecentChange);
+        console.log(`XXX recent-change eventstream`, newRecentChange);
+        console.log(`XXX recent-change eventstream is dewiki`, newRecentChange.wiki ==="dewiki", "actual wiki", newRecentChange.wiki);
+        this.bufferNewRecentChange = newRecentChange;
+        await this.maybeShowRecentChange(this.bufferNewRecentChange);
       });
       socket.on('client-activity', async (clientActivity) => {
         console.log(`client activity: ${JSON.stringify(clientActivity)}`);
@@ -200,7 +204,7 @@
         this.stats = await this.$axios.$get(`/api/stats`);
       });
 
-      this.$axios.$get(`/api/latestRevs?wiki=frwiki`).then((result) => {
+      this.$axios.$get(`/api/latestRevs?wiki=${this.subscribeWiki}`).then((result) => {
         this.initRecentChanges = result;
         result.forEach((async (rc) => await this.maybeShowRecentChange(rc)));
         this.loading = false;
