@@ -115,8 +115,9 @@
             this.wikiRevIdToInfo[interaction.wikiRevId] = {};
             this.wikiRevIdToInfo[interaction.wikiRevId].interaction = interaction;
           });
-          revisionsFetched['enwiki'].forEach(item => this.wikiRevIdToInfo[item.wikiRevId].revision = item);
-          oresFetched['enwiki'].forEach(item => this.wikiRevIdToInfo[item.wikiRevId].ores = item);
+          console.log(`XXX revisionsFetched`, revisionsFetched);
+          Object.values(revisionsFetched).flat().forEach(item => this.wikiRevIdToInfo[item.wikiRevId].revision = item);
+          Object.values(oresFetched).flat().forEach(item => this.wikiRevIdToInfo[item.wikiRevId].ores = item);
         }
         else {
           this.isEnd = true;
