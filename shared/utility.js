@@ -19,6 +19,7 @@ const _wikiToDomain = {
   "frwiki": "fr.wikipedia.org",
   "dewiki": "de.wikipedia.org",
   "wikidatawiki": "wikidata.org",
+  "zhwiki": "zh.wikipedia.org",
 };
 
 export default {

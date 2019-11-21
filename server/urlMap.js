@@ -8,5 +8,6 @@ module.exports = {
     "frwiki": "fr.wikipedia.org",
     "dewiki": "de.wikipedia.org",
     "wikidatawiki": "wikidata.org",
+    "zhwiki": "zh.wikipedia.org",
   }
 };

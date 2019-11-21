@@ -13,7 +13,6 @@
 // limitations under the License.
 
 const wikiToDomain = require("../urlMap").wikiToDomain;
-const supportedUrlList = require("../urlMap").supportedUrlList;
 
 const rp = require('request-promise');
 const { perfLogger } = require('../common');

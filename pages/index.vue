@@ -25,6 +25,8 @@
           <option :value="`enwiki`">English</option>
           <option :value="`frwiki`">French</option>
           <option :value="`dewiki`">Germany</option>
+          <option :value="`wikidatawiki`">Wikidata</option>
+          <option :value="`zhwiki`">Chinese</option>
         </b-form-select>
       </h5>
 
@@ -106,7 +108,7 @@
         timer: null,
         loading: false,
         initRecentChanges: [],
-        subscribeWiki: 'dewiki'
+        subscribeWiki: 'zhwiki'
         // loaded: false
       }
     },
