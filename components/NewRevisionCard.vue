@@ -392,6 +392,7 @@
 
         await this.$axios.$post(`/api/interaction/${this.wikiRevId}`, postBody);
         document.dispatchEvent(new Event("stats-update"));
+        this.$emit('judgement-event', postBody);
         this.$ga.event({
           eventCategory: 'interaction',
           eventAction: 'judgement',
