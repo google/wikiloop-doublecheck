@@ -13,16 +13,40 @@
 // limitations under the License.
 
 const rp = require('request-promise');
-const { computeOresField, wikiRevIdsGroupByWiki } = require('../common');
+const { computeOresField, wikiRevIdsGroupByWiki, apiLogger } = require('../common');
 
+/** Function to fetch ORES, if unavailable, cover the error and replace score with null
+ * There are two main reasons ORES scores are unavailable:
+ *  1. Rate throttled - when we send too many requests within a limited time window.
+ *    **solution**: we need to add paging and throttling to maximize the number of ORES score.
+ *    Bug: https://github.com/google/wikiloop-battlefield/issues/97
+ *  2. Revision ORES unavailable, normally because a revision is unavailable, or other error.
+ *    Bug: https://github.com/google/wikiloop-battlefield/issues/110
+ *  3. ORES service (temporarily)unavailable.
+ *    Bug: https://github.com/google/wikiloop-battlefield/issues/37
+ *  TODO(xinbenlv, P2): consider add test for handling these 3 cases
+ *
+ * @param wikiRevIds
+ * @returns {Promise<Object> a map of {wiki: [oresScore]}} where oresScore
+ */
 async function fetchOres(wikiRevIds) {
     let wikiToRevIdList = wikiRevIdsGroupByWiki(wikiRevIds);
     let oresResults = {};
+    let oresResultJson;
     for (let wiki in wikiToRevIdList) {
         let revIds = wikiToRevIdList[wiki];
         let oresUrl = `https://ores.wikimedia.org/v3/scores/${wiki}/?models=damaging|goodfaith&revids=${revIds.join('|')}`;
-        let oresResultJson = await rp.get(oresUrl, { json: true });
-        oresResults[wiki] = revIds.map(revId => computeOresField(oresResultJson, wiki, revId));
+        try {
+            oresResultJson = await rp.get(oresUrl, { json: true });
+            oresResults[wiki] = revIds.map(revId => computeOresField(oresResultJson, wiki, revId));
+        } catch (err) {
+            if (err.statusCode === 429) {
+                apiLogger.warn(`\n\n\nEncountered a 429 rate limit err for wikiRevIds=${wikiRevIds}, returning null for all\n\n\n`);
+            } else apiLogger.error(`fetchOres has an unknown error of `, err);
+            revIds.forEach(revId => {
+                oresResults[wiki] = Array(revIds.length).fill(null);
+            });
+        }
     }
     return oresResults;
 }
@@ -40,15 +64,15 @@ const oresWikiRevId = async (req, res) => {
     let wikiRevId = req.params.wikiRevId;
     let wiki = req.params.wikiRevId.split(':')[0];
     let ret = await fetchOres([wikiRevId]);
-    if (ret[wiki].length === 1) {
+    if (ret && ret[wiki] && ret[wiki].length === 1) {
         res.send(ret[wiki][0]);
-    } else if (ret[wiki].length === 0) {
-        res.status(404);
-        res.send(`Can't find ores`);
     } else {
         res.status(500);
-        res.send(`Something is wrong inside of oresWikiRevId, ret = `, ret);
+        let errMsg = `Something unknown happen to the function of oresWikiRevId, wikiRevId = ${wikiRevId}, ret = ${ret}`;
+        res.send(errMsg);
+        apiLogger.warn(errMsg);
     }
+    // TODO(zzn): Google Analytics to log different cases with different value
     req.visitor
         .event({ ec: "api", ea: "/ores/:wikiRevId" })
         .send();
