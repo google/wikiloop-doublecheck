@@ -17,7 +17,7 @@ const { computeOresField, wikiRevIdsGroupByWiki, apiLogger } = require('../commo
 
 /** Function to fetch ORES, if unavailable, cover the error and replace score with null
  * There are two main reasons ORES scores are unavailable:
- *  1. Rate throttled - when we send too many requests within a limited time window.
+ *  1. [Fixed] Rate throttled - when we send too many requests within a limited time window.
  *    **solution**: we need to add paging and throttling to maximize the number of ORES score.
  *    Bug: https://github.com/google/wikiloop-battlefield/issues/97
  *  2. Revision ORES unavailable, normally because a revision is unavailable, or other error.
