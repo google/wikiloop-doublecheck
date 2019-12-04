@@ -143,7 +143,7 @@ function setupApiRequestListener(db, io, app) {
 
   apiRouter.get('/diff', asyncHandler(routes.diff));
 
-  apiRouter.get('/recentChanges', asyncHandler(routes.recentChanges));
+  apiRouter.get('/recentchanges/list', asyncHandler(routes.listRecentChanges));
 
   apiRouter.get('/ores', asyncHandler(routes.ores));
 
