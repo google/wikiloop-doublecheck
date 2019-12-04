@@ -40,8 +40,9 @@ const latestRevs = async (req, res) => {
 
   // It seems according to url.searchParams is not available in Microsoft Internet Explorer, we need to test it
   let url = new URL(`http://${wikiToDomain[wiki]}/w/api.php?action=query&list=recentchanges&prop=info&format=json&rcnamespace=0&rclimit=30&rctype=edit&rctoponly=true&rcprop=user|userid|comment|flags|timestamp|ids|title&rcshow=!bot`);
-  if (req.query.startTimestamp) url.searchParams.set(`rcstart`, req.query.startTimestamp);
-  if (req.query.endTimestamp) url.searchParams.set(`rcend`, req.query.endTimestamp);
+  if (req.query.startTimestamp) url.searchParams.set(`rcstart`, new Date(parseInt(req.query.startTimestamp) * 1000).toISOString());
+  if (req.query.endTimestamp) url.searchParams.set(`rcend`, new Date(parseInt(req.query.endTimestamp) * 1000).toISOString());
+
   apiLogger.info(`Request for Action API: ${url.toString()}`);
 
   let recentChangesJson = await rp.get(url.toString(), { json: true });
