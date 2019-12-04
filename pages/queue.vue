@@ -53,6 +53,15 @@
                 if (this.currentWikiRevId) this.prevWikiRevIds.push(this.currentWikiRevId); // push into
                 this.currentWikiRevId = this.nextWikiRevIds.pop();
             },
+
+            /** Load more revisions into the sorted queue which is stored in nextWikiRevIds
+            *
+            *  Step 1: load a few more latest Revisions, i.e. revisions after current timeWindow
+            *  Step 2: load a few more revisions before current timeWindow
+            *  Step 3: sort all local revisions
+            *  Step 4: update entire nextWikiRevIds.
+            *  @returns {Promise<void>}
+            */
             loadMoreIntoSortedQueue: async function() {
                 let apiPage = await this.$axios.$get(`/api/latestRevs?wiki=${this.subscribeWiki}`);
                 let wikiRevIds = apiPage.map(item => item.wikiRevId);

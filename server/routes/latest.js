@@ -15,8 +15,16 @@
 const wikiToDomain = require("../urlMap").wikiToDomain;
 
 const rp = require('request-promise');
-const { perfLogger } = require('../common');
+const { perfLogger, apiLogger } = require('../common');
 
+/**
+ *
+ * @param req, supporting query
+ *   req.query.wiki: the language of wikis being queried for.
+ *   req.query.startTime: the timestamp starting in UNIX Epo
+ * @param res
+ * @returns {Promise<void>}
+ */
 const latestRevs = async (req, res) => {
   let startTime = new Date();
   if (req.query.wiki && Object.keys(wikiToDomain).indexOf(req.query.wiki) < 0) {
@@ -27,11 +35,16 @@ const latestRevs = async (req, res) => {
   let wiki = req.query.wiki || `frwiki`; // Default to french wiki
 
   // Getting a list of latest revisions related to the filter (Lang of Wiki), and their related diff
-  // TODO Consider use https://nodejs.org/api/url.html#url_url_searchparams to compose a standard one. this contains too many parameters
-  let queryUrl = `http://${wikiToDomain[wiki]}/w/api.php?action=query&list=recentchanges&prop=info&format=json&rcnamespace=0&rclimit=30&rctype=edit&rctoponly=true&rcprop=user|userid|comment|flags|timestamp|ids|title&rcshow=!bot`;
-
   // https://en.wikipedia.org/w/api.php?action=query&list=recentchanges&prop=info&format=json&rcnamespace=0&rclimit=50&rctype=edit&rctoponly=true&rcprop=user|userid|comment|flags|timestamp|ids|title&rcshow=!bot
-  let recentChangesJson = await rp.get(queryUrl, { json: true });
+  // API document: https://www.mediawiki.org/w/api.php?action=help&modules=query%2Brecentchanges
+
+  // It seems according to url.searchParams is not available in Microsoft Internet Explorer, we need to test it
+  let url = new URL(`http://${wikiToDomain[wiki]}/w/api.php?action=query&list=recentchanges&prop=info&format=json&rcnamespace=0&rclimit=30&rctype=edit&rctoponly=true&rcprop=user|userid|comment|flags|timestamp|ids|title&rcshow=!bot`);
+  if (req.query.startTimestamp) url.searchParams.set(`rcstart`, req.query.startTimestamp);
+  if (req.query.endTimestamp) url.searchParams.set(`rcend`, req.query.endTimestamp);
+  apiLogger.info(`Request for Action API: ${url.toString()}`);
+
+  let recentChangesJson = await rp.get(url.toString(), { json: true });
   let recentChangeResponseTime = new Date();
   /** Sample response
    {
