@@ -16,10 +16,7 @@ export const state = () => ({
     flags: {},
     version: null,
     sessionId: null,
-    wiki: "enwiki", // default to English.
-    reviewedWikiRevIds: {},
-    unreviewedWikiRevIds: {},
-    wikiRevIdToMeta: {},
+    wiki: "enwiki", // default to English
 });
 
 export const mutations = {
