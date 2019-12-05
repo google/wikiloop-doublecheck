@@ -39,7 +39,7 @@ const latestRevs = async (req, res) => {
   // API document: https://www.mediawiki.org/w/api.php?action=help&modules=query%2Brecentchanges
 
   // It seems according to url.searchParams is not available in Microsoft Internet Explorer, we need to test it
-  let url = new URL(`http://${wikiToDomain[wiki]}/w/api.php?action=query&list=recentchanges&prop=info&format=json&rcnamespace=0&rclimit=30&rctype=edit&rctoponly=true&rcprop=user|userid|comment|flags|timestamp|ids|title&rcshow=!bot`);
+  let url = new URL(`http://${wikiToDomain[wiki]}/w/api.php?action=query&list=recentchanges&prop=info&format=json&rcnamespace=0&rclimit=5&rctype=edit&rctoponly=true&rcprop=user|userid|comment|flags|timestamp|ids|title&rcshow=!bot`);
   if (req.query.startTimestamp) url.searchParams.set(`rcstart`, new Date(parseInt(req.query.startTimestamp) * 1000).toISOString());
   if (req.query.endTimestamp) url.searchParams.set(`rcend`, new Date(parseInt(req.query.endTimestamp) * 1000).toISOString());
 

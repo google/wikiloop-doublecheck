@@ -21,13 +21,7 @@
       <h5>
         {{showCounter}} out of {{revisionCounter}} revisions matches <span
           class="btn btn-sm btn-outline-primary" v-b-modal.filter-modal>filters</span> or <span v-on:click="pause = !pause" class="btn btn-sm btn-outline-primary">pause</span> it.
-        <b-form-select v-model="subscribeWiki" class="mb-3">
-          <option :value="`enwiki`">English</option>
-          <option :value="`frwiki`">French</option>
-          <option :value="`dewiki`">Germany</option>
-          <option :value="`wikidatawiki`">Wikidata</option>
-          <option :value="`zhwiki`">Chinese</option>
-        </b-form-select>
+
       </h5>
 
       <div class="m-auto" v-if="newRecentChangDbIds.length === 0">
@@ -107,8 +101,7 @@
         pause: false,
         timer: null,
         loading: false,
-        initRecentChanges: [],
-        subscribeWiki: 'zhwiki'
+        initRecentChanges: []
         // loaded: false
       }
     },
@@ -165,7 +158,7 @@
         if (
             (newRecentChange.namespace === 0 || !this.requireArticleNamespace) &&
             (newRecentChange.nonbot === true || !this.requireNonBot) &&
-            (this.subscribeWiki === newRecentChange.wiki || !this.requireEnWiki) &&
+            (this.$store.state.wiki === newRecentChange.wiki || !this.requireEnWiki) &&
             this.meetThreshold(newRecentChange)
         ) {
           this.stale = false; // resets the stale
@@ -208,7 +201,7 @@
         this.stats = await this.$axios.$get(`/api/stats`);
       });
 
-      this.$axios.$get(`/api/latestRevs?wiki=${this.subscribeWiki}`).then((result) => {
+      this.$axios.$get(`/api/latestRevs?wiki=${this.$store.state.wiki}`).then((result) => {
         this.initRecentChanges = result;
         result.forEach((async (rc) => await this.maybeShowRecentChange(rc)));
         this.loading = false;
