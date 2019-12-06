@@ -49,9 +49,11 @@ function computeOresFieldNew(oresJson, wiki, revId) {
   let ret = {};
   let damagingScore = oresJson.damagingScore || (oresJson[wiki].scores[revId].damaging.score && oresJson[wiki].scores[revId].damaging.score.probability.true);
   let badfaithScore = oresJson.badfaithScore || (oresJson[wiki].scores[revId].goodfaith.score && oresJson[wiki].scores[revId].goodfaith.score.probability.false);
+  ret.wikiRevId = `${wiki}:${revId}`;
   ret['damaging'] = {};
+  ret['goodfaith'] = {};
   ret['damaging']['true'] = damagingScore;
-  ret['damaging']['false'] = 1 - damagingScore;  ret['damaging'] = {};
+  ret['damaging']['false'] = 1 - damagingScore;
   ret['goodfaith']['true'] = 1 - badfaithScore;
   ret['goodfaith']['false'] = badfaithScore;
   return ret;

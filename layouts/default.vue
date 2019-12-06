@@ -54,19 +54,19 @@
             </b-nav-item>
           </b-navbar-nav>
           <b-navbar-nav class="ml-auto">
-            <b-nav-item-dropdown :href="`/marked/?userGaId=${$cookiez.get('_ga')}`" right>
+            <b-nav-item-dropdown  right>
               <template v-slot:button-content>
-                <object type="image/svg+xml" class="avatar-navbar" v-bind:data="`/api/avatar/${$cookiez.get('_ga')}`" ></object>Me{{$store.state.user.profile ? `(${$store.state.user.profile.displayName})`:''}}
+                <object type="image/svg+xml" class="avatar-navbar" v-bind:data="`/api/avatar/${$cookiez.get('_ga')}`" ></object>{{$store.state.user.profile ? `${$store.state.user.profile.displayName}`:'Anonymous'}}
               </template>
-              <template v-if="($store.state.user.profile)">
+              <template v-if="!($store.state.user.profile)">
                 <b-dropdown-item v-if="!($store.state.user.profile)" href="/auth/mediawiki/login" right>
                   <i class="fas fa-sign-in-alt"></i>Login
                 </b-dropdown-item>
               </template>
-              <template v-if="!($store.state.user.profile)">
+              <template v-if="($store.state.user.profile)">
                 <b-dropdown-item href="#"><i class="fas fa-cog"></i>Settings</b-dropdown-item>
                 <b-dropdown-item href="#"><i class="fas fa-user"></i>Profile</b-dropdown-item>
-                <b-dropdown-item href="#"><i class="fas fa-list"></i>Contributions</b-dropdown-item>
+                <b-dropdown-item :href="`/marked/?userGaId=${$cookiez.get('_ga')}`"><i class="fas fa-list"></i>Contributions</b-dropdown-item>
                 <b-dropdown-item href="/auth/mediawiki/logout"><i class="fas fa-sign-out-alt"></i>Logout</b-dropdown-item>
               </template>
 

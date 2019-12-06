@@ -27,8 +27,8 @@
           <div class="d-flex">
             <div class="flex-grow-1">
               [[<a :href="`${getUrlBaseByWiki(revision.wiki)}/wiki/${revision.title}`">{{ revision.title }}</a>]]
-              <sup><a v-bind:href="`${getUrlBaseByWiki(revision.wiki)}/wiki/Special:Diff/${revision.revid}`">
-                <small>rev.{{revision.revid}}</small>
+              <sup><a v-bind:href="`${getUrlBaseByWiki(revision.wiki)}/wiki/Special:Diff/${revision.wikiRevId.split(`:`)[1]}`">
+                <small>rev.{{revision.wikiRevId.split(`:`)[1]}}</small>
               </a></sup>
             </div>
             <div v-if="revision ? revision.pageLatestRevId > revision.revid: false"> Overriden</div>
@@ -89,8 +89,29 @@
               site</a>.
           </h5>
         </div>
+
+        <div v-if="interaction && interaction.judgements.length > 0" class="col-lg-12">
+          <table class="b-table table mt-2 w-100">
+            <tr class="row">
+              <td class="col-4">User</td>
+              <td class="col-4">Label</td>
+              <td class="col-4">Time</td>
+            </tr>
+            <tr class="row" v-for="judgement of interaction.judgements">
+              <td class="col-4">
+                <router-link :to="`/marked/?userGaId=${judgement.userGaId}`" replace>
+                  <object class="avatar-object" v-bind:data="`/api/avatar/${judgement.userGaId}`" ></object>
+                  <span v-if="$cookiez.get('_ga') === judgement.userGaId ">Me</span>
+                  <span v-else>Someone</span>
+                </router-link>
+              </td>
+              <td class="col-4">{{judgement.judgement}}</td>
+              <td class="col-4">{{new Date(judgement.timestamp * 1000).toISOString()}} <br/> (<timeago :datetime="new Date(interaction.lastTimestamp * 1000).toString()" :auto-update="60"></timeago>)</td>
+            </tr>
+          </table>
+        </div>
         <div class="mt-4 d-flex justify-content-center">
-          <div v-if="interaction" class="btn-group">
+          <div v-if="interaction" class="btn-group mx-1">
             <button
                 v-on:click="interactionBtn(`LooksGood`)"
                 class="btn btn-sm"
@@ -114,41 +135,27 @@
             </button>
             <transition name="fade">
               <template v-if="enableRevertRedirect()">
-                <button v-if="$store.state.user && $store.state.user.profile"
+                <button v-if="$store.state.flags.useDirectRevert && $store.state.user && $store.state.user.profile"
                         v-on:click="directRevert()"
                         class="btn btn-outline-primary">
-                  Revert Now
+                  <i class="fas fa-broom"></i>
                 </button>
                 <button v-else
                         v-on:click="redirectToRevert()"
                         class="btn btn-outline-primary">
-                  Jump to Revert
+                  <i class="fas fa-broom"></i>
                 </button>
               </template>
-
             </transition>
-
           </div>
-        </div>
-        <div v-if="interaction && interaction.judgements.length > 0" class="col-lg-12">
-          <table class="b-table table mt-2 w-100">
-            <tr class="row">
-              <td class="col-4">User</td>
-              <td class="col-4">Label</td>
-              <td class="col-4">Time</td>
-            </tr>
-            <tr class="row" v-for="judgement of interaction.judgements">
-              <td class="col-4">
-                <router-link :to="`/marked/?userGaId=${judgement.userGaId}`" replace>
-                  <object class="avatar-object" v-bind:data="`/api/avatar/${judgement.userGaId}`" ></object>
-                  <span v-if="$cookiez.get('_ga') === judgement.userGaId ">Me</span>
-                  <span v-else>Someone</span>
-                </router-link>
-              </td>
-              <td class="col-4">{{judgement.judgement}}</td>
-              <td class="col-4">{{new Date(judgement.timestamp * 1000).toISOString()}} <br/> (<timeago :datetime="new Date(interaction.lastTimestamp * 1000).toString()" :auto-update="60"></timeago>)</td>
-            </tr>
-          </table>
+          <div v-if="myJudgement" class="btn-group mx-1">
+          <button
+            v-on:click="$emit(`next-card`)"
+            v-if="myJudgement"
+            class="btn btn-outline-primary"
+          ><i class="fas fa-arrow-right"></i> Next
+          </button>
+          </div>
         </div>
       </div>
       <div v-else class="card-body d-flex flex-column small-screen-padding">
@@ -334,7 +341,7 @@
       redirectToRevert: async function() {
         if (this.myJudgement === `ShouldRevert` && !this.isOverriden()) {
           const version = await this.$axios.$get(`/api/version`);
-          let revertUrl = `${this.getUrlBaseByWiki(this.revision.wiki)}/w/index.php?title=${this.revision.title}&action=edit&undoafter=${this.revision.parentid}&undo=${this.revision.revid}&summary=Identified as test/vandalism using [[:m:WikiLoop Battlefield]](version ${version}). See it or provide your opinion at http://battlefield.wikiloop.org/marked?wikiRevId=${this.wikiRevId}`;
+          let revertUrl = `${this.getUrlBaseByWiki(this.revision.wiki)}/w/index.php?title=${this.revision.title}&action=edit&undoafter=${this.revision.parentid}&undo=${this.revision.revid}&summary=Identified as test/vandalism using [[:m:WikiLoop Battlefield]](version ${version}). See it or provide your opinion at http://battlefield.wikiloop.org/marked?wikiRevIds=${this.wikiRevId}`;
           let historyUrl = `${this.getUrlBaseByWiki(this.revision.wiki)}/w/index.php?title=${this.revision.title}&action=history`;
           let result = await this.$axios.$get(`/api/mediawiki`, {params: {
             wiki: this.revision.wiki,
@@ -382,10 +389,7 @@
           recentChange: {
             title: revision.title,
             namespace: revision.namespace,
-            revision: {
-              new: revision.revid,
-              old: revision.parentid,
-            },
+            revision: revision.revision,
             ores: this.ores,
             user: revision.user,
             wiki: revision.wiki,
