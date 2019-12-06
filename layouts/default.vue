@@ -34,28 +34,51 @@
             <b-nav-item href="/leaderboard" v-b-tooltip.hover title="Leaderboard">
               <i class="fas fa-trophy"></i>
             </b-nav-item>
-            <b-nav-item-dropdown text="About" right>
+            <b-nav-item-dropdown right>
+              <template v-slot:button-content>
+                <i class="fas fa-info"></i>
+              </template>
               <b-dropdown-item href="https://github.com/google/wikiloop-battlefield/issues">Issues</b-dropdown-item>
               <b-dropdown-item href="https://github.com/google/wikiloop-battlefield">Code </b-dropdown-item>
               <b-dropdown-item href="https://meta.wikimedia.org/wiki/WikiProject_WikiLoop">WikiProject</b-dropdown-item>
               <b-dropdown-item href="/api/stats">Stats</b-dropdown-item>
             </b-nav-item-dropdown>
+            <b-nav-item>
+              <b-form-select class="small" v-model="wiki">
+                <option :value="`enwiki`">English</option>
+                <option :value="`frwiki`">French</option>
+                <option :value="`dewiki`">Germany</option>
+                <option :value="`wikidatawiki`">Wikidata</option>
+                <option :value="`zhwiki`">Chinese</option>
+              </b-form-select>
+            </b-nav-item>
           </b-navbar-nav>
           <b-navbar-nav class="ml-auto">
-            <b-nav-item v-if="!($store.state.user.profile)" href="/auth/mediawiki/login" right>
-              Login
-            </b-nav-item>
-            <b-nav-item v-if="($store.state.user.profile)" href="/auth/mediawiki/logout" right>
-              Logout
-            </b-nav-item>
-            <b-nav-item :href="`/marked/?userGaId=${$cookiez.get('_ga')}`" right>
-                <object class="avatar-navbar" v-bind:data="`/api/avatar/${$cookiez.get('_ga')}`" ></object>Me{{$store.state.user.profile ? `(${$store.state.user.profile.displayName})`:''}}
-            </b-nav-item>
+            <b-nav-item-dropdown :href="`/marked/?userGaId=${$cookiez.get('_ga')}`" right>
+              <template v-slot:button-content>
+                <object type="image/svg+xml" class="avatar-navbar" v-bind:data="`/api/avatar/${$cookiez.get('_ga')}`" ></object>Me{{$store.state.user.profile ? `(${$store.state.user.profile.displayName})`:''}}
+              </template>
+              <template v-if="($store.state.user.profile)">
+                <b-dropdown-item v-if="!($store.state.user.profile)" href="/auth/mediawiki/login" right>
+                  <i class="fas fa-sign-in-alt"></i>Login
+                </b-dropdown-item>
+              </template>
+              <template v-if="!($store.state.user.profile)">
+                <b-dropdown-item href="#"><i class="fas fa-cog"></i>Settings</b-dropdown-item>
+                <b-dropdown-item href="#"><i class="fas fa-user"></i>Profile</b-dropdown-item>
+                <b-dropdown-item href="#"><i class="fas fa-list"></i>Contributions</b-dropdown-item>
+                <b-dropdown-item href="/auth/mediawiki/logout"><i class="fas fa-sign-out-alt"></i>Logout</b-dropdown-item>
+              </template>
+
+
+             </b-nav-item-dropdown>
           </b-navbar-nav>
         </b-collapse>
       </div>
     </nav>
-    <nuxt />
+    <div style="margin-top:80px" class="container small-screen-padding">
+      <nuxt />
+    </div>
   </div>
 </template>
 
@@ -75,6 +98,17 @@
           if (v === "1" | v === "true") v = true; // convert to native boolean
           else if (v==="0" || v==="false") v = false;
           this.$store.commit(`setFlag`, {key: k, value: v});
+        }
+      }
+    },
+    computed: {
+      wiki: {
+        get () {
+          return this.$store.state.wiki
+        },
+        set (value) {
+          console.warn(`XXX changing Wiki!`, value);
+          this.$store.dispatch('changeWiki', value)
         }
       }
     },
@@ -129,39 +163,21 @@ html {
   margin: 0;
 }
 
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-}
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
-}
-
 .avatar-navbar {
   width: 48px;
   height: 48px;
   margin-top: -18px;
   margin-bottom: -18px;
+}
+
+@media (max-width: 576px) {
+  .small-screen-padding {
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+}
+.nav-item .fas, .nav-item span {
+  line-height: 24px;
+  padding: 7px;
 }
 </style>

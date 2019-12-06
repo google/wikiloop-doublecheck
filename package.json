@@ -37,6 +37,7 @@
     "eventsource": "^1.0.7",
     "express": "^4.16.4",
     "express-session": "^1.16.2",
+    "heap": "^0.2.6",
     "http": "0.0.0",
     "jquery": "^3.4.0",
     "log4js": "^5.1.0",

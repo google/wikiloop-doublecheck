@@ -16,6 +16,7 @@ export const state = () => ({
     flags: {},
     version: null,
     sessionId: null,
+    wiki: "enwiki", // default to English
 });
 
 export const mutations = {
@@ -33,6 +34,9 @@ export const mutations = {
     },
     setSessionId (state, sessionId) {
         state.sessionId = sessionId;
+    },
+    setWiki(state, wiki) {
+        state.wiki = wiki
     }
 };
 
@@ -53,5 +57,12 @@ export const actions = {
             console.log(`nuxtServerInit store state clearProfile because req.user is not defined`);
             commit('user/clearProfile');
         }
+    },
+    async changeWiki({ commit, state, dispatch}, wiki) {
+      let oldWiki = state.wiki;
+      let newWiki = wiki;
+      commit(`setWiki`, wiki);
+      commit(`revisions/initHeap`);
+      dispatch(`revisions/loadMoreWikiRevs`);
     }
 };

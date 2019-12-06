@@ -14,7 +14,7 @@
 
 const root = require('./root');
 const { diff, diffWikiRevId } = require('./diff');
-const recentChanges = require('./recentChanges');
+const { listRecentChanges } = require('./recentchanges');
 const { ores, oresWikiRevId } = require('./ores');
 const { revision, revisionWikiRevId } = require('./revision');
 const { getInteraction, listInteractions, updateInteraction, interaction } = require('./interaction');
@@ -31,7 +31,7 @@ module.exports = {
     root,
     diff,
     diffWikiRevId,
-    recentChanges,
+    listRecentChanges,
     ores,
     oresWikiRevId,
     revision,

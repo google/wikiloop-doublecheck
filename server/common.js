@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+const wikiToDomain = require("./urlMap").wikiToDomain;
+
 const rp = require('request-promise');
 var log4js = require('log4js');
 var logger = log4js.getLogger(`default`);
@@ -23,16 +25,13 @@ apiLogger.level = process.env.LOG_LEVEL || 'debug';
 var perfLogger = log4js.getLogger(`perf`);
 perfLogger.level = process.env.LOG_LEVEL || 'debug';
 
-// TODO: merged with shared/utility
-function getUrlBaseByWiki(wiki) {
-    let wikiToLang = {
-        'enwiki': 'en',
-        'frwiki': 'fr',
-        'ruwiki': 'ru'
-    };
-    return `https://${wikiToLang[wiki]}.wikipedia.org`; // Require HTTPS to conduct the write edits
-}
-
+/**
+ * @deprecated
+ * @param oresJson
+ * @param wiki
+ * @param revId
+ * @return {{badfaithScore: *, damagingScore: *, badfaith: *, damaging: *, wikiRevId: string}}
+ */
 function computeOresField(oresJson, wiki, revId) {
     let damagingScore = oresJson.damagingScore || (oresJson[wiki].scores[revId].damaging.score && oresJson[wiki].scores[revId].damaging.score.probability.true);
     let badfaithScore = oresJson.badfaithScore || (oresJson[wiki].scores[revId].goodfaith.score && oresJson[wiki].scores[revId].goodfaith.score.probability.false);
@@ -46,6 +45,17 @@ function computeOresField(oresJson, wiki, revId) {
         badfaith: badfaith
     }
 }
+function computeOresFieldNew(oresJson, wiki, revId) {
+  let ret = {};
+  let damagingScore = oresJson.damagingScore || (oresJson[wiki].scores[revId].damaging.score && oresJson[wiki].scores[revId].damaging.score.probability.true);
+  let badfaithScore = oresJson.badfaithScore || (oresJson[wiki].scores[revId].goodfaith.score && oresJson[wiki].scores[revId].goodfaith.score.probability.false);
+  ret['damaging'] = {};
+  ret['damaging']['true'] = damagingScore;
+  ret['damaging']['false'] = 1 - damagingScore;  ret['damaging'] = {};
+  ret['goodfaith']['true'] = 1 - badfaithScore;
+  ret['goodfaith']['false'] = badfaithScore;
+  return ret;
+}
 
 async function fetchRevisions(wikiRevIds) {
     let wikiToRevIdList = wikiRevIdsGroupByWiki(wikiRevIds);
@@ -53,7 +63,7 @@ async function fetchRevisions(wikiRevIds) {
     let wikiToRevisionList = {};
     for (let wiki in wikiToRevIdList) {
         let revIds= wikiToRevIdList[wiki];
-        const fetchUrl = new URL(`${getUrlBaseByWiki(wiki)}/w/api.php`);
+        const fetchUrl = new URL(`http://${wikiToDomain[wiki]}/w/api.php`);
         let params = {
             "action": "query",
             "format": "json",
@@ -330,8 +340,8 @@ module.exports = {
     logger,
     apiLogger,
     perfLogger,
-    getUrlBaseByWiki,
     computeOresField,
+    computeOresFieldNew,
     fetchRevisions,
     getNewJudgementCounts,
     useOauth,

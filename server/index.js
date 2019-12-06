@@ -11,6 +11,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 require(`dotenv`).config();
 const http = require('http');
 const express = require('express');
@@ -21,6 +22,8 @@ const rp = require('request-promise');
 const mongoose = require('mongoose');
 const {logger, apiLogger, perfLogger, getUrlBaseByWiki, computeOresField, fetchRevisions, useOauth} = require('./common');
 const routes = require('./routes');
+const wikiToDomain = require("./urlMap").wikiToDomain;
+
 const asyncHandler = fn => (req, res, next) =>
     Promise
         .resolve(fn(req, res, next))
@@ -140,7 +143,7 @@ function setupApiRequestListener(db, io, app) {
 
   apiRouter.get('/diff', asyncHandler(routes.diff));
 
-  apiRouter.get('/recentChanges', asyncHandler(routes.recentChanges));
+  apiRouter.get('/recentchanges/list', asyncHandler(routes.listRecentChanges));
 
   apiRouter.get('/ores', asyncHandler(routes.ores));
 
@@ -216,7 +219,10 @@ function setupMediaWikiListener(db, io) {
       recentChange._id = (`${recentChange.wiki}-${recentChange.id}`);
       if (recentChange.type === "edit") {
         // Currently only support these wikis.
-        if (["enwiki", "frwiki", "ruwiki"].indexOf(recentChange.wiki) >= 0) {
+        if (Object.keys(wikiToDomain).indexOf(recentChange.wiki) >= 0) {
+          // TODO(xinbenlv): remove it after we build review queue or allow ORES missing
+          if (recentChange.wiki == "wikidatawiki" && Math.random() <= 0.9) return; // ignore 90% of wikidata
+
           try {
             let oresUrl = `https://ores.wikimedia.org/v3/scores/${recentChange.wiki}/?models=damaging|goodfaith&revids=${recentChange.revision.new}`;
             let oresJson;
@@ -240,9 +246,9 @@ function setupMediaWikiListener(db, io) {
               ores: recentChange.ores,
               namespace: recentChange.namespace,
               nonbot: !recentChange.bot,
+              wikiRevId: `${recentChange.wiki}:${recentChange.revision.new}`,
             };
             docCounter++;
-            // logger.debug(` Counters: ${docCounter} / ${allDocCounter}`);
             doc.comment = recentChange.comment;
             io.sockets.emit('recent-change', doc);
             delete doc.comment;
@@ -257,7 +263,9 @@ function setupMediaWikiListener(db, io) {
             }
           }
         }
-
+        else {
+          logger.debug(`Ignoring revision from wiki=${recentChange.wiki}`);
+        }
       }
     };
 

@@ -17,8 +17,8 @@
 <template>
   <section>
     <div v-bind:class="{
-        'border-danger': ores ? ores.badfaith : false,
-        'border-warning': ores ? ores.damaging : false,
+        'border-danger': ores ? ores.goodfaith.false > 0.5 : false,
+        'border-warning': ores ? ores.damaging.true > 0.5 : false,
         'bg-light': revision ? revision.pageLatestRevId > revision.revid : false
         }"
          class="card shadow-sm h-100">
@@ -46,14 +46,14 @@
             </div>
             <div v-if="ores" class="col-lg-2">
               <span data-toggle="tooltip" data-placement="top" title="Damaging Score by WMF ORES">
-                <i v-bind:class="{ 'text-danger': ores ? ores.badfaith : false }" class="fas fa-cloud-rain"></i> ORES Damaging: <a
+                <i v-bind:class="{ 'text-danger': ores ? ores.damaging.true > 0.5 : false }" class="fas fa-cloud-rain"></i> ORES Damaging: <a
                   :href="`https://ores.wikimedia.org/v3/scores/enwiki/?revids=${revision.revid}`">{{ damagingPercent() }}</a>
               </span>
             </div>
             <div v-if="ores" class="col-lg-2">
               <span data-toggle="tooltip" data-placement="top"
                     title="Bad-faith Score by WMF ORES (here Bad-faith = 100% - Goodfaith)">
-                <i v-bind:class="{ 'text-warning': ores ? ores.damaging: false }" class="fas fa-theater-masks"></i> ORES Bad-faith:  <a
+                <i v-bind:class="{ 'text-warning': ores ? ores.goodfaith.false > 0.5: false }" class="fas fa-theater-masks"></i> ORES Bad-faith:  <a
                   :href="`https://ores.wikimedia.org/v3/scores/enwiki/?revids=${revision.revid}`">{{ badfaithPercent() }}</a>
               </span>
             </div>
@@ -164,7 +164,6 @@
   import utility from '~/shared/utility';
   import DiffBox from '~/components/DiffBox.vue';
   import socket from '~/plugins/socket.io.js';
-
   export default {
     components: {
       DiffBox
@@ -194,7 +193,10 @@
         type: Number,
         default: null
       },
-
+      diffProp: {
+        type: Object,
+        default: null
+      },
     },
     data() {
       return {
@@ -213,7 +215,7 @@
         this.diff = await this.fetchDiffWithWikiRevId(this.wikiRevId);
       },
       loadStiki: async function() {
-        console.log(`Load Stiki`);
+        console.info(`Load Stiki`);
         let stikiRemote = [];
         if (this.stikiProp) {
           stikiRemote = this.stikiProp;
@@ -233,7 +235,7 @@
         this.stikiRetryRemains --;
       },
       loadCbng: async function() {
-        console.log(`Load CBNG for ${this.wikiRevId}`);
+        console.info(`Load CBNG for ${this.wikiRevId}`);
         let cbngRemote = [];
         if (this.cbngProp) {
           cbngRemote = this.cbngProp;
@@ -259,7 +261,8 @@
         return this.interaction.counts[judge];
       },
       isOverriden: function () {
-        return this.revision.pageLatestRevId > this.revision.revid;
+        return false;
+        // return this.revision.pageLatestRevId > this.revision.revid;
       },
       getMyJudgement: function() {
         if (this.interaction) {
@@ -403,10 +406,10 @@
         });
       },
       damagingPercent: function () {
-        return `${this.ores !== null ? Math.floor(parseFloat(this.ores.damagingScore) * 100) : "??"}%`;
+        return `${this.ores !== null ? Math.floor(parseFloat(this.ores.damaging.true) * 100) : "??"}%`;
       },
       badfaithPercent: function () {
-        return `${this.ores !== null ? Math.floor(parseFloat(this.ores.badfaithScore) * 100) : "??"}%`;
+        return `${this.ores !== null ? Math.floor(parseFloat(this.ores.goodfaith.false) * 100) : "??"}%`;
       },
       stikiPercent: function() {
         return `${this.stiki !== null ? Math.floor(parseFloat(this.stiki) * 100) : "??"}%`;
@@ -416,31 +419,28 @@
       }
     },
     async beforeMount() {
-      console.log(`Mounted NewRevisionCard wikiRevId=${this.wikiRevId}, Set props: interactionProp:${this.interactionProp!=null}, revisionProp:${this.revisionProp!=null}, oresProp:${this.oresProp!=null}`);
+      console.info(`Mounted NewRevisionCard wikiRevId=${this.wikiRevId},
+        Set props: interactionProp:${this.interactionProp!=null},
+        revisionProp:${this.revisionProp!=null},
+        oresProp:${this.oresProp!=null}
+        diffProp:${this.diffProp!=null}
+        `);
       this.interaction = this.interactionProp || await this.$axios.$get(`/api/interaction/${this.wikiRevId}`);
       this.revision = this.revisionProp || await this.$axios.$get(`/api/revision/${this.wikiRevId}`);
-      this.ores = this.oresProp || await this.$axios.$get(`/api/ores/${this.wikiRevId}`);
+      this.ores = this.oresProp ||  await this.$axios.$get(`/api/ores/${this.wikiRevId}`);
+      this.diff = this.diffProp || await this.$axios.$get(`/api/diff/${this.wikiRevId}`);
       if (this.stikiProp) {
         this.stiki = this.stikiProp;
       } else if (this.$store.state.flags.useStiki) {
         await this.loadStiki();
       }
       if (this.cbngProp) {
-        this.cbngProp = this.cbngProp;
+        this.cbng = this.cbngProp;
       } else if (this.$store.state.flags.useStiki/*Cbng shares the same flag with STiki*/) {
         await this.loadCbng();
       } // TODO(xinbenlv) merge duplicated logic
 
-      if (!this.diff) {
-        this.diff = await this.$axios.$get(`/api/diff/${this.wikiRevId}`);
-      }
-
-      socket.on('recent-change', async (newRecentChange) => {
-        // TODO(xinbenlv@, #40): if performance becomes a concern, revisit this approach.
-        if(newRecentChange.wiki === this.revision.wiki && newRecentChange.title === this.revision.title) {
-          this.revision.pageLatestRevId = Math.max(newRecentChange.revision.new, this.revision.revid);
-        }
-      });
+      // TODO(xinbenlv): after marking "shouldRevert" query to see if this revesion is top and can be reverted.
       socket.on('interaction', async (interaction) => {
         if(interaction.wikiRevId === this.wikiRevId) {
           this.interaction = interaction;
