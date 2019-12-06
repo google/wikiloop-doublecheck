@@ -19,7 +19,8 @@ const useStiki = !isEmpty(process.env.STIKI_MYSQL);
 module.exports = (req, res, next) => {
     res.send({
         useStiki: useStiki,
-        useOauth: useOauth
+        useOauth: useOauth,
+        useDirectRevert: false
     });
     req.visitor
         .event({ ec: "api", ea: "/" })

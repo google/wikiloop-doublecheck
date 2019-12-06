@@ -89,8 +89,29 @@
               site</a>.
           </h5>
         </div>
+
+        <div v-if="interaction && interaction.judgements.length > 0" class="col-lg-12">
+          <table class="b-table table mt-2 w-100">
+            <tr class="row">
+              <td class="col-4">User</td>
+              <td class="col-4">Label</td>
+              <td class="col-4">Time</td>
+            </tr>
+            <tr class="row" v-for="judgement of interaction.judgements">
+              <td class="col-4">
+                <router-link :to="`/marked/?userGaId=${judgement.userGaId}`" replace>
+                  <object class="avatar-object" v-bind:data="`/api/avatar/${judgement.userGaId}`" ></object>
+                  <span v-if="$cookiez.get('_ga') === judgement.userGaId ">Me</span>
+                  <span v-else>Someone</span>
+                </router-link>
+              </td>
+              <td class="col-4">{{judgement.judgement}}</td>
+              <td class="col-4">{{new Date(judgement.timestamp * 1000).toISOString()}} <br/> (<timeago :datetime="new Date(interaction.lastTimestamp * 1000).toString()" :auto-update="60"></timeago>)</td>
+            </tr>
+          </table>
+        </div>
         <div class="mt-4 d-flex justify-content-center">
-          <div v-if="interaction" class="btn-group">
+          <div v-if="interaction" class="btn-group mx-1">
             <button
                 v-on:click="interactionBtn(`LooksGood`)"
                 class="btn btn-sm"
@@ -114,45 +135,27 @@
             </button>
             <transition name="fade">
               <template v-if="enableRevertRedirect()">
-                <button v-if="$store.state.user && $store.state.user.profile"
+                <button v-if="$store.state.flags.useDirectRevert && $store.state.user && $store.state.user.profile"
                         v-on:click="directRevert()"
                         class="btn btn-outline-primary">
-                  Revert Now
+                  <i class="fas fa-broom"></i>
                 </button>
                 <button v-else
                         v-on:click="redirectToRevert()"
                         class="btn btn-outline-primary">
-                  <i class="fas fa-broom"></i>Jump to Revert
+                  <i class="fas fa-broom"></i>
                 </button>
               </template>
             </transition>
-            <button
-              v-on:click="$emit(`next-card`)"
-              v-if="myJudgement"
-              class="btn btn-outline-primary"
-            ><i class="fas fa-arrow-right"></i> Next Card
-            </button>
           </div>
-        </div>
-        <div v-if="interaction && interaction.judgements.length > 0" class="col-lg-12">
-          <table class="b-table table mt-2 w-100">
-            <tr class="row">
-              <td class="col-4">User</td>
-              <td class="col-4">Label</td>
-              <td class="col-4">Time</td>
-            </tr>
-            <tr class="row" v-for="judgement of interaction.judgements">
-              <td class="col-4">
-                <router-link :to="`/marked/?userGaId=${judgement.userGaId}`" replace>
-                  <object class="avatar-object" v-bind:data="`/api/avatar/${judgement.userGaId}`" ></object>
-                  <span v-if="$cookiez.get('_ga') === judgement.userGaId ">Me</span>
-                  <span v-else>Someone</span>
-                </router-link>
-              </td>
-              <td class="col-4">{{judgement.judgement}}</td>
-              <td class="col-4">{{new Date(judgement.timestamp * 1000).toISOString()}} <br/> (<timeago :datetime="new Date(interaction.lastTimestamp * 1000).toString()" :auto-update="60"></timeago>)</td>
-            </tr>
-          </table>
+          <div v-if="myJudgement" class="btn-group mx-1">
+          <button
+            v-on:click="$emit(`next-card`)"
+            v-if="myJudgement"
+            class="btn btn-outline-primary"
+          ><i class="fas fa-arrow-right"></i> Next
+          </button>
+          </div>
         </div>
       </div>
       <div v-else class="card-body d-flex flex-column small-screen-padding">

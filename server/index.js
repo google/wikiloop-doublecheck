@@ -375,7 +375,7 @@ function setupAuthApi(app) {
     logger.info(`Receive auth revert request`, req.params);
     let wiki = req.params.wikiRevId.split(':')[0];
     let revId = req.params.wikiRevId.split(':')[1];
-    let apiUrl = `${getUrlBaseByWiki(wiki)}/w/api.php`;
+    let apiUrl = `https://${wikiToDomain[wiki]}/w/api.php`;
     let revInfo = (await fetchRevisions([req.params.wikiRevId]))[wiki]; // assuming request succeeded
     let token = (await oauthFetch( apiUrl,     {
       "action": "query",
@@ -383,20 +383,26 @@ function setupAuthApi(app) {
       "meta": "tokens"
     }, {}, req.user.oauth)).query.tokens.csrftoken;  // assuming request succeeded;
     // Documentation: https://www.mediawiki.org/wiki/API:Edit#API_documentation
-    oauthFetch( apiUrl, {
+    try {
+      let data = await oauthFetch(apiUrl, {
         "action": "edit",
         "format": "json",
         "title": revInfo[0].title, // TODO(zzn): assuming only 1 revision is being reverted
         "tags": "WikiLoop Battlefield",
-        "summary": `Identified as test/vandalism and undid revision ${revId} by [[User:${revInfo[0].user}]] with [[m:WikiLoop Battlefield]](v${require('./../package.json').version}). See it or provide your opinion at ${process.env.OAUTH_CALLBACK_ENDPOINT}/marked?wikiRevId=${req.params.wikiRevId}`,
+        "summary": `Identified as test/vandalism and undid revision ${revId} by [[User:${revInfo[0].user}]] with [[m:WikiLoop Battlefield]](v${require(
+          './../package.json').version}). See it or provide your opinion at ${process.env.OAUTH_CALLBACK_ENDPOINT}/marked?wikiRevId=${req.params.wikiRevId}`,
         "undo": revId,
         "token": token
-      }, { method: 'POST' }, req.user.oauth ).then( function ( data ) {
+      }, {method: 'POST'}, req.user.oauth );  // assuming request succeeded;
       res.setHeader('Content-Type', 'application/json');
-      res.status( 200 );
-      res.send( JSON.stringify( data ) );
-    } );  // assuming request succeeded;
-    logger.debug(`conducted revert for wikiRevId=${req.params.wikiRevId}`);
+      res.status(200);
+      res.send(JSON.stringify(data));
+      logger.debug(`conducted revert for wikiRevId=${req.params.wikiRevId}`);
+    } catch (err) {
+      apiLogger.error(err);
+      res.status( 500 );
+      res.send(err);
+    }
   }));
 }
 
