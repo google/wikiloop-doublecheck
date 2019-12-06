@@ -262,7 +262,7 @@
         this.cbngRetryRemains --;
       },
       getTimeString: function () {
-        return new Date(this.revision.timestamp).toString();
+        return new Date(this.revision.timestamp * 1000).toString();
       },
       getJudgementCount: function (judge) {
         return this.interaction.counts[judge];
@@ -396,7 +396,7 @@
             timestamp: new Date(revision.timestamp).getTime()/1000
           }
         };
-
+        console.log(`XXX`, postBoyd);
         await this.$axios.$post(`/api/interaction/${this.wikiRevId}`, postBody);
         document.dispatchEvent(new Event("stats-update"));
         this.$emit('judgement-event', postBody);
