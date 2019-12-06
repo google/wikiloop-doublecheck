@@ -24,12 +24,12 @@
            v-bind:key="wikiRevId"
            class="col-12 p-2"
       >
-        <NewRevisionCard
+        <RevisionCard
             :wikiRevId="wikiRevId"
             :interactionProp="wikiRevIdToInfo[wikiRevId].interaction"
             :oresProp="wikiRevIdToInfo[wikiRevId].ores"
             :revisionProp="wikiRevIdToInfo[wikiRevId].revision"
-        ></NewRevisionCard>
+        ></RevisionCard>
       </div>
       <div class="col-12 p-2" v-if="!isEnd && loading">
         <div class="spinner-border" role="status">
@@ -41,14 +41,14 @@
 
 </template>
 <script>
-  import NewRevisionCard from '~/components/NewRevisionCard.vue';
+  import RevisionCard from '~/components/RevisionCard.vue';
 
   // Margin (in pixels) above the bottom of the screen at which new history entries begin to load.
   const SCROLL_OFFSET = 50;
 
   export default {
     components: {
-      NewRevisionCard
+      RevisionCard
     },
     data() {
       return {
