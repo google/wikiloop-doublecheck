@@ -13,59 +13,53 @@
 // limitations under the License.
 import axios from 'axios';
 const Heap = require('heap');
+const _populatePriority = function(meta, bumpPriority) {
+  // TODO(zzn): implement this function according to
+  // the design discussion of https://github.com/google/wikiloop-battlefield/issues/112
+
+  // Approach: using RevId as the quantifying measure.
+  let priority = parseInt(meta.wikiRevId.split(':')[1]);
+
+  // For 20% of time, we will ask the reviewer to review a randomly generated revision
+  // first somewhere, therefore, regardless.
+  if (Math.random() <= 0.2/*20%*/) {
+    priority += (bumpPriority); // and we don't consider any other factors.
+    meta.random = true;
+  } else {
+      // The more suspicious, the more priority. We have not yet honored "hardcase" so far.
+      if (meta.ores && meta.ores.damaging && meta.ores.damaging.true >= 0.5) {
+        priority += (bumpPriority);
+      }
+      if (meta.ores && meta.ores.damaging && meta.ores.goodfaith.false >= 0.5) {
+        priority += (bumpPriority);
+      }
+  }
+  meta.priority = priority;
+};
+
 export const state = () => ({
   wikiRevIdToMeta: {},
   nextWikiRevIdsHeap: null, // a heap
   prevWikiRevIds: [],
   maxTimestamp: Math.floor(new Date().getTime() / 1000),
   minTimestamp: null,
-  maxQueueSize: 500,
-});
-
-export const getter = () => ({
-  getNext: function(state) {
-    console.log(`XXX getter called`);
-    return state.nextWikiRevIdsHeap.peak();
-  },
-
+  maxQueueSize: 50,
 });
 
 export const mutations = {
   initHeap(state) {
     state.nextWikiRevIdsHeap = new Heap(function(wikiRevId1, wikiRevId2) {
-      // // TODO(zzn): implement this function according to
-      // // the design discussion of https://github.com/google/wikiloop-battlefield/issues/112
-      //
-      // // Approach: using RevId as the quantifying measure.
-      // let priority = parseInt(wikiRevId.split(':')[1]);
-      // this.wikiRevIdToMeta[wikiRevId].meta = {};
-      //
-      // // For 20% of time, we will ask the reviewer to review a randomly generated revision
-      // // first somewhere, therefore, regardless.
-      // if (Math.random() <= 0.2) {
-      //   priority += (REVIEW_QUEUE_SIZE); // and we don't consider any other factors.
-      //   this.wikiRevIdToMeta[wikiRevId].meta.random = true;
-      // } else {
-      //   if (this.wikiRevIdToMeta[wikiRevId]) {
-      //     let item = this.wikiRevIdToMeta[wikiRevId];
-      //     // The more suspicious, the more priority. We have not yet honored "hardcase" so far.
-      //     if (item.ores && item.ores.damaging && item.ores.damaging.true >= 0.5) {
-      //       priority += (REVIEW_QUEUE_SIZE);
-      //     }
-      //     if (item.ores && item.ores.damaging && item.ores.goodfaith.false >= 0.5) {
-      //       priority += (REVIEW_QUEUE_SIZE);
-      //     }
-      //   }
-      // }
-      // this.wikiRevIdToMeta[wikiRevId].meta.priority = priority;
-      return wikiRevId2 - wikiRevId1;
+      return state.wikiRevIdToMeta[wikiRevId2].priority - state.wikiRevIdToMeta[wikiRevId1].priority;
     });
-  },git
+  },
   addRecentChange (state, recentChange) {
+    state.wikiRevIdToMeta[recentChange.wikiRevId] = recentChange;
+    _populatePriority(state.wikiRevIdToMeta[recentChange.wikiRevId], state.maxQueueSize);
     state.nextWikiRevIdsHeap.push(recentChange.wikiRevId);
   },
-  updateScore (state, value) {
-    state.profile = null;
+  pop(state) {
+    // we can't return so far, otherwise it will be good.
+    return state.nextWikiRevIdsHeap.pop();
   },
   updateTimestamps(state, timestamps) {
     state.maxTimestamp = Math.max(state.maxTimestamp,...timestamps);

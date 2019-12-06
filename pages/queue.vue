@@ -16,8 +16,6 @@
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
-
-    const REVIEW_QUEUE_SIZE = 500;
     export default {
         components: {
             NewRevisionCard
@@ -32,8 +30,8 @@
             showNext: async function() {
                 await sleep(300);
                 await this.$store.dispatch(`revisions/loadMoreWikiRevs`);
-                this.currentWikiRevId = this.$store.state.revisions.getNext;
-                console.log(`XXX this.$store.state.revisions.getNext`, this.$store.state.revisions.getNext);
+                this.currentWikiRevId = this.$store.state.revisions.nextWikiRevIdsHeap.peek();
+                this.$store.commit(`revisions/pop`);
             }
         },
         async mounted() {
