@@ -40,10 +40,10 @@ const _populatePriority = function(meta, bumpPriority) {
 export const state = () => ({
   wikiRevIdToMeta: {},
   nextWikiRevIdsHeap: null, // a heap
-  prevWikiRevIds: [],
+  seenWikiRevSets: new Set(),
   maxTimestamp: Math.floor(new Date().getTime() / 1000),
   minTimestamp: null,
-  maxQueueSize: 50,
+  maxQueueSize: 500,
 });
 
 export const mutations = {
@@ -104,7 +104,12 @@ export const actions = {
     let apiPage = (await axios.get(`/api/recentchanges/list?${urlParams.toString()}`)).data;
     let _timestamps = apiPage.map(item => item.timestamp);
     commit(`updateTimestamps`, _timestamps);
-    apiPage.forEach(item => commit(`addRecentChange`, item));
+    apiPage.forEach(item => {
+      if (!state.seenWikiRevSets.has(item.wikiRevId)) {
+        commit(`addRecentChange`, item)
+        state.seenWikiRevSets.add(item.wikiRevId);
+      }
+    });
     return apiPage.map(item => item.wikiRevId);
   },
   async loadMoreWikiRevs( { commit, state, dispatch}) {
