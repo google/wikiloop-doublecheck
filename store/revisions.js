@@ -37,14 +37,18 @@ const _populatePriority = function(meta, bumpPriority) {
   meta.priority = priority;
 };
 
-export const state = () => ({
-  wikiRevIdToMeta: {},
-  nextWikiRevIdsHeap: null, // a heap
-  seenWikiRevSets: new Set(),
-  maxTimestamp: Math.floor(new Date().getTime() / 1000),
-  minTimestamp: null,
-  maxQueueSize: 500,
-});
+const getDefaultState = () => {
+  return {
+    wikiRevIdToMeta: {},
+    nextWikiRevIdsHeap: null, // a heap
+    reviewedWikiRevIdSet: new Set(),
+    maxTimestamp: Math.floor(new Date().getTime() / 1000),
+    minTimestamp: null,
+    maxQueueSize: 500,
+  }
+};
+
+export const state = getDefaultState();
 
 export const mutations = {
   initHeap(state) {
@@ -56,12 +60,17 @@ export const mutations = {
     state.wikiRevIdToMeta[recentChange.wikiRevId] = recentChange;
     if (recentChange.ores instanceof Array) recentChange.ores = null; // an empty ORES
     _populatePriority(state.wikiRevIdToMeta[recentChange.wikiRevId], state.maxQueueSize);
-    state.nextWikiRevIdsHeap.push(recentChange.wikiRevId);
+    if (!state.reviewedWikiRevIdSet.has(recentChange.wikiRevId)) {
+      state.nextWikiRevIdsHeap.push(recentChange.wikiRevId);
+    }
   },
   pop(state) {
     // we can't return so far, otherwise it will be good.
     let wikiRevId = state.nextWikiRevIdsHeap.pop();
     return state.nextWikiRevIdsHeap.pop();
+  },
+  markAsReviewed(state, wikiRevId) {
+    state.reviewedWikiRevIdSet.add(wikiRevId);
   },
   updateTimestamps(state, timestamps) {
     state.maxTimestamp = Math.max(state.maxTimestamp,...timestamps);
@@ -73,6 +82,9 @@ export const mutations = {
     let fieldName = payload.fieldName;
     let fieldValue = payload.fieldValue;
     state.wikiRevIdToMeta[wikiRevId][fieldName] = fieldValue;
+  },
+  resetState (state) {
+    Object.assign(state, getDefaultState())
   }
 };
 
@@ -105,9 +117,8 @@ export const actions = {
     let _timestamps = apiPage.map(item => item.timestamp);
     commit(`updateTimestamps`, _timestamps);
     apiPage.forEach(item => {
-      if (!state.seenWikiRevSets.has(item.wikiRevId)) {
-        commit(`addRecentChange`, item)
-        state.seenWikiRevSets.add(item.wikiRevId);
+      if (!(item.wikiRevId in state.wikiRevIdToMeta)) {
+        commit(`addRecentChange`, item);
       }
     });
     return apiPage.map(item => item.wikiRevId);
@@ -142,7 +153,6 @@ export const actions = {
   async loadInteraction( {commit, state, dispatch}, wikiRevId ) {
     if (state.wikiRevIdToMeta[wikiRevId].interactions) {
       console.info(`ignoring existing interactions preloadAsyncMeta for wikiRevId = `, wikiRevId);
-      return;
     } else {
       console.info(`loading interactions preloadAsyncMeta for wikiRevId = `, wikiRevId);
       let interaction = await this.$axios.$get(`/api/interaction/${wikiRevId}`);

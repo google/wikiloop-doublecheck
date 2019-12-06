@@ -58,9 +58,11 @@ export const actions = {
             commit('user/clearProfile');
         }
     },
-    async changeWiki({ commit, state}, wiki) {
+    async changeWiki({ commit, state, dispatch}, wiki) {
       let oldWiki = state.wiki;
       let newWiki = wiki;
       commit(`setWiki`, wiki);
+      commit(`revisions/initHeap`);
+      dispatch(`revisions/loadMoreWikiRevs`);
     }
 };

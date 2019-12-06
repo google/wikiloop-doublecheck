@@ -107,6 +107,7 @@
           return this.$store.state.wiki
         },
         set (value) {
+          console.warn(`XXX changing Wiki!`, value);
           this.$store.dispatch('changeWiki', value)
         }
       }
