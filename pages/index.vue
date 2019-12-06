@@ -9,7 +9,7 @@
                 :oresProp="currentOres"
                 :interactionProp="currentInteraction"
                 :revisionProp="currentRevision"
-                v-on:judgement-event="showNext()"
+                v-on:next-card="showNext()"
                 ></RevisionCard>
         </template>
     </section>
