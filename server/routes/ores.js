@@ -13,7 +13,7 @@
 // limitations under the License.
 
 const rp = require('request-promise');
-const { computeOresField, wikiRevIdsGroupByWiki, apiLogger } = require('../common');
+const { computeOresFieldNew, wikiRevIdsGroupByWiki, apiLogger } = require('../common');
 
 /** Function to fetch ORES, if unavailable, cover the error and replace score with null
  * There are two main reasons ORES scores are unavailable:
@@ -38,7 +38,7 @@ async function fetchOres(wikiRevIds) {
         let oresUrl = `https://ores.wikimedia.org/v3/scores/${wiki}/?models=damaging|goodfaith&revids=${revIds.join('|')}`;
         try {
             oresResultJson = await rp.get(oresUrl, { json: true });
-            oresResults[wiki] = revIds.map(revId => computeOresField(oresResultJson, wiki, revId));
+            oresResults[wiki] = revIds.map(revId => computeOresFieldNew(oresResultJson, wiki, revId));
         } catch (err) {
             if (err.statusCode === 429) {
                 apiLogger.warn(`\n\n\nEncountered a 429 rate limit err for wikiRevIds=${wikiRevIds}, returning null for all\n\n\n`);
@@ -49,7 +49,7 @@ async function fetchOres(wikiRevIds) {
         }
     }
     return oresResults;
-}
+};
 
 const ores = async (req, res) => {
     let wikiRevIds = req.query.wikiRevIds;

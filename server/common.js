@@ -25,6 +25,13 @@ apiLogger.level = process.env.LOG_LEVEL || 'debug';
 var perfLogger = log4js.getLogger(`perf`);
 perfLogger.level = process.env.LOG_LEVEL || 'debug';
 
+/**
+ * @deprecated
+ * @param oresJson
+ * @param wiki
+ * @param revId
+ * @return {{badfaithScore: *, damagingScore: *, badfaith: *, damaging: *, wikiRevId: string}}
+ */
 function computeOresField(oresJson, wiki, revId) {
     let damagingScore = oresJson.damagingScore || (oresJson[wiki].scores[revId].damaging.score && oresJson[wiki].scores[revId].damaging.score.probability.true);
     let badfaithScore = oresJson.badfaithScore || (oresJson[wiki].scores[revId].goodfaith.score && oresJson[wiki].scores[revId].goodfaith.score.probability.false);
@@ -37,6 +44,17 @@ function computeOresField(oresJson, wiki, revId) {
         badfaithScore: badfaithScore,
         badfaith: badfaith
     }
+}
+function computeOresFieldNew(oresJson, wiki, revId) {
+  let ret = {};
+  let damagingScore = oresJson.damagingScore || (oresJson[wiki].scores[revId].damaging.score && oresJson[wiki].scores[revId].damaging.score.probability.true);
+  let badfaithScore = oresJson.badfaithScore || (oresJson[wiki].scores[revId].goodfaith.score && oresJson[wiki].scores[revId].goodfaith.score.probability.false);
+  ret['damaging'] = {};
+  ret['damaging']['true'] = damagingScore;
+  ret['damaging']['false'] = 1 - damagingScore;  ret['damaging'] = {};
+  ret['goodfaith']['true'] = 1 - badfaithScore;
+  ret['goodfaith']['false'] = badfaithScore;
+  return ret;
 }
 
 async function fetchRevisions(wikiRevIds) {
@@ -323,6 +341,7 @@ module.exports = {
     apiLogger,
     perfLogger,
     computeOresField,
+    computeOresFieldNew,
     fetchRevisions,
     getNewJudgementCounts,
     useOauth,

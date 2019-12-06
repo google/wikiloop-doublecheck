@@ -2,23 +2,27 @@
 <template>
     <section>
         <template v-if="currentWikiRevId">
-            <NewRevisionCard
+            <RevisionCard
                 :wikiRevId="currentWikiRevId"
                 :key="currentWikiRevId"
+                :diffProp="currentDiff"
+                :oresProp="currentOres"
+                :interactionProp="currentInteraction"
+                :revisionProp="currentRevision"
                 v-on:judgement-event="showNext()"
-                ></NewRevisionCard>
+                ></RevisionCard>
         </template>
     </section>
 </template>
 
 <script>
-    import NewRevisionCard from '~/components/NewRevisionCard.vue';
+    import RevisionCard from '~/components/RevisionCard.vue';
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
     export default {
         components: {
-            NewRevisionCard
+          RevisionCard
         },
         data() {
             return {
@@ -26,12 +30,36 @@
                 currentWikiRevId: null
             }
         },
+        computed: {
+          currentDiff: {
+            get () {
+              return this.$store.state.revisions.wikiRevIdToMeta[this.currentWikiRevId].diff;
+            }
+          },
+          currentRevision: {
+            get () {
+              return this.$store.state.revisions.wikiRevIdToMeta[this.currentWikiRevId];
+            }
+          },
+          currentInteraction: {
+            get () {
+
+              return this.$store.state.revisions.wikiRevIdToMeta[this.currentWikiRevId].interaction;
+            }
+          },
+          currentOres: {
+            get () {
+              let ores = this.$store.state.revisions.wikiRevIdToMeta[this.currentWikiRevId].ores;
+              return ores;
+            }
+          },
+        },
         methods: {
             showNext: async function() {
-                await sleep(300);
                 await this.$store.dispatch(`revisions/loadMoreWikiRevs`);
                 this.currentWikiRevId = this.$store.state.revisions.nextWikiRevIdsHeap.peek();
                 this.$store.commit(`revisions/pop`);
+                /*unawait*/ this.$store.dispatch(`revisions/preloadAsyncMeta`).then();
             }
         },
         async mounted() {

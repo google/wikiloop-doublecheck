@@ -54,16 +54,25 @@ export const mutations = {
   },
   addRecentChange (state, recentChange) {
     state.wikiRevIdToMeta[recentChange.wikiRevId] = recentChange;
+    if (recentChange.ores instanceof Array) recentChange.ores = null; // an empty ORES
     _populatePriority(state.wikiRevIdToMeta[recentChange.wikiRevId], state.maxQueueSize);
     state.nextWikiRevIdsHeap.push(recentChange.wikiRevId);
   },
   pop(state) {
     // we can't return so far, otherwise it will be good.
+    let wikiRevId = state.nextWikiRevIdsHeap.pop();
     return state.nextWikiRevIdsHeap.pop();
   },
   updateTimestamps(state, timestamps) {
     state.maxTimestamp = Math.max(state.maxTimestamp,...timestamps);
     state.minTimestamp = Math.min(state.minTimestamp,...timestamps);
+  },
+  field(state, payload) {
+    console.info(`committing value of ${payload.fieldName}`);
+    let wikiRevId = payload.wikiRevId;
+    let fieldName = payload.fieldName;
+    let fieldValue = payload.fieldValue;
+    state.wikiRevIdToMeta[wikiRevId][fieldName] = fieldValue;
   }
 };
 
@@ -100,13 +109,39 @@ export const actions = {
   },
   async loadMoreWikiRevs( { commit, state, dispatch}) {
     if (!state.nextWikiRevIdsHeap) commit(`initHeap`);
+    let limit = state.maxQueueSize - state.nextWikiRevIdsHeap.size();
     if (state.nextWikiRevIdsHeap.size() <= state.maxQueueSize) {
       await dispatch('fetchNewWikiRevIds',
-        {limit: state.maxQueueSize - state.nextWikiRevIdsHeap.size(), direction: `newer`});
+        {limit, direction: `newer`});
     }
     if (state.nextWikiRevIdsHeap.size() <= state.maxQueueSize) {
       await dispatch('fetchNewWikiRevIds',
-        {limit: state.maxQueueSize - state.nextWikiRevIdsHeap.size(), direction: `older`});
+        {limit, direction: `older`});
     }
-  }
+  },
+  async preloadAsyncMeta( {state, dispatch}) {
+    await Promise.all([state.nextWikiRevIdsHeap.peek()].map(wikiRevId => {
+      return Promise.all([dispatch(`loadDiff`, wikiRevId), dispatch(`loadInteraction`, wikiRevId)]);
+    }));
+  },
+  async loadDiff( {commit, state, dispatch}, wikiRevId ) {
+    if (state.wikiRevIdToMeta[wikiRevId].diff) {
+      console.info(`ignoring existing diff preloadAsyncMeta for wikiRevId = `, wikiRevId);
+      return;
+    } else {
+      console.info(`loading diff preloadAsyncMeta for wikiRevId = `, wikiRevId);
+      let diff = await this.$axios.$get(`/api/diff/${wikiRevId}`);
+      commit(`field`, {wikiRevId, fieldName: "diff", fieldValue: diff})
+    }
+  },
+  async loadInteraction( {commit, state, dispatch}, wikiRevId ) {
+    if (state.wikiRevIdToMeta[wikiRevId].interactions) {
+      console.info(`ignoring existing interactions preloadAsyncMeta for wikiRevId = `, wikiRevId);
+      return;
+    } else {
+      console.info(`loading interactions preloadAsyncMeta for wikiRevId = `, wikiRevId);
+      let interaction = await this.$axios.$get(`/api/interaction/${wikiRevId}`);
+      commit(`field`, {wikiRevId, fieldName: "interaction", fieldValue: interaction})
+    }
+  },
 };
