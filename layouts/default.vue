@@ -45,29 +45,27 @@
             </b-nav-item-dropdown>
             <b-nav-item>
               <b-form-select class="small" v-model="wiki">
-                <option :value="`enwiki`">English</option>
-                <option :value="`frwiki`">French</option>
-                <option :value="`dewiki`">Germany</option>
+                <option :value="`enwiki`">English (en)</option>
+                <option :value="`frwiki`">français (fr)</option>
+                <option :value="`dewiki`"> Deutsch (de)</option>
                 <option :value="`wikidatawiki`">Wikidata</option>
-                <option :value="`zhwiki`">Chinese</option>
+                <option :value="`zhwiki`">中文 (zh)</option>
               </b-form-select>
             </b-nav-item>
           </b-navbar-nav>
           <b-navbar-nav class="ml-auto">
             <b-nav-item-dropdown  right>
               <template v-slot:button-content>
-                <object type="image/svg+xml" class="avatar-navbar" v-bind:data="`/api/avatar/${$cookiez.get('_ga')}`" ></object>{{$store.state.user.profile ? `${$store.state.user.profile.displayName}`:'Anonymous'}}
+                <object type="image/svg+xml" class="avatar-navbar" v-bind:data="`/api/avatar/${$cookiez.get('_ga')}`" ></object>{{$store.state.user.profile ? `${$store.state.user.profile.displayName}`:`${$t(`Anonymous`)}`}}
               </template>
+              <b-dropdown-item :href="`/marked/?userGaId=${$cookiez.get('_ga')}`"><i class="fas fa-list"></i>{{$t(`ContributionsMenuItem`)}}</b-dropdown-item>
               <template v-if="!($store.state.user.profile)">
                 <b-dropdown-item v-if="!($store.state.user.profile)" href="/auth/mediawiki/login" right>
-                  <i class="fas fa-sign-in-alt"></i>Login
+                  <i class="fas fa-sign-in-alt"></i>{{$t(`LoginMenuItem`)}}
                 </b-dropdown-item>
               </template>
               <template v-if="($store.state.user.profile)">
-                <b-dropdown-item href="#"><i class="fas fa-cog"></i>Settings</b-dropdown-item>
-                <b-dropdown-item href="#"><i class="fas fa-user"></i>Profile</b-dropdown-item>
-                <b-dropdown-item :href="`/marked/?userGaId=${$cookiez.get('_ga')}`"><i class="fas fa-list"></i>Contributions</b-dropdown-item>
-                <b-dropdown-item href="/auth/mediawiki/logout"><i class="fas fa-sign-out-alt"></i>Logout</b-dropdown-item>
+                <b-dropdown-item href="/auth/mediawiki/logout"><i class="fas fa-sign-out-alt"></i>{{$t(`LogoutMenuItem`)}}</b-dropdown-item>
               </template>
 
 
@@ -106,9 +104,17 @@
         get () {
           return this.$store.state.wiki
         },
-        set (value) {
-          console.warn(`XXX changing Wiki!`, value);
-          this.$store.dispatch('changeWiki', value)
+        set (wiki) {
+
+          const wikiToLangMap = {
+            "enwiki": "en",
+            "dewiki": "de",
+            "frwiki": "fr",
+            "zhwiki": "zh",
+            "wikidatawiki": "en", // TODO(xinbenlv): consider how we deal with wikidata UI langauge.
+          };
+          this.$i18n.locale = wikiToLangMap[wiki];
+          this.$store.dispatch('changeWiki', wiki)
         }
       }
     },

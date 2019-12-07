@@ -24,22 +24,19 @@ const markedRevsCsv = async (req, res) => {
     let ret = [[
         `WikiRevId`,
         `LastTimestamp`,
-        `OresDamagingScore`,
-        `OresBadfaithScore`,
         `ShouldRevert`,
         `NotSure`,
         `LooksGood`
     ]]
-        .concat(newJudgementCounts.map((newJudgementCount) => [
+        .concat(newJudgementCounts.map((newJudgementCount) => {
+          return [
             newJudgementCount.wikiRevId,
             newJudgementCount.lastTimestamp,
-            newJudgementCount.recentChange.ores ? newJudgementCount.recentChange.ores.damagingScore : "null",
-            newJudgementCount.recentChange.ores ? newJudgementCount.recentChange.ores.badfaithScore : "null",
             newJudgementCount.counts.ShouldRevert,
             newJudgementCount.counts.NotSure,
             newJudgementCount.counts.LooksGood,
-            // newJudgementCount.judgements
-        ]));
+          ]
+        }));
     stringify(ret, { header: false })
         .pipe(res);
 };
