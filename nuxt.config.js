@@ -84,7 +84,79 @@ module.exports = {
         'PORT',
         'GA_ID'
       ]
-    }]
+    }],
+    [
+      'nuxt-i18n',
+      {
+        locales: ['en', 'zh', 'fr', 'de'],
+        defaultLocale: 'en',
+        vueI18n: {
+          fallbackLocale: 'en',
+          messages: {
+            en: {
+              LoginMenuItem: "Login",
+              LogoutMenuItem: "Logout",
+              ContributionsMenuItem: "Contributions",
+              Anonymous: "Anonymous",
+              Me: "Me",
+              Someone: "Someone",
+              EditSummaryLabel: "Edit summary",
+              LooksGoodBtnLabel: "Looks good",
+              NotSureBtnLabel: "Not sure",
+              ShouldRevertBtnLabel: "Should revert",
+              NextBtnLabel: "Next",
+              Loading: "Loading",
+              EditedTimeLabel: "edited"
+            },
+            zh: {
+              LoginMenuItem: "登录",
+              LogoutMenuItem: "登出",
+              ContributionsMenuItem: "贡献",
+              Anonymous: "游客",
+              Me: "我",
+              Someone: "别人",
+              EditSummaryLabel: "编辑摘要",
+              LooksGoodBtnLabel: "看着不错",
+              NotSureBtnLabel: "不确定",
+              ShouldRevertBtnLabel: "应该撤回",
+              Loading: "读取中",
+              EditedTimeLabel: "编辑于"
+            },
+            fr: {
+              LoginMenuItem: "Connexion",
+              LogoutMenuItem: "Déconnexion",
+              ContributionsMenuItem: "Contributions",
+              Anonymous: "Anonyme",
+              Me: "Moi",
+              Someone: "Quelqu'un",
+              EditSummaryLabel: "Modifier le résumé",
+              LooksGoodBtnLabel: "Cela semble bon",
+              NotSureBtnLabel: "Pas sûr",
+              ShouldRevertBtnLabel: "Devrait revenir",
+              NextBtnLabel: "Suivant",
+              Loading: "Chargement",
+              EditedTimeLabel: "édité"
+            },
+            de: {
+              LoginMenuItem: "Anmelden",
+              LogoutMenuItem: "Abmelden",
+              ContributionsMenuItem: "Beiträge",
+              Anonymous: "Anonym",
+              Me: "Ich",
+              Someone: "Jemand",
+              EditSummaryLabel: "Zusammenfassung bearbeiten",
+              LooksGoodBtnLabel: "Sieht gut aus",
+              NotSureBtnLabel: "Nicht sicher",
+              ShouldRevertBtnLabel: "Sollte zurücksetzen",
+              NextBtnLabel: "Nächste",
+              Loading: "Beladung",
+              EditedTimeLabel: "Bearbeitet"
+            }
+          }
+        }
+      }
+    ]
+
   ],
   /*
    ** Axios module configuration

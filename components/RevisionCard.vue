@@ -31,14 +31,15 @@
                 <small>rev.{{revision.wikiRevId.split(`:`)[1]}}</small>
               </a></sup>
             </div>
+            <!-- TODO(xinbenlv) update the following text for for i18n -->
             <div v-if="revision ? revision.pageLatestRevId > revision.revid: false"> Overriden</div>
           </div>
         </h5>
         <div class="card-subtitle mb-2 text-muted">
           <div class="row p-2">
             <div class="col-lg-2">
-              <i class="fas fa-pen"></i> edited
-              <timeago :datetime="getTimeString()" :auto-update="60"></timeago>
+              <i class="fas fa-pen"></i> {{$t(`EditedTimeLabel`)}}
+              <timeago :datetime="getTimeString()" :auto-update="60" :locale="$i18n.locale"></timeago>
             </div>
             <div class="col-lg-2">
               <small><span>by <a v-bind:href="`${getUrlBaseByWiki(revision.wiki)}/wiki/User:${revision.user}`">{{ revision.user }}</a></span>
@@ -46,6 +47,7 @@
             </div>
             <div v-if="ores" class="col-lg-2">
               <span data-toggle="tooltip" data-placement="top" title="Damaging Score by WMF ORES">
+                <!-- TODO(xinbenlv) update the following text for for i18n -->
                 <i v-bind:class="{ 'text-danger': ores ? ores.damaging.true > 0.5 : false }" class="fas fa-cloud-rain"></i> ORES Damaging: <a
                   :href="`https://ores.wikimedia.org/v3/scores/enwiki/?revids=${revision.revid}`">{{ damagingPercent() }}</a>
               </span>
@@ -53,6 +55,7 @@
             <div v-if="ores" class="col-lg-2">
               <span data-toggle="tooltip" data-placement="top"
                     title="Bad-faith Score by WMF ORES (here Bad-faith = 100% - Goodfaith)">
+                <!-- TODO(xinbenlv) update the following text for for i18n -->
                 <i v-bind:class="{ 'text-warning': ores ? ores.goodfaith.false > 0.5: false }" class="fas fa-theater-masks"></i> ORES Bad-faith:  <a
                   :href="`https://ores.wikimedia.org/v3/scores/enwiki/?revids=${revision.revid}`">{{ badfaithPercent() }}</a>
               </span>
@@ -75,13 +78,14 @@
         </div>
         <div v-if="revision" class="card-subtitle mb-2 text-muted">
           <div class="row p-2">
-            <div class="col-12"><b>Edit summary:</b>
+            <div class="col-12"><b>{{$t('EditSummaryLabel')}}:</b>
               <span>{{revision.comment || "(empty)}"}}</span>
             </div>
           </div>
         </div>
         <div class="card-text w-100 pl-sm-0">
           <diff-box v-if="diff && diff.compare && diff.compare['*']" v-bind:diffContent="diff.compare['*']"/>
+          <!-- TODO(xinbenlv) update the following text for for i18n -->
           <h5 v-else>Diff not available. You can load it
             <div v-on:click="loadDiff()" class="btn btn-outline-primary btn-small">here</div>
             , and sometimes it's caused by revision deleted or page deleted. See it directly on <a
@@ -101,12 +105,12 @@
               <td class="col-4">
                 <router-link :to="`/marked/?userGaId=${judgement.userGaId}`" replace>
                   <object class="avatar-object" v-bind:data="`/api/avatar/${judgement.userGaId}`" ></object>
-                  <span v-if="$cookiez.get('_ga') === judgement.userGaId ">Me</span>
-                  <span v-else>Someone</span>
+                  <span v-if="$cookiez.get('_ga') === judgement.userGaId ">{{$t("Me")}}</span>
+                  <span v-else>{{$t("Someone")}}</span>
                 </router-link>
               </td>
               <td class="col-4">{{judgement.judgement}}</td>
-              <td class="col-4">{{new Date(judgement.timestamp * 1000).toISOString()}} <br/> (<timeago :datetime="new Date(interaction.lastTimestamp * 1000).toString()" :auto-update="60"></timeago>)</td>
+              <td class="col-4">{{new Date(judgement.timestamp * 1000).toISOString()}} <br/> (<timeago :locale="$i18n.locale" :datetime="new Date(interaction.lastTimestamp * 1000).toString()" :auto-update="60"></timeago>)</td>
             </tr>
           </table>
         </div>
@@ -116,13 +120,13 @@
                 v-on:click="interactionBtn(`LooksGood`)"
                 class="btn btn-sm"
                 v-bind:class="{ 'btn-success':getMyJudgement() ===`LooksGood`, 'btn-outline-success': getMyJudgement() !==`LooksGood` }"
-            >Looks good {{getJudgementCount(`LooksGood`)}}
+            >{{$t(`LooksGoodBtnLabel`)}} {{getJudgementCount(`LooksGood`)}}
             </button>
             <button
                 v-on:click="interactionBtn(`NotSure`)"
                 v-bind:class="{ 'btn-secondary':getMyJudgement() ===`NotSure`, 'btn-outline-secondary':getMyJudgement() !==`NotSure` }"
                 class="btn btn-sm"
-            >Not sure
+            >{{$t(`NotSureBtnLabel`)}}
             <template v-if="!interaction"><span class="sr-only"></span></template>
             <template v-else>{{getJudgementCount(`NotSure`)}}</template>
 
@@ -131,7 +135,7 @@
                 v-on:click="interactionBtn(`ShouldRevert`)"
                 v-bind:class="{ 'btn-danger':getMyJudgement() ===`ShouldRevert`, 'btn-outline-danger':getMyJudgement() !== `ShouldRevert` }"
                 class="btn btn-sm" target="_blank"
-            >Should revert {{getJudgementCount(`ShouldRevert`)}}
+            >{{$t(`ShouldRevertBtnLabel`)}} {{getJudgementCount(`ShouldRevert`)}}
             </button>
             <transition name="fade">
               <template v-if="enableRevertRedirect()">
@@ -153,14 +157,14 @@
             v-on:click="$emit(`next-card`)"
             v-if="myJudgement"
             class="btn btn-outline-primary"
-          ><i class="fas fa-arrow-right"></i> Next
+          ><i class="fas fa-arrow-right"></i> {{$t(`NextBtnLabel`)}}
           </button>
           </div>
         </div>
       </div>
       <div v-else class="card-body d-flex flex-column small-screen-padding">
         <div class="spinner-border" role="status">
-          <span class="sr-only">Loading...</span>
+          <span class="sr-only">{{$t(`Loading`)}}...</span>
         </div>
       </div>
     </div>
@@ -396,7 +400,6 @@
             timestamp: new Date(revision.timestamp).getTime()/1000
           }
         };
-        console.log(`XXX`, postBoyd);
         await this.$axios.$post(`/api/interaction/${this.wikiRevId}`, postBody);
         document.dispatchEvent(new Event("stats-update"));
         this.$emit('judgement-event', postBody);
