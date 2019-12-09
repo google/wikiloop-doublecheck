@@ -88,7 +88,8 @@
           <!-- TODO(xinbenlv) update the following text for for i18n -->
           <h5 v-else>{{$t(`DiffNotAvailable`)}}
             <div v-on:click="loadDiff()" class="btn btn-outline-primary btn-small"><i class="fas fa-redo"></i></div>
-            <a class="btn btn-outline-primary" :href="`${getUrlBaseByWiki(revision.wiki)}/w/index.php?title=${revision.title}&diff=${revision.revision.new}&oldid=prev&diffmode=source`"><i class="fas fa-external-link-alt"></i></a>
+            <!--TODO(zzn): v-if="revision.revision" might not be available, handle those cases better. -->
+            <a v-if="revision.revision" class="btn btn-outline-primary" :href="`${getUrlBaseByWiki(revision.wiki)}/w/index.php?title=${revision.title}&diff=${revision.revision.new}&oldid=prev&diffmode=source`"><i class="fas fa-external-link-alt"></i></a>
           </h5>
         </div>
 
