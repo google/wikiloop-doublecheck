@@ -106,7 +106,8 @@ module.exports = {
               ShouldRevertBtnLabel: "Should revert",
               NextBtnLabel: "Next",
               Loading: "Loading",
-              EditedTimeLabel: "edited"
+              EditedTimeLabel: "edited",
+              DiffNotAvailable: "The wikipedia article diff is temporarily not available. You can try to reload it. Sometimes a vandalized revision could be deleted. You can check the page history."
             },
             zh: {
               LoginMenuItem: "登录",
@@ -120,7 +121,9 @@ module.exports = {
               NotSureBtnLabel: "不确定",
               ShouldRevertBtnLabel: "应该撤回",
               Loading: "读取中",
-              EditedTimeLabel: "编辑于"
+              EditedTimeLabel: "编辑于",
+              DiffNotAvailable: "该页面的版本差异暂时无法读取，可以重试。有时被涂鸦的版本可能被完全删除，您可以查看页面历史。"
+
             },
             fr: {
               LoginMenuItem: "Connexion",

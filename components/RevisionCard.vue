@@ -56,7 +56,7 @@
               <span data-toggle="tooltip" data-placement="top"
                     title="Bad-faith Score by WMF ORES (here Bad-faith = 100% - Goodfaith)">
                 <!-- TODO(xinbenlv) update the following text for for i18n -->
-                <i v-bind:class="{ 'text-warning': ores ? ores.goodfaith.false > 0.5: false }" class="fas fa-theater-masks"></i> ORES Bad-faith:  <a
+                <i v-bind:class="{ 'text-warning': ores ? ores.goodfaith.false > 0.5: false }" class="fas fa-theater-masks"></i> ORES Badfaith:  <a
                   :href="`https://ores.wikimedia.org/v3/scores/enwiki/?revids=${revision.revid}`">{{ badfaithPercent() }}</a>
               </span>
             </div>
@@ -86,11 +86,9 @@
         <div class="card-text w-100 pl-sm-0">
           <diff-box v-if="diff && diff.compare && diff.compare['*']" v-bind:diffContent="diff.compare['*']"/>
           <!-- TODO(xinbenlv) update the following text for for i18n -->
-          <h5 v-else>Diff not available. You can load it
-            <div v-on:click="loadDiff()" class="btn btn-outline-primary btn-small">here</div>
-            , and sometimes it's caused by revision deleted or page deleted. See it directly on <a
-                :href="`${getUrlBaseByWiki(revision.wiki)}/w/index.php?title=${revision.title}&diff=${revision.revid}&oldid=prev&diffmode=source`">the
-              site</a>.
+          <h5 v-else>{{$t(`DiffNotAvailable`)}}
+            <div v-on:click="loadDiff()" class="btn btn-outline-primary btn-small"><i class="fas fa-redo"></i></div>
+            <a class="btn btn-outline-primary" :href="`${getUrlBaseByWiki(revision.wiki)}/w/index.php?title=${revision.title}&diff=${revision.revision.new}&oldid=prev&diffmode=source`"><i class="fas fa-external-link-alt"></i></a>
           </h5>
         </div>
 
@@ -345,7 +343,6 @@
       redirectToRevert: async function() {
         if (this.myJudgement === `ShouldRevert` && !this.isOverriden()) {
           const version = await this.$axios.$get(`/api/version`);
-          console.log(`XXX this.revision.old`, this.revision);
           let revertUrl = `${this.getUrlBaseByWiki(this.revision.wiki)}/w/index.php?title=${this.revision.title}&action=edit&undoafter=${this.revision.revision.old}&undo=${this.revision.revision.new}&summary=Identified as test/vandalism using [[:m:WikiLoop Battlefield]](version ${version}). See it or provide your opinion at http://battlefield.wikiloop.org/marked?wikiRevIds=${this.wikiRevId}`;
           let historyUrl = `${this.getUrlBaseByWiki(this.revision.wiki)}/w/index.php?title=${this.revision.title}&action=history`;
           let result = await this.$axios.$get(`/api/mediawiki`, {params: {
@@ -436,7 +433,7 @@
       this.interaction = this.interactionProp || await this.$axios.$get(`/api/interaction/${this.wikiRevId}`);
       this.revision = this.revisionProp || await this.$axios.$get(`/api/revision/${this.wikiRevId}`);
       this.ores = this.oresProp ||  await this.$axios.$get(`/api/ores/${this.wikiRevId}`);
-      this.diff = this.diffProp || await this.$axios.$get(`/api/diff/${this.wikiRevId}`);
+      // this.diff = this.diffProp || await this.$axios.$get(`/api/diff/${this.wikiRevId}`);
       if (this.stikiProp) {
         this.stiki = this.stikiProp;
       } else if (this.$store.state.flags.useStiki) {
