@@ -433,7 +433,7 @@
       this.interaction = this.interactionProp || await this.$axios.$get(`/api/interaction/${this.wikiRevId}`);
       this.revision = this.revisionProp || await this.$axios.$get(`/api/revision/${this.wikiRevId}`);
       this.ores = this.oresProp ||  await this.$axios.$get(`/api/ores/${this.wikiRevId}`);
-      // this.diff = this.diffProp || await this.$axios.$get(`/api/diff/${this.wikiRevId}`);
+      this.diff = this.diffProp || await this.$axios.$get(`/api/diff/${this.wikiRevId}`);
       if (this.stikiProp) {
         this.stiki = this.stikiProp;
       } else if (this.$store.state.flags.useStiki) {
