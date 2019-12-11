@@ -10,7 +10,6 @@
 ![GitHub stargazers](https://img.shields.io/github/stars/google/wikiloop-battlefield.svg?label=Star&style=social)
 ![GitHub followers](https://img.shields.io/github/followers/xinbenlv.svg?label=Follow&style=social)
 
-
 This is a web app project built to allow people to fight vandalism on Wikipedia collaboratively. See [[[m:WikiProject_WikiLoop]]](https://meta.wikimedia.org/wiki/WikiProject_WikiLoop) for more introduction. The documentation in this repository focuses on development of the software itself.
 
 [![Vandalism Example](./assets/demo-1.2.0-beta.gif)](http://battlefield.wikiloop.org/?utm_source=github&utm_medium=markdown&utm_campaign=repo_readme_img)
