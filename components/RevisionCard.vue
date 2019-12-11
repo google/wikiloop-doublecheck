@@ -399,6 +399,12 @@
             timestamp: new Date(revision.timestamp).getTime()/1000
           }
         };
+
+        if (this.$store.state.user && this.$store.state.user.profile) {
+          let wikiUserName = this.$store.state.user.profile.displayName;
+          postBody.wikiUserName = wikiUserName;
+        }
+
         await this.$axios.$post(`/api/interaction/${this.wikiRevId}`, postBody);
         document.dispatchEvent(new Event("stats-update"));
         this.$emit('judgement-event', postBody);
