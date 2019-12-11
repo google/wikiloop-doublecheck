@@ -90,3 +90,5 @@ circleci local execute build
   - Ashwin Ramaswami(@epicfaace)
 
 - We appreciate the courtesy of [Dr. Andrew G. West](http://www.andrew-g-west.com/) for providing us with read access to [STiki](https://en.wikipedia.org/wiki/Wikipedia:STiki) vandalism detection scores.
+
+- We welcome new contributors too!
