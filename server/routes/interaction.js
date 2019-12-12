@@ -57,6 +57,9 @@ const listInteractions = async (req, res) => {
     if (req.query.userGaIds) {
         matcher.userGaId = { $in: req.query.userGaIds }
     }
+    if (req.query.wikiUserName) {
+      matcher.wikiUserName = { $in: [req.query.wikiUserName] }
+    }
 
     let interactions = await getNewJudgementCounts(mongoose.connection.db, matcher, offset, limit);
     res.send(interactions);

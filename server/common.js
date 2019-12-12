@@ -177,6 +177,7 @@ async function getNewJudgementCounts(db, matcher = {}, offset = 0, limit = 10) {
                     "$push": {
                         "judgement": "$judgement",
                         "userGaId": "$userGaId",
+                        "wikiUserName": "$wikiUserName",
                         "timestamp": "$timestamp"
                     }
                 },

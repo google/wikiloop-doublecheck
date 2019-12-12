@@ -69,6 +69,8 @@
         };
         if (this.$router.history.current.query.userGaId) {
           params.userGaIds = [this.$router.history.current.query.userGaId];
+        } else if (this.$router.history.current.query.wikiUserName) {
+          params.wikiUserName = this.$router.history.current.query.wikiUserName;
         } else if (this.$router.history.current.query.userGaIds) {
           params.userGaIds = this.$router.history.current.query.userGaIds.split('|');
         } else if (this.$router.history.current.query.wikiRevIds) {

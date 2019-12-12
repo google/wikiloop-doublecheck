@@ -102,10 +102,15 @@
             </tr>
             <tr class="row" v-for="judgement of interaction.judgements">
               <td class="col-4">
-                <router-link :to="`/marked/?userGaId=${judgement.userGaId}`" replace>
+                <router-link v-if="judgement.wikiUserName" :to="`/marked/?wikiUserName=${judgement.wikiUserName}`" replace>
+                  <object class="avatar-object" v-bind:data="`/api/avatar/${judgement.wikiUserName}`" ></object>
+                  <span v-if="isMine(judgement)">{{$t("Me")}} ({{judgement.wikiUserName}})</span>
+                  <span v-else>{{judgement.wikiUserName || $t("SomeoneAnonymous")}}</span>
+                </router-link>
+                <router-link v-else :to="`/marked/?userGaId=${judgement.userGaId}`" replace>
                   <object class="avatar-object" v-bind:data="`/api/avatar/${judgement.userGaId}`" ></object>
-                  <span v-if="$cookiez.get('_ga') === judgement.userGaId ">{{$t("Me")}}</span>
-                  <span v-else>{{$t("Someone")}}</span>
+                  <span v-if="isMine(judgement)">{{$t("Me")}}</span>
+                  <span v-else>{{$t("SomeoneAnonymous")}}</span>
                 </router-link>
               </td>
               <td class="col-4">{{judgement.judgement}}</td>
@@ -224,6 +229,14 @@
       loadDiff: async function () {
         this.diff = await this.fetchDiffWithWikiRevId(this.wikiRevId);
       },
+      isMine: function(judgement) {
+        if (judgement.wikiUserName && this.$store.state.user && this.$store.state.user.profile) {
+          return judgement.wikiUserName === this.$store.state.user.profile.displayName;
+        } else {
+          return this.$cookiez.get('_ga') === judgement.userGaId;
+        }
+      },
+
       loadStiki: async function() {
         console.info(`Load Stiki`);
         let stikiRemote = [];
@@ -265,7 +278,8 @@
         this.cbngRetryRemains --;
       },
       getTimeString: function () {
-        return new Date(this.revision.timestamp * 1000).toString();
+        return /* Deprecated */ Date.parse(this.revision.timestamp) ||
+            new Date(this.revision.timestamp * 1000).toString();
       },
       getJudgementCount: function (judge) {
         return this.interaction.counts[judge];
@@ -277,7 +291,14 @@
       getMyJudgement: function() {
         if (this.interaction) {
           let myGaId = this.$cookiez.get("_ga");
-          let result = this.interaction.judgements.filter(j => j.userGaId === myGaId);
+          let myWikiUserName = null;
+          if (this.$store.state.user && this.$store.state.user.profile) {
+            myWikiUserName = this.$store.state.user.profile.displayName;
+          }
+          let result = this.interaction.judgements.filter(j => {
+            if (myWikiUserName && myWikiUserName === j.wikiUserName) return true;
+            else return j.userGaId === myGaId;
+          });
           if (result.length === 1) {
             return result[0].judgement;
           } else return null;
