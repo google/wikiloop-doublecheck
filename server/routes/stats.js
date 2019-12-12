@@ -40,6 +40,19 @@ module.exports = async (req, res) => {
         ret.totalMyRevJudged = Object.keys(myRevSet).length;
         ret.totalMyShouldRevert = myInteractions.filter(item => item.judgement === "ShouldRevert").length;
     }
+    ret.totalJudgementByLogin = allInteractions.reduce((counters, item) => {
+        if (item.wikiUserName) counters.Login++;
+        else counters.Anonymous++;
+        return counters;
+    }, {'Login': 0, "Anonymous": 0});;
+    ret.totalJudgementByLang = allInteractions
+    .filter(item => item.wikiRevId)
+    .map(item => item.wikiRevId.split(':')[0])
+    .reduce((counters, wiki) => {
+        if (!counters[wiki]) counters[wiki] = 0;
+        counters[wiki]++;
+        return counters;
+    }, {});
 
     res.send(ret);
     req.visitor
