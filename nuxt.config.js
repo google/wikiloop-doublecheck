@@ -122,7 +122,7 @@ module.exports = {
               ShouldRevertBtnLabel: "应该撤回",
               Loading: "读取中",
               EditedTimeLabel: "编辑于",
-              DiffNotAvailable: "该页面的版本差异暂时无法读取，可以重试。有时被涂鸦的版本可能被完全删除，您可以查看页面历史。"
+              DiffNotAvailable: "该页面的版本差异暂时无法读取，可以嘗試重新載入。有时被破壞的版本可能被完全删除，您可以查看页面历史。"
 
             },
             fr: {
