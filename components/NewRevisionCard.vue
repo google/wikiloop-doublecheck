@@ -38,7 +38,7 @@
           <div class="row p-2">
             <div class="col-lg-2">
               <i class="fas fa-pen"></i> edited
-              <timeago :datetime="getTimeString()" :auto-update="60"></timeago>
+              <timeago v-if="this.revision.timestamp" :datetime="getTimeString()" :auto-update="60"></timeago>
             </div>
             <div class="col-lg-2">
               <small><span>by <a v-bind:href="`${getUrlBaseByWiki(revision.wiki)}/wiki/User:${revision.user}`">{{ revision.user }}</a></span>
@@ -137,7 +137,7 @@
               <td class="col-4">Label</td>
               <td class="col-4">Time</td>
             </tr>
-            <tr class="row" v-for="judgement of interaction.judgements">
+            <tr class="row" :key="judgement.userGaId" v-for="judgement of interaction.judgements">
               <td class="col-4">
                 <router-link :to="`/marked/?userGaId=${judgement.userGaId}`" replace>
                   <object class="avatar-object" v-bind:data="`/api/avatar/${judgement.userGaId}`" ></object>
@@ -253,7 +253,7 @@
         this.cbngRetryRemains --;
       },
       getTimeString: function () {
-        return new Date(this.revision.timestamp).toString();
+        return new Date(this.revision.timestamp).toUTCString();
       },
       getJudgementCount: function (judge) {
         return this.interaction.counts[judge];
