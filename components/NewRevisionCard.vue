@@ -38,7 +38,7 @@
           <div class="row p-2">
             <div class="col-lg-2">
               <i class="fas fa-pen"></i> edited
-              <timeago v-if="this.revision.timestamp" :datetime="getTimeString()" :auto-update="60"></timeago>
+              <timeago :datetime="getTimeString()" :auto-update="60"></timeago>
             </div>
             <div class="col-lg-2">
               <small><span>by <a v-bind:href="`${getUrlBaseByWiki(revision.wiki)}/wiki/User:${revision.user}`">{{ revision.user }}</a></span>
@@ -253,7 +253,8 @@
         this.cbngRetryRemains --;
       },
       getTimeString: function () {
-        return new Date(this.revision.timestamp).toUTCString();
+        const timestamp = isNaN(this.revision.timestamp) ? this.revision.timestamp : this.revision.timestamp * 1000
+        return new Date(timestamp).toString();
       },
       getJudgementCount: function (judge) {
         return this.interaction.counts[judge];

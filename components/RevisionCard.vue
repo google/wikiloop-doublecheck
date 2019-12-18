@@ -265,7 +265,8 @@
         this.cbngRetryRemains --;
       },
       getTimeString: function () {
-        return new Date(this.revision.timestamp).toString();
+        const timestamp = isNaN(this.revision.timestamp) ? this.revision.timestamp : this.revision.timestamp * 1000
+        return new Date(timestamp).toString();
       },
       getJudgementCount: function (judge) {
         return this.interaction.counts[judge];
