@@ -111,6 +111,7 @@
             "dewiki": "de",
             "frwiki": "fr",
             "zhwiki": "zh",
+            "trwiki": "tr",
             "wikidatawiki": "en", // TODO(xinbenlv): consider how we deal with wikidata UI langauge.
           };
           this.$i18n.locale = wikiToLangMap[wiki];
