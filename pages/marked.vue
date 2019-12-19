@@ -143,8 +143,11 @@
         stats,
       };
     },
-    async mounted() {
+    mounted() {
       this.$ga.page('/marked.vue'); // track page
+    },
+
+    async beforeMount() {
       await this.loadMore();
     },
     created() {

@@ -26,12 +26,26 @@
 </script>
 
 <style>
-  .diff-content {
-    font-size: 12px;
+  @media screen and (min-width: 601px) {
+    .diff-content {
+    }
+    .diff-card {
+      font-size: 12px;
+      max-height: 600px;
+      min-height: 400px;
+      overflow: auto;
+    }
   }
-  .diff-card {
-    max-height: 600px;
-    min-height: 400px;
-    overflow: auto;
+
+  /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+  @media screen and (max-width: 600px) {
+    .diff-content {
+    }
+    .diff-card {
+      font-size: 8px;
+      max-height: 400px;
+      min-height: 200px;
+      overflow: auto;
+    }
   }
 </style>
