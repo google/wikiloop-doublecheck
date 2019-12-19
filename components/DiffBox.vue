@@ -14,7 +14,7 @@
   limitations under the License.
 -->
 <template>
-  <div style="max-height: 300px;overflow-y: scroll;">
+  <div class="diff-card">
     <table class="pl-sm-0 w-100 diff-content" v-html="diffContent"></table>
   </div>
 </template>
@@ -28,5 +28,10 @@
 <style>
   .diff-content {
     font-size: 12px;
+  }
+  .diff-card {
+    max-height: 600px;
+    min-height: 400px;
+    overflow: auto;
   }
 </style>
