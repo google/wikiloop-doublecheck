@@ -9,5 +9,6 @@ module.exports = {
     "dewiki": "de.wikipedia.org",
     "wikidatawiki": "wikidata.org",
     "zhwiki": "zh.wikipedia.org",
+    "trwiki": "tr.wikipedia.org",
   }
 };
