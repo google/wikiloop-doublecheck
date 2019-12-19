@@ -137,7 +137,7 @@
               <td class="col-4">Label</td>
               <td class="col-4">Time</td>
             </tr>
-            <tr class="row" v-for="judgement of interaction.judgements">
+            <tr class="row" :key="judgement.userGaId" v-for="judgement of interaction.judgements">
               <td class="col-4">
                 <router-link :to="`/marked/?userGaId=${judgement.userGaId}`" replace>
                   <object class="avatar-object" v-bind:data="`/api/avatar/${judgement.userGaId}`" ></object>
@@ -253,7 +253,8 @@
         this.cbngRetryRemains --;
       },
       getTimeString: function () {
-        return new Date(this.revision.timestamp).toString();
+        const timestamp = isNaN(this.revision.timestamp) ? this.revision.timestamp : this.revision.timestamp * 1000
+        return new Date(timestamp).toString();
       },
       getJudgementCount: function (judge) {
         return this.interaction.counts[judge];

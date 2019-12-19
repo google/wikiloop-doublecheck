@@ -13,6 +13,7 @@
 // limitations under the License.
 
 const pkg = require('./package');
+const locales = require('./locales/locales');
 require(`dotenv`).config();
 
 console.log(`=================================`);
@@ -93,72 +94,7 @@ module.exports = {
         vueI18n: {
           fallbackLocale: 'en',
           messages: {
-            en: {
-              LoginMenuItem: "Login",
-              LogoutMenuItem: "Logout",
-              ContributionsMenuItem: "Contributions",
-              ContributionsBeforeLoginMenuItem: "Contributions Before Login",
-              Anonymous: "Anonymous",
-              Me: "Me",
-              SomeoneAnonymous: "Someone anonymous",
-              EditSummaryLabel: "Edit summary",
-              LooksGoodBtnLabel: "Looks good",
-              NotSureBtnLabel: "Not sure",
-              ShouldRevertBtnLabel: "Should revert",
-              NextBtnLabel: "Next",
-              Loading: "Loading",
-              EditedTimeLabel: "edited",
-              DiffNotAvailable: "The wikipedia article diff is temporarily not available. You can try to reload it. Sometimes a vandalized revision could be deleted. You can check the page history."
-            },
-            zh: {
-              LoginMenuItem: "登录",
-              LogoutMenuItem: "登出",
-              ContributionsMenuItem: "实名贡献",
-              ContributionsBeforeLoginMenuItem: "匿名贡献",
-              Anonymous: "游客",
-              Me: "我",
-              SomeoneAnonymous: "某匿名用户",
-              EditSummaryLabel: "编辑摘要",
-              LooksGoodBtnLabel: "看着不错",
-              NotSureBtnLabel: "不确定",
-              ShouldRevertBtnLabel: "应该撤回",
-              Loading: "读取中",
-              EditedTimeLabel: "编辑于",
-              DiffNotAvailable: "该页面的版本差异暂时无法读取，可以重试。有时被涂鸦的版本可能被完全删除，您可以查看页面历史。"
-
-            },
-            fr: {
-              LoginMenuItem: "Connexion",
-              LogoutMenuItem: "Déconnexion",
-              ContributionsMenuItem: "Contributions",
-              ContributionsBeforeLoginMenuItem: "Contributions avant la connexion",
-              Anonymous: "Anonyme",
-              Me: "Moi",
-              SomeoneAnonymous: "Quelqu'un anonyme",
-              EditSummaryLabel: "Modifier le résumé",
-              LooksGoodBtnLabel: "Cela semble bon",
-              NotSureBtnLabel: "Pas sûr",
-              ShouldRevertBtnLabel: "Devrait revenir",
-              NextBtnLabel: "Suivant",
-              Loading: "Chargement",
-              EditedTimeLabel: "édité"
-            },
-            de: {
-              LoginMenuItem: "Anmelden",
-              LogoutMenuItem: "Abmelden",
-              ContributionsMenuItem: "Beiträge",
-              ContributionsBeforeLoginMenuItem: "Beiträge vor dem Login",
-              Anonymous: "Anonym",
-              Me: "Ich",
-              SomeoneAnonymous: "Jemand anonym",
-              EditSummaryLabel: "Zusammenfassung bearbeiten",
-              LooksGoodBtnLabel: "Sieht gut aus",
-              NotSureBtnLabel: "Nicht sicher",
-              ShouldRevertBtnLabel: "Sollte zurücksetzen",
-              NextBtnLabel: "Nächste",
-              Loading: "Beladung",
-              EditedTimeLabel: "Bearbeitet"
-            }
+            ...locales
           }
         }
       }

@@ -45,11 +45,7 @@
             </b-nav-item-dropdown>
             <b-nav-item>
               <b-form-select class="small" v-model="wiki">
-                <option :value="`enwiki`">English (en)</option>
-                <option :value="`frwiki`">français (fr)</option>
-                <option :value="`dewiki`"> Deutsch (de)</option>
-                <option :value="`wikidatawiki`">Wikidata</option>
-                <option :value="`zhwiki`">中文 (zh)</option>
+                <option v-for="language in languages" :key="language.value" :value="language.value">{{ language.text }}</option>
               </b-form-select>
             </b-nav-item>
           </b-navbar-nav>
@@ -83,11 +79,14 @@
 
 <script>
   import socket from '~/plugins/socket.io.js';
+  import languages from '~/locales/languages.js';
+
   export default {
     data() {
       return {
         liveUserCount: 1,
-        stats: 0
+        stats: 0,
+        languages
       }
     },
     methods: {

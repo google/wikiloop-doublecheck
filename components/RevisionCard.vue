@@ -109,8 +109,8 @@
                 </router-link>
                 <router-link v-else :to="`/marked/?userGaId=${judgement.userGaId}`" replace>
                   <object class="avatar-object" v-bind:data="`/api/avatar/${judgement.userGaId}`" ></object>
-                  <span v-if="isMine(judgement)">{{$t("Me")}}</span>
-                  <span v-else>{{$t("SomeoneAnonymous")}}</span>
+                  <span v-if="$cookiez.get('_ga') === judgement.userGaId ">{{$t("Me")}}</span>
+                  <span v-else>{{$t("Someone")}}</span>
                 </router-link>
               </td>
               <td class="col-4">{{judgement.judgement}}</td>
@@ -278,8 +278,8 @@
         this.cbngRetryRemains --;
       },
       getTimeString: function () {
-        return /* Deprecated */ Date.parse(this.revision.timestamp) ||
-            new Date(this.revision.timestamp * 1000).toString();
+        const timestamp = isNaN(this.revision.timestamp) ? this.revision.timestamp : this.revision.timestamp * 1000
+        return new Date(timestamp).toString();
       },
       getJudgementCount: function (judge) {
         return this.interaction.counts[judge];
