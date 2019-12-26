@@ -8,8 +8,8 @@ export default [
         text: 'français (fr)'
     },
     {
-        value: 'dewiki',
-        text: 'Deutsch (de)'
+        value: 'idwiki',
+        text: 'Bahasa Indonesia (id)'
     },
     {
         value: 'wikidatawiki',
