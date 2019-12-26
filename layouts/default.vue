@@ -106,12 +106,16 @@
         },
         set (wiki) {
 
+          // Probably Wiki language doesn't have to be tied to UI language.
+          // For example, people can edit wikidata in any language. Or,
+          // they might prefer editing the Indonesian wiki using English interface
           const wikiToLangMap = {
             "enwiki": "en",
-            "dewiki": "de",
+            "dewiki": "de",          
             "frwiki": "fr",
-            "zhwiki": "zh",
+            "idwiki": "id",           
             "trwiki": "tr",
+            "zhwiki": "zh",
             "wikidatawiki": "en", // TODO(xinbenlv): consider how we deal with wikidata UI langauge.
           };
           this.$i18n.locale = wikiToLangMap[wiki];
