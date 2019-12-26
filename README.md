@@ -87,7 +87,9 @@ circleci local execute build
 ## Credit
 - Primary Project Lead: Zainan Zhou <zzn@google.com> @xinbenlv
 - Contributors:
-  - Ashwin Ramaswami(@epicfaace)
+  - **Ashwin Ramaswami** (@epicfaace), for massive refactoring API structure
+  - **Hamdanil Rasyid** (@hrasyid), for adding Indonsian(`idwiki`) language support
+  - **Ali Goren** (@aligoren), for fixing timestamp bug and adding (`tuwiki`) language support.
 
 - We appreciate the courtesy of [Dr. Andrew G. West](http://www.andrew-g-west.com/) for providing us with read access to [STiki](https://en.wikipedia.org/wiki/Wikipedia:STiki) vandalism detection scores.
 
