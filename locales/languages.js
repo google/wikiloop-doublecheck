@@ -12,6 +12,10 @@ export default [
         text: 'Deutsch (de)'
     },
     {
+        value: 'idwiki',
+        text: 'Bahasa Indonesia (id)'
+    },
+    {
         value: 'wikidatawiki',
         text: 'Wikidatawiki'
     },
