@@ -1,14 +1,16 @@
-const en = require('./en');
-const zh = require('./zh');
-const fr = require('./fr');
 const de = require('./de');
+const en = require('./en');
+const fr = require('./fr');
+const id = require('./id');
 const tr = require('./tr');
+const zh = require('./zh');
 
 
 module.exports = {
-    en,
-    zh,
-    fr,
     de,
-    tr
+    en,
+    fr,
+    id,    
+    tr,
+    zh
 }
