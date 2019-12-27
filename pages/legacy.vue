@@ -163,7 +163,7 @@
         ) {
           this.stale = false; // resets the stale
           this.showCounter++;
-          await this.fetchDiffWithWikiRevId(newRecentChange.wikiRevId);
+          await this.fetchDiffWithWikiRevId(newRecentChange.wikiRevId, this.$axios);
           this.dbIdToRecentChangeMap[newRecentChange._id] = newRecentChange;
           this.newRecentChangDbIds.unshift(newRecentChange._id); // TODO the list becomes larger and larger as time goes....
           if (!this.titleToDbIds[newRecentChange.title]) this.titleToDbIds[newRecentChange.title] = [];

@@ -210,7 +210,7 @@
     },
     methods: {
       loadDiff: async function () {
-        this.diff = await this.fetchDiffWithWikiRevId(this.wikiRevId);
+        this.diff = await this.fetchDiffWithWikiRevId(this.wikiRevId, this.$axios);
       },
       loadStiki: async function() {
         console.log(`Load Stiki`);
