@@ -4,11 +4,12 @@
  */
 module.exports = {
   wikiToDomain: {
-    "enwiki": "en.wikipedia.org",
-    "frwiki": "fr.wikipedia.org",
     "dewiki": "de.wikipedia.org",
-    "wikidatawiki": "wikidata.org",
+    "enwiki": "en.wikipedia.org",
+    "frwiki": "fr.wikipedia.org",    
+    "idwiki": "id.wikipedia.org",
+    "trwiki": "tr.wikipedia.org",   
+    "wikidatawiki": "wikidata.org",     
     "zhwiki": "zh.wikipedia.org",
-    "trwiki": "tr.wikipedia.org",
   }
 };
