@@ -74,6 +74,7 @@ export const actions = {
       let newWiki = wiki;
       commit(`setWiki`, wiki);
       commit(`revisions/initHeap`);
-      dispatch(`revisions/loadMoreWikiRevs`);
+      dispatch(`revisions/loadMoreWikiRevs`)
+          .then(() => document.dispatchEvent(new Event(`wiki-change-completed`)));
     }
 };
