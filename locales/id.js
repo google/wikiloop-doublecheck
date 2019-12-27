@@ -9,7 +9,7 @@ module.exports = {
     LooksGoodBtnLabel: "Kelihatan bagus",
     NotSureBtnLabel: "Tidak yakin",
     ShouldRevertBtnLabel: "Patut dibatalkan",
-    RevertNowBtnLabel: "Batalkan sekarang",
+    // RevertNowBtnLabel: "Batalkan sekarang",
     NextBtnLabel: "Selanjutnya",
     Loading: "Sedang memuat",
     EditedTimeLabel: "disunting",

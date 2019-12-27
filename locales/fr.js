@@ -9,7 +9,7 @@ module.exports = {
     LooksGoodBtnLabel: "Cela semble bon",
     NotSureBtnLabel: "Pas sûr",
     ShouldRevertBtnLabel: "Devrait revenir",
-    # RevertNowBtnLabel: "Revert now", # TODO: translate
+    // RevertNowBtnLabel: "Revert now", # TODO: translate
     NextBtnLabel: "Suivant",
     Loading: "Chargement",
     EditedTimeLabel: "édité"
