@@ -58,11 +58,23 @@ export const actions = {
             commit('user/clearProfile');
         }
     },
+   /** An vuex action to change the current wiki, denoted by `wiki`.
+   *
+   * When switching a language, we store the `wiki` into the Vuex store.
+   * this action also dispatches the command to load the revisions of the new
+   * wiki
+   * @param commit
+   * @param state
+   * @param dispatch
+   * @param wiki
+   * @return {Promise<void>}
+   */
     async changeWiki({ commit, state, dispatch}, wiki) {
       let oldWiki = state.wiki;
       let newWiki = wiki;
       commit(`setWiki`, wiki);
       commit(`revisions/initHeap`);
-      dispatch(`revisions/loadMoreWikiRevs`);
+      dispatch(`revisions/loadMoreWikiRevs`)
+          .then(() => document.dispatchEvent(new Event(`wiki-change-completed`)));
     }
 };
