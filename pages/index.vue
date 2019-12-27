@@ -64,6 +64,11 @@
         },
         async mounted() {
             await this.$store.dispatch(`revisions/loadMoreWikiRevs`);
+            // when wiki changes, go to the next diff instead of
+            // keeping the existing diff in the previously selected wiki
+            document.addEventListener(`wiki-change-completed`, async () => {
+              await this.showNext();
+            });
             this.showNext();
         }
     }
