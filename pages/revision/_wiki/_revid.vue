@@ -57,7 +57,9 @@
           `/api/ores`, { params: { wikiRevIds: [wikiRevId] }}))[params.wiki][0];
 
       let interaction;
-      const interactions = await $axios.$get(`/api/interactions`, { params: params });
+      let apiParams = params;
+      apiParams.wikiRevId = wikiRevId;
+      const interactions = await $axios.$get(`/api/interactions`, { params: apiParams });
       if (interactions.length > 0) {
         interaction = interactions[0];
       } else {
