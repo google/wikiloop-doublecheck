@@ -97,7 +97,7 @@
     head ({$axios}) {
       let title = `WikiLoop Battlefield (${this.wikiRevId})`;
       let desc = `Is this Wikipedia edit good or bad? Come share your opinion at WikiLoop Battlefield. (${this.wikiRevId})`;
-      let host = `wikiloop-bat-fr-static-pl4riy1.herokuapp.com`;
+      let host = `battlefield.wikiloop.org`;
       let img = `http://${host}/wikiloop-battlefield-logo.png`; // TODO(xinbenlv) use relative URL
       let url = `http://${host}${this.$route.path}`;
       return {
