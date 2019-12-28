@@ -14,8 +14,10 @@
   limitations under the License.
 -->
 
+<!-- TODO(xinbenlv) merge with RevisionCard, ensure it loads in consistency
+between Client-Side-Rendering and Server-Side-Rendering -->
 <template>
-  <section class="XXX-debug">
+  <section>
     <div v-bind:class="{
         'border-danger': ores ? ores.goodfaith.false > 0.5 : false,
         'border-warning': ores ? ores.damaging.true > 0.5 : false,
@@ -49,7 +51,7 @@
               <span data-toggle="tooltip" data-placement="top" title="Damaging Score by WMF ORES">
                 <!-- TODO(xinbenlv) update the following text for for i18n -->
                 <i v-bind:class="{ 'text-danger': ores ? ores.damaging.true > 0.5 : false }" class="fas fa-cloud-rain"></i> ORES Damaging: <a
-                  :href="`https://ores.wikimedia.org/v3/scores/enwiki/?revids=${revision.revid}`">{{ damagingPercent() }}</a>
+                :href="`https://ores.wikimedia.org/v3/scores/enwiki/?revids=${revision.revid}`">{{ damagingPercent() }}</a>
               </span>
             </div>
             <div v-if="ores" class="col-lg-2">
@@ -57,21 +59,7 @@
                     title="Bad-faith Score by WMF ORES (here Bad-faith = 100% - Goodfaith)">
                 <!-- TODO(xinbenlv) update the following text for for i18n -->
                 <i v-bind:class="{ 'text-warning': ores ? ores.goodfaith.false > 0.5: false }" class="fas fa-theater-masks"></i> ORES Badfaith:  <a
-                  :href="`https://ores.wikimedia.org/v3/scores/enwiki/?revids=${revision.revid}`">{{ badfaithPercent() }}</a>
-              </span>
-            </div>
-            <div v-if="stiki" class="col-lg-2">
-              <span data-toggle="tooltip" data-placement="top"
-                    title="Vandalism Score by STiki">
-                <i v-bind:class="{ 'text-warning': stiki && stiki > 0.5 ? true : false }" class="fas fa-theater-masks"></i> STiki:  <a
-                  :href="`/extra/stiki/${wikiRevId}`">{{ stikiPercent() }}</a>
-              </span>
-            </div>
-            <div v-if="cbng" class="col-lg-2">
-              <span data-toggle="tooltip" data-placement="top"
-                    title="Vandalism Score by ClueBotNG">
-                <i v-bind:class="{ 'text-warning': cbng && cbng > 0.5 ? true : false }" class="fas fa-theater-masks"></i> ClueBotNG:  <a
-                  :href="`/extra/cbng/${wikiRevId}`">{{ cbngPercent() }}</a>
+                :href="`https://ores.wikimedia.org/v3/scores/enwiki/?revids=${revision.revid}`">{{ badfaithPercent() }}</a>
               </span>
             </div>
           </div>
@@ -185,99 +173,38 @@
     components: {
       DiffBox
     },
+    data() {
+      return {myJudgement: null}
+    },
     props: {
       wikiRevId: {
         type: String,
         required: true
       },
-      oresProp: {
+      ores: {
         type: Object,
         default: null
       },
-      revisionProp: {
+      revision: {
         type: Object,
         default: null
       },
-      interactionProp: {
+      interaction: {
         type: Object,
         default: null
       },
-      stikiProp: {
-        type: Number,
-        default: null
-      },
-      cbngProp: {
-        type: Number,
-        default: null
-      },
-      diffProp: {
+      diff: {
         type: Object,
         default: null
       },
-    },
-    data() {
-      return {
-        ores: null,
-        diff: null,
-        interaction: null,
-        revision: null,
-        myJudgement: null,
-        stikiRetryRemains: 3,
-        stiki: null,
-        cbng: null,
-      }
     },
     methods: {
-      loadDiff: async function () {
-        this.diff = await this.fetchDiffWithWikiRevId(this.wikiRevId);
-      },
       isMine: function(judgement) {
         if (judgement.wikiUserName && this.$store.state.user && this.$store.state.user.profile) {
           return judgement.wikiUserName === this.$store.state.user.profile.displayName;
         } else {
           return this.$cookiez.get('_ga') === judgement.userGaId;
         }
-      },
-
-      loadStiki: async function() {
-        console.info(`Load Stiki`);
-        let stikiRemote = [];
-        if (this.stikiProp) {
-          stikiRemote = this.stikiProp;
-        } else {
-          try {
-            await this.$axios.$get(`/extra/stiki/${this.wikiRevId}`);
-          } catch(err) {
-            // ignoring
-            stikiRemote = [];
-          }
-        }
-        if (stikiRemote.length) {
-          this.stiki = parseFloat(stikiRemote[0].SCORE);
-        } else {
-          if (this.stikiRetryRemains) setTimeout(this.loadStiki, 5000);
-        }
-        this.stikiRetryRemains --;
-      },
-      loadCbng: async function() {
-        console.info(`Load CBNG for ${this.wikiRevId}`);
-        let cbngRemote = [];
-        if (this.cbngProp) {
-          cbngRemote = this.cbngProp;
-        } else {
-          try {
-            await this.$axios.$get(`/extra/cbng/${this.wikiRevId}`);
-          } catch(err) {
-            // ignoring
-            cbngRemote = [];
-          }
-        }
-        if (cbngRemote.length) {
-          this.cbng = parseFloat(cbngRemote[0].SCORE);
-        } else {
-          if (this.cbngRetryRemains) setTimeout(this.loadCbng, 5000);
-        }
-        this.cbngRetryRemains --;
       },
       getTimeString: function () {
         const timestamp = isNaN(this.revision.timestamp) ? this.revision.timestamp : this.revision.timestamp * 1000
@@ -308,61 +235,54 @@
           return null;
         }
       },
-      enableRevertRedirect: function() {
-        this.$ga.event({
-          eventCategory: 'wp-edit',
-          eventAction: 'go-revert',
-          eventValue: {
-            wikiRevId: this.wikiRevId
-          }
-        });
+      enableRevertRedirect: async function() {
         return this.myJudgement === `ShouldRevert` && !this.isOverriden();
       },
       directRevert: async function() {
-      try {
-        this.$ga.event({
-          eventCategory: 'interaction',
-          eventAction: 'direct-revert-initiate',
-          eventValue: {
-            wikiRevId: this.wikiRevId
-          }
-        });
-        let ret = await this.$axios.$get(`/api/auth/revert/${this.wikiRevId}`);
-        if (ret && ret.edit && ret.edit.result ===`Success`) {
-          this.$bvToast.toast(
-                  `Congrats! you've successfully reverted ${this.wikiRevId}`, {
-                    title: 'Revert succeeded!',
-                    autoHideDelay: 3000,
-                    appendToast: true
-                  });
+        try {
           this.$ga.event({
             eventCategory: 'interaction',
-            eventAction: 'direct-revert-success',
+            eventAction: 'direct-revert-initiate',
             eventValue: {
               wikiRevId: this.wikiRevId
             }
           });
-        } else {
-          console.warn(`Direct revert result unknown`, ret);
+          let ret = await this.$axios.$get(`/api/auth/revert/${this.wikiRevId}`);
+          if (ret && ret.edit && ret.edit.result ===`Success`) {
+            this.$bvToast.toast(
+                `Congrats! you've successfully reverted ${this.wikiRevId}`, {
+                  title: 'Revert succeeded!',
+                  autoHideDelay: 3000,
+                  appendToast: true
+                });
+            this.$ga.event({
+              eventCategory: 'interaction',
+              eventAction: 'direct-revert-success',
+              eventValue: {
+                wikiRevId: this.wikiRevId
+              }
+            });
+          } else {
+            console.warn(`Direct revert result unknown`, ret);
+            this.$ga.event({
+              eventCategory: 'interaction',
+              eventAction: 'direct-revert-unknown',
+              eventValue: {
+                wikiRevId: this.wikiRevId
+              }
+            });
+          }
+
+        } catch(e) {
+          // TODO show failure message.
           this.$ga.event({
             eventCategory: 'interaction',
-            eventAction: 'direct-revert-unknown',
+            eventAction: 'direct-revert-failure',
             eventValue: {
               wikiRevId: this.wikiRevId
             }
           });
         }
-
-      } catch(e) {
-        // TODO show failure message.
-        this.$ga.event({
-          eventCategory: 'interaction',
-          eventAction: 'direct-revert-failure',
-          eventValue: {
-            wikiRevId: this.wikiRevId
-          }
-        });
-      }
       },
       redirectToRevert: async function() {
         if (this.myJudgement === `ShouldRevert` && !this.isOverriden()) {
@@ -370,15 +290,15 @@
           let revertUrl = `${this.getUrlBaseByWiki(this.revision.wiki)}/w/index.php?title=${this.revision.title}&action=edit&undoafter=${this.revision.revision.old}&undo=${this.revision.revision.new}&summary=Identified as test/vandalism using [[:m:WikiLoop Battlefield]](version ${version}). See it or provide your opinion at http://battlefield.wikiloop.org/marked?wikiRevIds=${this.wikiRevId}`;
           let historyUrl = `${this.getUrlBaseByWiki(this.revision.wiki)}/w/index.php?title=${this.revision.title}&action=history`;
           let result = await this.$axios.$get(`/api/mediawiki`, {params: {
-            wiki: this.revision.wiki,
-            apiQuery: {
-              action: "query",
-              format: "json",
-              prop: "revisions",
-              titles: this.revision.title,
-              rvlimit: 10,
-            }
-          }});
+              wiki: this.revision.wiki,
+              apiQuery: {
+                action: "query",
+                format: "json",
+                prop: "revisions",
+                titles: this.revision.title,
+                rvlimit: 10,
+              }
+            }});
           let revisions = Object.values(result.query.pages)[0].revisions;
           if (revisions[1].user === revisions[0].user) {
             window.open(historyUrl, '_blank');
@@ -454,27 +374,6 @@
       }
     },
     async beforeMount() {
-      console.info(`Mounted NewRevisionCard wikiRevId=${this.wikiRevId},
-        Set props: interactionProp:${this.interactionProp!=null},
-        revisionProp:${this.revisionProp!=null},
-        oresProp:${this.oresProp!=null}
-        diffProp:${this.diffProp!=null}
-        `);
-      this.interaction = this.interactionProp || await this.$axios.$get(`/api/interaction/${this.wikiRevId}`);
-      this.revision = this.revisionProp || await this.$axios.$get(`/api/revision/${this.wikiRevId}`);
-      this.ores = this.oresProp ||  await this.$axios.$get(`/api/ores/${this.wikiRevId}`);
-      this.diff = this.diffProp || await this.$axios.$get(`/api/diff/${this.wikiRevId}`);
-      if (this.stikiProp) {
-        this.stiki = this.stikiProp;
-      } else if (this.$store.state.flags.useStiki) {
-        await this.loadStiki();
-      }
-      if (this.cbngProp) {
-        this.cbng = this.cbngProp;
-      } else if (this.$store.state.flags.useStiki/*Cbng shares the same flag with STiki*/) {
-        await this.loadCbng();
-      } // TODO(xinbenlv) merge duplicated logic
-
       // TODO(xinbenlv): after marking "shouldRevert" query to see if this revesion is top and can be reverted.
       socket.on('interaction', async (interaction) => {
         if(interaction.wikiRevId === this.wikiRevId) {
@@ -482,19 +381,11 @@
         }
       });
     },
-    async mounted() {
-      this.$ga.event({
-        eventCategory: 'display',
-        eventAction: 'NewRevisionCard',
-        eventValue: {
-          wikiRevId: this.wikiRevId
-        }
-      });
-    },
     beforeCreate() {
       this.getUrlBaseByWiki = utility.getUrlBaseByWiki.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
       this.fetchDiffWithWikiRevId = utility.fetchDiffWithWikiRevId.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
     },
+
   }
 
 </script>

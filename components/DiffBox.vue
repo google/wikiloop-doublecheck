@@ -15,7 +15,10 @@
 -->
 <template>
   <div class="diff-card">
-    <table class="pl-sm-0 w-100 diff-content" v-html="diffContent"></table>
+    <table class="pl-sm-0 w-100 diff-content" >
+      <tbody v-html="diffContent" >
+      </tbody>
+    </table>
   </div>
 </template>
 

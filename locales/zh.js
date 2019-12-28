@@ -1,7 +1,8 @@
 module.exports = {
     LoginMenuItem: "登录",
     LogoutMenuItem: "登出",
-    ContributionsMenuItem: "贡献",
+    ContributionsMenuItem: "我的贡献",
+    ContributionsBeforeLoginMenuItem: "我的匿名贡献",
     Anonymous: "游客",
     Me: "我",
     Someone: "别人",

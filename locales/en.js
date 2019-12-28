@@ -1,7 +1,8 @@
 module.exports = {
     LoginMenuItem: "Login",
     LogoutMenuItem: "Logout",
-    ContributionsMenuItem: "Contributions",
+    ContributionsMenuItem: "My contributions",
+    ContributionsBeforeLoginMenuItem: "My contributions before login",
     Anonymous: "Anonymous",
     Me: "Me",
     Someone: "Someone",

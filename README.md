@@ -1,6 +1,6 @@
 # WikiLoop Battlefield: Fight vandalism on Wikipedia together
 
-[![WikiLoop Logo](./assets/wikiloop-battlefield-logo.svg)](https://meta.wikimedia.org/wiki/WikiProject_WikiLoop)
+[![WikiLoop Logo](static/wikiloop-battlefield-logo.svg)](https://meta.wikimedia.org/wiki/WikiProject_WikiLoop)
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 

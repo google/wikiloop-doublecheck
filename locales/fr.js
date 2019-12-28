@@ -2,6 +2,8 @@ module.exports = {
     LoginMenuItem: "Connexion",
     LogoutMenuItem: "Déconnexion",
     ContributionsMenuItem: "Contributions",
+    // TODO please help add translation of this item
+    // ContributionsBeforeLoginMenuItem: "",
     Anonymous: "Anonyme",
     Me: "Moi",
     Someone: "Quelqu'un",
