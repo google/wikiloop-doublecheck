@@ -33,11 +33,12 @@ export default {
    * @param wikiRevId a string of wiki:revId
    * @returns {Promise<String>}
    */
-  fetchDiffWithWikiRevId: async function(wikiRevId) {
+  fetchDiffWithWikiRevId: async function(wikiRevId, $axios) {
     let wiki = wikiRevId.split(`:`)[0];
     let revId = wikiRevId.split(`:`)[1];
     let diffApiUrl = `/api/diff/${wiki}:${revId}`;
-    let diffJson = await this.$axios.$get(diffApiUrl);
+    let diffJson = await $axios.$get(diffApiUrl);
     return diffJson;
   },
+  supportedWikis: Object.keys(_wikiToDomain)
 };

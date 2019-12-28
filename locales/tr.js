@@ -2,6 +2,8 @@ module.exports = {
     LoginMenuItem: "Giriş",
     LogoutMenuItem: "Çıkış",
     ContributionsMenuItem: "Katkılar",
+    // TODO please help add translation of this item
+    // ContributionsBeforeLoginMenuItem: "",
     Anonymous: "Anonim",
     Me: "Ben",
     Someone: "Birisi",

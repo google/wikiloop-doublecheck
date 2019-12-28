@@ -48,7 +48,9 @@ const getDefaultState = () => {
   }
 };
 
-export const state = getDefaultState();
+export const state = () => {
+  return getDefaultState();
+};
 
 export const mutations = {
   initHeap(state) {
