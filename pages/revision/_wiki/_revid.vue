@@ -115,6 +115,12 @@
             content: desc
           },
           {
+            hid: 'og:site_name',
+            name: 'og:site_name',
+            property: 'og:site_name',
+            content: desc
+          },
+          {
             hid: 'og:description',
             name: 'og:description',
             property: 'og:description',
@@ -137,6 +143,12 @@
             name: 'og:url',
             property: 'og:url',
             content: canonicalUrl
+          },
+          {
+            hid: 'apple-mobile-web-app-title',
+            name: 'apple-mobile-web-app-title',
+            property: 'apple-mobile-web-app-title',
+            content: desc
           },
         ]
       }
