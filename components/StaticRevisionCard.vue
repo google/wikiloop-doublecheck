@@ -109,12 +109,12 @@ between Client-Side-Rendering and Server-Side-Rendering -->
                 <button v-if="$store.state.flags.useDirectRevert && $store.state.user && $store.state.user.profile"
                         v-on:click="directRevert()"
                         class="btn btn-outline-primary">
-                  <i class="fas fa-broom"></i>
+                  <i class="fas fa-broom"></i> {{$t(`RevertNowBtnLabel`)}}
                 </button>
                 <button v-else
                         v-on:click="redirectToRevert()"
                         class="btn btn-outline-primary">
-                  <i class="fas fa-broom"></i>
+                  <i class="fas fa-broom"></i> {{$t(`RevertNowBtnLabel`)}}
                 </button>
               </template>
             </transition>
