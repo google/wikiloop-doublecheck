@@ -14,6 +14,8 @@
   limitations under the License.
 -->
 
+<!-- TODO(xinbenlv) merge with RevisionCard, ensure it loads in consistency
+between Client-Side-Rendering and Server-Side-Rendering -->
 <template>
   <section>
     <div v-bind:class="{

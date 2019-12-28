@@ -17,7 +17,7 @@
 <template>
   <section>
     <div class="container small-screen-padding" style="margin-top:80px">
-      <h4 >{{wikiRevId}}</h4>
+      <h1 >Revision {{wikiRevId}}</h1>
       <div class="col-12 p-2">
         <StaticRevisionCard
           :wikiRevId="wikiRevId"
@@ -90,16 +90,54 @@
     mounted() {
       this.$ga.page('/revision.vue'); // track page
     },
+    /** Override the head to optimize for Search Engines / Facebook crawling.
+     *
+     * @return {{meta: *[], title: *}}
+     */
     head () {
+      let title = `WikiLoop Battlefield (${this.wikiRevId})`;
+      let desc = `Is this Wikipedia edit good or bad? Come share your opinion at WikiLoop Battlefield. (${this.wikiRevId})`;
+      let img = `https://github.com/google/wikiloop-battlefield/raw/master/assets/wikiloop-battlefield-logo.svg?sanitize=true`;
+      let canonicalUrl = `http://battlefield.wikiloop.org/${this.$route.path}`;
       return {
-        title: `WikiLoop Battlefield (${this.wikiRevId})`,
+        title: title,
+        link: [
+          {
+            rel: 'canonical',
+            href: canonicalUrl,
+          },
+        ],
         meta: [
           // hid is used as unique identifier. Do not use `vmid` for it as it will not work
           {
             hid: 'description',
             name: 'description',
-            content: `Hi my Wikipedian friends, please take a look at this Wikipedia revision ${this.wikiRevId} at WikiLoop Battlefield and give your opinion.`
-          }
+            content: desc
+          },
+          {
+            hid: 'og:description',
+            name: 'og:description',
+            property: 'og:description',
+            content: desc
+          },
+          {
+            hid: 'og:title',
+            name: 'og:title',
+            property: 'og:title',
+            content: title
+          },
+          {
+            hid: 'og:image',
+            name: 'og:image',
+            property: 'og:image',
+            content: img
+          },
+          {
+            hid: 'og:url',
+            name: 'og:url',
+            property: 'og:url',
+            content: canonicalUrl
+          },
         ]
       }
     }
