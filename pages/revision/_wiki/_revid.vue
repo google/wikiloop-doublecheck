@@ -98,15 +98,8 @@
       let title = `WikiLoop Battlefield (${this.wikiRevId})`;
       let desc = `Is this Wikipedia edit good or bad? Come share your opinion at WikiLoop Battlefield. (${this.wikiRevId})`;
       let img = `https://github.com/google/wikiloop-battlefield/raw/master/assets/wikiloop-battlefield-logo.svg?sanitize=true`;
-      let canonicalUrl = `http://battlefield.wikiloop.org/${this.$route.path}`;
       return {
         title: title,
-        link: [
-          {
-            rel: 'canonical',
-            href: canonicalUrl,
-          },
-        ],
         meta: [
           // hid is used as unique identifier. Do not use `vmid` for it as it will not work
           {
@@ -137,12 +130,6 @@
             name: 'og:image',
             property: 'og:image',
             content: img
-          },
-          {
-            hid: 'og:url',
-            name: 'og:url',
-            property: 'og:url',
-            content: canonicalUrl
           },
           {
             hid: 'apple-mobile-web-app-title',
