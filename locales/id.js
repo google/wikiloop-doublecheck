@@ -2,6 +2,7 @@ module.exports = {
     LoginMenuItem: "Masuk log",
     LogoutMenuItem: "Keluar log",
     ContributionsMenuItem: "Kontribusi",
+    ContributionsBeforeLoginMenuItem: "Daftar kontribusi sebelum masuk log",
     Anonymous: "Anonim",
     Me: "Aku",
     Someone: "Seseorang",
