@@ -94,12 +94,19 @@
      *
      * @return {{meta: *[], title: *}}
      */
-    head () {
+    head ({$axios}) {
       let title = `WikiLoop Battlefield (${this.wikiRevId})`;
       let desc = `Is this Wikipedia edit good or bad? Come share your opinion at WikiLoop Battlefield. (${this.wikiRevId})`;
-      let img = `https://github.com/google/wikiloop-battlefield/raw/master/assets/wikiloop-battlefield-logo.svg?sanitize=true`;
+      let img = `${$axios.defaults.baseURL}/static/wikiloop-log.png`; // TODO(xinbenlv) use relative URL
+      let url = $axios.defaults.baseURL + this.$route.path;
       return {
         title: title,
+        link: [
+          {
+            rel: 'canonical',
+            href: url,
+          },
+        ],
         meta: [
           // hid is used as unique identifier. Do not use `vmid` for it as it will not work
           {
@@ -136,6 +143,12 @@
             name: 'apple-mobile-web-app-title',
             property: 'apple-mobile-web-app-title',
             content: desc
+          },
+          {
+            hid: 'og:url',
+            name: 'og:url',
+            property: 'og:url',
+            content: url
           },
         ]
       }
