@@ -142,6 +142,7 @@
         </div>
         <div v-if="interaction && interaction.judgements.length > 0" class="col-lg-12">
           <table class="b-table table mt-2 w-100">
+            <tbody>
             <tr class="row">
               <td class="col-4">User</td>
               <td class="col-4">Label</td>
@@ -163,6 +164,7 @@
               <td class="col-4">{{judgement.judgement}}</td>
               <td class="col-4">{{new Date(judgement.timestamp * 1000).toISOString()}} <br/> (<timeago :locale="$i18n.locale" :datetime="new Date(interaction.lastTimestamp * 1000).toString()" :auto-update="60"></timeago>)</td>
             </tr>
+            </tbody>
           </table>
         </div>
       </div>

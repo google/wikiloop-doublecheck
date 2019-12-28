@@ -90,6 +90,19 @@
     mounted() {
       this.$ga.page('/revision.vue'); // track page
     },
+    head () {
+      return {
+        title: `WikiLoop Battlefield (${this.wikiRevId})`,
+        meta: [
+          // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+          {
+            hid: 'description',
+            name: 'description',
+            content: `Hi my Wikipedian friends, please take a look at this Wikipedia revision ${this.wikiRevId} at WikiLoop Battlefield and give your opinion.`
+          }
+        ]
+      }
+    }
   }
 </script>
 
