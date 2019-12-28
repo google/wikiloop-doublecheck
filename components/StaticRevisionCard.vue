@@ -235,21 +235,157 @@ between Client-Side-Rendering and Server-Side-Rendering -->
           return null;
         }
       },
-      enableRevertRedirect: function() { },
-      directRevert: function() {  },
-      redirectToRevert: function() {  },
-      interactionBtn:  function (myJudgement) {  },
+      enableRevertRedirect: async function() {
+        return this.myJudgement === `ShouldRevert` && !this.isOverriden();
+      },
+      directRevert: async function() {
+        try {
+          this.$ga.event({
+            eventCategory: 'interaction',
+            eventAction: 'direct-revert-initiate',
+            eventValue: {
+              wikiRevId: this.wikiRevId
+            }
+          });
+          let ret = await this.$axios.$get(`/api/auth/revert/${this.wikiRevId}`);
+          if (ret && ret.edit && ret.edit.result ===`Success`) {
+            this.$bvToast.toast(
+                `Congrats! you've successfully reverted ${this.wikiRevId}`, {
+                  title: 'Revert succeeded!',
+                  autoHideDelay: 3000,
+                  appendToast: true
+                });
+            this.$ga.event({
+              eventCategory: 'interaction',
+              eventAction: 'direct-revert-success',
+              eventValue: {
+                wikiRevId: this.wikiRevId
+              }
+            });
+          } else {
+            console.warn(`Direct revert result unknown`, ret);
+            this.$ga.event({
+              eventCategory: 'interaction',
+              eventAction: 'direct-revert-unknown',
+              eventValue: {
+                wikiRevId: this.wikiRevId
+              }
+            });
+          }
+
+        } catch(e) {
+          // TODO show failure message.
+          this.$ga.event({
+            eventCategory: 'interaction',
+            eventAction: 'direct-revert-failure',
+            eventValue: {
+              wikiRevId: this.wikiRevId
+            }
+          });
+        }
+      },
+      redirectToRevert: async function() {
+        if (this.myJudgement === `ShouldRevert` && !this.isOverriden()) {
+          const version = await this.$axios.$get(`/api/version`);
+          let revertUrl = `${this.getUrlBaseByWiki(this.revision.wiki)}/w/index.php?title=${this.revision.title}&action=edit&undoafter=${this.revision.revision.old}&undo=${this.revision.revision.new}&summary=Identified as test/vandalism using [[:m:WikiLoop Battlefield]](version ${version}). See it or provide your opinion at http://battlefield.wikiloop.org/marked?wikiRevIds=${this.wikiRevId}`;
+          let historyUrl = `${this.getUrlBaseByWiki(this.revision.wiki)}/w/index.php?title=${this.revision.title}&action=history`;
+          let result = await this.$axios.$get(`/api/mediawiki`, {params: {
+              wiki: this.revision.wiki,
+              apiQuery: {
+                action: "query",
+                format: "json",
+                prop: "revisions",
+                titles: this.revision.title,
+                rvlimit: 10,
+              }
+            }});
+          let revisions = Object.values(result.query.pages)[0].revisions;
+          if (revisions[1].user === revisions[0].user) {
+            window.open(historyUrl, '_blank');
+            this.$ga.event({
+              eventCategory: 'interaction',
+              eventAction: 'go-to-history',
+              eventValue: {
+                wikiRevId: this.wikiRevId
+              }
+            });
+          } else {
+            window.open(revertUrl, '_blank');
+            this.$ga.event({
+              eventCategory: 'interaction',
+              eventAction: 'go-to-revert',
+              eventValue: {
+                wikiRevId: this.wikiRevId
+              }
+            });
+          }
+
+        }
+      },
+      interactionBtn: async function (myJudgement) {
+        this.myJudgement = myJudgement;
+        let revision = this.revision;
+        let gaId = this.$cookiez.get("_ga");
+        let postBody = {
+          gaId: gaId, // Deprecated
+          userGaId: gaId,
+          judgement: myJudgement,
+          timestamp: Math.floor(new Date().getTime() / 1000), // timestamp for interaction
+          wikiRevId: revision.wikiRevId,
+          recentChange: {
+            title: revision.title,
+            namespace: revision.namespace,
+            revision: revision.revision,
+            ores: this.ores,
+            user: revision.user,
+            wiki: revision.wiki,
+            timestamp: new Date(revision.timestamp).getTime()/1000
+          }
+        };
+
+        if (this.$store.state.user && this.$store.state.user.profile) {
+          let wikiUserName = this.$store.state.user.profile.displayName;
+          postBody.wikiUserName = wikiUserName;
+        }
+
+        await this.$axios.$post(`/api/interaction/${this.wikiRevId}`, postBody);
+        document.dispatchEvent(new Event("stats-update"));
+        this.$emit('judgement-event', postBody);
+        this.$ga.event({
+          eventCategory: 'interaction',
+          eventAction: 'judgement',
+          eventLabel: myJudgement,
+          eventValue: {
+            wikiRevId: this.wikiRevId
+          }
+        });
+      },
       damagingPercent: function () {
         return `${this.ores !== null ? Math.floor(parseFloat(this.ores.damaging.true) * 100) : "??"}%`;
       },
       badfaithPercent: function () {
         return `${this.ores !== null ? Math.floor(parseFloat(this.ores.goodfaith.false) * 100) : "??"}%`;
       },
+      stikiPercent: function() {
+        return `${this.stiki !== null ? Math.floor(parseFloat(this.stiki) * 100) : "??"}%`;
+      },
+      cbngPercent: function() {
+        return `${this.cbng !== null ? Math.floor(parseFloat(this.cbng) * 100) : "??"}%`;
+      }
+    },
+    async beforeMount() {
+      // TODO(xinbenlv): after marking "shouldRevert" query to see if this revesion is top and can be reverted.
+      socket.on('interaction', async (interaction) => {
+        if(interaction.wikiRevId === this.wikiRevId) {
+          this.interaction = interaction;
+        }
+      });
     },
     beforeCreate() {
       this.getUrlBaseByWiki = utility.getUrlBaseByWiki.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
       this.fetchDiffWithWikiRevId = utility.fetchDiffWithWikiRevId.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
     },
+
   }
 
 </script>

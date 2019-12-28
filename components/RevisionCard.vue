@@ -15,7 +15,7 @@
 -->
 
 <template>
-  <section>
+  <section class="XXX-debug">
     <div v-bind:class="{
         'border-danger': ores ? ores.goodfaith.false > 0.5 : false,
         'border-warning': ores ? ores.damaging.true > 0.5 : false,
@@ -67,7 +67,7 @@
                   :href="`/extra/stiki/${wikiRevId}`">{{ stikiPercent() }}</a>
               </span>
             </div>
-            <div v-if="stiki" class="col-lg-2">
+            <div v-if="cbng" class="col-lg-2">
               <span data-toggle="tooltip" data-placement="top"
                     title="Vandalism Score by ClueBotNG">
                 <i v-bind:class="{ 'text-warning': cbng && cbng > 0.5 ? true : false }" class="fas fa-theater-masks"></i> ClueBotNG:  <a
