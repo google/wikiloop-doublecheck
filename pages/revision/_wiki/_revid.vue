@@ -17,7 +17,6 @@
 <template>
   <section>
     <div class="container small-screen-padding" style="margin-top:80px">
-      <h1 >Revision {{wikiRevId}}</h1>
       <div class="col-12 p-2">
         <StaticRevisionCard
           :wikiRevId="wikiRevId"
@@ -94,8 +93,8 @@
      *
      * @return {{meta: *[], title: *}}
      */
-    head ({$axios}) {
-      let title = `WikiLoop Battlefield (${this.wikiRevId})`;
+    head ({ params }) {
+      let title = `${this.revision.title} (rev:${this.$route.params.revid})`;
       let desc = `Is this Wikipedia edit good or bad? Come share your opinion at WikiLoop Battlefield. (${this.wikiRevId})`;
       let host = `battlefield.wikiloop.org`;
       let img = `http://${host}/wikiloop-battlefield-logo.png`; // TODO(xinbenlv) use relative URL
