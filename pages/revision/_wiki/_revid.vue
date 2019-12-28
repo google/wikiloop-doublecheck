@@ -58,7 +58,7 @@
 
       let interaction;
       let apiParams = params;
-      apiParams.wikiRevId = wikiRevId;
+      apiParams.wikiRevIds = [wikiRevId];
       const interactions = await $axios.$get(`/api/interactions`, { params: apiParams });
       if (interactions.length > 0) {
         interaction = interactions[0];
