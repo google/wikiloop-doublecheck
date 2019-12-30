@@ -25,6 +25,15 @@
         "projectManagement",
         "tutorial"
       ]
+    },
+    {
+      "login": "epicfaace",
+      "name": "Ashwin Ramaswami",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1689183?v=4",
+      "profile": "https://epicfaace.github.io/",
+      "contributions": [
+        "infra"
+      ]
     }
   ],
   "contributorsPerLine": 7
