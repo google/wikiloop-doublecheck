@@ -1,6 +1,6 @@
 # WikiLoop Battlefield: Fight vandalism on Wikipedia together
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![WikiLoop Logo](static/wikiloop-battlefield-logo.svg)](https://meta.wikimedia.org/wiki/WikiProject_WikiLoop)
@@ -113,6 +113,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://aligoren.com"><img src="https://avatars0.githubusercontent.com/u/4205423?v=4" width="100px;" alt=""/><br /><sub><b>Ali GOREN</b></sub></a><br /><a href="#translation-aligoren" title="Translation">🌍</a> <a href="https://github.com/google/wikiloop-battlefield/issues?q=author%3Aaligoren" title="Bug reports">🐛</a> <a href="https://github.com/google/wikiloop-battlefield/commits?author=aligoren" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/ElanHR"><img src="https://avatars3.githubusercontent.com/u/573697?v=4" width="100px;" alt=""/><br /><sub><b>Elan</b></sub></a><br /><a href="https://github.com/google/wikiloop-battlefield/issues?q=author%3AElanHR" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/ExtremoBlando"><img src="https://avatars3.githubusercontent.com/u/18313773?v=4" width="100px;" alt=""/><br /><sub><b>ExtremoBlando</b></sub></a><br /><a href="https://github.com/google/wikiloop-battlefield/issues?q=author%3AExtremoBlando" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/ChaoyueFred"><img src="https://avatars1.githubusercontent.com/u/14314482?v=4" width="100px;" alt=""/><br /><sub><b>ChaoyueFred</b></sub></a><br /><a href="#video-ChaoyueFred" title="Videos">📹</a></td>
   </tr>
 </table>
 
