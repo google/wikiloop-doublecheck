@@ -111,6 +111,16 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "westand",
+      "name": "Andrew G. West",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/1369929?v=4",
+      "profile": "http://www.andrew-g-west.com",
+      "contributions": [
+        "question",
+        "tool"
+      ]
     }
   ],
   "contributorsPerLine": 7

@@ -1,6 +1,6 @@
 # WikiLoop Battlefield: Fight vandalism on Wikipedia together
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-10-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-11-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![WikiLoop Logo](static/wikiloop-battlefield-logo.svg)](https://meta.wikimedia.org/wiki/WikiProject_WikiLoop)
@@ -87,17 +87,6 @@ We run our continuous integration with CircleCI. To run continuous integration l
 circleci local execute build
 ```
 
-## Credit
-- Primary Project Lead: Zainan Zhou <zzn@google.com> @xinbenlv
-- Contributors:
-  - **Ashwin Ramaswami** (@epicfaace), for massive refactoring API structure
-  - **Hamdanil Rasyid** (@hrasyid), for adding Indonsian(`idwiki`) language support
-  - **Ali Goren** (@aligoren), for fixing timestamp bug and adding Turkish (`trwiki`) language support.
-
-- We appreciate the courtesy of [Dr. Andrew G. West](http://www.andrew-g-west.com/) for providing us with read access to [STiki](https://en.wikipedia.org/wiki/Wikipedia:STiki) vandalism detection scores.
-
-- We welcome new contributors too!
-
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
@@ -119,6 +108,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://simia.net"><img src="https://avatars0.githubusercontent.com/u/663648?v=4" width="100px;" alt=""/><br /><sub><b>Denny Vrandečić</b></sub></a><br /><a href="https://github.com/google/wikiloop-battlefield/issues?q=author%3Avrandezo" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://wisn.github.io/"><img src="https://avatars1.githubusercontent.com/u/8147926?v=4" width="100px;" alt=""/><br /><sub><b>Wisnu Adi Nurcahyo</b></sub></a><br /><a href="https://github.com/google/wikiloop-battlefield/issues?q=author%3Awisn" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://curimit.com/blog"><img src="https://avatars0.githubusercontent.com/u/1249753?v=4" width="100px;" alt=""/><br /><sub><b>curimit</b></sub></a><br /><a href="https://github.com/google/wikiloop-battlefield/issues?q=author%3Acurimit" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="http://www.andrew-g-west.com"><img src="https://avatars0.githubusercontent.com/u/1369929?v=4" width="100px;" alt=""/><br /><sub><b>Andrew G. West</b></sub></a><br /><a href="#question-westand" title="Answering Questions">💬</a> <a href="#tool-westand" title="Tools">🔧</a></td>
   </tr>
 </table>
 
