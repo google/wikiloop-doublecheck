@@ -10,6 +10,7 @@ module.exports = {
     LooksGoodBtnLabel: "Looks good",
     NotSureBtnLabel: "Not sure",
     ShouldRevertBtnLabel: "Should revert",
+    RevertNowBtnLabel: "Revert now",
     NextBtnLabel: "Next",
     Loading: "Loading",
     EditedTimeLabel: "edited",

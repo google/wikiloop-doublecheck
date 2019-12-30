@@ -11,6 +11,7 @@ module.exports = {
     LooksGoodBtnLabel: "İyi Görünüyor",
     NotSureBtnLabel: "Emin Değilim",
     ShouldRevertBtnLabel: "Eski Haline Dönmeli",
+    // RevertNowBtnLabel: "Revert now", # TODO: translate
     NextBtnLabel: "Sonraki",
     Loading: "Yükleniyor",
     EditedTimeLabel: "düzenlendi",
