@@ -1,0 +1,24 @@
+{
+  "projectName": "wikiloop-battlefield",
+  "projectOwner": "google",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "none",
+  "contributors": [
+    {
+      "login": "xinbenlv",
+      "name": "xinbenlv",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/640325?v=4",
+      "profile": "http://keybase.io/xinbenlv",
+      "contributions": [
+        "doc"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7
+}
