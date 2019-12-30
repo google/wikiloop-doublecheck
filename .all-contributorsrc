@@ -1,0 +1,117 @@
+{
+  "projectName": "wikiloop-battlefield",
+  "projectOwner": "google",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "none",
+  "contributors": [
+    {
+      "login": "xinbenlv",
+      "name": "xinbenlv",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/640325?v=4",
+      "profile": "http://keybase.io/xinbenlv",
+      "contributions": [
+        "doc",
+        "code",
+        "translation",
+        "bug",
+        "content",
+        "ideas",
+        "projectManagement",
+        "tutorial"
+      ]
+    },
+    {
+      "login": "epicfaace",
+      "name": "Ashwin Ramaswami",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1689183?v=4",
+      "profile": "https://epicfaace.github.io/",
+      "contributions": [
+        "infra",
+        "code"
+      ]
+    },
+    {
+      "login": "hrasyid",
+      "name": "Hamdanil Rasyid",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/4159519?v=4",
+      "profile": "https://www.facebook.com/hamdanil",
+      "contributions": [
+        "translation",
+        "code",
+        "bug"
+      ]
+    },
+    {
+      "login": "aligoren",
+      "name": "Ali GOREN",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/4205423?v=4",
+      "profile": "https://aligoren.com",
+      "contributions": [
+        "translation",
+        "bug",
+        "code"
+      ]
+    },
+    {
+      "login": "ElanHR",
+      "name": "Elan",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/573697?v=4",
+      "profile": "https://github.com/ElanHR",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "ExtremoBlando",
+      "name": "ExtremoBlando",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/18313773?v=4",
+      "profile": "https://github.com/ExtremoBlando",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "ChaoyueFred",
+      "name": "ChaoyueFred",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/14314482?v=4",
+      "profile": "https://github.com/ChaoyueFred",
+      "contributions": [
+        "video"
+      ]
+    },
+    {
+      "login": "vrandezo",
+      "name": "Denny Vrandečić",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/663648?v=4",
+      "profile": "http://simia.net",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "wisn",
+      "name": "Wisnu Adi Nurcahyo",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/8147926?v=4",
+      "profile": "https://wisn.github.io/",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "curimit",
+      "name": "curimit",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/1249753?v=4",
+      "profile": "https://curimit.com/blog",
+      "contributions": [
+        "bug"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7
+}

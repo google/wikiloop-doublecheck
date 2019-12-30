@@ -1,4 +1,7 @@
 # WikiLoop Battlefield: Fight vandalism on Wikipedia together
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-10-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![WikiLoop Logo](static/wikiloop-battlefield-logo.svg)](https://meta.wikimedia.org/wiki/WikiProject_WikiLoop)
 
@@ -94,3 +97,33 @@ circleci local execute build
 - We appreciate the courtesy of [Dr. Andrew G. West](http://www.andrew-g-west.com/) for providing us with read access to [STiki](https://en.wikipedia.org/wiki/Wikipedia:STiki) vandalism detection scores.
 
 - We welcome new contributors too!
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="http://keybase.io/xinbenlv"><img src="https://avatars2.githubusercontent.com/u/640325?v=4" width="100px;" alt=""/><br /><sub><b>xinbenlv</b></sub></a><br /><a href="https://github.com/google/wikiloop-battlefield/commits?author=xinbenlv" title="Documentation">📖</a> <a href="https://github.com/google/wikiloop-battlefield/commits?author=xinbenlv" title="Code">💻</a> <a href="#translation-xinbenlv" title="Translation">🌍</a> <a href="https://github.com/google/wikiloop-battlefield/issues?q=author%3Axinbenlv" title="Bug reports">🐛</a> <a href="#content-xinbenlv" title="Content">🖋</a> <a href="#ideas-xinbenlv" title="Ideas, Planning, & Feedback">🤔</a> <a href="#projectManagement-xinbenlv" title="Project Management">📆</a> <a href="#tutorial-xinbenlv" title="Tutorials">✅</a></td>
+    <td align="center"><a href="https://epicfaace.github.io/"><img src="https://avatars2.githubusercontent.com/u/1689183?v=4" width="100px;" alt=""/><br /><sub><b>Ashwin Ramaswami</b></sub></a><br /><a href="#infra-epicfaace" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/google/wikiloop-battlefield/commits?author=epicfaace" title="Code">💻</a></td>
+    <td align="center"><a href="https://www.facebook.com/hamdanil"><img src="https://avatars0.githubusercontent.com/u/4159519?v=4" width="100px;" alt=""/><br /><sub><b>Hamdanil Rasyid</b></sub></a><br /><a href="#translation-hrasyid" title="Translation">🌍</a> <a href="https://github.com/google/wikiloop-battlefield/commits?author=hrasyid" title="Code">💻</a> <a href="https://github.com/google/wikiloop-battlefield/issues?q=author%3Ahrasyid" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://aligoren.com"><img src="https://avatars0.githubusercontent.com/u/4205423?v=4" width="100px;" alt=""/><br /><sub><b>Ali GOREN</b></sub></a><br /><a href="#translation-aligoren" title="Translation">🌍</a> <a href="https://github.com/google/wikiloop-battlefield/issues?q=author%3Aaligoren" title="Bug reports">🐛</a> <a href="https://github.com/google/wikiloop-battlefield/commits?author=aligoren" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/ElanHR"><img src="https://avatars3.githubusercontent.com/u/573697?v=4" width="100px;" alt=""/><br /><sub><b>Elan</b></sub></a><br /><a href="https://github.com/google/wikiloop-battlefield/issues?q=author%3AElanHR" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/ExtremoBlando"><img src="https://avatars3.githubusercontent.com/u/18313773?v=4" width="100px;" alt=""/><br /><sub><b>ExtremoBlando</b></sub></a><br /><a href="https://github.com/google/wikiloop-battlefield/issues?q=author%3AExtremoBlando" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/ChaoyueFred"><img src="https://avatars1.githubusercontent.com/u/14314482?v=4" width="100px;" alt=""/><br /><sub><b>ChaoyueFred</b></sub></a><br /><a href="#video-ChaoyueFred" title="Videos">📹</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="http://simia.net"><img src="https://avatars0.githubusercontent.com/u/663648?v=4" width="100px;" alt=""/><br /><sub><b>Denny Vrandečić</b></sub></a><br /><a href="https://github.com/google/wikiloop-battlefield/issues?q=author%3Avrandezo" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://wisn.github.io/"><img src="https://avatars1.githubusercontent.com/u/8147926?v=4" width="100px;" alt=""/><br /><sub><b>Wisnu Adi Nurcahyo</b></sub></a><br /><a href="https://github.com/google/wikiloop-battlefield/issues?q=author%3Awisn" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://curimit.com/blog"><img src="https://avatars0.githubusercontent.com/u/1249753?v=4" width="100px;" alt=""/><br /><sub><b>curimit</b></sub></a><br /><a href="https://github.com/google/wikiloop-battlefield/issues?q=author%3Acurimit" title="Bug reports">🐛</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
