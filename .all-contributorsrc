@@ -102,6 +102,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "curimit",
+      "name": "curimit",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/1249753?v=4",
+      "profile": "https://curimit.com/blog",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7
