@@ -93,6 +93,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "wisn",
+      "name": "Wisnu Adi Nurcahyo",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/8147926?v=4",
+      "profile": "https://wisn.github.io/",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7
