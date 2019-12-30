@@ -35,6 +35,15 @@
         "infra",
         "code"
       ]
+    },
+    {
+      "login": "hrasyid",
+      "name": "Hamdanil Rasyid",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/4159519?v=4",
+      "profile": "https://www.facebook.com/hamdanil",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "contributorsPerLine": 7
