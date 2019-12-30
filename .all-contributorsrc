@@ -19,7 +19,8 @@
         "doc",
         "code",
         "translation",
-        "bug"
+        "bug",
+        "content"
       ]
     }
   ],
