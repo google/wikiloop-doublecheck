@@ -67,9 +67,8 @@ export const mutations = {
     }
   },
   pop(state) {
-    // we can't return so far, otherwise it will be good.
-    let wikiRevId = state.nextWikiRevIdsHeap.pop();
-    return state.nextWikiRevIdsHeap.pop();
+    // we can't return in VUEX store so far, otherwise it will be even better.
+    state.nextWikiRevIdsHeap.pop();
   },
   markAsReviewed(state, wikiRevId) {
     state.reviewedWikiRevIdSet.add(wikiRevId);
