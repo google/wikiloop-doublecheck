@@ -118,7 +118,10 @@ export const actions = {
     let _timestamps = apiPage.map(item => item.timestamp);
     commit(`updateTimestamps`, _timestamps);
     apiPage.forEach(item => {
-      if (!(item.wikiRevId in state.wikiRevIdToMeta)) {
+          // skip if already in list:
+      if (!(item.wikiRevId in state.wikiRevIdToMeta)
+          // skip reviewing one's own edit:
+          && ((rootState.user.profile || {}).displayName != item.user)) {
         commit(`addRecentChange`, item);
       }
     });
