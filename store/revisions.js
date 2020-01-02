@@ -121,7 +121,7 @@ export const actions = {
           // skip if already in list:
       if (!(item.wikiRevId in state.wikiRevIdToMeta)
           // skip reviewing one's own edit:
-          && ((rootState.user.profile || {}).displayName != item.user)) {
+          && ((rootState.user.profile || {}).displayName !== item.user)) {
         commit(`addRecentChange`, item);
       }
     });
