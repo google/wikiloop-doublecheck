@@ -17,7 +17,7 @@
 <template>
   <section>
     <div class="container small-screen-padding" style="margin-top:80px">
-      <h2>LoggedIn Users</h2>
+      <h2>Logged In Users</h2>
       <div class="table-responsive mt-5">
         <table class="table table-bordered">
           <thead>
@@ -99,7 +99,8 @@
     },
     methods: {
       isMe: function(leader) {
-        return this.$store.state.user.profile.displayName === leader.wikiUserName
+        return (this.$store.state.user && this.$store.state.user.profile
+                && this.$store.state.user.profile.displayName === leader.wikiUserName)
             || this.$cookiez.get('_ga') === leader.userGaId;
       }
     },
