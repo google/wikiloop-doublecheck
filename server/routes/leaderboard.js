@@ -17,18 +17,56 @@ module.exports = async (req, res) => {
     let myGaId = req.body.gaId || req.cookies._ga;
 
     // TO-FUTURE-DO consider adding pagination if performance is a problem. We don't expect this list to be more than
-    // 10K records anytime soon
-    let ret = await mongoose.connection.db.collection("Interaction").aggregate(
+    // 100K records anytime soon (updated 2020-01-02).
+    let loggedIn = await mongoose.connection.db.collection("Interaction").aggregate(
+      [
+        {
+          "$match": {
+            "wikiUserName": { $exists: true },
+          }
+        },
+        {
+          "$group": {
+            "_id": {
+              "wikiUserName": "$wikiUserName",
+            },
+            "count": {
+              "$sum": 1
+            },
+            "lastTimestamp": {
+              "$max": "$timestamp"
+            }
+          }
+        },
+        {
+          "$sort": {
+            "count": -1
+          }
+        },
+        {
+          "$project": {
+            "wikiUserName": "$_id.wikiUserName",
+            "count": 1,
+            "lastTimestamp": 1
+          }
+        }
+      ],
+      {
+        "allowDiskUse": false
+      }
+    ).toArray();
+    let anonymous = await mongoose.connection.db.collection("Interaction").aggregate(
         [
             {
                 "$match": {
-                    "userGaId": { $ne: null }
+                    "userGaId": { $ne: null },
+                    "wikiUserName": { $exists: false },
                 }
             },
             {
                 "$group": {
                     "_id": {
-                        "userGaId": "$userGaId"
+                        "userGaId": "$userGaId",
                     },
                     "count": {
                         "$sum": 1
@@ -55,7 +93,7 @@ module.exports = async (req, res) => {
             "allowDiskUse": false
         }
     ).toArray();
-    res.send(ret);
+    res.send({ loggedIn, anonymous });
     req.visitor
         .event({ ec: "api", ea: "/leaderboard" })
         .send();
