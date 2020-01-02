@@ -10,6 +10,7 @@ module.exports = {
     NotSureBtnLabel: "Nicht sicher",
     ShouldRevertBtnLabel: "Sollte zurücksetzen",
     // RevertNowBtnLabel: "Revert now", # TODO: translate
+    // RevertEditSummary: "Identified as test/vandalism using {0} version {1}. See it or provide your opinion at {2}", TODO: translate
     NextBtnLabel: "Nächste",
     Loading: "Beladung",
     EditedTimeLabel: "Bearbeitet"

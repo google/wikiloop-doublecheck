@@ -11,6 +11,7 @@ module.exports = {
     NotSureBtnLabel: "Tidak yakin",
     ShouldRevertBtnLabel: "Patut dibatalkan",
     RevertNowBtnLabel: "Batalkan sekarang",
+    RevertEditSummary: "Batalkan percobaan/vandalisme menggunakan {0} versi {1}. Lihat atau beri pendapat di {2}",
     NextBtnLabel: "Selanjutnya",
     Loading: "Sedang memuat",
     EditedTimeLabel: "disunting",
