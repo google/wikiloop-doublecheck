@@ -11,6 +11,7 @@ module.exports = {
     NotSureBtnLabel: "Not sure",
     ShouldRevertBtnLabel: "Should revert",
     RevertNowBtnLabel: "Revert now",
+    RevertEditSummary: "Identified as test/vandalism using {0} version {1}. See it or provide your opinion at {2}",
     NextBtnLabel: "Next",
     Loading: "Loading",
     EditedTimeLabel: "edited",
