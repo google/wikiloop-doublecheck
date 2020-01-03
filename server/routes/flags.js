@@ -20,7 +20,7 @@ module.exports = (req, res, next) => {
     res.send({
         useStiki: useStiki,
         useOauth: useOauth,
-        useDirectRevert: false
+        useDirectRevert: process.env.DIRECT_REVERT
     });
     req.visitor
         .event({ ec: "api", ea: "/" })

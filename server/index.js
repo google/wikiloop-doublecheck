@@ -356,7 +356,7 @@ function setupAuthApi(app) {
   passport.use(new MediaWikiStrategy({
         consumerKey: process.env.MEDIAWIKI_CONSUMER_KEY,
         consumerSecret: process.env.MEDIAWIKI_CONSUMER_SECRET,
-        callbackURL: `${process.env.OAUTH_CALLBACK_ENDPOINT}/auth/mediawiki/callback` // TODO probably need to set HOST and PORT
+        callbackURL: `http://${process.env.PUBLIC_HOST}/auth/mediawiki/callback` // TODO probably need to set HOST and PORT
       },
       function(token, tokenSecret, profile, done) {
         profile.oauth = {
@@ -426,7 +426,7 @@ function setupAuthApi(app) {
         "title": revInfo[0].title, // TODO(zzn): assuming only 1 revision is being reverted
         "tags": "WikiLoop Battlefield",
         "summary": `Identified as test/vandalism and undid revision ${revId} by [[User:${revInfo[0].user}]] with [[m:WikiLoop Battlefield]](v${require(
-          './../package.json').version}). See it or provide your opinion at http://${process.env.PUBLIC_HOST || "localhost:8000"}/${wiki}/${revId}`,
+          './../package.json').version}). See it or provide your opinion at http://${process.env.PUBLIC_HOST || "localhost:8000"}/revision/${wiki}/${revId}`,
         "undo": revId,
         "token": token
       }, {method: 'POST'}, req.user.oauth );  // assuming request succeeded;
