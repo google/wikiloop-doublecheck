@@ -54,7 +54,7 @@
           <b-navbar-nav class="ml-auto">
             <b-nav-item-dropdown  right>
               <template v-slot:button-content>
-                <object type="image/svg+xml" class="avatar-navbar" v-bind:data="`/api/avatar/${$cookiez.get('_ga')}`" ></object>{{$store.state.user.profile ? `${$store.state.user.profile.displayName}`:`${$t(`Anonymous`)}`}}
+                <object type="image/svg+xml" class="avatar-navbar" v-bind:data="`/api/avatar/${userId}`" ></object>{{$store.state.user.profile ? `${$store.state.user.profile.displayName}`:`${$t(`Anonymous`)}`}}
               </template>
               <b-dropdown-item v-if="$store.state.user.profile && $store.state.user.profile.displayName" :href="`/marked/?wikiUserName=${$store.state.user.profile.displayName}`"><i class="fas fa-list"></i>{{$t(`ContributionsMenuItem`)}}</b-dropdown-item>
               <b-dropdown-item :href="`/marked/?userGaId=${$cookiez.get('_ga')}`"><i class="fas fa-list"></i>{{$t(`ContributionsBeforeLoginMenuItem`)}}</b-dropdown-item>
@@ -123,6 +123,12 @@
           this.$i18n.locale = wikiToLangMap[wiki];
           this.$store.dispatch('changeWiki', wiki)
         }
+      },
+      userId: {
+        get() {
+          if (this.$store.state.user.profile) return this.$store.state.user.profile.displayName;
+          else return this.$cookiez.get('_ga');
+        },
       }
     },
     async mounted() {
