@@ -17,13 +17,44 @@
 <template>
   <section>
     <div class="container small-screen-padding" style="margin-top:80px">
-      <h2>Logged In Users</h2>
+      <h2>Top Wikis</h2>
+      <div class="table-responsive mt-5">
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th scope="row">Rank</th>
+            <th>Wiki</th>
+            <th>Count </th>
+            <th>Last Active</th>
+          </tr>
+          </thead>
+          <tbody>
+          <template  v-for="(leadWiki, index) in wikis">
+            <tr class="table-success">
+              <td scope="col">
+                {{index + 1}}
+              </td>
+              <td scope="col">
+                <router-link :to="`/marked/?wiki=${leadWiki.wiki}`" replace>
+                  <span>{{getWikis([leadWiki.wiki])}}</span>
+                </router-link>
+              </td>
+              <td scope="col">{{leadWiki.count}}</td>
+              <td scope="col"><timeago :datetime="new Date(leadWiki.lastTimestamp * 1000).toString()"></timeago></td>
+            </tr>
+          </template>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Top Users</h2>
       <div class="table-responsive mt-5">
         <table class="table table-bordered">
           <thead>
           <tr>
             <th scope="row">Rank</th>
             <th>User</th>
+            <th>Wikis</th>
             <th>Count</th>
             <th>Last Active</th>
           </tr>
@@ -41,20 +72,22 @@
                     <span v-else>User:{{leader.wikiUserName}}</span>
                   </router-link>
                 </td>
+                <td scope="col">{{getWikis(leader.wikis)}}</td>
                 <td scope="col">{{leader.count}}</td>
-                <td scope="col">{{new Date(leader.lastTimestamp * 1000).toISOString()}} <br/> (<timeago :datetime="new Date(leader.lastTimestamp * 1000).toString()"></timeago>)</td>
+                <td scope="col"><timeago :datetime="new Date(leader.lastTimestamp * 1000).toString()"></timeago></td>
               </tr>
             </template>
           </tbody>
         </table>
       </div>
-      <h2>Anonymous Users</h2>
+      <h2>Top Anonymous Users</h2>
       <div class="table-responsive mt-5">
         <table class="table table-bordered">
         <thead>
           <tr>
             <th scope="row">Rank</th>
             <th>User</th>
+            <th>Wikis</th>
             <th>Count</th>
             <th>Last Active</th>
           </tr>
@@ -72,8 +105,9 @@
                 <span v-else>Someone</span>
               </router-link>
             </td>
+            <td scope="col">{{getWikis(leader.wikis)}}</td>
             <td scope="col">{{leader.count}}</td>
-            <td scope="col">{{new Date(leader.lastTimestamp * 1000).toISOString()}} <br/> (<timeago :datetime="new Date(leader.lastTimestamp * 1000).toString()"></timeago>)</td>
+            <td scope="col"><timeago :datetime="new Date(leader.lastTimestamp * 1000).toString()"></timeago></td>
           </tr>
           </template>
         </tbody>
@@ -85,6 +119,7 @@
 <script>
   import BootstrapVue from 'bootstrap-vue';
   import VueTimeago from 'vue-timeago';
+  import languages from '~/locales/languages.js';
 
   const $ = require('jquery');
 
@@ -94,15 +129,23 @@
       VueTimeago
     },
     async asyncData({$axios}) {
-      const { loggedIn, anonymous } = await $axios.$get(`/api/leaderboard`);
-      return { loggedIn ,anonymous };
+      const { loggedIn, anonymous, wikis } = await $axios.$get(`/api/leaderboard`);
+      return { loggedIn ,anonymous, wikis };
     },
     methods: {
       isMe: function(leader) {
         return (this.$store.state.user && this.$store.state.user.profile
                 && this.$store.state.user.profile.displayName === leader.wikiUserName)
             || this.$cookiez.get('_ga') === leader.userGaId;
-      }
+      },
+      getWikis: function(wikis) {
+        return wikis.map(wiki => {
+          for (let lang of languages) {
+            if (lang.value === wiki) return lang.text
+          }
+          return wiki; // fall back
+        }).join(', ');
+      },
     },
     mounted() {
       this.$ga.page('/leaderboard.vue'); // track page
