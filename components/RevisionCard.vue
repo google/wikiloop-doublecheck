@@ -247,7 +247,7 @@
           stikiRemote = this.stikiProp;
         } else {
           try {
-            await this.$axios.$get(`/extra/stiki/${this.wikiRevId}`);
+            stikiRemote = await this.$axios.$get(`/extra/stiki/${this.wikiRevId}`);
           } catch(err) {
             // ignoring
             stikiRemote = [];
@@ -261,13 +261,12 @@
         this.stikiRetryRemains --;
       },
       loadCbng: async function() {
-        console.info(`Load CBNG for ${this.wikiRevId}`);
         let cbngRemote = [];
         if (this.cbngProp) {
           cbngRemote = this.cbngProp;
         } else {
           try {
-            await this.$axios.$get(`/extra/cbng/${this.wikiRevId}`);
+            cbngRemote = await this.$axios.$get(`/extra/cbng/${this.wikiRevId}`);
           } catch(err) {
             // ignoring
             cbngRemote = [];
@@ -462,12 +461,6 @@
       }
     },
     async beforeMount() {
-      console.info(`Mounted NewRevisionCard wikiRevId=${this.wikiRevId},
-        Set props: interactionProp:${this.interactionProp!=null},
-        revisionProp:${this.revisionProp!=null},
-        oresProp:${this.oresProp!=null}
-        diffProp:${this.diffProp!=null}
-        `);
       this.interaction = this.interactionProp || await this.$axios.$get(`/api/interaction/${this.wikiRevId}`);
       this.revision = this.revisionProp || await this.$axios.$get(`/api/revision/${this.wikiRevId}`);
       this.ores = this.oresProp ||  await this.$axios.$get(`/api/ores/${this.wikiRevId}`);
