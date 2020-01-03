@@ -274,7 +274,6 @@ function setupMediaWikiListener(db, io) {
 
 function setupIoSocketListener(db, io) {
   let liveClients = {};
-  db.collection(`LiveClients`).insert({});
   io.on('connection', function (socket) {
     logger.info(`A socket client connected. Socket id = ${socket.id}. Total connections =`, Object.keys(io.sockets.connected).length);
     socket.on('disconnect', function () {
