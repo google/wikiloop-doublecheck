@@ -330,7 +330,7 @@
         let ret = await this.$axios.$get(`/api/auth/revert/${this.wikiRevId}`);
         if (ret && ret.edit && ret.edit.result ===`Success`) {
           this.$bvToast.toast(
-                  `Congrats! you've successfully reverted ${this.wikiRevId}`, {
+                  `Congrats! you've successfully reverted directly ${this.wikiRevId}`, {
                     title: 'Revert succeeded!',
                     autoHideDelay: 3000,
                     appendToast: true

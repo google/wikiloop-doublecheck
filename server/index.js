@@ -426,7 +426,7 @@ function setupAuthApi(app) {
         "title": revInfo[0].title, // TODO(zzn): assuming only 1 revision is being reverted
         "tags": "WikiLoop Battlefield",
         "summary": `Identified as test/vandalism and undid revision ${revId} by [[User:${revInfo[0].user}]] with [[m:WikiLoop Battlefield]](v${require(
-          './../package.json').version}). See it or provide your opinion at ${process.env.OAUTH_CALLBACK_ENDPOINT}/marked?wikiRevId=${req.params.wikiRevId}`,
+          './../package.json').version}). See it or provide your opinion at http://${process.env.PUBLIC_HOST || "localhost:8000"}/${wiki}/${revId}`,
         "undo": revId,
         "token": token
       }, {method: 'POST'}, req.user.oauth );  // assuming request succeeded;
