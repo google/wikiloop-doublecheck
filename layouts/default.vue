@@ -27,7 +27,7 @@
             </b-nav-item>
             <b-nav-item href="/marked" v-b-tooltip.hover title="History">
               <i class="fas fa-history"></i> ({{stats ? stats.totalJudgement : 0}})</b-nav-item>
-            <b-nav-item href="#" v-b-tooltip.hover title="Online Users"><i class="fas fa-users"></i> ({{ liveUserCount }})</b-nav-item>
+            <b-nav-item href="/online" v-b-tooltip.hover title="Online Users"><i class="fas fa-users"></i> ({{ Object.keys($store.state.liveClients || {}).length }})</b-nav-item>
             <b-nav-item href="/api/markedRevs.csv" v-b-tooltip.hover title="Download">
               <i class="fas fa-cloud-download-alt"></i>
             </b-nav-item>
@@ -111,9 +111,9 @@
           // they might prefer editing the Indonesian wiki using English interface
           const wikiToLangMap = {
             "enwiki": "en",
-            "dewiki": "de",          
+            "dewiki": "de",
             "frwiki": "fr",
-            "idwiki": "id",           
+            "idwiki": "id",
             "trwiki": "tr",
             "zhwiki": "zh",
             "wikidatawiki": "en", // TODO(xinbenlv): consider how we deal with wikidata UI langauge.
@@ -126,9 +126,10 @@
     async mounted() {
       this.commitFlagsFromUrlQuery(this.$route.query);
       this.stats = await this.$axios.$get(`/api/stats`);
-      socket.on('client-activity', async (clientActivity) => {
-        this.liveUserCount = clientActivity.liveUserCount;
+      socket.on('live-clients-update', async (liveClients) => {
+        this.$store.commit(`setLiveClients`, liveClients);
       });
+      socket.emit('user-ga-id', this.$cookiez.get('_ga'));
       document.addEventListener('stats-update', async () => {
         console.log(`stats-update:`);
         this.stats = await this.$axios.$get(`/api/stats`);

@@ -272,15 +272,28 @@ function setupMediaWikiListener(db, io) {
   });
 }
 
-function setupIoSocketListener(io) {
+function setupIoSocketListener(db, io) {
+  let liveClients = {};
+  db.collection(`LiveClients`).insert({});
   io.on('connection', function (socket) {
-    logger.debug(`New client connected `, Object.keys(io.sockets.connected).length);
-    io.sockets.emit('client-activity', {liveUserCount: Object.keys(io.sockets.connected).length});
+    logger.info(`A socket client connected. Socket id = ${socket.id}. Total connections =`, Object.keys(io.sockets.connected).length);
     socket.on('disconnect', function () {
-      io.sockets.emit('client-activity', {liveUserCount: Object.keys(io.sockets.connected).length});
-      logger.warn(`One client disconnected `, Object.keys(io.sockets.connected).length);
+      delete liveClients[socket.id];
+      io.sockets.emit('live-clients-update', liveClients);
+      logger.info(`A socket client disconnected. Socket id = ${socket.id}. Total connections =`, Object.keys(io.sockets.connected).length);
     });
+    socket.on(`user-ga-id`, function(userGaId) {
+      liveClients[socket.id].userGaId = userGaId;
+    });
+    liveClients[socket.id] ={
+      socketId: socket.id,
+      created: new Date()
+    };
   });
+
+  setInterval(() => {
+    io.sockets.emit('live-clients-update', liveClients);
+  },3000);
 }
 
 function setupAuthApi(app) {
@@ -443,7 +456,7 @@ async function start() {
     next();
   });
   if (useOauth) setupAuthApi(app);
-  setupIoSocketListener(io);
+  setupIoSocketListener(mongoose.connection.db, io);
   setupMediaWikiListener(mongoose.connection.db, io);
   setupApiRequestListener(mongoose.connection.db, io, app);
 

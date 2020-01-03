@@ -16,6 +16,7 @@ export const state = () => ({
     flags: {},
     version: null,
     sessionId: null,
+    liveClients: {},
     wiki: "enwiki", // default to English
 });
 
@@ -37,7 +38,10 @@ export const mutations = {
     },
     setWiki(state, wiki) {
         state.wiki = wiki
-    }
+    },
+    setLiveClients(state, liveClients) {
+      state.liveClients = liveClients;
+    },
 };
 
 export const actions = {
