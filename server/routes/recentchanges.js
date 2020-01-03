@@ -128,8 +128,21 @@ const listRecentChanges = async (req, res) => {
         namespace: 0, // we already query the server with "rcnamespace=0" filter
         nonbot: true, // we already query the server with "rcprop=!bot" filter
         comment: rawRecentChange.comment,
+        interactions: []
       };
     });
+  const mongoose = require('mongoose');
+  const wikiRevIds = recentChanges.map(rc => rc.wikiRevId);
+  let interactions = await mongoose.connection.db.collection(`Interaction`).find({
+    wikiRevId: {$in: wikiRevIds}
+  }).toArray();
+
+  interactions.forEach(i => recentChanges.forEach(rc => {
+    if (i.wikiRevId === rc.wikiRevId) {
+      rc.interactions.push(i);
+    }
+  }));
+
   res.send(recentChanges.reverse());
 
   let endTime = new Date();
