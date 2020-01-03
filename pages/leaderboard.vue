@@ -36,7 +36,7 @@
               </td>
               <td scope="col">
                 <router-link :to="`/marked/?wiki=${leadWiki.wiki}`" replace>
-                  <span>{{getWikis([leadWiki.wiki])}}</span>
+                  <span>{{getWiki(leadWiki.wiki)}}</span>
                 </router-link>
               </td>
               <td scope="col">{{leadWiki.count}}</td>
@@ -72,7 +72,9 @@
                     <span v-else>User:{{leader.wikiUserName}}</span>
                   </router-link>
                 </td>
-                <td scope="col">{{getWikis(leader.wikis)}}</td>
+                <td scope="col"><template v-for="wiki of leader.wikis">
+                  <a :href="`${getUrlBaseByWiki(wiki)}/wiki/Special:Contributions/${leader.wikiUserName}`">{{getWiki(wiki)}}</a></template>
+                </td>
                 <td scope="col">{{leader.count}}</td>
                 <td scope="col"><timeago :datetime="new Date(leader.lastTimestamp * 1000).toString()"></timeago></td>
               </tr>
@@ -105,7 +107,8 @@
                 <span v-else>Someone</span>
               </router-link>
             </td>
-            <td scope="col">{{getWikis(leader.wikis)}}</td>
+            <td scope="col"><template v-for="wiki of leader.wikis">{{getWiki(wiki)}} </template>
+            </td>
             <td scope="col">{{leader.count}}</td>
             <td scope="col"><timeago :datetime="new Date(leader.lastTimestamp * 1000).toString()"></timeago></td>
           </tr>
@@ -117,6 +120,7 @@
   </section>
 </template>
 <script>
+  import utility from '~/shared/utility';
   import BootstrapVue from 'bootstrap-vue';
   import VueTimeago from 'vue-timeago';
   import languages from '~/locales/languages.js';
@@ -138,18 +142,20 @@
                 && this.$store.state.user.profile.displayName === leader.wikiUserName)
             || this.$cookiez.get('_ga') === leader.userGaId;
       },
-      getWikis: function(wikis) {
-        return wikis.map(wiki => {
-          for (let lang of languages) {
-            if (lang.value === wiki) return lang.text
-          }
-          return wiki; // fall back
-        }).join(', ');
+      getWiki: function(wiki) {
+        for (let lang of languages) {
+          if (lang.value === wiki) return lang.text
+        }
+        return wiki; // fall back
       },
     },
     mounted() {
       this.$ga.page('/leaderboard.vue'); // track page
-    }
+    },
+    beforeCreate() {
+      this.getUrlBaseByWiki = utility.getUrlBaseByWiki.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
+      this.fetchDiffWithWikiRevId = utility.fetchDiffWithWikiRevId.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
+    },
   }
 </script>
 
