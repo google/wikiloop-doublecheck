@@ -31,7 +31,7 @@ const asyncHandler = fn => (req, res, next) =>
 
 const logReqPerf = function (req, res, next) {
   // Credit for inspiration: http://www.sheshbabu.com/posts/measuring-response-times-of-express-route-handlers/
-  perfLogger.info(` log request starts for ${req.method} ${req.originalUrl}:`, {
+  perfLogger.debug(` log request starts for ${req.method} ${req.originalUrl}:`, {
     method: req.method,
     original_url: req.originalUrl,
     ga_id: req.cookies._ga,
@@ -39,7 +39,7 @@ const logReqPerf = function (req, res, next) {
   const startNs = process.hrtime.bigint();
   res.on(`finish`, () => {
     const endNs = process.hrtime.bigint();
-    perfLogger.info(` log response ends for ${req.method} ${req.originalUrl}:`, {
+    perfLogger.debug(` log response ends for ${req.method} ${req.originalUrl}:`, {
       method: req.method,
       original_url: req.originalUrl,
       ga_id: req.cookies._ga,
@@ -48,7 +48,7 @@ const logReqPerf = function (req, res, next) {
       end_ns: endNs,
     });
     if (req.session) {
-      perfLogger.info(` log request session info for ${req.method} ${req.originalUrl}:`, {
+      perfLogger.debug(` log request session info for ${req.method} ${req.originalUrl}:`, {
         session_id: req.session.id
       });
     }
@@ -300,10 +300,10 @@ function setupIoSocketListener(db, io) {
       logger.info(`A socket client disconnected. Socket id = ${socket.id}. Total connections =`, Object.keys(io.sockets.connected).length);
     });
 
-    socket.on(`user-ga-id`, async function (userGaId) {
-      logger.info(`Received user-ga-id`, userGaId);
+    socket.on(`user-id-info`, async function (userIdInfo) {
+      logger.info(`Received userIdInfo`, userIdInfo);
       await db.collection(`Sockets`).updateOne({_id: socket.id}, {
-          $set: { userGaId: userGaId },
+          $set: { userGaId: userIdInfo.userGaId, wikiUserName: userIdInfo.wikiUserName },
         }, { upsert: true }
       );
       await emitLiveUsers();
@@ -383,11 +383,7 @@ function setupAuthApi(app) {
     next();
   });
 
-  app.get('/auth/mediawiki/login', passport.authenticate('mediawiki', function (err, user, info) {
-    console.log(`XXX err`, err);
-    console.log(`XXX user`, user);
-    console.log(`XXX info`, info);
-  }));
+  app.get('/auth/mediawiki/login', passport.authenticate('mediawiki'));
 
   app.get('/auth/mediawiki/logout', asyncHandler(async (req, res) => {
     req.logout();

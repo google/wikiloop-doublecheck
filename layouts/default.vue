@@ -152,7 +152,14 @@
               });
         }
       });
-      socket.emit('user-ga-id', this.$cookiez.get('_ga'));
+      let userIdInfo = {};
+      userIdInfo.userGaId = this.$cookiez.get('_ga');
+
+      if (this.$store.state.user && this.$store.state.user.profile) {
+        userIdInfo.wikiUserName = this.$store.state.user.profile.displayName;
+      }
+      socket.emit('user-id-info', userIdInfo);
+
     }
 }
 
