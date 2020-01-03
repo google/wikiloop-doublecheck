@@ -273,25 +273,49 @@ function setupMediaWikiListener(db, io) {
 }
 
 function setupIoSocketListener(db, io) {
-  let liveClients = {};
-  io.on('connection', function (socket) {
+  async function emitLiveUsers() {
+    let sockets = await db.collection(`Sockets`).find(
+      {
+        _id: {$in: Object.keys(io.sockets.connected)},
+      })
+      .toArray();
+
+    let liveUsers = {wikiUserNames: [], userGaIds: []};
+    // If it is a logged in user, we display their wikiUserName
+    // else if not logged in, but has session cookie created as `userGaId`,
+    //   we fall back to `userGaId`.
+    sockets.forEach(socket => {
+      if (socket.wikiUserName) liveUsers.wikiUserNames.push(socket);
+      else if (socket.userGaId) liveUsers.userGaIds.push(socket);
+      // else we ignore socket ids.
+    });
+    io.sockets.emit('live-users-update', liveUsers);
+    logger.debug(`Emit Live Users`, liveUsers);
+  }
+
+  io.on('connection', async function (socket) {
     logger.info(`A socket client connected. Socket id = ${socket.id}. Total connections =`, Object.keys(io.sockets.connected).length);
-    socket.on('disconnect', function () {
-      delete liveClients[socket.id];
-      io.sockets.emit('live-clients-update', liveClients);
+    socket.on('disconnect', async function () {
+      await emitLiveUsers();
       logger.info(`A socket client disconnected. Socket id = ${socket.id}. Total connections =`, Object.keys(io.sockets.connected).length);
     });
-    socket.on(`user-ga-id`, function(userGaId) {
-      liveClients[socket.id].userGaId = userGaId;
+
+    socket.on(`user-ga-id`, async function (userGaId) {
+      logger.info(`Received user-ga-id`, userGaId);
+      await db.collection(`Sockets`).updateOne({_id: socket.id}, {
+          $set: { userGaId: userGaId },
+        }, { upsert: true }
+      );
+      await emitLiveUsers();
     });
-    liveClients[socket.id] ={
-      socketId: socket.id,
-      created: new Date()
-    };
+
+    await db.collection(`Sockets`).updateOne({_id: socket.id}, {
+      $setOnInsert: { created: new Date() }
+    }, { upsert: true } );
   });
 
-  setInterval(() => {
-    io.sockets.emit('live-clients-update', liveClients);
+  setInterval(async () => {
+    await emitLiveUsers();
   },3000);
 }
 
@@ -359,7 +383,11 @@ function setupAuthApi(app) {
     next();
   });
 
-  app.get('/auth/mediawiki/login', passport.authenticate('mediawiki'));
+  app.get('/auth/mediawiki/login', passport.authenticate('mediawiki', function (err, user, info) {
+    console.log(`XXX err`, err);
+    console.log(`XXX user`, user);
+    console.log(`XXX info`, info);
+  }));
 
   app.get('/auth/mediawiki/logout', asyncHandler(async (req, res) => {
     req.logout();

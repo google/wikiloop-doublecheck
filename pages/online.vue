@@ -22,11 +22,12 @@
         <th>Connected</th>
       </thead>
       <tbody>
-        <tr v-for="(client, index) of Object.values($store.state.liveClients)">
+        <tr v-for="(client, index) of Object.values($store.state.liveUsers.userGaIds)">
           <td scope="col">
             <router-link :to="`/marked/?userGaId=${client.userGaId}`" replace>
               <object class="avatar-object" v-bind:data="`/api/avatar/${client.userGaId}`" >
-              </object><span v-if="isMe(client)">Me</span>
+              </object>
+              <span v-if="isMe(client)">Me</span>
               <span v-else>Anonymous</span>
             </router-link>
           </td>

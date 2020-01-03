@@ -27,7 +27,9 @@
             </b-nav-item>
             <b-nav-item href="/marked" v-b-tooltip.hover title="History">
               <i class="fas fa-history"></i> ({{stats ? stats.totalJudgement : 0}})</b-nav-item>
-            <b-nav-item href="/online" v-b-tooltip.hover title="Online Users"><i class="fas fa-users"></i> ({{ Object.keys($store.state.liveClients || {}).length }})</b-nav-item>
+            <b-nav-item href="/online" v-b-tooltip.hover title="Online Users"><i class="fas fa-users"></i>
+              ({{ $store.state.liveUsers.wikiUserNames.length + $store.state.liveUsers.userGaIds.length }})
+            </b-nav-item>
             <b-nav-item href="/api/markedRevs.csv" v-b-tooltip.hover title="Download">
               <i class="fas fa-cloud-download-alt"></i>
             </b-nav-item>
@@ -126,10 +128,9 @@
     async mounted() {
       this.commitFlagsFromUrlQuery(this.$route.query);
       this.stats = await this.$axios.$get(`/api/stats`);
-      socket.on('live-clients-update', async (liveClients) => {
-        this.$store.commit(`setLiveClients`, liveClients);
+      socket.on('live-users-update', async (liveUsers) => {
+        this.$store.commit(`setLiveUsers`, liveUsers);
       });
-      socket.emit('user-ga-id', this.$cookiez.get('_ga'));
       document.addEventListener('stats-update', async () => {
         console.log(`stats-update:`);
         this.stats = await this.$axios.$get(`/api/stats`);
@@ -151,6 +152,7 @@
               });
         }
       });
+      socket.emit('user-ga-id', this.$cookiez.get('_ga'));
     }
 }
 
