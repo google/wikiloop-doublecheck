@@ -15,7 +15,7 @@
 -->
 
 <template>
-  <section class="XXX-debug">
+  <section>
     <div v-bind:class="{
         'border-danger': ores ? ores.goodfaith.false > 0.5 : false,
         'border-warning': ores ? ores.damaging.true > 0.5 : false,
@@ -33,6 +33,7 @@
             </div>
             <!-- TODO(xinbenlv) update the following text for for i18n -->
             <div v-if="revision ? revision.pageLatestRevId > revision.revid: false"> Overriden</div>
+            <div class="ml-2"> <a :href="`/revision/${revision.wiki}/${revision.wikiRevId.split(`:`)[1]}`"><i class="fas fa-link"></i></a></div>
           </div>
         </h5>
         <div class="card-subtitle mb-2 text-muted">

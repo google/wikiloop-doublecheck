@@ -15,7 +15,7 @@
 -->
 <template>
   <section>
-    <h1>Live Users</h1>
+    <h1>Live Users <sup>per connection</sup></h1>
     <table class="table table-bordered">
       <thead>
         <th>User</th>
@@ -27,7 +27,7 @@
             <router-link :to="`/marked/?userGaId=${client.userGaId}`" replace>
               <object class="avatar-object" v-bind:data="`/api/avatar/${client.userGaId}`" >
               </object><span v-if="isMe(client)">Me</span>
-              <span v-else>Someone</span>
+              <span v-else>Anonymous</span>
             </router-link>
           </td>
           <td scope="col"><timeago :datetime="client.created"></timeago></td>
