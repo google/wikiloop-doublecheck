@@ -71,25 +71,30 @@
             });
             this.showNext();
 
-          window.addEventListener("keyup", e => {
+          window.addEventListener("keyup", async e => {
             switch (e.code) {
               case 'KeyV':
-                this.$refs.revisionCard.interactionBtn(`ShouldRevert`) ;
+                await this.$refs.revisionCard.interactionBtn(`ShouldRevert`) ;
                 break;
               case 'KeyG':
-                this.$refs.revisionCard.interactionBtn(`LooksGood`);
+                await this.$refs.revisionCard.interactionBtn(`LooksGood`);
                 break;
               case 'KeyP':
-                this.$refs.revisionCard.interactionBtn(`NotSure`);
+                await this.$refs.revisionCard.interactionBtn(`NotSure`);
+                break;
+              case 'KeyR':
+                await this.$refs.revisionCard.performRevert();
                 break;
               case 'ArrowRight':
-                this.$refs.revisionCard.interactionBtn(`NotSure`);
-                this.showNext();
+                if (this.$refs.revisionCard.myJudgement) this.showNext();
+                else await this.$refs.revisionCard.interactionBtn(`NotSure`);
                 break;
-              // TODO add
-                // case 'PageUp':
-                // case 'PageDown':
-                // case 'ArrowLeft':
+              case 'PageUp':
+                this.$refs.revisionCard.$el.querySelector(`.diff-card`).scrollBy(0, -200);
+                break;
+              case 'PageDown':
+                this.$refs.revisionCard.$el.querySelector(`.diff-card`).scrollBy(0, 200);
+                break;
 
             }
             if (e.key === '?') {

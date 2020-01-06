@@ -116,18 +116,10 @@
             >{{$t(`ShouldRevertBtnLabel`)}} (v)
             </button>
             <transition name="fade">
-              <template v-if="enableRevertRedirect()">
-                <button v-if="$store.state.flags.useDirectRevert && $store.state.user && $store.state.user.profile"
-                        v-on:click="directRevert()"
+                <button v-if="enableRevertRedirect()" v-on:click="performRevert()"
                         class="btn btn-outline-primary">
-                  <i class="fas fa-broom"></i> {{$t(`RevertNowBtnLabel`)}}
+                  <i class="fas fa-broom"></i> {{$t(`RevertNowBtnLabel`)}} (r)
                 </button>
-                <button v-else
-                        v-on:click="redirectToRevert()"
-                        class="btn btn-outline-primary">
-                  <i class="fas fa-broom"></i> {{$t(`RevertNowBtnLabel`)}}
-                </button>
-              </template>
             </transition>
           </div>
           <div v-if="myJudgement" class="btn-group mx-1">
@@ -314,8 +306,20 @@
             wikiRevId: this.wikiRevId
           }
         });
+        // TODO(xinbenlv): use realtime overriden information.
         return this.myJudgement === `ShouldRevert` && !this.isOverriden();
       },
+
+      performRevert: async function() {
+        if (this.enableRevertRedirect()/*TODO sanity check for reversion*/) {
+          if (this.$store.state.flags.useDirectRevert && this.$store.state.user && $store.state.user.profile) {
+            await this.directRevert();
+          } else {
+            await this.redirectToRevert();
+          }
+        }
+      },
+
       directRevert: async function() {
       try {
         this.$ga.event({
