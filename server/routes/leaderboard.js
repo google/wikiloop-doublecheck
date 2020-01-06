@@ -82,6 +82,7 @@ async function getLoggedInLeaderList() {
           "count": -1
         }
       },
+      { $limit : 100 },
       {
         "$project": {
           "wikiUserName": "$_id.wikiUserName",
@@ -104,6 +105,9 @@ async function getAnonymousLeaderList() {
         "$match": {
           "userGaId": {$ne: null},
           "wikiUserName": {$exists: false},
+          "timestamp": {
+            $gte: parseInt((new Date().getTime() / 1000) - (7 * 24 * 3600))
+          }
         }
       },
       {
@@ -127,6 +131,7 @@ async function getAnonymousLeaderList() {
           "count": -1
         }
       },
+      { $limit : 20 },
       {
         "$project": {
           "userGaId": "$_id.userGaId",

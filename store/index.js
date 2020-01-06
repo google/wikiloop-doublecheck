@@ -59,7 +59,6 @@ export const actions = {
             console.log(`nuxtServerInit req.session.id`, req.session.id);
         }
         if (req.user) {
-            console.log(`nuxtServerInit store state setProfile req.user`, req.user);
             commit('user/setProfile', req.user);
         } else {
             console.log(`nuxtServerInit store state clearProfile because req.user is not defined`);

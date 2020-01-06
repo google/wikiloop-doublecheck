@@ -82,7 +82,7 @@
           </tbody>
         </table>
       </div>
-      <h2>Top Anonymous Users</h2>
+      <h2>Top 20 Anonymous Users 7 days</h2>
       <div class="table-responsive mt-5">
         <table class="table table-bordered">
         <thead>
