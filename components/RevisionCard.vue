@@ -491,6 +491,21 @@
           wikiRevId: this.wikiRevId
         }
       });
+
+      window.addEventListener("keypress", e => {
+        if (e.code === 'KeyV') {
+          this.interactionBtn(`ShouldRevert`) ;
+        } else if (e.code === 'KeyG') {
+          this.interactionBtn(`LooksGood`);
+        } else if (e.code === 'KeyP') {
+          this.interactionBtn(`NotSure`);
+        } else if (e.code === 'KeyN') {
+          this.$emit(`next-card`);
+        } else if (e.key === '?') {
+          // Show key screen
+          this.$bvModal.show(`modal-keymap`);
+        }
+      });
     },
     beforeCreate() {
       this.getUrlBaseByWiki = utility.getUrlBaseByWiki.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)

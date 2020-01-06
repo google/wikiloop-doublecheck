@@ -76,6 +76,12 @@
     <div style="margin-top:80px" class="container small-screen-padding">
       <nuxt />
     </div>
+    <b-modal id="modal-keymap" title="Keymap">
+      V: Should Revert<br/>
+      G: Looks Good<br/>
+      P: Not Sure<br/>
+      N: Next Card<br/>
+    </b-modal>
   </div>
 </template>
 
