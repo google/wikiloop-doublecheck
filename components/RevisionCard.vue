@@ -100,22 +100,20 @@
               v-on:click="interactionBtn(`LooksGood`)"
               class="btn btn-sm"
               v-bind:class="{ 'btn-success':getMyJudgement() ===`LooksGood`, 'btn-outline-success': getMyJudgement() !==`LooksGood` }"
-            >{{$t(`LooksGoodBtnLabel`)}} {{getJudgementCount(`LooksGood`)}}
+            >{{$t(`LooksGoodBtnLabel`)}} (g)
             </button>
             <button
               v-on:click="interactionBtn(`NotSure`)"
               v-bind:class="{ 'btn-secondary':getMyJudgement() ===`NotSure`, 'btn-outline-secondary':getMyJudgement() !==`NotSure` }"
               class="btn btn-sm"
-            >{{$t(`NotSureBtnLabel`)}}
-              <template v-if="!interaction"><span class="sr-only"></span></template>
-              <template v-else>{{getJudgementCount(`NotSure`)}}</template>
+            >{{$t(`NotSureBtnLabel`)}} (p)
 
             </button>
             <button
               v-on:click="interactionBtn(`ShouldRevert`)"
               v-bind:class="{ 'btn-danger':getMyJudgement() ===`ShouldRevert`, 'btn-outline-danger':getMyJudgement() !== `ShouldRevert` }"
               class="btn btn-sm" target="_blank"
-            >{{$t(`ShouldRevertBtnLabel`)}} {{getJudgementCount(`ShouldRevert`)}}
+            >{{$t(`ShouldRevertBtnLabel`)}} (v)
             </button>
             <transition name="fade">
               <template v-if="enableRevertRedirect()">
@@ -137,7 +135,7 @@
               v-on:click="$emit(`next-card`)"
               v-if="myJudgement"
               class="btn btn-outline-primary"
-            ><i class="fas fa-arrow-right"></i> {{$t(`NextBtnLabel`)}}
+            ><i class="fas fa-arrow-right"></i> {{$t(`NextBtnLabel`)}}(→)
             </button>
           </div>
         </div>

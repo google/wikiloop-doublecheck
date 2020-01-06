@@ -87,22 +87,19 @@ between Client-Side-Rendering and Server-Side-Rendering -->
               v-on:click="interactionBtn(`LooksGood`)"
               class="btn btn-sm"
               v-bind:class="{ 'btn-success':getMyJudgement() ===`LooksGood`, 'btn-outline-success': getMyJudgement() !==`LooksGood` }"
-            >{{$t(`LooksGoodBtnLabel`)}} {{getJudgementCount(`LooksGood`)}}
+            >{{$t(`LooksGoodBtnLabel`)}}
             </button>
             <button
               v-on:click="interactionBtn(`NotSure`)"
               v-bind:class="{ 'btn-secondary':getMyJudgement() ===`NotSure`, 'btn-outline-secondary':getMyJudgement() !==`NotSure` }"
               class="btn btn-sm"
             >{{$t(`NotSureBtnLabel`)}}
-              <template v-if="!interaction"><span class="sr-only"></span></template>
-              <template v-else>{{getJudgementCount(`NotSure`)}}</template>
-
             </button>
             <button
               v-on:click="interactionBtn(`ShouldRevert`)"
               v-bind:class="{ 'btn-danger':getMyJudgement() ===`ShouldRevert`, 'btn-outline-danger':getMyJudgement() !== `ShouldRevert` }"
               class="btn btn-sm" target="_blank"
-            >{{$t(`ShouldRevertBtnLabel`)}} {{getJudgementCount(`ShouldRevert`)}}
+            >{{$t(`ShouldRevertBtnLabel`)}}
             </button>
             <transition name="fade">
               <template v-if="enableRevertRedirect()">

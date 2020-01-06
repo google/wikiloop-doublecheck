@@ -80,7 +80,7 @@
       V: Should Revert<br/>
       G: Looks Good<br/>
       P: Not Sure<br/>
-      N: Next Card<br/>
+      →: Next Card<br/>
     </b-modal>
   </div>
 </template>

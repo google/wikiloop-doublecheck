@@ -82,7 +82,6 @@
               case 'KeyP':
                 this.$refs.revisionCard.interactionBtn(`NotSure`);
                 break;
-              case 'KeyN': // fall through
               case 'ArrowRight':
                 this.$refs.revisionCard.interactionBtn(`NotSure`);
                 this.showNext();
