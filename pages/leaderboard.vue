@@ -73,7 +73,8 @@
                   </router-link>
                 </td>
                 <td scope="col"><template v-for="wiki of leader.wikis">
-                  <a :href="`${getUrlBaseByWiki(wiki)}/wiki/Special:Contributions/${leader.wikiUserName}`">{{getWiki(wiki)}}</a></template>
+                  <a class="mr-1" :href="`${getUrlBaseByWiki(wiki)}/wiki/Special:Contributions/${leader.wikiUserName}`">{{getWiki(wiki)}}</a>
+                </template>
                 </td>
                 <td scope="col">{{leader.count}}</td>
                 <td scope="col"><timeago :datetime="new Date(leader.lastTimestamp * 1000).toString()"></timeago></td>
@@ -82,7 +83,7 @@
           </tbody>
         </table>
       </div>
-      <h2>Top 20 Anonymous Users 7 days</h2>
+      <h2>Top 20 Anonymous Users 30 days</h2>
       <div class="table-responsive mt-5">
         <table class="table table-bordered">
         <thead>

@@ -106,7 +106,7 @@ async function getAnonymousLeaderList() {
           "userGaId": {$ne: null},
           "wikiUserName": {$exists: false},
           "timestamp": {
-            $gte: parseInt((new Date().getTime() / 1000) - (7 * 24 * 3600))
+            $gte: parseInt((new Date().getTime() / 1000) - (30 * 24 * 3600))
           }
         }
       },
