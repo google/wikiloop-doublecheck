@@ -27,7 +27,9 @@
             </b-nav-item>
             <b-nav-item href="/marked" v-b-tooltip.hover title="History">
               <i class="fas fa-history"></i> ({{stats ? stats.totalJudgement : 0}})</b-nav-item>
-            <b-nav-item href="#" v-b-tooltip.hover title="Online Users"><i class="fas fa-users"></i> ({{ liveUserCount }})</b-nav-item>
+            <b-nav-item href="/online" v-b-tooltip.hover title="Online Users"><i class="fas fa-users"></i>
+              ({{ $store.state.liveUsers.wikiUserNames.length + $store.state.liveUsers.userGaIds.length }})
+            </b-nav-item>
             <b-nav-item href="/api/markedRevs.csv" v-b-tooltip.hover title="Download">
               <i class="fas fa-cloud-download-alt"></i>
             </b-nav-item>
@@ -52,7 +54,7 @@
           <b-navbar-nav class="ml-auto">
             <b-nav-item-dropdown  right>
               <template v-slot:button-content>
-                <object type="image/svg+xml" class="avatar-navbar" v-bind:data="`/api/avatar/${$cookiez.get('_ga')}`" ></object>{{$store.state.user.profile ? `${$store.state.user.profile.displayName}`:`${$t(`Anonymous`)}`}}
+                <object type="image/svg+xml" class="avatar-navbar" v-bind:data="`/api/avatar/${userId}`" ></object>{{$store.state.user.profile ? `${$store.state.user.profile.displayName}`:`${$t(`Anonymous`)}`}}
               </template>
               <b-dropdown-item v-if="$store.state.user.profile && $store.state.user.profile.displayName" :href="`/marked/?wikiUserName=${$store.state.user.profile.displayName}`"><i class="fas fa-list"></i>{{$t(`ContributionsMenuItem`)}}</b-dropdown-item>
               <b-dropdown-item :href="`/marked/?userGaId=${$cookiez.get('_ga')}`"><i class="fas fa-list"></i>{{$t(`ContributionsBeforeLoginMenuItem`)}}</b-dropdown-item>
@@ -74,6 +76,12 @@
     <div style="margin-top:80px" class="container small-screen-padding">
       <nuxt />
     </div>
+    <b-modal id="modal-keymap" title="Keymap">
+      V: Should Revert<br/>
+      G: Looks Good<br/>
+      P: Not Sure<br/>
+      →: Next Card<br/>
+    </b-modal>
   </div>
 </template>
 
@@ -122,13 +130,19 @@
           this.$i18n.locale = wikiToLangMap[wiki];
           this.$store.dispatch('changeWiki', wiki)
         }
+      },
+      userId: {
+        get() {
+          if (this.$store.state.user.profile) return this.$store.state.user.profile.displayName;
+          else return this.$cookiez.get('_ga');
+        },
       }
     },
     async mounted() {
       this.commitFlagsFromUrlQuery(this.$route.query);
       this.stats = await this.$axios.$get(`/api/stats`);
-      socket.on('client-activity', async (clientActivity) => {
-        this.liveUserCount = clientActivity.liveUserCount;
+      socket.on('live-users-update', async (liveUsers) => {
+        this.$store.commit(`setLiveUsers`, liveUsers);
       });
       document.addEventListener('stats-update', async () => {
         console.log(`stats-update:`);
@@ -151,6 +165,14 @@
               });
         }
       });
+      let userIdInfo = {};
+      userIdInfo.userGaId = this.$cookiez.get('_ga');
+
+      if (this.$store.state.user && this.$store.state.user.profile) {
+        userIdInfo.wikiUserName = this.$store.state.user.profile.displayName;
+      }
+      socket.emit('user-id-info', userIdInfo);
+
     }
 }
 

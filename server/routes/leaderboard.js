@@ -13,87 +13,149 @@
 // limitations under the License.
 
 const mongoose = require('mongoose');
+async function getWikisLeaderList() {
+  return await mongoose.connection.db.collection("Interaction").aggregate(
+    [
+      {
+        "$match": {
+          "recentChange.wiki": { $exists: true },
+        }
+      },
+      {
+        "$group": {
+          "_id": {
+            "wiki": "$recentChange.wiki",
+          },
+          "count": {
+            "$sum": 1
+          },
+          "lastTimestamp": {
+            "$max": "$timestamp"
+          }
+        }
+      },
+      {
+        "$sort": {
+          "count": -1
+        }
+      },
+      {
+        "$project": {
+          "wiki": "$_id.wiki",
+          "count": 1,
+          "lastTimestamp": 1
+        }
+      }
+    ],
+    {
+      "allowDiskUse": false
+    }
+  ).toArray();
+}
+
+async function getLoggedInLeaderList() {
+  return await mongoose.connection.db.collection("Interaction").aggregate(
+    [
+      {
+        "$match": {
+          "wikiUserName": { $exists: true },
+        }
+      },
+      {
+        "$group": {
+          "_id": {
+            "wikiUserName": "$wikiUserName",
+          },
+          "count": {
+            "$sum": 1
+          },
+          "wikis": {
+            "$addToSet": "$recentChange.wiki"
+          },
+          "lastTimestamp": {
+            "$max": "$timestamp"
+          }
+        }
+      },
+      {
+        "$sort": {
+          "count": -1
+        }
+      },
+      { $limit : 100 },
+      {
+        "$project": {
+          "wikiUserName": "$_id.wikiUserName",
+          "count": 1,
+          "wikis": 1,
+          "lastTimestamp": 1
+        }
+      }
+    ],
+    {
+      "allowDiskUse": false
+    }
+  ).toArray();
+}
+
+async function getAnonymousLeaderList() {
+  return await mongoose.connection.db.collection("Interaction").aggregate(
+    [
+      {
+        "$match": {
+          "userGaId": {$ne: null},
+          "wikiUserName": {$exists: false},
+          "timestamp": {
+            $gte: parseInt((new Date().getTime() / 1000) - (30 * 24 * 3600))
+          }
+        }
+      },
+      {
+        "$group": {
+          "_id": {
+            "userGaId": "$userGaId",
+          },
+          "count": {
+            "$sum": 1
+          },
+          "wikis": {
+            "$addToSet": "$recentChange.wiki"
+          },
+          "lastTimestamp": {
+            "$max": "$timestamp"
+          }
+        }
+      },
+      {
+        "$sort": {
+          "count": -1
+        }
+      },
+      { $limit : 20 },
+      {
+        "$project": {
+          "userGaId": "$_id.userGaId",
+          "count": 1,
+          "wikis": 1,
+          "lastTimestamp": 1
+        }
+      }
+    ],
+    {
+      "allowDiskUse": false
+    }
+  ).toArray();
+}
+
 module.exports = async (req, res) => {
     let myGaId = req.body.gaId || req.cookies._ga;
 
     // TO-FUTURE-DO consider adding pagination if performance is a problem. We don't expect this list to be more than
     // 100K records anytime soon (updated 2020-01-02).
-    let loggedIn = await mongoose.connection.db.collection("Interaction").aggregate(
-      [
-        {
-          "$match": {
-            "wikiUserName": { $exists: true },
-          }
-        },
-        {
-          "$group": {
-            "_id": {
-              "wikiUserName": "$wikiUserName",
-            },
-            "count": {
-              "$sum": 1
-            },
-            "lastTimestamp": {
-              "$max": "$timestamp"
-            }
-          }
-        },
-        {
-          "$sort": {
-            "count": -1
-          }
-        },
-        {
-          "$project": {
-            "wikiUserName": "$_id.wikiUserName",
-            "count": 1,
-            "lastTimestamp": 1
-          }
-        }
-      ],
-      {
-        "allowDiskUse": false
-      }
-    ).toArray();
-    let anonymous = await mongoose.connection.db.collection("Interaction").aggregate(
-        [
-            {
-                "$match": {
-                    "userGaId": { $ne: null },
-                    "wikiUserName": { $exists: false },
-                }
-            },
-            {
-                "$group": {
-                    "_id": {
-                        "userGaId": "$userGaId",
-                    },
-                    "count": {
-                        "$sum": 1
-                    },
-                    "lastTimestamp": {
-                        "$max": "$timestamp"
-                    }
-                }
-            },
-            {
-                "$sort": {
-                    "count": -1
-                }
-            },
-            {
-                "$project": {
-                    "userGaId": "$_id.userGaId",
-                    "count": 1,
-                    "lastTimestamp": 1
-                }
-            }
-        ],
-        {
-            "allowDiskUse": false
-        }
-    ).toArray();
-    res.send({ loggedIn, anonymous });
+    let loggedIn = await getLoggedInLeaderList();
+    let anonymous = await getAnonymousLeaderList();
+    let wikis = await getWikisLeaderList();
+    res.send({ loggedIn, anonymous, wikis });
     req.visitor
         .event({ ec: "api", ea: "/leaderboard" })
         .send();

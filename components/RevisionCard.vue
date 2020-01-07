@@ -15,7 +15,7 @@
 -->
 
 <template>
-  <section class="XXX-debug">
+  <section>
     <div v-bind:class="{
         'border-danger': ores ? ores.goodfaith.false > 0.5 : false,
         'border-warning': ores ? ores.damaging.true > 0.5 : false,
@@ -33,6 +33,7 @@
             </div>
             <!-- TODO(xinbenlv) update the following text for for i18n -->
             <div v-if="revision ? revision.pageLatestRevId > revision.revid: false"> Overriden</div>
+            <div class="ml-2"> <a :href="`/revision/${revision.wiki}/${revision.wikiRevId.split(`:`)[1]}`"><i class="fas fa-link"></i></a></div>
           </div>
         </h5>
         <div class="card-subtitle mb-2 text-muted">
@@ -99,36 +100,26 @@
               v-on:click="interactionBtn(`LooksGood`)"
               class="btn btn-sm"
               v-bind:class="{ 'btn-success':getMyJudgement() ===`LooksGood`, 'btn-outline-success': getMyJudgement() !==`LooksGood` }"
-            >{{$t(`LooksGoodBtnLabel`)}} {{getJudgementCount(`LooksGood`)}}
+            >{{$t(`LooksGoodBtnLabel`)}} (g)
             </button>
             <button
               v-on:click="interactionBtn(`NotSure`)"
               v-bind:class="{ 'btn-secondary':getMyJudgement() ===`NotSure`, 'btn-outline-secondary':getMyJudgement() !==`NotSure` }"
               class="btn btn-sm"
-            >{{$t(`NotSureBtnLabel`)}}
-              <template v-if="!interaction"><span class="sr-only"></span></template>
-              <template v-else>{{getJudgementCount(`NotSure`)}}</template>
+            >{{$t(`NotSureBtnLabel`)}} (p)
 
             </button>
             <button
               v-on:click="interactionBtn(`ShouldRevert`)"
               v-bind:class="{ 'btn-danger':getMyJudgement() ===`ShouldRevert`, 'btn-outline-danger':getMyJudgement() !== `ShouldRevert` }"
               class="btn btn-sm" target="_blank"
-            >{{$t(`ShouldRevertBtnLabel`)}} {{getJudgementCount(`ShouldRevert`)}}
+            >{{$t(`ShouldRevertBtnLabel`)}} (v)
             </button>
             <transition name="fade">
-              <template v-if="enableRevertRedirect()">
-                <button v-if="$store.state.flags.useDirectRevert && $store.state.user && $store.state.user.profile"
-                        v-on:click="directRevert()"
+                <button v-if="enableRevertRedirect()" v-on:click="performRevert()"
                         class="btn btn-outline-primary">
-                  <i class="fas fa-broom"></i> {{$t(`RevertNowBtnLabel`)}}
+                  <i class="fas fa-broom"></i> {{$t(`RevertNowBtnLabel`)}} (r)
                 </button>
-                <button v-else
-                        v-on:click="redirectToRevert()"
-                        class="btn btn-outline-primary">
-                  <i class="fas fa-broom"></i> {{$t(`RevertNowBtnLabel`)}}
-                </button>
-              </template>
             </transition>
           </div>
           <div v-if="myJudgement" class="btn-group mx-1">
@@ -136,7 +127,7 @@
               v-on:click="$emit(`next-card`)"
               v-if="myJudgement"
               class="btn btn-outline-primary"
-            ><i class="fas fa-arrow-right"></i> {{$t(`NextBtnLabel`)}}
+            ><i class="fas fa-arrow-right"></i> {{$t(`NextBtnLabel`)}}(→)
             </button>
           </div>
         </div>
@@ -246,7 +237,7 @@
           stikiRemote = this.stikiProp;
         } else {
           try {
-            await this.$axios.$get(`/extra/stiki/${this.wikiRevId}`);
+            stikiRemote = await this.$axios.$get(`/extra/stiki/${this.wikiRevId}`);
           } catch(err) {
             // ignoring
             stikiRemote = [];
@@ -260,13 +251,12 @@
         this.stikiRetryRemains --;
       },
       loadCbng: async function() {
-        console.info(`Load CBNG for ${this.wikiRevId}`);
         let cbngRemote = [];
         if (this.cbngProp) {
           cbngRemote = this.cbngProp;
         } else {
           try {
-            await this.$axios.$get(`/extra/cbng/${this.wikiRevId}`);
+            cbngRemote = await this.$axios.$get(`/extra/cbng/${this.wikiRevId}`);
           } catch(err) {
             // ignoring
             cbngRemote = [];
@@ -316,8 +306,20 @@
             wikiRevId: this.wikiRevId
           }
         });
+        // TODO(xinbenlv): use realtime overriden information.
         return this.myJudgement === `ShouldRevert` && !this.isOverriden();
       },
+
+      performRevert: async function() {
+        if (this.enableRevertRedirect()/*TODO sanity check for reversion*/) {
+          if (this.$store.state.flags.useDirectRevert && this.$store.state.user && $store.state.user.profile) {
+            await this.directRevert();
+          } else {
+            await this.redirectToRevert();
+          }
+        }
+      },
+
       directRevert: async function() {
       try {
         this.$ga.event({
@@ -330,7 +332,7 @@
         let ret = await this.$axios.$get(`/api/auth/revert/${this.wikiRevId}`);
         if (ret && ret.edit && ret.edit.result ===`Success`) {
           this.$bvToast.toast(
-                  `Congrats! you've successfully reverted ${this.wikiRevId}`, {
+                  `Congrats! you've successfully reverted directly ${this.wikiRevId}`, {
                     title: 'Revert succeeded!',
                     autoHideDelay: 3000,
                     appendToast: true
@@ -461,12 +463,6 @@
       }
     },
     async beforeMount() {
-      console.info(`Mounted NewRevisionCard wikiRevId=${this.wikiRevId},
-        Set props: interactionProp:${this.interactionProp!=null},
-        revisionProp:${this.revisionProp!=null},
-        oresProp:${this.oresProp!=null}
-        diffProp:${this.diffProp!=null}
-        `);
       this.interaction = this.interactionProp || await this.$axios.$get(`/api/interaction/${this.wikiRevId}`);
       this.revision = this.revisionProp || await this.$axios.$get(`/api/revision/${this.wikiRevId}`);
       this.ores = this.oresProp ||  await this.$axios.$get(`/api/ores/${this.wikiRevId}`);
@@ -497,6 +493,7 @@
           wikiRevId: this.wikiRevId
         }
       });
+
     },
     beforeCreate() {
       this.getUrlBaseByWiki = utility.getUrlBaseByWiki.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)

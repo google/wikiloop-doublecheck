@@ -20,6 +20,15 @@ const _populatePriority = function(meta, bumpPriority) {
   // Approach: using RevId as the quantifying measure.
   let priority = parseInt(meta.wikiRevId.split(':')[1]);
 
+  // For simplicity, we currently discourage people to review any latest
+  // recent changes that are already reviewed, regardless whether such review
+  // is by the user themselves, so we don't have to
+  // populate the individual userGaId or wikiUserName.
+  //
+  // TODO(xinbenlv): revisit this design decision after we consolidate the
+  // feed algorithm.
+  if (meta.interactions.length > 0) priority -= (2 * bumpPriority);
+
   // For 20% of time, we will ask the reviewer to review a randomly generated revision
   // first somewhere, therefore, regardless.
   if (Math.random() <= 0.2/*20%*/) {

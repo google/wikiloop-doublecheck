@@ -31,7 +31,7 @@ const asyncHandler = fn => (req, res, next) =>
 
 const logReqPerf = function (req, res, next) {
   // Credit for inspiration: http://www.sheshbabu.com/posts/measuring-response-times-of-express-route-handlers/
-  perfLogger.info(` log request starts for ${req.method} ${req.originalUrl}:`, {
+  perfLogger.debug(` log request starts for ${req.method} ${req.originalUrl}:`, {
     method: req.method,
     original_url: req.originalUrl,
     ga_id: req.cookies._ga,
@@ -39,7 +39,7 @@ const logReqPerf = function (req, res, next) {
   const startNs = process.hrtime.bigint();
   res.on(`finish`, () => {
     const endNs = process.hrtime.bigint();
-    perfLogger.info(` log response ends for ${req.method} ${req.originalUrl}:`, {
+    perfLogger.debug(` log response ends for ${req.method} ${req.originalUrl}:`, {
       method: req.method,
       original_url: req.originalUrl,
       ga_id: req.cookies._ga,
@@ -48,7 +48,7 @@ const logReqPerf = function (req, res, next) {
       end_ns: endNs,
     });
     if (req.session) {
-      perfLogger.info(` log request session info for ${req.method} ${req.originalUrl}:`, {
+      perfLogger.debug(` log request session info for ${req.method} ${req.originalUrl}:`, {
         session_id: req.session.id
       });
     }
@@ -272,15 +272,51 @@ function setupMediaWikiListener(db, io) {
   });
 }
 
-function setupIoSocketListener(io) {
-  io.on('connection', function (socket) {
-    logger.debug(`New client connected `, Object.keys(io.sockets.connected).length);
-    io.sockets.emit('client-activity', {liveUserCount: Object.keys(io.sockets.connected).length});
-    socket.on('disconnect', function () {
-      io.sockets.emit('client-activity', {liveUserCount: Object.keys(io.sockets.connected).length});
-      logger.warn(`One client disconnected `, Object.keys(io.sockets.connected).length);
+function setupIoSocketListener(db, io) {
+  async function emitLiveUsers() {
+    let sockets = await db.collection(`Sockets`).find(
+      {
+        _id: {$in: Object.keys(io.sockets.connected)},
+      })
+      .toArray();
+
+    let liveUsers = {wikiUserNames: [], userGaIds: []};
+    // If it is a logged in user, we display their wikiUserName
+    // else if not logged in, but has session cookie created as `userGaId`,
+    //   we fall back to `userGaId`.
+    sockets.forEach(socket => {
+      if (socket.wikiUserName) liveUsers.wikiUserNames.push(socket);
+      else if (socket.userGaId) liveUsers.userGaIds.push(socket);
+      // else we ignore socket ids.
     });
+    io.sockets.emit('live-users-update', liveUsers);
+    logger.debug(`Emit Live Users`, liveUsers);
+  }
+
+  io.on('connection', async function (socket) {
+    logger.info(`A socket client connected. Socket id = ${socket.id}. Total connections =`, Object.keys(io.sockets.connected).length);
+    socket.on('disconnect', async function () {
+      await emitLiveUsers();
+      logger.info(`A socket client disconnected. Socket id = ${socket.id}. Total connections =`, Object.keys(io.sockets.connected).length);
+    });
+
+    socket.on(`user-id-info`, async function (userIdInfo) {
+      logger.info(`Received userIdInfo`, userIdInfo);
+      await db.collection(`Sockets`).updateOne({_id: socket.id}, {
+          $set: { userGaId: userIdInfo.userGaId, wikiUserName: userIdInfo.wikiUserName },
+        }, { upsert: true }
+      );
+      await emitLiveUsers();
+    });
+
+    await db.collection(`Sockets`).updateOne({_id: socket.id}, {
+      $setOnInsert: { created: new Date() }
+    }, { upsert: true } );
   });
+
+  setInterval(async () => {
+    await emitLiveUsers();
+  },3000);
 }
 
 function setupAuthApi(app) {
@@ -320,7 +356,7 @@ function setupAuthApi(app) {
   passport.use(new MediaWikiStrategy({
         consumerKey: process.env.MEDIAWIKI_CONSUMER_KEY,
         consumerSecret: process.env.MEDIAWIKI_CONSUMER_SECRET,
-        callbackURL: `${process.env.OAUTH_CALLBACK_ENDPOINT}/auth/mediawiki/callback` // TODO probably need to set HOST and PORT
+        callbackURL: `http://${process.env.PUBLIC_HOST}/auth/mediawiki/callback` // TODO probably need to set HOST and PORT
       },
       function(token, tokenSecret, profile, done) {
         profile.oauth = {
@@ -390,7 +426,7 @@ function setupAuthApi(app) {
         "title": revInfo[0].title, // TODO(zzn): assuming only 1 revision is being reverted
         "tags": "WikiLoop Battlefield",
         "summary": `Identified as test/vandalism and undid revision ${revId} by [[User:${revInfo[0].user}]] with [[m:WikiLoop Battlefield]](v${require(
-          './../package.json').version}). See it or provide your opinion at ${process.env.OAUTH_CALLBACK_ENDPOINT}/marked?wikiRevId=${req.params.wikiRevId}`,
+          './../package.json').version}). See it or provide your opinion at http://${process.env.PUBLIC_HOST || "localhost:8000"}/revision/${wiki}/${revId}`,
         "undo": revId,
         "token": token
       }, {method: 'POST'}, req.user.oauth );  // assuming request succeeded;
@@ -443,7 +479,7 @@ async function start() {
     next();
   });
   if (useOauth) setupAuthApi(app);
-  setupIoSocketListener(io);
+  setupIoSocketListener(mongoose.connection.db, io);
   setupMediaWikiListener(mongoose.connection.db, io);
   setupApiRequestListener(mongoose.connection.db, io, app);
 

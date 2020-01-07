@@ -2,7 +2,7 @@
 <template>
     <section>
         <template v-if="currentWikiRevId">
-            <RevisionCard
+            <RevisionCard ref="revisionCard"
                 :wikiRevId="currentWikiRevId"
                 :key="currentWikiRevId"
                 :diffProp="currentDiff"
@@ -70,6 +70,38 @@
               await this.showNext();
             });
             this.showNext();
+
+          window.addEventListener("keyup", async e => {
+            switch (e.code) {
+              case 'KeyV':
+                await this.$refs.revisionCard.interactionBtn(`ShouldRevert`) ;
+                break;
+              case 'KeyG':
+                await this.$refs.revisionCard.interactionBtn(`LooksGood`);
+                break;
+              case 'KeyP':
+                await this.$refs.revisionCard.interactionBtn(`NotSure`);
+                break;
+              case 'KeyR':
+                await this.$refs.revisionCard.performRevert();
+                break;
+              case 'ArrowRight':
+                if (this.$refs.revisionCard.myJudgement) this.showNext();
+                else await this.$refs.revisionCard.interactionBtn(`NotSure`);
+                break;
+              case 'PageUp':
+                this.$refs.revisionCard.$el.querySelector(`.diff-card`).scrollBy(0, -200);
+                break;
+              case 'PageDown':
+                this.$refs.revisionCard.$el.querySelector(`.diff-card`).scrollBy(0, 200);
+                break;
+
+            }
+            if (e.key === '?') {
+              // Show key screen
+              this.$bvModal.show(`modal-keymap`);
+            }
+          });
         }
     }
 </script>
