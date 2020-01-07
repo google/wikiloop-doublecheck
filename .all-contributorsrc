@@ -121,6 +121,15 @@
         "question",
         "tool"
       ]
+    },
+    {
+      "login": "papuass",
+      "name": "Martins Brunenieks",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/1764614?v=4",
+      "profile": "http://aiz.miga.lv",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "contributorsPerLine": 7
