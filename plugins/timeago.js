@@ -21,9 +21,12 @@ Vue.use(VueTimeago, {
   // We use `date-fns` under the hood
   // So you can use all locales from it
   locales: {
-    en: require('date-fns/locale/en'),
-    zh: require('date-fns/locale/zh_cn'),
-    fr: require('date-fns/locale/fr'),
     de: require('date-fns/locale/de'),
+    en: require('date-fns/locale/en'),
+    fr: require('date-fns/locale/fr'),
+    id: require('date-fns/locale/id'),
+    tr: require('date-fns/locale/tr'),
+    zh: require('date-fns/locale/zh_cn'),
+    // lv: require('date-fns/locale/lv'), NOT SUPPORTED by DEP yet
   }
 })
