@@ -16,6 +16,10 @@ export default [
         text: 'Bahasa Indonesia (id)'
     },
     {
+        value: 'lvwiki',
+        text: 'Latviešu (lv)'
+    },
+    {
         value: 'wikidatawiki',
         text: 'Wikidatawiki'
     },

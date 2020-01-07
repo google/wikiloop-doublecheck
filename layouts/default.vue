@@ -122,6 +122,7 @@
             "dewiki": "de",
             "frwiki": "fr",
             "idwiki": "id",
+            "lvwiki": "lv",
             "trwiki": "tr",
             "zhwiki": "zh",
             "wikidatawiki": "en", // TODO(xinbenlv): consider how we deal with wikidata UI langauge.
