@@ -19,6 +19,7 @@ const _wikiToDomain = {
   "enwiki": "en.wikipedia.org",
   "frwiki": "fr.wikipedia.org",
   "idwiki": "id.wikipedia.org",
+  "lvwiki": "lv.wikipedia.org",
   "trwiki": "tr.wikipedia.org",
   "wikidatawiki": "wikidata.org",
   "zhwiki": "zh.wikipedia.org", 
