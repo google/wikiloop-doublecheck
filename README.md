@@ -91,6 +91,11 @@ circleci local execute build
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
+Add contributor through the following command
+
+```shell script
+npx all-contributors add $NEW_CONTRIBUTOR translation
+```
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
