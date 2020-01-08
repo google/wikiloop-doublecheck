@@ -323,7 +323,6 @@
       },
 
       performRevert: async function() {
-        console.log(`XXX perform revert, flags=`, this.$store.state.flags);
         if (this.enableRevertRedirect()/*TODO sanity check for reversion*/) {
           if (this.$store.state.flags.useDirectRevert && this.$store.state.user && this.$store.state.user.profile) {
             await this.directRevert();
