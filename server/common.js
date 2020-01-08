@@ -25,6 +25,17 @@ apiLogger.level = process.env.LOG_LEVEL || 'debug';
 var perfLogger = log4js.getLogger(`perf`);
 perfLogger.level = process.env.LOG_LEVEL || 'debug';
 
+async function isWhitelistedFor(featureName, wikiUserName) {
+  const mongoose = require('mongoose');
+  let db = mongoose.connection.db;
+  console.log(`featureName`, featureName, "wikiUserName", wikiUserName);
+  let ret = await db.collection(`FeatureList`).find({
+    featureName: featureName,
+    whitelistedWikiUserNames: {$elemMatch: {$eq: wikiUserName +"!"}}
+  }).toArray();
+  return ret.length >= 0
+}
+
 /**
  * @deprecated
  * @param oresJson
@@ -349,5 +360,6 @@ module.exports = {
     getNewJudgementCounts,
     useOauth,
     isEmpty,
-    wikiRevIdsGroupByWiki
+    wikiRevIdsGroupByWiki,
+    isWhitelistedFor
 };

@@ -20,7 +20,7 @@ const {Nuxt, Builder} = require('nuxt');
 const universalAnalytics = require('universal-analytics');
 const rp = require('request-promise');
 const mongoose = require('mongoose');
-const {logger, apiLogger, perfLogger, getUrlBaseByWiki, computeOresField, fetchRevisions, useOauth} = require('./common');
+const {logger, apiLogger, perfLogger, getUrlBaseByWiki, computeOresField, fetchRevisions, useOauth, isWhitelistedFor} = require('./common');
 const routes = require('./routes');
 const wikiToDomain = require("./urlMap").wikiToDomain;
 
@@ -407,41 +407,61 @@ function setupAuthApi(db, app) {
     }
   }
 
-  app.get(`/api/auth/revert/:wikiRevId`, ensureAuthenticated,  asyncHandler(async (req, res) => {
+  const rateLimit = require("express-rate-limit");
+  const editLimiter = rateLimit({
+    windowMs: 3 * 60 * 1000, // 3 minutes
+    max: 30 // 30 edits globally per 3 minutes
+  });
+
+  app.get(`/api/auth/revert/:wikiRevId`, ensureAuthenticated, editLimiter,  asyncHandler(async (req, res) => {
     logger.info(`Receive auth revert request`, req.params);
     let wiki = req.params.wikiRevId.split(':')[0];
     let revId = req.params.wikiRevId.split(':')[1];
     let apiUrl = `https://${wikiToDomain[wiki]}/w/api.php`;
+
     let revInfo = (await fetchRevisions([req.params.wikiRevId]))[wiki]; // assuming request succeeded
-    let token = (await oauthFetch( apiUrl,     {
+
+    // Documentation: https://www.mediawiki.org/wiki/API:Edit#API_documentation
+    let userInfo = await oauthFetch(apiUrl, {
       "action": "query",
       "format": "json",
-      "meta": "tokens"
-    }, {}, req.user.oauth)).query.tokens.csrftoken;  // assuming request succeeded;
-    // Documentation: https://www.mediawiki.org/wiki/API:Edit#API_documentation
-    try {
-      let data = await oauthFetch(apiUrl, {
-        "action": "edit",
+      "meta": "userinfo",
+      "uiprop": "rights|groups|groupmemberships"
+    }, {method: 'GET'}, req.user.oauth );  // assuming request succeeded;
+    logger.debug(`userInfo ret =${JSON.stringify(userInfo, null, 2)}`, );
+    let whitelisted = await isWhitelistedFor(`DirectRevert`, userInfo.query.userinfo.name);
+    if (whitelisted || userInfo.rights.indexOf(`rollback`) >= 0) {
+      let token = (await oauthFetch( apiUrl,     {
+        "action": "query",
         "format": "json",
-        "title": revInfo[0].title, // TODO(zzn): assuming only 1 revision is being reverted
-        "tags": "WikiLoop Battlefield",
-        "summary": `Identified as test/vandalism and undid revision ${revId} by [[User:${revInfo[0].user}]] with [[m:WikiLoop Battlefield]](v${require(
-          './../package.json').version}). See it or provide your opinion at http://${process.env.PUBLIC_HOST || "localhost:8000"}/revision/${wiki}/${revId}`,
-        "undo": revId,
-        "token": token
-      }, {method: 'POST'}, req.user.oauth );  // assuming request succeeded;
-      res.setHeader('Content-Type', 'application/json');
-      res.status(200);
-      res.send(JSON.stringify(data));
-      logger.debug(`conducted revert for wikiRevId=${req.params.wikiRevId}`);
-      db.collection(`Action`).insertOne({
+        "meta": "tokens"
+      }, {}, req.user.oauth)).query.tokens.csrftoken;  // assuming request succeeded;
 
-      });
-    } catch (err) {
-      apiLogger.error(err);
-      res.status( 500 );
-      res.send(err);
+      try {
+        let data = await oauthFetch(apiUrl, {
+          "action": "edit",
+          "format": "json",
+          "title": revInfo[0].title, // TODO(zzn): assuming only 1 revision is being reverted
+          "tags": "WikiLoop Battlefield",
+          "summary": `Identified as test/vandalism and undid revision ${revId} by [[User:${revInfo[0].user}]] with [[m:WikiLoop Battlefield]](v${require(
+            './../package.json').version}). See it or provide your opinion at http://${process.env.PUBLIC_HOST || "localhost:8000"}/revision/${wiki}/${revId}`,
+          "undo": revId,
+          "token": token
+        }, {method: 'POST'}, req.user.oauth );  // assuming request succeeded;
+        res.setHeader('Content-Type', 'application/json');
+        res.status(200);
+        res.send(JSON.stringify(data));
+        logger.debug(`conducted revert for wikiRevId=${req.params.wikiRevId}`);
+      } catch (err) {
+        apiLogger.error(err);
+        res.status( 500 );
+        res.send(err);
+      }
+    } else {
+      res.status(403);
+      res.send(`No rollback rights or whitelisted`);
     }
+
   }));
 }
 
