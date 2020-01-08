@@ -116,10 +116,21 @@
             >{{$t(`ShouldRevertBtnLabel`)}} (v)
             </button>
             <transition name="fade">
-                <button v-if="enableRevertRedirect()" v-on:click="performRevert()"
+                <button v-if="action === null && enableRevertRedirect()" v-on:click="performRevert()"
                         class="btn btn-outline-primary">
                   <i class="fas fa-broom"></i> {{$t(`RevertNowBtnLabel`)}} (r)
                 </button>
+              <button disabled v-if="action !== null" class="btn"
+                v-bind:class="{
+                  'btn-success': action === `DirectReverted` || action === `OpenedUrlToRevert`,
+                  'btn-primary': action === `DirectRevertFailed`,
+                  'btn-outline-primary': action === null
+                }">
+                <i class="fas fa-broom"></i>
+                <template v-if="action===`DirectReverted`">{{$t(`DirectRevertedBtnLabel`)}}</template>
+                <template v-else-if="action===`DirectRevertFailed`">{{$t(`DirectRevertFailedBtnLabel`)}}</template>
+                <template v-else-if="action===`OpenedUrlToRevert`">{{$t(`OpenedUrlToRevertBtnLabel`)}}</template>
+              </button>
             </transition>
           </div>
           <div v-if="myJudgement" class="btn-group mx-1">
@@ -216,6 +227,7 @@
         stikiRetryRemains: 3,
         stiki: null,
         cbng: null,
+        action: null,
       }
     },
     methods: {
@@ -311,8 +323,9 @@
       },
 
       performRevert: async function() {
+        console.log(`XXX perform revert, flags=`, this.$store.state.flags);
         if (this.enableRevertRedirect()/*TODO sanity check for reversion*/) {
-          if (this.$store.state.flags.useDirectRevert && this.$store.state.user && $store.state.user.profile) {
+          if (this.$store.state.flags.useDirectRevert && this.$store.state.user && this.$store.state.user.profile) {
             await this.directRevert();
           } else {
             await this.redirectToRevert();
@@ -344,6 +357,7 @@
               wikiRevId: this.wikiRevId
             }
           });
+          this.action = `DirectReverted`;
         } else {
           console.warn(`Direct revert result unknown`, ret);
           this.$ga.event({
@@ -353,6 +367,7 @@
               wikiRevId: this.wikiRevId
             }
           });
+          this.action = `DirectRevertFailed`;
         }
 
       } catch(e) {
@@ -374,7 +389,7 @@
               [
                 `[[:m:WikiLoop Battlefield]]`,
                 `${version}`,
-                `http://battlefield.wikiloop.org/marked?wikiRevIds=${this.wikiRevId}`
+                `http://${process.env.PUBLIC_HOST || "localhost:8000"}/revision/${this.wikiRevId.split(':')[0]}/${this.wikiRevId.split(':')[1]}`
               ]);
           let revertUrl = `${this.getUrlBaseByWiki(this.revision.wiki)}/w/index.php?title=${this.revision.title}&action=edit&undoafter=${this.revision.revision.old}&undo=${this.revision.revision.new}&summary=${revertEditSummary}`;
           let historyUrl = `${this.getUrlBaseByWiki(this.revision.wiki)}/w/index.php?title=${this.revision.title}&action=history`;
@@ -408,7 +423,7 @@
               }
             });
           }
-
+          this.action = `OpenedUrlToRevert`;
         }
       },
       interactionBtn: async function (myJudgement) {

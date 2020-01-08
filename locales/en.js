@@ -15,5 +15,8 @@ module.exports = {
     NextBtnLabel: "Next",
     Loading: "Loading",
     EditedTimeLabel: "edited",
-    DiffNotAvailable: "The wikipedia article diff is temporarily not available. You can try to reload it. Sometimes a vandalized revision could be deleted. You can check the page history."
-}
+    DiffNotAvailable: "The wikipedia article diff is temporarily not available. You can try to reload it. Sometimes a vandalized revision could be deleted. You can check the page history.",
+    DirectRevertedBtnLabel: "Direct reverted",
+    DirectRevertFailedBtnLabel: "Direct revert failed",
+    OpenedUrlToRevertBtnLabel: "Opened URL to revert",
+};

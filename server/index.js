@@ -319,7 +319,7 @@ function setupIoSocketListener(db, io) {
   },3000);
 }
 
-function setupAuthApi(app) {
+function setupAuthApi(db, app) {
   const passport = require(`passport`);
   const oauthFetch = require('oauth-fetch-json');
   const session = require('express-session');
@@ -434,6 +434,9 @@ function setupAuthApi(app) {
       res.status(200);
       res.send(JSON.stringify(data));
       logger.debug(`conducted revert for wikiRevId=${req.params.wikiRevId}`);
+      db.collection(`Action`).insertOne({
+
+      });
     } catch (err) {
       apiLogger.error(err);
       res.status( 500 );
@@ -478,7 +481,7 @@ async function start() {
     apiLogger.debug('req.query:', req.query);
     next();
   });
-  if (useOauth) setupAuthApi(app);
+  if (useOauth) setupAuthApi(mongoose.connection.db, app);
   setupIoSocketListener(mongoose.connection.db, io);
   setupMediaWikiListener(mongoose.connection.db, io);
   setupApiRequestListener(mongoose.connection.db, io, app);
