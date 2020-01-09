@@ -430,7 +430,13 @@ function setupAuthApi(db, app) {
     }, {method: 'GET'}, req.user.oauth );  // assuming request succeeded;
     logger.debug(`userInfo ret =${JSON.stringify(userInfo, null, 2)}`, );
     let whitelisted = await isWhitelistedFor(`DirectRevert`, userInfo.query.userinfo.name);
-    if (whitelisted || userInfo.rights.indexOf(`rollback`) >= 0) {
+    logger.warn(`userInfo ret =${JSON.stringify(userInfo, null, 2)}`);
+
+    logger.warn(`userInfo ret = ${JSON.stringify(userInfo, null, 2)}`, userInfo.query.userinfo.rights);
+
+    logger.warn(`userInfo.query.userinfo.rights.indexOf('rollback)`, userInfo.query.userinfo.rights.indexOf(`rollback`));
+    logger.warn(`whitelisted`, whitelisted);
+    if (whitelisted || userInfo.query.userinfo.rights.indexOf(`rollback`) >= 0) {
       let token = (await oauthFetch( apiUrl,     {
         "action": "query",
         "format": "json",
@@ -458,8 +464,9 @@ function setupAuthApi(db, app) {
         res.send(err);
       }
     } else {
+      logger.warn(`Attempt to direct revert but no rights or whitelisted`)
       res.status(403);
-      res.send(`No rollback rights or whitelisted`);
+      res.send(`Error, lack of permission!. No rollback rights or whitelisted`);
     }
 
   }));

@@ -33,7 +33,7 @@ async function isWhitelistedFor(featureName, wikiUserName) {
     featureName: featureName,
     whitelistedWikiUserNames: {$elemMatch: {$eq: wikiUserName +"!"}}
   }).toArray();
-  return ret.length >= 0
+  return ret.length >= 1
 }
 
 /**
