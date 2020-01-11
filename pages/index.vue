@@ -17,7 +17,7 @@
         Do you know you could Login and preserve your labels under your name?
         We support Login with Wikipedia account through Oauth. <br/>
         <template v-slot:modal-footer="{ ok, hide }">
-          <b-button size="sm" variant="primary" href="/auth/mediawiki/login">Login</b-button>
+          <a class="btn-sm btn btn-primary" href="/auth/mediawiki/login">Login</a>
           <b-button size="sm" variant="secondary" @click="snoozeTipLogin()">
             Snooze
           </b-button>
@@ -73,10 +73,11 @@
                 await this.$store.dispatch(`revisions/loadMoreWikiRevs`);
                 /*unawait*/ this.$store.dispatch(`revisions/preloadAsyncMeta`).then();
             },
-          snoozeTipLogin: function() {
-              this.tipLoginCountDown = 10;
+            snoozeTipLogin: function() {
+              this.tipLoginCountDown = 15;
               this.$bvModal.hide(`modal-promote-login`);
-            }
+            },
+
         },
         async mounted() {
             await this.$store.dispatch(`revisions/loadMoreWikiRevs`);
@@ -89,7 +90,7 @@
 
           document.addEventListener('judgement-event', async () => {
             if (!(this.$store.state.user &&this.$store.state.user.profile)) {
-              if (this.tipLoginCountDown <= 0) {
+              if (this.tipLoginCountDown === 0) {
                 this.$bvModal.show(`modal-promote-login`);
               } else {
                 this.tipLoginCountDown --;
