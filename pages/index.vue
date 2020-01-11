@@ -12,6 +12,17 @@
                 v-on:next-card="showNext()"
                 ></RevisionCard>
         </template>
+
+      <b-modal id="modal-promote-login" title="Tip: Login">
+        Do you know you could Login and preserve your labels under your name?
+        We support Login with Wikipedia account through Oauth. <br/>
+        <template v-slot:modal-footer="{ ok, hide }">
+          <b-button size="sm" variant="primary" href="/auth/mediawiki/login">Login</b-button>
+          <b-button size="sm" variant="secondary" @click="snoozeTipLogin()">
+            Snooze
+          </b-button>
+        </template>
+      </b-modal>
     </section>
 </template>
 
@@ -27,7 +38,8 @@
         data() {
             return {
                 title: 'WikiLoop Battlefield',
-                currentWikiRevId: null
+                currentWikiRevId: null,
+                tipLoginCountDown: 0,
             }
         },
         computed: {
@@ -60,6 +72,10 @@
                 this.$store.commit(`revisions/pop`);
                 await this.$store.dispatch(`revisions/loadMoreWikiRevs`);
                 /*unawait*/ this.$store.dispatch(`revisions/preloadAsyncMeta`).then();
+            },
+          snoozeTipLogin: function() {
+              this.tipLoginCountDown = 10;
+              this.$bvModal.hide(`modal-promote-login`);
             }
         },
         async mounted() {
@@ -70,6 +86,17 @@
               await this.showNext();
             });
             this.showNext();
+
+          document.addEventListener('judgement-event', async () => {
+            if (!(this.$store.state.user &&this.$store.state.user.profile)) {
+              if (this.tipLoginCountDown <= 0) {
+                this.$bvModal.show(`modal-promote-login`);
+              } else {
+                this.tipLoginCountDown --;
+              }
+            }
+
+          });
 
           window.addEventListener("keyup", async e => {
             switch (e.code) {
@@ -86,7 +113,7 @@
                 await this.$refs.revisionCard.performRevert();
                 break;
               case 'ArrowRight':
-                if (this.$refs.revisionCard.myJudgement) this.showNext();
+                if (this.$refs.revisionCard && this.$refs.revisionCard.myJudgement) this.showNext();
                 else await this.$refs.revisionCard.interactionBtn(`NotSure`);
                 break;
               case 'PageUp':
