@@ -128,6 +128,7 @@
             "wikidatawiki": "en", // TODO(xinbenlv): consider how we deal with wikidata UI langauge.
           };
           this.$i18n.locale = wikiToLangMap[wiki];
+          this.$store.commit('user/setPreferences', {wiki:wiki});
           this.$store.dispatch('changeWiki', wiki)
         }
       },
