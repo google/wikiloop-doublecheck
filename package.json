@@ -33,6 +33,7 @@
     "cookie-universal-nuxt": "^2.0.19",
     "cross-env": "^5.2.1",
     "csv-stringify": "^5.3.4",
+    "d3": "^4.13.0",
     "dotenv": "^7.0.0",
     "eventsource": "^1.0.7",
     "express": "^4.17.1",

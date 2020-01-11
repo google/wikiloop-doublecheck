@@ -15,7 +15,35 @@
 const mongoose = require('mongoose');
 const { logger } = require('../common');
 
-module.exports = async (req, res) => {
+
+const labelsTimeSeries = async (req, res) => {
+  let labelsTimeSeries = await mongoose.connection.db.collection(`Interaction`)
+    .aggregate([
+      { $match: {timestamp: {$exists: true}}},
+      { "$group": {
+          "_id": {
+              date: {
+                "$dateToString": {
+                  "format": "%Y-%m-%d",
+                  "date": {
+                    "$add": [
+                      new Date(0),
+                      {"$multiply": [1000, "$timestamp"]}
+                    ]
+                  }
+                },
+              },
+              "wiki": "$recentChange.wiki",
+          },
+          "count": { "$sum": 1 }
+        } },
+      { $sort: {'_id.date': -1}},
+    ]).toArray();
+  res.send(labelsTimeSeries);
+};
+
+
+const basic = async (req, res) => {
     let myGaId = req.body.gaId || req.cookies._ga;
     logger.debug(`req.query`, req.query);
     let allInteractions = await mongoose.connection.db.collection(`Interaction`)
@@ -58,4 +86,9 @@ module.exports = async (req, res) => {
     req.visitor
         .event({ ec: "api", ea: "/stats" })
         .send();
-}
+};
+
+module.exports = {
+  basic,
+  labelsTimeSeries,
+};
