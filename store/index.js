@@ -49,17 +49,23 @@ export const mutations = {
 };
 
 export const actions = {
-    async nuxtServerInit({ commit, state }, { req }) {
+    async nuxtServerInit({ commit, state, dispatch }, { req }) {
         const flags = await this.$axios.$get(`/api/flags`);
         commit('setFlags', flags);
         const version = await this.$axios.$get(`/api/version`);
         commit('setVersion', version);
+
         if (req.session && req.session.id) {
             commit('setSessionId', req.session.id);
             console.log(`nuxtServerInit req.session.id`, req.session.id);
         }
         if (req.user) {
             commit('user/setProfile', req.user);
+            const userPreferences = await this.$axios.$get(`/api/auth/user/preferences`);
+            commit('user/setPreferences', userPreferences);
+            if (userPreferences.wiki) {
+              commit(`setWiki`, userPreferences.wiki);
+            }
         } else {
             console.log(`nuxtServerInit store state clearProfile because req.user is not defined`);
             commit('user/clearProfile');
@@ -81,7 +87,7 @@ export const actions = {
       let newWiki = wiki;
       commit(`setWiki`, wiki);
       commit(`revisions/initHeap`);
-      dispatch(`revisions/loadMoreWikiRevs`)
-          .then(() => document.dispatchEvent(new Event(`wiki-change-completed`)));
+      await dispatch(`revisions/loadMoreWikiRevs`);
+      document.dispatchEvent(new Event(`wiki-change-completed`));
     }
 };

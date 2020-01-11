@@ -14,6 +14,7 @@
 
 export const state = () => ({
     profile: null,
+    preferences: null,
 });
 
 export const mutations = {
@@ -22,5 +23,16 @@ export const mutations = {
     },
     clearProfile (state) {
         state.profile = null;
+    },
+    setPreferences (state, value) {
+      state.preferences = value;
+    },
+};
+
+export const actions = {
+    async updateWikiPreference ({commit}, wiki) {
+      let preferences = await this.$axios.$post(
+        `/api/auth/user/preferences`, {wiki: wiki});
+      commit(`setPreferences`, preferences);
     },
 };

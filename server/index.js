@@ -470,6 +470,31 @@ function setupAuthApi(db, app) {
     }
 
   }));
+  app.get(`/api/auth/user/preferences`, ensureAuthenticated, asyncHandler(async (req, res) => {
+    let wikiUserName = req.user.displayName;
+    let userPreferences = await mongoose.connection.db.collection(
+      `UserPreferences`)
+      .find({wikiUserName: wikiUserName})
+      .toArray();
+    res.send(userPreferences.length > 0 ? userPreferences[0] : {});
+  }));
+
+  app.post(`/api/auth/user/preferences`, ensureAuthenticated,
+    asyncHandler(async (req, res) => {
+      await mongoose.connection.db.collection(`UserPreferences`)
+        .update({wikiUserName: req.user.displayName}, {
+          $set: req.body,
+          $setOnInsert: {created: new Date()}
+        }, {upsert: true});
+      let wikiUserName = req.user.id;
+      let userPreferences = await mongoose.connection.db.collection(
+        `UserPreferences`)
+        .find({wikiUserName: wikiUserName})
+        .toArray();
+      res.send(userPreferences.length > 0 ? userPreferences[0] : {});
+    }));
+
+
 }
 
 async function start() {
