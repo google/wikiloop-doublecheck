@@ -388,7 +388,7 @@
               [
                 `[[:m:WikiLoop Battlefield]]`,
                 `${version}`,
-                `http://${process.env.PUBLIC_HOST || "localhost:8000"}/revision/${this.wikiRevId.split(':')[0]}/${this.wikiRevId.split(':')[1]}`
+                `http://${process.env.PUBLIC_HOST || "battlefield.wikiloop.org"}/revision/${this.wikiRevId.split(':')[0]}/${this.wikiRevId.split(':')[1]}`
               ]);
           let revertUrl = `${this.getUrlBaseByWiki(this.revision.wiki)}/w/index.php?title=${this.revision.title}&action=edit&undoafter=${this.revision.revision.old}&undo=${this.revision.revision.new}&summary=${revertEditSummary}`;
           let historyUrl = `${this.getUrlBaseByWiki(this.revision.wiki)}/w/index.php?title=${this.revision.title}&action=history`;
