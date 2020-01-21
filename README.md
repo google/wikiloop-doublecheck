@@ -1,6 +1,6 @@
 # WikiLoop Battlefield: Fight vandalism on Wikipedia together
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-13-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![WikiLoop Logo](static/wikiloop-battlefield-logo.svg)](https://meta.wikimedia.org/wiki/WikiProject_WikiLoop)
@@ -115,6 +115,7 @@ npx all-contributors add $NEW_CONTRIBUTOR translation
     <td align="center"><a href="https://curimit.com/blog"><img src="https://avatars0.githubusercontent.com/u/1249753?v=4" width="100px;" alt=""/><br /><sub><b>curimit</b></sub></a><br /><a href="https://github.com/google/wikiloop-battlefield/issues?q=author%3Acurimit" title="Bug reports">🐛</a></td>
     <td align="center"><a href="http://www.andrew-g-west.com"><img src="https://avatars0.githubusercontent.com/u/1369929?v=4" width="100px;" alt=""/><br /><sub><b>Andrew G. West</b></sub></a><br /><a href="#question-westand" title="Answering Questions">💬</a> <a href="#tool-westand" title="Tools">🔧</a></td>
     <td align="center"><a href="http://aiz.miga.lv"><img src="https://avatars1.githubusercontent.com/u/1764614?v=4" width="100px;" alt=""/><br /><sub><b>Martins Brunenieks</b></sub></a><br /><a href="#translation-papuass" title="Translation">🌍</a></td>
+    <td align="center"><a href="https://florian-koerner.com"><img src="https://avatars0.githubusercontent.com/u/647303?v=4" width="100px;" alt=""/><br /><sub><b>Florian Körner</b></sub></a><br /><a href="https://github.com/google/wikiloop-battlefield/commits?author=FlorianKoerner" title="Code">💻</a></td>
   </tr>
 </table>
 

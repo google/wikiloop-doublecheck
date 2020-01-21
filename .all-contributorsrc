@@ -130,6 +130,15 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "FlorianKoerner",
+      "name": "Florian Körner",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/647303?v=4",
+      "profile": "https://florian-koerner.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
