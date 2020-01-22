@@ -31,7 +31,7 @@ async function isWhitelistedFor(featureName, wikiUserName) {
   console.log(`featureName`, featureName, "wikiUserName", wikiUserName);
   let ret = await db.collection(`FeatureList`).find({
     featureName: featureName,
-    whitelistedWikiUserNames: {$elemMatch: {$eq: wikiUserName +"!"}}
+    whitelistedWikiUserNames: {$elemMatch: {$eq: wikiUserName}}
   }).toArray();
   return ret.length >= 1
 }
