@@ -20,7 +20,7 @@ const { revision, revisionWikiRevId } = require('./revision');
 const { getInteraction, listInteractions, updateInteraction, interaction } = require('./interaction');
 const { markedRevsCsv, markedCsv, markedRevs, marked } = require('./marked');
 const leaderboard = require('./leaderboard');
-const { basic, labelsTimeSeries } = require('./stats');
+const { basic, labelsTimeSeries, champion } = require('./stats');
 const avatar = require('./avatar');
 const { latest, latestRevs } = require('./latest');
 const flags = require('./flags');
@@ -28,7 +28,7 @@ const mediawiki = require('./mediawiki');
 const version = require('./version');
 
 module.exports = {
-    basic, labelsTimeSeries,
+    basic, labelsTimeSeries, champion,
     root,
     diff,
     diffWikiRevId,
@@ -52,4 +52,5 @@ module.exports = {
     flags,
     mediawiki,
     version,
+    
 }

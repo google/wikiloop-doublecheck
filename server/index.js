@@ -177,6 +177,7 @@ function setupApiRequestListener(db, io, app) {
 
   apiRouter.get('/stats', asyncHandler(routes.basic));
   apiRouter.get('/stats/timeseries/labels', asyncHandler(routes.labelsTimeSeries));
+  apiRouter.get('/stats/champion', asyncHandler(routes.champion));
 
   // TODO build batch api for avatar until performance is an issue. We have cache anyway should be fine.
   apiRouter.get("/avatar/:seed", asyncHandler(routes.avatar));

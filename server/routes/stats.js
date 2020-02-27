@@ -15,6 +15,56 @@
 const mongoose = require('mongoose');
 const { logger } = require('../common');
 
+const championQuery = function(timeRange, endDate) {
+  let utcEndTime;
+  if (/20\d\d-\d\d-\d\d/.test(endDate)) {
+    utcEndTime = new Date(endDate).getTime()/1000;
+  } else if (/\d+/.test(endDate) && 
+      parseInt(endDate) <= new Date('2099-01-01').getTime()/1000 && // WE WILL EXLODE in 2099!
+      parseInt(endDate) >= new Date('2015-01-01').getTime()/1000
+  ) {
+    utcEndTime = parseInt(endDate);
+  }
+
+  let days;
+  if (/\d+/.test(timeRange)) {
+    days = parseInt(timeRange);
+  } else if ( timeRange === 'week' ) {
+    days = 7;
+  } else if (timeRange === 'month') {
+    days = 30; // for simplicity
+  } else if (timeRange === 'year') {
+    days = 365; // for simplicity
+  }
+  return [
+    { 
+      $match: {
+        wikiUserName: {$exists: true},
+        timestamp: {
+          $exists: true,
+          $lt: utcEndTime, 
+          $gte: utcEndTime - (3600 * 24 * days)
+        },
+        "recentChange.wiki": "enwiki",
+      }
+    },
+    { "$group": {
+        "_id": {
+            // "wiki": "$recentChange.wiki", TODO(xinbenlv): for now we only award ENWIKI champion
+            "wikiUserName": "$wikiUserName",
+        },
+        "count": { "$sum": 1 }
+      } },
+    { $sort: {'count': -1}},
+  ];
+}
+
+const champion = async (req, res) => {
+  let query = championQuery(req.query.timeRange || 'week', req.query.endDate || '2020-02-01');
+  let ret = await mongoose.connection.db.collection(`Interaction`)
+    .aggregate(query).toArray();
+  res.send(ret);
+}
 
 const labelsTimeSeries = async (req, res) => {
   let labelsTimeSeries = await mongoose.connection.db.collection(`Interaction`)
@@ -91,4 +141,5 @@ const basic = async (req, res) => {
 module.exports = {
   basic,
   labelsTimeSeries,
+  champion,
 };
