@@ -15,7 +15,7 @@
 const mongoose = require('mongoose');
 const { logger } = require('../common');
 
-const championQuery = function(timeRange, endDate) {
+const championQuery = function(timeRange, endDate, wiki) {
   let utcEndTime;
   if (/20\d\d-\d\d-\d\d/.test(endDate)) {
     utcEndTime = new Date(endDate).getTime()/1000;
@@ -29,7 +29,7 @@ const championQuery = function(timeRange, endDate) {
   let days;
   if (/\d+/.test(timeRange)) {
     days = parseInt(timeRange);
-  } else if ( timeRange === 'week' ) {
+  } else if (timeRange === 'week') {
     days = 7;
   } else if (timeRange === 'month') {
     days = 30; // for simplicity
@@ -45,12 +45,11 @@ const championQuery = function(timeRange, endDate) {
           $lt: utcEndTime, 
           $gte: utcEndTime - (3600 * 24 * days)
         },
-        "recentChange.wiki": "enwiki",
+        "recentChange.wiki": wiki, // For now we only count individual wiki. There will be time we change it to also count global wiki.
       }
     },
     { "$group": {
         "_id": {
-            // "wiki": "$recentChange.wiki", TODO(xinbenlv): for now we only award ENWIKI champion
             "wikiUserName": "$wikiUserName",
         },
         "count": { "$sum": 1 }
@@ -60,10 +59,20 @@ const championQuery = function(timeRange, endDate) {
 }
 
 const champion = async (req, res) => {
-  let query = championQuery(req.query.timeRange || 'week', req.query.endDate || '2020-02-01');
+  let query = championQuery(req.query.timeRange || 'week', req.query.endDate || '2020-02-01', req.wiki || 'enwiki');
   let ret = await mongoose.connection.db.collection(`Interaction`)
     .aggregate(query).toArray();
-  res.send(ret);
+  if (req.query.cmd) {
+    if (ret.length) {
+      res.send(
+        `npx ts-node barnstar.ts --users=${ret.slice(0,10/*top 10*/).map(item => item._id.wikiUserName).join(',')} --timeRange=${req.query.timeRange} --endDate=${req.query.endDate}`
+      );
+    } else {
+      res.send(`empty!`);
+    }
+  } else {
+    res.send(ret);
+  }
 }
 
 const labelsTimeSeries = async (req, res) => {
