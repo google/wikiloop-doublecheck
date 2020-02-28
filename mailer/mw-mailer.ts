@@ -45,13 +45,17 @@ export class MwMailer {
             content = newContent;
         }
 
-        let res = await this.limiter.schedule(async () => {
-            await this.mwbot.edit(
-                pageTitle,
-                content,
-                editSummary
-            );
-        });
+        if (process.env.REAL_RUN === '1') {
+            let res = await this.limiter.schedule(async () => {
+                await this.mwbot.edit(
+                    pageTitle,
+                    content,
+                    editSummary
+                );
+            });
+        } else {
+            console.log(`\n==Dry run for edit ==\n`);
+        }
 
         console.log(`Done written edit for `, {
             pageTitle: pageTitle,
