@@ -65,7 +65,7 @@ const champion = async (req, res) => {
   if (req.query.cmd) {
     if (ret.length) {
       res.send(
-        `npx ts-node barnstar.ts --users=${ret.slice(0,10/*top 10*/).map(item => item._id.wikiUserName).join(',')} --timeRange=${req.query.timeRange} --endDate=${req.query.endDate}`
+        `npx ts-node barnstar.ts --users='${ret.slice(0,10/*top 10*/).map(item => item._id.wikiUserName).join(',')}' --timeRange=${req.query.timeRange} --endDate=${req.query.endDate}`
       );
     } else {
       res.send(`empty!`);
