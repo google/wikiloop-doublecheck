@@ -14,7 +14,7 @@
 
 const mongoose = require('mongoose');
 const { logger } = require('../common');
-
+const ANONYMOUS_PLACEHOLDER = `(anonymous)`;
 const championQuery = function(timeRange, endDate, wiki) {
   let utcEndTime;
   if (/20\d\d-\d\d-\d\d/.test(endDate)) {
@@ -39,18 +39,18 @@ const championQuery = function(timeRange, endDate, wiki) {
   return [
     { 
       $match: {
-        wikiUserName: {$exists: true},
+        // wikiUserName: {$exists: true},
         timestamp: {
           $exists: true,
           $lt: utcEndTime, 
           $gte: utcEndTime - (3600 * 24 * days)
         },
-        "recentChange.wiki": wiki, // For now we only count individual wiki. There will be time we change it to also count global wiki.
+        "recentChange.wiki": wiki ? wiki: {$exists:true}, // For now we only count individual wiki. There will be time we change it to also count global wiki.
       }
     },
     { "$group": {
         "_id": {
-            "wikiUserName": "$wikiUserName",
+            "wikiUserName": { $ifNull: ["$wikiUserName", ANONYMOUS_PLACEHOLDER]},
         },
         "count": { "$sum": 1 }
       } },
@@ -58,14 +58,25 @@ const championQuery = function(timeRange, endDate, wiki) {
   ];
 }
 
+/**
+ * Generate the champion list given a end date,  time range and wiki.
+ * @param {Ge} timeRange 
+ * @param {*} endDate 
+ * @param {*} wiki 
+ */
+const getChampion = async function(timeRange, endDate, wiki) {
+  let query = championQuery(timeRange, endDate, wiki);
+  let ret = await mongoose.connection.db.collection(`Interaction`).aggregate(query).toArray();
+  return ret;
+}
 const champion = async (req, res) => {
-  let query = championQuery(req.query.timeRange || 'week', req.query.endDate || '2020-02-01', req.wiki || 'enwiki');
-  let ret = await mongoose.connection.db.collection(`Interaction`)
-    .aggregate(query).toArray();
+  let ret = await getChampion(req.query.timeRange || 'week', req.query.endDate || '2020-02-01', req.wiki || null);
   if (req.query.cmd) {
     if (ret.length) {
       res.send(
-        `npx ts-node barnstar.ts --users='${ret.slice(0,10/*top 10*/).map(item => item._id.wikiUserName).join(',')}' --timeRange=${req.query.timeRange} --endDate=${req.query.endDate}`
+        `npx ts-node barnstar.ts --users='${ret.slice(0,10/*top 10*/)
+          .filter(n => n !== ANONYMOUS_PLACEHOLDER)
+          .map(item => item._id.wikiUserName).join(',')}' --timeRange=${req.query.timeRange} --endDate=${req.query.endDate}`
       );
     } else {
       res.send(`empty!`);
@@ -151,4 +162,5 @@ module.exports = {
   basic,
   labelsTimeSeries,
   champion,
+  getChampion
 };

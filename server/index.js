@@ -554,8 +554,8 @@ async function start() {
     message: `Server listening on http://${host}:${port}`,
     badge: true
   })
-
-
+  const dailyReportJob = require('../cron').dailyReportJob;
+  dailyReportJob.start();
 }
 
 start()
