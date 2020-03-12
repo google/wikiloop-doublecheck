@@ -139,6 +139,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "dz-s",
+      "name": "dz_s",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/27350480?v=4",
+      "profile": "https://github.com/dz-s",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "contributorsPerLine": 7
