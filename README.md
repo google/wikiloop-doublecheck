@@ -123,7 +123,7 @@ npx all-contributors add $NEW_CONTRIBUTOR translation
     <td align="center"><a href="http://www.andrew-g-west.com"><img src="https://avatars0.githubusercontent.com/u/1369929?v=4" width="100px;" alt=""/><br /><sub><b>Andrew G. West</b></sub></a><br /><a href="#question-westand" title="Answering Questions">💬</a> <a href="#tool-westand" title="Tools">🔧</a></td>
     <td align="center"><a href="http://aiz.miga.lv"><img src="https://avatars1.githubusercontent.com/u/1764614?v=4" width="100px;" alt=""/><br /><sub><b>Martins Brunenieks</b></sub></a><br /><a href="#translation-papuass" title="Translation">🌍</a></td>
     <td align="center"><a href="https://florian-koerner.com"><img src="https://avatars0.githubusercontent.com/u/647303?v=4" width="100px;" alt=""/><br /><sub><b>Florian Körner</b></sub></a><br /><a href="https://github.com/google/wikiloop-battlefield/commits?author=FlorianKoerner" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/dz-s"><img src="https://avatars2.githubusercontent.com/u/27350480?v=4" width="100px;" alt=""/><br /><sub><b>dz_s</b></sub></a><br /><a href="#translation-dz-s" title="Translation">🌍</a></td>
+    <td align="center"><a href="https://github.com/dz-s"><img src="https://avatars2.githubusercontent.com/u/27350480?v=4" width="100px;" alt=""/><br /><sub><b>dz_s</b></sub></a><br /><a href="#code-dz-s" title="Code">💻</a></td>
   </tr>
 </table>
 
