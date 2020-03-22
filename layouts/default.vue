@@ -46,7 +46,7 @@
               <b-dropdown-item href="/api/stats">Stats</b-dropdown-item>
             </b-nav-item-dropdown>
             <b-nav-item>
-              <b-form-select class="small" v-model="wiki">
+              <b-form-select @click.native.stop='' class="small" v-model="wiki">
                 <option v-for="language in languages" :key="language.value" :value="language.value">{{ language.text }}</option>
               </b-form-select>
             </b-nav-item>
