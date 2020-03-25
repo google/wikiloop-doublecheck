@@ -28,8 +28,7 @@ let envAssert = (varName) => {
     else return false;
 }
 
-let dailyReportJob = new cron.CronJob("0 0 6 * * *"/* 6am everyday */, async () => {
-    mailCronLogger.info(`Running dailyReportJob agt ${new Date()}`);
+let dailyReport = async () => {
     if (envAssert('CRON_DAILY_REPORT') && process.env['CRON_DAILY_REPORT'].length > 0) {
         if (envAssert('MAIL_SENDER_USERNAME') && envAssert('MAIL_SENDER_PASSWORD')) {
             const nodemailer = require("nodemailer");
@@ -73,8 +72,52 @@ let dailyReportJob = new cron.CronJob("0 0 6 * * *"/* 6am everyday */, async () 
             ].join(' or ')}, not sending msg.`);
         }
     }
+};
+
+let dailyReportJob = new cron.CronJob("0 0 6 * * *"/* 6am everyday */, async () => {
+    mailCronLogger.info(`Running dailyReportJob agt ${new Date()}`);
+    await dailyReport();
 }, null, true, "America/Los_Angeles");
 
+let awardBarnstar = async () => {
+    console.log(`XXXX start awardBarnstar 111`);
+    if (envAssert('WP_USER') && envAssert('WP_PASSWORD')) {
+    
+    console.log(`XXXX start awardBarnstar 222`);
+    const MwMailer =  require('../mailer/mw-mailer');
+    let mwMailer = new MwMailer();
+
+    let awardBarnstarMsg = async (mwMailer, user, timeRange, endDate, isReal) => {
+        await mwMailer.mail(isReal ? `User_talk:${user}` : `User:Xinbenlv/Sandbox/User_talk:${user}`, `
+== The WikiLoop Battlefield ${timeRange}ly barnstar ==
+{{subst:Xinbenlv/WikiLoop Battlefield Champion|user=${user}|enddate=${endDate}|timerange=${timeRange}}}
+`, 
+`Awarding The WikiLoop Battlefield ${timeRange}ly barnstar to ${user} ending on ${endDate}`);
+    };
+
+    let formatedDate/**format: YYYY-MM-DD */ = new Date().toISOString().split('T')[0]
+    let report = await require('../server/routes/stats').getChampion(7, formatedDate, 'enwiki');
+    let users = report.slice(0,10/*top 10*/)
+        .filter(n => n !== ANONYMOUS_PLACEHOLDER)
+        .map(item => item._id.wikiUserName)
+    await Promise.all(users.map(async user => {
+        await awardBarnstarMsg(mwMailer, user, 'week', formatedDate, process.env.WP_LEVEL === 'real')
+    }));
+
+} else {
+    mailCronLogger.info(`Running CRON_WEEKLY_BARNSTAR without sufficient vars`);
+}
+};
+
+let weeklyBarnstarJob = new cron.CronJob(
+    // "* * * * * Mon"/* 6am everyday */, 
+    "0 43 15 * * *", 
+    async () => {
+    mailCronLogger.info(`Running weeklyBarnstarJob at ${new Date()}`);
+    await awardBarnstar();
+}, null, true, "America/Los_Angeles");
 module.exports = {
-    dailyReportJob: dailyReportJob
+    dailyReportJob: dailyReportJob,
+    weeklyBarnstarJob: weeklyBarnstarJob,
+    awardBarnstar: awardBarnstar,
 }

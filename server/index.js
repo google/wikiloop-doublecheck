@@ -556,6 +556,8 @@ async function start() {
   })
   const dailyReportJob = require('../cron').dailyReportJob;
   dailyReportJob.start();
+  const awardBarnstar = require('../cron').awardBarnstar;
+  await awardBarnstar();
 }
 
 start()
