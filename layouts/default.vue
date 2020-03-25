@@ -118,6 +118,7 @@
           // For example, people can edit wikidata in any language. Or,
           // they might prefer editing the Indonesian wiki using English interface
           const wikiToLangMap = {
+            "afwiki": "af",
             "enwiki": "en",
             "dewiki": "de",
             "frwiki": "fr",

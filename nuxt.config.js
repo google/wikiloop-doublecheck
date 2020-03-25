@@ -90,6 +90,7 @@ module.exports = {
       'nuxt-i18n',
       {
         locales: [
+          'af', 
           'de', 
           'en',
           'fr',

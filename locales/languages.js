@@ -1,5 +1,9 @@
 export default [
     {
+        value: 'afwiki',
+        text: 'Afrikaans (af)'
+    },
+    {
         value: 'enwiki',
         text: 'English (en)'
     },

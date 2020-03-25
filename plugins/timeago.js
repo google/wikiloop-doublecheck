@@ -21,6 +21,7 @@ Vue.use(VueTimeago, {
   // We use `date-fns` under the hood
   // So you can use all locales from it
   locales: {
+    // af: require('date-fns/locale/af'), Afrikaan is not supported by date-fns
     de: require('date-fns/locale/de'),
     en: require('date-fns/locale/en'),
     fr: require('date-fns/locale/fr'),

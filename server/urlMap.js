@@ -4,6 +4,7 @@
  */
 module.exports = {
   wikiToDomain: {
+    "afwiki": "af.wikipedia.org",
     "dewiki": "de.wikipedia.org",
     "enwiki": "en.wikipedia.org",
     "frwiki": "fr.wikipedia.org",

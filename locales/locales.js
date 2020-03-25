@@ -1,3 +1,4 @@
+const af = require('./af');
 const de = require('./de');
 const en = require('./en');
 const fr = require('./fr');
@@ -10,6 +11,7 @@ const zh = require('./zh');
 
 
 module.exports = {
+    af,
     de,
     en,
     fr,
