@@ -46,7 +46,7 @@
               <b-dropdown-item href="/api/stats">Stats</b-dropdown-item>
             </b-nav-item-dropdown>
             <b-nav-item>
-              <b-form-select class="small" v-model="wiki">
+              <b-form-select @click.native.stop='' class="small" v-model="wiki">
                 <option v-for="language in languages" :key="language.value" :value="language.value">{{ language.text }}</option>
               </b-form-select>
             </b-nav-item>
@@ -118,11 +118,14 @@
           // For example, people can edit wikidata in any language. Or,
           // they might prefer editing the Indonesian wiki using English interface
           const wikiToLangMap = {
+            "afwiki": "af",
             "enwiki": "en",
             "dewiki": "de",
             "frwiki": "fr",
             "idwiki": "id",
             "lvwiki": "lv",
+            "plwiki": "pl",
+            "ruwiki": "ru",
             "trwiki": "tr",
             "zhwiki": "zh",
             "wikidatawiki": "en", // TODO(xinbenlv): consider how we deal with wikidata UI langauge.
