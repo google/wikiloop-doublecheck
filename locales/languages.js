@@ -20,15 +20,19 @@ export default [
         text: 'Latviešu (lv)'
     },
     {
-        value: 'wikidatawiki',
-        text: 'Wikidatawiki'
+        value: 'ruwiki',
+        text: 'Русский (ru)' // Russian
     },
+    {
+        value: 'trwiki',
+        text: 'Turkish (tr)'
+    },  
     {
         value: 'zhwiki',
         text: '中文 (zh)'
     },
     {
-        value: 'trwiki',
-        text: 'Turkish (tr)'
+        value: 'wikidatawiki',
+        text: 'Wikidatawiki'
     },
 ]

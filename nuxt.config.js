@@ -89,7 +89,16 @@ module.exports = {
     [
       'nuxt-i18n',
       {
-        locales: ['en', 'zh', 'fr', 'de', 'lv', 'tr', 'id'],
+        locales: [
+          'de', 
+          'en',
+          'fr',
+          'id',
+          'lv',
+          'ru',
+          'tr',
+          'zh'
+        ],
         defaultLocale: 'en',
         vueI18n: {
           fallbackLocale: 'en',

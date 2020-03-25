@@ -1,0 +1,23 @@
+// Credit: Russian transaltion majorly provided by Joris Darlington 
+module.exports = {
+    LoginMenuItem: "Логин",
+    LogoutMenuItem: "Выход",
+    ContributionsMenuItem: "Мои взносы",
+    ContributionsBeforeLoginMenuItem: "Мои взносы перед входом в систему",
+    Anonymous: "Анонимный",
+    Me: "Я",
+    Someone: "Кто-то",
+    EditSummaryLabel: "Редактировать резюме",
+    LooksGoodBtnLabel: "Выглядит хорошо",
+    NotSureBtnLabel: "Не уверен",
+    ShouldRevertBtnLabel: "Должен вернуться",
+    RevertNowBtnLabel: "Вернуть сейчас",
+    RevertEditSummary: "Идентифицировано как тест/вандализм с использованием {0} версии {1}. Смотрите или высказывайте своё мнение по адресу {2}",
+    NextBtnLabel: "Следующий",
+    Loading: "Загрузка",
+    EditedTimeLabel: "Edited",
+    DiffNotAvailable: "Статья в Википедии отличается",
+    DirectRevertedBtnLabel: "Прямой возврат",
+    DirectRevertFailedBtnLabel: "Прямой возврат не удался",
+    OpenedUrlToRevertBtnLabel: "Открытый URL для возврата",
+}

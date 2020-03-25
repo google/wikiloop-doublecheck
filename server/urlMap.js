@@ -9,6 +9,7 @@ module.exports = {
     "frwiki": "fr.wikipedia.org",
     "idwiki": "id.wikipedia.org",
     "lvwiki": "lv.wikipedia.org",
+    "ruwiki": "ru.wikipedia.org",
     "trwiki": "tr.wikipedia.org",
     "wikidatawiki": "wikidata.org",
     "zhwiki": "zh.wikipedia.org",

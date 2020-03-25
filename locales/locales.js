@@ -3,6 +3,7 @@ const en = require('./en');
 const fr = require('./fr');
 const id = require('./id');
 const lv = require('./lv');
+const ru = require('./ru');
 const tr = require('./tr');
 const zh = require('./zh');
 
@@ -13,6 +14,7 @@ module.exports = {
     fr,
     id,
     lv,
+    ru,
     tr,
     zh
 }
