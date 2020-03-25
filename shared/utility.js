@@ -15,11 +15,14 @@
 // TODO(xinbenlv): merge with urlMap on the server side.
 // blocked by https://github.com/google/wikiloop-battlefield/issues/105
 const _wikiToDomain = {
+  "afwiki": "af.wikipedia.org",
   "dewiki": "de.wikipedia.org",
   "enwiki": "en.wikipedia.org",
   "frwiki": "fr.wikipedia.org",
   "idwiki": "id.wikipedia.org",
   "lvwiki": "lv.wikipedia.org",
+  "plwiki": "pl.wikipedia.org",
+  "ruwiki": "ru.wikipedia.org",
   "trwiki": "tr.wikipedia.org",
   "wikidatawiki": "wikidata.org",
   "zhwiki": "zh.wikipedia.org", 

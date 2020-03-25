@@ -1,5 +1,9 @@
 export default [
     {
+        value: 'afwiki',
+        text: 'Afrikaans (af)'
+    },
+    {
         value: 'enwiki',
         text: 'English (en)'
     },
@@ -20,15 +24,23 @@ export default [
         text: 'Latviešu (lv)'
     },
     {
-        value: 'wikidatawiki',
-        text: 'Wikidatawiki'
+        value: 'plwiki',
+        text: 'Polski (pl)' // Polish
     },
+    {
+        value: 'ruwiki',
+        text: 'Русский (ru)' // Russian
+    },
+    {
+        value: 'trwiki',
+        text: 'Turkish (tr)'
+    },  
     {
         value: 'zhwiki',
         text: '中文 (zh)'
     },
     {
-        value: 'trwiki',
-        text: 'Turkish (tr)'
+        value: 'wikidatawiki',
+        text: 'Wikidatawiki'
     },
 ]

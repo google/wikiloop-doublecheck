@@ -118,11 +118,14 @@
           // For example, people can edit wikidata in any language. Or,
           // they might prefer editing the Indonesian wiki using English interface
           const wikiToLangMap = {
+            "afwiki": "af",
             "enwiki": "en",
             "dewiki": "de",
             "frwiki": "fr",
             "idwiki": "id",
             "lvwiki": "lv",
+            "plwiki": "pl",
+            "ruwiki": "ru",
             "trwiki": "tr",
             "zhwiki": "zh",
             "wikidatawiki": "en", // TODO(xinbenlv): consider how we deal with wikidata UI langauge.
