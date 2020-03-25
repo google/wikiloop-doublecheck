@@ -20,6 +20,10 @@ export default [
         text: 'Latviešu (lv)'
     },
     {
+        value: 'plwiki',
+        text: 'Polski (pl)' // Polish
+    },
+    {
         value: 'ruwiki',
         text: 'Русский (ru)' // Russian
     },

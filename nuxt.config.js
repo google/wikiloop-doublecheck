@@ -95,6 +95,7 @@ module.exports = {
           'fr',
           'id',
           'lv',
+          'pl',
           'ru',
           'tr',
           'zh'

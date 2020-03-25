@@ -123,6 +123,7 @@
             "frwiki": "fr",
             "idwiki": "id",
             "lvwiki": "lv",
+            "plwiki": "pl",
             "ruwiki": "ru",
             "trwiki": "tr",
             "zhwiki": "zh",
