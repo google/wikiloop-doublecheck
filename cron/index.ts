@@ -47,7 +47,11 @@ export class ReportCronJob {
                 let formatedDate/**format: YYYY-MM-DD */ = new Date().toISOString().split('T')[0]
                 let report = await require('../server/routes/stats').getChampion(1, formatedDate, 'enwiki');
 
+<<<<<<< HEAD
                 let mailAddresss = process.env['CRON_DAILY_REPORT'].split(',').map(e=> e.trim()); // trimming emails
+=======
+                let mailAddress = process.env['CRON_DAILY_REPORT'].split(',').map(e=> e.trim()); // trimming emails
+>>>>>>> auto-barnstar
                 const json2html = require('node-json2html');
                 let html = json2html.transform(
                     report,{
@@ -83,6 +87,7 @@ export class ReportCronJob {
 }
 
 export class AwardBarnStarCronJob {
+<<<<<<< HEAD
     public awardBarnstar = async function () {
         if (envAssert('WP_USER') && envAssert('WP_PASSWORD')) {
 
@@ -108,6 +113,33 @@ export class AwardBarnStarCronJob {
     } else {
         mailCronLogger.info(`Running CRON_WEEKLY_BARNSTAR without sufficient vars`);
     }
+=======
+
+    private awardBarnstarMsg = async (mwMailer, user, timeRange, endDate, isReal) => {
+        await mwMailer.mail(
+            isReal ? `User_talk:${user}` : `User:Xinbenlv/Sandbox/User_talk:${user}`,
+            `== The WikiLoop Battlefield ${timeRange}ly barnstar ==\n` +
+            `{{subst:Xinbenlv/WikiLoop Battlefield Champion|user=${user}|enddate=${endDate}|timerange=${timeRange}}}`,
+            `Awarding The WikiLoop Battlefield ${timeRange}ly barnstar to ${user} ending on ${endDate}`);
+    };
+
+    public awardBarnstar = async function () {
+        if (envAssert('WP_USER') && envAssert('WP_PASSWORD')) {
+            let mwMailer = new MwMailer();
+            await mwMailer.init();
+            let formattedDate/**format: YYYY-MM-DD */ = new Date().toISOString().split('T')[0];
+            let report = await require('../server/routes/stats').getChampion(7, formattedDate, 'enwiki');
+            let users = report.slice(0, 10/*top 10*/)
+                .filter(n => n !== ANONYMOUS_PLACEHOLDER)
+                .map(item => item._id.wikiUserName)
+            await Promise.all(users.map(async user => {
+                await this.awardBarnstarMsg(
+                mwMailer, user, 'week', formattedDate, process.env.WP_LEVEL === 'real')
+            }));
+        } else {
+            mailCronLogger.error(`Running awardBarnstar without sufficient vars`);
+        }
+>>>>>>> auto-barnstar
     };
 
     public weeklyBarnstarJob = new cron.CronJob(
