@@ -11,7 +11,8 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-import { ReportCronJob } from 'cron';
+
+const ReportCronJob = require("../cron").ReportCronJob;
 
 require(`dotenv`).config();
 const http = require('http');
@@ -253,9 +254,9 @@ function setupMediaWikiListener(db, io) {
               wikiRevId: `${recentChange.wiki}:${recentChange.revision.new}`,
             };
             docCounter++;
-            doc.comment = recentChange.comment;
+            doc['comment'] = recentChange.comment;
             io.sockets.emit('recent-change', doc);
-            delete doc.comment;
+            delete doc['comment'];
             // TODO add
             // await db.collection(`MediaWikiRecentChange`).insertOne(doc);
 
