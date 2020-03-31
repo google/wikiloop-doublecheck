@@ -511,11 +511,12 @@ async function start() {
   await nuxt.ready();
   // Build only in dev mode
   if (config.dev) {
-    console.log(`config.dev XXX dev`);
-    const builder = new Builder(nuxt)
-    await builder.build()
+    logger.info(`Running Nuxt Builder ... `);
+    const builder = new Builder(nuxt);
+    await builder.build();
+    logger.info(`DONE ... `);
   } else {
-    console.log(`config.dev XXX NOT dev`);
+    logger.info(`NOT Running Nuxt Builder`);
   }
 
   const app = express();
