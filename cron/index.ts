@@ -46,7 +46,7 @@ export class ReportCronJob {
                 });
                 let formatedDate/**format: YYYY-MM-DD */ = new Date().toISOString().split('T')[0]
                 let report = await require('../server/routes/stats').getChampion(1, formatedDate, 'enwiki');
-    
+
                 let mailAddresss = process.env['CRON_DAILY_REPORT'].split(',').map(e=> e.trim()); // trimming emails
                 const json2html = require('node-json2html');
                 let html = json2html.transform(
@@ -65,9 +65,9 @@ export class ReportCronJob {
                     text: JSON.stringify(report, null, 2), // plain text body
                     html: html // html body
                 });
-    
+
                 mailCronLogger.info(`Message sent: ${info.messageId}`);
-            
+
             } else {
                 mailCronLogger.info(`No ${[
                     'CRON_DAILY_REPORT', 'MAIL_SENDER_USERNAME', 'MAIL_SENDER_PASSWORD'
@@ -75,7 +75,7 @@ export class ReportCronJob {
             }
         }
     };
-    
+
     public dailyReportJob = new cron.CronJob("0 0 6 * * *"/* 6am everyday */, async () => {
         mailCronLogger.info(`Running dailyReportJob agt ${new Date()}`);
         await this.dailyReport();
@@ -85,17 +85,17 @@ export class ReportCronJob {
 export class AwardBarnStarCronJob {
     public awardBarnstar = async function () {
         if (envAssert('WP_USER') && envAssert('WP_PASSWORD')) {
-       
+
         let mwMailer = new MwMailer();
-    
+
         let awardBarnstarMsg = async (mwMailer, user, timeRange, endDate, isReal) => {
             await mwMailer.mail(isReal ? `User_talk:${user}` : `User:Xinbenlv/Sandbox/User_talk:${user}`, `
     == The WikiLoop Battlefield ${timeRange}ly barnstar ==
     {{subst:Xinbenlv/WikiLoop Battlefield Champion|user=${user}|enddate=${endDate}|timerange=${timeRange}}}
-    `, 
+    `,
     `Awarding The WikiLoop Battlefield ${timeRange}ly barnstar to ${user} ending on ${endDate}`);
         };
-    
+
         let formatedDate/**format: YYYY-MM-DD */ = new Date().toISOString().split('T')[0]
         let report = await require('../server/routes/stats').getChampion(7, formatedDate, 'enwiki');
         let users = report.slice(0,10/*top 10*/)
@@ -104,15 +104,15 @@ export class AwardBarnStarCronJob {
         await Promise.all(users.map(async user => {
             await awardBarnstarMsg(mwMailer, user, 'week', formatedDate, process.env.WP_LEVEL === 'real')
         }));
-    
+
     } else {
         mailCronLogger.info(`Running CRON_WEEKLY_BARNSTAR without sufficient vars`);
     }
     };
-    
+
     public weeklyBarnstarJob = new cron.CronJob(
-        // "* * * * * Mon"/* 6am everyday */, 
-        "0 43 15 * * *", 
+        // "* * * * * Mon"/* 6am everyday */,
+        "0 43 15 * * *",
         async () => {
         mailCronLogger.info(`Running weeklyBarnstarJob at ${new Date()}`);
         await this.awardBarnstar();

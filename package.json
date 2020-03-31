@@ -5,7 +5,7 @@
   "author": "Zainan Victor Zhou <zzn@google.com>",
   "repository": "git@github.com:google/wikiloop-battlefield.git",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
+    "dev": "cross-env NODE_ENV=development nodemon",
     "prod": "npm run build && npm run start",
     "build": "nuxt build",
     "start": "cross-env NODE_ENV=production node server/index.js",
@@ -15,11 +15,13 @@
     "test": "jest",
     "heroku-postbuild": "npm run build",
     "test-report": "jest --ci --runInBand --reporters=default --reporters=jest-junit",
-    "ci": "circleci local execute build"
+    "ci": "circleci local execute build",
+    "dev:exec": "node --inspect=5858 -r ts-node/register ./server/index.ts"
   },
   "dependencies": {
     "@dicebear/avatars": "^4.0.2",
     "@dicebear/avatars-identicon-sprites": "^4.0.2",
+    "@nuxt/typescript-runtime": "^0.4.1",
     "@nuxtjs/axios": "^5.8.0",
     "@nuxtjs/google-analytics": "^2.2.2",
     "@nuxtjs/pwa": "^2.6.0",
@@ -69,6 +71,7 @@
     "yargs": "^15.3.1"
   },
   "devDependencies": {
+    "@nuxt/typescript-build": "^0.6.1",
     "@nuxtjs/eslint-config": "^0.0.1",
     "@vue/test-utils": "^1.0.0-beta.30",
     "all-contributors-cli": "^6.11.2",
@@ -98,5 +101,20 @@
     "node": "10.16.0",
     "npm": "6.10.0"
   },
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "nodemonConfig": {
+    "ignore": [
+      "**/*.test.ts",
+      "**/*.spec.ts",
+      ".git",
+      "node_modules"
+    ],
+    "watch": [
+      "server",
+      "cron",
+      "mailer"
+    ],
+    "exec": "npm run dev:exec",
+    "ext": "ts"
+  }
 }

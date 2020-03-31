@@ -11,8 +11,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-
-const ReportCronJob = require("../cron").ReportCronJob;
+import {ReportCronJob} from "../cron";
 
 require(`dotenv`).config();
 const http = require('http');
@@ -192,6 +191,7 @@ function setupApiRequestListener(db, io, app) {
   apiRouter.get('/mediawiki', asyncHandler(routes.mediawiki));
 
   apiRouter.get('/version', routes.version);
+  apiRouter.get('/test', (req, res) => { res.send('test ok')});
 
   app.use(`/api`, apiRouter);
 }
@@ -503,6 +503,20 @@ function setupAuthApi(db, app) {
 }
 
 async function start() {
+  // Init Nuxt.js
+  const nuxt = new Nuxt(config)
+
+  const {host, port} = nuxt.options.server
+
+  await nuxt.ready();
+  // Build only in dev mode
+  if (config.dev) {
+    console.log(`config.dev XXX dev`);
+    const builder = new Builder(nuxt)
+    await builder.build()
+  } else {
+    console.log(`config.dev XXX NOT dev`);
+  }
 
   const app = express();
   const cookieParser = require('cookie-parser');
@@ -516,19 +530,6 @@ async function start() {
   const server = http.Server(app);
   const io = require('socket.io')(server);
   app.set('socketio', io);
-
-  // Init Nuxt.js
-  const nuxt = new Nuxt(config)
-
-  const {host, port} = nuxt.options.server
-
-  // Build only in dev mode
-  if (config.dev) {
-    const builder = new Builder(nuxt)
-    await builder.build()
-  } else {
-    await nuxt.ready()
-  }
 
   await mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, dbName: process.env.MONGODB_DB} );
 
