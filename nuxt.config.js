@@ -90,8 +90,8 @@ module.exports = {
       'nuxt-i18n',
       {
         locales: [
-          'af', 
-          'de', 
+          'af',
+          'de',
           'en',
           'fr',
           'id',
@@ -130,7 +130,8 @@ module.exports = {
    */
   build: {
     vendor: ['socket.io-client']
-  }
+  },
+  buildModules: ['@nuxt/typescript-build']
 };
 
 console.log(`nuxt.config.js is done executed!`);

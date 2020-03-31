@@ -1,8 +1,6 @@
 const MWBot = require('mwbot');
 const Bottleneck = require("bottleneck");
 require('dotenv').config();
-console.log(`process.env.WP_USER`, process.env.WP_USER);
-console.log(`process.env.WP_PASSWORD`, process.env.WP_PASSWORD);
 
 export class MwMailer {
     private mwbot:any;
@@ -40,7 +38,7 @@ export class MwMailer {
                 let pageId = Object.keys(res.query['pages'])[0];
                 oldContent = res.query['pages'][pageId]['revisions'][0]['*'];
             }
-            content = oldContent + '\n\n' + newContent; 
+            content = oldContent + '\n\n' + newContent;
         } else {
             content = newContent;
         }

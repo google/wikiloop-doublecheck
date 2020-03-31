@@ -11,6 +11,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+import {ReportCronJob} from "../cron";
 
 require(`dotenv`).config();
 const http = require('http');
@@ -190,6 +191,7 @@ function setupApiRequestListener(db, io, app) {
   apiRouter.get('/mediawiki', asyncHandler(routes.mediawiki));
 
   apiRouter.get('/version', routes.version);
+  apiRouter.get('/test', (req, res) => { res.send('test ok')});
 
   app.use(`/api`, apiRouter);
 }
@@ -252,9 +254,9 @@ function setupMediaWikiListener(db, io) {
               wikiRevId: `${recentChange.wiki}:${recentChange.revision.new}`,
             };
             docCounter++;
-            doc.comment = recentChange.comment;
+            doc['comment'] = recentChange.comment;
             io.sockets.emit('recent-change', doc);
-            delete doc.comment;
+            delete doc['comment'];
             // TODO add
             // await db.collection(`MediaWikiRecentChange`).insertOne(doc);
 
@@ -501,6 +503,21 @@ function setupAuthApi(db, app) {
 }
 
 async function start() {
+  // Init Nuxt.js
+  const nuxt = new Nuxt(config)
+
+  const {host, port} = nuxt.options.server
+
+  await nuxt.ready();
+  // Build only in dev mode
+  if (config.dev) {
+    logger.info(`Running Nuxt Builder ... `);
+    const builder = new Builder(nuxt);
+    await builder.build();
+    logger.info(`DONE ... `);
+  } else {
+    logger.info(`NOT Running Nuxt Builder`);
+  }
 
   const app = express();
   const cookieParser = require('cookie-parser');
@@ -514,19 +531,6 @@ async function start() {
   const server = http.Server(app);
   const io = require('socket.io')(server);
   app.set('socketio', io);
-
-  // Init Nuxt.js
-  const nuxt = new Nuxt(config)
-
-  const {host, port} = nuxt.options.server
-
-  // Build only in dev mode
-  if (config.dev) {
-    const builder = new Builder(nuxt)
-    await builder.build()
-  } else {
-    await nuxt.ready()
-  }
 
   await mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, dbName: process.env.MONGODB_DB} );
 
@@ -555,8 +559,11 @@ async function start() {
     message: `Server listening on http://${host}:${port}`,
     badge: true
   })
-  const dailyReportJob = require('../cron').dailyReportJob;
-  dailyReportJob.start();
+  const r = new ReportCronJob();
+  // const dailyReportJob = require('../cron').dailyReportJob;
+  // dailyReportJob.start();
+  // const awardBarnstar = require('../cron').awardBarnstar;
+  // await awardBarnstar();
 }
 
 start()
