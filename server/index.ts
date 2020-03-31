@@ -11,7 +11,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-import {ReportCronJob} from "../cron";
+import {AwardBarnStarCronJob, ReportCronJob} from "../cron";
 
 require(`dotenv`).config();
 const http = require('http');
@@ -558,12 +558,11 @@ async function start() {
   consola.ready({
     message: `Server listening on http://${host}:${port}`,
     badge: true
-  })
-  const r = new ReportCronJob();
-  // const dailyReportJob = require('../cron').dailyReportJob;
-  // dailyReportJob.start();
-  // const awardBarnstar = require('../cron').awardBarnstar;
-  // await awardBarnstar();
+  });
+  const reportCronJob = new ReportCronJob();
+  reportCronJob.dailyReportJob.start();
+  const awardBarnStarCronJob = new AwardBarnStarCronJob();
+  awardBarnStarCronJob.weeklyBarnstarJob.start();
 }
 
-start()
+start();

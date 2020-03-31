@@ -21,12 +21,13 @@ export class MwMailer {
         this.limiter = new Bottleneck({
             minTime: 5000
         });
-    }
+    };
 
     public mail = async (pageTitle, newContent, editSummary = 'Deliver a new message.', append = true) => {
         if (!/\:/.test(pageTitle)) { // if colon is not in the pageTitle, it's in a default page.
             throw `We don't allow changing any page article at default namespace! pageTile = ${pageTitle}`;
         }
+
         let content;
         let oldContent;
         if (append) {
