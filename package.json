@@ -8,6 +8,7 @@
     "dev": "cross-env NODE_ENV=development nodemon",
     "prod": "npm run build && npm run start",
     "build": "nuxt build",
+    "analyze": "nuxt build -a",
     "start": "cross-env NODE_ENV=production npx ts-node server/index.ts",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
