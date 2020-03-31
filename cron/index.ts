@@ -75,7 +75,7 @@ export class ReportCronJob {
         }
     };
 
-    public dailyReportJob = new cron.CronJob("0 0 6 * * *"/* 6am everyday */, async () => {
+    public dailyReportJob = new cron.CronJob("0 18 16 * * *"/* 6am everyday */, async () => {
         mailCronLogger.info(`Running dailyReportJob agt ${new Date()}`);
         await this.dailyReport();
     }, null, true, "America/Los_Angeles");
@@ -111,7 +111,7 @@ export class AwardBarnStarCronJob {
 
     public weeklyBarnstarJob = new cron.CronJob(
         // "* * * * * Mon"/* 6am everyday */,
-        "0 59 15 * * *",
+        "0 20 16 * * *",
         async () => {
         mailCronLogger.info(`Running weeklyBarnstarJob at ${new Date()}`);
         await this.awardBarnstar();
