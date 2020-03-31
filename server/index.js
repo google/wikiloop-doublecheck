@@ -156,6 +156,7 @@ function setupApiRequestListener(db, io, app) {
   apiRouter.get('/interaction/:wikiRevId', asyncHandler(routes.getInteraction));
 
   apiRouter.get('/interactions', asyncHandler(routes.listInteractions));
+  apiRouter.get('/labels', asyncHandler(routes.listLabels));
 
   apiRouter.post('/interaction/:wikiRevId', asyncHandler(routes.updateInteraction));
 

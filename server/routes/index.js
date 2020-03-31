@@ -18,6 +18,7 @@ const { listRecentChanges } = require('./recentchanges');
 const { ores, oresWikiRevId } = require('./ores');
 const { revision, revisionWikiRevId } = require('./revision');
 const { getInteraction, listInteractions, updateInteraction, interaction } = require('./interaction');
+const { listLabels } = require('./label');
 const { markedRevsCsv, markedCsv, markedRevs, marked } = require('./marked');
 const leaderboard = require('./leaderboard');
 const { basic, labelsTimeSeries, champion } = require('./stats');
@@ -40,6 +41,8 @@ module.exports = {
     getInteraction,
     listInteractions,
     updateInteraction,
+
+    listLabels,
     interaction,
     markedRevsCsv,
     markedCsv,
@@ -52,5 +55,5 @@ module.exports = {
     flags,
     mediawiki,
     version,
-    
+    listLabels,
 }
