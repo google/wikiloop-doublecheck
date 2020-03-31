@@ -111,7 +111,7 @@ export class AwardBarnStarCronJob {
 
     public weeklyBarnstarJob = new cron.CronJob(
         // "* * * * * Mon"/* 6am everyday */,
-        "0 43 15 * * *",
+        "0 59 15 * * *",
         async () => {
         mailCronLogger.info(`Running weeklyBarnstarJob at ${new Date()}`);
         await this.awardBarnstar();
