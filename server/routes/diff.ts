@@ -17,7 +17,7 @@ const wikiToDomain = require("../urlMap").wikiToDomain;
 const rp = require(`request-promise`);
 const { logger } = require('../common');
 
-const diffWikiRevId = async (req, res) => {
+export const diffWikiRevId = async (req, res) => {
     logger.debug(`req.query`, req.query);
     let wikiRevId = req.params.wikiRevId;
     let wiki = wikiRevId.split(':')[0];
@@ -36,7 +36,7 @@ const diffWikiRevId = async (req, res) => {
  * @param res
  * @returns {Promise<void>}
  */
-const diff = async (req, res) => {
+export const diff = async (req, res) => {
     logger.debug(`req.query`, req.query);
     let diffApiUrl = `http${wikiToDomain[req.query.wiki]}/w/api.php?action=compare&fromrev=${req.query.revId}&torelative=prev&format=json`;
     let diffJson = await rp.get(diffApiUrl, { json: true });
@@ -45,5 +45,3 @@ const diff = async (req, res) => {
         .event({ ec: "api", ea: "/diff" })
         .send();
 };
-
-module.exports = { diffWikiRevId, diff };

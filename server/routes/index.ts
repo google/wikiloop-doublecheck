@@ -15,7 +15,7 @@
 import { flags } from './flags';
 
 import { root } from './root';
-const { diff, diffWikiRevId } = require('./diff');
+import { diff, diffWikiRevId } from './diff';
 const { listRecentChanges } = require('./recentchanges');
 const { ores, oresWikiRevId } = require('./ores');
 const { revision, revisionWikiRevId } = require('./revision');
