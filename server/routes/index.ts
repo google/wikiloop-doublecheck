@@ -12,7 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-const root = require('./root');
+import { flags } from './flags';
+
+import { root } from './root';
 const { diff, diffWikiRevId } = require('./diff');
 const { listRecentChanges } = require('./recentchanges');
 const { ores, oresWikiRevId } = require('./ores');
@@ -24,7 +26,7 @@ const leaderboard = require('./leaderboard');
 const { basic, labelsTimeSeries, champion } = require('./stats');
 const avatar = require('./avatar');
 const { latest, latestRevs } = require('./latest');
-const { flags } = require('./flags');
+
 const mediawiki = require('./mediawiki');
 const version = require('./version');
 
@@ -55,4 +57,4 @@ module.exports = {
     flags,
     mediawiki,
     version,
-}
+};

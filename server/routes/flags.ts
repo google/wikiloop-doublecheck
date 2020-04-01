@@ -12,9 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-module.exports = (req, res, next) => {
-    res.send('API root');
+const {useOauth, isEmpty} = require('../common');
+
+const useStiki = !isEmpty(process.env.STIKI_MYSQL);
+
+export const flags = async (req, res) => {
+    res.send({
+        flagDEBUGXXX: "debug 444",
+        useStiki: useStiki,
+        useOauth: useOauth,
+        useDirectRevert: process.env.DIRECT_REVERT === '1'
+    });
     req.visitor
-        .event({ ec: "api", ea: "/" })
+        .event({ec: "api", ea: "/"})
         .send();
 };
+
