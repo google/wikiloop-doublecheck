@@ -85,7 +85,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
   import socket from '~/plugins/socket.io.js';
   import languages from '~/locales/languages.js';
 
@@ -101,7 +101,7 @@
       commitFlagsFromUrlQuery: function(query) {
         for (let k in query) {
           let v = query[k];
-          if (v === "1" | v === "true") v = true; // convert to native boolean
+          if (v === "1" || v === "true") v = true; // convert to native boolean
           else if (v==="0" || v==="false") v = false;
           this.$store.commit(`setFlag`, {key: k, value: v});
         }
@@ -146,6 +146,7 @@
       this.commitFlagsFromUrlQuery(this.$route.query);
       this.stats = await this.$axios.$get(`/api/stats`);
       socket.on('live-users-update', async (liveUsers) => {
+      
         this.$store.commit(`setLiveUsers`, liveUsers);
       });
       document.addEventListener('stats-update', async () => {
@@ -169,7 +170,7 @@
               });
         }
       });
-      let userIdInfo = {};
+      let userIdInfo:any = {};
       userIdInfo.userGaId = this.$cookiez.get('_ga');
 
       if (this.$store.state.user && this.$store.state.user.profile) {

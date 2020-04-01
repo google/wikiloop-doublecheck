@@ -162,7 +162,7 @@ between Client-Side-Rendering and Server-Side-Rendering -->
   </section>
 
 </template>
-<script>
+<script lang="ts">
   import {  fetchDiffWithWikiRevId, supportedWikis, getUrlBaseByWiki } from '@/shared/utility-shared';
   import DiffBox from '~/components/DiffBox.vue';
   import socket from '~/plugins/socket.io.js';
@@ -303,7 +303,7 @@ between Client-Side-Rendering and Server-Side-Rendering -->
                 rvlimit: 10,
               }
             }});
-          let revisions = Object.values(result.query.pages)[0].revisions;
+          let revisions = Object.values(result.query.pages)[0]['revisions'];
           if (revisions[1].user === revisions[0].user) {
             window.open(historyUrl, '_blank');
             this.$ga.event({
@@ -330,7 +330,7 @@ between Client-Side-Rendering and Server-Side-Rendering -->
         this.myJudgement = myJudgement;
         let revision = this.revision;
         let gaId = this.$cookiez.get("_ga");
-        let postBody = {
+        let postBody:any = {
           gaId: gaId, // Deprecated
           userGaId: gaId,
           judgement: myJudgement,

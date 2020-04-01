@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-enum GoodEnum {
+export enum GoodEnum {
   Good,
   VeryGood
 }
@@ -30,7 +30,7 @@ export const wikiToDomain = {
   "wikidatawiki": "wikidata.org",
   "zhwiki": "zh.wikipedia.org",
 };
-export const getUrlBaseByWiki = function(wiki) {
+export let getUrlBaseByWiki = function(wiki) {
     return `http://${wikiToDomain[wiki]}`;
 };
 
@@ -38,7 +38,7 @@ export const getUrlBaseByWiki = function(wiki) {
    * @param wikiRevId a string of wiki:revId
    * @returns {Promise<String>}
    */
-export const fetchDiffWithWikiRevId = async function(wikiRevId, $axios) {
+export let fetchDiffWithWikiRevId = async function(wikiRevId, $axios) {
     let wiki = wikiRevId.split(`:`)[0];
     let revId = wikiRevId.split(`:`)[1];
     let diffApiUrl = `/api/diff/${wiki}:${revId}`;

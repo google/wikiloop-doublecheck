@@ -120,12 +120,12 @@
     </div>
   </section>
 </template>
-<script>
-  import { shoutXXX, getUrlBaseByWiki, fetchDiffWithWikiRevId, supportedWikis } from '@/shared/utility-shared';
+<script lang="ts">
+  import { getUrlBaseByWiki, fetchDiffWithWikiRevId } from '~/shared/utility-shared';
   import BootstrapVue from 'bootstrap-vue';
   import VueTimeago from 'vue-timeago';
   import languages from '~/locales/languages.js';
-
+  console.log(`Start leaderboard!`);
   const $ = require('jquery');
 
   export default {
@@ -152,6 +152,8 @@
     },
     mounted() {
       this.$ga.page('/leaderboard.vue'); // track page
+
+      console.log(`Start leaderboard!`);
     },
     beforeCreate() {
       this.getUrlBaseByWiki = getUrlBaseByWiki.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
