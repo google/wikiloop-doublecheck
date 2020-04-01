@@ -19,6 +19,7 @@ import { diff, diffWikiRevId } from './diff';
 import { avatar } from './avatar';
 import { getInteraction, listInteractions, updateInteraction } from './interaction';
 import { listRecentChanges } from './recentchanges';
+import {version } from './version';
 const { ores, oresWikiRevId } = require('./ores');
 const { revision, revisionWikiRevId } = require('./revision');
 const { listLabels } = require('./label');
@@ -28,7 +29,6 @@ const { basic, labelsTimeSeries, champion } = require('./stats');
 const { latest, latestRevs } = require('./latest');
 
 const mediawiki = require('./mediawiki');
-const version = require('./version');
 
 export default {
     basic, labelsTimeSeries, champion,

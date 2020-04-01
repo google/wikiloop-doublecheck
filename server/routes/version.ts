@@ -12,10 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-module.exports = (req, res, next) => {
+export const version = async (req, res) => {
     var packageson = require('./../../package.json');
     res.send(packageson.version);
     req.visitor
         .event({ ec: "api", ea: "/" })
         .send();
-}
+};

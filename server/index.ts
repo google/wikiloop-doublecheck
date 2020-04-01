@@ -139,7 +139,7 @@ function setupApiRequestListener(db, io, app) {
 
   apiRouter.use(cache('1 week', onlyGet));
 
-  apiRouter.get('/', routes.root);
+  apiRouter.get('/', asyncHandler(routes.root));
 
   apiRouter.get('/diff/:wikiRevId', asyncHandler(routes.diffWikiRevId));
 
@@ -187,11 +187,11 @@ function setupApiRequestListener(db, io, app) {
 
   apiRouter.get('/latestRevs', asyncHandler(routes.latestRevs));
 
-  apiRouter.get('/flags', routes.flags);
+  apiRouter.get('/flags', asyncHandler(routes.flags));
 
   apiRouter.get('/mediawiki', asyncHandler(routes.mediawiki));
 
-  apiRouter.get('/version', routes.version);
+  apiRouter.get('/version', asyncHandler(routes.version));
   apiRouter.get('/test', (req, res) => { res.send('test ok')});
 
   app.use(`/api`, apiRouter);
