@@ -16,6 +16,7 @@ import { flags } from './flags';
 
 import { root } from './root';
 import { diff, diffWikiRevId } from './diff';
+import { avatar } from './avatar';
 const { listRecentChanges } = require('./recentchanges');
 const { ores, oresWikiRevId } = require('./ores');
 const { revision, revisionWikiRevId } = require('./revision');
@@ -24,7 +25,6 @@ const { listLabels } = require('./label');
 const { markedRevsCsv, markedCsv, markedRevs, marked } = require('./marked');
 const leaderboard = require('./leaderboard');
 const { basic, labelsTimeSeries, champion } = require('./stats');
-const avatar = require('./avatar');
 const { latest, latestRevs } = require('./latest');
 
 const mediawiki = require('./mediawiki');
