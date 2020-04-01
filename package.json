@@ -103,8 +103,8 @@
     "webpack-hot-middleware": "^2.25.0"
   },
   "engines": {
-    "node": "10.16.0",
-    "npm": "6.10.0"
+    "node": "12.16.1",
+    "npm": "6.13.4"
   },
   "license": "Apache-2.0",
   "nodemonConfig": {
