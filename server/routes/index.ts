@@ -30,7 +30,7 @@ const { latest, latestRevs } = require('./latest');
 const mediawiki = require('./mediawiki');
 const version = require('./version');
 
-module.exports = {
+export default {
     basic, labelsTimeSeries, champion,
     root,
     diff,

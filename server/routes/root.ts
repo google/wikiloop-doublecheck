@@ -13,7 +13,7 @@
 // limitations under the License.
 
 export const root = async (req, res) => {
-    res.send('API root v4.0');
+    res.send('API root > v4.0 with typescript');
     req.visitor
         .event({ ec: "api", ea: "/" })
         .send();

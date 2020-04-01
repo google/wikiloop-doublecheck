@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 import {AwardBarnStarCronJob, UsageReportCronJob} from "../cronjobs";
+import routes from './routes';
 
 require(`dotenv`).config();
 const http = require('http');
@@ -22,7 +23,7 @@ const universalAnalytics = require('universal-analytics');
 const rp = require('request-promise');
 const mongoose = require('mongoose');
 const {logger, apiLogger, perfLogger, getUrlBaseByWiki, computeOresField, fetchRevisions, useOauth, isWhitelistedFor} = require('./common');
-const routes = require('./routes');
+
 const wikiToDomain = require("./urlMap").wikiToDomain;
 
 const asyncHandler = fn => (req, res, next) =>
