@@ -55,5 +55,4 @@ module.exports = {
     flags,
     mediawiki,
     version,
-    listLabels,
 }
