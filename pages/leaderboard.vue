@@ -121,7 +121,7 @@
   </section>
 </template>
 <script>
-  import { getUrlBaseByWiki, fetchDiffWithWikiRevId, supportedWikis } from '@/shared/utility-shared';
+  import { shoutXXX, getUrlBaseByWiki, fetchDiffWithWikiRevId, supportedWikis } from '@/shared/utility-shared';
   import BootstrapVue from 'bootstrap-vue';
   import VueTimeago from 'vue-timeago';
   import languages from '~/locales/languages.js';
