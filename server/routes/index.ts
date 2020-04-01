@@ -24,7 +24,7 @@ const leaderboard = require('./leaderboard');
 const { basic, labelsTimeSeries, champion } = require('./stats');
 const avatar = require('./avatar');
 const { latest, latestRevs } = require('./latest');
-const flags = require('./flags');
+const { flags } = require('./flags');
 const mediawiki = require('./mediawiki');
 const version = require('./version');
 

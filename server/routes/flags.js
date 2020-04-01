@@ -16,13 +16,16 @@ const { useOauth, isEmpty } = require('../common');
 
 const useStiki = !isEmpty(process.env.STIKI_MYSQL);
 
-module.exports = (req, res, next) => {
-    res.send({
-        useStiki: useStiki,
-        useOauth: useOauth,
-        useDirectRevert: process.env.DIRECT_REVERT === '1'
-    });
-    req.visitor
-        .event({ ec: "api", ea: "/" })
-        .send();
+module.exports = {
+    flags: async (req, res) => {
+        res.send({
+            flagDEBUGXXX: "debug 111",
+            useStiki: useStiki,
+            useOauth: useOauth,
+            useDirectRevert: process.env.DIRECT_REVERT === '1'
+        });
+        req.visitor
+            .event({ec: "api", ea: "/"})
+            .send();
+    }
 };
