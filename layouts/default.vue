@@ -146,7 +146,6 @@
       this.commitFlagsFromUrlQuery(this.$route.query);
       this.stats = await this.$axios.$get(`/api/stats`);
       socket.on('live-users-update', async (liveUsers) => {
-      
         this.$store.commit(`setLiveUsers`, liveUsers);
       });
       document.addEventListener('stats-update', async () => {

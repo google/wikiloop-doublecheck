@@ -18,7 +18,6 @@ const useStiki = !isEmpty(process.env.STIKI_MYSQL);
 
 export const flags = async (req, res) => {
     res.send({
-        flagDEBUGXXX: "debug 888",
         useStiki: useStiki,
         useOauth: useOauth,
         useDirectRevert: process.env.DIRECT_REVERT === '1'
