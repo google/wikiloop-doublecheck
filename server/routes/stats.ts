@@ -13,7 +13,7 @@
 // limitations under the License.
 
 const mongoose = require('mongoose');
-const { logger } = require('../common');
+import { logger } from '../common';
 const ANONYMOUS_PLACEHOLDER = `(anonymous)`;
 const championQuery = function(timeRange, endDate, wiki) {
   let utcEndTime;

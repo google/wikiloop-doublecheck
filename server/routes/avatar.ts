@@ -12,10 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import { logger } from '../common';
 const Avatars = require('@dicebear/avatars').default;
 const sprites = require('@dicebear/avatars-identicon-sprites').default;
 const avatars = new Avatars(sprites, {});
-const { logger } = require('../common');
 
 export const avatar = async (req, res) => {
     logger.debug(`avatar requested with seed`, req.params.seed);

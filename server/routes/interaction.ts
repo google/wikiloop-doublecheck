@@ -14,7 +14,7 @@
 
 const apicache = require('apicache');
 const mongoose = require('mongoose');
-const { logger, getNewJudgementCounts } = require('../common');
+import { logger, getNewJudgementCounts } from '../common';
 
 export const getInteraction = async (req, res) => {
     let wikiRevId = req.params.wikiRevId;

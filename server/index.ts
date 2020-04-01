@@ -13,6 +13,7 @@
 // limitations under the License.
 import {AwardBarnStarCronJob, UsageReportCronJob} from "../cronjobs";
 import routes from './routes';
+import {logger, apiLogger, perfLogger, computeOresField, fetchRevisions, useOauth, isWhitelistedFor} from './common';
 
 require(`dotenv`).config();
 const http = require('http');
@@ -22,7 +23,6 @@ const {Nuxt, Builder} = require('nuxt');
 const universalAnalytics = require('universal-analytics');
 const rp = require('request-promise');
 const mongoose = require('mongoose');
-const {logger, apiLogger, perfLogger, getUrlBaseByWiki, computeOresField, fetchRevisions, useOauth, isWhitelistedFor} = require('./common');
 
 const wikiToDomain = require("./urlMap").wikiToDomain;
 

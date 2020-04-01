@@ -12,10 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import { logger } from '../common';
+
 const wikiToDomain = require("../urlMap").wikiToDomain;
 
 const rp = require(`request-promise`);
-const { logger } = require('../common');
 
 export const diffWikiRevId = async (req, res) => {
     logger.debug(`req.query`, req.query);

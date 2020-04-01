@@ -13,7 +13,7 @@
 // limitations under the License.
 
 const rp = require('request-promise');
-const { computeOresFieldNew, wikiRevIdsGroupByWiki, apiLogger } = require('../common');
+import { computeOresFieldNew, wikiRevIdsGroupByWiki, apiLogger } from '../common';
 
 /** Function to fetch ORES, if unavailable, cover the error and replace score with null
  * There are two main reasons ORES scores are unavailable:

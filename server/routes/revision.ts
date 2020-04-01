@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-const { fetchRevisions } = require('../common');
+import { fetchRevisions } from '../common';
 
 export const revision = async (req, res) => {
     let wikiRevIds = req.query.wikiRevIds;

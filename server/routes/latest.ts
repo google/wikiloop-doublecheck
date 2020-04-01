@@ -14,8 +14,8 @@
 
 const wikiToDomain = require("../urlMap").wikiToDomain;
 
+import { perfLogger, apiLogger } from '../common';
 const rp = require('request-promise');
-const { perfLogger, apiLogger } = require('../common');
 
 /**
  * @deprecated use `listRecentChanges` instead.

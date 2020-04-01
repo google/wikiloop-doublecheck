@@ -15,7 +15,7 @@
 const wikiToDomain = require("../urlMap").wikiToDomain;
 
 const rp = require('request-promise');
-const { perfLogger, apiLogger } = require('../common');
+import { perfLogger, apiLogger } from '../common';
 
 /**
  * @param req, supporting query

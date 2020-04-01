@@ -16,16 +16,16 @@ const wikiToDomain = require("./urlMap").wikiToDomain;
 
 const rp = require('request-promise');
 var log4js = require('log4js');
-var logger = log4js.getLogger(`default`);
+export var logger = log4js.getLogger(`default`);
 logger.level = process.env.LOG_LEVEL || 'debug';
 
-var apiLogger = log4js.getLogger(`api`);
+export var apiLogger = log4js.getLogger(`api`);
 apiLogger.level = process.env.LOG_LEVEL || 'debug';
 
-var perfLogger = log4js.getLogger(`perf`);
+export var perfLogger = log4js.getLogger(`perf`);
 perfLogger.level = process.env.LOG_LEVEL || 'debug';
 
-async function isWhitelistedFor(featureName, wikiUserName) {
+export async function isWhitelistedFor(featureName, wikiUserName) {
   const mongoose = require('mongoose');
   let db = mongoose.connection.db;
   console.log(`featureName`, featureName, "wikiUserName", wikiUserName);
@@ -43,7 +43,7 @@ async function isWhitelistedFor(featureName, wikiUserName) {
  * @param revId
  * @return {{badfaithScore: *, damagingScore: *, badfaith: *, damaging: *, wikiRevId: string}}
  */
-function computeOresField(oresJson, wiki, revId) {
+export function computeOresField(oresJson, wiki, revId) {
     let damagingScore = oresJson.damagingScore || (oresJson[wiki].scores[revId].damaging.score && oresJson[wiki].scores[revId].damaging.score.probability.true);
     let badfaithScore = oresJson.badfaithScore || (oresJson[wiki].scores[revId].goodfaith.score && oresJson[wiki].scores[revId].goodfaith.score.probability.false);
     let damaging = oresJson.damaging || (oresJson[wiki].scores[revId].damaging.score && oresJson[wiki].scores[revId].damaging.score.prediction);
@@ -56,8 +56,8 @@ function computeOresField(oresJson, wiki, revId) {
         badfaith: badfaith
     }
 }
-function computeOresFieldNew(oresJson, wiki, revId) {
-  let ret = {};
+export function computeOresFieldNew(oresJson, wiki, revId) {
+  let ret:any = {};
   let damagingScore = oresJson.damagingScore || (oresJson[wiki].scores[revId].damaging.score && oresJson[wiki].scores[revId].damaging.score.probability.true);
   let badfaithScore = oresJson.badfaithScore || (oresJson[wiki].scores[revId].goodfaith.score && oresJson[wiki].scores[revId].goodfaith.score.probability.false);
   ret.wikiRevId = `${wiki}:${revId}`;
@@ -70,7 +70,7 @@ function computeOresFieldNew(oresJson, wiki, revId) {
   return ret;
 }
 
-async function fetchRevisions(wikiRevIds) {
+export async function fetchRevisions(wikiRevIds) {
     let wikiToRevIdList = wikiRevIdsGroupByWiki(wikiRevIds);
 
     let wikiToRevisionList = {};
@@ -171,7 +171,7 @@ async function fetchRevisions(wikiRevIds) {
     return wikiToRevisionList;
 }
 
-async function getNewJudgementCounts(db, matcher = {}, offset = 0, limit = 10) {
+export async function getNewJudgementCounts(db, matcher = {}, offset = 0, limit = 10) {
     return await db.collection(`Interaction`).aggregate([
         {
             $match: matcher
@@ -331,13 +331,13 @@ async function getNewJudgementCounts(db, matcher = {}, offset = 0, limit = 10) {
      */
 }
 
-function isEmpty(value) {
+export function isEmpty(value) {
     return typeof value == 'string' && !value.trim() || typeof value == 'undefined' || value === null;
 }
 
-const useOauth = !isEmpty(process.env.MEDIAWIKI_CONSUMER_SECRET) && !isEmpty(process.env.MEDIAWIKI_CONSUMER_KEY);
+export const useOauth = !isEmpty(process.env.MEDIAWIKI_CONSUMER_SECRET) && !isEmpty(process.env.MEDIAWIKI_CONSUMER_KEY);
 
-function wikiRevIdsGroupByWiki(wikiRevIds) {
+export function wikiRevIdsGroupByWiki(wikiRevIds) {
     let wikiToRevIdList = {};
     wikiRevIds.forEach((wikiRevId) => {
         let wiki = wikiRevId.split(':')[0];
@@ -349,17 +349,3 @@ function wikiRevIdsGroupByWiki(wikiRevIds) {
     });
     return wikiToRevIdList;
 }
-
-module.exports = {
-    logger,
-    apiLogger,
-    perfLogger,
-    computeOresField,
-    computeOresFieldNew,
-    fetchRevisions,
-    getNewJudgementCounts,
-    useOauth,
-    isEmpty,
-    wikiRevIdsGroupByWiki,
-    isWhitelistedFor
-};
