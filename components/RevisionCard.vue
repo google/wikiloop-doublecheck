@@ -179,8 +179,8 @@
   </section>
 
 </template>
-<script>
-  import utility from '~/shared/utility';
+<script lang="ts">
+  import {  fetchDiffWithWikiRevId, supportedWikis, getUrlBaseByWiki } from '@/shared/utility-shared';
   import DiffBox from '~/components/DiffBox.vue';
   import socket from '~/plugins/socket.io.js';
   export default {
@@ -402,7 +402,7 @@
               rvlimit: 10,
             }
           }});
-          let revisions = Object.values(result.query.pages)[0].revisions;
+          let revisions = Object.values(result.query.pages)[0]['revisions'];
           if (revisions[1].user === revisions[0].user) {
             window.open(historyUrl, '_blank');
             this.$ga.event({
@@ -429,7 +429,7 @@
         this.myJudgement = myJudgement;
         let revision = this.revision;
         let gaId = this.$cookiez.get("_ga");
-        let postBody = {
+        let postBody:any = {
           gaId: gaId, // Deprecated
           userGaId: gaId,
           judgement: myJudgement,
@@ -511,8 +511,8 @@
 
     },
     beforeCreate() {
-      this.getUrlBaseByWiki = utility.getUrlBaseByWiki.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
-      this.fetchDiffWithWikiRevId = utility.fetchDiffWithWikiRevId.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
+      this.getUrlBaseByWiki = getUrlBaseByWiki.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
+      this.fetchDiffWithWikiRevId = fetchDiffWithWikiRevId.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
     },
   }
 

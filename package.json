@@ -17,7 +17,7 @@
     "heroku-postbuild": "npm run build",
     "test-report": "jest --ci --runInBand --reporters=default --reporters=jest-junit",
     "ci": "circleci local execute build",
-    "dev:exec": "node --inspect=5858 -r ts-node/register ./server/index.ts"
+    "dev:exec": "ts-node ./server/index.ts"
   },
   "dependencies": {
     "@dicebear/avatars": "^4.0.2",

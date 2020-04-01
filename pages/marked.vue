@@ -40,7 +40,7 @@
   </section>
 
 </template>
-<script>
+<script lang="ts">
   import RevisionCard from '~/components/RevisionCard.vue';
 
   // Margin (in pixels) above the bottom of the screen at which new history entries begin to load.
@@ -63,7 +63,7 @@
     methods: {
       loadMore: async function () {
         this.loading = true;
-        let params = {
+        let params:any = {
           offset: this.offset,
           limit: this.limit,
         };

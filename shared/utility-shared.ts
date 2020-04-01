@@ -12,9 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// TODO(xinbenlv): merge with urlMap on the server side.
-// blocked by https://github.com/google/wikiloop-battlefield/issues/105
-const _wikiToDomain = {
+export enum GoodEnum {
+  Good,
+  VeryGood
+}
+
+export const wikiToDomain = {
   "afwiki": "af.wikipedia.org",
   "dewiki": "de.wikipedia.org",
   "enwiki": "en.wikipedia.org",
@@ -25,24 +28,25 @@ const _wikiToDomain = {
   "ruwiki": "ru.wikipedia.org",
   "trwiki": "tr.wikipedia.org",
   "wikidatawiki": "wikidata.org",
-  "zhwiki": "zh.wikipedia.org", 
+  "zhwiki": "zh.wikipedia.org",
 };
-
-export default {
-  getUrlBaseByWiki: function(wiki) {
-    return `http://${_wikiToDomain[wiki]}`;
-  },
+export let getUrlBaseByWiki = function(wiki) {
+    return `http://${wikiToDomain[wiki]}`;
+};
 
   /**
    * @param wikiRevId a string of wiki:revId
    * @returns {Promise<String>}
    */
-  fetchDiffWithWikiRevId: async function(wikiRevId, $axios) {
+export let fetchDiffWithWikiRevId = async function(wikiRevId, $axios) {
     let wiki = wikiRevId.split(`:`)[0];
     let revId = wikiRevId.split(`:`)[1];
     let diffApiUrl = `/api/diff/${wiki}:${revId}`;
     let diffJson = await $axios.$get(diffApiUrl);
     return diffJson;
-  },
-  supportedWikis: Object.keys(_wikiToDomain)
 };
+export const supportedWikis = Object.keys(wikiToDomain);
+
+export const E_NUM = 2.76;
+
+export const isItGood:GoodEnum = GoodEnum.Good;

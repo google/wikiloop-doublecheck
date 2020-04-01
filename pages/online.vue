@@ -46,7 +46,7 @@
     </table>
   </section>
 </template>
-<script>
+<script lang="ts">
   export default {
     layout: 'default', // not using any layout
     methods: {

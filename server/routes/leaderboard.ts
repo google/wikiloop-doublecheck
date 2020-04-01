@@ -106,7 +106,7 @@ async function getAnonymousLeaderList() {
           "userGaId": {$ne: null},
           "wikiUserName": {$exists: false},
           "timestamp": {
-            $gte: parseInt((new Date().getTime() / 1000) - (30 * 24 * 3600))
+            $gte: (new Date().getTime() / 1000) - (30 * 24 * 3600)
           }
         }
       },
@@ -147,7 +147,7 @@ async function getAnonymousLeaderList() {
   ).toArray();
 }
 
-module.exports = async (req, res) => {
+export const leaderboard = async (req, res) => {
     let myGaId = req.body.gaId || req.cookies._ga;
 
     // TO-FUTURE-DO consider adding pagination if performance is a problem. We don't expect this list to be more than

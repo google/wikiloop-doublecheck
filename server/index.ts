@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 import {AwardBarnStarCronJob, UsageReportCronJob} from "../cronjobs";
+import routes from './routes';
+import {logger, apiLogger, perfLogger, computeOresField, fetchRevisions, useOauth, isWhitelistedFor} from './common';
 
 require(`dotenv`).config();
 const http = require('http');
@@ -21,9 +23,8 @@ const {Nuxt, Builder} = require('nuxt');
 const universalAnalytics = require('universal-analytics');
 const rp = require('request-promise');
 const mongoose = require('mongoose');
-const {logger, apiLogger, perfLogger, getUrlBaseByWiki, computeOresField, fetchRevisions, useOauth, isWhitelistedFor} = require('./common');
-const routes = require('./routes');
-const wikiToDomain = require("./urlMap").wikiToDomain;
+
+import {wikiToDomain} from "../shared/utility-shared";
 
 const asyncHandler = fn => (req, res, next) =>
     Promise
@@ -138,7 +139,7 @@ function setupApiRequestListener(db, io, app) {
 
   apiRouter.use(cache('1 week', onlyGet));
 
-  apiRouter.get('/', routes.root);
+  apiRouter.get('/', asyncHandler(routes.root));
 
   apiRouter.get('/diff/:wikiRevId', asyncHandler(routes.diffWikiRevId));
 
@@ -186,11 +187,11 @@ function setupApiRequestListener(db, io, app) {
 
   apiRouter.get('/latestRevs', asyncHandler(routes.latestRevs));
 
-  apiRouter.get('/flags', routes.flags);
+  apiRouter.get('/flags', asyncHandler(routes.flags));
 
   apiRouter.get('/mediawiki', asyncHandler(routes.mediawiki));
 
-  apiRouter.get('/version', routes.version);
+  apiRouter.get('/version', asyncHandler(routes.version));
   apiRouter.get('/test', (req, res) => { res.send('test ok')});
 
   app.use(`/api`, apiRouter);

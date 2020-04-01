@@ -12,10 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-module.exports = (req, res, next) => {
-    var packageson = require('./../../package.json');
-    res.send(packageson.version);
+export const root = async (req, res) => {
+    res.send('API root > v4.0 with typescript');
     req.visitor
         .event({ ec: "api", ea: "/" })
         .send();
-}
+};

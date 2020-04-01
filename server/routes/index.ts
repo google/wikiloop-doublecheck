@@ -12,23 +12,24 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-const root = require('./root');
-const { diff, diffWikiRevId } = require('./diff');
-const { listRecentChanges } = require('./recentchanges');
-const { ores, oresWikiRevId } = require('./ores');
-const { revision, revisionWikiRevId } = require('./revision');
-const { getInteraction, listInteractions, updateInteraction, interaction } = require('./interaction');
-const { listLabels } = require('./label');
-const { markedRevsCsv, markedCsv, markedRevs, marked } = require('./marked');
-const leaderboard = require('./leaderboard');
-const { basic, labelsTimeSeries, champion } = require('./stats');
-const avatar = require('./avatar');
-const { latest, latestRevs } = require('./latest');
-const flags = require('./flags');
-const mediawiki = require('./mediawiki');
-const version = require('./version');
+import { flags } from './flags';
 
-module.exports = {
+import { root } from './root';
+import { diff, diffWikiRevId } from './diff';
+import { avatar } from './avatar';
+import { getInteraction, listInteractions, updateInteraction } from './interaction';
+import { listRecentChanges } from './recentchanges';
+import { version } from './version';
+import { listLabels } from './label';
+import { ores, oresWikiRevId } from './ores';
+import { mediawiki } from './mediawiki';
+import { revision, revisionWikiRevId } from './revision';
+import { markedRevsCsv, markedRevs } from './marked';
+import { latestRevs } from './latest';
+import { leaderboard } from './leaderboard';
+import { basic, labelsTimeSeries, champion } from './stats';
+
+export default {
     basic, labelsTimeSeries, champion,
     root,
     diff,
@@ -43,17 +44,12 @@ module.exports = {
     updateInteraction,
 
     listLabels,
-    interaction,
     markedRevsCsv,
-    markedCsv,
     markedRevs,
-    marked,
     leaderboard,
     avatar,
-    latest,
     latestRevs,
     flags,
     mediawiki,
     version,
-    listLabels,
-}
+};

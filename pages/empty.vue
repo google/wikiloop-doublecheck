@@ -22,9 +22,9 @@
 
     </section>
 </template>
-<script>
+<script lang="ts">
     export default {
-        layout: 'empty' // not using any layout
+        layout: 'empty', // not using any layout
     }
 </script>
 

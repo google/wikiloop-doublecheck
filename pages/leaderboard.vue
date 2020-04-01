@@ -120,12 +120,12 @@
     </div>
   </section>
 </template>
-<script>
-  import utility from '~/shared/utility';
+<script lang="ts">
+  import { getUrlBaseByWiki, fetchDiffWithWikiRevId } from '~/shared/utility-shared';
   import BootstrapVue from 'bootstrap-vue';
   import VueTimeago from 'vue-timeago';
   import languages from '~/locales/languages.js';
-
+  console.log(`Start leaderboard!`);
   const $ = require('jquery');
 
   export default {
@@ -152,10 +152,12 @@
     },
     mounted() {
       this.$ga.page('/leaderboard.vue'); // track page
+
+      console.log(`Start leaderboard!`);
     },
     beforeCreate() {
-      this.getUrlBaseByWiki = utility.getUrlBaseByWiki.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
-      this.fetchDiffWithWikiRevId = utility.fetchDiffWithWikiRevId.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
+      this.getUrlBaseByWiki = getUrlBaseByWiki.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
+      this.fetchDiffWithWikiRevId = fetchDiffWithWikiRevId.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
     },
   }
 </script>

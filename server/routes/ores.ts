@@ -13,7 +13,7 @@
 // limitations under the License.
 
 const rp = require('request-promise');
-const { computeOresFieldNew, wikiRevIdsGroupByWiki, apiLogger } = require('../common');
+import { computeOresFieldNew, wikiRevIdsGroupByWiki, apiLogger } from '../common';
 
 /** Function to fetch ORES, if unavailable, cover the error and replace score with null
  * There are two main reasons ORES scores are unavailable:
@@ -51,7 +51,7 @@ async function fetchOres(wikiRevIds) {
     return oresResults;
 };
 
-const ores = async (req, res) => {
+export const ores = async (req, res) => {
     let wikiRevIds = req.query.wikiRevIds;
     let ret = await fetchOres(wikiRevIds);
     res.send(ret);
@@ -60,7 +60,7 @@ const ores = async (req, res) => {
         .send();
 };
 
-const oresWikiRevId = async (req, res) => {
+export const oresWikiRevId = async (req, res) => {
     let wikiRevId = req.params.wikiRevId;
     let wiki = req.params.wikiRevId.split(':')[0];
     let ret = await fetchOres([wikiRevId]);
@@ -76,9 +76,4 @@ const oresWikiRevId = async (req, res) => {
     req.visitor
         .event({ ec: "api", ea: "/ores/:wikiRevId" })
         .send();
-};
-
-module.exports = {
-    ores,
-    oresWikiRevId
 };

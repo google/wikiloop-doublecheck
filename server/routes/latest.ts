@@ -12,32 +12,26 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-const wikiToDomain = require("../urlMap").wikiToDomain;
+import {wikiToDomain} from "../../shared/utility-shared";
 
+import { perfLogger, apiLogger } from '../common';
 const rp = require('request-promise');
-const { perfLogger, apiLogger } = require('../common');
 
 /**
+ * @deprecated use `listRecentChanges` instead.
  * @param req, supporting query
  *   req.query.wiki: the language of wikis being queried for.
- *   req.query.timestamp: the timestamp as boundary of recent change
- *   req.query.limit: the limit of request
- *   req.query.direction: enum of {newer, older} as in `rcdir` in
- *     MediaWiki Action API
+ *   req.query.startTime: the timestamp starting in UNIX Epo
  * @param res
  * @returns {Promise<void>}
  */
-
-const listRecentChanges = async (req, res) => {
+export const latestRevs = async (req, res) => {
   let startTime = new Date();
-
-  // TODO(zzn): create and use a common request/response error handler
   if (req.query.wiki && Object.keys(wikiToDomain).indexOf(req.query.wiki) < 0) {
     res.status(400);
     res.send(`Bad serverUrl, we only support ${Object.keys(wikiToDomain)}`);
     return;
   }
-
   let wiki = req.query.wiki || `frwiki`; // Default to french wiki
 
   // Getting a list of latest revisions related to the filter (Lang of Wiki), and their related diff
@@ -45,26 +39,11 @@ const listRecentChanges = async (req, res) => {
   // API document: https://www.mediawiki.org/w/api.php?action=help&modules=query%2Brecentchanges
 
   // It seems according to url.searchParams is not available in Microsoft Internet Explorer, we need to test it
-  let searchParams = new URLSearchParams(
-  {
-    "action": "query",
-    "format": "json",
-    "prop": "info",
-    "list": "recentchanges",
-    "rcnamespace": "0",
-    "rcprop": "user|userid|comment|flags|timestamp|ids|title|oresscores",
-    "rcshow": "!bot",
-    "rctype": "edit",
-    "rctoponly": 1
-  });
+  let url = new URL(`http://${wikiToDomain[wiki]}/w/api.php?action=query&list=recentchanges&prop=info&format=json&rcnamespace=0&rclimit=5&rctype=edit&rctoponly=true&rcprop=user|userid|comment|flags|timestamp|ids|title&rcshow=!bot`);
+  if (req.query.startTimestamp) url.searchParams.set(`rcstart`, new Date(parseInt(req.query.startTimestamp) * 1000).toISOString());
+  if (req.query.endTimestamp) url.searchParams.set(`rcend`, new Date(parseInt(req.query.endTimestamp) * 1000).toISOString());
 
-  if (req.query.direction ) searchParams.set(`rcdir`, req.query.direction);
-  if (req.query.timestamp ) searchParams.set(`rcstart`, req.query.timestamp);
-  if (req.query.limit) searchParams.set(`rclimit`, parseInt(req.query.limit));
-
-  let url = new URL(`http://${wikiToDomain[wiki]}/w/api.php?${searchParams.toString()}`);
-  apiLogger.info(`Requesting for Action API: ${url.toString()}`);
-  apiLogger.info(`Try sandbox request here: ${new URL(`http://${wikiToDomain[wiki]}/wiki/Special:ApiSandbox#${searchParams.toString()}`)}`);
+  apiLogger.info(`Request for Action API: ${url.toString()}`);
 
   let recentChangesJson = await rp.get(url.toString(), { json: true });
   let recentChangeResponseTime = new Date();
@@ -122,38 +101,21 @@ const listRecentChanges = async (req, res) => {
         },
         title: rawRecentChange.title,
         user: rawRecentChange.user,
-        wiki: `${wiki}`,
-        ores: rawRecentChange.oresscores,
-        timestamp: Math.floor(new Date(rawRecentChange.timestamp).getTime() / 1000),
+        wiki: `${wiki}`, // TODO verify
+        timestamp: Math.floor(new Date(rawRecentChange.timestamp).getTime() / 1000), // TODO check the exact format of timestamp. maybe use an interface?
         namespace: 0, // we already query the server with "rcnamespace=0" filter
         nonbot: true, // we already query the server with "rcprop=!bot" filter
         comment: rawRecentChange.comment,
-        interactions: []
       };
     });
-  const mongoose = require('mongoose');
-  const wikiRevIds = recentChanges.map(rc => rc.wikiRevId);
-  let interactions = await mongoose.connection.db.collection(`Interaction`).find({
-    wikiRevId: {$in: wikiRevIds}
-  }).toArray();
-
-  interactions.forEach(i => recentChanges.forEach(rc => {
-    if (i.wikiRevId === rc.wikiRevId) {
-      rc.interactions.push(i);
-    }
-  }));
-
   res.send(recentChanges.reverse());
 
   let endTime = new Date();
   req.visitor
-    .event({ ec: "api", ea: "/recentchanges/list" })
-    .timing(`/api/recentchanges/list`, 'Response delay for /api/recentchanges/list', endTime.getTime() - startTime.getTime())
-    .timing(`/api/recentchanges/list - recentChange`, 'Response delay for /api/latestRevs recentChange', recentChangeResponseTime.getTime() - startTime.getTime())
+    .event({ ec: "api", ea: "/latestRevs" })
+    .timing(`/api/latestRevs`, 'Response delay for /api/latestRevs', endTime.getTime() - startTime.getTime())
+    .timing(`/api/latestRevs - recentChange`, 'Response delay for /api/latestRevs recentChange', recentChangeResponseTime.getTime() - startTime.getTime())
     .send();
-  perfLogger.debug(`Response delay for /api/recentchanges/list = ${endTime.getTime() - startTime.getTime()}`);
-  perfLogger.debug(`Response delay for /api/recentchanges/list = ${recentChangeResponseTime.getTime() - startTime.getTime()}`);
-};
-module.exports = {
-  listRecentChanges
+  perfLogger.info(`Response delay for /api/latestRevs = ${endTime.getTime() - startTime.getTime()}`);
+  perfLogger.info(`Response delay for /api/latestRevs recentChange = ${recentChangeResponseTime.getTime() - startTime.getTime()}`);
 };
