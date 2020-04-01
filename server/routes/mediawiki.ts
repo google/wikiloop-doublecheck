@@ -13,7 +13,7 @@
 // limitations under the License.
 
 import { apiLogger } from '../common';
-const wikiToDomain = require("../urlMap").wikiToDomain;
+import {wikiToDomain} from "../../shared/utility-shared";
 const rp = require('request-promise');
 
 export const mediawiki = async (req, res) => {

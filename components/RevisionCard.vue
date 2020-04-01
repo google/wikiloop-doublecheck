@@ -180,7 +180,7 @@
 
 </template>
 <script>
-  import utility from '~/shared/utility';
+  import {  fetchDiffWithWikiRevId, supportedWikis, getUrlBaseByWiki } from '@/shared/utility-shared';
   import DiffBox from '~/components/DiffBox.vue';
   import socket from '~/plugins/socket.io.js';
   export default {
@@ -511,8 +511,8 @@
 
     },
     beforeCreate() {
-      this.getUrlBaseByWiki = utility.getUrlBaseByWiki.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
-      this.fetchDiffWithWikiRevId = utility.fetchDiffWithWikiRevId.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
+      this.getUrlBaseByWiki = getUrlBaseByWiki.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
+      this.fetchDiffWithWikiRevId = fetchDiffWithWikiRevId.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
     },
   }
 

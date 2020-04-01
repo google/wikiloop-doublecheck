@@ -14,7 +14,7 @@
 
 import { logger } from '../common';
 
-const wikiToDomain = require("../urlMap").wikiToDomain;
+import {wikiToDomain} from "../../shared/utility-shared";
 
 const rp = require(`request-promise`);
 

@@ -32,10 +32,10 @@
         "node_modules"
     ],
     "include": [
-        "src/**/*.ts",
-        "src/**/*.vue"
+        "./**/*.ts",
+        "./**/*.vue"
     ],
     "files": [
-        "vue-shims.d.ts"
+        "vue-shim.d.ts"
     ]
 }

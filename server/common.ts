@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-const wikiToDomain = require("./urlMap").wikiToDomain;
+import { wikiToDomain } from "../shared/utility-shared";
 
 const rp = require('request-promise');
 var log4js = require('log4js');

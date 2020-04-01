@@ -32,7 +32,7 @@
 <script>
 
   import StaticRevisionCard from '~/components/StaticRevisionCard.vue';
-  import utility from '../../../shared/utility';
+  import {  fetchDiffWithWikiRevId, supportedWikis } from '@/shared/utility-shared';
   export default {
     components: {
       StaticRevisionCard
@@ -74,7 +74,7 @@
           },
         };
       }
-      const diff = await utility.fetchDiffWithWikiRevId(wikiRevId, $axios);
+      const diff = await fetchDiffWithWikiRevId(wikiRevId, $axios);
       return { ores, revision, interaction, diff };
     },
     /** Validate the parameters.
@@ -85,7 +85,7 @@
      * @return {boolean}
      */
     validate ({ params }) {
-      return (utility.supportedWikis.indexOf(params.wiki) >= 0) && /\d+/.test(params.revid);
+      return (supportedWikis.indexOf(params.wiki) >= 0) && /\d+/.test(params.revid);
     },
     mounted() {
       this.$ga.page('/revision.vue'); // track page

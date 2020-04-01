@@ -121,7 +121,7 @@
   </section>
 </template>
 <script>
-  import utility from '~/shared/utility';
+  import { getUrlBaseByWiki, fetchDiffWithWikiRevId, supportedWikis } from '@/shared/utility-shared';
   import BootstrapVue from 'bootstrap-vue';
   import VueTimeago from 'vue-timeago';
   import languages from '~/locales/languages.js';
@@ -154,8 +154,8 @@
       this.$ga.page('/leaderboard.vue'); // track page
     },
     beforeCreate() {
-      this.getUrlBaseByWiki = utility.getUrlBaseByWiki.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
-      this.fetchDiffWithWikiRevId = utility.fetchDiffWithWikiRevId.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
+      this.getUrlBaseByWiki = getUrlBaseByWiki.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
+      this.fetchDiffWithWikiRevId = fetchDiffWithWikiRevId.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
     },
   }
 </script>

@@ -24,7 +24,7 @@ const universalAnalytics = require('universal-analytics');
 const rp = require('request-promise');
 const mongoose = require('mongoose');
 
-const wikiToDomain = require("./urlMap").wikiToDomain;
+import {wikiToDomain} from "../shared/utility-shared";
 
 const asyncHandler = fn => (req, res, next) =>
     Promise

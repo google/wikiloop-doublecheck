@@ -163,7 +163,7 @@ between Client-Side-Rendering and Server-Side-Rendering -->
 
 </template>
 <script>
-  import utility from '~/shared/utility';
+  import {  fetchDiffWithWikiRevId, supportedWikis, getUrlBaseByWiki } from '@/shared/utility-shared';
   import DiffBox from '~/components/DiffBox.vue';
   import socket from '~/plugins/socket.io.js';
   export default {
@@ -386,8 +386,8 @@ between Client-Side-Rendering and Server-Side-Rendering -->
       });
     },
     beforeCreate() {
-      this.getUrlBaseByWiki = utility.getUrlBaseByWiki.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
-      this.fetchDiffWithWikiRevId = utility.fetchDiffWithWikiRevId.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
+      this.getUrlBaseByWiki = getUrlBaseByWiki.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
+      this.fetchDiffWithWikiRevId = fetchDiffWithWikiRevId.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
     },
 
   }
