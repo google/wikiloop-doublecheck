@@ -25,7 +25,7 @@ const { perfLogger, apiLogger } = require('../common');
  * @param res
  * @returns {Promise<void>}
  */
-const latestRevs = async (req, res) => {
+export const latestRevs = async (req, res) => {
   let startTime = new Date();
   if (req.query.wiki && Object.keys(wikiToDomain).indexOf(req.query.wiki) < 0) {
     res.status(400);
@@ -118,7 +118,4 @@ const latestRevs = async (req, res) => {
     .send();
   perfLogger.info(`Response delay for /api/latestRevs = ${endTime.getTime() - startTime.getTime()}`);
   perfLogger.info(`Response delay for /api/latestRevs recentChange = ${recentChangeResponseTime.getTime() - startTime.getTime()}`);
-};
-module.exports = {
-  latestRevs
 };

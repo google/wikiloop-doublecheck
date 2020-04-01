@@ -25,9 +25,9 @@ import { ores, oresWikiRevId } from './ores';
 import { mediawiki } from './mediawiki';
 import { revision, revisionWikiRevId } from './revision';
 import { markedRevsCsv, markedRevs } from './marked';
-const leaderboard = require('./leaderboard');
-const { basic, labelsTimeSeries, champion } = require('./stats');
-const { latest, latestRevs } = require('./latest');
+import { latestRevs } from './latest';
+import { leaderboard } from './leaderboard';
+import { basic, labelsTimeSeries, champion } from './stats';
 
 export default {
     basic, labelsTimeSeries, champion,
@@ -48,7 +48,6 @@ export default {
     markedRevs,
     leaderboard,
     avatar,
-    latest,
     latestRevs,
     flags,
     mediawiki,

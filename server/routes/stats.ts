@@ -19,7 +19,7 @@ const championQuery = function(timeRange, endDate, wiki) {
   let utcEndTime;
   if (/20\d\d-\d\d-\d\d/.test(endDate)) {
     utcEndTime = new Date(endDate).getTime()/1000;
-  } else if (/\d+/.test(endDate) && 
+  } else if (/\d+/.test(endDate) &&
       parseInt(endDate) <= new Date('2099-01-01').getTime()/1000 && // WE WILL EXLODE in 2099!
       parseInt(endDate) >= new Date('2015-01-01').getTime()/1000
   ) {
@@ -37,12 +37,12 @@ const championQuery = function(timeRange, endDate, wiki) {
     days = 365; // for simplicity
   }
   return [
-    { 
+    {
       $match: {
         // wikiUserName: {$exists: true},
         timestamp: {
           $exists: true,
-          $lt: utcEndTime, 
+          $lt: utcEndTime,
           $gte: utcEndTime - (3600 * 24 * days)
         },
         "recentChange.wiki": wiki ? wiki: {$exists:true}, // For now we only count individual wiki. There will be time we change it to also count global wiki.
@@ -60,16 +60,16 @@ const championQuery = function(timeRange, endDate, wiki) {
 
 /**
  * Generate the champion list given a end date,  time range and wiki.
- * @param {Ge} timeRange 
- * @param {*} endDate 
- * @param {*} wiki 
+ * @param {Ge} timeRange
+ * @param {*} endDate
+ * @param {*} wiki
  */
-const getChampion = async function(timeRange, endDate, wiki) {
+export const getChampion = async function(timeRange, endDate, wiki) {
   let query = championQuery(timeRange, endDate, wiki);
   let ret = await mongoose.connection.db.collection(`Interaction`).aggregate(query).toArray();
   return ret;
 }
-const champion = async (req, res) => {
+export const champion = async (req, res) => {
   let ret = await getChampion(req.query.timeRange || 'week', req.query.endDate || '2020-02-01', req.wiki || null);
   if (req.query.cmd) {
     if (ret.length) {
@@ -88,7 +88,7 @@ const champion = async (req, res) => {
   }
 }
 
-const labelsTimeSeries = async (req, res) => {
+export const labelsTimeSeries = async (req, res) => {
   let labelsTimeSeries = await mongoose.connection.db.collection(`Interaction`)
     .aggregate([
       { $match: {timestamp: {$exists: true}}},
@@ -115,7 +115,7 @@ const labelsTimeSeries = async (req, res) => {
 };
 
 
-const basic = async (req, res) => {
+export const basic = async (req, res) => {
     let myGaId = req.body.gaId || req.cookies._ga;
     logger.debug(`req.query`, req.query);
     let allInteractions = await mongoose.connection.db.collection(`Interaction`)
@@ -126,7 +126,7 @@ const basic = async (req, res) => {
         }).toArray();
     let revSet = {};
     allInteractions.forEach(item => revSet[item.wikiRevId] = true);
-    let ret = {
+    let ret:any = {
         totalJudgement: allInteractions.length,
         totalRevJudged: Object.keys(revSet).length,
         totalShouldRevert: allInteractions.filter(i => i.judgement === "ShouldRevert").length,
