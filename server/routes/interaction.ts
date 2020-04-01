@@ -16,7 +16,7 @@ const apicache = require('apicache');
 const mongoose = require('mongoose');
 const { logger, getNewJudgementCounts } = require('../common');
 
-const getInteraction = async (req, res) => {
+export const getInteraction = async (req, res) => {
     let wikiRevId = req.params.wikiRevId;
     let interactions = await getNewJudgementCounts(mongoose.connection.db,
         // {
@@ -47,10 +47,10 @@ const getInteraction = async (req, res) => {
         .send();
 };
 
-const listInteractions = async (req, res) => {
+export const listInteractions = async (req, res) => {
     let limit = parseInt(req.query.limit) || 10;
     let offset = parseInt(req.query.offset) || 0;
-    let matcher = {};
+    let matcher:any = {};
     if (req.query.wikiRevIds) {
         matcher.wikiRevId = { $in: req.query.wikiRevIds }
     }
@@ -68,7 +68,7 @@ const listInteractions = async (req, res) => {
         .send();
 };
 
-const updateInteraction = async (req, res) => {
+export const updateInteraction = async (req, res) => {
     const io = req.app.get('socketio');
     let userGaId = req.body.gaId;
     let wikiRevId = req.params.wikiRevId;
@@ -114,10 +114,4 @@ const updateInteraction = async (req, res) => {
         .event({ ec: "api", ea: "/interaction" })
         .event("judgement", req.body.judgement)
         .send();
-};
-
-module.exports = {
-    getInteraction,
-    listInteractions,
-    updateInteraction
 };

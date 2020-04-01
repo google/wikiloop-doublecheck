@@ -17,10 +17,10 @@ import { flags } from './flags';
 import { root } from './root';
 import { diff, diffWikiRevId } from './diff';
 import { avatar } from './avatar';
-const { listRecentChanges } = require('./recentchanges');
+import { getInteraction, listInteractions, updateInteraction } from './interaction';
+import { listRecentChanges } from './recentchanges';
 const { ores, oresWikiRevId } = require('./ores');
 const { revision, revisionWikiRevId } = require('./revision');
-const { getInteraction, listInteractions, updateInteraction, interaction } = require('./interaction');
 const { listLabels } = require('./label');
 const { markedRevsCsv, markedCsv, markedRevs, marked } = require('./marked');
 const leaderboard = require('./leaderboard');
@@ -45,7 +45,6 @@ export default {
     updateInteraction,
 
     listLabels,
-    interaction,
     markedRevsCsv,
     markedCsv,
     markedRevs,

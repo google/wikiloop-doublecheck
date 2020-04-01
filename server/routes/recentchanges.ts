@@ -28,7 +28,7 @@ const { perfLogger, apiLogger } = require('../common');
  * @returns {Promise<void>}
  */
 
-const listRecentChanges = async (req, res) => {
+export const listRecentChanges = async (req, res) => {
   let startTime = new Date();
 
   // TODO(zzn): create and use a common request/response error handler
@@ -55,12 +55,12 @@ const listRecentChanges = async (req, res) => {
     "rcprop": "user|userid|comment|flags|timestamp|ids|title|oresscores",
     "rcshow": "!bot",
     "rctype": "edit",
-    "rctoponly": 1
+    "rctoponly": "1"
   });
 
   if (req.query.direction ) searchParams.set(`rcdir`, req.query.direction);
   if (req.query.timestamp ) searchParams.set(`rcstart`, req.query.timestamp);
-  if (req.query.limit) searchParams.set(`rclimit`, parseInt(req.query.limit));
+  if (req.query.limit) searchParams.set(`rclimit`, req.query.limit);
 
   let url = new URL(`http://${wikiToDomain[wiki]}/w/api.php?${searchParams.toString()}`);
   apiLogger.info(`Requesting for Action API: ${url.toString()}`);
@@ -153,7 +153,4 @@ const listRecentChanges = async (req, res) => {
     .send();
   perfLogger.debug(`Response delay for /api/recentchanges/list = ${endTime.getTime() - startTime.getTime()}`);
   perfLogger.debug(`Response delay for /api/recentchanges/list = ${recentChangeResponseTime.getTime() - startTime.getTime()}`);
-};
-module.exports = {
-  listRecentChanges
 };

@@ -1,15 +1,15 @@
-module.exports = {
+export const interaction = {
     /**
      * ExpressJS GET route for listing **Labels**
-     * 
-     * Note: **Label** refers to the judgement given by a WikiLoop Battlefield reviwer 
+     *
+     * Note: **Label** refers to the judgement given by a WikiLoop Battlefield reviwer
      * @param {*} req the request, with
      * @param {*} req.query.start the start of time-window to query for labels
      * @param {*} req.query.end the end of time-window to query for labels
      * @param {*} req.query.limit an integer for paginataion size, default to 1K
      * @param {*} req.query.offset an integer for offset of pagaination, default to 0
      * @param {*} res the response
-     * 
+     *
      * @public This endpoint has API clients, take extra caution when migrating
      */
     listLabels: async function (req, res) {
