@@ -12,6 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+enum GoodEnum {
+  Good,
+  VeryGood
+}
+
 export const wikiToDomain = {
   "afwiki": "af.wikipedia.org",
   "dewiki": "de.wikipedia.org",
@@ -41,3 +46,7 @@ export const fetchDiffWithWikiRevId = async function(wikiRevId, $axios) {
     return diffJson;
 };
 export const supportedWikis = Object.keys(wikiToDomain);
+
+export const E_NUM = 2.76;
+
+export const isItGood:GoodEnum = GoodEnum.Good;

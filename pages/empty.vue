@@ -22,9 +22,16 @@
 
     </section>
 </template>
-<script>
+<script lang="ts">
+    import * as utility from '~/shared/utility-shared';
+
     export default {
-        layout: 'empty' // not using any layout
+        layout: 'empty', // not using any layout
+
+        async mounted() {
+            console.log(`XXX Empty ${utility.E_NUM}`);
+            console.log(`XXX Empty ${utility.isItGood}`);
+        }
     }
 </script>
 
