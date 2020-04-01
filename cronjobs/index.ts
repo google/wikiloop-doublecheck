@@ -45,7 +45,7 @@ export class UsageReportCronJob {
         this.cronJob = new CronJob(cronTime/* 6am everyday */, async () => {
             mailCronLogger.info(`Running UsageReportCronJob at ${new Date()}`);
             await UsageReportCronJob.usageReport(this.frequency);
-        }, null, false, "America/Los_Angeles");
+        }, null, false, process.env.CRON_TIMEZONE || "America/Los_Angeles");
     }
 
     public static usageReport = async function (frequency) {
@@ -112,7 +112,7 @@ export class AwardBarnStarCronJob {
             async () => {
                 mailCronLogger.info(`Running weeklyBarnstarJob at ${new Date()}`);
                 await AwardBarnStarCronJob.awardBarnstar(frequency);
-            }, null, false, "America/Los_Angeles");
+            }, null, false, process.env.CRON_TIMEZONE || "America/Los_Angeles");
     }
 
     private static awardBarnstarMsg = async (mwMailer, user, frequency, endDate, isReal) => {
