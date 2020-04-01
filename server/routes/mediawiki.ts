@@ -16,7 +16,7 @@ const { apiLogger } = require('../common');
 const wikiToDomain = require("../urlMap").wikiToDomain;
 const rp = require('request-promise');
 
-module.exports = async (req, res) => {
+export const mediawiki = async (req, res) => {
   // TODO add sanitize if we see abuse.
   apiLogger.debug('req.params:', req.params);
   apiLogger.debug('req.query:', req.query);
@@ -31,4 +31,4 @@ module.exports = async (req, res) => {
   req.visitor
     .event({ ec: "mediawiki", ea: "/" })
     .send();
-}
+};

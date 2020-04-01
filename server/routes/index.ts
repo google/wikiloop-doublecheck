@@ -22,13 +22,12 @@ import { listRecentChanges } from './recentchanges';
 import { version } from './version';
 import { listLabels } from './label';
 import { ores, oresWikiRevId } from './ores';
-const { revision, revisionWikiRevId } = require('./revision');
+import { mediawiki } from './mediawiki';
+import { revision, revisionWikiRevId } from './revision';
 const { markedRevsCsv, markedCsv, markedRevs, marked } = require('./marked');
 const leaderboard = require('./leaderboard');
 const { basic, labelsTimeSeries, champion } = require('./stats');
 const { latest, latestRevs } = require('./latest');
-
-const mediawiki = require('./mediawiki');
 
 export default {
     basic, labelsTimeSeries, champion,

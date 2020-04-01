@@ -14,7 +14,7 @@
 
 const { fetchRevisions } = require('../common');
 
-const revision = async (req, res) => {
+export const revision = async (req, res) => {
     let wikiRevIds = req.query.wikiRevIds;
     let wikiToRevisionList = await fetchRevisions(wikiRevIds);
     res.send(wikiToRevisionList);
@@ -23,7 +23,7 @@ const revision = async (req, res) => {
         .event({ ec: "api", ea: "/revision/:wikiRevId" })
         .send();
 };
-const revisionWikiRevId = async (req, res) => {
+export const revisionWikiRevId = async (req, res) => {
     let wikiRevId = req.params.wikiRevId;
     let wiki = wikiRevId.split(':')[0];
     let wikiToRevisionList = await fetchRevisions( [wikiRevId]);
@@ -41,9 +41,4 @@ const revisionWikiRevId = async (req, res) => {
     req.visitor
         .event({ ec: "api", ea: "/revision/:wikiRevId" })
         .send();
-};
-
-module.exports = {
-    revision,
-    revisionWikiRevId
 };
