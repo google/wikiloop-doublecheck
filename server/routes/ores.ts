@@ -51,7 +51,7 @@ async function fetchOres(wikiRevIds) {
     return oresResults;
 };
 
-const ores = async (req, res) => {
+export const ores = async (req, res) => {
     let wikiRevIds = req.query.wikiRevIds;
     let ret = await fetchOres(wikiRevIds);
     res.send(ret);
@@ -60,7 +60,7 @@ const ores = async (req, res) => {
         .send();
 };
 
-const oresWikiRevId = async (req, res) => {
+export const oresWikiRevId = async (req, res) => {
     let wikiRevId = req.params.wikiRevId;
     let wiki = req.params.wikiRevId.split(':')[0];
     let ret = await fetchOres([wikiRevId]);
@@ -76,9 +76,4 @@ const oresWikiRevId = async (req, res) => {
     req.visitor
         .event({ ec: "api", ea: "/ores/:wikiRevId" })
         .send();
-};
-
-module.exports = {
-    ores,
-    oresWikiRevId
 };
