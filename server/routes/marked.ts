@@ -16,14 +16,14 @@ const mongoose = require('mongoose');
 const { getNewJudgementCounts } = require('../common');
 
 /**
- * 
- * @param {*} req 
+ *
+ * @param {*} req
  * @param {*} res
- * 
- * 
-* @public This endpoint has API clients, take extra caution when migrating 
+ *
+ *
+* @public This endpoint has API clients, take extra caution when migrating
  */
-const markedRevsCsv = async (req, res) => {
+export const markedRevsCsv = async (req, res) => {
     let newJudgementCounts = await getNewJudgementCounts(
         mongoose.connection.db, {}, 0, 10000000/* as many as possible to download all */);
     res.setHeader('Content-Type', 'text/csv');
@@ -49,11 +49,6 @@ const markedRevsCsv = async (req, res) => {
         .pipe(res);
 };
 
-const markedRevs = async (req, res) => {
-    res.send(await getNewJudgementCounts(db));
-};
-
-module.exports = {
-    markedRevsCsv,
-    markedRevs,
+export const markedRevs = async (req, res) => {
+    res.send(await getNewJudgementCounts(mongoose.connection.db));
 };

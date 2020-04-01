@@ -24,7 +24,7 @@ import { listLabels } from './label';
 import { ores, oresWikiRevId } from './ores';
 import { mediawiki } from './mediawiki';
 import { revision, revisionWikiRevId } from './revision';
-const { markedRevsCsv, markedCsv, markedRevs, marked } = require('./marked');
+import { markedRevsCsv, markedRevs } from './marked';
 const leaderboard = require('./leaderboard');
 const { basic, labelsTimeSeries, champion } = require('./stats');
 const { latest, latestRevs } = require('./latest');
@@ -45,9 +45,7 @@ export default {
 
     listLabels,
     markedRevsCsv,
-    markedCsv,
     markedRevs,
-    marked,
     leaderboard,
     avatar,
     latest,
