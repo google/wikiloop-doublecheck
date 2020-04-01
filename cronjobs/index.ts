@@ -12,8 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 import { MwMailer }  from '../mailer/mw-mailer';
-
-const cron = require('cron');
+import {CronJob} from "cron";
 
 var log4js = require('log4js');
 var logger = log4js.getLogger(`default`);
@@ -23,15 +22,35 @@ var mailCronLogger = log4js.getLogger(`Mail-CronJob`);
 mailCronLogger.level = process.env.LOG_LEVEL || 'debug';
 const ANONYMOUS_PLACEHOLDER = `(anonymous)`;
 
+const frequencyToNumDaysMap = {
+    'daily': 1,
+    'weekly': 7,
+    'monthly': 30,
+    'quarterly': 90,
+    'annually': 365,
+};
+
 const envAssert = (varName) => {
     console.assert(process.env[varName],`Warning Environment Varaible ${varName} doesn't exist.`);
     if (process.env[varName]) return true;
     else return false;
-}
+};
 
-export class ReportCronJob {
-    public dailyReport = async function () {
-        if (envAssert('CRON_DAILY_REPORT') && process.env['CRON_DAILY_REPORT'].length > 0) {
+export class UsageReportCronJob {
+    public cronJob:CronJob;
+    private frequency:string;
+    constructor(cronTime:string, frequency:string) {
+        mailCronLogger.info(`Setting up UsageReportCronJob for cronTime=${cronTime}, frequency=${frequency}`);
+        this.frequency = frequency;
+        this.cronJob = new CronJob(cronTime/* 6am everyday */, async () => {
+            mailCronLogger.info(`Running UsageReportCronJob at ${new Date()}`);
+            await UsageReportCronJob.usageReport(this.frequency);
+        }, null, false, "America/Los_Angeles");
+    }
+
+    public static usageReport = async function (frequency) {
+        mailCronLogger.info(`Executing UsageReport at `, new Date());
+        if (envAssert('REPORT_RECEIVER') && process.env['REPORT_RECEIVER'].length > 0) {
             if (envAssert('MAIL_SENDER_USERNAME') && envAssert('MAIL_SENDER_PASSWORD')) {
                 const nodemailer = require("nodemailer");
                 // create reusable transporter object using the default SMTP transport
@@ -45,8 +64,7 @@ export class ReportCronJob {
                     }
                 });
                 let formatedDate/**format: YYYY-MM-DD */ = new Date().toISOString().split('T')[0]
-                let report = await require('../server/routes/stats').getChampion(1, formatedDate, 'enwiki');
-                let mailAddress = process.env['CRON_DAILY_REPORT'].split(',').map(e=> e.trim()); // trimming emails
+                let report = await require('../server/routes/stats').getChampion(frequencyToNumDaysMap[frequency], formatedDate, 'enwiki');
                 const json2html = require('node-json2html');
                 let html = json2html.transform(
                     report,{
@@ -57,10 +75,10 @@ export class ReportCronJob {
                         ]
                     });
                 let info = await transporter.sendMail({
-                    from: '"User:Xinbenlv\'s Messenger for WikiLoop" <zzn+wikiloop@zzn.im>', // sender address
+                    from: `WikiLoop Battlefield Mailer <zzn+wikiloop@zzn.im>`, // sender address
                     replyTo: 'zzn+wikiloop@zzn.im',
-                    to: process.env.CRON_DAILY_REPORT, // list of receivers
-                    subject: `Daily Report for WikiLoop Battlefield ${formatedDate}`, // Subject line
+                    to: process.env.REPORT_RECEIVER, // list of receivers
+                    subject: `Usage Report (${frequency}) for WikiLoop Battlefield at ${formatedDate}`, // Subject line
                     text: JSON.stringify(report, null, 2), // plain text body
                     html: html // html body
                 });
@@ -69,51 +87,66 @@ export class ReportCronJob {
 
             } else {
                 mailCronLogger.info(`No ${[
-                    'CRON_DAILY_REPORT', 'MAIL_SENDER_USERNAME', 'MAIL_SENDER_PASSWORD'
+                    'REPORT_RECEIVER', 'MAIL_SENDER_USERNAME', 'MAIL_SENDER_PASSWORD'
                 ].join(' or ')}, not sending msg.`);
             }
         }
     };
 
-    public dailyReportJob = new cron.CronJob("0 18 16 * * *"/* 6am everyday */, async () => {
-        mailCronLogger.info(`Running dailyReportJob agt ${new Date()}`);
-        await this.dailyReport();
-    }, null, true, "America/Los_Angeles");
+
+    public startCronJob() {
+        mailCronLogger.info(`Starting UsageReportCronJob cronjob.`);
+        this.cronJob.start();
+        mailCronLogger.info(`Next 3 occurrences`,
+            JSON.stringify(this.cronJob.nextDates(3), null, 2));
+    }
 }
 
 export class AwardBarnStarCronJob {
+    public cronJob:CronJob;
+    constructor(cronTime:string, frequency:string) {
+        mailCronLogger.info(`Setting up AwardBarnStarCronJob for cronTime=${cronTime}, frequency=${frequency}`);
+        this.cronJob = new CronJob(
+            // "* * * * * Mon"/* 6am everyday */,
+            cronTime,
+            async () => {
+                mailCronLogger.info(`Running weeklyBarnstarJob at ${new Date()}`);
+                await AwardBarnStarCronJob.awardBarnstar(frequency);
+            }, null, false, "America/Los_Angeles");
+    }
 
-    private awardBarnstarMsg = async (mwMailer, user, timeRange, endDate, isReal) => {
+    private static awardBarnstarMsg = async (mwMailer, user, frequency, endDate, isReal) => {
         await mwMailer.mail(
             isReal ? `User_talk:${user}` : `User:Xinbenlv/Sandbox/User_talk:${user}`,
-            `== The WikiLoop Battlefield ${timeRange}ly barnstar ==\n` +
-            `{{subst:Xinbenlv/WikiLoop Battlefield Champion|user=${user}|enddate=${endDate}|timerange=${timeRange}}}`,
-            `Awarding The WikiLoop Battlefield ${timeRange}ly barnstar to ${user} ending on ${endDate}`);
+            `== The WikiLoop Battlefield ${frequency}ly barnstar ==\n` +
+            `{{subst:Xinbenlv/WikiLoop Battlefield Champion|user=${user}|enddate=${endDate}|timerange=${frequency}}}`,
+            `Awarding The WikiLoop Battlefield ${frequency}ly barnstar to ${user} ending on ${endDate}`);
     };
 
-    public awardBarnstar = async function () {
+    public static awardBarnstar = async function (frequency:string) {
+        mailCronLogger.info(`Executing AwardBarnstar CronJob at `, new Date());
         if (envAssert('WP_USER') && envAssert('WP_PASSWORD')) {
             let mwMailer = new MwMailer();
             await mwMailer.init();
             let formattedDate/**format: YYYY-MM-DD */ = new Date().toISOString().split('T')[0];
-            let report = await require('../server/routes/stats').getChampion(7, formattedDate, 'enwiki');
+            let report = await require('../server/routes/stats')
+                .getChampion(frequencyToNumDaysMap[frequency], formattedDate, 'enwiki');
             let users = report.slice(0, 10/*top 10*/)
                 .filter(n => n !== ANONYMOUS_PLACEHOLDER)
                 .map(item => item._id.wikiUserName)
             await Promise.all(users.map(async user => {
-                await this.awardBarnstarMsg(
-                mwMailer, user, 'week', formattedDate, process.env.WP_LEVEL === 'real')
+                await AwardBarnStarCronJob.awardBarnstarMsg(
+                mwMailer, user, frequency, formattedDate, process.env.WP_LEVEL === 'real')
             }));
         } else {
-            mailCronLogger.error(`Running awardBarnstar without sufficient vars`);
+            mailCronLogger.error(`NOT Running awardBarnstar because of lack sufficient vars`);
         }
     };
 
-    public weeklyBarnstarJob = new cron.CronJob(
-        // "* * * * * Mon"/* 6am everyday */,
-        "0 20 16 * * *",
-        async () => {
-        mailCronLogger.info(`Running weeklyBarnstarJob at ${new Date()}`);
-        await this.awardBarnstar();
-    }, null, true, "America/Los_Angeles");
+    public startCronJob() {
+        mailCronLogger.info(`Starting award barnstar cronjob`);
+        this.cronJob.start();
+        mailCronLogger.info(`Next 3 occurrences`,
+            JSON.stringify(this.cronJob.nextDates(3), null, 2));
+    }
 }

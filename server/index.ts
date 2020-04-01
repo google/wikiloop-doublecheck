@@ -11,7 +11,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-import {AwardBarnStarCronJob, ReportCronJob} from "../cron";
+import {AwardBarnStarCronJob, UsageReportCronJob} from "../cronjobs";
 
 require(`dotenv`).config();
 const http = require('http');
@@ -559,10 +559,43 @@ async function start() {
     message: `Server listening on http://${host}:${port}`,
     badge: true
   });
-  const reportCronJob = new ReportCronJob();
-  reportCronJob.dailyReportJob.start();
-  const awardBarnStarCronJob = new AwardBarnStarCronJob();
-  awardBarnStarCronJob.weeklyBarnstarJob.start();
+
+  if (process.env.CRON_BARNSTAR_TIMES) {
+    logger.info(`Setting up CRON_BARN_STAR_TIME raw value = `, process.env.CRON_BARNSTAR_TIMES);
+    let cronTimePairs =
+      process.env.CRON_BARNSTAR_TIMES
+        .split('|')
+        .map(pairStr => {
+          let pair = pairStr.split(';');
+          return { cronTime: pair[0], frequency: pair[1]}
+        }).forEach(pair => {
+          const awardBarnStarCronJob = new AwardBarnStarCronJob(pair.cronTime, pair.frequency);
+          awardBarnStarCronJob.startCronJob();
+      });
+  } else {
+    logger.warn(`Skipping Barnstar cronjobs because of lack of CRON_BARNSTAR_TIMES which is: `, process.env.CRON_BARNSTAR_TIMES);
+  }
+
+  if (process.env.CRON_USAGE_REPORT_TIMES) {
+    logger.info(`Setting up CRON_USAGE_REPORT_TIMES raw value = `, process.env.CRON_USAGE_REPORT_TIMES);
+    let cronTimePairs =
+        process.env.CRON_USAGE_REPORT_TIMES
+            .split('|')
+            .map(pairStr => {
+              let pair = pairStr.split(';');
+              return { cronTime: pair[0], frequency: pair[1]}
+            }).forEach(pair => {
+          const usageReportCronJob = new UsageReportCronJob(pair.cronTime, pair.frequency);
+          usageReportCronJob.startCronJob();
+        });
+  } else {
+    logger.warn(`Skipping UsageReportCronJob because of lack of CRON_BARNSTAR_TIMES which is: `, process.env.CRON_BARNSTAR_TIMES);
+  }
+
+  // const reportCronJob = new ReportCronJob();
+  // reportCronJob.dailyReportJob.start();
+
+
 }
 
 start();
