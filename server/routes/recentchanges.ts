@@ -17,22 +17,6 @@ import {wikiToDomain} from "../../shared/utility-shared";
 const rp = require('request-promise');
 import { perfLogger, apiLogger } from '../common';
 
-export const listRevisions = async (req, res) => {
-  // API Sandbox: https://www.mediawiki.org/wiki/Special:ApiSandbox#action=query&format=json&prop=revisions&titles=Donald_Trump&formatversion=2&rvprop=timestamp%7Cuser%7Ctags%7Cflags%7Cids&rvslots=main&rvlimit=10
-  // Documentation
-  let sq:any = {
-    "action": "query",
-    "format": "json",
-    "prop": "revisions",
-    "titles": "Donald_Trump",
-    "formatversion": "2",
-    "rvprop": "timestamp|user|tags|flags|ids",
-    "rvslots": "main",
-    "rvlimit": "10"
-  };
-
-};
-
 /**
  * @param req, supporting query
  *   req.query.wiki: the language of wikis being queried for.

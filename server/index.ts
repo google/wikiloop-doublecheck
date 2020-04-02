@@ -14,6 +14,7 @@
 import {AwardBarnStarCronJob, UsageReportCronJob} from "../cronjobs";
 import routes from './routes';
 import {logger, apiLogger, perfLogger, computeOresField, fetchRevisions, useOauth, isWhitelistedFor} from './common';
+import { feedRouter } from "./routes/feed";
 
 require(`dotenv`).config();
 const http = require('http');
@@ -130,8 +131,8 @@ function setupSTikiApiLisenter(app) {
 
 // -------------- FROM API ----------------
 function setupApiRequestListener(db, io, app) {
+  // TODO(xinbenlv): consider use native ExpressJS nested Router pattern.
   let apiRouter = express();
-
 
   const apicache = require('apicache');
   let cache = apicache.middleware;
@@ -193,7 +194,6 @@ function setupApiRequestListener(db, io, app) {
 
   apiRouter.get('/version', asyncHandler(routes.version));
   apiRouter.get('/test', (req, res) => { res.send('test ok')});
-
   app.use(`/api`, apiRouter);
 }
 
@@ -503,22 +503,31 @@ function setupAuthApi(db, app) {
 
 }
 
+function setupRouters(db: IDBDatabase, app: any) {
+
+  app.use(`/api/feed`, feedRouter);
+}
+
+function setupFlag() {
+  const yargs = require('yargs');
+  const argv = yargs
+      .option('server-only', {
+        alias: 's',
+        default: false,
+        description: 'If true, the app will be run as server-only',
+        type: 'boolean',
+      })
+      .help().alias('help', 'h')
+      .argv;
+  return argv;
+}
+
 async function start() {
+  const flag = setupFlag();
   // Init Nuxt.js
   const nuxt = new Nuxt(config)
 
   const {host, port} = nuxt.options.server
-
-  await nuxt.ready();
-  // Build only in dev mode
-  if (config.dev) {
-    logger.info(`Running Nuxt Builder ... `);
-    const builder = new Builder(nuxt);
-    await builder.build();
-    logger.info(`DONE ... `);
-  } else {
-    logger.info(`NOT Running Nuxt Builder`);
-  }
 
   const app = express();
   const cookieParser = require('cookie-parser');
@@ -545,13 +554,26 @@ async function start() {
   setupIoSocketListener(mongoose.connection.db, io);
   setupMediaWikiListener(mongoose.connection.db, io);
   setupApiRequestListener(mongoose.connection.db, io, app);
-
+  setupRouters(mongoose.connection.db, app);
   if (process.env.STIKI_MYSQL) {
     await setupSTikiApiLisenter(app);
   }
+  if (!flag['server-only']) {
+    await nuxt.ready();
 
-  // Give nuxt middleware to express
-  app.use(nuxt.render);
+    // Build only in dev mode
+    if (config.dev) {
+      logger.info(`Running Nuxt Builder ... `);
+      const builder = new Builder(nuxt);
+      await builder.build();
+      logger.info(`DONE ... `);
+    } else {
+      logger.info(`NOT Running Nuxt Builder`);
+    }
+    // Give nuxt middleware to express
+    app.use(nuxt.render);
+  }
+
 
   // Listen the server
   // app.listen(port, host)

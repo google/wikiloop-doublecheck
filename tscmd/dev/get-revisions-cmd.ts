@@ -7,4 +7,7 @@ async function main() {
   console.log(`RevIds for ${page} = ${revIds}`);
 }
 
-main().then();
+main().then(() => {
+  console.log(`CMD Done!`);
+  process.exit(0);
+});

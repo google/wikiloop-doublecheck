@@ -1,5 +1,8 @@
+// Usage: npx ts-node -r tsconfig-paths/register tscmd/dev/populate-watch-collection-cmd.ts
+
 import {MwActionApiClient} from "~/shared/mwapi";
 import {WatchCollectionItem} from "~/shared/schema";
+import {FeedEnum} from "~/server/feed/watch-collection-feed";
 
 function arraySum(arr: any[]): string {
   if (!arr || arr.length == 0) return `[]`;
@@ -11,6 +14,17 @@ function arraySum(arr: any[]): string {
 }
 
 async function main() {
+  const yargs = require('yargs');
+  const argv = yargs
+      .option('feed', {
+        alias: 'f',
+        default: 'covid19',
+        description: 'The feed to populate',
+        type: 'string',
+      })
+      .help()
+      .alias('help', 'h')
+      .argv;
 
   const Bottleneck = require("bottleneck");
   let neck = new Bottleneck({
@@ -18,20 +32,21 @@ async function main() {
   });
   require(`dotenv`).config();
   const mongoose = require('mongoose');
-  const COLLECTION = `WatchCollection_US2020`;
+  const feedName = FeedEnum[argv.feed];
+  console.log(`Populating feed = `, feedName);
   const WIKI = `enwiki`;
-  const REV_PER_PAGE_LIMIT = 10000;
+  const REV_PER_PAGE_LIMIT = 500;
   console.log(`Connecting ...`);
   await mongoose.connect(process.env.MONGODB_URI, {useUnifiedTopology: true, useNewUrlParser: true});
   console.log(`Connected ...`);
-  let watchCollectionUS2020 = await mongoose.connection.db.collection(COLLECTION)
+  let feed = await mongoose.connection.db.collection(feedName)
       .find({})
       .toArray() as WatchCollectionItem[];
   console.log(`Fetched ...`);
   let j = 1;
-  let total = watchCollectionUS2020.length;
-  console.log(`watchCollectionUS2020 = `, watchCollectionUS2020);
-  await Promise.all(watchCollectionUS2020.map(async (item: WatchCollectionItem) => {
+  let total = feed.length;
+  console.log(`feed = `, feed);
+  await Promise.all(feed.map(async (item: WatchCollectionItem) => {
     j++;
     let i = j;
     console.log(`Start fetching revIds for  ${i}/${total} Page ${item.title}`);
@@ -53,10 +68,13 @@ async function main() {
     console.log(`Done Fetching RevIds for ${item.title}, RevIds ${arraySum(revIds)}`);
     item.wiki = WIKI;
     item.revIds = revIds;
-    await mongoose.connection.db.collection(COLLECTION).update({title: item.title}, item, {upsert: true});
+    await mongoose.connection.db.collection(feedName).update({title: item.title}, item, {upsert: true});
     console.log(`Uploaded ${i}/${total} Page ${item.title}`);
   }));
   process.exit(0);
 }
 
-main().then();
+main().then(() => {
+  console.log(`CMD Done!`);
+  process.exit(0);
+});

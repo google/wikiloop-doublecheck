@@ -7,5 +7,6 @@ async function main() {
 }
 
 main().then(() => {
+  console.log(`CMD Done!`);
   process.exit(0);
 });
