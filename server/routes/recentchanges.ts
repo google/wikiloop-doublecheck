@@ -17,6 +17,22 @@ import {wikiToDomain} from "../../shared/utility-shared";
 const rp = require('request-promise');
 import { perfLogger, apiLogger } from '../common';
 
+export const listRevisions = async (req, res) => {
+  // API Sandbox: https://www.mediawiki.org/wiki/Special:ApiSandbox#action=query&format=json&prop=revisions&titles=Donald_Trump&formatversion=2&rvprop=timestamp%7Cuser%7Ctags%7Cflags%7Cids&rvslots=main&rvlimit=10
+  // Documentation
+  let sq:any = {
+    "action": "query",
+    "format": "json",
+    "prop": "revisions",
+    "titles": "Donald_Trump",
+    "formatversion": "2",
+    "rvprop": "timestamp|user|tags|flags|ids",
+    "rvslots": "main",
+    "rvlimit": "10"
+  };
+
+};
+
 /**
  * @param req, supporting query
  *   req.query.wiki: the language of wikis being queried for.
@@ -27,7 +43,6 @@ import { perfLogger, apiLogger } from '../common';
  * @param res
  * @returns {Promise<void>}
  */
-
 export const listRecentChanges = async (req, res) => {
   let startTime = new Date();
 
@@ -57,7 +72,6 @@ export const listRecentChanges = async (req, res) => {
     "rctype": "edit",
     "rctoponly": "1"
   });
-
   if (req.query.direction ) searchParams.set(`rcdir`, req.query.direction);
   if (req.query.timestamp ) searchParams.set(`rcstart`, req.query.timestamp);
   if (req.query.limit) searchParams.set(`rclimit`, req.query.limit);
