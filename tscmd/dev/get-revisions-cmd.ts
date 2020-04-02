@@ -1,4 +1,4 @@
-import {MwActionApiClient} from "../shared/mwapi";
+import {MwActionApiClient} from "~/shared/mwapi";
 
 async function main() {
   let page = "Barack_Obama";

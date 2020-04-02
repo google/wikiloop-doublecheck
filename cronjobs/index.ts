@@ -20,7 +20,7 @@ logger.level = process.env.LOG_LEVEL || 'debug';
 
 var mailCronLogger = log4js.getLogger(`Mail-CronJob`);
 mailCronLogger.level = process.env.LOG_LEVEL || 'debug';
-const ANONYMOUS_PLACEHOLDER = `(anonymous)`;
+const ANONYMOUS_PLACEHOLDER:string = `(anonymous)`;
 
 const frequencyToNumDaysMap = {
     'daily': 1,

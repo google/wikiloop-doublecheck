@@ -44,7 +44,7 @@ export class MwMailer {
             content = newContent;
         }
 
-        if (process.env.REAL_RUN === '1') {
+        if (process.env.WP_REAL_WRITE === '1') {
             let res = await this.limiter.schedule(async () => {
                 await this.mwbot.edit(
                     pageTitle,

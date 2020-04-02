@@ -68,13 +68,6 @@ To build and run a local instance with like a prod:
 npm run build
 npm start
 ```
-#### Deliver barnstar message (weekly as an example)
-
-```
-export REAL_RUN=1 # set real run to 1
-cd mailer
-$(curl --request GET "http://battlefield.wikiloop.org/api/stats/champion?endDate=$(date '+%Y-%m-%d')&timeRange=week&cmd=1")
-```
 
 ### Test
 

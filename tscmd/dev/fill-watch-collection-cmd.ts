@@ -1,4 +1,4 @@
-import {MwActionApiClient} from "../shared/mwapi";
+import {MwActionApiClient} from "~/shared/mwapi";
 import {WatchCollectionItem} from "~/shared/schema";
 
 function arraySum(arr: any[]): string {
