@@ -22,9 +22,13 @@
         </b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
-            <b-nav-item href="/" class="active" v-b-tooltip.hover title="Home">
-              <i class="fas fa-home"></i>
-            </b-nav-item>
+            <b-nav-item-dropdown right v-b-tooltip.hover title="Featured feeds">
+              <template v-slot:button-content>
+                <i class="fas fa-star"></i>
+              </template>
+              <b-dropdown-item href="/feed/us2020">US 2020 Feed</b-dropdown-item>
+              <b-dropdown-item href="/feed/covid19">COVID-19 Feed</b-dropdown-item>
+            </b-nav-item-dropdown>
             <b-nav-item href="/marked" v-b-tooltip.hover title="History">
               <i class="fas fa-history"></i> ({{stats ? stats.totalJudgement : 0}})</b-nav-item>
             <b-nav-item href="/online" v-b-tooltip.hover title="Online Users"><i class="fas fa-users"></i>
@@ -66,8 +70,6 @@
               <template v-if="($store.state.user.profile)">
                 <b-dropdown-item href="/auth/mediawiki/logout"><i class="fas fa-sign-out-alt"></i>{{$t(`LogoutMenuItem`)}}</b-dropdown-item>
               </template>
-
-
              </b-nav-item-dropdown>
           </b-navbar-nav>
         </b-collapse>
