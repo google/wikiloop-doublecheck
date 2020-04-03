@@ -15,147 +15,199 @@
 -->
 <!--eslint-disable-->
 <template>
-  <section>
-    <div class="container small-screen-padding">
-      <h2>Top Wikis</h2>
-      <div class="table-responsive mt-5">
-        <table class="table table-bordered">
-          <thead>
-          <tr>
-            <th scope="row">Rank</th>
-            <th>Wiki</th>
-            <th>Count </th>
-            <th>Last Active</th>
-          </tr>
-          </thead>
-          <tbody>
-          <template  v-for="(leadWiki, index) in wikis">
-            <tr class="table-success">
-              <td scope="col">
-                {{index + 1}}
-              </td>
-              <td scope="col">
-                <router-link :to="`/marked/?wiki=${leadWiki.wiki}`" replace>
-                  <span>{{getWiki(leadWiki.wiki)}}</span>
-                </router-link>
-              </td>
-              <td scope="col">{{leadWiki.count}}</td>
-              <td scope="col"><timeago :datetime="new Date(leadWiki.lastTimestamp * 1000).toString()"></timeago></td>
-            </tr>
-          </template>
-          </tbody>
-        </table>
-      </div>
+    <section>
+        <div class="container small-screen-padding">
+            <b-form-select class="mt-4"
+                    @click.native.stop=''
+                    v-model="timeRange"
+                    v-on:change="load()">
+                <option :value="null">All time</option>
+                <option :value="1">1 day</option>
+                <option :value="7">1 week (7d)</option>
+                <option :value="30">1 month (30d)</option>
+                <option :value="90">1 quarter (90d)</option>
+                <option :value="365">1 year (365d)</option>
+            </b-form-select>
+            <div class="card mt-4">
+                <div class="card-header"><h2>Top Wikis</h2></div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                                <th scope="row">Rank</th>
+                                <th>Wiki</th>
+                                <th>Count</th>
+                                <th>Last Active</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <template v-for="(leadWiki, index) in wikis">
+                                <tr>
+                                    <td scope="col">
+                                        {{index + 1}}
+                                    </td>
+                                    <td scope="col">
+                                        <router-link :to="`/marked/?wiki=${leadWiki.wiki}`" replace>
+                                            <span>{{getWiki(leadWiki.wiki)}}</span>
+                                        </router-link>
+                                    </td>
+                                    <td scope="col">{{leadWiki.count}}</td>
+                                    <td scope="col">
+                                        <timeago
+                                                :datetime="new Date(leadWiki.lastTimestamp * 1000).toString()"></timeago>
+                                    </td>
+                                </tr>
+                            </template>
+                            </tbody>
+                            <tfoot>
+                              <tr>
+                                <th scope="row">Total</th>
+                                <th></th>
+                                <th>{{wikis.map(wiki=>wiki.count).reduce((a, b) => a+b, 0)}}</th>
+                                <th>
+                                    <timeago
+                                            :datetime="new Date(
+                                            wikis.map(wiki=>wiki.lastTimestamp)
+                                                .reduce((a, b) => Math.max(a,b), 0) * 1000).toString()">
 
-      <h2>Top Users</h2>
-      <div class="table-responsive mt-5">
-        <table class="table table-bordered">
-          <thead>
-          <tr>
-            <th scope="row">Rank</th>
-            <th>User</th>
-            <th>Wikis</th>
-            <th>Count</th>
-            <th>Last Active</th>
-          </tr>
-          </thead>
-          <tbody>
-            <template  v-for="(leader, index) in loggedIn">
-              <tr v-bind:class="{ 'table-success': isMe(leader) }">
-                <td scope="col">
-                  {{index + 1}}
-                </td>
-                <td scope="col">
-                  <router-link :to="`/marked/?wikiUserName=${leader.wikiUserName}`" replace>
-                    <object class="avatar-object" v-bind:data="`/api/avatar/${leader.wikiUserName}`" ></object>
-                    <span v-if="isMe(leader)">Me (User:{{leader.wikiUserName}})</span>
-                    <span v-else>User:{{leader.wikiUserName}}</span>
-                  </router-link>
-                </td>
-                <td scope="col"><template v-for="wiki of leader.wikis">
-                  <a class="mr-1" :href="`${getUrlBaseByWiki(wiki)}/wiki/Special:Contributions/${leader.wikiUserName}`">{{getWiki(wiki)}}</a>
-                </template>
-                </td>
-                <td scope="col">{{leader.count}}</td>
-                <td scope="col"><timeago :datetime="new Date(leader.lastTimestamp * 1000).toString()"></timeago></td>
-              </tr>
-            </template>
-          </tbody>
-        </table>
-      </div>
-      <h2>Top 20 Anonymous Users 30 days</h2>
-      <div class="table-responsive mt-5">
-        <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th scope="row">Rank</th>
-            <th>User</th>
-            <th>Wikis</th>
-            <th>Count</th>
-            <th>Last Active</th>
-          </tr>
-        </thead>
-        <tbody>
-          <template  v-for="(leader, index) in anonymous">
-          <tr v-bind:class="{ 'table-success': isMe(leader) }">
-            <td scope="col">
-              {{index + 1}}
-            </td>
-            <td scope="col">
-              <router-link :to="`/marked/?userGaId=${leader.userGaId}`" replace>
-                <object class="avatar-object" v-bind:data="`/api/avatar/${leader.userGaId}`" ></object>
-                <span v-if="isMe(leader) ">Me</span>
-                <span v-else>Someone</span>
-              </router-link>
-            </td>
-            <td scope="col"><template v-for="wiki of leader.wikis">{{getWiki(wiki)}} </template>
-            </td>
-            <td scope="col">{{leader.count}}</td>
-            <td scope="col"><timeago :datetime="new Date(leader.lastTimestamp * 1000).toString()"></timeago></td>
-          </tr>
-          </template>
-        </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
+                                    </timeago>
+                                </th>
+                              </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h2>Top Users</h2>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                                <th scope="row">Rank</th>
+                                <th>User</th>
+                                <th>Wikis</th>
+                                <th>Count</th>
+                                <th>Last Active</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <template v-for="(leader, index) in loggedIn">
+                                <tr v-bind:class="{ 'table-success': isMe(leader) }">
+                                    <td scope="col">
+                                        {{index + 1}}
+                                    </td>
+                                    <td scope="col">
+                                        <router-link :to="`/marked/?wikiUserName=${leader.wikiUserName}`" replace>
+                                            <object class="avatar-object"
+                                                    v-bind:data="`/api/avatar/${leader.wikiUserName}`"></object>
+                                            <span v-if="isMe(leader)">Me (User:{{leader.wikiUserName}})</span>
+                                            <span v-else>User:{{leader.wikiUserName}}</span>
+                                        </router-link>
+                                    </td>
+                                    <td scope="col">
+                                        <template v-for="wiki of leader.wikis">
+                                            <a class="mr-1"
+                                               :href="`${getUrlBaseByWiki(wiki)}/wiki/Special:Contributions/${leader.wikiUserName}`">{{getWiki(wiki)}}</a>
+                                        </template>
+                                    </td>
+                                    <td scope="col">{{leader.count}}</td>
+                                    <td scope="col">
+                                        <timeago :datetime="new Date(leader.lastTimestamp * 1000).toString()"></timeago>
+                                    </td>
+                                </tr>
+                            </template>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h2>Top 20 Anonymous Users</h2>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                                <th scope="row">Rank</th>
+                                <th>User</th>
+                                <th>Wikis</th>
+                                <th>Count</th>
+                                <th>Last Active</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <template v-for="(leader, index) in anonymous">
+                                <tr v-bind:class="{ 'table-success': isMe(leader) }">
+                                    <td scope="col">
+                                        {{index + 1}}
+                                    </td>
+                                    <td scope="col">
+                                        <router-link :to="`/marked/?userGaId=${leader.userGaId}`" replace>
+                                            <object class="avatar-object"
+                                                    v-bind:data="`/api/avatar/${leader.userGaId}`"></object>
+                                            <span v-if="isMe(leader) ">Me</span>
+                                            <span v-else>Someone</span>
+                                        </router-link>
+                                    </td>
+                                    <td scope="col">
+                                        <template v-for="wiki of leader.wikis">{{getWiki(wiki)}}</template>
+                                    </td>
+                                    <td scope="col">{{leader.count}}</td>
+                                    <td scope="col">
+                                        <timeago :datetime="new Date(leader.lastTimestamp * 1000).toString()"></timeago>
+                                    </td>
+                                </tr>
+                            </template>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
 </template>
 <script lang="ts">
-  import { getUrlBaseByWiki, fetchDiffWithWikiRevId } from '~/shared/utility-shared';
+  import {getUrlBaseByWiki, fetchDiffWithWikiRevId} from '~/shared/utility-shared';
   import BootstrapVue from 'bootstrap-vue';
   import VueTimeago from 'vue-timeago';
   import languages from '~/locales/languages.js';
-  console.log(`Start leaderboard!`);
-  const $ = require('jquery');
 
   export default {
     comments: {
-      BootstrapVue,
-      VueTimeago
-    },
-    async asyncData({$axios}) {
-      const { loggedIn, anonymous, wikis } = await $axios.$get(`/api/leaderboard`);
-      return { loggedIn ,anonymous, wikis };
-    },
-    methods: {
-      isMe: function(leader) {
-        return (this.$store.state.user && this.$store.state.user.profile
-                && this.$store.state.user.profile.displayName === leader.wikiUserName)
-            || this.$cookiez.get('_ga') === leader.userGaId;
-      },
-      getWiki: function(wiki) {
+      BootstrapVue, VueTimeago
+    }, data() {
+      return {
+        timeRange: null
+      }
+    }, async asyncData({$axios}) {
+      const {loggedIn, anonymous, wikis} = await $axios.$get(`/api/leaderboard`);
+      return {loggedIn, anonymous, wikis};
+    }, methods: {
+      isMe: function (leader) {
+        return (this.$store.state.user && this.$store.state.user.profile && this.$store.state.user.profile.displayName === leader.wikiUserName) || this.$cookiez.get('_ga') === leader.userGaId;
+      }, getWiki: function (wiki) {
         for (let lang of languages) {
           if (lang.value === wiki) return lang.text
         }
         return wiki; // fall back
-      },
-    },
-    mounted() {
-      this.$ga.page('/leaderboard.vue'); // track page
-
-      console.log(`Start leaderboard!`);
-    },
-    beforeCreate() {
+      }, load: async function () {
+        const {loggedIn, anonymous, wikis} = await this.$axios.$get(`/api/leaderboard?days=${this.timeRange}`);
+        this.loggedIn = loggedIn;
+        this.anonymous = anonymous;
+        this.wikis = wikis;
+      }
+    }, mounted() {
+      this.$ga.page('/leaderboard.vue');
+    }, beforeCreate() {
       this.getUrlBaseByWiki = getUrlBaseByWiki.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
       this.fetchDiffWithWikiRevId = fetchDiffWithWikiRevId.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
     },
@@ -163,10 +215,10 @@
 </script>
 
 <style>
-  .avatar-object {
-    width: 48px;
-    height: 48px;
-    margin-top: -18px;
-    margin-bottom: -18px;
-  }
+    .avatar-object {
+        width: 48px;
+        height: 48px;
+        margin-top: -18px;
+        margin-bottom: -18px;
+    }
 </style>

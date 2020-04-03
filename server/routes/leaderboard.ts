@@ -13,12 +13,14 @@
 // limitations under the License.
 
 const mongoose = require('mongoose');
-async function getWikisLeaderList() {
+async function getWikisLeaderList(
+    startTime:number, endTime:number) {
   return await mongoose.connection.db.collection("Interaction").aggregate(
     [
       {
         "$match": {
           "recentChange.wiki": { $exists: true },
+          "timestamp": {$gte: startTime, $lte: endTime}
         }
       },
       {
@@ -53,12 +55,14 @@ async function getWikisLeaderList() {
   ).toArray();
 }
 
-async function getLoggedInLeaderList() {
+async function getLoggedInLeaderList(
+    startTime:number, endTime:number, limit:number) {
   return await mongoose.connection.db.collection("Interaction").aggregate(
     [
       {
         "$match": {
           "wikiUserName": { $exists: true },
+          "timestamp": {$gte: startTime, $lte: endTime}
         }
       },
       {
@@ -82,7 +86,7 @@ async function getLoggedInLeaderList() {
           "count": -1
         }
       },
-      { $limit : 100 },
+      { $limit : limit },
       {
         "$project": {
           "wikiUserName": "$_id.wikiUserName",
@@ -98,16 +102,15 @@ async function getLoggedInLeaderList() {
   ).toArray();
 }
 
-async function getAnonymousLeaderList() {
+async function getAnonymousLeaderList(
+    startTime:number, endTime:number, limit:number) {
   return await mongoose.connection.db.collection("Interaction").aggregate(
     [
       {
         "$match": {
           "userGaId": {$ne: null},
           "wikiUserName": {$exists: false},
-          "timestamp": {
-            $gte: (new Date().getTime() / 1000) - (30 * 24 * 3600)
-          }
+          "timestamp": {$gte: startTime, $lte: endTime}
         }
       },
       {
@@ -131,7 +134,7 @@ async function getAnonymousLeaderList() {
           "count": -1
         }
       },
-      { $limit : 20 },
+      { $limit : limit },
       {
         "$project": {
           "userGaId": "$_id.userGaId",
@@ -148,13 +151,19 @@ async function getAnonymousLeaderList() {
 }
 
 export const leaderboard = async (req, res) => {
-    let myGaId = req.body.gaId || req.cookies._ga;
-
+    let startTime = parseInt(req.query.startTime) || 0;
+    let endTime = parseInt(req.query.endTime) || new Date().getTime()/1000;
+    const limit = parseInt(req.query.limit) || 20;
+    if (req.query.days) {
+      const days = parseInt(req.query.days);
+      endTime = new Date().getTime()/1000;
+      startTime = new Date().getTime()/1000 - (3600 * 24 * days);
+    }
     // TO-FUTURE-DO consider adding pagination if performance is a problem. We don't expect this list to be more than
     // 100K records anytime soon (updated 2020-01-02).
-    let loggedIn = await getLoggedInLeaderList();
-    let anonymous = await getAnonymousLeaderList();
-    let wikis = await getWikisLeaderList();
+    let loggedIn = await getLoggedInLeaderList(startTime, endTime, limit);
+    let anonymous = await getAnonymousLeaderList(startTime, endTime, limit);
+    let wikis = await getWikisLeaderList(startTime, endTime);
     res.send({ loggedIn, anonymous, wikis });
     req.visitor
         .event({ ec: "api", ea: "/leaderboard" })
