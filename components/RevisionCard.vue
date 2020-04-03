@@ -21,7 +21,7 @@
         'border-warning': ores ? ores.damaging.true > 0.5 : false,
         'bg-light': revision ? revision.pageLatestRevId > revision.revid : false
         }"
-         class="card shadow-sm h-100">
+         class="card shadow h-100">
       <div v-if="revision" class="card-body d-flex flex-column small-screen-padding">
         <h5 class="card-title ">
           <div class="d-flex">

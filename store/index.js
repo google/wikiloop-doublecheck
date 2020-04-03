@@ -15,12 +15,8 @@
 export const state = () => ({
     flags: {},
     version: null,
+    metrics: null,
     sessionId: null,
-    liveUsers: {
-      wikiUserNames: [],
-      userGaIds: [],
-      sockets: []
-    },
     wiki: "enwiki", // default to English
 });
 
@@ -37,14 +33,14 @@ export const mutations = {
     setVersion(state, version) {
         state.version = version;
     },
+    setMetrics(state, metrics) {
+      state.metrics = metrics;
+    },
     setSessionId (state, sessionId) {
         state.sessionId = sessionId;
     },
     setWiki(state, wiki) {
         state.wiki = wiki
-    },
-    setLiveUsers(state, liveUsers) {
-      state.liveUsers = liveUsers;
     },
 };
 
@@ -54,6 +50,9 @@ export const actions = {
         commit('setFlags', flags);
         const version = await this.$axios.$get(`/api/version`);
         commit('setVersion', version);
+        const metrics = await this.$axios.$get(`/api/metrics`);
+        console.log(`XXX Store got metrics ${JSON.stringify(metrics, null, 2)}`);
+        commit('setMetrics', metrics);
 
         if (req.session && req.session.id) {
             commit('setSessionId', req.session.id);

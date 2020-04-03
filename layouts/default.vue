@@ -15,7 +15,7 @@
 -->
 <template>
   <div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow border-1">
       <div class="container-xl">
         <a class="navbar-brand" href="/">WikiLoop Battlefield</a>
         <b-navbar-toggle  target="nav-collapse">
@@ -23,10 +23,8 @@
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
             <b-nav-item href="/marked" v-b-tooltip.hover title="History">
-              <div class="d-flex">
-                <div><i class="fas fa-history"></i></div>
-                <div style="line-height: 38px">({{stats ? stats.totalJudgement : 0}})</div>
-              </div>
+              <i class="fas fa-history"></i>
+              <span class="pl-0 ml-0" v-if="$store.state.metrics">({{$store.state.metrics.totalJudgement}})</span>
             </b-nav-item>
             <b-nav-item href="/leaderboard" v-b-tooltip.hover title="Leaderboard">
               <i class="fas fa-trophy"></i>
@@ -39,8 +37,9 @@
               <b-dropdown-item href="/feed/covid19">COVID-19 Feed</b-dropdown-item>
             </b-nav-item-dropdown>
 
-            <b-nav-item href="/online" v-b-tooltip.hover title="Online Users">
-              <i class="fas fa-users"></i>({{ $store.state.liveUsers.wikiUserNames.length + $store.state.liveUsers.userGaIds.length }})
+            <b-nav-item href="/active" v-b-tooltip.hover title="Active Users">
+              <i class="fas fa-users"></i>
+              <span class="pl-0 ml-0" v-if="$store.state.metrics">({{ $store.state.metrics.activeLoggedInUser.length + $store.state.metrics.activeAnonymousUser.length }})</span>
             </b-nav-item>
             <b-nav-item href="/api/markedRevs.csv" v-b-tooltip.hover title="Download">
               <i class="fas fa-cloud-download-alt"></i>
@@ -99,8 +98,6 @@
   export default {
     data() {
       return {
-        liveUserCount: 1,
-        stats: 0,
         languages
       }
     },
@@ -152,8 +149,8 @@
     async mounted() {
       this.commitFlagsFromUrlQuery(this.$route.query);
       this.stats = await this.$axios.$get(`/api/stats`);
-      socket.on('live-users-update', async (liveUsers) => {
-        this.$store.commit(`setLiveUsers`, liveUsers);
+      socket.on('metrics-update', async (metrics) => {
+        this.$store.commit(`setMetrics`, metrics);
       });
       document.addEventListener('stats-update', async () => {
         console.log(`stats-update:`);

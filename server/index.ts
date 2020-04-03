@@ -26,6 +26,7 @@ const rp = require('request-promise');
 const mongoose = require('mongoose');
 
 import {wikiToDomain} from "../shared/utility-shared";
+import {getMetrics, metricsRouter} from "./metrics";
 
 const asyncHandler = fn => (req, res, next) =>
     Promise
@@ -279,30 +280,16 @@ function setupMediaWikiListener(db, io) {
 }
 
 function setupIoSocketListener(db, io) {
-  async function emitLiveUsers() {
-    let sockets = await db.collection(`Sockets`).find(
-      {
-        _id: {$in: Object.keys(io.sockets.connected)},
-      })
-      .toArray();
-
-    let liveUsers = {wikiUserNames: [], userGaIds: []};
-    // If it is a logged in user, we display their wikiUserName
-    // else if not logged in, but has session cookie created as `userGaId`,
-    //   we fall back to `userGaId`.
-    sockets.forEach(socket => {
-      if (socket.wikiUserName) liveUsers.wikiUserNames.push(socket);
-      else if (socket.userGaId) liveUsers.userGaIds.push(socket);
-      // else we ignore socket ids.
-    });
-    io.sockets.emit('live-users-update', liveUsers);
-    logger.debug(`Emit Live Users`, liveUsers);
+  async function emitMetricsUpdate() {
+    let metrics = await getMetrics();
+    io.sockets.emit('metrics-update', metrics);
+    logger.debug(`Emit Metrics Update`, metrics);
   }
 
   io.on('connection', async function (socket) {
     logger.info(`A socket client connected. Socket id = ${socket.id}. Total connections =`, Object.keys(io.sockets.connected).length);
     socket.on('disconnect', async function () {
-      await emitLiveUsers();
+      await emitMetricsUpdate();
       logger.info(`A socket client disconnected. Socket id = ${socket.id}. Total connections =`, Object.keys(io.sockets.connected).length);
     });
 
@@ -312,7 +299,7 @@ function setupIoSocketListener(db, io) {
           $set: { userGaId: userIdInfo.userGaId, wikiUserName: userIdInfo.wikiUserName },
         }, { upsert: true }
       );
-      await emitLiveUsers();
+      await emitMetricsUpdate();
     });
 
     await db.collection(`Sockets`).updateOne({_id: socket.id}, {
@@ -321,8 +308,8 @@ function setupIoSocketListener(db, io) {
   });
 
   setInterval(async () => {
-    await emitLiveUsers();
-  },3000);
+    await emitMetricsUpdate();
+  },5000);
 }
 
 function setupAuthApi(db, app) {
@@ -506,6 +493,7 @@ function setupAuthApi(db, app) {
 function setupRouters(db: IDBDatabase, app: any) {
 
   app.use(`/api/feed`, feedRouter);
+  app.use(`/api/metrics`, metricsRouter);
 }
 
 function setupFlag() {

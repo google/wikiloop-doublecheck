@@ -19,10 +19,10 @@
     <table class="table table-bordered">
       <thead>
         <th>User</th>
-        <th>Connected</th>
+        <th>Last Active</th>
       </thead>
       <tbody>
-        <tr v-for="(client, index) of Object.values($store.state.liveUsers.wikiUserNames)">
+        <tr v-for="(client, index) of $store.state.metrics.activeLoggedInUser">
           <td scope="col">
             <router-link :to="`/marked/?wikiUserName=${client.wikiUserName}`" replace>
               <object class="avatar-object" v-bind:data="`/api/avatar/${client.wikiUserName}`" >
@@ -30,9 +30,9 @@
               <span v-if="isMe(client)">(Me)</span>
             </router-link>
           </td>
-          <td scope="col"><timeago :datetime="client.created"></timeago></td>
+          <td scope="col"><timeago :datetime="client.lastActive"></timeago></td>
         </tr>
-        <tr v-for="(client, index) of Object.values($store.state.liveUsers.userGaIds)">
+        <tr v-for="(client, index) of $store.state.metrics.activeAnonymousUser">
           <td scope="col">
             <router-link :to="`/marked/?userGaId=${client.userGaId}`" replace>
               <object class="avatar-object" v-bind:data="`/api/avatar/${client.userGaId}`" >
@@ -40,7 +40,7 @@
               <span v-if="isMe(client)">(Me)</span>
             </router-link>
           </td>
-          <td scope="col"><timeago :datetime="client.created"></timeago></td>
+          <td scope="col"><timeago :datetime="client.lastActive"></timeago></td>
         </tr>
       </tbody>
     </table>

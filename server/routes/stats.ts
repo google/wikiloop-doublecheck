@@ -12,6 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+/** @deprecated stats.ts is deprecated, use metrics.ts instead.
+* New endpoints shall be added to metrics.ts
+*/
+
 const mongoose = require('mongoose');
 import { logger } from '../common';
 const ANONYMOUS_PLACEHOLDER = `(anonymous)`;
