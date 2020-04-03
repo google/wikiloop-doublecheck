@@ -534,7 +534,7 @@ async function start() {
   const bodyParser = require('body-parser');
   app.use(cookieParser());
   // Setup Google Analytics
-  app.use(universalAnalytics.middleware(process.env.GA_ID, {cookieName: '_ga'}));
+  app.use(universalAnalytics.middleware(process.env.GA_WLBF_ID_API, {cookieName: '_ga'}));
   app.use(bodyParser());
   app.use(logReqPerf);
 

@@ -16,29 +16,34 @@
 <template>
   <div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="/">WikiLoop Battlefield <sup>{{$store.state.version}}</sup></a>
+      <div class="container-xl">
+        <a class="navbar-brand" href="/">WikiLoop Battlefield</a>
         <b-navbar-toggle  target="nav-collapse">
         </b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
+            <b-nav-item href="/marked" v-b-tooltip.hover title="History">
+              <div class="d-flex">
+                <div><i class="fas fa-history"></i></div>
+                <div style="line-height: 38px">({{stats ? stats.totalJudgement : 0}})</div>
+              </div>
+            </b-nav-item>
+            <b-nav-item href="/leaderboard" v-b-tooltip.hover title="Leaderboard">
+              <i class="fas fa-trophy"></i>
+            </b-nav-item>
             <b-nav-item-dropdown right v-b-tooltip.hover title="Featured feeds">
               <template v-slot:button-content>
-                <i class="fas fa-star"></i>
+                <i class="fas fa-star pr-0"></i>
               </template>
               <b-dropdown-item href="/feed/us2020">US 2020 Feed</b-dropdown-item>
               <b-dropdown-item href="/feed/covid19">COVID-19 Feed</b-dropdown-item>
             </b-nav-item-dropdown>
-            <b-nav-item href="/marked" v-b-tooltip.hover title="History">
-              <i class="fas fa-history"></i> ({{stats ? stats.totalJudgement : 0}})</b-nav-item>
-            <b-nav-item href="/online" v-b-tooltip.hover title="Online Users"><i class="fas fa-users"></i>
-              ({{ $store.state.liveUsers.wikiUserNames.length + $store.state.liveUsers.userGaIds.length }})
+
+            <b-nav-item href="/online" v-b-tooltip.hover title="Online Users">
+              <i class="fas fa-users"></i>({{ $store.state.liveUsers.wikiUserNames.length + $store.state.liveUsers.userGaIds.length }})
             </b-nav-item>
             <b-nav-item href="/api/markedRevs.csv" v-b-tooltip.hover title="Download">
               <i class="fas fa-cloud-download-alt"></i>
-            </b-nav-item>
-            <b-nav-item href="/leaderboard" v-b-tooltip.hover title="Leaderboard">
-              <i class="fas fa-trophy"></i>
             </b-nav-item>
             <b-nav-item-dropdown right>
               <template v-slot:button-content>
@@ -51,14 +56,14 @@
             </b-nav-item-dropdown>
             <b-nav-item>
               <b-form-select @click.native.stop='' class="small" v-model="wiki">
-                <option v-for="language in languages" :key="language.value" :value="language.value">{{ language.text }}</option>
+                <option v-for="language in languages" :key="language.value" :value="language.value">{{ language.value }}</option>
               </b-form-select>
             </b-nav-item>
           </b-navbar-nav>
           <b-navbar-nav class="ml-auto">
             <b-nav-item-dropdown  right>
               <template v-slot:button-content>
-                <object type="image/svg+xml" class="avatar-navbar" v-bind:data="`/api/avatar/${userId}`" ></object>{{$store.state.user.profile ? `${$store.state.user.profile.displayName}`:`${$t(`Anonymous`)}`}}
+                <object type="image/svg+xml" class="avatar-navbar" v-bind:data="`/api/avatar/${userId}`" ></object><span v-if="">{{$store.state.user.profile ? `${$store.state.user.profile.displayName}`:`${$t(`Anonymous`)}`}}</span>
               </template>
               <b-dropdown-item v-if="$store.state.user.profile && $store.state.user.profile.displayName" :href="`/marked/?wikiUserName=${$store.state.user.profile.displayName}`"><i class="fas fa-list"></i>{{$t(`ContributionsMenuItem`)}}</b-dropdown-item>
               <b-dropdown-item :href="`/marked/?userGaId=${$cookiez.get('_ga')}`"><i class="fas fa-list"></i>{{$t(`ContributionsBeforeLoginMenuItem`)}}</b-dropdown-item>
@@ -220,4 +225,5 @@ html {
   line-height: 24px;
   padding: 7px;
 }
+
 </style>

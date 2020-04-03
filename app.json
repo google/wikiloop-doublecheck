@@ -12,7 +12,12 @@
     }
   ],
   "env": {
-    "GA_ID": {
+    "GA_WLBF_ID_CLIENT": {
+      "required": true,
+      "description": "The Google Analytics ID. Feel free to use the dev one we provided.",
+      "value": "UA-122681777-3"
+    },
+    "GA_WLBF_ID_API": {
       "required": true,
       "description": "The Google Analytics ID. Feel free to use the dev one we provided.",
       "value": "UA-122681777-3"

@@ -75,7 +75,7 @@ module.exports = {
     '@nuxtjs/pwa',
     ['@nuxtjs/google-analytics', {
       asyncID: function (ctx) {
-        return ctx.app.$env.GA_ID;
+        return ctx.app.$env.GA_WLBF_ID_CLIENT;
       }
     }],
     ['cookie-universal-nuxt', { alias: 'cookiez' }],
@@ -83,7 +83,7 @@ module.exports = {
       keys: [
         'HOST',
         'PORT',
-        'GA_ID'
+        'GA_WLBF_ID_CLIENT'
       ]
     }],
     [
