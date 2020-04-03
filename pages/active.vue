@@ -15,8 +15,8 @@
 -->
 <template>
   <section>
-    <h1>Live Users <sup>per connection</sup></h1>
-    <table class="table table-bordered">
+    <h1>Active Users</h1>
+    <table v-if="$store.state.metrics.activeLoggedInUser.length || $store.state.metrics.activeAnonymousUser.length" class="table table-bordered" >
       <thead>
         <th>User</th>
         <th>Last Active</th>
@@ -44,6 +44,8 @@
         </tr>
       </tbody>
     </table>
+    <h2 v-else><br/>:(<br/></h2>
+    <p>No active users in last 15min. Start <a class="btn btn-outline-primary" href="/">reviewing revisions</a> and become the first one.</p>
   </section>
 </template>
 <script lang="ts">

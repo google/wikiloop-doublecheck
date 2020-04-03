@@ -79,8 +79,8 @@
         </b-collapse>
       </div>
     </nav>
-    <div style="margin-top:80px" class="container small-screen-padding">
-      <nuxt />
+    <div style="margin-top:70px" class="container small-screen-padding">
+      <nuxt class="pt-lg-4 pt-md-2 pt-sm-1"/>
     </div>
     <b-modal id="modal-keymap" title="Keymap">
       V: Should Revert<br/>

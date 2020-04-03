@@ -16,7 +16,7 @@
 <!--eslint-disable-->
 <template>
   <section>
-    <div class="container small-screen-padding" style="margin-top:80px">
+    <div class="container small-screen-padding">
       <div class="col-12 p-2">
         <StaticRevisionCard
           :wikiRevId="wikiRevId"

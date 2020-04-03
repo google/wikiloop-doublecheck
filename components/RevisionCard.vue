@@ -39,8 +39,7 @@
         <div class="card-subtitle mb-2 text-muted">
           <div class="row p-2">
             <div class="col-lg-2">
-              <i class="fas fa-pen"></i> {{$t(`EditedTimeLabel`)}}
-              <timeago :datetime="getTimeString()" :auto-update="60" :locale="$i18n.locale"></timeago>
+              <i class="fas fa-pen"></i><timeago :datetime="getTimeString()" :auto-update="60" :locale="$i18n.locale"></timeago>
             </div>
             <div class="col-lg-2">
               <small><span>by <a v-bind:href="`${getUrlBaseByWiki(revision.wiki)}/wiki/User:${revision.user}`">{{ revision.user }}</a></span>
