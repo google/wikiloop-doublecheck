@@ -193,6 +193,10 @@ between Client-Side-Rendering and Server-Side-Rendering -->
         type: Object,
         default: null
       },
+      feedName: {
+        type: String,
+        default: null
+      }
     },
     methods: {
       isMine: function(judgement) {
@@ -343,7 +347,8 @@ between Client-Side-Rendering and Server-Side-Rendering -->
             user: revision.user,
             wiki: revision.wiki,
             timestamp: new Date(revision.timestamp).getTime()/1000
-          }
+          },
+          feed: this.feedName
         };
 
         if (this.$store.state.user && this.$store.state.user.profile) {

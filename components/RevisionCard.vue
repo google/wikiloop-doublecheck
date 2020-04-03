@@ -191,10 +191,15 @@
         type: String,
         required: true
       },
+      feedNameProp: {
+        type: String,
+        default: null
+      },
       oresProp: {
         type: Object,
         default: null
       },
+
       revisionProp: {
         type: Object,
         default: null
@@ -442,7 +447,8 @@
             user: revision.user,
             wiki: revision.wiki,
             timestamp: new Date(revision.timestamp).getTime()/1000
-          }
+          },
+          feed: this.feedNameProp
         };
 
         if (this.$store.state.user && this.$store.state.user.profile) {

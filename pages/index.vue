@@ -9,6 +9,7 @@
                 :oresProp="currentOres"
                 :interactionProp="currentInteraction"
                 :revisionProp="currentRevision"
+                :feed-name-prop="`index`"
                 v-on:next-card="showNext()"
                 ></RevisionCard>
         </template>

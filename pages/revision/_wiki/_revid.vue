@@ -24,6 +24,7 @@
           :ores="ores"
           :diff="diff"
           :revision="revision"
+          :feedName="`direct`"
         ></StaticRevisionCard>
       </div>
     </div>

@@ -6,6 +6,7 @@
             <RevisionCard ref="revisionCard"
                           :wikiRevId="currentWikiRevId"
                           :key="currentWikiRevId"
+                          :feed-name-prop="`feed-${feedName}`"
                           v-on:next-card="showNext()"
             ></RevisionCard>
         </template>
