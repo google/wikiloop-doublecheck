@@ -82,7 +82,7 @@
 
             <div class="card mt-4">
                 <div class="card-header">
-                    <h2>Top Users</h2>
+                    <h2>Top Users ({{totalLoggedIn}})</h2>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -189,8 +189,8 @@
         timeRange: null
       }
     }, async asyncData({$axios}) {
-      const {loggedIn, anonymous, wikis} = await $axios.$get(`/api/leaderboard`);
-      return {loggedIn, anonymous, wikis};
+      const {loggedIn, anonymous, wikis, totalLoggedIn} = await $axios.$get(`/api/leaderboard`);
+      return {loggedIn, anonymous, wikis, totalLoggedIn};
     }, methods: {
       isMe: function (leader) {
         return (this.$store.state.user && this.$store.state.user.profile && this.$store.state.user.profile.displayName === leader.wikiUserName) || this.$cookiez.get('_ga') === leader.userGaId;
@@ -200,10 +200,11 @@
         }
         return wiki; // fall back
       }, load: async function () {
-        const {loggedIn, anonymous, wikis} = await this.$axios.$get(`/api/leaderboard?days=${this.timeRange}`);
+        const {loggedIn, anonymous, wikis, totalLoggedIn} = await this.$axios.$get(`/api/leaderboard?days=${this.timeRange}`);
         this.loggedIn = loggedIn;
         this.anonymous = anonymous;
         this.wikis = wikis;
+        this.totalLoggedIn = totalLoggedIn;
       }
     }, mounted() {
       this.$ga.page('/leaderboard.vue');

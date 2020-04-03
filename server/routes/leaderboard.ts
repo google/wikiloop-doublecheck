@@ -54,6 +54,32 @@ async function getWikisLeaderList(
     }
   ).toArray();
 }
+async function getTotalLoggedInUsers(
+    startTime:number, endTime:number) {
+  return (await mongoose.connection.db.collection("Interaction").aggregate(
+      [
+        {
+          "$match": {
+            "wikiUserName": { $exists: true },
+            "timestamp": {$gte: startTime, $lte: endTime}
+          }
+        },
+        {
+          "$group": {
+            "_id": {
+              "wikiUserName": "$wikiUserName",
+            },
+          }
+        },
+        {
+          "$count": "count"
+        }
+      ],
+      {
+        "allowDiskUse": false
+      }
+  ).toArray())[0].count;
+}
 
 async function getLoggedInLeaderList(
     startTime:number, endTime:number, limit:number) {
@@ -164,7 +190,8 @@ export const leaderboard = async (req, res) => {
     let loggedIn = await getLoggedInLeaderList(startTime, endTime, limit);
     let anonymous = await getAnonymousLeaderList(startTime, endTime, limit);
     let wikis = await getWikisLeaderList(startTime, endTime);
-    res.send({ loggedIn, anonymous, wikis });
+    let totalLoggedIn = await getTotalLoggedInUsers(startTime, endTime);
+    res.send({ loggedIn, anonymous, wikis, totalLoggedIn });
     req.visitor
         .event({ ec: "api", ea: "/leaderboard" })
         .send();
