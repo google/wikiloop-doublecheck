@@ -1,0 +1,15 @@
+{
+  "feed": "WIKITRUST",
+  "feedToken": "8a6658b8-c3c7-4431-842e-275648f8274f",
+  "content": [
+    {
+      "title": "Barack_Obama",
+      "wiki": "enwiki",
+      "pageId": 123,
+      "revIds": [
+        456,
+        789
+      ]
+    }
+  ]
+}

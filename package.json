@@ -114,7 +114,8 @@
       "**/*.test.ts",
       "**/*.spec.ts",
       ".git",
-      "node_modules"
+      "node_modules",
+      "test"
     ],
     "watch": [
       "server",
