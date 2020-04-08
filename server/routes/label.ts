@@ -28,6 +28,7 @@ export const listLabels = async function (req, res) {
                 judgement: true,
                 wikiRevId: true,
                 timestamp: true,
+                feed: true
             })
         .sort({timestamp: -1})
         .skip(offset)
@@ -44,6 +45,7 @@ export const listLabels = async function (req, res) {
                 `userGaId`,
                 `wikiUserName`,
                 `judgement`,
+                `feed`,
             ]]
                 .concat(labels.map((label) => {
                   return [
@@ -52,6 +54,7 @@ export const listLabels = async function (req, res) {
                     label.userGaId,
                     label.wikiUserName,
                     label.judgement,
+                    label.feed,
                   ]
                 }));
             stringify(ret, { header: false })
