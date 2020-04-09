@@ -6,7 +6,8 @@
             <RevisionCard ref="revisionCard"
                           :wikiRevId="currentWikiRevId"
                           :key="currentWikiRevId"
-                          :feed-name-prop="`feed-${feedName}`"
+                          :feed-name-prop="`${feedItem.feed}`"
+                          :from-mixer-prop="`${feedItem.userMixer}`"
                           v-on:next-card="showNext()"
             ></RevisionCard>
         </template>
@@ -38,6 +39,7 @@
         title: 'WikiLoop Battlefield',
         currentWikiRevId: null,
         tipLoginCountDown: 0,
+        feedItem: null,
       }
     },
     computed: {
@@ -49,8 +51,8 @@
     },
     methods: {
       showNext: async function() {
-        let ret = await this.$axios.$get(`/api/feed/${this.feedName}?size=1`);
-        this.currentWikiRevId = `enwiki:${ret[0]}`;
+        this.feedItem = await this.$axios.$get(`/api/feed/${this.feedName}?limit=1`);
+        this.currentWikiRevId = `enwiki:${this.feedItem.revIds[0]}`;
       },
       snoozeTipLogin: function() {
         this.tipLoginCountDown = 15;
@@ -59,7 +61,7 @@
 
     },
     validate ({ params }) {
-      return (['us2020', 'covid19'].indexOf(params.feed) >= 0);
+      return (['us2020', 'covid19', 'recent', 'mix'].indexOf(params.feed) >= 0);
     },
 
     async asyncData ({ params }) {

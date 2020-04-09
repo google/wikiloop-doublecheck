@@ -13,9 +13,10 @@
 // limitations under the License.
 
 import {wikiToDomain} from "../../shared/utility-shared";
+import {apiLogger, perfLogger} from '../common';
+import {MwActionApiClient} from "../../shared/mwapi";
 
 const rp = require('request-promise');
-import { perfLogger, apiLogger } from '../common';
 
 /**
  * @param req, supporting query
@@ -44,55 +45,15 @@ export const listRecentChanges = async (req, res) => {
   // API document: https://www.mediawiki.org/w/api.php?action=help&modules=query%2Brecentchanges
 
   // It seems according to url.searchParams is not available in Microsoft Internet Explorer, we need to test it
-  let searchParams = new URLSearchParams(
-  {
-    "action": "query",
-    "format": "json",
-    "prop": "info",
-    "list": "recentchanges",
-    "rcnamespace": "0",
-    "rcprop": "user|userid|comment|flags|timestamp|ids|title|oresscores",
-    "rcshow": "!bot",
-    "rctype": "edit",
-    "rctoponly": "1"
-  });
-  if (req.query.direction ) searchParams.set(`rcdir`, req.query.direction);
-  if (req.query.timestamp ) searchParams.set(`rcstart`, req.query.timestamp);
-  if (req.query.limit) searchParams.set(`rclimit`, req.query.limit);
+  let direction = req.query.direction;
+  let timestamp = req.query.timestamp;
+  let limit = req.query.limit;
 
-  let url = new URL(`http://${wikiToDomain[wiki]}/w/api.php?${searchParams.toString()}`);
-  apiLogger.info(`Requesting for Action API: ${url.toString()}`);
-  apiLogger.info(`Try sandbox request here: ${new URL(`http://${wikiToDomain[wiki]}/wiki/Special:ApiSandbox#${searchParams.toString()}`)}`);
+  let recentChangesJson = await MwActionApiClient.getRawRecentChanges({wiki, direction, timestamp, limit});
 
-  let recentChangesJson = await rp.get(url.toString(), { json: true });
   let recentChangeResponseTime = new Date();
-  /** Sample response
-   {
-     "batchcomplete":"",
-     "continue":{
-        "rccontinue":"20190701214931|1167038199",
-        "continue":"-||info"
-     },
-     "query":{
-        "recentchanges":[
-           {
-              "type":"edit",
-              "ns":0,
-              "title":"Multiprocessor system architecture",
-              "pageid":58955273,
-              "revid":904396518,
-              "old_revid":904395753,
-              "rcid":1167038198,
-              "user":"Dhtwiki",
-              "userid":9475572,
-              "timestamp":"2019-07-01T21:49:32Z",
-              "comment":"Putting images at bottom, side by side, to prevent impinging on References section"
-           }
-           // ...
-        ]
-     }
-   }
 
+  /*
    Converting to
    {
       _id: recentChange._id,

@@ -51,7 +51,6 @@ export const actions = {
         const version = await this.$axios.$get(`/api/version`);
         commit('setVersion', version);
         const metrics = await this.$axios.$get(`/api/metrics`);
-        console.log(`XXX Store got metrics ${JSON.stringify(metrics, null, 2)}`);
         commit('setMetrics', metrics);
 
         if (req.session && req.session.id) {

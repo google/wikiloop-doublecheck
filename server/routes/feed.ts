@@ -1,10 +1,55 @@
 import express, {Request, Response} from "express";
 import {FeedEnum, WatchCollectionFeed} from "../../server/feed/watch-collection-feed";
+import {MwActionApiClient} from "~/shared/mwapi";
 
 export const feedRouter = express.Router();
 
+feedRouter.get('/mix', async (req: Request, res: Response) => {
+  var weighted = require('weighted');
+
+  var options = {
+    'recent': 0.1,
+    // 'second': 0.1,
+    'ores': 0.5,
+    // 'wikitrust': 0.2,
+    'covid19': 0.2,
+    'us2020': 0.2,
+  };
+  const feed = weighted.select(options);
+  let revIds;
+  switch (feed) {
+    case 'ores':  // fall through
+    case 'wikitrust':  // fall through
+    case 'covid19':  // fall through
+    case 'us2020':  // fall through
+      revIds = await WatchCollectionFeed.sampleRevisions(
+      FeedEnum[feed], parseInt(req.query.size) || 50);
+      break;
+    case 'recent':  // fall through
+    default:
+      revIds = await MwActionApiClient.getLatestRevisionIds({limit: 50});
+      break;
+  }
+  res.send({
+    useMixer: true,
+    feed: feed,
+    revIds: revIds
+  });
+});
+
+feedRouter.get("/recent", async (req: Request, res: Response) => {
+  res.send(await MwActionApiClient.getLatestRevisionIds({limit: 50}));
+});
+
 feedRouter.get("/:feed", async (req: Request, res: Response) => {
-  res.send(await WatchCollectionFeed.sampleRevisions(FeedEnum[req.params.feed], parseInt(req.query.size) || 100));
+  let feed = req.params.feed;
+  if (Object.keys(FeedEnum).includes(feed))
+    res.send({
+      useMixer: false,
+      feed: feed,
+      revIds: await WatchCollectionFeed.sampleRevisions(FeedEnum[req.params.feed], parseInt(req.query.limit) || 50)
+    });
+  else res.status(404).send(`Feed ${feed} doesn't exist`);
 });
 
 if (process.env.FEED_WIKITRUST_TOKEN) {

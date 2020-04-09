@@ -1,7 +1,8 @@
 export enum FeedEnum {
   us2020 = 'WatchCollection_US2020',
   covid19 = 'WatchCollection_COVID19',
-  wikitrust = 'WatchCollection_WIKITRUST'
+  wikitrust = 'WatchCollection_WIKITRUST',
+  ores = 'WatchCollection_ORES'
 }
 
 export class WatchCollectionFeed {

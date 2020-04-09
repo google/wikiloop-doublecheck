@@ -27,6 +27,7 @@ const mongoose = require('mongoose');
 
 import {wikiToDomain} from "../shared/utility-shared";
 import {getMetrics, metricsRouter} from "./metrics";
+import {OresStream} from "~/server/ingest/ores-stream";
 
 const asyncHandler = fn => (req, res, next) =>
     Promise
@@ -204,19 +205,18 @@ function setupMediaWikiListener(db, io) {
   logger.debug(`Starting mediaWikiListener.`);
 
   return new Promise(async (resolve, reject) => {
-    logger.debug(`MediaWikiListener started`);
     const EventSource = require('eventsource');
-    const url = 'https://stream.wikimedia.org/v2/stream/recentchange';
+    const url = 'https://stream.wikimedia.org/v2/stream/revision-score';
 
     logger.debug(`Connecting to EventStreams at ${url}`);
 
     const eventSource = new EventSource(url);
     eventSource.onopen = function (event) {
-      logger.debug('--- Opened connection.');
+      logger.debug(`Stream connected: ${url}`);
     };
 
     eventSource.onerror = function (event) {
-      logger.error('--- Encountered error', event);
+      logger.error(`Stream error: ${url}`, event);
     };
 
     eventSource.onmessage = async function (event) {
@@ -540,7 +540,7 @@ async function start() {
   });
   if (useOauth) setupAuthApi(mongoose.connection.db, app);
   setupIoSocketListener(mongoose.connection.db, io);
-  setupMediaWikiListener(mongoose.connection.db, io);
+  // setupMediaWikiListener(mongoose.connection.db, io);
   setupApiRequestListener(mongoose.connection.db, io, app);
   setupRouters(mongoose.connection.db, app);
   if (process.env.STIKI_MYSQL) {
@@ -570,6 +570,9 @@ async function start() {
     message: `Server listening on http://${host}:${port}`,
     badge: true
   });
+
+  const oresStream = new OresStream(`enwiki`);
+  oresStream.subscribe();
 
   if (process.env.CRON_BARNSTAR_TIMES) {
     logger.info(`Setting up CRON_BARN_STAR_TIME raw value = `, process.env.CRON_BARNSTAR_TIMES);

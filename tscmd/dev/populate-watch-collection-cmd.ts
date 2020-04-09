@@ -55,7 +55,7 @@ async function main() {
 
       let newRevIds = await neck.schedule(async () => {
         return await MwActionApiClient
-            .getRevisions(WIKI, item.title,
+            .getRevisionIdsByTitle(WIKI, item.title,
                 revIds.length ? revIds[revIds.length - 1] - 1 : null/*we start from the one earlier*/);
 
       });

@@ -139,13 +139,16 @@ export const actions = {
   async loadMoreWikiRevs( { commit, state, dispatch}) {
     if (!state.nextWikiRevIdsHeap) commit(`initHeap`);
     let limit = state.maxQueueSize - state.nextWikiRevIdsHeap.size();
+
+    // Consider revisions in `nextWikiRevIdsHeap` as a time window
+    // Extend the time window by fetching both before and after the time window
     if (state.nextWikiRevIdsHeap.size() <= state.maxQueueSize) {
       await dispatch('fetchNewWikiRevIds',
-        {limit, direction: `newer`});
+        {limit, direction: `newer`}); // fetching revisions after (newer than)the time window
     }
     if (state.nextWikiRevIdsHeap.size() <= state.maxQueueSize) {
       await dispatch('fetchNewWikiRevIds',
-        {limit, direction: `older`});
+        {limit, direction: `older`}); // fetching revisions after (older than) the time window
     }
   },
   async preloadAsyncMeta( {state, dispatch}) {
