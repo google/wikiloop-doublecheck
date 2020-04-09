@@ -9,7 +9,7 @@
     "prod": "npm run build && npm run start",
     "build": "nuxt build",
     "analyze": "nuxt build -a",
-    "start": "cross-env NODE_ENV=production npx ts-node server/index.ts",
+    "start": "cross-env NODE_ENV=production npx ts-node -r tsconfig-paths/register --project tsconfig.json server/index.ts",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint",
