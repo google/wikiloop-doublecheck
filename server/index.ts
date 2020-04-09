@@ -571,8 +571,13 @@ async function start() {
     badge: true
   });
 
-  const oresStream = new OresStream(`enwiki`);
-  oresStream.subscribe();
+  if (process.env.INGESTION_ENABLED === '1') {
+    const oresStream = new OresStream(`enwiki`);
+    oresStream.subscribe();
+    logger.info(`Ingestion enabled`);
+  } else {
+    logger.info(`Ingestion disabled`);
+  }
 
   if (process.env.CRON_BARNSTAR_TIMES) {
     logger.info(`Setting up CRON_BARN_STAR_TIME raw value = `, process.env.CRON_BARNSTAR_TIMES);
@@ -605,10 +610,6 @@ async function start() {
   } else {
     logger.warn(`Skipping UsageReportCronJob because of lack of CRON_BARNSTAR_TIMES which is: `, process.env.CRON_BARNSTAR_TIMES);
   }
-
-  // const reportCronJob = new ReportCronJob();
-  // reportCronJob.dailyReportJob.start();
-
 
 }
 
