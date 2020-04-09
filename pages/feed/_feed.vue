@@ -1,7 +1,7 @@
 
 <template>
     <section>
-        <h1 v-if="feedName"> Review Feed {{feedName}} </h1>
+        <h1 v-if="feedName"> Review Feed<sup class="text-warning">β</sup> {{feedName}} </h1>
         <template v-if="currentWikiRevId">
             <RevisionCard ref="revisionCard"
                           :wikiRevId="currentWikiRevId"
@@ -61,7 +61,7 @@
 
     },
     validate ({ params }) {
-      return (['us2020', 'covid19', 'recent', 'mix'].indexOf(params.feed) >= 0);
+      return (['us2020', 'covid19', 'recent', 'ores', 'mix'].indexOf(params.feed) >= 0);
     },
 
     async asyncData ({ params }) {

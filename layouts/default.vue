@@ -33,8 +33,12 @@
               <template v-slot:button-content>
                 <i class="fas fa-star pr-0"></i>
               </template>
-              <b-dropdown-item href="/feed/us2020">US 2020 Feed</b-dropdown-item>
-              <b-dropdown-item href="/feed/covid19">COVID-19 Feed</b-dropdown-item>
+              <b-dropdown-item href="/feed/mix">Mix Feeds<sup class="text-warning">β</sup></b-dropdown-item>
+              <b-dropdown-item href="/feed/ores">ORES detected Feed<sup class="text-warning">β</sup></b-dropdown-item>
+              <b-dropdown-item href="/feed/wikitrust">WikiTrust detected Feed<sup class="text-warning">β</sup></b-dropdown-item>
+              <b-dropdown-item href="/feed/us2020">US 2020 Election Topic Feed<sup class="text-warning">β</sup></b-dropdown-item>
+              <b-dropdown-item href="/feed/covid19">COVID-19 Topic Feed<sup class="text-warning">β</sup></b-dropdown-item>
+
             </b-nav-item-dropdown>
 
             <b-nav-item href="/active" v-b-tooltip.hover title="Active Users">
