@@ -8,12 +8,12 @@ feedRouter.get("/:feed", async (req: Request, res: Response) => {
 });
 
 if (process.env.FEED_WIKITRUST_TOKEN) {
-  // FEED_WIKITRUST_TOKEN=<token> curl -H "Content-Type: application/json" -H "WikiLoopToken:$FEED_WIKITRUST_TOKEN" -X POST -d @./test/testdata/wikitrust_feed.json http://localhost:3000/api/feed/WIKITRUST
+  // FEED_WIKITRUST_TOKEN=<FEED_WIKITRUST_TOKEN> curl -H "Content-Type: application/json" -H "WikiLoopToken:$FEED_WIKITRUST_TOKEN" -X POST -d @./test/testdata/wikitrust_feed.json http://dev.battlefield.wikiloop.org:3000/api/feed/wikitrust
   feedRouter.post("/:feed", async (req: Request, res: Response) => {
     // Validation
     // TODO(xinbenlv): consider use `express-validator`
     // TODO(xinbenlv): change to MongoDB
-    if (req.params.feed == 'WIKITRUST' && req.header('WikiLoopToken') == process.env.FEED_WIKITRUST_TOKEN) {
+    if (req.params.feed == 'wikitrust' && req.header('WikiLoopToken') == process.env.FEED_WIKITRUST_TOKEN) {
       const mongoose = require('mongoose');
       await mongoose.connection.db.collection(`WatchCollection_WIKITRUST`)
         .insertMany(req.body.content);
@@ -25,12 +25,12 @@ if (process.env.FEED_WIKITRUST_TOKEN) {
     }
   });
 
-  // FEED_WIKITRUST_TOKEN=<token> curl -H "Content-Type: application/json" -H "WikiLoopToken:$FEED_WIKITRUST_TOKEN" -X DELETE http://localhost:3000/api/feed/WIKITRUST
+  // FEED_WIKITRUST_TOKEN=<token> curl -H "Content-Type: application/json" -H "WikiLoopToken:$FEED_WIKITRUST_TOKEN" -X DELETE http://localhost:3000/api/feed/wikitrust
   feedRouter.delete("/:feed", async (req: Request, res: Response) => {
     // Validation
     // TODO(xinbenlv): consider use `express-validator`
     // TODO(xinbenlv): change to MongoDB
-    if (req.params.feed == 'WIKITRUST' && req.header('WikiLoopToken') == process.env.FEED_WIKITRUST_TOKEN) {
+    if (req.params.feed == 'wikitrust' && req.header('WikiLoopToken') == process.env.FEED_WIKITRUST_TOKEN) {
       const mongoose = require('mongoose');
       await mongoose.connection.db.collection(`WatchCollection_WIKITRUST`)
         .drop();
