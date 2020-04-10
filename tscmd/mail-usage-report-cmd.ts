@@ -1,6 +1,6 @@
 // Usage: npx ts-node -r tsconfig-paths/register tscmd/mail-usage-report-cmd.ts
 
-import {UsageReportCronJob} from "~/cronjobs";
+import {UsageReportCronJob} from "@/cronjobs";
 const mongoose = require('mongoose');
 
 async function main() {

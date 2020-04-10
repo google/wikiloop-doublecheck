@@ -1,8 +1,8 @@
 // Usage: npx ts-node -r tsconfig-paths/register tscmd/dev/populate-watch-collection-cmd.ts
 
-import {MwActionApiClient} from "~/shared/mwapi";
-import {WatchCollectionItem} from "~/shared/schema";
-import {FeedEnum} from "~/server/feed/watch-collection-feed";
+import {MwActionApiClient} from "@/shared/mwapi";
+import {WatchCollectionItem} from "@/shared/schema";
+import {FeedEnum} from "@/server/feed/watch-collection-feed";
 
 function arraySum(arr: any[]): string {
   if (!arr || arr.length == 0) return `[]`;

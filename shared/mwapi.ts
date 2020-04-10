@@ -15,8 +15,8 @@
 // This folder includes api convenience  that we use for accessing
 // MediaWiki Action API and REST API
 
-import {wikiToDomain} from "~/shared/utility-shared";
-import {logger} from "~/server/common";
+import {wikiToDomain} from "@/shared/utility-shared";
+import {logger} from "@/server/common";
 import * as _ from 'underscore';
 const rp = require('request-promise');
 

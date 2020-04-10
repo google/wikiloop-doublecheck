@@ -1,7 +1,6 @@
 import express, {Request, Response} from "express";
-import {FeedEnum, WatchCollectionFeed} from "../../server/feed/watch-collection-feed";
-import {MwActionApiClient} from "~/shared/mwapi";
-import {logger} from "~/server/common";
+import {FeedEnum, WatchCollectionFeed} from "@/server/feed/watch-collection-feed";
+import {MwActionApiClient} from "@/shared/mwapi";
 
 export const feedRouter = express.Router();
 

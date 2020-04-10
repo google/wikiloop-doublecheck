@@ -181,8 +181,8 @@
 </template>
 <script lang="ts">
   import {  fetchDiffWithWikiRevId, supportedWikis, getUrlBaseByWiki } from '@/shared/utility-shared';
-  import DiffBox from '~/components/DiffBox.vue';
-  import socket from '~/plugins/socket.io.js';
+  import DiffBox from '@/components/DiffBox.vue';
+  import socket from '@/plugins/socket.io.js';
   export default {
     components: {
       DiffBox

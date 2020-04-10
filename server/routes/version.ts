@@ -13,7 +13,7 @@
 // limitations under the License.
 
 export const version = async (req, res) => {
-    var packageson = require('./../../package.json');
+    var packageson = require('@/package.json');
     res.send(packageson.version);
     req.visitor
         .event({ ec: "api", ea: "/" })

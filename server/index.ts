@@ -25,9 +25,9 @@ const universalAnalytics = require('universal-analytics');
 const rp = require('request-promise');
 const mongoose = require('mongoose');
 
-import {wikiToDomain} from "../shared/utility-shared";
-import {getMetrics, metricsRouter} from "./metrics";
-import {OresStream} from "~/server/ingest/ores-stream";
+import {wikiToDomain} from "@/shared/utility-shared";
+import {getMetrics, metricsRouter} from "@/server/metrics";
+import {OresStream} from "@/server/ingest/ores-stream";
 
 const asyncHandler = fn => (req, res, next) =>
     Promise

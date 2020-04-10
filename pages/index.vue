@@ -28,7 +28,7 @@
 </template>
 
 <script lang="ts">
-    import RevisionCard from '~/components/RevisionCard.vue';
+    import RevisionCard from '@/components/RevisionCard.vue';
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }

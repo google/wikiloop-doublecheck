@@ -12,9 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import {wikiToDomain} from "../../shared/utility-shared";
+import {wikiToDomain} from "@/shared/utility-shared";
 
-import { perfLogger, apiLogger } from '../common';
+import { perfLogger, apiLogger } from '@/server/common';
 const rp = require('request-promise');
 
 /**

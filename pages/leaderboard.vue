@@ -176,10 +176,10 @@
     </section>
 </template>
 <script lang="ts">
-  import {getUrlBaseByWiki, fetchDiffWithWikiRevId} from '~/shared/utility-shared';
+  import {getUrlBaseByWiki, fetchDiffWithWikiRevId} from '@/shared/utility-shared';
   import BootstrapVue from 'bootstrap-vue';
   import VueTimeago from 'vue-timeago';
-  import languages from '~/locales/languages.js';
+  import languages from '@/locales/languages.js';
 
   export default {
     comments: {

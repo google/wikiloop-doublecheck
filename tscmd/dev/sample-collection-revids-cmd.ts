@@ -1,5 +1,5 @@
-import {WatchCollectionFeed} from "~/server/feed/watch-collection-feed";
-import {FeedEnum} from "~/server/feed/watch-collection-feed";
+import {WatchCollectionFeed} from "@/server/feed/watch-collection-feed";
+import {FeedEnum} from "@/server/feed/watch-collection-feed";
 
 const mongoose = require('mongoose');
 

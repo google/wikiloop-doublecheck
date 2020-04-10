@@ -129,7 +129,7 @@ export class AwardBarnStarCronJob {
             let mwMailer = new MwMailer();
             await mwMailer.init();
             let formattedDate/**format: YYYY-MM-DD */ = new Date().toISOString().split('T')[0];
-            let report = await require('../server/routes/stats')
+            let report = await require('@/server/routes/stats')
                 .getChampion(frequencyToNumDaysMap[frequency], formattedDate, 'enwiki');
             let users = report.slice(0, 10/*top 10*/)
                 .filter(n => n !== ANONYMOUS_PLACEHOLDER)

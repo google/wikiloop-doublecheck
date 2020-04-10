@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import {useOauth, isEmpty} from '../common';
+import {useOauth, isEmpty} from '@/server/common';
 
 const useStiki = !isEmpty(process.env.STIKI_MYSQL);
 

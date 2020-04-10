@@ -96,8 +96,8 @@
 </template>
 
 <script lang="ts">
-  import socket from '~/plugins/socket.io.js';
-  import languages from '~/locales/languages.js';
+  import socket from '@/plugins/socket.io.js';
+  import languages from '@/locales/languages.js';
 
   export default {
     data() {

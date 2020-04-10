@@ -78,7 +78,7 @@ async function getTotalLoggedInUsers(
       {
         "allowDiskUse": false
       }
-  ).toArray())[0].count;
+  ).toArray())[0]?.count || 0; // it's possible the result is zero
 }
 
 async function getLoggedInLeaderList(

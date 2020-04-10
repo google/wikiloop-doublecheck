@@ -32,7 +32,7 @@
 </template>
 <script>
 
-  import StaticRevisionCard from '~/components/StaticRevisionCard.vue';
+  import StaticRevisionCard from '@/components/StaticRevisionCard.vue';
   import {  fetchDiffWithWikiRevId, supportedWikis } from '@/shared/utility-shared';
   export default {
     components: {

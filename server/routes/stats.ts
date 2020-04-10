@@ -17,7 +17,7 @@
 */
 
 const mongoose = require('mongoose');
-import { logger } from '../common';
+import { logger } from '@/server/common';
 const ANONYMOUS_PLACEHOLDER = `(anonymous)`;
 const championQuery = function(timeRange, endDate, wiki) {
   let utcEndTime;

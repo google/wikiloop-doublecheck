@@ -41,7 +41,7 @@
 
 </template>
 <script lang="ts">
-  import RevisionCard from '~/components/RevisionCard.vue';
+  import RevisionCard from '@/components/RevisionCard.vue';
 
   // Margin (in pixels) above the bottom of the screen at which new history entries begin to load.
   const SCROLL_OFFSET = 50;
