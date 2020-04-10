@@ -30,7 +30,7 @@
               <span v-if="isMe(client)">(Me)</span>
             </router-link>
           </td>
-          <td scope="col"><timeago :datetime="client.lastActive"></timeago></td>
+          <td scope="col"><timeago :datetime="new Date(client.lastActive*1000)"></timeago></td>
         </tr>
         <tr v-for="(client, index) of $store.state.metrics.activeAnonymousUser">
           <td scope="col">
@@ -40,7 +40,7 @@
               <span v-if="isMe(client)">(Me)</span>
             </router-link>
           </td>
-          <td scope="col"><timeago :datetime="client.lastActive"></timeago></td>
+          <td scope="col"><timeago :datetime="new Date(client.lastActive*1000)"></timeago></td>
         </tr>
       </tbody>
     </table>
@@ -57,7 +57,7 @@
             && this.$store.state.user.profile.displayName === leader.wikiUserName)
             || this.$cookiez.get('_ga') === leader.userGaId;
       },
-    },
+    }
   }
 </script>
 
