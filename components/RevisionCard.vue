@@ -483,6 +483,8 @@
         return `${this.cbng !== null ? Math.floor(parseFloat(this.cbng) * 100) : "??"}%`;
       }
     },
+    async created() {
+    },
     async beforeMount() {
       this.interaction = this.interactionProp || await this.$axios.$get(`/api/interaction/${this.wikiRevId}`);
       this.revision = this.revisionProp || await this.$axios.$get(`/api/revision/${this.wikiRevId}`);

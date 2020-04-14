@@ -2,12 +2,11 @@
   "feed": "wikitrust",
   "content": [
     {
-      "title": "Barack_Obama",
+      "title": "Washington_Heights,_Manhattan",
       "wiki": "enwiki",
-      "pageId": 123,
+      "pageId": 182694,
       "revIds": [
-        456,
-        789
+        950027405
       ]
     }
   ]

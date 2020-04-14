@@ -27,6 +27,7 @@
 
 <script lang="ts">
   import RevisionCard from '@/components/RevisionCard.vue';
+  import {RevisionCardItem} from "@/shared/interfaces";
   function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
@@ -40,6 +41,8 @@
         currentWikiRevId: null,
         tipLoginCountDown: 0,
         feedItem: null,
+        revisionCardItem: null,
+        nextRevisionCardItem: null
       }
     },
     computed: {
@@ -53,6 +56,25 @@
       showNext: async function() {
         this.feedItem = await this.$axios.$get(`/api/feed/${this.feedName}?limit=1`);
         this.currentWikiRevId = `enwiki:${this.feedItem.revIds[0]}`;
+        this.nextFeedItem = await this.$axios.$get(`/api/feed/${this.feedName}?limit=1`);
+
+
+      },
+      fetchRevisionCardItem: async function(wikiRevId):Promise<RevisionCardItem> {
+        let revision = await this.$axios.$get(`/api/revision/${wikiRevId}`);
+        let ores = await this.$axios.$get(`/api/、ores/${wikiRevId}`);
+        let stiki = await this.$axios.$get(`/extra/stiki/${wikiRevId}`);
+        let cbng = await this.$axios.$get(`/extra/cbng/${wikiRevId}`);
+        let diff = await this.$axios.$get(`/api/diff/${wikiRevId}`);
+        return <RevisionCardItem> {
+          wiki: revision.wiki,
+          revId: revision.revId,
+          title: revision.title,
+          pageId: revision.wki,
+          summary: revision.comment,
+          author: revision.user,
+          timestamp: revision.timestamp,
+        };
       },
       snoozeTipLogin: function() {
         this.tipLoginCountDown = 15;
@@ -61,7 +83,7 @@
 
     },
     validate ({ params }) {
-      return (['us2020', 'covid19', 'recent', 'ores', 'mix'].indexOf(params.feed) >= 0);
+      return (['us2020', 'covid19', 'recent', 'ores', 'mix', ].indexOf(params.feed) >= 0);
     },
 
     async asyncData ({ params }) {
