@@ -83,7 +83,7 @@
 
     },
     validate ({ params }) {
-      return (['us2020', 'covid19', 'recent', 'ores', 'mix', ].indexOf(params.feed) >= 0);
+      return (['us2020', 'covid19', 'recent', 'ores', 'mix', 'wikitrust'].indexOf(params.feed) >= 0);
     },
 
     async asyncData ({ params }) {
