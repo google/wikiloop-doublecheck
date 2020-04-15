@@ -117,9 +117,7 @@
     async mounted() {
       document.addEventListener('judgement-event', async () => {
         if (!(this.$store.state.user &&this.$store.state.user.profile)) {
-        console.log(`XXX tip ${this.tipLoginCountDown}, ${this.tipLoginCountDown === 0}`);
           if (this.tipLoginCountDown === 0) {
-            console.log(`XXX tip 222 ${this.tipLoginCountDown}`);
             this.$bvModal.show(`modal-promote-login`);
           } else {
             this.tipLoginCountDown --;

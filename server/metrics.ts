@@ -1,4 +1,4 @@
-import express, {Request, Response} from "express";
+const express = require('express');
 
 const mongoose = require('mongoose');
 export const metricsRouter = express.Router();
@@ -33,6 +33,6 @@ export const getMetrics = async() => {
   }
 };
 
-metricsRouter.get("/", async (req, res: Response) => {
+metricsRouter.get("/", async (req, res) => {
   res.send(await getMetrics());
 });

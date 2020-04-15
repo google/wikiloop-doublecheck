@@ -33,6 +33,10 @@
     "NPM_CONFIG_PRODUCTION": {
       "required": true,
       "value": "false"
+    },
+    "INGESTION_ENABLED": {
+      "required": true,
+      "value": "1"
     }
   },
   "formation": {

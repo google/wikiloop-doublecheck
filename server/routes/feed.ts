@@ -1,10 +1,10 @@
-import express, {Request, Response} from "express";
+const express = require('express');
 import {FeedEnum, WatchCollectionFeed} from "@/server/feed/watch-collection-feed";
 import {MwActionApiClient} from "@/shared/mwapi";
 
 export const feedRouter = express.Router();
 
-feedRouter.get('/mix', async (req, res: Response) => {
+feedRouter.get('/mix', async (req, res) => {
   var weighted = require('weighted');
 
   var options = {
@@ -37,7 +37,7 @@ feedRouter.get('/mix', async (req, res: Response) => {
   });
 });
 
-feedRouter.get("/recent", async (req, res: Response) => {
+feedRouter.get("/recent", async (req, res) => {
   let revIds = await MwActionApiClient.getLatestRevisionIds({limit: 50});
   let feed = 'recent';
   res.send({
@@ -47,7 +47,7 @@ feedRouter.get("/recent", async (req, res: Response) => {
   });
 });
 
-feedRouter.get("/:feed", async (req, res: Response) => {
+feedRouter.get("/:feed", async (req, res) => {
   let feed = req.params.feed;
   if (Object.keys(FeedEnum).includes(feed))
     res.send({
@@ -60,7 +60,7 @@ feedRouter.get("/:feed", async (req, res: Response) => {
 
 if (process.env.FEED_WIKITRUST_TOKEN) {
   // curl -H "Content-Type: application/json" -H "WikiLoopToken:$FEED_WIKITRUST_TOKEN" -X POST -d @./test/testdata/wikitrust_feed.json http://dev.battlefield.wikiloop.org:3000/api/feed/wikitrust
-  feedRouter.post("/:feed", async (req, res: Response) => {
+  feedRouter.post("/:feed", async (req, res) => {
     // Validation
     // TODO(xinbenlv): consider use `express-validator`
     // TODO(xinbenlv): change to MongoDB
@@ -77,7 +77,7 @@ if (process.env.FEED_WIKITRUST_TOKEN) {
   });
 
   // curl -H "Content-Type: application/json" -H "WikiLoopToken:$FEED_WIKITRUST_TOKEN" -X DELETE http://localhost:3000/api/feed/wikitrust
-  feedRouter.delete("/:feed", async (req, res: Response) => {
+  feedRouter.delete("/:feed", async (req, res) => {
     // Validation
     // TODO(xinbenlv): consider use `express-validator`
     // TODO(xinbenlv): change to MongoDB
