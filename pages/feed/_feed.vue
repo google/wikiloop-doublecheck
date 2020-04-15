@@ -1,8 +1,8 @@
 <template>
     <section>
         <h1 v-if="feedName"> Review Feed<sup class="text-warning">β</sup> {{feedName}} </h1>
-        <template v-if="currentWikiRevId">
-          <div class="card shadow h-100">
+        <template v-if="!loading">
+          <div v-if="currentRevisionPanelItem" class="card shadow h-100">
             <RevisionPanel
               :key="currentWikiRevId"
               :item="currentRevisionPanelItem"
@@ -14,6 +14,27 @@
               :wikiRevId="currentWikiRevId"
               :title="currentRevisionPanelItem.title"
               @next-card="showNext()"/>
+          </div>
+          <div v-else>
+            <div class="card">
+            <div class="card-body">
+              <div class="card-body w-100 text-center">
+                <h5 m-5>Feed <div class="badge badge-success">{{currentFeedItem.feed}}</div> has no new Revisions, next</h5>
+                <button @click="showNext()" class="m-5 btn btn-outline-success">
+                  {{$t(`NextBtnLabel`)}}(→)
+                </button>
+              </div>
+            </div>
+            </div>
+          </div>
+        </template>
+        <template v-else>
+          <div class="card">
+            <div class="card-body w-100 align-items-center d-flex" style="height: 500px;">
+              <div class="w-100 text-center">
+                <b-spinner label="Loading..."></b-spinner>
+              </div>
+            </div>
           </div>
         </template>
 
@@ -50,6 +71,7 @@
           nextWikiRevId: null,
           nextRevisionPanelItem: null,
           tipLoginCountDown: 5,
+          loading:true,
       }
     },
     computed: {
@@ -60,26 +82,26 @@
       },
     },
     methods: {
-      showNext: async function() {
-        if (this.nextWikiRevId) {
-          this.currentFeedItem = this.nextFeedItem;
-          this.currentWikiRevId = this.nextWikiRevId;
-          this.currentRevisionPanelItem = this.nextRevisionPanelItem;
-        } else {
+      getNewFeedItemAndInfo: async function() {
           let newFeedItem = await this.$axios.$get(`/api/feed/${this.feedName}?limit=1`);
-          let newWikiRevId = `enwiki:${newFeedItem.revIds[0]}`;
-          let newRevisionPanelItem = await this.fetchRevisionPanelItem(newWikiRevId);
-          this.currentFeedItem = newFeedItem;
-          this.currentWikiRevId = newWikiRevId;
-          this.currentRevisionPanelItem = newRevisionPanelItem;
+          if (newFeedItem.revIds.length > 0) {
+              let newWikiRevId = `enwiki:${newFeedItem.revIds[0]}`;
+              let newRevisionCardItem = await this.fetchRevisionPanelItem(newWikiRevId);
+              return [newFeedItem, newWikiRevId, newRevisionCardItem];
+          } else return [newFeedItem, null, null];
+      },
+      showNext: async function() {
+        this.loading = true;
+        if (this.nextWikiRevId) {
+          // swap current with next
+          [this.currentFeedItem, this.currentWikiRevId, this.currentRevisionPanelItem] =
+          [this.nextFeedItem, this.nextWikiRevId, this.nextRevisionPanelItem];
+        } else {
+          [this.currentFeedItem, this.currentWikiRevId, this.currentRevisionPanelItem] = await this.getNewFeedItemAndInfo();
         }
+        this.loading = false;
+        [this.nextFeedItem, this.nextWikiRevId, this.nextRevisionPanelItem] = await this.getNewFeedItemAndInfo();
 
-        let newFeedItem = await this.$axios.$get(`/api/feed/${this.feedName}?limit=1`);
-        let newWikiRevId = `enwiki:${newFeedItem.revIds[0]}`;
-        let newRevisionCardItem = await this.fetchRevisionPanelItem(newWikiRevId);
-        this.nextFeedItem = newFeedItem;
-        this.nextWikiRevId = newWikiRevId;
-        this.nextRevisionPanelItem = newRevisionCardItem;
       },
       fetchRevisionPanelItem: async function(wikiRevId):Promise<RevisionPanelItem> {
         let [revision, diff] = await Promise.all([
@@ -112,7 +134,7 @@
       return { feedName: params.feed };
     },
     async beforeMount() {
-        await this.showNext();
+      await this.showNext();
     },
     async mounted() {
       document.addEventListener('judgement-event', async () => {
@@ -128,29 +150,28 @@
       window.addEventListener("keyup", async e => {
         switch (e.code) {
           case 'KeyV':
-            await this.$refs.actionPanel.interactionBtn(`ShouldRevert`);
+            await this.$refs.actionPanel?.interactionBtn(`ShouldRevert`);
             break;
           case 'KeyG':
-            await this.$refs.actionPanel.interactionBtn(`LooksGood`);
+            await this.$refs.actionPanel?.interactionBtn(`LooksGood`);
             break;
           case 'KeyP':
-            await this.$refs.actionPanel.interactionBtn(`NotSure`);
+            await this.$refs.actionPanel?.interactionBtn(`NotSure`);
             break;
           case 'KeyR':
-            await this.$refs.actionPanel.performRevert();
+            await this.$refs.actionPanel?.performRevert();
             break;
           case 'ArrowLeft':
-            this.$refs.actionPanel.undo();
+            this.$refs.actionPanel?.undo();
             break;
           case 'ArrowRight':
-            if (this.$refs.actionPanel && this.$refs.actionPanel.myJudgement) this.showNext();
-            else await this.$refs.actionPanel.interactionBtn(`NotSure`);
+            await this.showNext();
             break;
           case 'PageUp':
-            this.$refs.actionPanel.$el.querySelector(`.diff-card`).scrollBy(0, -200);
+            this.$refs.actionPanel?.$el.querySelector(`.diff-card`).scrollBy(0, -200);
             break;
           case 'PageDown':
-            this.$refs.actionPanel.$el.querySelector(`.diff-card`).scrollBy(0, 200);
+            this.$refs.actionPanel?.$el.querySelector(`.diff-card`).scrollBy(0, 200);
             break;
 
         }
