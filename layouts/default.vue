@@ -31,7 +31,7 @@
             </b-nav-item>
             <b-nav-item-dropdown right v-b-tooltip.hover title="Featured feeds">
               <template v-slot:button-content>
-                <i class="fas fa-star pr-0"></i>
+                <i class="fas fa-faucet pr-0"></i>
               </template>
               <b-dropdown-item href="/feed/mix">Mix Feeds<sup class="text-warning">β</sup></b-dropdown-item>
               <b-dropdown-item href="/feed/recent">Recent Feed<sup class="text-warning">β</sup></b-dropdown-item>
@@ -127,26 +127,31 @@
           return this.$store.state.wiki
         },
         set (wiki) {
+          if (wiki != this.$store.state.wiki) {
+            // Probably Wiki language doesn't have to be tied to UI language.
+            // For example, people can edit wikidata in any language. Or,
+            // they might prefer editing the Indonesian wiki using English interface
+            const wikiToLangMap = {
+              "afwiki": "af",
+              "enwiki": "en",
+              "dewiki": "de",
+              "frwiki": "fr",
+              "idwiki": "id",
+              "lvwiki": "lv",
+              "plwiki": "pl",
+              "ruwiki": "ru",
+              "trwiki": "tr",
+              "zhwiki": "zh",
+              "wikidatawiki": "en", // TODO(xinbenlv): consider how we deal with wikidata UI langauge.
+            };
+            if (/^\/feed/.test(this.$route.path) && this.$store.state.wiki == 'enwiki') {
+                this.$router.push(`/${wikiToLangMap[wiki]}`);
+            }
 
-          // Probably Wiki language doesn't have to be tied to UI language.
-          // For example, people can edit wikidata in any language. Or,
-          // they might prefer editing the Indonesian wiki using English interface
-          const wikiToLangMap = {
-            "afwiki": "af",
-            "enwiki": "en",
-            "dewiki": "de",
-            "frwiki": "fr",
-            "idwiki": "id",
-            "lvwiki": "lv",
-            "plwiki": "pl",
-            "ruwiki": "ru",
-            "trwiki": "tr",
-            "zhwiki": "zh",
-            "wikidatawiki": "en", // TODO(xinbenlv): consider how we deal with wikidata UI langauge.
-          };
-          this.$i18n.locale = wikiToLangMap[wiki];
-          this.$store.commit('user/setPreferences', {wiki:wiki});
-          this.$store.dispatch('changeWiki', wiki)
+            this.$store.commit('user/setPreferences', {wiki:wiki});
+            this.$store.dispatch('changeWiki', wiki);
+            this.$i18n.locale = wikiToLangMap[wiki];
+          }
         }
       },
       userId: {

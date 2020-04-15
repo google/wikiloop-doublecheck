@@ -19,7 +19,8 @@
             <div class="card">
             <div class="card-body">
               <div class="card-body w-100 text-center">
-                <h5 m-5>Feed <div class="badge badge-success">{{currentFeedItem.feed}}</div> has no new Revisions, next</h5>
+                <h5 m-5>Feed <div class="badge badge-success">{{currentFeedItem.feed}}</div> has no new Revisions,
+                  click next below.</h5>
                 <button @click="showNext()" class="m-5 btn btn-outline-success">
                   {{$t(`NextBtnLabel`)}}(→)
                 </button>

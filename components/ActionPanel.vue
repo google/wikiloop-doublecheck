@@ -61,14 +61,14 @@
     export default class ActionPanel extends Vue {
         @Prop({type: String, required: true}) readonly wikiRevId!: string;
         @Prop({type: String, required: true}) readonly title!: string;
-        myJudgement: BasicJudgement = null;
-        feed: string;
-        action: string = null;
+
         $cookiez: NuxtCookies; // TODO remove after dep resolved https://github.com/microcipcip/cookie-universal/issues/63
         $axios: NuxtAxiosInstance;
         $t:any;
         $bvModal:any;
 
+        myJudgement: BasicJudgement = null;
+        feed: string;
         private wiki: string;
         private revId: number;
         private page2ndLastRevision = null;

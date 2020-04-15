@@ -80,6 +80,12 @@
             },
 
         },
+        async beforeMount() {
+          if (this.$store.state.wiki == 'enwiki' && Math.random() < 0.5 /* 50% time to redirect to feed/mix*/) {
+              this.$router.push('/feed/mix');
+              console.log(`Redirect to /feed/mix`);
+          }
+        },
         async mounted() {
             await this.$store.dispatch(`revisions/loadMoreWikiRevs`);
             // when wiki changes, go to the next diff instead of
