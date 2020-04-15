@@ -13,12 +13,22 @@
 // limitations under the License.
 import {AwardBarnStarCronJob, UsageReportCronJob} from "../cronjobs";
 import routes from './routes';
-import {logger, apiLogger, perfLogger, computeOresField, fetchRevisions, useOauth, isWhitelistedFor} from './common';
+import {
+  logger,
+  apiLogger,
+  perfLogger,
+  computeOresField,
+  fetchRevisions,
+  useOauth,
+  isWhitelistedFor,
+  asyncHandler
+} from './common';
 import { feedRouter } from "./routes/feed";
 
 require(`dotenv`).config();
 const http = require('http');
 const express = require('express');
+var responseTime = require('response-time');
 const consola = require('consola');
 const {Nuxt, Builder} = require('nuxt');
 const universalAnalytics = require('universal-analytics');
@@ -28,11 +38,7 @@ const mongoose = require('mongoose');
 import {wikiToDomain} from "@/shared/utility-shared";
 import {getMetrics, metricsRouter} from "@/server/metrics";
 import {OresStream} from "@/server/ingest/ores-stream";
-
-const asyncHandler = fn => (req, res, next) =>
-    Promise
-        .resolve(fn(req, res, next))
-        .catch(next);
+import { scoreRouter } from "./routes/score";
 
 const logReqPerf = function (req, res, next) {
   // Credit for inspiration: http://www.sheshbabu.com/posts/measuring-response-times-of-express-route-handlers/
@@ -66,70 +72,6 @@ let allDocCounter = 0;
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js');
 config.dev = !(process.env.NODE_ENV === 'production');
-
-// -------------- FROM STIKI API -------------
-function setupSTikiApiLisenter(app) {
-  let stikiRouter = express();
-
-  const apicache = require('apicache');
-  let cache = apicache.middleware;
-  const onlyGet = (req, res) => res.method === `GET`;
-  stikiRouter.use(cache('1 week', onlyGet));
-
-  const mysql = require('mysql2');
-
-  // create the pool
-  const pool = mysql.createPool(process.env.STIKI_MYSQL);
-  // now get a Promise wrapped instance of that pool
-  const promisePool = pool.promise();
-
-  stikiRouter.get('/stiki', asyncHandler(async (req, res) => {
-    logger.debug(`req.query`, req.query);
-    let revIds = JSON.parse(req.query.revIds);
-    const [rows, _fields] = await promisePool.query(`SELECT R_ID, SCORE FROM scores_stiki WHERE R_ID in (${revIds.join(',')})`);
-    res.send(rows);
-    req.visitor
-        .event({ec: "api", ea: "/scores"})
-        .send();
-  }));
-
-  stikiRouter.get('/stiki/:wikiRevId', asyncHandler(async (req, res) => {
-    let revIds = req.query.revIds;
-    logger.debug(`req.query`, req.query);
-    let wikiRevId = req.params.wikiRevId;
-    let _wiki = wikiRevId.split(':')[0];
-    let revId = wikiRevId.split(':')[1];
-    const [rows, _fields] = await promisePool.query(`SELECT R_ID, SCORE FROM scores_stiki WHERE R_ID = ${revId}`);
-    res.send(rows);
-    req.visitor
-        .event({ec: "api", ea: "/scores/:wikiRevId"})
-        .send();
-  }));
-
-  stikiRouter.get('/cbng/:wikiRevId', asyncHandler(async (req, res) => {
-    logger.debug(`req.query`, req.query);
-    let wikiRevId = req.params.wikiRevId;
-    let _wiki = wikiRevId.split(':')[0];
-    let revId = wikiRevId.split(':')[1];
-    const [rows, _fields] = await promisePool.query(`SELECT R_ID, SCORE FROM scores_cbng WHERE R_ID = ${revId}`);
-    res.send(rows);
-    req.visitor
-        .event({ec: "api", ea: "/cbng/:wikiRevId"})
-        .send();
-  }));
-
-  stikiRouter.get('/cbng', asyncHandler(async (req, res) => {
-    logger.debug(`req.query`, req.query);
-    let revIds = JSON.parse(req.query.revIds);
-    const [rows, _fields] = await promisePool.query(`SELECT R_ID, SCORE FROM scores_cbng WHERE R_ID in (${revIds.join(',')})`);
-    res.send(rows);
-    req.visitor
-        .event({ec: "api", ea: "/scores"})
-        .send();
-  }));
-
-  app.use(`/extra`, stikiRouter);
-}
 
 // -------------- FROM API ----------------
 function setupApiRequestListener(db, io, app) {
@@ -494,6 +436,7 @@ function setupRouters(db: IDBDatabase, app: any) {
 
   app.use(`/api/feed`, feedRouter);
   app.use(`/api/metrics`, metricsRouter);
+  app.use(`/api/score`, scoreRouter);
 }
 
 function setupFlag() {
@@ -518,6 +461,8 @@ async function start() {
   const {host, port} = nuxt.options.server
 
   const app = express();
+  app.use(responseTime());
+
   const cookieParser = require('cookie-parser');
   const bodyParser = require('body-parser');
   app.use(cookieParser());
@@ -544,7 +489,8 @@ async function start() {
   setupApiRequestListener(mongoose.connection.db, io, app);
   setupRouters(mongoose.connection.db, app);
   if (process.env.STIKI_MYSQL) {
-    await setupSTikiApiLisenter(app);
+    app.use('/score', scoreRouter);
+    app.use('/extra', scoreRouter); // DEPRECATED, added for backward compatibility.
   }
   if (!flag['server-only']) {
     await nuxt.ready();

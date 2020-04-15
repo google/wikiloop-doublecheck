@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// DEPRECATED use score.ts if possible
+
 const rp = require('request-promise');
 import { computeOresFieldNew, wikiRevIdsGroupByWiki, apiLogger } from '../common';
 

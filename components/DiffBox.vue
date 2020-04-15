@@ -36,9 +36,8 @@
     }
     .diff-card {
       font-size: 12px;
-      max-height: 600px;
-      min-height: 400px;
-      overflow: auto;
+      max-height: 400px;
+      overflow-x: hidden;
     }
   }
 
@@ -48,9 +47,8 @@
     }
     .diff-card {
       font-size: 8px;
-      max-height: 400px;
-      min-height: 200px;
-      overflow: auto;
+      max-height: 300px;
+      overflow-x: hidden;
     }
   }
 </style>

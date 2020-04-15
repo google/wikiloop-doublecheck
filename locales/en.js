@@ -19,4 +19,5 @@ module.exports = {
     DirectRevertedBtnLabel: "Direct reverted",
     DirectRevertFailedBtnLabel: "Direct revert failed",
     OpenedUrlToRevertBtnLabel: "Opened URL to revert",
+    UndoBtnLabel: "Undo",
 };

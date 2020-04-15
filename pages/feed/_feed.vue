@@ -3,13 +3,19 @@
     <section>
         <h1 v-if="feedName"> Review Feed<sup class="text-warning">β</sup> {{feedName}} </h1>
         <template v-if="currentWikiRevId">
-            <RevisionCard ref="revisionCard"
-                          :wikiRevId="currentWikiRevId"
-                          :key="currentWikiRevId"
-                          :feed-name-prop="`${feedItem.feed}`"
-                          :from-mixer-prop="`${feedItem.userMixer}`"
-                          v-on:next-card="showNext()"
-            ></RevisionCard>
+          <div class="card shadow h-100">
+            <RevisionPanel
+              :key="currentWikiRevId"
+              :item="currentRevisionPanelItem"
+              :feed-name="currentFeedItem.feed"
+            >
+            </RevisionPanel>
+            <ActionPanel
+              :key="`action-panel-${currentWikiRevId}`"
+              :wikiRevId="currentWikiRevId"
+              :title="currentRevisionPanelItem.title"
+              @next-card="showNext()"/>
+          </div>
         </template>
 
         <b-modal id="modal-promote-login" title="Tip: Login">
@@ -26,23 +32,24 @@
 </template>
 
 <script lang="ts">
-  import RevisionCard from '@/components/RevisionCard.vue';
-  import {RevisionCardItem} from "@/shared/interfaces";
-  function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
+    import {RevisionPanelItem} from "@/shared/interfaces";
+    import RevisionPanel from "~/components/RevisionPanel.vue";
+    import ActionPanel from "~/components/ActionPanel.vue";
   export default {
     components: {
-      RevisionCard
+      RevisionPanel,
+      ActionPanel
     },
     data() {
       return {
-        title: 'WikiLoop Battlefield',
-        currentWikiRevId: null,
-        tipLoginCountDown: 0,
-        feedItem: null,
-        revisionCardItem: null,
-        nextRevisionCardItem: null
+          title: 'WikiLoop Battlefield',
+          currentWikiRevId: null,
+          currentFeedItem: null,
+          currentRevisionPanelItem: <RevisionPanelItem>null,
+          nextFeedItem: null,
+          nextWikiRevId: null,
+          nextRevisionPanelItem: null,
+          tipLoginCountDown: 0,
       }
     },
     computed: {
@@ -54,26 +61,41 @@
     },
     methods: {
       showNext: async function() {
-        this.feedItem = await this.$axios.$get(`/api/feed/${this.feedName}?limit=1`);
-        this.currentWikiRevId = `enwiki:${this.feedItem.revIds[0]}`;
-        this.nextFeedItem = await this.$axios.$get(`/api/feed/${this.feedName}?limit=1`);
+        if (this.nextWikiRevId) {
+          this.currentFeedItem = this.nextFeedItem;
+          this.currentWikiRevId = this.nextWikiRevId;
+          this.currentRevisionPanelItem = this.nextRevisionPanelItem;
+        } else {
+          let newFeedItem = await this.$axios.$get(`/api/feed/${this.feedName}?limit=1`);
+          let newWikiRevId = `enwiki:${newFeedItem.revIds[0]}`;
+          let newRevisionPanelItem = await this.fetchRevisionPanelItem(newWikiRevId);
+          this.currentFeedItem = newFeedItem;
+          this.currentWikiRevId = newWikiRevId;
+          this.currentRevisionPanelItem = newRevisionPanelItem;
+        }
 
-
+        let newFeedItem = await this.$axios.$get(`/api/feed/${this.feedName}?limit=1`);
+        let newWikiRevId = `enwiki:${newFeedItem.revIds[0]}`;
+        let newRevisionCardItem = await this.fetchRevisionPanelItem(newWikiRevId);
+        this.nextFeedItem = newFeedItem;
+        this.nextWikiRevId = newWikiRevId;
+        this.nextRevisionPanelItem = newRevisionCardItem;
       },
-      fetchRevisionCardItem: async function(wikiRevId):Promise<RevisionCardItem> {
-        let revision = await this.$axios.$get(`/api/revision/${wikiRevId}`);
-        let ores = await this.$axios.$get(`/api/、ores/${wikiRevId}`);
-        let stiki = await this.$axios.$get(`/extra/stiki/${wikiRevId}`);
-        let cbng = await this.$axios.$get(`/extra/cbng/${wikiRevId}`);
-        let diff = await this.$axios.$get(`/api/diff/${wikiRevId}`);
-        return <RevisionCardItem> {
+      fetchRevisionPanelItem: async function(wikiRevId):Promise<RevisionPanelItem> {
+        let [revision, diff] = await Promise.all([
+          await this.$axios.$get(`/api/revision/${wikiRevId}`),
+          await this.$axios.$get(`/api/diff/${wikiRevId}`)
+        ]);
+        let diffHtml = diff?.compare['*'] || '';
+        return <RevisionPanelItem> {
           wiki: revision.wiki,
-          revId: revision.revId,
+          revId: revision.revid,
           title: revision.title,
           pageId: revision.wki,
           summary: revision.comment,
           author: revision.user,
-          timestamp: revision.timestamp,
+          timestamp: new Date(revision.timestamp).getTime()/1000,
+          diffHtml: diffHtml,
         };
       },
       snoozeTipLogin: function() {
@@ -86,12 +108,13 @@
       return (['us2020', 'covid19', 'recent', 'ores', 'mix', 'wikitrust'].indexOf(params.feed) >= 0);
     },
 
-    async asyncData ({ params }) {
+    async asyncData ({ params, $axios }) {
       return { feedName: params.feed };
     },
+    async beforeMount() {
+        await this.showNext();
+    },
     async mounted() {
-      this.showNext();
-
       document.addEventListener('judgement-event', async () => {
         if (!(this.$store.state.user &&this.$store.state.user.profile)) {
           if (this.tipLoginCountDown === 0) {

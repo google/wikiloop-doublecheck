@@ -92,14 +92,19 @@
       P: Not Sure<br/>
       →: Next Card<br/>
     </b-modal>
+    <b-toast ref="example-toast-ref" id="example-toast" title="BootstrapVue" class="b-toaster-top-right" no-auto-hide>
+      Hello, world! This is a toast message.
+      <div class="btn btn-primary"> Get Out </div>
+    </b-toast>
   </div>
 </template>
 
 <script lang="ts">
-  import socket from '@/plugins/socket.io.js';
-  import languages from '@/locales/languages.js';
+    import socket from '@/plugins/socket.io.js';
+    import languages from '@/locales/languages.js';
+    import {InteractionItem} from "~/shared/schema";
 
-  export default {
+    export default {
     data() {
       return {
         languages
@@ -152,31 +157,45 @@
     },
     async mounted() {
       this.commitFlagsFromUrlQuery(this.$route.query);
-      this.stats = await this.$axios.$get(`/api/stats`);
       socket.on('metrics-update', async (metrics) => {
         this.$store.commit(`setMetrics`, metrics);
       });
-      document.addEventListener('stats-update', async () => {
-        console.log(`stats-update:`);
-        this.stats = await this.$axios.$get(`/api/stats`);
-      });
+
+      // DEPRECATED, use interaction-item
       socket.on('interaction', async (interaction) => {
         if (interaction.newJudgement.userGaId === this.$cookiez.get('_ga')) {
           this.$bvToast.toast(
               `Your judgement for ${interaction.recentChange.title} for revision ${interaction.wikiRevId} has been logged.`, {
                 title: 'Your Judgement',
-                autoHideDelay: 3000,
+                //autoHideDelay: 3000,
                 appendToast: true
               });
         } else {
           this.$bvToast.toast(
               `A judgement for ${interaction.recentChange.title} for revision ${interaction.wikiRevId} has been logged.`, {
                 title: 'New Judgement',
-                autoHideDelay: 3000,
+                //autoHideDelay: 3000,
                 appendToast: true
               });
         }
       });
+        socket.on('interaction-item', async (interaction: InteractionItem) => {
+            if (interaction.userGaId === this.$cookiez.get('_ga')) {
+                this.$bvToast.toast(
+                    `Your judgement for ${interaction.title} for revision ${interaction.wikiRevId} has been logged.`, {
+                        title: 'Your Judgement',
+                        //autoHideDelay: 3000,
+                        appendToast: true
+                    });
+            } else {
+                this.$bvToast.toast(
+                    `A judgement for ${interaction.title} for revision ${interaction.wikiRevId} has been logged.`, {
+                        title: 'New Judgement',
+                        //autoHideDelay: 3000,
+                        appendToast: true
+                    });
+            }
+        });
       let userIdInfo:any = {};
       userIdInfo.userGaId = this.$cookiez.get('_ga');
 

@@ -33,6 +33,6 @@ export const getMetrics = async() => {
   }
 };
 
-metricsRouter.get("/", async (req: Request, res: Response) => {
+metricsRouter.get("/", async (req, res: Response) => {
   res.send(await getMetrics());
 });

@@ -70,7 +70,7 @@ export const listInteractions = async (req, res) => {
 
 export const updateInteraction = async (req, res) => {
     const io = req.app.get('socketio');
-    let userGaId = req.body.gaId;
+    let userGaId = req.body.gaId || req.body.userGaId;
     let wikiRevId = req.params.wikiRevId;
     /**
     {
@@ -99,15 +99,20 @@ export const updateInteraction = async (req, res) => {
         wikiRevId: wikiRevId,
     }, doc, { upsert: true });
     apicache.clear(req.originalUrl);
-    let storedInteractions = await getNewJudgementCounts(mongoose.connection.db, { wikiRevId: { $in: [wikiRevId] } });
-    let storedInteraction = storedInteractions[0];
-
-    storedInteraction.newJudgement = {
+    try { // old way
+      let storedInteractions = await getNewJudgementCounts(mongoose.connection.db, {wikiRevId: {$in: [wikiRevId]}});
+      let storedInteraction = storedInteractions[0];
+      storedInteraction.newJudgement = {
         userGaId: doc.userGaId,
         judgement: doc.judgement,
         timestamp: doc.timestamp
-    };
-    io.sockets.emit('interaction', storedInteraction);
+      };
+      io.sockets.emit('interaction', storedInteraction);
+    } catch(err) {
+      logger.warn(err);
+      // new way
+      io.sockets.emit('interaction-item', doc);
+    }
 
     res.send(`ok`);
     req.visitor
