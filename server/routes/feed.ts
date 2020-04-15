@@ -38,7 +38,13 @@ feedRouter.get('/mix', async (req, res: Response) => {
 });
 
 feedRouter.get("/recent", async (req, res: Response) => {
-  res.send(await MwActionApiClient.getLatestRevisionIds({limit: 50}));
+  let revIds = await MwActionApiClient.getLatestRevisionIds({limit: 50});
+  let feed = 'recent';
+  res.send({
+    useMixer: true,
+    feed: feed,
+    revIds: revIds
+  });
 });
 
 feedRouter.get("/:feed", async (req, res: Response) => {

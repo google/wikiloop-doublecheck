@@ -45,7 +45,8 @@ export class OresStream {
           revIds: [revId],
           pageId: pageId,
           title: title,
-          timestamp: Math.floor(new Date().getTime() / 1000)
+          timestamp: Math.floor(new Date().getTime() / 1000),
+          _created: new Date(),
         }, {upsert:true});
       }
     };

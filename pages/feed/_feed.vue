@@ -1,4 +1,3 @@
-
 <template>
     <section>
         <h1 v-if="feedName"> Review Feed<sup class="text-warning">β</sup> {{feedName}} </h1>
@@ -10,7 +9,7 @@
               :feed-name="currentFeedItem.feed"
             >
             </RevisionPanel>
-            <ActionPanel
+            <ActionPanel ref="actionPanel"
               :key="`action-panel-${currentWikiRevId}`"
               :wikiRevId="currentWikiRevId"
               :title="currentRevisionPanelItem.title"
@@ -35,7 +34,8 @@
     import {RevisionPanelItem} from "@/shared/interfaces";
     import RevisionPanel from "~/components/RevisionPanel.vue";
     import ActionPanel from "~/components/ActionPanel.vue";
-  export default {
+
+    export default {
     components: {
       RevisionPanel,
       ActionPanel
@@ -49,7 +49,7 @@
           nextFeedItem: null,
           nextWikiRevId: null,
           nextRevisionPanelItem: null,
-          tipLoginCountDown: 0,
+          tipLoginCountDown: 5,
       }
     },
     computed: {
@@ -117,7 +117,9 @@
     async mounted() {
       document.addEventListener('judgement-event', async () => {
         if (!(this.$store.state.user &&this.$store.state.user.profile)) {
+        console.log(`XXX tip ${this.tipLoginCountDown}, ${this.tipLoginCountDown === 0}`);
           if (this.tipLoginCountDown === 0) {
+            console.log(`XXX tip 222 ${this.tipLoginCountDown}`);
             this.$bvModal.show(`modal-promote-login`);
           } else {
             this.tipLoginCountDown --;
@@ -128,26 +130,29 @@
       window.addEventListener("keyup", async e => {
         switch (e.code) {
           case 'KeyV':
-            await this.$refs.revisionCard.interactionBtn(`ShouldRevert`) ;
+            await this.$refs.actionPanel.interactionBtn(`ShouldRevert`);
             break;
           case 'KeyG':
-            await this.$refs.revisionCard.interactionBtn(`LooksGood`);
+            await this.$refs.actionPanel.interactionBtn(`LooksGood`);
             break;
           case 'KeyP':
-            await this.$refs.revisionCard.interactionBtn(`NotSure`);
+            await this.$refs.actionPanel.interactionBtn(`NotSure`);
             break;
           case 'KeyR':
-            await this.$refs.revisionCard.performRevert();
+            await this.$refs.actionPanel.performRevert();
+            break;
+          case 'ArrowLeft':
+            this.$refs.actionPanel.undo();
             break;
           case 'ArrowRight':
-            if (this.$refs.revisionCard && this.$refs.revisionCard.myJudgement) this.showNext();
-            else await this.$refs.revisionCard.interactionBtn(`NotSure`);
+            if (this.$refs.actionPanel && this.$refs.actionPanel.myJudgement) this.showNext();
+            else await this.$refs.actionPanel.interactionBtn(`NotSure`);
             break;
           case 'PageUp':
-            this.$refs.revisionCard.$el.querySelector(`.diff-card`).scrollBy(0, -200);
+            this.$refs.actionPanel.$el.querySelector(`.diff-card`).scrollBy(0, -200);
             break;
           case 'PageDown':
-            this.$refs.revisionCard.$el.querySelector(`.diff-card`).scrollBy(0, 200);
+            this.$refs.actionPanel.$el.querySelector(`.diff-card`).scrollBy(0, 200);
             break;
 
         }

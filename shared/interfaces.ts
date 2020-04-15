@@ -9,9 +9,9 @@ export enum ScoreType {
 }
 
 export enum BasicJudgement {
-  LOOKS_GOOD = 'LooksGood',
-  NOT_SURE = 'NotSure',
-  SHOULD_REVERT = 'ShouldRevert'
+  LooksGood = 'LooksGood',
+  NotSure = 'NotSure',
+  ShouldRevert = 'ShouldRevert'
 }
 
 export interface Score {
