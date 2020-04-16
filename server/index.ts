@@ -468,7 +468,7 @@ async function start() {
   app.use(cookieParser());
   // Setup Google Analytics
   app.use(universalAnalytics.middleware(process.env.GA_WLBF_ID_API, {cookieName: '_ga'}));
-  app.use(bodyParser());
+  app.use(bodyParser({limit: '50mb'}));
   app.use(logReqPerf);
 
   const server = http.Server(app);
@@ -492,23 +492,23 @@ async function start() {
     app.use('/score', scoreRouter);
     app.use('/extra', scoreRouter); // DEPRECATED, added for backward compatibility.
   }
-  if (!flag['server-only']) {
-    await nuxt.ready();
+  // if (!flag['server-only']) {
+  //   await nuxt.ready();
+  //
+  //   // Build only in dev mode
+  //   if (config.dev) {
+  //     logger.info(`Running Nuxt Builder ... `);
+  //     const builder = new Builder(nuxt);
+  //     await builder.build();
+  //     logger.info(`DONE ... `);
+  //   } else {
+  //     logger.info(`NOT Running Nuxt Builder`);
+  //   }
+  //   // Give nuxt middleware to express
+  //   app.use(nuxt.render);
+  // }
 
-    // Build only in dev mode
-    if (config.dev) {
-      logger.info(`Running Nuxt Builder ... `);
-      const builder = new Builder(nuxt);
-      await builder.build();
-      logger.info(`DONE ... `);
-    } else {
-      logger.info(`NOT Running Nuxt Builder`);
-    }
-    // Give nuxt middleware to express
-    app.use(nuxt.render);
-  }
-
-
+  console.log(`XXXX start server`);
   // Listen the server
   // app.listen(port, host)
   server.listen(port, host);
