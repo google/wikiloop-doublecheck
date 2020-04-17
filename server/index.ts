@@ -492,23 +492,22 @@ async function start() {
     app.use('/score', scoreRouter);
     app.use('/extra', scoreRouter); // DEPRECATED, added for backward compatibility.
   }
-  // if (!flag['server-only']) {
-  //   await nuxt.ready();
-  //
-  //   // Build only in dev mode
-  //   if (config.dev) {
-  //     logger.info(`Running Nuxt Builder ... `);
-  //     const builder = new Builder(nuxt);
-  //     await builder.build();
-  //     logger.info(`DONE ... `);
-  //   } else {
-  //     logger.info(`NOT Running Nuxt Builder`);
-  //   }
-  //   // Give nuxt middleware to express
-  //   app.use(nuxt.render);
-  // }
+  if (!flag['server-only']) {
+    await nuxt.ready();
 
-  console.log(`XXXX start server`);
+    // Build only in dev mode
+    if (config.dev) {
+      logger.info(`Running Nuxt Builder ... `);
+      const builder = new Builder(nuxt);
+      await builder.build();
+      logger.info(`DONE ... `);
+    } else {
+      logger.info(`NOT Running Nuxt Builder`);
+    }
+    // Give nuxt middleware to express
+    app.use(nuxt.render);
+  }
+
   // Listen the server
   // app.listen(port, host)
   server.listen(port, host);
