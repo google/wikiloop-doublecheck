@@ -81,6 +81,9 @@ if (process.env.FEED_WIKITRUST_TOKEN) {
     // Validation
     // TODO(xinbenlv): consider use `express-validator`
     // TODO(xinbenlv): change to MongoDB
+    console.log(`XXX req.header('WikiLoopToken') = ${req.header('WikiLoopToken')}`);
+    console.log(`XXX req.header('wikilooptoken') = ${req.header('wikilooptoken')}`);
+    console.log(`XXX req.headers') = ${JSON.stringify(req.headers, null, 2)}`);
     if (req.params.feed == 'wikitrust' && req.header('WikiLoopToken') == process.env.FEED_WIKITRUST_TOKEN) {
       const mongoose = require('mongoose');
       try{
