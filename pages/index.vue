@@ -81,7 +81,7 @@
 
         },
         async beforeMount() {
-          if (this.$store.state.wiki == 'enwiki' && Math.random() < 0.5 /* 50% time to redirect to feed/mix*/) {
+          if (this.$store.state.wiki == 'enwiki' && Math.random() < 0.1 /* 50% time to redirect to feed/mix*/) {
               this.$router.push('/feed/mix');
               console.log(`Redirect to /feed/mix`);
           }
