@@ -7,7 +7,6 @@ const express = require('express');
 export const actionRouter = express.Router();
 
 actionRouter.post('/revert', asyncHandler(async (req, res) => {
-  console.log(`XXX req.body, ${JSON.stringify(req.body, null, 2)}`);
   let wikiAction: WikiActionItem = req.body;
   if (wikiAction.fromWikiUserName && !isAuthenticatedWithWikiUserName(req, wikiAction.fromWikiUserName)) {
     res.status(403).send(
