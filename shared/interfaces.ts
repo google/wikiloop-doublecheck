@@ -32,5 +32,10 @@ export interface RevisionPanelItem {
   diffHtml?: string,
 }
 
+export enum WikiActionType {
+  RedirectToRevert = 'RedirectRevert',
+  RedirectToHistory = 'RedirectToHistory',
+}
+
 
 

@@ -21,7 +21,8 @@ import {
   fetchRevisions,
   useOauth,
   isWhitelistedFor,
-  asyncHandler
+  asyncHandler,
+  ensureAuthenticated
 } from './common';
 import { feedRouter } from "./routes/feed";
 
@@ -39,6 +40,7 @@ import {wikiToDomain} from "@/shared/utility-shared";
 import {getMetrics, metricsRouter} from "@/server/metrics";
 import {OresStream} from "@/server/ingest/ores-stream";
 import { scoreRouter } from "./routes/score";
+import { actionRouter } from "./routes/action";
 
 const logReqPerf = function (req, res, next) {
   // Credit for inspiration: http://www.sheshbabu.com/posts/measuring-response-times-of-express-route-handlers/
@@ -333,15 +335,6 @@ function setupAuthApi(db, app) {
         res.redirect('/');
       });
 
-  function ensureAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-      return next();
-    } else {
-      res.status( 401 );
-      res.send( 'Login required for this endpoint' );
-    }
-  }
-
   const rateLimit = require("express-rate-limit");
   const editLimiter = rateLimit({
     windowMs: 3 * 60 * 1000, // 3 minutes
@@ -437,6 +430,7 @@ function setupRouters(db: IDBDatabase, app: any) {
   app.use(`/api/feed`, feedRouter);
   app.use(`/api/metrics`, metricsRouter);
   app.use(`/api/score`, scoreRouter);
+  app.use(`/api/action`, actionRouter);
 }
 
 function setupFlag() {

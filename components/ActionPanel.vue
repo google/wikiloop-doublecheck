@@ -1,3 +1,4 @@
+import {WikiActionType} from "~/shared/interfaces";
 <template>
   <section>
     <div class="card-body">
@@ -51,10 +52,10 @@
 
 <script lang="ts">
     import {Component, Prop, Vue} from 'vue-property-decorator';
-    import {BasicJudgement} from "~/shared/interfaces";
+    import {BasicJudgement, WikiActionType} from "~/shared/interfaces";
     import {NuxtCookies} from "~/node_modules/cookie-universal-nuxt";
     import {NuxtAxiosInstance} from "~/node_modules/@nuxtjs/axios";
-    import {InteractionItem} from "~/shared/schema";
+    import {InteractionItem, WikiActionItem} from "~/shared/schema";
     import {getUrlBaseByWiki} from "~/shared/utility-shared";
 
     @Component
@@ -132,9 +133,28 @@
                 if (this.isConsecutive) {
                     let historyUrl = `${getUrlBaseByWiki(this.wiki)}/w/index.php?title=${this.title}&action=history`;
                     window.open(historyUrl, '_blank');
+                    let wikiActionItem:WikiActionItem = {
+                        fromUserGaId: this.$cookiez.get('_ga'),
+                        type: WikiActionType.RedirectToHistory,
+                        wiki: this.wiki,
+                        revId: this.revId,
+                        title: this.title,
+                    };
+                    if (this.$store.state.user.profile.displayName) wikiActionItem.fromWikiUserName = this.$store.state.user.profile.displayName;
+                    await this.$axios.$post('/api/action/revert', wikiActionItem);
                 } else {
                     let revertUrl = `${getUrlBaseByWiki(this.wiki)}/w/index.php?title=${this.title}&action=edit&undoafter=prev&undo=${this.revId}&summary=${revertEditSummary}`;
                     window.open(revertUrl, '_blank');
+
+                    let wikiActionItem:WikiActionItem = {
+                        fromUserGaId: this.$cookiez.get('_ga'),
+                        type: WikiActionType.RedirectToRevert,
+                        wiki: this.wiki,
+                        revId: this.revId,
+                        title: this.title,
+                    };
+                    if (this.$store.state.user.profile.displayName) wikiActionItem.fromWikiUserName = this.$store.state.user.profile.displayName;
+                    await this.$axios.$post('/api/action/revert', wikiActionItem);
                 }
 
             }

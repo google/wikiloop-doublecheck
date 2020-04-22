@@ -358,3 +358,16 @@ export const asyncHandler = fn => (req, res, next) =>
 export function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+export function isAuthenticatedWithWikiUserName(req, wikiUserName:string):boolean {
+  return req.isAuthenticated() && req.user.displayName === wikiUserName;
+}
+
+export function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  } else {
+    res.status( 401 );
+    res.send( 'Login required for this endpoint' );
+  }
+}
