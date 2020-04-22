@@ -1,20 +1,27 @@
 import {logger} from "@/server/common";
 const EventSource = require('eventsource');
+import mongoose, { Schema } from 'mongoose';
+import {CollectionInsertOneOptions, ObjectID} from "mongodb";
 
 export class OresStream {
-
   private eventSource:EventSource;
   private wiki:string;
   public constructor(wiki) {
     this.wiki = wiki;
   }
-  public filter(data) {
+
+  public filterBasic(data) {
     let matchWiki = data.database === this.wiki;
     let matchNamespace = data.page_namespace == 0;
-    let isDamaging = data.scores?.damaging?.prediction == 'true';
-    let isBadfaith = data.scores?.goodfaith?.prediction == 'false';
-    return matchWiki && matchNamespace && (isDamaging || isBadfaith);
+    return matchWiki && matchNamespace;
   }
+
+  public filterIsBad(data) {
+    let isDamaging = data.scores?.damaging?.prediction[0] === 'true';
+    let isBadfaith = data.scores?.goodfaith?.prediction[0] === 'false';
+    return isDamaging || isBadfaith;
+  }
+
 
   public subscribe() {
     const url = 'https://stream.wikimedia.org/v2/stream/revision-score';
@@ -32,22 +39,50 @@ export class OresStream {
 
     eventSource.onmessage = async (event) => {
       let json = JSON.parse(event.data);
-      if (this.filter(json)) {
-        logger.debug(`rev-score`, JSON.stringify(json, null, 2));
-        const mongoose = require('mongoose');
+      if (this.filterBasic(json)) {
         const wiki = json.database;
         const title = json.page_title;
         const pageId = json.page_id;
         const revId = json.rev_id;
-        await mongoose.connection.db.collection(`WatchCollection_ORES`).insertOne({
-          _id: `${wiki}:${revId}`,
-          wiki: wiki,
-          revIds: [revId],
-          pageId: pageId,
-          title: title,
-          timestamp: Math.floor(new Date().getTime() / 1000),
-          _created: new Date(),
-        }, {upsert:true});
+        if (this.filterIsBad(json)) {
+          logger.debug(`rev-score`, JSON.stringify({wiki, title, pageId, revId}, null, 2));
+          await mongoose.connection.db.collection(`WatchCollection_ORES`).insertOne({
+            _id: `${wiki}:${revId}`,
+            wiki: wiki,
+            revIds: [revId],
+            pageId: pageId,
+            title: title,
+            timestamp: Math.floor(new Date().getTime() / 1000),
+            _created: new Date(),
+          }, {upsert: true} as CollectionInsertOneOptions);
+
+          logger.debug(`Inserting LASTBAD: `, JSON.stringify({wiki, title, pageId, revId}, null, 2));
+          await mongoose.connection.db.collection(`WatchCollection_LASTBAD`).findOneAndUpdate(
+            {
+              _id: `${wiki}:page-${pageId}`
+            },
+            {
+              $set: {
+                revIds: [revId],
+                timestamp: Math.floor(new Date().getTime() / 1000),
+                _updated: new Date(),
+                '_tmp.ores': json.scores,
+                '_tmp.damaging': json.scores?.damaging?.prediction[0],
+                '_tmp.goodfaith': json.scores?.goodfaith?.prediction[0],
+              },
+              $setOnInsert: {
+                _id: `${wiki}:page-${pageId}`,
+                wiki: wiki,
+                pageId: pageId,
+                title: title,
+                _created: new Date(),
+              }
+            }, {upsert: true});
+        } else {
+          logger.debug(`Removing from LASTBAD: `, JSON.stringify({wiki, title, pageId, revId}, null, 2));
+          await mongoose.connection.db.collection(`WatchCollection_LASTBAD`).findOneAndDelete(
+            { _id: `${wiki}:page-${pageId}`});
+        }
       }
     };
 

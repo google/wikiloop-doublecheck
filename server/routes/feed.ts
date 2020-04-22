@@ -8,12 +8,13 @@ feedRouter.get('/mix', async (req, res) => {
   var weighted = require('weighted');
 
   var options = {
-    'recent': 0.1,
+    'recent': 1,
     // 'second': 0.1,
-    'ores': 0.5,
-    // 'wikitrust': 0.2,
-    'covid19': 0.2,
-    'us2020': 0.2,
+    'ores': 1,
+    'covid19': 1,
+    'us2020': 1,
+    'wikitrust': parseInt(process.env.MIXER_RATIO_WIKITRUST) || 0,
+    'lastbad': parseInt(process.env.MIXER_RATIO_LASTBAD )|| 0
   };
   const feed = weighted.select(options);
   let revIds;
@@ -22,6 +23,7 @@ feedRouter.get('/mix', async (req, res) => {
     case 'wikitrust':  // fall through
     case 'covid19':  // fall through
     case 'us2020':  // fall through
+    case 'lastbad':  // fall through
       revIds = await WatchCollectionFeed.sampleRevisions(
       FeedEnum[feed], parseInt(req.query.size) || 50);
       break;

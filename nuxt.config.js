@@ -83,7 +83,8 @@ module.exports = {
       keys: [
         'HOST',
         'PORT',
-        'GA_WLBF_ID_CLIENT'
+        'GA_WLBF_ID_CLIENT',
+        'MIXER_RAMP_UP_PERCENT'
       ]
     }],
     [

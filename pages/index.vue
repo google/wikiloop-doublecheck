@@ -1,4 +1,3 @@
-
 <template>
     <section>
         <template v-if="currentWikiRevId">
@@ -81,7 +80,9 @@
 
         },
         async beforeMount() {
-          if (this.$store.state.wiki == 'enwiki' && Math.random() < 0.1 /* 50% time to redirect to feed/mix*/) {
+          let dice = Math.random() * 100;
+          let threshold = parseInt(this.$env.MIXER_RAMP_UP_PERCENT) || 0;
+          if (this.$store.state.wiki == 'enwiki' && dice < threshold) {
               this.$router.push('/feed/mix');
               console.log(`Redirect to /feed/mix`);
           }
