@@ -103,7 +103,6 @@ import {WikiActionType} from "~/shared/interfaces";
         public async interactionBtn(judgement: string) {
             this.myJudgement = BasicJudgement[judgement];
             let userGaId = this.$cookiez.get("_ga");
-            console.log(`XXX start`);
             let postBody: InteractionItem = {
                 userGaId: userGaId,
                 judgement: this.myJudgement,
@@ -112,8 +111,6 @@ import {WikiActionType} from "~/shared/interfaces";
                 feed: this.feed,
                 title: this.title
             };
-
-            console.log(`XXX end`, postBody);
             if (this.$store.state.user && this.$store.state.user.profile) {
                 let wikiUserName = this.$store.state.user.profile.displayName;
                 postBody.wikiUserName = wikiUserName;
@@ -144,7 +141,7 @@ import {WikiActionType} from "~/shared/interfaces";
                         revId: this.revId,
                         title: this.title,
                     };
-                    if (this.$store.state.user.profile.displayName) wikiActionItem.fromWikiUserName = this.$store.state.user.profile.displayName;
+                    if (this.$store.state.user?.profile?.displayName) wikiActionItem.fromWikiUserName = this.$store.state.user.profile.displayName;
                     await this.$axios.$post('/api/action/revert', wikiActionItem);
                 } else {
                     let revertUrl = `${getUrlBaseByWiki(this.wiki)}/w/index.php?title=${this.title}&action=edit&undoafter=prev&undo=${this.revId}&summary=${revertEditSummary}`;
@@ -157,7 +154,7 @@ import {WikiActionType} from "~/shared/interfaces";
                         revId: this.revId,
                         title: this.title,
                     };
-                    if (this.$store.state.user.profile.displayName) wikiActionItem.fromWikiUserName = this.$store.state.user.profile.displayName;
+                    if (this.$store.state.user?.profile?.displayName) wikiActionItem.fromWikiUserName = this.$store.state.user.profile.displayName;
                     await this.$axios.$post('/api/action/revert', wikiActionItem);
                 }
 
