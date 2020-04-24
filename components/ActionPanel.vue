@@ -62,6 +62,7 @@ import {WikiActionType} from "~/shared/interfaces";
     export default class ActionPanel extends Vue {
         @Prop({type: String, required: true}) readonly wikiRevId!: string;
         @Prop({type: String, required: true}) readonly title!: string;
+        @Prop({type: String, required: true}) readonly feed!: string;
 
         $cookiez: NuxtCookies; // TODO remove after dep resolved https://github.com/microcipcip/cookie-universal/issues/63
         $axios: NuxtAxiosInstance;
@@ -69,7 +70,7 @@ import {WikiActionType} from "~/shared/interfaces";
         $bvModal:any;
 
         myJudgement: BasicJudgement = null;
-        feed: string;
+
         private wiki: string;
         private revId: number;
         private page2ndLastRevision = null;
@@ -102,6 +103,7 @@ import {WikiActionType} from "~/shared/interfaces";
         public async interactionBtn(judgement: string) {
             this.myJudgement = BasicJudgement[judgement];
             let userGaId = this.$cookiez.get("_ga");
+            console.log(`XXX start`);
             let postBody: InteractionItem = {
                 userGaId: userGaId,
                 judgement: this.myJudgement,
@@ -110,6 +112,8 @@ import {WikiActionType} from "~/shared/interfaces";
                 feed: this.feed,
                 title: this.title
             };
+
+            console.log(`XXX end`, postBody);
             if (this.$store.state.user && this.$store.state.user.profile) {
                 let wikiUserName = this.$store.state.user.profile.displayName;
                 postBody.wikiUserName = wikiUserName;

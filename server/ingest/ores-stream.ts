@@ -45,7 +45,7 @@ export class OresStream {
         const pageId = json.page_id;
         const revId = json.rev_id;
         if (this.filterIsBad(json)) {
-          logger.debug(`rev-score`, JSON.stringify({wiki, title, pageId, revId}, null, 2));
+          logger.debug(`rev-score`, {wiki, title, pageId, revId});
           await mongoose.connection.db.collection(`WatchCollection_ORES`).insertOne({
             _id: `${wiki}:${revId}`,
             wiki: wiki,
@@ -56,7 +56,7 @@ export class OresStream {
             _created: new Date(),
           }, {upsert: true} as CollectionInsertOneOptions);
 
-          logger.debug(`Inserting LASTBAD: `, JSON.stringify({wiki, title, pageId, revId}, null, 2));
+          logger.debug(`Inserting LASTBAD: `, {wiki, title, pageId, revId});
           await mongoose.connection.db.collection(`WatchCollection_LASTBAD`).findOneAndUpdate(
             {
               _id: `${wiki}:page-${pageId}`
@@ -79,7 +79,7 @@ export class OresStream {
               }
             }, {upsert: true});
         } else {
-          logger.debug(`Removing from LASTBAD: `, JSON.stringify({wiki, title, pageId, revId}, null, 2));
+          logger.debug(`Removing from LASTBAD: `, {wiki, title, pageId, revId});
           await mongoose.connection.db.collection(`WatchCollection_LASTBAD`).findOneAndDelete(
             { _id: `${wiki}:page-${pageId}`});
         }

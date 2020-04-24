@@ -11,6 +11,8 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
+require(`dotenv`).config();
 import {AwardBarnStarCronJob, UsageReportCronJob} from "../cronjobs";
 import routes from './routes';
 import {
@@ -26,7 +28,6 @@ import {
 } from './common';
 import { feedRouter } from "./routes/feed";
 
-require(`dotenv`).config();
 const http = require('http');
 const express = require('express');
 var responseTime = require('response-time');
@@ -264,13 +265,13 @@ function setupAuthApi(db, app) {
   var MongoDBStore = require('connect-mongodb-session')(session);
   var mongoDBStore = new MongoDBStore({
     uri: process.env.MONGODB_URI,
-    collection: 'Sessions'
+    collection: 'Sessions',
   });
 
   app.use(session({
     cookie: {
-      // 90 days
-      maxAge: 90*24*60*60*1000
+      // 7 days
+      maxAge: 7*24*60*60*1000
      },
     secret: 'keyboard cat like a random stuff',
     resave: false,
@@ -315,7 +316,7 @@ function setupAuthApi(db, app) {
         username: req.user._json.username,
         grants: req.user._json.grants
       };
-      logger.debug(`Setting res.locals.user = ${JSON.stringify(res.locals.user, null ,2)}`);
+      logger.debug(`Setting res.locals.user = `, res.locals.user);
     }
     next();
   });
@@ -356,12 +357,8 @@ function setupAuthApi(db, app) {
       "meta": "userinfo",
       "uiprop": "rights|groups|groupmemberships"
     }, {method: 'GET'}, req.user.oauth );  // assuming request succeeded;
-    logger.debug(`userInfo ret =${JSON.stringify(userInfo, null, 2)}`, );
+    logger.debug(`userInfo ret = `, userInfo);
     let whitelisted = await isWhitelistedFor(`DirectRevert`, userInfo.query.userinfo.name);
-    logger.warn(`userInfo ret =${JSON.stringify(userInfo, null, 2)}`);
-
-    logger.warn(`userInfo ret = ${JSON.stringify(userInfo, null, 2)}`, userInfo.query.userinfo.rights);
-
     logger.warn(`userInfo.query.userinfo.rights.indexOf('rollback)`, userInfo.query.userinfo.rights.indexOf(`rollback`));
     logger.warn(`whitelisted`, whitelisted);
     if (whitelisted || userInfo.query.userinfo.rights.indexOf(`rollback`) >= 0) {
@@ -468,8 +465,7 @@ async function start() {
   const server = http.Server(app);
   const io = require('socket.io')(server);
   app.set('socketio', io);
-
-  await mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, dbName: process.env.MONGODB_DB} );
+  await mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true } );
 
   app.use(function (req, res, next) {
     apiLogger.debug('req.originalUrl:', req.originalUrl);

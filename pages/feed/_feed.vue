@@ -13,6 +13,7 @@
               :key="`action-panel-${currentWikiRevId}`"
               :wikiRevId="currentWikiRevId"
               :title="currentRevisionPanelItem.title"
+              :feed="currentFeedItem.feed"
               @next-card="showNext()"/>
           </div>
           <div v-else>

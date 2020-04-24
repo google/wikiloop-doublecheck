@@ -15,15 +15,19 @@
 import { wikiToDomain } from "@/shared/utility-shared";
 
 const rp = require('request-promise');
-var log4js = require('log4js');
-export var logger = log4js.getLogger(`default`);
-logger.level = process.env.LOG_LEVEL || 'debug';
+const Logger = require('heroku-logger').Logger;
+export const logger = require('heroku-logger');
 
-export var apiLogger = log4js.getLogger(`api`);
-apiLogger.level = process.env.LOG_LEVEL || 'debug';
+export const apiLogger = new Logger({
+  prefix: 'API:',    // Defaults to `''`.
+});
 
-export var perfLogger = log4js.getLogger(`perf`);
-perfLogger.level = process.env.LOG_LEVEL || 'debug';
+export const perfLogger = new Logger({
+  prefix: 'PERF:',    // Defaults to `''`.
+});
+export const mailCronLogger = new Logger({
+  prefix: 'MAILCRON:',    // Defaults to `''`.
+});
 
 export async function isWhitelistedFor(featureName, wikiUserName) {
   const mongoose = require('mongoose');

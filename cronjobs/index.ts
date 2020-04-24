@@ -13,13 +13,8 @@
 // limitations under the License.
 import { MwMailer }  from '../mailer/mw-mailer';
 import {CronJob} from "cron";
+import {mailCronLogger} from "@/server/common";
 
-var log4js = require('log4js');
-var logger = log4js.getLogger(`default`);
-logger.level = process.env.LOG_LEVEL || 'debug';
-
-var mailCronLogger = log4js.getLogger(`Mail-CronJob`);
-mailCronLogger.level = process.env.LOG_LEVEL || 'debug';
 const ANONYMOUS_PLACEHOLDER:string = `(anonymous)`;
 
 const frequencyToNumDaysMap = {
@@ -98,7 +93,7 @@ export class UsageReportCronJob {
         mailCronLogger.info(`Starting UsageReportCronJob cronjob.`);
         this.cronJob.start();
         mailCronLogger.info(`Next 3 occurrences`,
-            JSON.stringify(this.cronJob.nextDates(3), null, 2));
+            this.cronJob.nextDates(3));
     }
 }
 
@@ -147,6 +142,6 @@ export class AwardBarnStarCronJob {
         mailCronLogger.info(`Starting award barnstar cronjob`);
         this.cronJob.start();
         mailCronLogger.info(`Next 3 occurrences`,
-            JSON.stringify(this.cronJob.nextDates(3), null, 2));
+            this.cronJob.nextDates(3));
     }
 }
