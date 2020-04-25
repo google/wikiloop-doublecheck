@@ -1,4 +1,4 @@
-import {BasicJudgement, Score, WikiActionType} from "~/shared/interfaces";
+import {BasicJudgement, WikiActionType} from "~/shared/interfaces";
 
 /**
  * Schema of Database
@@ -17,6 +17,7 @@ export interface InteractionItem {
   judgement: BasicJudgement,
   timestamp: number, // int32 of Seconds from Unix Epoch of the interactions
   title: string,
+  wiki: string,
 }
 
 export interface WikiActionItem {

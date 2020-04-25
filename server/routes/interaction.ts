@@ -12,9 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import {Interaction, InteractionDoc, InteractionProps} from "~/shared/models/interaction-item.model";
+
 const apicache = require('apicache');
 const mongoose = require('mongoose');
 import { logger, getNewJudgementCounts } from '../common';
+import {MongooseUpdateQuery} from "mongoose";
 
 export const getInteraction = async (req, res) => {
     let wikiRevId = req.params.wikiRevId;
@@ -70,50 +73,31 @@ export const listInteractions = async (req, res) => {
 
 export const updateInteraction = async (req, res) => {
     const io = req.app.get('socketio');
-    let userGaId = req.body.gaId || req.body.userGaId;
-    let wikiRevId = req.params.wikiRevId;
-    /**
-    {
-      gaId: gaId,
-      judgement: this.myJudgement,
-      timestamp: Math.floor(new Date().getTime() / 1000),
-      wikiRevId: revision.wikiRevId,
-      recentChange: {
-        title: revision.title,
-        namespace: revision.namespace,
-        revision: {
-          new: revision.revid,
-          old: revision.parentid,
-        },
-        ores: this.ores,
-        user: revision.user,
-        wiki: revision.wiki,
-        timestamp: revision.timestamp
-      }
-    }
-    */
+    let interactionProps:InteractionProps = req.body as InteractionProps;
+    let matcher:any ={
+      wikiRevId: interactionProps.wikiRevId
+    };
+    if (interactionProps.wikiUserName) matcher.wikiUserName = interactionProps.wikiUserName;
+    else matcher.userGaId = interactionProps.userGaId;
+    await Interaction.findOneAndUpdate(matcher, interactionProps, {upsert:true});
 
-    let doc = req.body;
-    await mongoose.connection.db.collection(`Interaction`).findOneAndReplace({
-        userGaId: userGaId,
-        wikiRevId: wikiRevId,
-    }, doc, { upsert: true });
-    apicache.clear(req.originalUrl);
     try { // old way
-      let storedInteractions = await getNewJudgementCounts(mongoose.connection.db, {wikiRevId: {$in: [wikiRevId]}});
+      let storedInteractions = await getNewJudgementCounts(
+        mongoose.connection.db, {wikiRevId: {$in: [interactionProps.wikiRevId]}}
+      );
       let storedInteraction = storedInteractions[0];
       storedInteraction.newJudgement = {
-        userGaId: doc.userGaId,
-        judgement: doc.judgement,
-        timestamp: doc.timestamp
+        userGaId: interactionProps.userGaId,
+        judgement: interactionProps.judgement,
+        timestamp: interactionProps.timestamp
       };
       io.sockets.emit('interaction', storedInteraction);
     } catch(err) {
       logger.warn(err);
       // new way
-      io.sockets.emit('interaction-item', doc);
+      io.sockets.emit('interaction-item', interactionProps);
     }
-
+    apicache.clear(req.originalUrl);
     res.send(`ok`);
     req.visitor
         .event({ ec: "api", ea: "/interaction" })

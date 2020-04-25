@@ -465,7 +465,9 @@ async function start() {
   const server = http.Server(app);
   const io = require('socket.io')(server);
   app.set('socketio', io);
-  await mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true } );
+  await mongoose.connect(process.env.MONGODB_URI,
+    { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false }
+    );
 
   app.use(function (req, res, next) {
     apiLogger.debug('req.originalUrl:', req.originalUrl);

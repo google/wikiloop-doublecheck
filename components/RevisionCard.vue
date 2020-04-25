@@ -435,7 +435,6 @@
         let revision = this.revision;
         let gaId = this.$cookiez.get("_ga");
         let postBody:any = {
-          gaId: gaId, // Deprecated
           userGaId: gaId,
           judgement: myJudgement,
           timestamp: Math.floor(new Date().getTime() / 1000), // timestamp for interaction
@@ -449,7 +448,9 @@
             wiki: revision.wiki,
             timestamp: new Date(revision.timestamp).getTime()/1000
           },
-          feed: this.feedNameProp
+          feed: this.feedNameProp,
+          wiki: this.revision.wiki,
+          title: revision.title,
         };
 
         if (this.$store.state.user && this.$store.state.user.profile) {

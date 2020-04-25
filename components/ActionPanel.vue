@@ -57,6 +57,7 @@ import {WikiActionType} from "~/shared/interfaces";
     import {NuxtAxiosInstance} from "~/node_modules/@nuxtjs/axios";
     import {InteractionItem, WikiActionItem} from "~/shared/schema";
     import {getUrlBaseByWiki} from "~/shared/utility-shared";
+    import {InteractionProps} from "~/shared/models/interaction-item.model";
 
     @Component
     export default class ActionPanel extends Vue {
@@ -103,15 +104,17 @@ import {WikiActionType} from "~/shared/interfaces";
         public async interactionBtn(judgement: string) {
             this.myJudgement = BasicJudgement[judgement];
             let userGaId = this.$cookiez.get("_ga");
-            let postBody: InteractionItem = {
+            let postBody = <InteractionProps> {
                 userGaId: userGaId,
                 judgement: this.myJudgement,
                 timestamp: Math.floor(new Date().getTime() / 1000), // timestamp for interaction
                 wikiRevId: this.wikiRevId,
                 feed: this.feed,
-                title: this.title
+                title: this.title,
+                wiki: this.wiki
             };
-            if (this.$store.state.user && this.$store.state.user.profile) {
+
+            if (this.$store.state?.user?.profile) {
                 let wikiUserName = this.$store.state.user.profile.displayName;
                 postBody.wikiUserName = wikiUserName;
             }

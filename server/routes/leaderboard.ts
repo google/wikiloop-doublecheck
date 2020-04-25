@@ -19,14 +19,14 @@ async function getWikisLeaderList(
     [
       {
         "$match": {
-          "recentChange.wiki": { $exists: true },
+          "wiki": { $exists: true },
           "timestamp": {$gte: startTime, $lte: endTime}
         }
       },
       {
         "$group": {
           "_id": {
-            "wiki": "$recentChange.wiki",
+            "wiki": "$wiki",
           },
           "count": {
             "$sum": 1
@@ -100,7 +100,7 @@ async function getLoggedInLeaderList(
             "$sum": 1
           },
           "wikis": {
-            "$addToSet": "$recentChange.wiki"
+            "$addToSet": "$wiki"
           },
           "lastTimestamp": {
             "$max": "$timestamp"
@@ -148,7 +148,7 @@ async function getAnonymousLeaderList(
             "$sum": 1
           },
           "wikis": {
-            "$addToSet": "$recentChange.wiki"
+            "$addToSet": "$wiki"
           },
           "lastTimestamp": {
             "$max": "$timestamp"

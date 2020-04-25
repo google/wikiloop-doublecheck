@@ -49,7 +49,7 @@ const championQuery = function(timeRange, endDate, wiki) {
           $lt: utcEndTime,
           $gte: utcEndTime - (3600 * 24 * days)
         },
-        "recentChange.wiki": wiki ? wiki: {$exists:true}, // For now we only count individual wiki. There will be time we change it to also count global wiki.
+        "wiki": wiki ? wiki: {$exists:true}, // For now we only count individual wiki. There will be time we change it to also count global wiki.
       }
     },
     { "$group": {
@@ -109,7 +109,7 @@ export const labelsTimeSeries = async (req, res) => {
                   }
                 },
               },
-              "wiki": "$recentChange.wiki",
+              "wiki": "$wiki",
           },
           "count": { "$sum": 1 }
         } },

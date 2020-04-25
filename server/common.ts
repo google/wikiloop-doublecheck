@@ -244,8 +244,8 @@ export async function getNewJudgementCounts(db, matcher = {}, offset = 0, limit 
                 "lastTimestamp": {
                     "$max": "$timestamp"
                 },
-                "recentChange": {
-                    "$first": "$recentChange"
+                "wiki": {
+                    "$first": "$wiki"
                 }
             }
         },
@@ -253,7 +253,7 @@ export async function getNewJudgementCounts(db, matcher = {}, offset = 0, limit 
             "$project": {
                 "wikiRevId": "$_id.wikiRevId",
                 "judgements": "$judgements",
-                "recentChange": 1,
+                "wiki": 1,
                 "lastTimestamp": 1,
                 "counts.Total": "$totalCounts",
                 "counts.ShouldRevert": "$shouldRevertCounts",
@@ -263,11 +263,7 @@ export async function getNewJudgementCounts(db, matcher = {}, offset = 0, limit 
         },
         {
             "$match": {
-                "recentChange.ores": {
-                    "$exists": true,
-                    "$ne": null
-                },
-                "recentChange.wiki": {
+                "wiki": {
                     "$exists": true,
                     "$ne": null
                 },
