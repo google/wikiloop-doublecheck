@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 async function main() {
   await mongoose.connect(process.env.MONGODB_URI, {useUnifiedTopology: true, useNewUrlParser: true});
-  await AwardBarnStarCronJob.awardBarnstar('monthly');
+  await AwardBarnStarCronJob.awardBarnstar('weekly');
 }
 
 main().then(() => {

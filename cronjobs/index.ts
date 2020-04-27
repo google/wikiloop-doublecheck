@@ -113,9 +113,9 @@ export class AwardBarnStarCronJob {
     private static awardBarnstarMsg = async (mwMailer, user, frequency, endDate, isReal) => {
         await mwMailer.mail(
             isReal ? `User_talk:${user}` : `User:Xinbenlv/Sandbox/User_talk:${user}`,
-            `== The WikiLoop Battlefield ${frequency}ly barnstar ==\n` +
+            `== The WikiLoop Battlefield ${frequency} barnstar ==\n` +
             `{{subst:Xinbenlv/WikiLoop Battlefield Champion|user=${user}|enddate=${endDate}|timerange=${frequency}}}`,
-            `Awarding The WikiLoop Battlefield ${frequency}ly barnstar to ${user} ending on ${endDate}`);
+            `Awarding The WikiLoop Battlefield ${frequency} barnstar to ${user} ending on ${endDate}`);
     };
 
     public static awardBarnstar = async function (frequency:string) {
