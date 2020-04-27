@@ -1,9 +1,9 @@
 /**
  ```zsh
- export MONGODB_URI_FROM=""
- export MONGODB_URI_TO=""
- export DB_NAME_FROM=
- export DB_NAME_TO=
+ export MONGODB_URI_FROM="mongodb://heroku_00w6ld63:qa474bng5akjjn2368pji458rg@ds239079-a0.mlab.com:39079,ds239079-a1.mlab.com:39079/heroku_00w6ld63?replicaSet=rs-ds239079&retryWrites=false"
+ export MONGODB_URI_TO="mongodb://heroku_00w6ld63:qa474bng5akjjn2368pji458rg@ds239079-a0.mlab.com:39079,ds239079-a1.mlab.com:39079/heroku_00w6ld63?replicaSet=rs-ds239079&retryWrites=false"
+ export DB_NAME_FROM=heroku_00w6ld63
+ export DB_NAME_TO=heroku_00w6ld63
  export OUT_DIR=tmp/$(date +'%Y-%m-%d-%H-%M')
  echo "Start back up to $OUT_DIR/$DB_NAME_FROM/Interaction.bson from ${MONGODB_URI_FROM}"
  mongodump --uri="$MONGODB_URI_FROM" -o=$OUT_DIR -c=Interaction

@@ -34,6 +34,7 @@
                 <i class="fas fa-faucet pr-0"></i>
               </template>
               <b-dropdown-item href="/feed/mix">Mix Feeds<sup class="text-warning">β</sup></b-dropdown-item>
+              <b-dropdown-item href="/feed/lastbad">Last Bad Feed<sup class="text-warning">β</sup></b-dropdown-item>
               <b-dropdown-item href="/feed/recent">Recent Feed<sup class="text-warning">β</sup></b-dropdown-item>
               <b-dropdown-item href="/feed/ores">ORES detected Feed<sup class="text-warning">β</sup></b-dropdown-item>
               <b-dropdown-item href="/feed/wikitrust">WikiTrust detected Feed<sup class="text-warning">β</sup></b-dropdown-item>
