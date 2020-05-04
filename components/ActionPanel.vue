@@ -1,4 +1,6 @@
 import {WikiActionType} from "~/shared/interfaces";
+import {WikiActionType} from "~/shared/interfaces";
+import {WikiActionType} from "~/shared/interfaces";
 <template>
   <section>
     <div class="card-body">
@@ -55,7 +57,7 @@ import {WikiActionType} from "~/shared/interfaces";
     import {BasicJudgement, WikiActionType} from "~/shared/interfaces";
     import {NuxtCookies} from "~/node_modules/cookie-universal-nuxt";
     import {NuxtAxiosInstance} from "~/node_modules/@nuxtjs/axios";
-    import {InteractionItem, WikiActionItem} from "~/shared/schema";
+    import {WikiActionItem} from "~/shared/schema";
     import {getUrlBaseByWiki} from "~/shared/utility-shared";
     import {InteractionProps} from "~/shared/models/interaction-item.model";
 
@@ -69,6 +71,8 @@ import {WikiActionType} from "~/shared/interfaces";
         $axios: NuxtAxiosInstance;
         $t:any;
         $bvModal:any;
+        $ga:any;
+        $bvToast:any;
 
         myJudgement: BasicJudgement = null;
 
@@ -134,34 +138,78 @@ import {WikiActionType} from "~/shared/interfaces";
                         `${version}`,
                         `http://${process.env.PUBLIC_HOST || "battlefield.wikiloop.org"}/revision/${this.wiki}/${this.revId}`
                     ]);
+                let wikiActionItem: WikiActionItem = {
+                    fromUserGaId: this.$cookiez.get('_ga'),
+                    type: WikiActionType.RedirectToRevert,
+                    wiki: this.wiki,
+                    revId: this.revId,
+                    title: this.title,
+                };
                 if (this.isConsecutive) {
                     let historyUrl = `${getUrlBaseByWiki(this.wiki)}/w/index.php?title=${this.title}&action=history`;
                     window.open(historyUrl, '_blank');
-                    let wikiActionItem:WikiActionItem = {
-                        fromUserGaId: this.$cookiez.get('_ga'),
-                        type: WikiActionType.RedirectToHistory,
-                        wiki: this.wiki,
-                        revId: this.revId,
-                        title: this.title,
-                    };
-                    if (this.$store.state.user?.profile?.displayName) wikiActionItem.fromWikiUserName = this.$store.state.user.profile.displayName;
-                    await this.$axios.$post('/api/action/revert', wikiActionItem);
+                    wikiActionItem.type = WikiActionType.RedirectToHistory;
                 } else {
-                    let revertUrl = `${getUrlBaseByWiki(this.wiki)}/w/index.php?title=${this.title}&action=edit&undoafter=prev&undo=${this.revId}&summary=${revertEditSummary}`;
-                    window.open(revertUrl, '_blank');
-
-                    let wikiActionItem:WikiActionItem = {
-                        fromUserGaId: this.$cookiez.get('_ga'),
-                        type: WikiActionType.RedirectToRevert,
-                        wiki: this.wiki,
-                        revId: this.revId,
-                        title: this.title,
-                    };
-                    if (this.$store.state.user?.profile?.displayName) wikiActionItem.fromWikiUserName = this.$store.state.user.profile.displayName;
-                    await this.$axios.$post('/api/action/revert', wikiActionItem);
+                  if (this.$store.state.flags.useDirectRevert && this.$store.state.user && this.$store.state.user.profile) {
+                      this.directRevert();
+                      wikiActionItem.type = WikiActionType.DirectRevert;
+                  } else {
+                      let revertUrl = `${getUrlBaseByWiki(this.wiki)}/w/index.php?title=${this.title}&action=edit&undoafter=prev&undo=${this.revId}&summary=${revertEditSummary}`;
+                      window.open(revertUrl, '_blank');
+                      wikiActionItem.type = WikiActionType.RedirectToRevert
+                  }
                 }
-
+                if (this.$store.state.user?.profile?.displayName) wikiActionItem.fromWikiUserName = this.$store.state.user.profile.displayName;
+                await this.$axios.$post('/api/action/revert', wikiActionItem);
             }
+        }
+
+        async directRevert() {
+          try {
+            this.$ga.event({
+              eventCategory: 'interaction',
+              eventAction: 'direct-revert-initiate',
+              eventValue: {
+                wikiRevId: this.wikiRevId
+              }
+            });
+            let ret = await this.$axios.$get(`/api/auth/revert/${this.wikiRevId}`);
+            if (ret && ret.edit && ret.edit.result ===`Success`) {
+              this.$bvToast.toast(
+                      `Congrats! you've successfully reverted directly ${this.wikiRevId}`, {
+                        title: 'Revert succeeded!',
+                        autoHideDelay: 3000,
+                        appendToast: true
+                      });
+
+              this.$ga.event({
+                eventCategory: 'interaction',
+                eventAction: 'direct-revert-success',
+                eventValue: {
+                  wikiRevId: this.wikiRevId
+                }
+              });
+            } else {
+              console.warn(`Direct revert result unknown`, ret);
+              this.$ga.event({
+                eventCategory: 'interaction',
+                eventAction: 'direct-revert-unknown',
+                eventValue: {
+                  wikiRevId: this.wikiRevId
+                }
+              });
+            }
+
+          } catch(e) {
+            // TODO show failure message.
+            this.$ga.event({
+              eventCategory: 'interaction',
+              eventAction: 'direct-revert-failure',
+              eventValue: {
+                wikiRevId: this.wikiRevId
+              }
+            });
+          }
         }
 
         public undo() {

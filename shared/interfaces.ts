@@ -35,6 +35,7 @@ export interface RevisionPanelItem {
 export enum WikiActionType {
   RedirectToRevert = 'RedirectRevert',
   RedirectToHistory = 'RedirectToHistory',
+  DirectRevert = 'DirectRevert',
 }
 
 
