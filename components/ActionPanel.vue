@@ -74,12 +74,12 @@ import {WikiActionType} from "~/shared/interfaces";
           <a :href="`${getDiffLinkByRevId(wikiActionProps.resultRevId)}`">{{wikiActionProps.resultRevId}}</a>.
           </span>
         </template>
-        <template v-else>
+        <template v-else-if="wikiActionProps && wikiActionProps._meta && wikiActionProps._meta.hasError">
           <i class="text-danger fas fa-times-circle mr-1"></i>The
           revision <a :href="`${getDiffLinkByRevId(revId)}`">{{revId}}</a>
           is failed to be reverted
           <span v-if="wikiActionProps._meta.rawResult && wikiActionProps._meta.rawResult.error">
-            because {{wikiActionProps._meta.rawResult.error.code}}: {{wikiActionProps._meta.rawResult.error.info}}
+            because <b>{{wikiActionProps._meta.rawResult.error.code}}</b>: {{wikiActionProps._meta.rawResult.error.info}}
           </span>
           <span v-else>.</span>
         </template>
