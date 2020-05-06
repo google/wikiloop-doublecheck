@@ -12,7 +12,7 @@ const WikiActionSchema = createSchema({
   pageId: Type.number({required: true}),
   title: Type.string({required: true}),
   created: Type.date({required: true}),
-  resultRevId: Type.date({require: false}),
+  resultRevId: Type.number({require: false}),
   _meta: Type.object({required: false})
     .of({
       hasError: Type.boolean({required: false}),

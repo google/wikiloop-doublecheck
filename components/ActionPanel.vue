@@ -29,7 +29,6 @@ import {WikiActionType} from "~/shared/interfaces";
             {{ myJudgement }}
           </button>
           <div class="btn-group mx-1">
-
             <button
               @click="undo()"
               class="btn btn-outline-secondary"
@@ -66,6 +65,28 @@ import {WikiActionType} from "~/shared/interfaces";
           </div>
         </template>
       </div>
+      <template v-if="wikiActionProps && wikiActionProps.type ==`DirectRevert`">
+        <h5>Result</h5>
+        <template v-if="wikiActionProps.resultRevId">
+          <i class="text-success fas fa-check-circle mr-1"></i><span>The
+          revision <a :href="`${getDiffLinkByRevId(revId)}`">{{revId}}</a>
+          is successfully reverted as
+          <a :href="`${getDiffLinkByRevId(wikiActionProps.resultRevId)}`">{{wikiActionProps.resultRevId}}</a>.
+          </span>
+        </template>
+        <template v-else>
+          <i class="text-danger fas fa-times-circle mr-1"></i>The
+          revision <a :href="`${getDiffLinkByRevId(revId)}`">{{revId}}</a>
+          is failed to be reverted
+          <span v-if="wikiActionProps._meta.rawResult && wikiActionProps._meta.rawResult.error">
+            because {{wikiActionProps._meta.rawResult.error.code}}: {{wikiActionProps._meta.rawResult.error.info}}
+          </span>
+          <span v-else>.</span>
+        </template>
+      </template>
+      <div v-if="isPending" class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
     </div>
   </section>
 </template>
@@ -94,7 +115,7 @@ import {WikiActionType} from "~/shared/interfaces";
         $bvToast:any;
         wikiActionProps:WikiActionProps = null;
         myJudgement: BasicJudgement = null;
-
+        isPending:boolean = false;
         private wiki: string;
         private revId: number;
         private page2ndLastRevision = null;
@@ -146,7 +167,9 @@ import {WikiActionType} from "~/shared/interfaces";
             document.dispatchEvent(new Event("judgement-event"));
             this.$emit('judgement-event', postBody);
         }
-
+        getDiffLinkByRevId(revId) {
+          return `${getUrlBaseByWiki(this.wiki)}/wiki/Special:Diff/${revId}`;
+        }
         public async performRevert() {
             if (this.isRevIdCurrent) {
                 const version = await this.$axios.$get(`/api/version`);
@@ -167,16 +190,20 @@ import {WikiActionType} from "~/shared/interfaces";
                 };
                 if (this.isConsecutive) {
                     let historyUrl = `${getUrlBaseByWiki(this.wiki)}/w/index.php?title=${this.title}&action=history`;
-                    window.open(historyUrl, '_blank');
                     this.wikiActionProps.type = WikiActionType.RedirectToHistory;
+                    window.open(historyUrl, '_blank');
                 } else {
                   if (this.$store.state.flags.useDirectRevert && this.$store.state.user && this.$store.state.user.profile) {
-                      await this.directRevert();
                       this.wikiActionProps.type = WikiActionType.DirectRevert;
+                      this.isPending = true;
+                      await this.directRevert();
+                      this.isPending = false;
+
                   } else {
                       let revertUrl = `${getUrlBaseByWiki(this.wiki)}/w/index.php?title=${this.title}&action=edit&undoafter=prev&undo=${this.revId}&summary=${revertEditSummary}`;
-                      window.open(revertUrl, '_blank');
                       this.wikiActionProps.type = WikiActionType.RedirectToRevert;
+                      window.open(revertUrl, '_blank');
+
                   }
                 }
                 if (this.$store.state.user?.profile?.displayName) this.wikiActionProps.fromWikiUserName = this.$store.state.user.profile.displayName;
@@ -196,6 +223,7 @@ import {WikiActionType} from "~/shared/interfaces";
             let ret = await this.$axios.$get(`/api/auth/revert/${this.wikiRevId}`);
             this.wikiActionProps._meta.rawResult = ret;
             if (ret && ret.edit && ret.edit.result ===`Success`) {
+              this.wikiActionProps.resultRevId = parseInt(ret.edit.newrevid);
               this.$bvToast.toast(
                       `Congrats! you've successfully reverted directly ${this.wikiRevId}`, {
                         title: 'Revert succeeded!',
