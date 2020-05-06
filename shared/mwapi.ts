@@ -19,7 +19,7 @@ import {wikiToDomain} from "@/shared/utility-shared";
 import {logger} from "@/server/common";
 import * as _ from 'underscore';
 const rp = require('request-promise');
-
+import update from 'immutability-helper';
 const MAX_MWAPI_LIMIT:number = 5000;
 /**
  * MediaWiki Action API Client Utility
@@ -68,8 +68,12 @@ export class MwActionApiClient {
    * @returns raw object of recentChanges.
    */
   public static getLatestRevisionIds = async function (ctx) {
-    let raw = await MwActionApiClient.getRawRecentChanges(ctx);
-    return raw.query.recentchanges.map(rc => rc.revid);
+    let ctx2 = update(ctx, {
+      limit: {$set: MAX_MWAPI_LIMIT}
+    });
+    let raw = await MwActionApiClient.getRawRecentChanges(ctx2);
+    let revIds = raw.query.recentchanges.map(rc => rc.revid);
+    return _.sample(revIds, ctx.limit);
   };
 
   /**
@@ -110,7 +114,6 @@ export class MwActionApiClient {
         "rcshow": "!bot", // by default do not show bot edits
         "rctype": "edit",
         "rctoponly": "1",
-
       });
     if (direction) searchParams.set(`rcdir`, direction || `older`);
     if (timestamp) searchParams.set(`rcstart`, timestamp || (new Date().getTime()/1000));

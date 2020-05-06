@@ -11,13 +11,13 @@
  echo "Now restoring to ${MONGODB_URI_TO}"
  mongorestore --uri="$MONGODB_URI_TO" --drop -c=Interaction --db=${DB_NAME_TO} "$OUT_DIR/$DB_NAME_FROM/Interaction.bson"
  echo "Done, start fixing schema"
- npx ts-node -r tsconfig-paths/register --project tsconfig.json tscmd/validate-mongo-schema.ts
+ npx ts-node -r tsconfig-paths/register --project tsconfig.json tscmd/validate-interaction.ts
  echo "Done, everything"
  ```
 
 
 ```bash
- npx ts-node -r tsconfig-paths/register --project tsconfig.json tscmd/validate-mongo-schema.ts
+ npx ts-node -r tsconfig-paths/register --project tsconfig.json tscmd/validate-interaction.ts
 ```
 
 
@@ -162,10 +162,10 @@ async function validateAll() {
 }
 
 async function main() {
-  console.log(`Start! MONGODB_URI_TO = `, process.env.MONGODB_URI_TO);
+  console.log(`Start! MONGODB_URI = `, process.env.MONGODB_URI);
   require(`dotenv`).config();
 
-  await mongoose.connect(process.env.MONGODB_URI_TO, {useUnifiedTopology: true, useNewUrlParser: true});
+  await mongoose.connect(process.env.MONGODB_URI, {useUnifiedTopology: true, useNewUrlParser: true});
   let ret = await mongoose.connection.db.command({ buildInfo: 1 });
   await validateAll();
 

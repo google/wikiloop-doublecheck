@@ -144,9 +144,15 @@
               "trwiki": "tr",
               "zhwiki": "zh",
               "wikidatawiki": "en", // TODO(xinbenlv): consider how we deal with wikidata UI langauge.
+              "testwiki": "test",
             };
-            if (/^\/feed/.test(this.$route.path) && this.$store.state.wiki == 'enwiki') {
+            if (
+              /^\/feed/.test(this.$route.path) && // it was a feed
+              ['enwiki', 'testwiki'].indexOf(wiki) < 0 // it's not transitioning into a whitelist of wikis
+            ) {
                 this.$router.push(`/${wikiToLangMap[wiki]}`);
+            } else {
+                this.$router.go(0); // refresh the page to load.
             }
 
             this.$store.commit('user/setPreferences', {wiki:wiki});
@@ -170,20 +176,24 @@
 
       // DEPRECATED, use interaction-item
       socket.on('interaction', async (interaction) => {
-        if (interaction.newJudgement.userGaId === this.$cookiez.get('_ga')) {
-          this.$bvToast.toast(
-              `Your judgement for ${interaction.recentChange.title} for revision ${interaction.wikiRevId} has been logged.`, {
-                title: 'Your Judgement',
-                //autoHideDelay: 3000,
-                appendToast: true
-              });
-        } else {
-          this.$bvToast.toast(
-              `A judgement for ${interaction.recentChange.title} for revision ${interaction.wikiRevId} has been logged.`, {
-                title: 'New Judgement',
-                //autoHideDelay: 3000,
-                appendToast: true
-              });
+        try {
+            if (interaction.newJudgement.userGaId === this.$cookiez.get('_ga')) {
+                this.$bvToast.toast(
+                    `Your judgement for ${interaction.recentChange.title} for revision ${interaction.wikiRevId} has been logged.`, {
+                        title: 'Your Judgement',
+                        //autoHideDelay: 3000,
+                        appendToast: true
+                    });
+            } else {
+                this.$bvToast.toast(
+                    `A judgement for ${interaction.recentChange.title} for revision ${interaction.wikiRevId} has been logged.`, {
+                        title: 'New Judgement',
+                        //autoHideDelay: 3000,
+                        appendToast: true
+                    });
+            }
+        } catch (e) {
+          console.warn('omitted', e);
         }
       });
         socket.on('interaction-item', async (interaction: InteractionItem) => {

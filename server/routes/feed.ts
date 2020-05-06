@@ -40,13 +40,21 @@ feedRouter.get('/mix', async (req, res) => {
 });
 
 feedRouter.get("/recent", async (req, res) => {
-  let revIds = await MwActionApiClient.getLatestRevisionIds({limit: 50});
-  let feed = 'recent';
-  res.send({
-    useMixer: true,
-    feed: feed,
-    revIds: revIds
-  });
+  if (req.query.wiki && ['enwiki', 'testwiki'].indexOf(req.query.wiki) < 0) {
+    res.status(400).send(`The wiki ${req.query.wiki} is not supported`);
+    return;
+  } else {
+    let revIds = await MwActionApiClient.getLatestRevisionIds({
+      wiki: req.query.wiki, limit: 50
+    });
+
+    let feed = 'recent';
+    res.send({
+      useMixer: false,
+      feed: feed,
+      revIds: revIds
+    });
+  }
 });
 
 feedRouter.get("/:feed", async (req, res) => {

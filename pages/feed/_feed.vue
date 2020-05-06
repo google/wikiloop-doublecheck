@@ -85,9 +85,9 @@
     },
     methods: {
       getNewFeedItemAndInfo: async function() {
-          let newFeedItem = await this.$axios.$get(`/api/feed/${this.feedName}?limit=1`);
+          let newFeedItem = await this.$axios.$get(`/api/feed/${this.feedName}?limit=1&wiki=${this.$store.state.wiki}`);
           if (newFeedItem.revIds.length > 0) {
-              let newWikiRevId = `enwiki:${newFeedItem.revIds[0]}`;
+              let newWikiRevId = `${this.$store.state.wiki}:${newFeedItem.revIds[0]}`;
               let newRevisionCardItem = await this.fetchRevisionPanelItem(newWikiRevId);
               return [newFeedItem, newWikiRevId, newRevisionCardItem];
           } else return [newFeedItem, null, null];

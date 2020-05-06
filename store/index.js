@@ -85,6 +85,7 @@ export const actions = {
       let newWiki = wiki;
       commit(`setWiki`, wiki);
       commit(`revisions/initHeap`);
+      await this.$axios.$post(`/api/auth/user/preferences`, {wiki: wiki});
       await dispatch(`revisions/loadMoreWikiRevs`);
       document.dispatchEvent(new Event(`wiki-change-completed`));
     }

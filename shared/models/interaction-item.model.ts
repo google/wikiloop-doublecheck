@@ -1,4 +1,3 @@
-import mongoose, {Document, Schema}  from 'mongoose';
 import {createSchema, ExtractDoc, ExtractProps, Type, typedModel} from 'ts-mongoose';
 import {BasicJudgement} from "~/shared/interfaces";
 

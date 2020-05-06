@@ -34,7 +34,7 @@ export default [
     {
         value: 'trwiki',
         text: 'Turkish (tr)'
-    },  
+    },
     {
         value: 'zhwiki',
         text: '中文 (zh)'
@@ -42,5 +42,9 @@ export default [
     {
         value: 'wikidatawiki',
         text: 'Wikidatawiki'
+    },
+    {
+      value: 'testwiki',
+      text: 'Test Wiki'
     },
 ]

@@ -369,19 +369,22 @@ function setupAuthApi(db, app) {
       }, {}, req.user.oauth)).query.tokens.csrftoken;  // assuming request succeeded;
 
       try {
-        let data = await oauthFetch(apiUrl, {
+        let payload = {
           "action": "edit",
           "format": "json",
           "title": revInfo[0].title, // TODO(zzn): assuming only 1 revision is being reverted
-          "tags": "WikiLoop Battlefield",
           "summary": `Identified as test/vandalism and undid revision ${revId} by [[User:${revInfo[0].user}]] with [[m:WikiLoop Battlefield]](v${require(
             './../package.json').version}). See it or provide your opinion at http://${process.env.PUBLIC_HOST || "localhost:8000"}/revision/${wiki}/${revId}`,
           "undo": revId,
           "token": token
-        }, {method: 'POST'}, req.user.oauth );  // assuming request succeeded;
+        };
+        if (wiki == 'enwiki') { // currently only enwiki has the manually created tag of WikiLoop Battlefield
+          payload['tags'] = "WikiLoop Battlefield";
+        }
+        let retData = await oauthFetch(apiUrl, payload, {method: 'POST'}, req.user.oauth );  // assuming request succeeded;
         res.setHeader('Content-Type', 'application/json');
         res.status(200);
-        res.send(JSON.stringify(data));
+        res.send(JSON.stringify(retData));
         logger.debug(`conducted revert for wikiRevId=${req.params.wikiRevId}`);
       } catch (err) {
         apiLogger.error(err);

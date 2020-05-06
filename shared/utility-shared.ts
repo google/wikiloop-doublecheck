@@ -24,6 +24,7 @@ export enum WikiEnum {
   trwiki,
   zhwiki,
   wikidatawiki,
+  testwiki
 }
 
 export const wikiToDomain = {
@@ -38,6 +39,7 @@ export const wikiToDomain = {
   "trwiki": "tr.wikipedia.org",
   "wikidatawiki": "wikidata.org",
   "zhwiki": "zh.wikipedia.org",
+  "testwiki": "test.wikipedia.org",
 };
 export let getUrlBaseByWiki = function(wiki) {
     return `http://${wikiToDomain[wiki]}`;

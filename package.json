@@ -51,6 +51,7 @@
     "heap": "^0.2.6",
     "heroku-logger": "^0.3.3",
     "http": "0.0.0",
+    "immutability-helper": "^3.0.2",
     "jquery": "^3.4.1",
     "log4js": "^5.3.0",
     "mongodb": "^3.3.5",

@@ -94,9 +94,9 @@ export const updateInteraction = async (req, res) => {
       io.sockets.emit('interaction', storedInteraction);
     } catch(err) {
       logger.warn(err);
-      // new way
-      io.sockets.emit('interaction-item', interactionProps);
     }
+    // new way
+    io.sockets.emit('interaction-item', interactionProps);
     apicache.clear(req.originalUrl);
     res.send(`ok`);
     req.visitor

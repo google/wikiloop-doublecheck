@@ -1,4 +1,4 @@
-import {BasicJudgement, WikiActionType} from "~/shared/interfaces";
+import {BasicJudgement} from "~/shared/interfaces";
 
 /**
  * Schema of Database
@@ -9,6 +9,9 @@ export interface WatchCollectionItem {
   revIds: number[] // revert order
 }
 
+/**
+ * @deprecated: use {@interface InteractionProps}
+ */
 export interface InteractionItem {
   feed?: string,
   wikiRevId: string,
@@ -18,15 +21,4 @@ export interface InteractionItem {
   timestamp: number, // int32 of Seconds from Unix Epoch of the interactions
   title: string,
   wiki: string,
-}
-
-export interface WikiActionItem {
-  type: WikiActionType,
-  fromWikiUserName?: string,
-  fromUserGaId: string,
-  wiki: string,
-  revId: number,
-  pageId?: number,
-  title?: string,
-  toWikiUserName?: string,
 }

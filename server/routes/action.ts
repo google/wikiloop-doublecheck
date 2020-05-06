@@ -1,13 +1,13 @@
 import {asyncHandler, isAuthenticatedWithWikiUserName} from "~/server/common";
 import mongoose from 'mongoose';
-import {WikiActionItem} from "~/shared/schema";
+import {WikiActionProps} from "~/shared/models/wiki-action.model";
 
 const express = require('express');
 
 export const actionRouter = express.Router();
 
 actionRouter.post('/revert', asyncHandler(async (req, res) => {
-  let wikiAction: WikiActionItem = req.body;
+  let wikiAction: WikiActionProps = req.body;
   if (wikiAction.fromWikiUserName && !isAuthenticatedWithWikiUserName(req, wikiAction.fromWikiUserName)) {
     res.status(403).send(
       `The fromWikiUserName ${wikiAction.fromWikiUserName} ` +
