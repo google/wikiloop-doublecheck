@@ -17,7 +17,14 @@ import {Interaction, InteractionDoc, InteractionProps} from "~/shared/models/int
 const apicache = require('apicache');
 const mongoose = require('mongoose');
 import { logger, getNewJudgementCounts } from '../common';
-import {MongooseUpdateQuery} from "mongoose";
+
+type InteractionHookFunc = (i: InteractionProps) => any;
+
+const hooks = {};
+export const installHook = function(hookName, hookFunc:InteractionHookFunc) {
+  hooks[hookName] = hookFunc;
+  logger.info(`Hook ${hookName} is installed`);
+}
 
 export const getInteraction = async (req, res) => {
     let wikiRevId = req.params.wikiRevId;
@@ -98,6 +105,17 @@ export const updateInteraction = async (req, res) => {
     // new way
     io.sockets.emit('interaction-item', interactionProps);
     apicache.clear(req.originalUrl);
+
+    // install execute hooks.
+    Object.keys(hooks).forEach(hookName => {
+      logger.info(`Hook ${hookName} is being installed`);
+      hooks[hookName](interactionProps).then(() => {
+        logger.info(`Hook ${hookName} succeeded`);
+      }).catch((e) => {
+        logger.warn(`HTTP ${e.statusCode}, ${e.name}, ${e.message.slice(0,100)}`);
+      });
+    });
+
     res.send(`ok`);
     req.visitor
         .event({ ec: "api", ea: "/interaction" })

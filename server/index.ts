@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import {installHook} from "~/server/routes/interaction";
+
 require(`dotenv`).config();
 import {AwardBarnStarCronJob, UsageReportCronJob} from "../cronjobs";
 import routes from './routes';
@@ -42,6 +44,8 @@ import {getMetrics, metricsRouter} from "@/server/metrics";
 import {OresStream} from "@/server/ingest/ores-stream";
 import { scoreRouter } from "./routes/score";
 import { actionRouter } from "./routes/action";
+import {InteractionProps} from "~/shared/models/interaction-item.model";
+import {BasicJudgement} from "~/shared/interfaces";
 
 const logReqPerf = function (req, res, next) {
   // Credit for inspiration: http://www.sheshbabu.com/posts/measuring-response-times-of-express-route-handlers/
@@ -221,6 +225,69 @@ function setupMediaWikiListener(db, io) {
       }
     };
 
+  });
+}
+
+function setupCronJobs() {
+  if (process.env.CRON_BARNSTAR_TIMES) {
+    logger.info(`Setting up CRON_BARN_STAR_TIME raw value = `, process.env.CRON_BARNSTAR_TIMES);
+    let cronTimePairs =
+      process.env.CRON_BARNSTAR_TIMES
+        .split('|')
+        .map(pairStr => {
+          let pair = pairStr.split(';');
+          return { cronTime: pair[0], frequency: pair[1]}
+        }).forEach(pair => {
+        const awardBarnStarCronJob = new AwardBarnStarCronJob(pair.cronTime, pair.frequency);
+        awardBarnStarCronJob.startCronJob();
+      });
+  } else {
+    logger.warn(`Skipping Barnstar cronjobs because of lack of CRON_BARNSTAR_TIMES which is: `, process.env.CRON_BARNSTAR_TIMES);
+  }
+
+  if (process.env.CRON_USAGE_REPORT_TIMES) {
+    logger.info(`Setting up CRON_USAGE_REPORT_TIMES raw value = `, process.env.CRON_USAGE_REPORT_TIMES);
+    let cronTimePairs =
+      process.env.CRON_USAGE_REPORT_TIMES
+        .split('|')
+        .map(pairStr => {
+          let pair = pairStr.split(';');
+          return { cronTime: pair[0], frequency: pair[1]}
+        }).forEach(pair => {
+        const usageReportCronJob = new UsageReportCronJob(pair.cronTime, pair.frequency);
+        usageReportCronJob.startCronJob();
+      });
+  } else {
+    logger.warn(`Skipping UsageReportCronJob because of lack of CRON_BARNSTAR_TIMES which is: `, process.env.CRON_BARNSTAR_TIMES);
+  }
+
+}
+
+function setupHooks() {
+  // See https://github.com/google/wikiloop-battlefield/issues/234
+  // TODO(xinbenlv): add authentication.
+  installHook('postToJade', async function(i:InteractionProps) {
+    let revId = i.wikiRevId.split(':')[1];
+    let wiki = i.wikiRevId.split(':')[0];
+    if (wiki =='enwiki'  // we only handle enwiki for now. See https://github.com/google/wikiloop-battlefield/issues/234
+    && [
+      BasicJudgement.ShouldRevert.toString(),
+      BasicJudgement.LooksGood.toString(),
+    ].indexOf(i.judgement) > 0) {
+      let isDamaging = (i.judgement === BasicJudgement.ShouldRevert);
+      let searchParams = new URLSearchParams(
+        {
+          "action": "jadeproposeorendorse",
+          "title": `Jade:Diff/${revId}`,
+          "facet": "editquality",
+          "labeldata": `{"damaging":${isDamaging}"`,
+          "endorsementorigin": "mwapi-test",
+          "notes": "i-approve-of-this",
+          "formatversion": "2"
+        });
+      let url = new URL(`http://en.wikipedia.beta.wmflabs.org/w/api.php?${searchParams.toString()}`);
+      let ret = await rp.post(url.toString(), {json: true});
+    }
   });
 }
 
@@ -518,39 +585,8 @@ async function start() {
   } else {
     logger.info(`Ingestion disabled`);
   }
-
-  if (process.env.CRON_BARNSTAR_TIMES) {
-    logger.info(`Setting up CRON_BARN_STAR_TIME raw value = `, process.env.CRON_BARNSTAR_TIMES);
-    let cronTimePairs =
-      process.env.CRON_BARNSTAR_TIMES
-        .split('|')
-        .map(pairStr => {
-          let pair = pairStr.split(';');
-          return { cronTime: pair[0], frequency: pair[1]}
-        }).forEach(pair => {
-          const awardBarnStarCronJob = new AwardBarnStarCronJob(pair.cronTime, pair.frequency);
-          awardBarnStarCronJob.startCronJob();
-      });
-  } else {
-    logger.warn(`Skipping Barnstar cronjobs because of lack of CRON_BARNSTAR_TIMES which is: `, process.env.CRON_BARNSTAR_TIMES);
-  }
-
-  if (process.env.CRON_USAGE_REPORT_TIMES) {
-    logger.info(`Setting up CRON_USAGE_REPORT_TIMES raw value = `, process.env.CRON_USAGE_REPORT_TIMES);
-    let cronTimePairs =
-        process.env.CRON_USAGE_REPORT_TIMES
-            .split('|')
-            .map(pairStr => {
-              let pair = pairStr.split(';');
-              return { cronTime: pair[0], frequency: pair[1]}
-            }).forEach(pair => {
-          const usageReportCronJob = new UsageReportCronJob(pair.cronTime, pair.frequency);
-          usageReportCronJob.startCronJob();
-        });
-  } else {
-    logger.warn(`Skipping UsageReportCronJob because of lack of CRON_BARNSTAR_TIMES which is: `, process.env.CRON_BARNSTAR_TIMES);
-  }
-
+  setupCronJobs();
+  setupHooks();
 }
 
 start();
