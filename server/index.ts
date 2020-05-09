@@ -281,8 +281,8 @@ function setupHooks() {
           "title": `Jade:Diff/${revId}`,
           "facet": "editquality",
           "labeldata": `{"damaging":${isDamaging}"`,
-          "endorsementorigin": "mwapi-test",
-          "notes": "i-approve-of-this",
+          "endorsementorigin": `WikiLoop Battelfield`,
+          "notes": "Notes not available",
           "formatversion": "2"
         });
       let url = new URL(`http://en.wikipedia.beta.wmflabs.org/w/api.php?${searchParams.toString()}`);
