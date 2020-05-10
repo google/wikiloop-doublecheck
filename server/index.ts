@@ -14,7 +14,13 @@
 
 import {installHook} from "~/server/routes/interaction";
 
-require(`dotenv`).config();
+const envPath = process.env.DOTENV_PATH || 'template.env';
+console.log(`DotEnv envPath = `, envPath);
+
+require('dotenv').config({
+  path: envPath
+});
+
 import {AwardBarnStarCronJob, UsageReportCronJob} from "../cronjobs";
 import routes from './routes';
 import {
@@ -42,7 +48,6 @@ const mongoose = require('mongoose');
 import {wikiToDomain} from "@/shared/utility-shared";
 import {getMetrics, metricsRouter} from "@/server/metrics";
 import {OresStream} from "@/server/ingest/ores-stream";
-import { scoreRouter } from "./routes/score";
 import { actionRouter } from "./routes/action";
 import {InteractionProps} from "~/shared/models/interaction-item.model";
 import {BasicJudgement} from "~/shared/interfaces";
@@ -496,7 +501,11 @@ function setupRouters(db: IDBDatabase, app: any) {
 
   app.use(`/api/feed`, feedRouter);
   app.use(`/api/metrics`, metricsRouter);
-  app.use(`/api/score`, scoreRouter);
+  if (process.env.STIKI_MYSQL) {
+    const scoreRouter = require("./routes/score").scoreRouter;
+    app.use(`/api/score`, scoreRouter);
+  }
+
   app.use(`/api/action`, actionRouter);
 }
 
@@ -551,6 +560,7 @@ async function start() {
   setupApiRequestListener(mongoose.connection.db, io, app);
   setupRouters(mongoose.connection.db, app);
   if (process.env.STIKI_MYSQL) {
+    const scoreRouter = require("./routes/score").scoreRouter;
     app.use('/score', scoreRouter);
     app.use('/extra', scoreRouter); // DEPRECATED, added for backward compatibility.
   }
