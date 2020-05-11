@@ -280,18 +280,30 @@ function setupHooks() {
       BasicJudgement.LooksGood.toString(),
     ].indexOf(i.judgement) > 0) {
       let isDamaging = (i.judgement === BasicJudgement.ShouldRevert);
-      let searchParams = new URLSearchParams(
-        {
-          "action": "jadeproposeorendorse",
-          "title": `Jade:Diff/${revId}`,
-          "facet": "editquality",
-          "labeldata": `{"damaging":${isDamaging}"`,
-          "endorsementorigin": `WikiLoop Battelfield`,
-          "notes": "Notes not available",
-          "formatversion": "2"
-        });
-      let url = new URL(`http://en.wikipedia.beta.wmflabs.org/w/api.php?${searchParams.toString()}`);
-      let ret = await rp.post(url.toString(), {json: true});
+      let payload = {
+        "action": "jadeproposeorendorse",
+        "title": `Jade:Diff/${revId}`,
+        "facet": "editquality",
+        // TODO(xinbenlv): we don't actually make assessment on "goodfaith", but validation requires it.
+        "labeldata": `{"damaging":${isDamaging}, "goodfaith":true}`,
+        "endorsementorigin": `WikiLoop Battelfield`,
+        "notes": "Notes not available",
+        "formatversion": "2",
+        // TODO(xinbenlv): endorsementcomment is effectively required rather than optional
+        "endorsementcomment": "SeemsRequired",
+        "format":"json",
+        "token": `+\\`, // TODO(xinbenlv): update with real CSRF token when JADE launch to production
+      };
+      var optionsForForm = {
+        method: 'POST',
+        uri: 'https://en.wikipedia.beta.wmflabs.org/w/api.php',
+        formData: payload,
+        headers: {
+          /* 'content-type': 'multipart/form-data' */ // Is set automatically
+        }
+      };
+
+      let retWithForm = await rp(optionsForForm);
     }
   });
 }
