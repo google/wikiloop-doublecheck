@@ -554,7 +554,7 @@ async function start() {
   app.use(logReqPerf);
 
   const server = http.Server(app);
-  const io = require('socket.io')(server);
+  const io = require('socket.io')(server, { cookie: false });
   app.set('socketio', io);
   await mongoose.connect(process.env.MONGODB_URI,
     { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false }
