@@ -15,7 +15,7 @@
 import {installHook} from "~/server/routes/interaction";
 
 const envPath = process.env.DOTENV_PATH || 'template.env';
-console.log(`DotEnv envPath = `, envPath);
+console.log(`DotEnv envPath = `, envPath, ' if you want to change it, restart and set DOTENV_PATH');
 
 require('dotenv').config({
   path: envPath

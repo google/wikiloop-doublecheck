@@ -1,3 +1,5 @@
+import {asyncHandler} from "~/server/common";
+
 const express = require('express');
 import {FeedEnum, WatchCollectionFeed} from "@/server/feed/watch-collection-feed";
 import {MwActionApiClient} from "@/shared/mwapi";
@@ -68,41 +70,72 @@ feedRouter.get("/:feed", async (req, res) => {
   else res.status(404).send(`Feed ${feed} doesn't exist`);
 });
 
-if (process.env.FEED_WIKITRUST_TOKEN) {
-  // curl -H "Content-Type: application/json" -H "WikiLoopToken:$FEED_WIKITRUST_TOKEN" -X POST -d @./test/testdata/wikitrust_feed.json http://dev.battlefield.wikiloop.org:3000/api/feed/wikitrust
-  feedRouter.post("/:feed", async (req, res) => {
-    // Validation
-    // TODO(xinbenlv): consider use `express-validator`
-    // TODO(xinbenlv): change to MongoDB
-    if (req.params.feed == 'wikitrust' && req.header('WikiLoopToken') == process.env.FEED_WIKITRUST_TOKEN) {
-      const mongoose = require('mongoose');
-      await mongoose.connection.db.collection(`WatchCollection_WIKITRUST`)
-        .insertMany(req.body.content);
-        // TODO(xinbenlv) add logic to allow validating content format, or consider use gRPC
-      res.send(`ok`);
-    } else {
-      res.status(403).send(
-        `The provided feed ${req.body.feed} or feedToken ${req.body.feedToken} combination is invalid.`);
-    }
-  });
+// curl -H "Content-Type: application/json" -H "WikiLoopToken:$FEED_WIKITRUST_TOKEN" -X POST -d @./test/testdata/wikitrust_feed.json http://dev.battlefield.wikiloop.org:3000/api/feed/wikitrust
+feedRouter.post("/:feed", async (req, res) => {
+  // Validation
+  // TODO(xinbenlv): consider use `express-validator`
+  // TODO(xinbenlv): change to MongoDB
+  if (req.params.feed == 'wikitrust' &&
+    (process.env.FEED_WIKITRUST_TOKEN && req.header('WikiLoopToken') == process.env.FEED_WIKITRUST_TOKEN)) {
+    const mongoose = require('mongoose');
+    await mongoose.connection.db.collection(`WatchCollection_WIKITRUST`)
+      .insertMany(req.body.content);
+      // TODO(xinbenlv) add logic to allow validating content format, or consider use gRPC
+    res.send(`ok`);
+  } else {
+    res.status(403).send(
+      `The provided feed ${req.body.feed} or feedToken ${req.body.feedToken} combination is invalid.`);
+  }
+});
 
-  // curl -H "Content-Type: application/json" -H "WikiLoopToken:$FEED_WIKITRUST_TOKEN" -X DELETE http://localhost:3000/api/feed/wikitrust
-  feedRouter.delete("/:feed", async (req, res) => {
-    // Validation
-    // TODO(xinbenlv): consider use `express-validator`
-    // TODO(xinbenlv): change to MongoDB
-    if (req.params.feed == 'wikitrust' && req.header('WikiLoopToken') == process.env.FEED_WIKITRUST_TOKEN) {
-      const mongoose = require('mongoose');
-      try{
-        await mongoose.connection.db.collection(`WatchCollection_WIKITRUST`).drop();
-        res.send(`ok`);
-      } catch(e) {
-        if (e.code === 26 /* collection doesn't exist */) res.send(`ok`);
-        else res.status(500).send(e);
-      }
-    } else {
-      res.status(403).send(
-        `The provided feed ${req.body.feed} or feedToken ${req.header('WikiLoopToken')} combination is invalid.`);
+const ingestRevisionHandler = asyncHandler(async (req, res) => {
+  console.log(`Got it!`);
+  interface FeedRevisionItem {
+    feed:string,
+    wiki:string,
+    revIds:number[],
+    title?:string,
+    pageId?:number,
+  }
+  let feedRevisionItem = <FeedRevisionItem>{};
+  feedRevisionItem.feed = req.query.feed;
+  feedRevisionItem.wiki = req.query.wiki;
+  feedRevisionItem.revIds = [parseInt(req.query.revId)];
+  feedRevisionItem.title = req.query.title;
+  feedRevisionItem.pageId = parseInt(req.query.pageId);
+  if (req.query.feed == 'wikitrust' &&
+    (process.env.FEED_WIKITRUST_TOKEN && req.header('WikiLoopToken') == process.env.FEED_WIKITRUST_TOKEN)) {
+    const mongoose = require('mongoose');
+    await mongoose.connection.db.collection(`WatchCollection_WIKITRUST`)
+      .insertOne(feedRevisionItem);
+    // TODO(xinbenlv) add logic to allow validating content format, or consider use gRPC
+
+    res.send(`ok`);
+  } else {
+    res.status(403).send(
+      `The provided feed ${req.body.feed} or feedToken ${req.body.feedToken} combination is invalid.`);
+  }
+});
+// http://localhost:3000/api/feed/wikitrust/revision?feed=wikitrust&wiki=enwiki&title=Washington_Heights,_Manhattan&pageId=182694&revId=950027405
+feedRouter.get("/:feed/revision", ingestRevisionHandler);
+feedRouter.post("/:feed/revision", ingestRevisionHandler);
+
+// curl -H "Content-Type: application/json" -H "WikiLoopToken:$FEED_WIKITRUST_TOKEN" -X DELETE http://localhost:3000/api/feed/wikitrust
+feedRouter.delete("/:feed", async (req, res) => {
+  // Validation
+  // TODO(xinbenlv): consider use `express-validator`
+  // TODO(xinbenlv): change to MongoDB
+  if (req.params.feed == 'wikitrust' && req.header('WikiLoopToken') == process.env.FEED_WIKITRUST_TOKEN) {
+    const mongoose = require('mongoose');
+    try{
+      await mongoose.connection.db.collection(`WatchCollection_WIKITRUST`).drop();
+      res.send(`ok`);
+    } catch(e) {
+      if (e.code === 26 /* collection doesn't exist */) res.send(`ok`);
+      else res.status(500).send(e);
     }
-  });
-}
+  } else {
+    res.status(403).send(
+      `The provided feed ${req.body.feed} or feedToken ${req.header('WikiLoopToken')} combination is invalid.`);
+  }
+});
