@@ -11,15 +11,14 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-
-import {installHook} from "~/server/routes/interaction";
-
 const envPath = process.env.DOTENV_PATH || 'template.env';
 console.log(`DotEnv envPath = `, envPath, ' if you want to change it, restart and set DOTENV_PATH');
 
 require('dotenv').config({
   path: envPath
 });
+
+import {installHook} from "~/server/routes/interaction";
 
 import {AwardBarnStarCronJob, UsageReportCronJob} from "../cronjobs";
 import routes from './routes';
