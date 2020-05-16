@@ -200,7 +200,7 @@ import {WikiActionType} from "~/shared/interfaces";
                       this.isPending = false;
 
                   } else {
-                      let revertUrl = `${getUrlBaseByWiki(this.wiki)}/w/index.php?title=${this.title}&action=edit&undoafter=prev&undo=${this.revId}&summary=${revertEditSummary}`;
+                      let revertUrl = `${getUrlBaseByWiki(this.wiki)}/w/index.php?title=${this.title}&action=edit&undoafter=${this.page2ndLastRevision.revid/*a hack due to #238 before we roll out combined diff #225*/}&undo=${this.revId}&summary=${revertEditSummary}`;
                       this.wikiActionProps.type = WikiActionType.RedirectToRevert;
                       window.open(revertUrl, '_blank');
 

@@ -76,7 +76,7 @@ between Client-Side-Rendering and Server-Side-Rendering -->
           <h5 v-else>{{$t(`DiffNotAvailable`)}}
             <div v-on:click="loadDiff()" class="btn btn-outline-primary btn-small"><i class="fas fa-redo"></i></div>
             <!--TODO(zzn): v-if="revision.revision" might not be available, handle those cases better. -->
-            <a v-if="revision.revision" class="btn btn-outline-primary" :href="`${getUrlBaseByWiki(revision.wiki)}/w/index.php?title=${revision.title}&diff=${revision.revision.new}&oldid=prev&diffmode=source`"><i class="fas fa-external-link-alt"></i></a>
+            <a v-if="revision.revision" class="btn btn-outline-primary" :href="`${getUrlBaseByWiki(revision.wiki)}/w/index.php?title=${revision.title}&diff=${revision.revision.old}&oldid=${revision.revision.new}&diffmode=source`"><i class="fas fa-external-link-alt"></i></a>
           </h5>
         </div>
 

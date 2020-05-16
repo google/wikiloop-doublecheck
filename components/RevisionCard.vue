@@ -90,7 +90,7 @@
           <h5 v-else>{{$t(`DiffNotAvailable`)}}
             <div v-on:click="loadDiff()" class="btn btn-outline-primary btn-small"><i class="fas fa-redo"></i></div>
             <!--TODO(zzn): v-if="revision.revision" might not be available, handle those cases better. -->
-            <a v-if="revision.revision" class="btn btn-outline-primary" :href="`${getUrlBaseByWiki(revision.wiki)}/w/index.php?title=${revision.title}&diff=${revision.revision.new}&oldid=prev&diffmode=source`"><i class="fas fa-external-link-alt"></i></a>
+            <a v-if="revision.revision" class="btn btn-outline-primary" :href="`${getUrlBaseByWiki(revision.wiki)}/w/index.php?title=${revision.title}&diff=${revision.revision.new}&oldid=${revision.revision.old}&diffmode=source`"><i class="fas fa-external-link-alt"></i></a>
           </h5>
         </div>
 
@@ -395,7 +395,7 @@
                 `${version}`,
                 `http://${process.env.PUBLIC_HOST || "battlefield.wikiloop.org"}/revision/${this.wikiRevId.split(':')[0]}/${this.wikiRevId.split(':')[1]}`
               ]);
-          let revertUrl = `${this.getUrlBaseByWiki(this.revision.wiki)}/w/index.php?title=${this.revision.title}&action=edit&undoafter=prev&undo=${/*TODO(xinbenlv): this is a hack, until we standardize the revision interface */this.revision.revision?.new || this.wikiRevId.split(':')[1]}&summary=${revertEditSummary}`;
+          let revertUrl = `${this.getUrlBaseByWiki(this.revision.wiki)}/w/index.php?title=${this.revision.title}&action=edit&undoafter=${this.revision.revision?.old || 'prev'}&undo=${/*TODO(xinbenlv): this is a hack, until we standardize the revision interface */this.revision.revision?.new || this.wikiRevId.split(':')[1]}&summary=${revertEditSummary}`;
           let historyUrl = `${this.getUrlBaseByWiki(this.revision.wiki)}/w/index.php?title=${this.revision.title}&action=history`;
           let result = await this.$axios.$get(`/api/mediawiki`, {params: {
             wiki: this.revision.wiki,
