@@ -100,7 +100,7 @@ module.exports = {
           'pl',
           'ru',
           'tr',
-          'zh'
+          'zh',
         ],
         defaultLocale: 'en',
         vueI18n: {
