@@ -23,17 +23,23 @@ import {installHook} from "~/server/routes/interaction";
 import {AwardBarnStarCronJob, UsageReportCronJob} from "../cronjobs";
 import routes from './routes';
 import {
-  logger,
   apiLogger,
-  perfLogger,
-  computeOresField,
-  fetchRevisions,
-  useOauth,
-  isWhitelistedFor,
   asyncHandler,
-  ensureAuthenticated
+  computeOresField,
+  ensureAuthenticated,
+  fetchRevisions,
+  isWhitelistedFor,
+  logger,
+  perfLogger,
+  useOauth
 } from './common';
-import { feedRouter } from "./routes/feed";
+import {feedRouter} from "./routes/feed";
+import {getUrlBaseByWiki, wikiToDomain} from "@/shared/utility-shared";
+import {getMetrics, metricsRouter} from "@/server/metrics";
+import {OresStream} from "@/server/ingest/ores-stream";
+import {actionRouter} from "./routes/action";
+import {InteractionProps} from "~/shared/models/interaction-item.model";
+import {BasicJudgement} from "~/shared/interfaces";
 
 const http = require('http');
 const express = require('express');
@@ -43,13 +49,6 @@ const {Nuxt, Builder} = require('nuxt');
 const universalAnalytics = require('universal-analytics');
 const rp = require('request-promise');
 const mongoose = require('mongoose');
-
-import {wikiToDomain} from "@/shared/utility-shared";
-import {getMetrics, metricsRouter} from "@/server/metrics";
-import {OresStream} from "@/server/ingest/ores-stream";
-import { actionRouter } from "./routes/action";
-import {InteractionProps} from "~/shared/models/interaction-item.model";
-import {BasicJudgement} from "~/shared/interfaces";
 
 const logReqPerf = function (req, res, next) {
   // Credit for inspiration: http://www.sheshbabu.com/posts/measuring-response-times-of-express-route-handlers/
@@ -305,6 +304,39 @@ function setupHooks() {
       let retWithForm = await rp(optionsForForm);
     }
   });
+
+  if (process.env.DISCORD_WEBHOOK_ID && process.env.DISCORD_WEBHOOK_TOKEN) {
+    logger.info(`Installing discord webhook for id=${process.env.DISCORD_WEBHOOK_ID}, token=${process.env.DISCORD_WEBHOOK_TOKEN.slice(0,3)}...`);
+    installHook('postToDiscord', async function(i:InteractionProps) {
+      let revId = i.wikiRevId.split(':')[1];
+      let colorMap = {
+        'ShouldRevert': 14431557, // #dc3545 / Bootstrap Danger
+        'NotSure': 7107965, // 6c757d /
+        'LooksGood':  2664261, // #28a745 / Bootstrap Success
+      };
+      rp.post(
+        {
+          url: `https://discordapp.com/api/webhooks/${process.env.DISCORD_WEBHOOK_ID}/${process.env.DISCORD_WEBHOOK_TOKEN}`,
+          json: {
+            username: process.env.PUBLIC_HOST,
+            content: `A revision ${i.wikiRevId} for ${i.title} is reviewed by ${i.wikiUserName || i.userGaId} and result is ${i.judgement}`,
+            "embeds": [{
+              "title": `See it on ${i.wiki}: ${i.title}`,
+              "url": `${getUrlBaseByWiki(i.wiki)}/wiki/Special:Diff/${revId}`,
+
+            },
+            {
+              "title": `${i.judgement}`,
+              "url": `http://${process.env.PUBLIC_HOST}/revision/${i.wiki}/${revId}`,
+              "color": colorMap[i.judgement]
+            }]
+          }
+        });
+    });
+  } else {
+    logger.warn(`Not Installing discord webhook because lack of process.env.DISCORD_WEBHOOK_ID or process.env.DISCORD_WEBHOOK_TOKEN`);
+  }
+
 }
 
 function setupIoSocketListener(db, io) {
