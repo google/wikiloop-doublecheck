@@ -112,7 +112,8 @@ export const updateInteraction = async (req, res) => {
       hooks[hookName](interactionProps).then(() => {
         logger.info(`Hook ${hookName} succeeded`);
       }).catch((e) => {
-        logger.warn(`HTTP ${e.statusCode}, ${e.name}, ${e.message.slice(0,100)}`);
+        if(e.statusCode && e.name && e.message) logger.warn(`HTTP ${e.statusCode}, ${e.name}, ${e.message.slice(0,100)}`);
+        else logger.warn(`Error in hook ${hookName}:`, e);
       });
     });
 

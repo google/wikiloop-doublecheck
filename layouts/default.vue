@@ -143,18 +143,11 @@
               "ruwiki": "ru",
               "trwiki": "tr",
               "zhwiki": "zh",
-              "wikidatawiki": "en", // TODO(xinbenlv): consider how we deal with wikidata UI langauge.
+              "wikidatawiki": "en", // TODO(xinbenlv): consider how we deal with wikidata UI languages.
               "testwiki": "test",
             };
-            if (
-              /^\/feed/.test(this.$route.path) && // it was a feed
-              ['enwiki', 'testwiki'].indexOf(wiki) < 0 // it's not transitioning into a whitelist of wikis
-            ) {
-                this.$router.push(`/${wikiToLangMap[wiki]}`);
-            } else {
-                this.$router.go(0); // refresh the page to load.
-            }
-
+            if (wikiToLangMap[wiki] != 'en') this.$router.push(`/${wikiToLangMap[wiki]}`);
+            else this.$router.push(`/`);
             this.$store.commit('user/setPreferences', {wiki:wiki});
             this.$store.dispatch('changeWiki', wiki);
             this.$i18n.locale = wikiToLangMap[wiki];

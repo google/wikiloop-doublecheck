@@ -49,8 +49,11 @@ npm install
 ```
 
 ### Setup
+To configure more variables, you should create a `dev.env` file containing environment variables needed by this project used by [`dotenv`](https://www.npmjs.com/package/dotenv). A template has been provided in the `template.env`. Once set, you should do `cp template.env dev.env` to create such file in the exact name, and then do
 
-You should create a `.env` file containing environment variables needed by this project used by [`dotenv`](https://www.npmjs.com/package/dotenv). A template has been provided in the `template.env`. Once set, you should do `cp template.env .env` to create such file in the exact name. 
+```
+export DOTENV_PATH="dev.env"
+```
 
 ### Run
 
