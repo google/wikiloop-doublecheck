@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="1" failures="0" time="21.032">
+  <testsuite name="Logo" errors="0" failures="0" skipped="0" timestamp="2020-05-22T06:20:12" time="6.829" tests="1">
+    <testcase classname="Logo is a Vue instance" name="Logo is a Vue instance" time="0.016">
+    </testcase>
+  </testsuite>
+</testsuites>

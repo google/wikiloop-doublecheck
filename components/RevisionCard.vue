@@ -50,7 +50,7 @@
               <span data-toggle="tooltip" data-placement="top" title="Damaging Score by WMF ORES">
                 <!-- TODO(xinbenlv) update the following text for for i18n -->
                 <i v-bind:class="{ 'text-danger': ores ? ores.damaging.true > 0.5 : false }" class="fas fa-cloud-rain"></i> ORES Damaging: <a
-                  :href="`https://ores.wikimedia.org/v3/scores/enwiki/?revids=${revision.revid}`" target="_blank">{{ damagingPercent() }}</a>
+                  :href="`https://ores.wikimedia.org/v3/scores/enwiki/?revids=${revision.wikiRevId.split(`:`)[1]}`" target="_blank">{{ damagingPercent() }}</a>
               </span>
             </div>
             <div v-if="ores" class="col-lg-2">
@@ -58,7 +58,7 @@
                     title="Bad-faith Score by WMF ORES (here Bad-faith = 100% - Goodfaith)">
                 <!-- TODO(xinbenlv) update the following text for for i18n -->
                 <i v-bind:class="{ 'text-warning': ores ? ores.goodfaith.false > 0.5: false }" class="fas fa-theater-masks"></i> ORES Badfaith:  <a
-                  :href="`https://ores.wikimedia.org/v3/scores/enwiki/?revids=${revision.revid}`" target="_blank">{{ badfaithPercent() }}</a>
+                  :href="`https://ores.wikimedia.org/v3/scores/enwiki/?revids=${revision.wikiRevId.split(`:`)[1]}`" target="_blank">{{ badfaithPercent() }}</a>
               </span>
             </div>
             <div v-if="stiki" class="col-lg-2">
@@ -452,7 +452,6 @@
           wiki: this.revision.wiki,
           title: revision.title,
         };
-
         if (this.$store.state.user && this.$store.state.user.profile) {
           let wikiUserName = this.$store.state.user.profile.displayName;
           postBody.wikiUserName = wikiUserName;
