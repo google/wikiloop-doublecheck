@@ -32,7 +32,6 @@
     "@types/mongodb": "^3.3.12",
     "@types/mongoose": "^5.7.12",
     "apicache": "^1.5.2",
-    "body-parser": "^1.19.0",
     "bootstrap": "^4.4.1",
     "bootstrap-vue": "^2.1.0",
     "bottleneck": "^2.19.5",

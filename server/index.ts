@@ -577,11 +577,11 @@ async function start() {
   app.use(responseTime());
 
   const cookieParser = require('cookie-parser');
-  const bodyParser = require('body-parser');
   app.use(cookieParser());
   // Setup Google Analytics
   app.use(universalAnalytics.middleware(process.env.GA_WLBF_ID_API, {cookieName: '_ga'}));
-  app.use(bodyParser({limit: '50mb'}));
+  app.use(express.urlencoded({ limit: '50mb', extended: true }));
+  app.use(express.json({ limit: '50mb', extended: true }));
   app.use(logReqPerf);
 
   const server = http.Server(app);
