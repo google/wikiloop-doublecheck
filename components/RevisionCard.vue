@@ -32,7 +32,7 @@
               </a></sup>
             </div>
             <!-- TODO(xinbenlv) update the following text for for i18n -->
-            <div v-if="revision ? revision.pageLatestRevId > revision.revid: false"> Overriden</div>
+            <div v-if="revision ? revision.pageLatestRevId > revision.revid: false"> Overridden</div>
             <div class="ml-2"> <a :href="`/revision/${revision.wiki}/${revision.wikiRevId.split(`:`)[1]}`"><i class="fas fa-link"></i></a></div>
           </div>
           <div class="my-2" v-if="feedNameProp"><small><span class="badge badge-success">{{feedNameProp}} feed</span></small></div>
@@ -323,7 +323,7 @@
             wikiRevId: this.wikiRevId
           }
         });
-        // TODO(xinbenlv): use realtime overriden information.
+        // TODO(xinbenlv): use realtime overridden information.
         return this.myJudgement === `ShouldRevert` && !this.isOverriden();
       },
 

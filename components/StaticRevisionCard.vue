@@ -34,7 +34,7 @@ between Client-Side-Rendering and Server-Side-Rendering -->
               </a></sup>
             </div>
             <!-- TODO(xinbenlv) update the following text for for i18n -->
-            <div v-if="revision ? revision.pageLatestRevId > revision.revid: false"> Overriden</div>
+            <div v-if="revision ? revision.pageLatestRevId > revision.revid: false"> Overridden</div>
           </div>
         </h5>
         <div class="card-subtitle mb-2 text-muted">
