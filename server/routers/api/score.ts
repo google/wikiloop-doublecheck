@@ -13,7 +13,7 @@
 // limitations under the License.
 
 const express = require("express");
-import {asyncHandler, logger} from '../common';
+import {asyncHandler, logger} from '~/server/common';
 import {Score, ScoreType} from "~/shared/interfaces";
 
 const rp = require('request-promise');

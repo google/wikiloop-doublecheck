@@ -18,28 +18,17 @@ require('dotenv').config({
   path: envPath
 });
 
-import {installHook} from "~/server/routes/interaction";
-
-import {AwardBarnStarCronJob, UsageReportCronJob} from "../cronjobs";
+import { OresStream } from "@/server/ingest/ores-stream";
+import { getUrlBaseByWiki, wikiToDomain } from "@/shared/utility-shared";
+import { installHook } from "~/server/routes/interaction";
+import { BasicJudgement } from "~/shared/interfaces";
+import { InteractionProps } from "~/shared/models/interaction-item.model";
+import { AwardBarnStarCronJob, UsageReportCronJob } from "../cronjobs";
+import { apiLogger, asyncHandler, computeOresField, ensureAuthenticated, fetchRevisions, isWhitelistedFor, logger, perfLogger, useOauth } from './common';
 import routes from './routes';
-import {
-  apiLogger,
-  asyncHandler,
-  computeOresField,
-  ensureAuthenticated,
-  fetchRevisions,
-  isWhitelistedFor,
-  logger,
-  perfLogger,
-  useOauth
-} from './common';
-import {feedRouter} from "./routes/feed";
-import {getUrlBaseByWiki, wikiToDomain} from "@/shared/utility-shared";
-import {getMetrics, metricsRouter} from "@/server/metrics";
-import {OresStream} from "@/server/ingest/ores-stream";
-import {actionRouter} from "./routes/action";
-import {InteractionProps} from "~/shared/models/interaction-item.model";
-import {BasicJudgement} from "~/shared/interfaces";
+import { getMetrics } from "./routers/api/metrics";
+import { apiRouter as newApiRouter } from "./routers/api";
+
 
 const http = require('http');
 const express = require('express');
@@ -149,6 +138,7 @@ function setupApiRequestListener(db, io, app) {
   apiRouter.get('/version', asyncHandler(routes.version));
   apiRouter.get('/test', (req, res) => { res.send('test ok')});
   app.use(`/api`, apiRouter);
+  app.use(`/api`, newApiRouter);
 }
 
 // ----------------------------------------
@@ -536,20 +526,6 @@ function setupAuthApi(db, app) {
         .toArray();
       res.send(userPreferences.length > 0 ? userPreferences[0] : {});
     }));
-
-
-}
-
-function setupRouters(db: IDBDatabase, app: any) {
-
-  app.use(`/api/feed`, feedRouter);
-  app.use(`/api/metrics`, metricsRouter);
-  if (process.env.STIKI_MYSQL) {
-    const scoreRouter = require("./routes/score").scoreRouter;
-    app.use(`/api/score`, scoreRouter);
-  }
-
-  app.use(`/api/action`, actionRouter);
 }
 
 function setupFlag() {
@@ -601,7 +577,7 @@ async function start() {
   setupIoSocketListener(mongoose.connection.db, io);
   // setupMediaWikiListener(mongoose.connection.db, io);
   setupApiRequestListener(mongoose.connection.db, io, app);
-  setupRouters(mongoose.connection.db, app);
+
   if (process.env.STIKI_MYSQL) {
     const scoreRouter = require("./routes/score").scoreRouter;
     app.use('/score', scoreRouter);

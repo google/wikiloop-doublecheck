@@ -41,7 +41,7 @@ export const listRecentChanges = async (req, res) => {
   let wiki = req.query.wiki || `frwiki`; // Default to french wiki
 
   // Getting a list of latest revisions related to the filter (Lang of Wiki), and their related diff
-  // https://en.wikipedia.org/w/api.php?action=query&list=recentchanges&prop=info&format=json&rcnamespace=0&rclimit=50&rctype=edit&rctoponly=true&rcprop=user|userid|comment|flags|timestamp|ids|title&rcshow=!bot
+  // https://en.wikipedia.org/w/api.php?action=query&list=recentchanges&prop=info&format=json&rcnamespace=0&rclimit=50&rctype=edit&rctoponly=true&rcprop=oresscores%7Cuser%7Cuserid%7Ccomment%7Cflags%7Ctimestamp%7Cids%7Ctitle&rcshow=!bot
   // API document: https://www.mediawiki.org/w/api.php?action=help&modules=query%2Brecentchanges
 
   // It seems according to url.searchParams is not available in Microsoft Internet Explorer, we need to test it
