@@ -12,14 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { flags } from './flags';
-
-import { root } from './root';
 import { diff, diffWikiRevId } from './diff';
-import { avatar } from './avatar';
 import { getInteraction, listInteractions, updateInteraction } from './interaction';
 import { listRecentChanges } from './recentchanges';
-import { version } from './version';
 import { listLabels } from './label';
 import { ores, oresWikiRevId } from './ores';
 import { mediawiki } from './mediawiki';
@@ -31,7 +26,6 @@ import { basic, labelsTimeSeries, champion } from './stats';
 
 export default {
     basic, labelsTimeSeries, champion,
-    root,
     diff,
     diffWikiRevId,
     listRecentChanges,
@@ -47,9 +41,6 @@ export default {
     markedRevsCsv,
     markedRevs,
     leaderboard,
-    avatar,
     latestRevs,
-    flags,
     mediawiki,
-    version,
 };

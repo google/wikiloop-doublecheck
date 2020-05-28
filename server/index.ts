@@ -80,34 +80,25 @@ function setupApiRequestListener(db, io, app) {
   const apicache = require('apicache');
   let cache = apicache.middleware;
   const onlyGet = (req, res) => res.method === `GET`;
-
   apiRouter.use(cache('1 week', onlyGet));
 
-  apiRouter.get('/', asyncHandler(routes.root));
-
   apiRouter.get('/diff/:wikiRevId', asyncHandler(routes.diffWikiRevId));
-
   apiRouter.get('/diff', asyncHandler(routes.diff));
 
   apiRouter.get('/recentchanges/list', asyncHandler(routes.listRecentChanges));
 
   apiRouter.get('/ores', asyncHandler(routes.ores));
-
   apiRouter.get('/ores/:wikiRevId', asyncHandler(routes.oresWikiRevId));
 
   apiRouter.get('/revision/:wikiRevId', asyncHandler(routes.revisionWikiRevId));
-
   apiRouter.get('/revisions', asyncHandler(routes.revision));
 
   apiRouter.get('/interaction/:wikiRevId', asyncHandler(routes.getInteraction));
-
   apiRouter.get('/interactions', asyncHandler(routes.listInteractions));
+  apiRouter.post('/interaction/:wikiRevId', asyncHandler(routes.updateInteraction));
   apiRouter.get('/labels', asyncHandler(routes.listLabels));
 
-  apiRouter.post('/interaction/:wikiRevId', asyncHandler(routes.updateInteraction));
-
   apiRouter.get("/markedRevs.csv", asyncHandler(routes.markedRevsCsv));
-
   apiRouter.get("/markedRevs", asyncHandler(routes.markedRevs));
 
   /**
@@ -126,17 +117,10 @@ function setupApiRequestListener(db, io, app) {
   apiRouter.get('/stats/timeseries/labels', asyncHandler(routes.labelsTimeSeries));
   apiRouter.get('/stats/champion', asyncHandler(routes.champion));
 
-  // TODO build batch api for avatar until performance is an issue. We have cache anyway should be fine.
-  apiRouter.get("/avatar/:seed", asyncHandler(routes.avatar));
-
   apiRouter.get('/latestRevs', asyncHandler(routes.latestRevs));
-
-  apiRouter.get('/flags', asyncHandler(routes.flags));
 
   apiRouter.get('/mediawiki', asyncHandler(routes.mediawiki));
 
-  apiRouter.get('/version', asyncHandler(routes.version));
-  apiRouter.get('/test', (req, res) => { res.send('test ok')});
   app.use(`/api`, apiRouter);
   app.use(`/api`, newApiRouter);
 }
@@ -578,11 +562,6 @@ async function start() {
   // setupMediaWikiListener(mongoose.connection.db, io);
   setupApiRequestListener(mongoose.connection.db, io, app);
 
-  if (process.env.STIKI_MYSQL) {
-    const scoreRouter = require("./routes/score").scoreRouter;
-    app.use('/score', scoreRouter);
-    app.use('/extra', scoreRouter); // DEPRECATED, added for backward compatibility.
-  }
   if (!flag['server-only']) {
     await nuxt.ready();
 

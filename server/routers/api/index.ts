@@ -1,7 +1,23 @@
-import actionRouter from "~/server/routers/api/action";
-import {feedRouter} from "~/server/routers/api/feed";
-import scoreRouter from "~/server/routers/api/score";
+// Copyright 2019-2020 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+import { actionRouter } from "./action";
+import { feedRouter } from "./feed";
+import { scoreRouter } from "./score";
 import { metricsRouter } from "./metrics";
+import { utilsRouter } from "./utils";
 
 const express = require('express');
 
@@ -10,7 +26,12 @@ export const apiRouter = express.Router();
 apiRouter.use(`/action`, actionRouter);
 apiRouter.use(`/feed`, feedRouter);
 apiRouter.use(`/metrics`, metricsRouter);
+apiRouter.get('/test', (req, res) => { res.send('test ok') });
+
 if (process.env.STIKI_MYSQL) {
-  const scoreRouter = require("./routes/score").scoreRouter;
-  apiRouter.use(`/api/score`, scoreRouter);
+  apiRouter.use(`/score`, scoreRouter);
+  apiRouter.use(`/extra`, scoreRouter);
 }
+
+// Needs to stay at the end of ApiRouter
+apiRouter.use(`/`, utilsRouter);
