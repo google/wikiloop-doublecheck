@@ -12,10 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// TODO(xinbenlv): consider merge with mediawiki
+
 import {wikiToDomain} from "@/shared/utility-shared";
 
-import { perfLogger, apiLogger } from '@/server/common';
+import { perfLogger, apiLogger, asyncHandler } from '@/server/common';
 const rp = require('request-promise');
+
+export const latestRouter = require('express').Router();
 
 /**
  * @deprecated use `listRecentChanges` instead.
@@ -25,7 +29,7 @@ const rp = require('request-promise');
  * @param res
  * @returns {Promise<void>}
  */
-export const latestRevs = async (req, res) => {
+const latestRevs = async (req, res) => {
   let startTime = new Date();
   if (req.query.wiki && Object.keys(wikiToDomain).indexOf(req.query.wiki) < 0) {
     res.status(400);
@@ -119,3 +123,5 @@ export const latestRevs = async (req, res) => {
   perfLogger.info(`Response delay for /api/latestRevs = ${endTime.getTime() - startTime.getTime()}`);
   perfLogger.info(`Response delay for /api/latestRevs recentChange = ${recentChangeResponseTime.getTime() - startTime.getTime()}`);
 };
+
+latestRouter.get(`/`, asyncHandler(latestRevs));

@@ -12,13 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { logger } from '../common';
+// TODO(xinbenlv): consider merge with mediawiki
 
-import {wikiToDomain} from "../../shared/utility-shared";
+import { logger, asyncHandler } from '../../common';
+
+import {wikiToDomain} from "../../../shared/utility-shared";
 
 const rp = require(`request-promise`);
 
-export const diffWikiRevId = async (req, res) => {
+export const diffRouter = require('express').Router();
+
+const diffWikiRevId = async (req, res) => {
     logger.debug(`req.query`, req.query);
     let wikiRevId = req.params.wikiRevId;
     let wiki = wikiRevId.split(':')[0];
@@ -30,6 +34,7 @@ export const diffWikiRevId = async (req, res) => {
         .event({ ec: "api", ea: "/diff/:wikiRevId" })
         .send();
 };
+diffRouter.get(`/:wikiRevId`, asyncHandler(diffWikiRevId));
 
 /**
  * @deprecated
@@ -37,7 +42,7 @@ export const diffWikiRevId = async (req, res) => {
  * @param res
  * @returns {Promise<void>}
  */
-export const diff = async (req, res) => {
+const diff = async (req, res) => {
     logger.debug(`req.query`, req.query);
     let diffApiUrl = `http${wikiToDomain[req.query.wiki]}/w/api.php?action=compare&fromrev=${req.query.revId}&torelative=prev&format=json`;
     let diffJson = await rp.get(diffApiUrl, { json: true });
@@ -46,3 +51,5 @@ export const diff = async (req, res) => {
         .event({ ec: "api", ea: "/diff" })
         .send();
 };
+
+diffRouter.get(`/`, asyncHandler(diff));

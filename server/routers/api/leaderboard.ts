@@ -12,6 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import { asyncHandler } from "~/server/common";
+
+export const leaderboardRouter = require('express').Router();
+
 const mongoose = require('mongoose');
 async function getWikisLeaderList(
     startTime:number, endTime:number) {
@@ -176,7 +180,7 @@ async function getAnonymousLeaderList(
   ).toArray();
 }
 
-export const leaderboard = async (req, res) => {
+const leaderboard = async (req, res) => {
     let startTime = parseInt(req.query.startTime) || 0;
     let endTime = parseInt(req.query.endTime) || new Date().getTime()/1000;
     const limit = parseInt(req.query.limit) || 20;
@@ -196,3 +200,5 @@ export const leaderboard = async (req, res) => {
         .event({ ec: "api", ea: "/leaderboard" })
         .send();
 };
+
+leaderboardRouter.get(`/`, asyncHandler(leaderboard));

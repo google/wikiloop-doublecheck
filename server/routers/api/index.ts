@@ -18,10 +18,26 @@ import { feedRouter } from "./feed";
 import { scoreRouter } from "./score";
 import { metricsRouter } from "./metrics";
 import { utilsRouter } from "./utils";
+import { diffRouter } from "./diff";
+import { recentChangesRouter } from "./recentchanges";
+import { oresRouter } from "./ores";
+import { revisionRouter } from "./revision";
+import { labelRouter } from "./label";
+import { interactionRouter } from "./interaction";
+import { latestRouter } from "./latest";
+import { mediawikiRouter } from "./mediawiki";
+import { statsRouter } from "./stats";
+import { leaderboardRouter } from "./leaderboard";
+import { markedRevsCsv, markedRevs } from "./marked";
+import { asyncHandler } from "~/server/common";
 
 const express = require('express');
-
 export const apiRouter = express.Router();
+
+const apicache = require('apicache');
+let cache = apicache.middleware;
+const onlyGet = (req, res) => res.method === `GET`;
+apiRouter.use(cache('1 week', onlyGet));
 
 apiRouter.use(`/action`, actionRouter);
 apiRouter.use(`/feed`, feedRouter);
@@ -35,3 +51,40 @@ if (process.env.STIKI_MYSQL) {
 
 // Needs to stay at the end of ApiRouter
 apiRouter.use(`/`, utilsRouter);
+
+apiRouter.use('/diff', diffRouter);
+
+apiRouter.use('/recentchanges', recentChangesRouter);
+
+apiRouter.use('/ores', oresRouter);
+
+apiRouter.use('/revision', revisionRouter);
+apiRouter.use('/revisions', revisionRouter);
+
+apiRouter.use('/interaction', interactionRouter);
+apiRouter.use('/interactions', interactionRouter);
+
+apiRouter.use('/label', labelRouter);
+apiRouter.use('/labels', labelRouter);
+
+// TODO(xinbenlv): merge to labels / interactions
+apiRouter.use("/markedRevs.csv", asyncHandler(markedRevsCsv));
+apiRouter.use("/markedRevs", asyncHandler(markedRevs));
+
+/**
+ * Return a list of all leader
+ * Pseudo SQL
+ *
+ *
+ * ```SQL
+ *   SELECT user, count(*) FROM Interaction GROUP BY user ORDER by user;
+ * ````
+ */
+apiRouter.use('/leaderboard', leaderboardRouter);
+
+apiRouter.use('/stats', statsRouter);
+
+apiRouter.use('/latestRevs', latestRouter);
+
+apiRouter.use('/mediawiki', mediawikiRouter);
+

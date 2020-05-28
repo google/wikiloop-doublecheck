@@ -20,12 +20,11 @@ require('dotenv').config({
 
 import { OresStream } from "@/server/ingest/ores-stream";
 import { getUrlBaseByWiki, wikiToDomain } from "@/shared/utility-shared";
-import { installHook } from "~/server/routes/interaction";
+import { installHook } from "~/server/routers/api/interaction";
 import { BasicJudgement } from "~/shared/interfaces";
 import { InteractionProps } from "~/shared/models/interaction-item.model";
 import { AwardBarnStarCronJob, UsageReportCronJob } from "../cronjobs";
 import { apiLogger, asyncHandler, computeOresField, ensureAuthenticated, fetchRevisions, isWhitelistedFor, logger, perfLogger, useOauth } from './common';
-import routes from './routes';
 import { getMetrics } from "./routers/api/metrics";
 import { apiRouter as newApiRouter } from "./routers/api";
 
@@ -74,54 +73,6 @@ config.dev = !(process.env.NODE_ENV === 'production');
 
 // -------------- FROM API ----------------
 function setupApiRequestListener(db, io, app) {
-  // TODO(xinbenlv): consider use native ExpressJS nested Router pattern.
-  let apiRouter = express();
-
-  const apicache = require('apicache');
-  let cache = apicache.middleware;
-  const onlyGet = (req, res) => res.method === `GET`;
-  apiRouter.use(cache('1 week', onlyGet));
-
-  apiRouter.get('/diff/:wikiRevId', asyncHandler(routes.diffWikiRevId));
-  apiRouter.get('/diff', asyncHandler(routes.diff));
-
-  apiRouter.get('/recentchanges/list', asyncHandler(routes.listRecentChanges));
-
-  apiRouter.get('/ores', asyncHandler(routes.ores));
-  apiRouter.get('/ores/:wikiRevId', asyncHandler(routes.oresWikiRevId));
-
-  apiRouter.get('/revision/:wikiRevId', asyncHandler(routes.revisionWikiRevId));
-  apiRouter.get('/revisions', asyncHandler(routes.revision));
-
-  apiRouter.get('/interaction/:wikiRevId', asyncHandler(routes.getInteraction));
-  apiRouter.get('/interactions', asyncHandler(routes.listInteractions));
-  apiRouter.post('/interaction/:wikiRevId', asyncHandler(routes.updateInteraction));
-  apiRouter.get('/labels', asyncHandler(routes.listLabels));
-
-  apiRouter.get("/markedRevs.csv", asyncHandler(routes.markedRevsCsv));
-  apiRouter.get("/markedRevs", asyncHandler(routes.markedRevs));
-
-  /**
-   * Return a list of all leader
-   * Pseudo SQL
-   *
-   *
-   * ```SQL
-   *   SELECT user, count(*) FROM Interaction GROUP BY user ORDER by user;
-   * ````
-   */
-  apiRouter.get('/leaderboard', asyncHandler(routes.leaderboard));
-
-
-  apiRouter.get('/stats', asyncHandler(routes.basic));
-  apiRouter.get('/stats/timeseries/labels', asyncHandler(routes.labelsTimeSeries));
-  apiRouter.get('/stats/champion', asyncHandler(routes.champion));
-
-  apiRouter.get('/latestRevs', asyncHandler(routes.latestRevs));
-
-  apiRouter.get('/mediawiki', asyncHandler(routes.mediawiki));
-
-  app.use(`/api`, apiRouter);
   app.use(`/api`, newApiRouter);
 }
 

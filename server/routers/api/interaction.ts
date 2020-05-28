@@ -16,7 +16,9 @@ import {Interaction, InteractionDoc, InteractionProps} from "~/shared/models/int
 
 const apicache = require('apicache');
 const mongoose = require('mongoose');
-import { logger, getNewJudgementCounts } from '../common';
+import { logger, getNewJudgementCounts, asyncHandler } from '../../common';
+
+export const interactionRouter = require('express').Router();
 
 type InteractionHookFunc = (i: InteractionProps) => any;
 
@@ -26,7 +28,7 @@ export const installHook = function(hookName, hookFunc:InteractionHookFunc) {
   logger.info(`Hook ${hookName} is installed`);
 }
 
-export const getInteraction = async (req, res) => {
+const getInteraction = async (req, res) => {
     let wikiRevId = req.params.wikiRevId;
     let interactions = await getNewJudgementCounts(mongoose.connection.db,
         // {
@@ -56,8 +58,9 @@ export const getInteraction = async (req, res) => {
         .event({ ec: "api", ea: "/interaction/:wikiRevId" })
         .send();
 };
+interactionRouter.get(`/:wikiRevId`, asyncHandler(getInteraction));
 
-export const listInteractions = async (req, res) => {
+const listInteractions = async (req, res) => {
     let limit = parseInt(req.query.limit) || 10;
     let offset = parseInt(req.query.offset) || 0;
     let matcher:any = {};
@@ -78,7 +81,9 @@ export const listInteractions = async (req, res) => {
         .send();
 };
 
-export const updateInteraction = async (req, res) => {
+interactionRouter.get(`/`, asyncHandler(listInteractions));
+
+const updateInteraction = async (req, res) => {
     const io = req.app.get('socketio');
     let interactionProps:InteractionProps = req.body as InteractionProps;
     let matcher:any ={
@@ -123,3 +128,5 @@ export const updateInteraction = async (req, res) => {
         .event("judgement", req.body.judgement)
         .send();
 };
+
+interactionRouter.post(`/:wikiRevId`, asyncHandler(updateInteraction));

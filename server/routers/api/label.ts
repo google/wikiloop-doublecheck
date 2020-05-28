@@ -1,4 +1,8 @@
-export const listLabels = async function (req, res) {
+import { asyncHandler } from "~/server/common";
+
+export const labelRouter = require('express').Router();
+
+const listLabels = async function (req, res) {
         const mongoose = require('mongoose');
         const limit = req.query.limit || 1000;
         const offset = req.query.offset || 0;
@@ -63,3 +67,5 @@ export const listLabels = async function (req, res) {
             res.send(labels);
         }
 };
+
+labelRouter.get('/', asyncHandler(listLabels));

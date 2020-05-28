@@ -17,8 +17,11 @@
 */
 
 const mongoose = require('mongoose');
-import { logger } from '@/server/common';
+import { logger, asyncHandler } from '@/server/common';
 const ANONYMOUS_PLACEHOLDER = `(anonymous)`;
+
+export const statsRouter = require('express').Router();
+
 const championQuery = function(timeRange, endDate, wiki) {
   let utcEndTime;
   if (/20\d\d-\d\d-\d\d/.test(endDate)) {
@@ -73,7 +76,8 @@ export const getChampion = async function(timeRange, endDate, wiki) {
   let ret = await mongoose.connection.db.collection(`Interaction`).aggregate(query).toArray();
   return ret;
 }
-export const champion = async (req, res) => {
+
+const champion = async (req, res) => {
   let ret = await getChampion(req.query.timeRange || 'week', req.query.endDate || '2020-02-01', req.wiki || null);
   if (req.query.cmd) {
     if (ret.length) {
@@ -92,7 +96,9 @@ export const champion = async (req, res) => {
   }
 }
 
-export const labelsTimeSeries = async (req, res) => {
+statsRouter.get('/champion', asyncHandler(champion));
+
+const labelsTimeSeries = async (req, res) => {
   let labelsTimeSeries = await mongoose.connection.db.collection(`Interaction`)
     .aggregate([
       { $match: {timestamp: {$exists: true}}},
@@ -118,8 +124,9 @@ export const labelsTimeSeries = async (req, res) => {
   res.send(labelsTimeSeries);
 };
 
+statsRouter.get('/timeseries/labels', asyncHandler(labelsTimeSeries));
 
-export const basic = async (req, res) => {
+const basic = async (req, res) => {
     let myGaId = req.body.gaId || req.cookies._ga;
     logger.debug(`req.query`, req.query);
     let allInteractions = await mongoose.connection.db.collection(`Interaction`)
@@ -164,9 +171,5 @@ export const basic = async (req, res) => {
         .send();
 };
 
-module.exports = {
-  basic,
-  labelsTimeSeries,
-  champion,
-  getChampion
-};
+
+statsRouter.get('/', asyncHandler(basic));

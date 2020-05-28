@@ -12,11 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { apiLogger } from '@/server/common';
+import { apiLogger, asyncHandler } from '@/server/common';
 import {wikiToDomain} from "@/shared/utility-shared";
 const rp = require('request-promise');
 
-export const mediawiki = async (req, res) => {
+export const mediawikiRouter = require('express').Router();
+
+const mediawiki = async (req, res) => {
   // TODO add sanitize if we see abuse.
   apiLogger.debug('req.params:', req.params);
   apiLogger.debug('req.query:', req.query);
@@ -32,3 +34,5 @@ export const mediawiki = async (req, res) => {
     .event({ ec: "mediawiki", ea: "/" })
     .send();
 };
+
+mediawikiRouter.get(`/`, asyncHandler(mediawiki));

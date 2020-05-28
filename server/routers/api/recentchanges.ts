@@ -12,11 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import {wikiToDomain} from "../../shared/utility-shared";
-import {apiLogger, perfLogger} from '../common';
-import {MwActionApiClient} from "../../shared/mwapi";
+// TODO(xinbenlv): consider merge with mediawiki
+
+import {wikiToDomain} from "../../../shared/utility-shared";
+import {apiLogger, perfLogger, asyncHandler} from '../../common';
+import {MwActionApiClient} from "../../../shared/mwapi";
 
 const rp = require('request-promise');
+
+const express = require('express');
+export const recentChangesRouter = express.Router();
 
 /**
  * @param req, supporting query
@@ -28,7 +33,7 @@ const rp = require('request-promise');
  * @param res
  * @returns {Promise<void>}
  */
-export const listRecentChanges = async (req, res) => {
+const listRecentChanges = async (req, res) => {
   let startTime = new Date();
 
   // TODO(zzn): create and use a common request/response error handler
@@ -113,3 +118,5 @@ export const listRecentChanges = async (req, res) => {
   perfLogger.debug(`Response delay for /api/recentchanges/list = ${endTime.getTime() - startTime.getTime()}`);
   perfLogger.debug(`Response delay for /api/recentchanges/list = ${recentChangeResponseTime.getTime() - startTime.getTime()}`);
 };
+
+recentChangesRouter.get(`/list`, asyncHandler(listRecentChanges));

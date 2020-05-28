@@ -13,9 +13,12 @@
 // limitations under the License.
 
 // DEPRECATED use score.ts if possible
+// TODO(xinbenlv): consider merge with `/score`
 
 const rp = require('request-promise');
-import { computeOresFieldNew, wikiRevIdsGroupByWiki, apiLogger } from '../common';
+import { computeOresFieldNew, wikiRevIdsGroupByWiki, apiLogger, asyncHandler } from '../../common';
+
+export const oresRouter = require('express').Router();
 
 /** Function to fetch ORES, if unavailable, cover the error and replace score with null
  * There are two main reasons ORES scores are unavailable:
@@ -53,7 +56,7 @@ async function fetchOres(wikiRevIds) {
     return oresResults;
 };
 
-export const ores = async (req, res) => {
+const ores = async (req, res) => {
     let wikiRevIds = req.query.wikiRevIds;
     let ret = await fetchOres(wikiRevIds);
     res.send(ret);
@@ -62,7 +65,9 @@ export const ores = async (req, res) => {
         .send();
 };
 
-export const oresWikiRevId = async (req, res) => {
+oresRouter.get(`/`, asyncHandler(ores));
+
+const oresWikiRevId = async (req, res) => {
     let wikiRevId = req.params.wikiRevId;
     let wiki = req.params.wikiRevId.split(':')[0];
     let ret = await fetchOres([wikiRevId]);
@@ -79,3 +84,5 @@ export const oresWikiRevId = async (req, res) => {
         .event({ ec: "api", ea: "/ores/:wikiRevId" })
         .send();
 };
+
+oresRouter.get(`/:wikiRevId`, asyncHandler(oresWikiRevId));

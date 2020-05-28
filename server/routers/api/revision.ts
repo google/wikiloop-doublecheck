@@ -12,9 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { fetchRevisions } from '../common';
+// TODO(xinbenlv): consider merge with mediawiki
 
-export const revision = async (req, res) => {
+import { fetchRevisions, asyncHandler } from '../../common';
+
+export const revisionRouter = require('express').Router();
+
+const revision = async (req, res) => {
     let wikiRevIds = req.query.wikiRevIds;
     let wikiToRevisionList = await fetchRevisions(wikiRevIds);
     res.send(wikiToRevisionList);
@@ -23,7 +27,10 @@ export const revision = async (req, res) => {
         .event({ ec: "api", ea: "/revision/:wikiRevId" })
         .send();
 };
-export const revisionWikiRevId = async (req, res) => {
+
+revisionRouter.get(`/`, asyncHandler(revision));
+
+const revisionWikiRevId = async (req, res) => {
     let wikiRevId = req.params.wikiRevId;
     let wiki = wikiRevId.split(':')[0];
     let wikiToRevisionList = await fetchRevisions( [wikiRevId]);
@@ -42,3 +49,5 @@ export const revisionWikiRevId = async (req, res) => {
         .event({ ec: "api", ea: "/revision/:wikiRevId" })
         .send();
 };
+
+revisionRouter.get(`/:wikiRevId`, asyncHandler(revisionWikiRevId));
