@@ -54,10 +54,10 @@
               <template v-slot:button-content>
                 <i class="fas fa-info"></i>
               </template>
-              <b-dropdown-item href="https://github.com/google/wikiloop-battlefield/issues">Issues</b-dropdown-item>
-              <b-dropdown-item href="https://github.com/google/wikiloop-battlefield">Code </b-dropdown-item>
-              <b-dropdown-item href="https://meta.wikimedia.org/wiki/WikiProject_WikiLoop">WikiProject</b-dropdown-item>
-              <b-dropdown-item href="/api/stats">Stats</b-dropdown-item>
+              <b-dropdown-item href="https://github.com/google/wikiloop-battlefield/issues" target="_blank">Issues</b-dropdown-item>
+              <b-dropdown-item href="https://github.com/google/wikiloop-battlefield" target="_blank">Code </b-dropdown-item>
+              <b-dropdown-item href="https://meta.wikimedia.org/wiki/WikiProject_WikiLoop" target="_blank">WikiProject</b-dropdown-item>
+              <b-dropdown-item href="/api/stats" target="_blank">Stats</b-dropdown-item>
             </b-nav-item-dropdown>
             <b-nav-item>
               <b-form-select @click.native.stop='' class="small" v-model="wiki">

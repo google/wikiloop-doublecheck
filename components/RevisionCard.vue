@@ -26,13 +26,13 @@
         <h5 class="card-title ">
           <div class="d-flex">
             <div class="flex-grow-1">
-              [[<a :href="`${getUrlBaseByWiki(revision.wiki)}/wiki/${revision.title}`">{{ revision.title }}</a>]]
-              <sup><a v-bind:href="`${getUrlBaseByWiki(revision.wiki)}/wiki/Special:Diff/${revision.wikiRevId.split(`:`)[1]}`">
+              [[<a :href="`${getUrlBaseByWiki(revision.wiki)}/wiki/${revision.title}`" target="_blank">{{ revision.title }}</a>]]
+              <sup><a v-bind:href="`${getUrlBaseByWiki(revision.wiki)}/wiki/Special:Diff/${revision.wikiRevId.split(`:`)[1]}`" target="_blank">
                 <small>rev.{{revision.wikiRevId.split(`:`)[1]}}</small>
               </a></sup>
             </div>
             <!-- TODO(xinbenlv) update the following text for for i18n -->
-            <div v-if="revision ? revision.pageLatestRevId > revision.revid: false"> Overriden</div>
+            <div v-if="revision ? revision.pageLatestRevId > revision.revid: false"> Overridden</div>
             <div class="ml-2"> <a :href="`/revision/${revision.wiki}/${revision.wikiRevId.split(`:`)[1]}`"><i class="fas fa-link"></i></a></div>
           </div>
           <div class="my-2" v-if="feedNameProp"><small><span class="badge badge-success">{{feedNameProp}} feed</span></small></div>
@@ -43,14 +43,14 @@
               <i class="fas fa-pen"></i><timeago :datetime="getTimeString()" :auto-update="60" :locale="$i18n.locale"></timeago>
             </div>
             <div class="col-lg-2">
-              <small><span>by <a v-bind:href="`${getUrlBaseByWiki(revision.wiki)}/wiki/User:${revision.user}`">{{ revision.user }}</a></span>
+              <small><span>by <a v-bind:href="`${getUrlBaseByWiki(revision.wiki)}/wiki/User:${revision.user}`" target="_blank">{{ revision.user }}</a></span>
               </small>
             </div>
             <div v-if="ores" class="col-lg-2">
               <span data-toggle="tooltip" data-placement="top" title="Damaging Score by WMF ORES">
                 <!-- TODO(xinbenlv) update the following text for for i18n -->
                 <i v-bind:class="{ 'text-danger': ores ? ores.damaging.true > 0.5 : false }" class="fas fa-cloud-rain"></i> ORES Damaging: <a
-                  :href="`https://ores.wikimedia.org/v3/scores/enwiki/?revids=${revision.revid}`">{{ damagingPercent() }}</a>
+                  :href="`https://ores.wikimedia.org/v3/scores/enwiki/?revids=${revision.wikiRevId.split(`:`)[1]}`" target="_blank">{{ damagingPercent() }}</a>
               </span>
             </div>
             <div v-if="ores" class="col-lg-2">
@@ -58,21 +58,21 @@
                     title="Bad-faith Score by WMF ORES (here Bad-faith = 100% - Goodfaith)">
                 <!-- TODO(xinbenlv) update the following text for for i18n -->
                 <i v-bind:class="{ 'text-warning': ores ? ores.goodfaith.false > 0.5: false }" class="fas fa-theater-masks"></i> ORES Badfaith:  <a
-                  :href="`https://ores.wikimedia.org/v3/scores/enwiki/?revids=${revision.revid}`">{{ badfaithPercent() }}</a>
+                  :href="`https://ores.wikimedia.org/v3/scores/enwiki/?revids=${revision.wikiRevId.split(`:`)[1]}`" target="_blank">{{ badfaithPercent() }}</a>
               </span>
             </div>
             <div v-if="stiki" class="col-lg-2">
               <span data-toggle="tooltip" data-placement="top"
                     title="Vandalism Score by STiki">
                 <i v-bind:class="{ 'text-warning': stiki && stiki > 0.5 ? true : false }" class="fas fa-theater-masks"></i> STiki:  <a
-                  :href="`/extra/stiki/${wikiRevId}`">{{ stikiPercent() }}</a>
+                  :href="`/extra/stiki/${wikiRevId}`" target="_blank">{{ stikiPercent() }}</a>
               </span>
             </div>
             <div v-if="cbng" class="col-lg-2">
               <span data-toggle="tooltip" data-placement="top"
                     title="Vandalism Score by ClueBotNG">
                 <i v-bind:class="{ 'text-warning': cbng && cbng > 0.5 ? true : false }" class="fas fa-theater-masks"></i> ClueBotNG:  <a
-                  :href="`/extra/cbng/${wikiRevId}`">{{ cbngPercent() }}</a>
+                  :href="`/extra/cbng/${wikiRevId}`" target="_blank">{{ cbngPercent() }}</a>
               </span>
             </div>
           </div>
@@ -90,7 +90,7 @@
           <h5 v-else>{{$t(`DiffNotAvailable`)}}
             <div v-on:click="loadDiff()" class="btn btn-outline-primary btn-small"><i class="fas fa-redo"></i></div>
             <!--TODO(zzn): v-if="revision.revision" might not be available, handle those cases better. -->
-            <a v-if="revision.revision" class="btn btn-outline-primary" :href="`${getUrlBaseByWiki(revision.wiki)}/w/index.php?title=${revision.title}&diff=${revision.revision.new}&oldid=${revision.revision.old}&diffmode=source`"><i class="fas fa-external-link-alt"></i></a>
+            <a v-if="revision.revision" class="btn btn-outline-primary" :href="`${getUrlBaseByWiki(revision.wiki)}/w/index.php?title=${revision.title}&diff=${revision.revision.new}&oldid=${revision.revision.old}&diffmode=source`" target="_blank"><i class="fas fa-external-link-alt"></i></a>
           </h5>
         </div>
 
@@ -323,7 +323,7 @@
             wikiRevId: this.wikiRevId
           }
         });
-        // TODO(xinbenlv): use realtime overriden information.
+        // TODO(xinbenlv): use realtime overridden information.
         return this.myJudgement === `ShouldRevert` && !this.isOverriden();
       },
 
@@ -452,7 +452,6 @@
           wiki: this.revision.wiki,
           title: revision.title,
         };
-
         if (this.$store.state.user && this.$store.state.user.profile) {
           let wikiUserName = this.$store.state.user.profile.displayName;
           postBody.wikiUserName = wikiUserName;

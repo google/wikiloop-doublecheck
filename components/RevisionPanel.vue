@@ -20,8 +20,8 @@
       <h5 class="card-title ">
         <div class="d-flex">
           <div class="flex-grow-1">
-            [[<a :href="wikiPageUrl">{{ item.title }}</a>]]
-            <sup><a v-bind:href="diffUrl">
+            [[<a :href="wikiPageUrl" target="_blank">{{ item.title }}</a>]]
+            <sup><a v-bind:href="diffUrl" target="_blank">
               <small>rev.{{item.revId}}</small>
             </a></sup>
           </div>
@@ -35,7 +35,7 @@
             <span class="nobreak"><b>Edited:</b> <timeago :datetime="timeString" :auto-update="60" :locale="$i18n.locale"></timeago></span>
           </div>
           <div class="col-sm">
-            <span class="nobreak"><b>Author:</b> <a v-bind:href="authorUrl">{{ item.author }}</a></span>
+            <span class="nobreak"><b>Author:</b> <a v-bind:href="authorUrl" target="_blank">{{ item.author }}</a></span>
           </div>
         </div>
       </div>
@@ -48,7 +48,7 @@
         <template v-else>
         <h5>{{$t(`DiffNotAvailable`)}}
           <div v-on:click="loadDiff()" class="btn btn-outline-primary btn-small"><i class="fas fa-redo"></i></div>
-          <a v-if="item" class="btn btn-outline-primary" :href="revertUrl"><i class="fas fa-external-link-alt"></i></a>
+          <a v-if="item" class="btn btn-outline-primary" :href="revertUrl" target="_blank"><i class="fas fa-external-link-alt"></i></a>
         </h5>
         </template>
       </div>
