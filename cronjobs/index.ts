@@ -92,8 +92,6 @@ export class UsageReportCronJob {
     public startCronJob() {
         mailCronLogger.info(`Starting UsageReportCronJob cronjob.`);
         this.cronJob.start();
-        mailCronLogger.info(`Next 3 occurrences`,
-            this.cronJob.nextDates(3));
     }
 }
 
@@ -141,7 +139,5 @@ export class AwardBarnStarCronJob {
     public startCronJob() {
         mailCronLogger.info(`Starting award barnstar cronjob`);
         this.cronJob.start();
-        mailCronLogger.info(`Next 3 occurrences`,
-            this.cronJob.nextDates(3));
     }
 }

@@ -76,86 +76,6 @@ function setupApiRequestListener(db, io, app) {
   app.use(`/api`, newApiRouter);
 }
 
-// ----------------------------------------
-
-function setupMediaWikiListener(db, io) {
-  logger.debug(`Starting mediaWikiListener.`);
-
-  return new Promise(async (resolve, reject) => {
-    const EventSource = require('eventsource');
-    const url = 'https://stream.wikimedia.org/v2/stream/revision-score';
-
-    logger.debug(`Connecting to EventStreams at ${url}`);
-
-    const eventSource = new EventSource(url);
-    eventSource.onopen = function (event) {
-      logger.debug(`Stream connected: ${url}`);
-    };
-
-    eventSource.onerror = function (event) {
-      logger.error(`Stream error: ${url}`, event);
-    };
-
-    eventSource.onmessage = async function (event) {
-      allDocCounter++;
-      let recentChange = JSON.parse(event.data);
-      // logger.debug(`server received`, data.wiki, data.id, data.meta.uri);
-      recentChange._id = (`${recentChange.wiki}-${recentChange.id}`);
-      if (recentChange.type === "edit") {
-        // Currently only support these wikis.
-        if (Object.keys(wikiToDomain).indexOf(recentChange.wiki) >= 0) {
-          // TODO(xinbenlv): remove it after we build review queue or allow ORES missing
-          if (recentChange.wiki == "wikidatawiki" && Math.random() <= 0.9) return; // ignore 90% of wikidata
-
-          try {
-            let oresUrl = `https://ores.wikimedia.org/v3/scores/${recentChange.wiki}/?models=damaging|goodfaith&revids=${recentChange.revision.new}`;
-            let oresJson;
-            try {
-              oresJson = await rp.get(oresUrl, {json: true});
-            } catch(e) {
-              if (e.StatusCodeError === 429) {
-                  logger.warn(`ORES hits connection limit `, e.errmsg);
-              }
-              return;
-            }
-            recentChange.ores = computeOresField(oresJson, recentChange.wiki, recentChange.revision.new);
-            let doc = {
-              _id: recentChange._id,
-              id: recentChange.id,
-              revision: recentChange.revision,
-              title: recentChange.title,
-              user: recentChange.user,
-              wiki: recentChange.wiki,
-              timestamp: recentChange.timestamp,
-              ores: recentChange.ores,
-              namespace: recentChange.namespace,
-              nonbot: !recentChange.bot,
-              wikiRevId: `${recentChange.wiki}:${recentChange.revision.new}`,
-            };
-            docCounter++;
-            doc['comment'] = recentChange.comment;
-            io.sockets.emit('recent-change', doc);
-            delete doc['comment'];
-            // TODO add
-            // await db.collection(`MediaWikiRecentChange`).insertOne(doc);
-
-          } catch (e) {
-            if (e.name === "MongoError" && e.code === 11000) {
-              logger.warn(`Duplicated Key Found`, e.errmsg);
-            } else {
-              logger.error(e);
-            }
-          }
-        }
-        else {
-          logger.debug(`Ignoring revision from wiki=${recentChange.wiki}`);
-        }
-      }
-    };
-
-  });
-}
-
 function setupCronJobs() {
   if (process.env.CRON_BARNSTAR_TIMES) {
     logger.info(`Setting up CRON_BARN_STAR_TIME raw value = `, process.env.CRON_BARNSTAR_TIMES);
@@ -510,7 +430,6 @@ async function start() {
   });
   if (useOauth) setupAuthApi(mongoose.connection.db, app);
   setupIoSocketListener(mongoose.connection.db, io);
-  // setupMediaWikiListener(mongoose.connection.db, io);
   setupApiRequestListener(mongoose.connection.db, io, app);
 
   if (!flag['server-only']) {
