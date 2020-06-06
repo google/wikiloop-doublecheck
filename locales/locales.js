@@ -5,6 +5,7 @@ const fr = require('./fr');
 const id = require('./id');
 const lv = require('./lv');
 const pl = require('./pl');
+const pt = require('./pt');
 const ru = require('./ru');
 const tr = require('./tr');
 const zh = require('./zh');
@@ -18,6 +19,7 @@ module.exports = {
     id,
     lv,
     pl,
+    pt,
     ru,
     tr,
     zh

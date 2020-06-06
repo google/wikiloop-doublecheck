@@ -98,6 +98,7 @@ module.exports = {
           'id',
           'lv',
           'pl',
+          'pt',
           'ru',
           'tr',
           'zh',
