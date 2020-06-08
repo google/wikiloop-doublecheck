@@ -28,6 +28,10 @@ export default [
         text: 'Polski (pl)' // Polish
     },
     {
+        value: 'ptwiki',
+        text: 'Português (pt)' // Portuguese
+    },
+    {
         value: 'ruwiki',
         text: 'Русский (ru)' // Russian
     },
