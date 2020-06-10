@@ -140,6 +140,7 @@
               "idwiki": "id",
               "lvwiki": "lv",
               "plwiki": "pl",
+              "ptwiki": "pt",
               "ruwiki": "ru",
               "trwiki": "tr",
               "zhwiki": "zh",
