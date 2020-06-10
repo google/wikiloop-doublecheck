@@ -60,6 +60,18 @@ const getInteraction = async (req, res) => {
 };
 interactionRouter.get(`/:wikiRevId`, asyncHandler(getInteraction));
 
+const getInteractionsByWikiRevId = async (req, res) => {
+  let wikiRevId = req.params.wikiRevId;
+  let interactionDocs = await Interaction.find({wikiRevId: {$in: wikiRevId}});
+  res.send(interactionDocs);
+  req.visitor
+      .event({ ec: "api", ea: "/interaction/:wikiRevId" })
+      .send();
+};
+
+// TODO(xinbenlv): temprorarily use
+interactionRouter.get(`/beta/:wikiRevId`, asyncHandler(getInteractionsByWikiRevId));
+
 const listInteractions = async (req, res) => {
     let limit = parseInt(req.query.limit) || 10;
     let offset = parseInt(req.query.offset) || 0;

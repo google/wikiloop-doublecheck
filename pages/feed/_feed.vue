@@ -9,12 +9,20 @@
               :feed-name="currentFeedItem.feed"
             >
             </RevisionPanel>
+
             <ActionPanel ref="actionPanel"
               :key="`action-panel-${currentWikiRevId}`"
               :wikiRevId="currentWikiRevId"
               :title="currentRevisionPanelItem.title"
               :feed="currentFeedItem.feed"
+              @judgement-event="$refs.judgementPanel && $refs.judgementPanel.refresh()"
               @next-card="showNext()"/>
+            <template v-if="currentWikiRevId">
+              <button class="btn btn-outline-primary"
+                v-if="!showJudgementPanel"
+                @click="showJudgementPanel = !showJudgementPanel">Show judgements</button>
+              <JudgementPanel v-else="showJudgementPanel" ref="judgementPanel" class="card-body" :wikiRevId="currentWikiRevId" />
+            </template>
           </div>
           <div v-else>
             <div class="card">
@@ -57,11 +65,13 @@
     import {RevisionPanelItem} from "@/shared/interfaces";
     import RevisionPanel from "~/components/RevisionPanel.vue";
     import ActionPanel from "~/components/ActionPanel.vue";
+    import JudgementPanel from "~/components/JudgementPanel.vue";
 
     export default {
     components: {
       RevisionPanel,
-      ActionPanel
+      ActionPanel,
+      JudgementPanel
     },
     data() {
       return {
@@ -74,6 +84,7 @@
           nextRevisionPanelItem: null,
           tipLoginCountDown: 5,
           loading:true,
+          showJudgementPanel: false,
       }
     },
     computed: {
@@ -101,6 +112,7 @@
         } else {
           [this.currentFeedItem, this.currentWikiRevId, this.currentRevisionPanelItem] = await this.getNewFeedItemAndInfo();
         }
+        this.showJudgementPanel = false; // always set the show judgement panel to false when fetching a new revision.
         this.loading = false;
         [this.nextFeedItem, this.nextWikiRevId, this.nextRevisionPanelItem] = await this.getNewFeedItemAndInfo();
 

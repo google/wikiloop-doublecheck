@@ -15,7 +15,7 @@
 // TODO(xinbenlv): consider merge with mediawiki
 
 import {wikiToDomain} from "../../../shared/utility-shared";
-import {apiLogger, perfLogger, asyncHandler} from '../../common';
+import {apiLogger, perfLogger, asyncHandler, logger} from '../../common';
 import {MwActionApiClient} from "../../../shared/mwapi";
 
 const rp = require('request-promise');

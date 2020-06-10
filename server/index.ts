@@ -40,7 +40,7 @@ const mongoose = require('mongoose');
 
 const logReqPerf = function (req, res, next) {
   // Credit for inspiration: http://www.sheshbabu.com/posts/measuring-response-times-of-express-route-handlers/
-  perfLogger.debug(` log request starts for ${req.method} ${req.originalUrl}:`, {
+  perfLogger.info(` log request starts for ${req.method} ${req.originalUrl}:`, {
     method: req.method,
     original_url: req.originalUrl,
     ga_id: req.cookies._ga,
@@ -48,7 +48,7 @@ const logReqPerf = function (req, res, next) {
   const startNs = process.hrtime.bigint();
   res.on(`finish`, () => {
     const endNs = process.hrtime.bigint();
-    perfLogger.debug(` log response ends for ${req.method} ${req.originalUrl}:`, {
+    perfLogger.info(` log response ends for ${req.method} ${req.originalUrl}:`, {
       method: req.method,
       original_url: req.originalUrl,
       ga_id: req.cookies._ga,

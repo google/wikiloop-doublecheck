@@ -166,6 +166,7 @@ import {WikiActionType} from "~/shared/interfaces";
             document.dispatchEvent(new Event("stats-update"));
             document.dispatchEvent(new Event("judgement-event"));
             this.$emit('judgement-event', postBody);
+            
         }
         getDiffLinkByRevId(revId) {
           return `${getUrlBaseByWiki(this.wiki)}/wiki/Special:Diff/${revId}`;

@@ -34,10 +34,10 @@ import { asyncHandler } from "~/server/common";
 const express = require('express');
 export const apiRouter = express.Router();
 
-const apicache = require('apicache');
-let cache = apicache.middleware;
-const onlyGet = (req, res) => res.method === `GET`;
-apiRouter.use(cache('1 week', onlyGet));
+// const apicache = require('apicache');
+// let cache = apicache.middleware;
+// const onlyGet = (req, res) => res.method === `GET`;
+// apiRouter.use(cache('1 week', onlyGet));
 
 apiRouter.use(`/action`, actionRouter);
 apiRouter.use(`/feed`, feedRouter);

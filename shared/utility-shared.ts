@@ -57,3 +57,11 @@ export let fetchDiffWithWikiRevId = async function(wikiRevId, $axios) {
     return diffJson;
 };
 export const supportedWikis = Object.keys(wikiToDomain);
+
+export const parseWikiRevId = (wikiRevId: string): [string,number] => {
+  return [wikiRevId.split(':')[0], parseInt(wikiRevId.split(':')[1])];
+}
+
+export const percent = (num:number) => {
+  return `${Math.round(num * 100)}%`; 
+}

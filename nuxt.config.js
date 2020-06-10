@@ -130,7 +130,16 @@ module.exports = {
    ** Build configuration
    */
   build: {
-    vendor: ['socket.io-client']
+    vendor: ['socket.io-client'],
+    babel: {
+      presets({ isServer }) {
+        return [
+          [
+            "@nuxt/babel-preset-app", { loose: true }
+          ]
+        ]
+      }
+    }
   },
   buildModules: ['@nuxt/typescript-build']
 };
