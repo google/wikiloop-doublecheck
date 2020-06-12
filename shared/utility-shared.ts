@@ -28,6 +28,17 @@ export enum WikiEnum {
   testwiki
 }
 
+export enum UserTier {
+  Blocked = -1, // -10
+  Anonymous = 0, // 1 = 1e0
+  User = 1, // 10 = 1e1
+  Confirmed = 2, // 100 = 1e2
+  ExtendedConfirmed = 3, // 1000 = 1e3
+  Rollbacker = 4, // 10000 = 1e4
+  Admin = 5 // 100000 = 1e5
+}
+
+
 export const wikiToDomain = {
   "afwiki": "af.wikipedia.org",
   "dewiki": "de.wikipedia.org",
@@ -65,5 +76,5 @@ export const parseWikiRevId = (wikiRevId: string): [string,number] => {
 }
 
 export const percent = (num:number) => {
-  return `${Math.round(num * 100)}%`; 
+  return `${Math.round(num * 100)}%`;
 }

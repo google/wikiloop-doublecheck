@@ -66,10 +66,16 @@
             </b-nav-item>
           </b-navbar-nav>
           <b-navbar-nav class="ml-auto">
-            <b-nav-item-dropdown  right>
+            <b-nav-item-dropdown right>
               <template v-slot:button-content>
-                <object type="image/svg+xml" class="avatar-navbar" v-bind:data="`/api/avatar/${userId}`" ></object><span v-if="">{{$store.state.user.profile ? `${$store.state.user.profile.displayName}`:`${$t(`Anonymous`)}`}}</span>
+                <div class="d-flex">
+                  <user-avatar-with-name class="avatar-img mr-1"
+                    :wikiUserName="$store.state.user.profile ? $store.state.user.profile.displayName : null"
+                    :userGaId="$cookiez.get('_ga')"
+                    ></user-avatar-with-name>
+                </div>
               </template>
+
               <b-dropdown-item v-if="$store.state.user.profile && $store.state.user.profile.displayName" :href="`/marked/?wikiUserName=${$store.state.user.profile.displayName}`"><i class="fas fa-list"></i>{{$t(`ContributionsMenuItem`)}}</b-dropdown-item>
               <b-dropdown-item :href="`/marked/?userGaId=${$cookiez.get('_ga')}`"><i class="fas fa-list"></i>{{$t(`ContributionsBeforeLoginMenuItem`)}}</b-dropdown-item>
               <template v-if="!($store.state.user.profile)">
@@ -105,8 +111,12 @@
     import socket from '@/plugins/socket.io.js';
     import languages from '@/locales/languages.js';
     import {InteractionItem} from "~/shared/schema";
+    import UserAvatarWithName from "~/components/UserAvatarWithName.vue";
 
     export default {
+    components: {
+      UserAvatarWithName
+    },
     data() {
       return {
         languages
@@ -239,13 +249,6 @@ html {
   margin: 0;
 }
 
-.avatar-navbar {
-  width: 48px;
-  height: 48px;
-  margin-top: -18px;
-  margin-bottom: -18px;
-}
-
 @media (max-width: 576px) {
   .small-screen-padding {
     padding-left: 6px;
@@ -257,4 +260,8 @@ html {
   padding: 7px;
 }
 
+.dropdown-toggle::after {
+  display: block;
+  border:none;
+}
 </style>

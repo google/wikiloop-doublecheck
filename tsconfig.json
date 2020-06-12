@@ -30,7 +30,11 @@
             "@dicebear/avatars/typings/svgson"
         ],
         "experimentalDecorators": true /* Enables experimental support for ES7 decorators. */,
-        "emitDecoratorMetadata": true /* Enables experimental support for emitting type metadata for decorators. */
+
+        /* Enables experimental support for emitting type metadata for decorators.
+           Required by nuxt-property-decorator using Enum
+         */
+        "emitDecoratorMetadata": true
     },
     "exclude": [
         "node_modules"
