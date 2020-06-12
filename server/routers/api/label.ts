@@ -4,7 +4,7 @@ export const labelRouter = require('express').Router();
 
 const listLabels = async function (req, res) {
         const mongoose = require('mongoose');
-        const limit = req.query.limit || 1000;
+        const limit = parseInt(req.query.limit) || 1000;
         const offset = req.query.offset || 0;
 
         let mongoMatcher = {

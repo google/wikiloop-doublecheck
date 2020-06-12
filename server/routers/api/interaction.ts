@@ -121,6 +121,7 @@ const updateInteraction = async (req, res) => {
     }
     // new way
     io.sockets.emit('interaction-item', interactionProps);
+    io.sockets.emit('interaction-props', interactionProps);
     apicache.clear(req.originalUrl);
 
     // install execute hooks.

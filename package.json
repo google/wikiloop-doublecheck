@@ -62,6 +62,7 @@
     "nuxt": "^2.12.2",
     "nuxt-env": "^0.1.0",
     "nuxt-i18n": "^6.4.1",
+    "nuxt-property-decorator": "^2.7.2",
     "oauth-fetch-json": "^0.3.3",
     "passport": "^0.4.0",
     "passport-mediawiki-oauth": "^0.1.0",
