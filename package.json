@@ -18,7 +18,13 @@
     "test-report": "jest --ci --runInBand --reporters=default --reporters=jest-junit",
     "ci": "circleci local execute build",
     "dev:exec": "ts-node -r tsconfig-paths/register --project tsconfig.json ./server/index.ts",
-    "dev:server": "nodemon -w server -w shared -x ts-node ./server/index.ts --server-only"
+    "dev:server": "nodemon -w server -w shared -x ts-node ./server/index.ts --server-only",
+    "release": "HUSKY_SKIP_HOOKS=1 standard-version"
+  },
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
+    }
   },
   "dependencies": {
     "@dicebear/avatars": "^4.0.2",
@@ -86,6 +92,8 @@
     "yargs": "^15.3.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "8.3.5",
+    "@commitlint/config-conventional": "8.3.4",
     "@nuxt/typescript-build": "^0.6.1",
     "@nuxtjs/eslint-config": "^0.0.1",
     "@types/node": "^13.11.1",
@@ -95,6 +103,8 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
+    "commitizen": "4.1.2",
+    "cz-conventional-changelog": "3.2.0",
     "eslint": "^5.15.1",
     "eslint-config-prettier": "^4.3.0",
     "eslint-config-standard": "^14.1.0",
@@ -107,10 +117,12 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "eslint-plugin-vue": "^5.2.3",
+    "husky": "4.2.5",
     "jest": "^24.9.0",
     "jest-junit": "^6.4.0",
     "nodemon": "^1.19.4",
     "prettier": "^1.19.1",
+    "standard-version": "8.0.0",
     "tsconfig-paths": "^3.9.0",
     "vue-jest": "^3.0.5",
     "webpack-hot-middleware": "^2.25.0"
@@ -136,5 +148,10 @@
     ],
     "exec": "npm run dev:exec",
     "ext": "ts"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
