@@ -17,6 +17,7 @@
 <template>
     <section>
         <div class="container small-screen-padding">
+            <TimeSeriesBarChart></TimeSeriesBarChart>
             <b-form-select class="mt-4"
                     @click.native.stop=''
                     v-model="timeRange"
@@ -180,10 +181,10 @@
   import BootstrapVue from 'bootstrap-vue';
   import VueTimeago from 'vue-timeago';
   import languages from '@/locales/languages.js';
-
+  import TimeSeriesBarChart from 'TimeSeriesBarChart.vue';
   export default {
     comments: {
-      BootstrapVue, VueTimeago
+      BootstrapVue, VueTimeago, TimeSeriesBarChart
     }, data() {
       return {
         timeRange: null
@@ -205,7 +206,7 @@
         this.anonymous = anonymous;
         this.wikis = wikis;
         this.totalLoggedIn = totalLoggedIn;
-      }
+      },
     }, mounted() {
       this.$ga.page('/leaderboard.vue');
     }, beforeCreate() {
@@ -222,4 +223,19 @@
         margin-top: -18px;
         margin-bottom: -18px;
     }
+    .svg-container {
+      display: inline-block;
+      position: relative;
+      width: 100%;
+      padding-bottom: 100%; /* aspect ratio */
+      vertical-align: top;
+      overflow: hidden;
+    }
+    .svg-content-responsive {
+      display: inline-block;
+      position: absolute;
+      top: 10px;
+      left: 0;
+    }
+
 </style>
