@@ -11,51 +11,26 @@
     export default class TimeSeriesBarChart extends Vue {
         chart:any;
 
-        mounted() {
-            this.createSvg();
+        async mounted() {
+            await this.createSvg();
         }
 
-        private createSvg = function () {
-          var barChartData = {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-            datasets: [{
-              label: 'Dataset 1',
-              backgroundColor: "#FF0000",
-              data: [
-                Math.random() * 10,
-                Math.random() * 10,
-                Math.random() * 10,
-                Math.random() * 10,
-                Math.random() * 10,
-                Math.random() * 10,
-                Math.random() * 10,
-              ]
-            }, {
-              label: 'Dataset 2',
-              backgroundColor: "#0000FF",
-              data: [
-                Math.random() * 10,
-                Math.random() * 10,
-                Math.random() * 10,
-                Math.random() * 10,
-                Math.random() * 10,
-                Math.random() * 10,
-                Math.random() * 10,
-              ]
-            }, {
-              label: 'Dataset 3',
-              backgroundColor: "#00FF00",
-              data: [
-                Math.random() * 10,
-                Math.random() * 10,
-                Math.random() * 10,
-                Math.random() * 10,
-                Math.random() * 10,
-                Math.random() * 10,
-                Math.random() * 10,
-              ]
-            }]
+        private createSvg = async function () {
+          let stats = await this.$axios.$get('/api/stats/timeseries/labels?byMonth=1');
+          let data = []
+          let labels = []
+          stats.forEach(d => {
+            labels.push(d._id.date);
+            data.push(d.count);
+          });
 
+          var barChartData = {
+            labels: labels,
+            datasets: [{
+              label: 'Revisions',
+              backgroundColor: "#FF0000",
+              data: data
+            }]
           };
           let elm = document.getElementById('myChart') as HTMLCanvasElement;
           var ctx = elm.getContext('2d');
