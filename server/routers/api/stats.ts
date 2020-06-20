@@ -12,12 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import {Interaction} from "~/shared/models/interaction-item.model";
+import {asyncHandler, logger} from '@/server/common';
+import moment from "moment";
+
 /** @deprecated stats.ts is deprecated, use metrics.ts instead.
 * New endpoints shall be added to metrics.ts
 */
 
 const mongoose = require('mongoose');
-import { logger, asyncHandler } from '@/server/common';
 const ANONYMOUS_PLACEHOLDER = `(anonymous)`;
 
 export const statsRouter = require('express').Router();
@@ -99,26 +102,57 @@ const champion = async (req, res) => {
 statsRouter.get('/champion', asyncHandler(champion));
 
 const labelsTimeSeries = async (req, res) => {
+  let groupBy:any = {
+
+  },
+  matcher:any = {
+    timestamp: {$exists: true}
+  };
+
+  if (req.query.byJudgement) {
+    groupBy.judgement = "$judgement";
+  }
+
+  if (req.query.byDay) {
+    groupBy.date = {
+      "$dateToString": {
+        "format": "%Y-%m-%d",
+        "date": {
+          "$add": [
+            new Date(0),
+            {"$multiply": [1000, "$timestamp"]}
+          ]
+        }
+      },
+    }
+  } else if (req.query.byMonth) {
+    groupBy.date = {
+      "$dateToString": {
+        "format": "%Y-%m-01",
+        "date": {
+          "$add": [
+            new Date(0),
+            {"$multiply": [1000, "$timestamp"]}
+          ]
+        }
+      },
+    }
+  }
+
+  if (req.query.wiki) {
+    matcher.wiki = req.query.wiki;
+  }
+  if (req.query.wikiUserName) {
+    matcher.wikiUserName = req.query.wikiUserName;
+  }
+  if (req.query.title) {
+    matcher.title = req.query.title;
+  }
+
   let labelsTimeSeries = await mongoose.connection.db.collection(`Interaction`)
     .aggregate([
-      { $match: {timestamp: {$exists: true}}},
-      { "$group": {
-          "_id": {
-              date: {
-                "$dateToString": {
-                  "format": "%Y-%m-%d",
-                  "date": {
-                    "$add": [
-                      new Date(0),
-                      {"$multiply": [1000, "$timestamp"]}
-                    ]
-                  }
-                },
-              },
-              "wiki": "$wiki",
-          },
-          "count": { "$sum": 1 }
-        } },
+      { $match: matcher },
+      { $group: { _id: groupBy, count: { $sum: 1 } } },
       { $sort: {'_id.date': -1}},
     ]).toArray();
   res.send(labelsTimeSeries);
@@ -171,5 +205,59 @@ const basic = async (req, res) => {
         .send();
 };
 
-
 statsRouter.get('/', asyncHandler(basic));
+
+statsRouter.get('/breakdownQuery', asyncHandler(async (req, res) => {
+
+}));
+
+statsRouter.get('/breakdown', asyncHandler(async (req, res) => {
+  let interactions = await mongoose.connection.db.collection(`Interaction`)
+    .find({
+      timestamp: {$exists: true},
+      wikiRevId: {$exists: true},
+      judgement: {$exists: true}
+    })
+    .project({timestamp: 1, wikiRevId: 1, judgement: 1, wikiUserName: 1, userGaId: 1})
+    .toArray();
+  let breakdownByDay = {};
+  let breakdownByWeek = {};
+  let breakdownByMonth = {};
+  let breakdownByQuarter = {};
+  interactions.map(i => {
+    let rawDate = new Date(i.timestamp * 1000);
+    let dateStr = moment(rawDate).format('YYYY-MM-DD');
+    let weekStr = moment(rawDate).format('YYYY-[W]w');
+    let monthStr = moment(rawDate).format('YYYY-MM');
+    let monthNumber = parseInt(moment(rawDate).format('MM'));
+    let quarterStr = moment(rawDate).format(`YYYY-[Q]Q`);
+    breakdownByDay[dateStr] = (breakdownByDay[dateStr] ?? 0) + 1;
+    breakdownByWeek[weekStr] = (breakdownByWeek[weekStr] ?? 0) + 1;
+    breakdownByMonth[monthStr] = (breakdownByMonth[monthStr] ?? 0) + 1;
+    breakdownByQuarter[quarterStr] = (breakdownByQuarter[quarterStr] ?? 0) + 1;
+    return i;
+  });
+  let output = {
+    'day': [],
+    'week': [],
+    'month': [],
+    "quarter": [],
+  };
+
+  Object.keys(breakdownByDay).sort().forEach(k => {
+    output.day.push({date: k}, {value: breakdownByDay[k]});
+  });
+
+  Object.keys(breakdownByWeek).sort().forEach(k => {
+    output.week.push({date: k}, {value: breakdownByWeek[k]});
+  });
+
+  Object.keys(breakdownByMonth).sort().forEach(k => {
+    output.month.push({date: k}, {value: breakdownByMonth[k]});
+  });
+
+  Object.keys(breakdownByQuarter).sort().forEach(k => {
+    output.quarter.push({date: k}, {value: breakdownByQuarter[k]});
+  });
+  res.send(output);
+}));
