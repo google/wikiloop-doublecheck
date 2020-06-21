@@ -1,16 +1,31 @@
 <template>
   <section>
+    <b-form-select hidden class="mt-4"
+                   @click.native.stop=''
+                   v-model="breakdownBy"
+                   v-on:change="createSvg()">
+      <option :value="null">None</option>
+      <option :value="`judgement`">Judgement</option>
+      <option :value="`feed`">Feed</option>
+    </b-form-select>
     <canvas id="myChart" class="w-100" style="height:400px"></canvas>
   </section>
 </template>
 <script lang="ts">
     import {Component, Vue} from 'nuxt-property-decorator';
     import Chart from 'chart.js';
-    import {BasicJudgement} from "~/shared/interfaces";
 
-    @Component
+    @Component({
+      data() {
+        return {
+          breakdownBy: null
+        }
+      }
+    })
     export default class TimeSeriesBarChart extends Vue {
         chart:any;
+        // breakdownBy:any = 'feed';
+
         async mounted() {
             await this.createSvg();
         }
@@ -30,9 +45,11 @@
           return theme;
         }
 
-        private createSvg = async function () {
+        createSvg = async function () {
           let theme = this.computeColor();
-          let url = '/api/stats/timeseries/labels?byMonth=1&byJudgement=1';
+          let url = '/api/stats/timeseries/labels?byMonth=1';
+          if (this.breakdownBy) url += `&breakdownBy=${this.breakdownBy}`;
+
           if (this.$route.query.wikiUserName) {
             url += `&wikiUserName=${this.$route.query.wikiUserName}`;
           }
@@ -41,19 +58,34 @@
           }
           let stats = await this.$axios.$get(url);
 
-          let judgementDateCountMap = new Map<BasicJudgement, Map<String, Number>>();
-          Object.keys(BasicJudgement).forEach(j => judgementDateCountMap[j] = {});
+          let breakdownDateCountMap = new Map<String, Map<String, Number>>();
           let datesMap = {};
+          let breakdownMap = {};
           stats.forEach(d => {
             datesMap[d._id.date] = 1;
+            let breakdownKey = null;
+            Object.keys(d._id).map(k => {
+              if(k !== 'date') {
+                breakdownKey = d._id[k];
+                if (breakdownKey == null) breakdownKey = '(other)'
+                breakdownMap[breakdownKey] = 1;
+              }
+            });
+
             let date = d._id.date;
-            let judgement = d._id.judgement;
-            judgementDateCountMap[judgement][date] = d.count;
+            if (breakdownKey) {
+              if (!breakdownDateCountMap[breakdownKey]) breakdownDateCountMap[breakdownKey] = {};
+              // noinspection JSUnusedAssignment
+              breakdownDateCountMap[breakdownKey][date] = d.count;
+            } else {
+              if (!breakdownDateCountMap['All']) breakdownDateCountMap['All'] = {};
+              breakdownDateCountMap['All'][date] = d.count;
+            }
           });
 
-          Object.keys(datesMap).sort().forEach(date => {
-            Object.keys(BasicJudgement).forEach(judgement => {
-              if (!judgementDateCountMap[judgement][date]) judgementDateCountMap[judgement][date] = 0;
+          Object.keys(breakdownMap).forEach(breakDownKey => {
+            Object.keys(datesMap).sort().forEach(date => {
+              if (!breakdownDateCountMap[breakDownKey][date]) breakdownDateCountMap[breakDownKey][date] = 0;
             });
           });
 
@@ -61,15 +93,20 @@
             LooksGood: theme.success,
             NotSure: theme.secondary,
             ShouldRevert: theme.danger,
+            All: theme.primary
           };
+          const randomColor = function() {return Math.floor(Math.random()*16777215).toString(16)};
 
           var barChartData = {
             labels: Object.keys(datesMap).sort(),
-            datasets: Object.keys(judgementDateCountMap).map(judgement => {
+            datasets: Object.keys(breakdownDateCountMap).map(breakdownKey => {
               return {
-                label: judgement,
-                backgroundColor: colorMap[judgement],
-                data: Object.keys(judgementDateCountMap[judgement]).sort().map(date => judgementDateCountMap[judgement][date])
+                label: breakdownKey,
+                backgroundColor: colorMap[breakdownKey] || `#${randomColor()}`,
+                data: Object
+                  .keys(breakdownDateCountMap[breakdownKey])
+                  .sort()
+                  .map(date => breakdownDateCountMap[breakdownKey][date])
               }
             })
           };

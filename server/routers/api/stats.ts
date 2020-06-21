@@ -109,8 +109,8 @@ const labelsTimeSeries = async (req, res) => {
     timestamp: {$exists: true}
   };
 
-  if (req.query.byJudgement) {
-    groupBy.judgement = "$judgement";
+  if (req.query.breakdownBy && ['feed', 'judgement'].indexOf(req.query.breakdownBy) >= 0) {
+    groupBy[req.query.breakdownBy] = `$${req.query.breakdownBy}`;
   }
 
   if (req.query.byDay) {
