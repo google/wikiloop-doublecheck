@@ -181,12 +181,10 @@
   import BootstrapVue from 'bootstrap-vue';
   import VueTimeago from 'vue-timeago';
   import languages from '@/locales/languages.js';
-  import TimeSeriesBarChart from '@/components/TimeSeriesBarChart.vue';
   export default {
     components: {
       BootstrapVue,
       VueTimeago,
-      TimeSeriesBarChart
     }, data() {
       return {
         timeRange: null
