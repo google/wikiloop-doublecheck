@@ -24,10 +24,11 @@
     })
     export default class TimeSeriesBarChart extends Vue {
         chart:any;
-        // breakdownBy:any = 'feed';
+        breakdownBy:any = 'feed';
 
         async mounted() {
-            await this.createSvg();
+          if (this.$route.query.breakdownBy) this.breakdownBy = this.$route.query.breakdownBy;
+          await this.createSvg();
         }
 
         computeColor() {
@@ -99,7 +100,7 @@
 
           var barChartData = {
             labels: Object.keys(datesMap).sort(),
-            datasets: Object.keys(breakdownDateCountMap).map(breakdownKey => {
+            datasets: Object.keys(breakdownDateCountMap).sort().reverse().map(breakdownKey => {
               return {
                 label: breakdownKey,
                 backgroundColor: colorMap[breakdownKey] || `#${randomColor()}`,
