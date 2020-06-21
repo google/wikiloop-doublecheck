@@ -113,7 +113,7 @@ const labelsTimeSeries = async (req, res) => {
     groupBy[req.query.breakdownBy] = `$${req.query.breakdownBy}`;
   }
 
-  if (req.query.byDay) {
+  if (req.query.granularity === 'day') {
     groupBy.date = {
       "$dateToString": {
         "format": "%Y-%m-%d",
@@ -125,10 +125,22 @@ const labelsTimeSeries = async (req, res) => {
         }
       },
     }
-  } else if (req.query.byMonth) {
+  } else if (req.query.granularity === 'month') {
     groupBy.date = {
       "$dateToString": {
         "format": "%Y-%m",
+        "date": {
+          "$add": [
+            new Date(0),
+            {"$multiply": [1000, "$timestamp"]}
+          ]
+        }
+      },
+    }
+  } else if (req.query.granularity === 'week') {
+    groupBy.date = {
+      "$dateToString": {
+        "format": "%Y-w%V",
         "date": {
           "$add": [
             new Date(0),

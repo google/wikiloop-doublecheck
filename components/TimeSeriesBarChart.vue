@@ -1,12 +1,21 @@
 <template>
   <section>
-    <b-form-select hidden class="mt-4"
+    <b-form-select class="mt-4"
                    @click.native.stop=''
                    v-model="breakdownBy"
                    v-on:change="createSvg()">
       <option :value="null">None</option>
       <option :value="`judgement`">Judgement</option>
       <option :value="`feed`">Feed</option>
+    </b-form-select>
+
+    <b-form-select class="mt-4"
+                   @click.native.stop=''
+                   v-model="granularity"
+                   v-on:change="createSvg()">
+      <option :value="`month`">Month</option>
+      <option :value="`week`">Week</option>
+      <option :value="`day`">Day</option>
     </b-form-select>
     <canvas id="myChart" class="w-100" style="height:400px"></canvas>
   </section>
@@ -18,14 +27,15 @@
     @Component({
       data() {
         return {
-          breakdownBy: null
+          breakdownBy: null,
+          granularity: "month",
         }
       }
     })
     export default class TimeSeriesBarChart extends Vue {
         chart:any;
         breakdownBy:any = 'feed';
-
+        granularity:any = "month";
         async mounted() {
           if (this.$route.query.breakdownBy) this.breakdownBy = this.$route.query.breakdownBy;
           await this.createSvg();
@@ -48,7 +58,8 @@
 
         createSvg = async function () {
           let theme = this.computeColor();
-          let url = '/api/stats/timeseries/labels?byMonth=1';
+          let url = '/api/stats/timeseries/labels?';
+          if (this.granularity) url += `granularity=${this.granularity}`;
           if (this.breakdownBy) url += `&breakdownBy=${this.breakdownBy}`;
 
           if (this.$route.query.wikiUserName) {
@@ -133,6 +144,9 @@
                 yAxes: [{
                   stacked: true
                 }]
+              },
+              animation: {
+                duration: 2000
               }
             }
           });
