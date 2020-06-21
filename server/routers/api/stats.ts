@@ -128,7 +128,7 @@ const labelsTimeSeries = async (req, res) => {
   } else if (req.query.byMonth) {
     groupBy.date = {
       "$dateToString": {
-        "format": "%Y-%m-01",
+        "format": "%Y-%m",
         "date": {
           "$add": [
             new Date(0),

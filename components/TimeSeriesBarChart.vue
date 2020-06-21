@@ -11,7 +11,6 @@
     @Component
     export default class TimeSeriesBarChart extends Vue {
         chart:any;
-
         async mounted() {
             await this.createSvg();
         }
@@ -33,7 +32,15 @@
 
         private createSvg = async function () {
           let theme = this.computeColor();
-          let stats = await this.$axios.$get('/api/stats/timeseries/labels?byMonth=1&byJudgement=1');
+          let url = '/api/stats/timeseries/labels?byMonth=1&byJudgement=1';
+          if (this.$route.query.wikiUserName) {
+            url += `&wikiUserName=${this.$route.query.wikiUserName}`;
+          }
+          if (this.$route.query.wiki) {
+            url += `&wiki=${this.$route.query.wiki}`;
+          }
+          let stats = await this.$axios.$get(url);
+
           let judgementDateCountMap = new Map<BasicJudgement, Map<String, Number>>();
           Object.keys(BasicJudgement).forEach(j => judgementDateCountMap[j] = {});
           let datesMap = {};
@@ -62,14 +69,14 @@
               return {
                 label: judgement,
                 backgroundColor: colorMap[judgement],
-                data: Object.values(judgementDateCountMap[judgement])
+                data: Object.keys(judgementDateCountMap[judgement]).sort().map(date => judgementDateCountMap[judgement][date])
               }
             })
           };
           let elm = document.getElementById('myChart') as HTMLCanvasElement;
           var ctx = elm.getContext('2d');
           this.chart = new Chart(ctx, {
-            type: 'bar',
+            type: 'line',
             data: barChartData,
             options: {
               title: {
