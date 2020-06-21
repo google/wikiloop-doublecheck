@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex">
-    <user-avatar class="avatar mr-2" :wikiUserName="wikiUserName" :userGaId="userGaId"></user-avatar>
+    <user-avatar class="avatar-container mr-2" :wikiUserName="wikiUserName" :userGaId="userGaId"></user-avatar>
     <div>
       <span class="avatar-txt p-0">{{wikiUserName || "Anonymous" }}
       <i :class="['fas p-0',
@@ -31,7 +31,7 @@
   }
 </script>
 <style scoped>
-  .avatar {
+  .avatar-container {
     width: 32px;
     height: 32px;
   }

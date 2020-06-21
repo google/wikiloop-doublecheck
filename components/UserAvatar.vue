@@ -1,11 +1,11 @@
 <template>
   <div>
     <img v-if="wikiUserName"
-         class="avatar"
+         class="avatar-img"
          :src="`https://avatars.dicebear.com/api/initials/${wikiUserName}.svg`"
          :alt="`WikiUser:${wikiUserName}`"/>
     <img v-else
-         class="avatar"
+         class="avatar-img"
          :src="`https://avatars.dicebear.com/api/identicon/${userGaId}.svg`"
          :alt="`AnonUser:${userGaId}`"/>
   </div>
@@ -21,7 +21,7 @@
   }
 </script>
 <style scoped>
-  .avatar {
+  .avatar-img {
     width: 100%;
     height: 100%;
     border-radius: 50%;
