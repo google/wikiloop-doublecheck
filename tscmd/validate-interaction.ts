@@ -24,7 +24,7 @@
  */
 
 import {Interaction, InteractionDoc} from "@/shared/models/interaction-item.model";
-import mongoose, {Document, Schema}  from 'mongoose';
+import mongoose, {Document}  from 'mongoose';
 import {fetchRevisions} from "@/server/common";
 
 async function getInvalidCount() {

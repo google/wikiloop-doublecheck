@@ -33,7 +33,7 @@
       }
     })
     export default class TimeSeriesBarChart extends Vue {
-        chart:any;
+        chart:any = null;
         breakdownBy:any = 'feed';
         granularity:any = "month";
         async mounted() {
@@ -57,6 +57,7 @@
         }
 
         createSvg = async function () {
+
           let theme = this.computeColor();
           let url = '/api/stats/timeseries/labels?';
           if (this.granularity) url += `granularity=${this.granularity}`;
@@ -100,7 +101,6 @@
               if (!breakdownDateCountMap[breakDownKey][date]) breakdownDateCountMap[breakDownKey][date] = 0;
             });
           });
-
           let colorMap = {
             LooksGood: theme.success,
             NotSure: theme.secondary,
@@ -124,6 +124,7 @@
           };
           let elm = document.getElementById('myChart') as HTMLCanvasElement;
           var ctx = elm.getContext('2d');
+          if (this.chart != null) this.chart.destroy();
           this.chart = new Chart(ctx, {
             type: 'line',
             data: barChartData,
