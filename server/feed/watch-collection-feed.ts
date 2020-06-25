@@ -18,11 +18,50 @@ export class WatchCollectionFeed {
     const mongoose = require('mongoose');
     let ret = await mongoose.connection.db.collection(collectionName)
       .aggregate([
-        { $project: { _id: 0, revIds: '$revIds' } },
-        { $unwind: '$revIds' },
-        { "$sample": { size: sampleSize } }
+        {
+          "$group": {
+            "_id": {
+              "revIds": "$revIds",
+              "wiki": "$wiki"
+            }
+          }
+        },
+        {
+          "$sample": {
+            "size": sampleSize
+          }
+        },
+        {
+          "$project": {
+            "_id": 0.0,
+            "revId": "$_id.revIds",
+            "wiki": "$_id.wiki"
+          }
+        },
+        {
+          "$unwind": {
+            "path": "$revId"
+          }
+        },
+        {
+          "$project": {
+            "wikiRevId": {
+              "$concat": [
+                "$wiki",
+                ":",
+                {
+                  "$substr": [
+                    "$revId",
+                    0.0,
+                    -1.0
+                  ]
+                }
+              ]
+            }
+          }
+        }
       ])
       .toArray();
-    return ret.map(i => i.revIds);
+    return ret.map(i => i.wikiRevId);
   }
 }

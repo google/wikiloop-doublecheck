@@ -19,25 +19,27 @@ feedRouter.get('/mix', async (req, res) => {
     'lastbad': parseInt(process.env.MIXER_RATIO_LASTBAD )|| 0
   };
   const feed = weighted.select(options);
-  let revIds;
+  let wikiRevIds;
   switch (feed) {
     case 'ores':  // fall through
     case 'wikitrust':  // fall through
     case 'covid19':  // fall through
     case 'us2020':  // fall through
     case 'lastbad':  // fall through
-      revIds = await WatchCollectionFeed.sampleRevisions(
+      wikiRevIds = await WatchCollectionFeed.sampleRevisions(
       FeedEnum[feed], parseInt(req.query.size) || 50);
       break;
     case 'recent':  // fall through
     default:
-      revIds = await MwActionApiClient.getLatestRevisionIds({limit: 50});
+      let wiki = req.query.wiki || 'enwiki';
+      wikiRevIds = (await MwActionApiClient.getLatestRevisionIds({limit: 50, wiki: wiki}))
+        .map(revId => `${wiki}:${revId}`);
       break;
   }
   res.send({
     useMixer: true,
     feed: feed,
-    revIds: revIds
+    wikiRevIds: wikiRevIds
   });
 });
 
@@ -46,15 +48,16 @@ feedRouter.get("/recent", async (req, res) => {
     res.status(400).send(`The wiki ${req.query.wiki} is not supported`);
     return;
   } else {
-    let revIds = await MwActionApiClient.getLatestRevisionIds({
+    let wiki = req.query.wiki;
+    let wikiRevIds = (await MwActionApiClient.getLatestRevisionIds({
       wiki: req.query.wiki, limit: 50
-    });
+    })).map(revId => `${wiki}:${revId}`);
 
     let feed = 'recent';
     res.send({
       useMixer: false,
       feed: feed,
-      revIds: revIds
+      wikiRevIds: wikiRevIds
     });
   }
 });
@@ -65,7 +68,7 @@ feedRouter.get("/:feed", async (req, res) => {
     res.send({
       useMixer: false,
       feed: feed,
-      revIds: await WatchCollectionFeed.sampleRevisions(FeedEnum[req.params.feed], parseInt(req.query.limit) || 50)
+      wikiRevIds: await WatchCollectionFeed.sampleRevisions(FeedEnum[req.params.feed], parseInt(req.query.limit) || 50)
     });
   else res.status(404).send(`Feed ${feed} doesn't exist`);
 });

@@ -20,7 +20,7 @@ async function main() {
   let ret1 = await Interaction.updateMany({feed: {$exists:false}}, {feed: 'index'});
   console.log(`After fixed feed, ret= ${JSON.stringify(ret1, null, 2)}`);
 
-  let ret2 = await Interaction.updateMany({wiki: {$exists:false}}, {feed: 'enwiki'});
+  let ret2 = await Interaction.updateMany({wiki: {$exists:false}}, {wiki: 'enwiki'});
   console.log(`After fixed feed, ret= ${JSON.stringify(ret2, null, 2)}`);
   console.log(`Done`);
 }
