@@ -18,6 +18,7 @@ export class WatchCollectionFeed {
     const mongoose = require('mongoose');
     let ret = await mongoose.connection.db.collection(collectionName)
       .aggregate([
+      // TODO: add wiki filtering
         {
           "$group": {
             "_id": {

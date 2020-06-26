@@ -20,20 +20,25 @@ feedRouter.get('/mix', async (req, res) => {
   };
   const feed = weighted.select(options);
   let wikiRevIds;
+  let ctx:any = {
+    wiki: req.query.wiki || 'enwiki',
+    limit: 50
+  };
+
   switch (feed) {
     case 'ores':  // fall through
     case 'wikitrust':  // fall through
     case 'covid19':  // fall through
     case 'us2020':  // fall through
-    case 'lastbad':  // fall through
       wikiRevIds = await WatchCollectionFeed.sampleRevisions(
       FeedEnum[feed], parseInt(req.query.size) || 50);
       break;
+    case 'lastbad':  // fall through
+      ctx.bad = true;
     case 'recent':  // fall through
     default:
-      let wiki = req.query.wiki || 'enwiki';
-      wikiRevIds = (await MwActionApiClient.getLatestRevisionIds({limit: 50, wiki: wiki}))
-        .map(revId => `${wiki}:${revId}`);
+      wikiRevIds = (await MwActionApiClient.getLatestRevisionIds(ctx))
+        .map(revId => `${ctx.wiki}:${revId}`);
       break;
   }
   res.send({
@@ -43,17 +48,18 @@ feedRouter.get('/mix', async (req, res) => {
   });
 });
 
-feedRouter.get("/recent", async (req, res) => {
+feedRouter.get(/(recent|lastbad)/, async (req, res) => {
   if (req.query.wiki && ['enwiki', 'testwiki'].indexOf(req.query.wiki) < 0) {
     res.status(400).send(`The wiki ${req.query.wiki} is not supported`);
     return;
   } else {
-    let wiki = req.query.wiki;
-    let wikiRevIds = (await MwActionApiClient.getLatestRevisionIds({
+    let ctx:any = {
       wiki: req.query.wiki, limit: 50
-    })).map(revId => `${wiki}:${revId}`);
-
-    let feed = 'recent';
+    };
+    let feed = req.path.split('/')[1];
+    if (feed === 'lastbad') ctx.bad = true;
+    let wiki = req.query.wiki;
+    let wikiRevIds = (await MwActionApiClient.getLatestRevisionIds(ctx)).map(revId => `${wiki}:${revId}`);
     res.send({
       useMixer: false,
       feed: feed,
@@ -92,7 +98,6 @@ feedRouter.post("/:feed", async (req, res) => {
 });
 
 const ingestRevisionHandler = asyncHandler(async (req, res) => {
-  console.log(`Got it!`);
   interface FeedRevisionItem {
     feed:string,
     wiki:string,

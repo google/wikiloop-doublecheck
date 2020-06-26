@@ -102,19 +102,21 @@ export class MwActionApiClient {
    * @param
    * @returns raw object of recentChanges.
    */
-  public static getRawRecentChanges = async function ({wiki = 'enwiki', direction, timestamp, limit = 500}) {
+  public static getRawRecentChanges = async function ({wiki = 'enwiki', direction, timestamp, limit = 500, bad=false}) {
     let searchParams = new URLSearchParams(
       {
         "action": "query",
         "format": "json",
-        "prop": "info",
         "list": "recentchanges",
-        "rcnamespace": "0", // by default only request article namespace
-        "rcprop": "user|userid|comment|flags|timestamp|ids|title|oresscores",
-        "rcshow": "!bot", // by default do not show bot edits
+        "formatversion": "2",
+        "rcnamespace": "0",
+        "rcprop": "title|timestamp|ids|oresscores|flags|tags|sizes|comment",
+        "rcshow": "!bot",
+        "rclimit": "1",
         "rctype": "edit",
         "rctoponly": "1",
       });
+    if (bad) searchParams.set('rcshow', '!bot|oresreview');
     if (direction) searchParams.set(`rcdir`, direction || `older`);
     if (timestamp) searchParams.set(`rcstart`, timestamp || (new Date().getTime()/1000));
     searchParams.set(`rclimit`, limit.toString());
@@ -151,7 +153,6 @@ export class MwActionApiClient {
         ]
      }
     }*/
-
     return recentChangesJson;
   }
 }
