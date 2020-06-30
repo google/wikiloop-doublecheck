@@ -1,4 +1,8 @@
-// Credit: Russian transaltion majorly provided by Joris Darlington 
+// Credit: Russian transaltion majorly provided by Joris Darlington
+// RU: Russian
+// Language list from: ISO 639-1 codes.
+// https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+
 module.exports = {
     LoginMenuItem: "Логин",
     LogoutMenuItem: "Выход",
@@ -20,4 +24,6 @@ module.exports = {
     DirectRevertedBtnLabel: "Прямой возврат",
     DirectRevertFailedBtnLabel: "Прямой возврат не удался",
     OpenedUrlToRevertBtnLabel: "Открытый URL для возврата",
+    NameVoteAnnouncement: "Dear contributor, we are holding a voting for new name replacing the \"WikiLoop Battlefield\" ending on July 13, 2020 00:00 UTC.",
+    HelpTranslation: "Помогите перевести"
 }

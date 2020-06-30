@@ -1,3 +1,6 @@
+// PT: Portuguese
+// Language list from: ISO 639-1 codes.
+// https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 module.exports = {
     LoginMenuItem: "Entrar",
     LogoutMenuItem: "Sair",
@@ -20,4 +23,6 @@ module.exports = {
     DirectRevertFailedBtnLabel: "Houve uma falha ao desfazer diretamente",
     OpenedUrlToRevertBtnLabel: "Aberto URL para desfazer",
     UndoBtnLabel: "Desfazer",
+    NameVoteAnnouncement: "Dear contributor, we are holding a voting for new name replacing the \"WikiLoop Battlefield\" ending on July 13, 2020 00:00 UTC.",
+    HelpTranslation: "Ajude a traduzir"
 };

@@ -92,6 +92,10 @@
       </div>
     </nav>
     <div style="margin-top:70px" class="container small-screen-padding">
+      <div class="pt-2">
+        <NoticeBanner
+        ></NoticeBanner>
+      </div>
       <nuxt class="pt-lg-4 pt-md-2 pt-sm-1"/>
     </div>
     <b-modal id="modal-keymap" title="Keymap">
@@ -112,10 +116,12 @@
     import languages from '@/locales/languages.js';
     import {InteractionItem} from "~/shared/schema";
     import UserAvatarWithName from "~/components/UserAvatarWithName.vue";
+    import NoticeBanner from '~/components/NoticeBanner.vue';
 
     export default {
     components: {
-      UserAvatarWithName
+      UserAvatarWithName,
+      NoticeBanner
     },
     data() {
       return {
