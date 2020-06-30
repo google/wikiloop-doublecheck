@@ -24,5 +24,5 @@ module.exports = {
     OpenedUrlToRevertBtnLabel: "Opened URL to revert",
     UndoBtnLabel: "Undo",
     NameVoteAnnouncement: "Dear contributor, we are holding a voting for new name replacing the \"WikiLoop Battlefield\" ending on July 13, 2020 00:00 UTC.",
-    HelpTranslation: "Help translate"
+    HelpTranslate: "Help translate"
 };

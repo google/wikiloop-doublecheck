@@ -24,5 +24,5 @@ module.exports = {
     OpenedUrlToRevertBtnLabel: "Aberto URL para desfazer",
     UndoBtnLabel: "Desfazer",
     NameVoteAnnouncement: "Dear contributor, we are holding a voting for new name replacing the \"WikiLoop Battlefield\" ending on July 13, 2020 00:00 UTC.",
-    HelpTranslation: "Ajude a traduzir"
+    HelpTranslate: "Ajude a traduzir"
 };

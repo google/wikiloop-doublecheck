@@ -19,5 +19,5 @@ module.exports = {
     EditedTimeLabel: "编辑于",
     DiffNotAvailable: "该页面的版本差异暂时无法读取，可以嘗試重新載入。有时被破壞的版本可能被完全删除，您可以查看页面历史。",
     NameVoteAnnouncement: "亲爱的贡献者们，我们正在举行变更\"WikiLoop Battlefield\"的名称投票，截止于July 13, 2020 00:00 UTC。请前往投票",
-    HelpTranslation: "帮助翻译"
+    HelpTranslate: "帮助翻译"
 }

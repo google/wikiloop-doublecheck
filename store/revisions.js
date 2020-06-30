@@ -76,7 +76,6 @@ export const mutations = {
     }
   },
   pop(state) {
-    // we can't return in VUEX store so far, otherwise it will be even better.
     state.nextWikiRevIdsHeap.pop();
   },
   markAsReviewed(state, wikiRevId) {
@@ -130,7 +129,7 @@ export const actions = {
           // skip if already in list:
       if (!(item.wikiRevId in state.wikiRevIdToMeta)
           // skip reviewing one's own edit:
-          && ((rootState.user.profile || {}).displayName !== item.user)) {
+          && (!item.user || (rootState.user.profile || {}).displayName !== item.user)) {
         commit(`addRecentChange`, item);
       }
     });
@@ -139,7 +138,6 @@ export const actions = {
   async loadMoreWikiRevs( { commit, state, dispatch}) {
     if (!state.nextWikiRevIdsHeap) commit(`initHeap`);
     let limit = state.maxQueueSize - state.nextWikiRevIdsHeap.size();
-
     // Consider revisions in `nextWikiRevIdsHeap` as a time window
     // Extend the time window by fetching both before and after the time window
     if (state.nextWikiRevIdsHeap.size() <= state.maxQueueSize) {
@@ -157,7 +155,7 @@ export const actions = {
     }));
   },
   async loadDiff( {commit, state, dispatch}, wikiRevId ) {
-    if (state.wikiRevIdToMeta[wikiRevId].diff) {
+    if (state.wikiRevIdToMeta && state.wikiRevIdToMeta[wikiRevId] && state.wikiRevIdToMeta[wikiRevId].diff) {
       console.info(`ignoring existing diff preloadAsyncMeta for wikiRevId = `, wikiRevId);
       return;
     } else {

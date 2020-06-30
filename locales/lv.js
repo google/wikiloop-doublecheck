@@ -20,5 +20,5 @@ module.exports = {
     EditedTimeLabel: "labots",
     DiffNotAvailable: "Vikipēdijas raksta izmaiņas attēlošana īslaicīgi nav pieejama. Tu vari mēģināt ielādēt to vēlreiz. Dažkārt vandalizētā versija var būt jau dzēsta. Tu vari pārbaudīt lapas vēsturi.",
     NameVoteAnnouncement: "Dear contributor, we are holding a voting for new name replacing the \"WikiLoop Battlefield\" ending on July 13, 2020 00:00 UTC.",
-    HelpTranslation: "Palīdziet tulkot"
+    HelpTranslate: "Palīdziet tulkot"
 }

@@ -20,5 +20,5 @@ module.exports = {
     EditedTimeLabel: "disunting",
     DiffNotAvailable: "Perbedaan revisi tidak tersedia untuk saat ini. Silakan diulang membukanya. Kadang revisi yang terkena vandalisme sudah dihapus. Silakan periksa riwayat revisi artikel.",
     NameVoteAnnouncement: "Dear contributor, we are holding a voting for new name replacing the \"WikiLoop Battlefield\" ending on July 13, 2020 00:00 UTC.",
-    HelpTranslation: "Bantu terjemahkan"
+    HelpTranslate: "Bantu terjemahkan"
 }

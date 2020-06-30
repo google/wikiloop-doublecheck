@@ -25,5 +25,5 @@ module.exports = {
     DirectRevertFailedBtnLabel: "Прямой возврат не удался",
     OpenedUrlToRevertBtnLabel: "Открытый URL для возврата",
     NameVoteAnnouncement: "Dear contributor, we are holding a voting for new name replacing the \"WikiLoop Battlefield\" ending on July 13, 2020 00:00 UTC.",
-    HelpTranslation: "Помогите перевести"
+    HelpTranslate: "Помогите перевести"
 }

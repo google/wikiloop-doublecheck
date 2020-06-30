@@ -20,5 +20,5 @@ module.exports = {
     Loading: "Chargement",
     EditedTimeLabel: "édité",
     NameVoteAnnouncement: "Dear contributor, we are holding a voting for new name replacing the \"WikiLoop Battlefield\" ending on July 13, 2020 00:00 UTC.",
-    HelpTranslation: "Aide à traduire"
+    HelpTranslate: "Aide à traduire"
 }
