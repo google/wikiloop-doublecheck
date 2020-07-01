@@ -16,8 +16,16 @@ export default [
         text: 'Deutsch (de)'
     },
     {
+      value: 'hewiki',
+      text: 'עברית (he)'
+    },
+    {
         value: 'idwiki',
         text: 'Bahasa Indonesia (id)'
+    },
+    {
+      value: 'jawiki',
+      text: '日本語 (ja)'
     },
     {
         value: 'lvwiki',
@@ -37,7 +45,7 @@ export default [
     },
     {
         value: 'trwiki',
-        text: 'Turkish (tr)'
+        text: 'Türkçe (tr)'
     },
     {
         value: 'zhwiki',

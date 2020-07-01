@@ -24,8 +24,8 @@
   "i18n-ally.translate.overrideExisting": false,
 
   "i18n-ally.translate.engines": [
-    "google",
-    "google-cn"
+    "google-cn",
+    "google"
   ],
   "i18n-ally.theme.annotationMissingBorder": "#d37070",
   "i18n-ally.theme.annotationMissing": "#d37070",
