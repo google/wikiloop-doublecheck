@@ -3,7 +3,7 @@
 const fs = require('fs');
 const yaml = require('js-yaml');
 
-async function main() {
+async function translateCmd() {
   console.log(`Start...`);
   const envPath = process.env.DOTENV_PATH || 'template.env';
   console.log(`DotEnv envPath = `, envPath, ' if you want to change it, restart and set DOTENV_PATH');
@@ -49,7 +49,7 @@ async function main() {
 
 }
 
-main().then(() => {
+translateCmd().then(() => {
   console.log(`CMD Done!`);
   process.exit(0);
 });
