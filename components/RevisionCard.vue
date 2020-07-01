@@ -32,7 +32,7 @@
               </a></sup>
             </div>
             <!-- TODO(xinbenlv) update the following text for for i18n -->
-            <div v-if="revision ? revision.pageLatestRevId > revision.revid: false"> Overridden</div>
+            <div v-if="revision ? revision.pageLatestRevId > revision.revid: false"> {{$t('Overriden')}}</div>
             <div class="ml-2"> <a :href="`/revision/${revision.wiki}/${revision.wikiRevId.split(`:`)[1]}`"><i class="fas fa-link"></i></a></div>
           </div>
           <div class="my-2" v-if="feedNameProp"><small><span class="badge badge-success">{{feedNameProp}} feed</span></small></div>
@@ -49,7 +49,7 @@
             <div v-if="ores" class="col-lg-2">
               <span data-toggle="tooltip" data-placement="top" title="Damaging Score by WMF ORES">
                 <!-- TODO(xinbenlv) update the following text for for i18n -->
-                <i v-bind:class="{ 'text-danger': ores ? ores.damaging.true > 0.5 : false }" class="fas fa-cloud-rain"></i> ORES Damaging: <a
+                <i v-bind:class="{ 'text-danger': ores ? ores.damaging.true > 0.5 : false }" class="fas fa-cloud-rain"></i> {{$t('OresDamging')}}: <a
                   :href="`https://ores.wikimedia.org/v3/scores/enwiki/?revids=${revision.wikiRevId.split(`:`)[1]}`" target="_blank">{{ damagingPercent() }}</a>
               </span>
             </div>
@@ -57,7 +57,7 @@
               <span data-toggle="tooltip" data-placement="top"
                     title="Bad-faith Score by WMF ORES (here Bad-faith = 100% - Goodfaith)">
                 <!-- TODO(xinbenlv) update the following text for for i18n -->
-                <i v-bind:class="{ 'text-warning': ores ? ores.goodfaith.false > 0.5: false }" class="fas fa-theater-masks"></i> ORES Badfaith:  <a
+                <i v-bind:class="{ 'text-warning': ores ? ores.goodfaith.false > 0.5: false }" class="fas fa-theater-masks"></i> {{$t('OresBadfaith')}}:  <a
                   :href="`https://ores.wikimedia.org/v3/scores/enwiki/?revids=${revision.wikiRevId.split(`:`)[1]}`" target="_blank">{{ badfaithPercent() }}</a>
               </span>
             </div>
@@ -146,9 +146,9 @@
           <table class="b-table table mt-2 w-100">
             <tbody>
             <tr class="row">
-              <td class="col-4">User</td>
-              <td class="col-4">Label</td>
-              <td class="col-4">Time</td>
+              <td class="col-4">{{$t('User')}}</td>
+              <td class="col-4">{{$t('Judgement')}}</td>
+              <td class="col-4">{{$t('Time')}}</td>
             </tr>
             <tr class="row" v-for="judgement of interaction.judgements">
               <td class="col-4">

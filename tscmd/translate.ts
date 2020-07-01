@@ -18,7 +18,6 @@ async function translateCmd() {
   // Creates a client
   const translate = new Translate({
     projectId: `project-wikiloop`,
-
     keyFilename:'.creds/private-key.json'
   });
 

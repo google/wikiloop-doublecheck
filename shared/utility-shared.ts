@@ -12,31 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-export enum WikiEnum {
-  afwiki,
-  bgwiki,
-  cawiki,
-  dewiki,
-  enwiki,
-  eswiki,
-  frwiki,
-  hewiki,
-  idwiki,
-  itwiki,
-  jawiki,
-  kowiki,
-  lvwiki,
-  nlwiki,
-  plwiki,
-  ptwiki,
-  ruwiki,
-  trwiki,
-  thwiki,
-  zhwiki,
-  wikidatawiki,
-  testwiki
-}
-
 export enum UserTier {
   Blocked = -1, // -10
   Anonymous = 0, // 1 = 1e0
@@ -46,7 +21,6 @@ export enum UserTier {
   Rollbacker = 4, // 10000 = 1e4
   Admin = 5 // 100000 = 1e5
 }
-
 
 export const wikiToDomain = {
   "afwiki": "af.wikipedia.org",
@@ -72,6 +46,7 @@ export const wikiToDomain = {
   "zhwiki": "zh.wikipedia.org",
   "testwiki": "test.wikipedia.org",
 };
+
 export let getUrlBaseByWiki = function(wiki) {
     return `http://${wikiToDomain[wiki]}`;
 };

@@ -24,6 +24,7 @@ Vue.use(VueTimeago, {
     // af: require('date-fns/locale/af'), Afrikaan is not supported by date-fns
     de: require('date-fns/locale/de'),
     en: require('date-fns/locale/en'),
+    es: require('date-fns/locale/es'),
     fr: require('date-fns/locale/fr'),
     id: require('date-fns/locale/id'),
     pl: require('date-fns/locale/pl'),

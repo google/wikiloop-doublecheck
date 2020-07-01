@@ -1,4 +1,5 @@
 Anonymous: Anonymous
+Author: Author
 ContributionsBeforeLoginMenuItem: My contributions before login
 ContributionsMenuItem: My contributions
 DiffNotAvailable: >-
@@ -7,11 +8,17 @@ DiffNotAvailable: >-
   history.
 DirectRevertFailedBtnLabel: Direct revert failed
 DirectRevertedBtnLabel: Direct reverted
+EditSummary: Edit Summary
 EditSummaryLabel: Edit summary
+EditedAt: Edited at
 EditedTimeLabel: edited
 HelpTranslate: Help translate
+Judgement: Judgement
 Loading: Loading
 LoginMenuItem: Login
+LoginPrompt: >-
+  Do you know you could Login and preserve your labels under your name? We
+  support Login with Wikipedia account through Oauth. 
 LogoutMenuItem: Logout
 LooksGoodBtnLabel: Looks good
 Me: Me
@@ -21,10 +28,18 @@ NameVoteAnnouncement: >-
 NextBtnLabel: Next
 NotSureBtnLabel: Not sure
 OpenedUrlToRevertBtnLabel: Opened URL to revert
+OresBadfaith: ORES Badfaith
+OresDamging: ORES Damaging
+Overriden: Overridden
 RevertEditSummary: >-
   Identified as test/vandalism using {0} version {1}. See it or provide your
   opinion at {2}
 RevertNowBtnLabel: Revert now
+ReviewFeed: Review Feed
 ShouldRevertBtnLabel: Should revert
+ShowJudgements: Show judgements
 Someone: Someone
+ThereIsNoEditSummary: There is no edit summary.
+Time: Time
 UndoBtnLabel: Undo
+User: User

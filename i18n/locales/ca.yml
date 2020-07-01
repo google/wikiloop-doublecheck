@@ -1,4 +1,5 @@
 Anonymous: Anònim
+Author: Autor
 ContributionsBeforeLoginMenuItem: Les meves contribucions abans de l’inici de sessió
 ContributionsMenuItem: Les meves aportacions
 DiffNotAvailable: >-
@@ -7,11 +8,15 @@ DiffNotAvailable: >-
   Podeu consultar l’historial de pàgines.
 DirectRevertFailedBtnLabel: Ha fallat el revertiment directe
 DirectRevertedBtnLabel: Revertida directa
+EditSummary: Edita el resum
 EditSummaryLabel: Edita el resum
+EditedAt: Editat a
 EditedTimeLabel: editat
 HelpTranslate: Ajuda a traduir
+Judgement: ''
 Loading: Carregant
 LoginMenuItem: iniciar Sessió
+LoginPrompt: ''
 LogoutMenuItem: Tancar sessió
 LooksGoodBtnLabel: Té bona pinta
 Me: Jo
@@ -22,10 +27,18 @@ NameVoteAnnouncement: >-
 NextBtnLabel: Pròxim
 NotSureBtnLabel: No n'estic segur
 OpenedUrlToRevertBtnLabel: URL obert per tornar
+OresBadfaith: ''
+OresDamging: ''
+Overriden: ''
 RevertEditSummary: >-
   Identificat com a prova / vandalisme mitjançant {0} versió {1}. Vegeu-la o
   proporcioneu la vostra opinió a {2}
 RevertNowBtnLabel: Torna ara
+ReviewFeed: ''
 ShouldRevertBtnLabel: Hauria de revertir
+ShowJudgements: ''
 Someone: Algú
+ThereIsNoEditSummary: ''
+Time: ''
 UndoBtnLabel: Desfer
+User: ''

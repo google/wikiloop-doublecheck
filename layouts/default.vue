@@ -143,7 +143,7 @@
         get () {
           return this.$store.state.wiki
         },
-        set (wiki) {
+        set (wiki:string) {
           if (wiki != this.$store.state.wiki) {
             // Probably Wiki language doesn't have to be tied to UI language.
             // For example, people can edit wikidata in any language. Or,
@@ -170,7 +170,7 @@
               "trwiki": "tr",
               "zhwiki": "zh",
               "wikidatawiki": "en", // TODO(xinbenlv): consider how we deal with wikidata UI languages.
-              "testwiki": "test",
+              "testwiki": "en",
             };
             if (wikiToLangMap[wiki] != 'en') this.$router.push(`/${wikiToLangMap[wiki]}`);
             else this.$router.push(`/`);

@@ -1,4 +1,5 @@
 Anonymous: Anoniem
+Author: skrywer
 ContributionsBeforeLoginMenuItem: My bydraes voor aanmelding
 ContributionsMenuItem: My bydraes
 DiffNotAvailable: >-
@@ -7,11 +8,15 @@ DiffNotAvailable: >-
   bladsygeskiedenis bekyk.
 DirectRevertFailedBtnLabel: Kon nie terugkeer nie
 DirectRevertedBtnLabel: Direk teruggedraai
+EditSummary: Opsomming wysig
 EditSummaryLabel: Opsomming wysig
+EditedAt: Geredigeer om
 EditedTimeLabel: geredigeerde
 HelpTranslate: Help om te vertaal
+Judgement: ''
 Loading: laai
 LoginMenuItem: Teken aan
+LoginPrompt: ''
 LogoutMenuItem: Teken uit
 LooksGoodBtnLabel: Lyk goed
 Me: my
@@ -23,10 +28,18 @@ NameVoteAnnouncement: >-
 NextBtnLabel: volgende
 NotSureBtnLabel: Nie seker nie
 OpenedUrlToRevertBtnLabel: URL geopen om terug te keer
+OresBadfaith: ''
+OresDamging: ''
+Overriden: ''
 RevertEditSummary: >-
   Word geïdentifiseer as toets/vandalisme met behulp van {0} weergawe {1}. Sien
   dit of gee u mening by {2}
 RevertNowBtnLabel: Keer nou terug
+ReviewFeed: ''
 ShouldRevertBtnLabel: Moet terugkeer
+ShowJudgements: ''
 Someone: iemand
+ThereIsNoEditSummary: ''
+Time: ''
 UndoBtnLabel: ongedaan
+User: ''

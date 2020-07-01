@@ -1,4 +1,5 @@
 Anonymous: Anoniem
+Author: Auteur
 ContributionsBeforeLoginMenuItem: Mijn bijdragen voordat ik inlog
 ContributionsMenuItem: Mijn bijdragen
 DiffNotAvailable: >-
@@ -7,11 +8,15 @@ DiffNotAvailable: >-
   paginageschiedenis bekijken.
 DirectRevertFailedBtnLabel: Direct terugzetten is mislukt
 DirectRevertedBtnLabel: Direct teruggedraaid
+EditSummary: Samenvatting bewerken
 EditSummaryLabel: Samenvatting bewerken
+EditedAt: Bewerkt op
 EditedTimeLabel: bewerkt
 HelpTranslate: Help vertalen
+Judgement: ''
 Loading: Bezig met laden
 LoginMenuItem: Log in
+LoginPrompt: ''
 LogoutMenuItem: Uitloggen
 LooksGoodBtnLabel: Ziet er goed uit
 Me: Me
@@ -22,10 +27,18 @@ NameVoteAnnouncement: >-
 NextBtnLabel: De volgende
 NotSureBtnLabel: Niet zeker
 OpenedUrlToRevertBtnLabel: URL geopend om terug te zetten
+OresBadfaith: ''
+OresDamging: ''
+Overriden: ''
 RevertEditSummary: >-
   Geïdentificeerd als test / vandalisme met {0} versie {1}. Bekijk het of geef
   uw mening op {2}
 RevertNowBtnLabel: Nu terugzetten
+ReviewFeed: ''
 ShouldRevertBtnLabel: Moet terugkeren
+ShowJudgements: ''
 Someone: Iemand
+ThereIsNoEditSummary: ''
+Time: ''
 UndoBtnLabel: Ongedaan maken
+User: ''

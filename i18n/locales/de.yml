@@ -1,4 +1,5 @@
 Anonymous: Anonym
+Author: Autor
 ContributionsBeforeLoginMenuItem: Meine Beiträge vor dem Login
 ContributionsMenuItem: Beiträge
 DiffNotAvailable: |-
@@ -8,11 +9,15 @@ DiffNotAvailable: |-
   Sie können den Seitenverlauf überprüfen.
 DirectRevertFailedBtnLabel: Direktes Zurücksetzen fehlgeschlagen
 DirectRevertedBtnLabel: Direkt zurückgesetzt
+EditSummary: Zusammenfassung bearbeiten
 EditSummaryLabel: Zusammenfassung bearbeiten
+EditedAt: Bearbeitet bei
 EditedTimeLabel: Bearbeitet
 HelpTranslate: Hilfe beim Übersetzen
+Judgement: ''
 Loading: Beladung
 LoginMenuItem: Anmelden
+LoginPrompt: ''
 LogoutMenuItem: Abmelden
 LooksGoodBtnLabel: Sieht gut aus
 Me: Ich
@@ -25,10 +30,18 @@ NameVoteAnnouncement: >-
 NextBtnLabel: Nächste
 NotSureBtnLabel: Nicht sicher
 OpenedUrlToRevertBtnLabel: Geöffnete URL zum Zurücksetzen
+OresBadfaith: ''
+OresDamging: ''
+Overriden: ''
 RevertEditSummary: |-
   Mit {0} Version {1} als Test / Vandalismus identifiziert. 
   Sehen Sie es sich an oder geben Sie Ihre Meinung unter {2} ab
 RevertNowBtnLabel: Jetzt zurücksetzen
+ReviewFeed: ''
 ShouldRevertBtnLabel: Sollte zurücksetzen
+ShowJudgements: ''
 Someone: Jemand
+ThereIsNoEditSummary: ''
+Time: ''
 UndoBtnLabel: Rückgängig machen
+User: ''

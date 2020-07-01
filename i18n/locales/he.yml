@@ -1,4 +1,5 @@
 Anonymous: בעילום שם
+Author: מְחַבֵּר
 ContributionsBeforeLoginMenuItem: התרומות שלי לפני הכניסה
 ContributionsMenuItem: התרומות שלי
 DiffNotAvailable: |-
@@ -8,11 +9,15 @@ DiffNotAvailable: |-
   אתה יכול לבדוק את היסטוריית הדפים.
 DirectRevertFailedBtnLabel: הפעלה ישירה נכשלה
 DirectRevertedBtnLabel: ישירות הושבה
+EditSummary: ערוך סיכום
 EditSummaryLabel: ערוך סיכום
+EditedAt: נערך בשעה
 EditedTimeLabel: עָרוּך
 HelpTranslate: עזרה בתרגום
+Judgement: ''
 Loading: טעינה
 LoginMenuItem: התחברות
+LoginPrompt: ''
 LogoutMenuItem: להתנתק
 LooksGoodBtnLabel: נראה טוב
 Me: לִי
@@ -24,10 +29,18 @@ NameVoteAnnouncement: >-
 NextBtnLabel: הַבָּא
 NotSureBtnLabel: לא בטוח
 OpenedUrlToRevertBtnLabel: כתובת אתר נפתחה להחזרה
+OresBadfaith: ''
+OresDamging: ''
+Overriden: ''
 RevertEditSummary: |-
   זוהה כמבחן / השחתה באמצעות {0} גרסה {1}. 
   ראה אותו או ספק את דעתך ב {2}
 RevertNowBtnLabel: חזור עכשיו
+ReviewFeed: ''
 ShouldRevertBtnLabel: צריך לחזור
+ShowJudgements: ''
 Someone: מִישֶׁהוּ
+ThereIsNoEditSummary: ''
+Time: ''
 UndoBtnLabel: לבטל
+User: ''

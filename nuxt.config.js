@@ -90,28 +90,7 @@ module.exports = {
     [
       'nuxt-i18n',
       {
-        locales: [
-          'af',
-          'bg',
-          'ca',
-          'de',
-          'en',
-          'es',
-          'fr',
-          'he',
-          'id',
-          'it',
-          'ja',
-          'ko',
-          'lv',
-          'nl',
-          'pl',
-          'pt',
-          'ru',
-          'tr',
-          'th',
-          'zh',
-        ],
+        locales: Object.keys(locales),
         defaultLocale: 'en',
         vueI18n: {
           fallbackLocale: 'en',
@@ -151,7 +130,7 @@ module.exports = {
       }
     }
   },
-  buildModules: ['@nuxt/typescript-build']
+  buildModules: ['@nuxt/typescript-build'],
 };
 
 console.log(`nuxt.config.js is done executed!`);

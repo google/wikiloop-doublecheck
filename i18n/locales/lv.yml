@@ -1,4 +1,5 @@
 Anonymous: Anonīms
+Author: Autors
 ContributionsBeforeLoginMenuItem: Mani ieguldījumi pirms pieteikšanās
 ContributionsMenuItem: Mans devums
 DiffNotAvailable: >-
@@ -7,11 +8,15 @@ DiffNotAvailable: >-
   pārbaudīt lapas vēsturi.
 DirectRevertFailedBtnLabel: Tieša atgriešana neizdevās
 DirectRevertedBtnLabel: Tieši atgriezts
+EditSummary: Rediģēt kopsavilkumu
 EditSummaryLabel: Labojuma kopsavilkums
+EditedAt: Rediģēts plkst
 EditedTimeLabel: labots
 HelpTranslate: Palīdziet tulkot
+Judgement: ''
 Loading: Ielādē
 LoginMenuItem: Pieslēgties
+LoginPrompt: ''
 LogoutMenuItem: Iziet
 LooksGoodBtnLabel: Izskatās labi
 Me: Es
@@ -23,10 +28,18 @@ NameVoteAnnouncement: >-
 NextBtnLabel: Nākamais
 NotSureBtnLabel: Nav pārliecības
 OpenedUrlToRevertBtnLabel: 'Atjaunots URL, lai to atjaunotu'
+OresBadfaith: ''
+OresDamging: ''
+Overriden: ''
 RevertEditSummary: >-
   Identificēts kā izmēģinājums/vandalisms izmantojot {0} versiju {1}. Apskatīt
   to vai piedāvāt savu viedokli {2}
 RevertNowBtnLabel: Atcelt tagad
+ReviewFeed: ''
 ShouldRevertBtnLabel: Būtu jāatceļ
+ShowJudgements: ''
 Someone: Kāds
+ThereIsNoEditSummary: ''
+Time: ''
 UndoBtnLabel: Atsaukt
+User: ''

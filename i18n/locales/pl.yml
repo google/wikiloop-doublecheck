@@ -1,4 +1,5 @@
 Anonymous: Anonimowy
+Author: Autor
 ContributionsBeforeLoginMenuItem: Mój wkład przed zalogowaniem
 ContributionsMenuItem: Moje składki
 DiffNotAvailable: >-
@@ -7,11 +8,15 @@ DiffNotAvailable: >-
   sprawdzić historię strony.
 DirectRevertFailedBtnLabel: Bezpośredni odwrót nie powiódł się
 DirectRevertedBtnLabel: Bezpośrednie cofnięcie
+EditSummary: Edytuj podsumowanie
 EditSummaryLabel: Edytuj streszczenie
+EditedAt: Edytowane o
 EditedTimeLabel: edytowane
 HelpTranslate: Pomóż w tłumaczeniu
+Judgement: ''
 Loading: Ładowanie
 LoginMenuItem: Zaloguj sie
+LoginPrompt: ''
 LogoutMenuItem: Wyloguj
 LooksGoodBtnLabel: Wygląda dobrze
 Me: Ja
@@ -23,10 +28,18 @@ NameVoteAnnouncement: >-
 NextBtnLabel: Następny
 NotSureBtnLabel: Nie jestem pewien
 OpenedUrlToRevertBtnLabel: Otwarty URL do odwrócenia
+OresBadfaith: ''
+OresDamging: ''
+Overriden: ''
 RevertEditSummary: >-
   Zidentyfikowany jako test / wandalizm przy użyciu {0} wersji {1}. Zobacz to
   lub przedstaw swoją opinię na stronie {2}
 RevertNowBtnLabel: Revert now
+ReviewFeed: ''
 ShouldRevertBtnLabel: Powinien się odwrócić
+ShowJudgements: ''
 Someone: Ktoś
+ThereIsNoEditSummary: ''
+Time: ''
 UndoBtnLabel: Cofnij
+User: ''

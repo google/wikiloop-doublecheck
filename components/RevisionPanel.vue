@@ -32,10 +32,10 @@
       <div class="card-subtitle mb-2 text-muted">
         <div class="row">
           <div class="col-sm">
-            <span class="nobreak"><b>Edited:</b> <timeago :datetime="timeString" :auto-update="60" :locale="$i18n.locale"></timeago></span>
+            <span class="nobreak"><b>{{$t('EditedAt')}}:</b> <timeago :datetime="timeString" :auto-update="60" :locale="$i18n.locale"></timeago></span>
           </div>
           <div class="col-sm">
-            <span class="nobreak"><b>Author:</b> <a v-bind:href="authorUrl" target="_blank">{{ item.author }}</a></span>
+            <span class="nobreak"><b>{{$t('Author')}}:</b> <a v-bind:href="authorUrl" target="_blank">{{ item.author }}</a></span>
           </div>
         </div>
       </div>
@@ -54,11 +54,11 @@
       </div>
       <div class="card-text w-100 pl-sm-0 mb-3">
         <template v-if="item.summary">
-          <h5 class="w-100">Summary</h5>
+          <h5 class="w-100">{{$t('EditSummary')}}</h5>
           <span>{{item.summary}}</span>
         </template>
         <template v-else>
-          <h5 class="text-danger w-100">No edit summary</h5>
+          <h5 class="text-danger w-100">{{$t('ThereIsNoEditSummary')}}</h5>
         </template>
       </div>
     </div>

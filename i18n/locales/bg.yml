@@ -1,4 +1,5 @@
 Anonymous: анонимен
+Author: автор
 ContributionsBeforeLoginMenuItem: Моите вноски преди влизане
 ContributionsMenuItem: Моите приноси
 DiffNotAvailable: >-
@@ -7,11 +8,15 @@ DiffNotAvailable: >-
   проверите историята на страниците.
 DirectRevertFailedBtnLabel: Директното възстановяване не бе успешно
 DirectRevertedBtnLabel: Директно върнат
+EditSummary: Редактиране на обобщението
 EditSummaryLabel: Редактиране на обобщение
+EditedAt: Редактирано в
 EditedTimeLabel: редактирана
 HelpTranslate: Помогнете при превода
+Judgement: ''
 Loading: Зареждане
 LoginMenuItem: Влизам
+LoginPrompt: ''
 LogoutMenuItem: Излез от профила си
 LooksGoodBtnLabel: Изглежда добре
 Me: мен
@@ -21,10 +26,18 @@ NameVoteAnnouncement: >-
 NextBtnLabel: Следващия
 NotSureBtnLabel: Не съм сигурен
 OpenedUrlToRevertBtnLabel: Отворен URL адрес за възстановяване
+OresBadfaith: ''
+OresDamging: ''
+Overriden: ''
 RevertEditSummary: >-
   Идентифициран като тест / вандализъм с помощта на {0} версия {1}. Вижте го или
   дайте мнението си на {2}
 RevertNowBtnLabel: Върнете се сега
+ReviewFeed: ''
 ShouldRevertBtnLabel: Трябва да се върне
+ShowJudgements: ''
 Someone: Някой
+ThereIsNoEditSummary: ''
+Time: ''
 UndoBtnLabel: Undo
+User: ''

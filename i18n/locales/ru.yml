@@ -1,14 +1,19 @@
 Anonymous: Анонимный
+Author: автор
 ContributionsBeforeLoginMenuItem: Мои взносы перед входом в систему
 ContributionsMenuItem: Мои взносы
 DiffNotAvailable: Статья в Википедии отличается
 DirectRevertFailedBtnLabel: Прямой возврат не удался
 DirectRevertedBtnLabel: Прямой возврат
+EditSummary: Редактировать резюме
 EditSummaryLabel: Редактировать резюме
+EditedAt: Отредактировано в
 EditedTimeLabel: Edited
 HelpTranslate: Помогите перевести
+Judgement: ''
 Loading: Загрузка
 LoginMenuItem: Логин
+LoginPrompt: ''
 LogoutMenuItem: Выход
 LooksGoodBtnLabel: Выглядит хорошо
 Me: Я
@@ -20,10 +25,18 @@ NameVoteAnnouncement: >-
 NextBtnLabel: Следующий
 NotSureBtnLabel: Не уверен
 OpenedUrlToRevertBtnLabel: Открытый URL для возврата
+OresBadfaith: ''
+OresDamging: ''
+Overriden: ''
 RevertEditSummary: >-
   Идентифицировано как тест/вандализм с использованием {0} версии {1}. Смотрите
   или высказывайте своё мнение по адресу {2}
 RevertNowBtnLabel: Вернуть сейчас
+ReviewFeed: ''
 ShouldRevertBtnLabel: Должен вернуться
+ShowJudgements: ''
 Someone: Кто-то
+ThereIsNoEditSummary: ''
+Time: ''
 UndoBtnLabel: Отменить
+User: ''

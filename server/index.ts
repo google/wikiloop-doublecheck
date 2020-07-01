@@ -28,7 +28,6 @@ import { apiLogger, asyncHandler, computeOresField, ensureAuthenticated, fetchRe
 import { getMetrics } from "./routers/api/metrics";
 import { apiRouter as newApiRouter } from "./routers/api";
 
-
 const http = require('http');
 const express = require('express');
 var responseTime = require('response-time');

@@ -1,4 +1,5 @@
 Anonymous: Anonim
+Author: Yazar
 ContributionsBeforeLoginMenuItem: Giriş yapmadan önce yaptığım katkılar
 ContributionsMenuItem: Katkılar
 DiffNotAvailable: >-
@@ -7,11 +8,15 @@ DiffNotAvailable: >-
   history.
 DirectRevertFailedBtnLabel: Doğrudan geri alma başarısız
 DirectRevertedBtnLabel: Doğrudan geri döndürüldü
+EditSummary: Özeti Düzenle
 EditSummaryLabel: Özeti Düzenle
+EditedAt: Düzenlendi
 EditedTimeLabel: düzenlendi
 HelpTranslate: Çeviriye yardım et
+Judgement: ''
 Loading: Yükleniyor
 LoginMenuItem: Giriş
+LoginPrompt: ''
 LogoutMenuItem: Çıkış
 LooksGoodBtnLabel: İyi Görünüyor
 Me: Ben
@@ -23,10 +28,18 @@ NameVoteAnnouncement: >-
 NextBtnLabel: Sonraki
 NotSureBtnLabel: Emin Değilim
 OpenedUrlToRevertBtnLabel: Geri dönmek için açılan URL
+OresBadfaith: ''
+OresDamging: ''
+Overriden: ''
 RevertEditSummary: |-
   {0} {1} sürümü kullanılarak test / vandalizm olarak tanımlandı. 
   {2} adresinde görün veya görüşünüzü belirtin
 RevertNowBtnLabel: Şimdi geri dön
+ReviewFeed: ''
 ShouldRevertBtnLabel: Eski Haline Dönmeli
+ShowJudgements: ''
 Someone: Birisi
+ThereIsNoEditSummary: ''
+Time: ''
 UndoBtnLabel: Geri alma
+User: ''

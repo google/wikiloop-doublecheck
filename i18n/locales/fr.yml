@@ -1,4 +1,5 @@
 Anonymous: Anonyme
+Author: Auteur
 ContributionsBeforeLoginMenuItem: Mes contributions avant la connexion
 ContributionsMenuItem: Contributions
 DiffNotAvailable: |-
@@ -8,11 +9,15 @@ DiffNotAvailable: |-
   Vous pouvez consulter l'historique des pages.
 DirectRevertFailedBtnLabel: Échec du retour direct
 DirectRevertedBtnLabel: Direct inversé
+EditSummary: Modifier le résumé
 EditSummaryLabel: Modifier le résumé
+EditedAt: Modifié à
 EditedTimeLabel: édité
 HelpTranslate: Aide à traduire
+Judgement: ''
 Loading: Chargement
 LoginMenuItem: Connexion
+LoginPrompt: ''
 LogoutMenuItem: Déconnexion
 LooksGoodBtnLabel: Cela semble bon
 Me: Moi
@@ -24,10 +29,18 @@ NameVoteAnnouncement: >-
 NextBtnLabel: Suivant
 NotSureBtnLabel: Pas sûr
 OpenedUrlToRevertBtnLabel: URL ouverte pour revenir
+OresBadfaith: ''
+OresDamging: ''
+Overriden: ''
 RevertEditSummary: |-
   Identifié comme test / vandalisme à l'aide de la version {0} {1}. 
   Consultez-le ou donnez votre avis sur {2}
 RevertNowBtnLabel: Revenir maintenant
+ReviewFeed: ''
 ShouldRevertBtnLabel: Devrait revenir
+ShowJudgements: ''
 Someone: Quelqu'un
+ThereIsNoEditSummary: ''
+Time: ''
 UndoBtnLabel: annuler
+User: ''
