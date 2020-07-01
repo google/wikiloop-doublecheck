@@ -29,6 +29,7 @@
   "dependencies": {
     "@dicebear/avatars": "^4.0.2",
     "@dicebear/avatars-identicon-sprites": "^4.0.2",
+    "@google-cloud/translate": "^6.0.1",
     "@nuxt/typescript": "^2.8.1",
     "@nuxt/typescript-runtime": "^0.4.1",
     "@nuxtjs/axios": "^5.8.0",

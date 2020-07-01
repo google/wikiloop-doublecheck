@@ -150,16 +150,23 @@
             // they might prefer editing the Indonesian wiki using English interface
             const wikiToLangMap = {
               "afwiki": "af",
+              "bgwiki": "bg",
+              "cawiki": "ca",
               "enwiki": "en",
+              "eswiki": "es",
               "dewiki": "de",
               "frwiki": "fr",
               "hewiki": "he",
               "idwiki": "id",
+              "itwiki": "it",
               "jawiki": "ja",
+              "kowiki": "ko",
               "lvwiki": "lv",
+              "nlwiki": "nl",
               "plwiki": "pl",
               "ptwiki": "pt",
               "ruwiki": "ru",
+              "thwiki": "th",
               "trwiki": "tr",
               "zhwiki": "zh",
               "wikidatawiki": "en", // TODO(xinbenlv): consider how we deal with wikidata UI languages.

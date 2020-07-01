@@ -4,8 +4,20 @@ export default [
         text: 'Afrikaans (af)'
     },
     {
+      value: 'bgwiki',
+      text: 'български език (bg)'
+    },
+    {
+      value: 'cawiki',
+      text: 'català (ca)'
+    },
+    {
         value: 'enwiki',
         text: 'English (en)'
+    },
+    {
+      value: 'eswiki',
+      text: 'Español (es)'
     },
     {
         value: 'frwiki',
@@ -24,8 +36,16 @@ export default [
         text: 'Bahasa Indonesia (id)'
     },
     {
+      value: 'itwiki',
+      text: 'lietuvių kalba (it)'
+    },
+    {
       value: 'jawiki',
       text: '日本語 (ja)'
+    },
+    {
+      value: 'kowiki',
+      text: '한국어 (ko)'
     },
     {
         value: 'lvwiki',
@@ -34,6 +54,10 @@ export default [
     {
         value: 'plwiki',
         text: 'Polski (pl)' // Polish
+    },
+    {
+      value: 'nlwiki',
+      text: 'Nederlands (nl)'
     },
     {
         value: 'ptwiki',
@@ -47,6 +71,10 @@ export default [
         value: 'trwiki',
         text: 'Türkçe (tr)'
     },
+    {
+      value: 'thwiki',
+      text: 'ไทย (th)'
+  },
     {
         value: 'zhwiki',
         text: '中文 (zh)'
