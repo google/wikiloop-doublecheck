@@ -113,7 +113,7 @@
 
 <script lang="ts">
     import socket from '@/plugins/socket.io.js';
-    import languages from '@/locales/languages.js';
+    import languages from '@/i18n/languages.js';
     import {InteractionItem} from "~/shared/schema";
     import UserAvatarWithName from "~/components/UserAvatarWithName.vue";
     import NoticeBanner from '~/components/NoticeBanner.vue';

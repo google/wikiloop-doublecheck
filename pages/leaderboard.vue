@@ -180,7 +180,7 @@
   import {getUrlBaseByWiki, fetchDiffWithWikiRevId} from '@/shared/utility-shared';
   import BootstrapVue from 'bootstrap-vue';
   import VueTimeago from 'vue-timeago';
-  import languages from '@/locales/languages.js';
+  import languages from '@/i18n/languages.js';
   export default {
     components: {
       BootstrapVue,

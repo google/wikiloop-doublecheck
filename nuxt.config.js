@@ -13,7 +13,7 @@
 // limitations under the License.
 
 const pkg = require('./package');
-const locales = require('./locales/locales');
+const locales = require('./i18n/getlocales');
 require(`dotenv`).config();
 
 console.log(`=================================`);
@@ -91,16 +91,16 @@ module.exports = {
       'nuxt-i18n',
       {
         locales: [
-          'af',
-          'de',
+          // 'af',
+          // 'de',
           'en',
-          'fr',
-          'id',
-          'lv',
-          'pl',
-          'pt',
-          'ru',
-          'tr',
+          // 'fr',
+          // 'id',
+          // 'lv',
+          // 'pl',
+          // 'pt',
+          // 'ru',
+          // 'tr',
           'zh',
         ],
         defaultLocale: 'en',

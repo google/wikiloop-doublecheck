@@ -1,7 +1,7 @@
 // ZH: Chinese
 // Language list from: ISO 639-1 codes.
 // https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
-module.exports = {
+export default {
     LoginMenuItem: "登录",
     LogoutMenuItem: "登出",
     ContributionsMenuItem: "我的贡献",
