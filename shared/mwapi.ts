@@ -110,7 +110,7 @@ export class MwActionApiClient {
         "list": "recentchanges",
         "formatversion": "2",
         "rcnamespace": "0",
-        "rcprop": "title|timestamp|ids|oresscores|flags|tags|sizes|comment",
+        "rcprop": "title|timestamp|ids|oresscores|flags|tags|sizes|comment|user",
         "rcshow": "!bot",
         "rclimit": "1",
         "rctype": "edit",
