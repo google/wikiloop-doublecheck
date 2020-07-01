@@ -1,26 +1,17 @@
-// const en = require('./en');
-// const zh = require('./zh');
 const fs = require('fs');
 const yaml = require('js-yaml');
 
-let loadYml = function(locale) {
-  let fileContents = fs.readFileSync(`./i18n/locales/${locale}.yml`, 'utf8');
-  return yaml.safeLoad(fileContents);
-};
-const en = loadYml('en');
-const zh = loadYml('zh');
+const localesDir = `./i18n/locales/`;
+let files = fs.readdirSync(localesDir);
 
+const localeObjs = {};
 
-module.exports = {
-  // af,
-  // de,
-  en,
-  // fr,
-  // id,
-  // lv,
-  // pl,
-  // pt,
-  // ru,
-  // tr,
-  zh
-};
+files.filter(file => /\.yml$/.test(file)).forEach(file => {
+  let locale = file.split('.')[0];
+  console.log(`Loading locale file ${file}, as ${locale}`);
+  let fileContents = fs.readFileSync(`${localesDir}/${file}`, 'utf8');
+  let localeObj = yaml.safeLoad(fileContents);
+  localeObjs[locale] = localeObj
+});
+
+module.exports = localeObjs;

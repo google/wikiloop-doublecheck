@@ -1,4 +1,3 @@
----
 Anonymous: 游客
 ContributionsBeforeLoginMenuItem: 我的匿名贡献
 ContributionsMenuItem: 我的贡献
@@ -13,14 +12,13 @@ LoginMenuItem: 登录
 LogoutMenuItem: 登出
 LooksGoodBtnLabel: 看着不错
 Me: 我
-NameVoteAnnouncement: 亲爱的贡献者们，我们正在举行变更"WikiLoop Battlefield"的名称投票，截止于July 13, 2020
-  00:00 UTC。请前往投票
+NameVoteAnnouncement: |-
+  尊敬的贡献者，我们正在为新名称进行投票，以替换将于2020年7月13日UTC结束的“ WikiLoop Battlefield”。
+  请投票。
 NextBtnLabel: 下一个
 NotSureBtnLabel: 不确定
 OpenedUrlToRevertBtnLabel: 打开的网址即可还原
-RevertEditSummary: |-
-  使用{0}版本{1}标识为测试/故意破坏。
-  在{2}上查看或发表您的意见
+RevertEditSummary: '使用{0}版本{1}标识为测试/故意破坏。请在{2}上查看或发表您的意见'
 RevertNowBtnLabel: 立即还原
 ShouldRevertBtnLabel: 应该还原
 Someone: 别人

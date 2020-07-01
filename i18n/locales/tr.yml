@@ -1,0 +1,32 @@
+Anonymous: Anonim
+ContributionsBeforeLoginMenuItem: Giriş yapmadan önce yaptığım katkılar
+ContributionsMenuItem: Katkılar
+DiffNotAvailable: >-
+  The wikipedia article diff is temporarily not available. You can try to reload
+  it. Sometimes a vandalized revision could be deleted. You can check the page
+  history.
+DirectRevertFailedBtnLabel: Doğrudan geri alma başarısız
+DirectRevertedBtnLabel: Doğrudan geri döndürüldü
+EditSummaryLabel: Özeti Düzenle
+EditedTimeLabel: düzenlendi
+HelpTranslate: Çeviriye yardım et
+Loading: Yükleniyor
+LoginMenuItem: Giriş
+LogoutMenuItem: Çıkış
+LooksGoodBtnLabel: İyi Görünüyor
+Me: Ben
+NameVoteAnnouncement: >-
+  Sayın katılımcı, 13 Temmuz 2020 00:00 UTC ile biten "WikiLoop Battlefield"
+  yerine yeni bir isim vermek için oy kullanıyoruz. 
+
+  Lütfen oy verin.
+NextBtnLabel: Sonraki
+NotSureBtnLabel: Emin Değilim
+OpenedUrlToRevertBtnLabel: Geri dönmek için açılan URL
+RevertEditSummary: |-
+  {0} {1} sürümü kullanılarak test / vandalizm olarak tanımlandı. 
+  {2} adresinde görün veya görüşünüzü belirtin
+RevertNowBtnLabel: Şimdi geri dön
+ShouldRevertBtnLabel: Eski Haline Dönmeli
+Someone: Birisi
+UndoBtnLabel: ''

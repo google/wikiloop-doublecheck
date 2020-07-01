@@ -1,0 +1,34 @@
+Anonymous: Anonym
+ContributionsBeforeLoginMenuItem: Meine Beiträge vor dem Login
+ContributionsMenuItem: Beiträge
+DiffNotAvailable: |-
+  Der Wikipedia-Artikel diff ist vorübergehend nicht verfügbar. 
+  Sie können versuchen, es neu zu laden. 
+  Manchmal konnte eine zerstörte Revision gelöscht werden. 
+  Sie können den Seitenverlauf überprüfen.
+DirectRevertFailedBtnLabel: Direktes Zurücksetzen fehlgeschlagen
+DirectRevertedBtnLabel: Direkt zurückgesetzt
+EditSummaryLabel: Zusammenfassung bearbeiten
+EditedTimeLabel: Bearbeitet
+HelpTranslate: Hilfe beim Übersetzen
+Loading: Beladung
+LoginMenuItem: Anmelden
+LogoutMenuItem: Abmelden
+LooksGoodBtnLabel: Sieht gut aus
+Me: Ich
+NameVoteAnnouncement: >-
+  Sehr geehrter Mitwirkender, wir halten eine Abstimmung für einen neuen Namen
+  ab, der das "WikiLoop Battlefield" ersetzt und am 13. Juli 2020 um 00:00 UTC
+  endet. 
+
+  Bitte abstimmen.
+NextBtnLabel: Nächste
+NotSureBtnLabel: Nicht sicher
+OpenedUrlToRevertBtnLabel: Geöffnete URL zum Zurücksetzen
+RevertEditSummary: |-
+  Mit {0} Version {1} als Test / Vandalismus identifiziert. 
+  Sehen Sie es sich an oder geben Sie Ihre Meinung unter {2} ab
+RevertNowBtnLabel: Jetzt zurücksetzen
+ShouldRevertBtnLabel: Sollte zurücksetzen
+Someone: Jemand
+UndoBtnLabel: ''
