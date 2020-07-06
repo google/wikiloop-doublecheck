@@ -22,30 +22,43 @@ export enum UserTier {
   Admin = 5 // 100000 = 1e5
 }
 
+export const wikiLangs = [
+  'af',
+  'bg',
+  'ca',
+  'de',
+  'en',
+  'es',
+  'fr',
+  'he',
+  'id',
+  'it',
+  'ja',
+  'ko',
+  'lv',
+  'nl',
+  'pl',
+  'pt',
+  'ru',
+  'th',
+  'tr',
+  'zh',
+]
+
 export const wikiToDomain = {
-  "afwiki": "af.wikipedia.org",
-  "bgwiki": "bg.wikipedia.org",
-  "cawiki": "ca.wikipedia.org",
-  "dewiki": "de.wikipedia.org",
-  "enwiki": "en.wikipedia.org",
-  "eswiki": "es.wikipedia.org",
-  "frwiki": "fr.wikipedia.org",
-  "hewiki": "he.wikipedia.org",
-  "idwiki": "id.wikipedia.org",
-  "itwiki": "it.wikipedia.org",
-  "jawiki": "ja.wikipedia.org",
-  "kowiki": "ko.wikipedia.org",
-  "lvwiki": "lv.wikipedia.org",
-  "nlwiki": "nl.wikipedia.org",
-  "plwiki": "pl.wikipedia.org",
-  "ptwiki": "pt.wikipedia.org",
-  "ruwiki": "ru.wikipedia.org",
-  "trwiki": "tr.wikipedia.org",
-  "thwiki": "th.wikipedia.org",
   "wikidatawiki": "wikidata.org",
-  "zhwiki": "zh.wikipedia.org",
   "testwiki": "test.wikipedia.org",
 };
+
+export const wikiToLangMap = {
+  "wikidatawiki": "en", // TODO(xinbenlv): consider how we deal with wikidata UI languages.
+  "testwiki": "en",
+};
+
+wikiLangs.forEach(lang => {
+  wikiToDomain[`${lang}wiki`] = `${lang}.wikipedia.org`;
+  wikiToLangMap[`${lang}wiki`] = lang;
+});
 
 export let getUrlBaseByWiki = function(wiki) {
     return `http://${wikiToDomain[wiki]}`;

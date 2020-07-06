@@ -117,6 +117,7 @@
     import {InteractionItem} from "~/shared/schema";
     import UserAvatarWithName from "~/components/UserAvatarWithName.vue";
     import NoticeBanner from '~/components/NoticeBanner.vue';
+    import {wikiToLangMap} from '~/shared/utility-shared';
 
     export default {
     components: {
@@ -148,30 +149,7 @@
             // Probably Wiki language doesn't have to be tied to UI language.
             // For example, people can edit wikidata in any language. Or,
             // they might prefer editing the Indonesian wiki using English interface
-            const wikiToLangMap = {
-              "afwiki": "af",
-              "bgwiki": "bg",
-              "cawiki": "ca",
-              "enwiki": "en",
-              "eswiki": "es",
-              "dewiki": "de",
-              "frwiki": "fr",
-              "hewiki": "he",
-              "idwiki": "id",
-              "itwiki": "it",
-              "jawiki": "ja",
-              "kowiki": "ko",
-              "lvwiki": "lv",
-              "nlwiki": "nl",
-              "plwiki": "pl",
-              "ptwiki": "pt",
-              "ruwiki": "ru",
-              "thwiki": "th",
-              "trwiki": "tr",
-              "zhwiki": "zh",
-              "wikidatawiki": "en", // TODO(xinbenlv): consider how we deal with wikidata UI languages.
-              "testwiki": "en",
-            };
+
             if (wikiToLangMap[wiki] != 'en') this.$router.push(`/${wikiToLangMap[wiki]}`);
             else this.$router.push(`/`);
             this.$store.commit('user/setPreferences', {wiki:wiki});
