@@ -80,7 +80,7 @@
         <div v-if="revision" class="card-subtitle mb-2 text-muted">
           <div class="row p-2">
             <div class="col-12"><b>{{$t('EditSummaryLabel')}}:</b>
-              <span>{{revision.comment || "(empty)}"}}</span>
+              <span>{{revision.comment || "(empty)"}}</span>
             </div>
           </div>
         </div>
