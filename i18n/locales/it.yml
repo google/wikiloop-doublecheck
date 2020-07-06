@@ -1,60 +1,59 @@
-Anonymous: Anonimo
-Author: Autore
-ContributionsBeforeLoginMenuItem: I miei contributi prima dell'accesso
-ContributionsMenuItem: I miei contributi
-DiffNotAvailable: >-
+Button-Go: Partire
+Button-HelpTranslate: Aiuta a tradurre
+Button-Next: Il prossimo
+Button-OpenedUrlToRevert: URL aperto da ripristinare
+Button-RevertNow: Ripristina ora
+Button-ShowJudgements: Mostra giudizi
+Button-Undo: Disfare
+Label-Anonymous: Anonimo
+Label-ArtificialIntelligence: Intelligenza artificiale
+Label-Author: Autore
+Label-DirectRevertFailed: Ripristino diretto non riuscito
+Label-DirectReverted: Diretto ripristinato
+Label-EditSummary: Modifica riepilogo
+Label-EditedAt: modificato
+Label-HumanEditors: Redattori umani
+Label-Judgement: Giudizio
+Label-Loading: Caricamento in corso
+Label-Login: Accesso
+Label-Logout: Disconnettersi
+Label-Looks-Good: Sembra buono
+Label-LooksGood: Sembra buono
+Label-Me: Me
+Label-Not-Sure: Non sono sicuro
+Label-NotSure: Non sono sicuro
+Label-OresBadfaith: ORES Badfaith
+Label-OresDamaging: ORES Danneggiamento
+Label-Overriden: override
+Label-Prompt-Login: Accesso
+Label-ReviewFeed: Rivedi feed
+Label-Should-Revert: Dovrebbe tornare
+Label-ShouldRevert: Dovrebbe tornare
+Label-Snooze: sonnellino
+Label-Someone: Qualcuno
+Label-Time: Tempo
+Label-User: Utente
+MenuItem-Code: Codice
+MenuItem-Contributions: I miei contributi
+MenuItem-ContributionsBeforeLogin: I miei contributi prima dell'accesso
+MenuItem-Issues: Problemi
+MenuItem-Stats: Statistiche
+Message-DiffNotAvailable: >-
   L'articolo diff di Wikipedia non è temporaneamente disponibile. Puoi provare a
   ricaricarlo. A volte una revisione vandalizzata potrebbe essere eliminata.
   Puoi controllare la cronologia delle pagine.
-DirectRevertFailedBtnLabel: Ripristino diretto non riuscito
-DirectRevertedBtnLabel: Diretto ripristinato
-EditSummary: Modifica riepilogo
-EditSummaryLabel: Modifica riepilogo
-EditedAt: A cura di
-EditedTimeLabel: modificato
-HelpTranslate: Aiuta a tradurre
-Judgement: Giudizio
-Label-Login: Accesso
-Label-Looks-Good: Sembra buono
-Label-Not-Sure: Non sono sicuro
-Label-Should-Revert: Dovrebbe tornare
-Loading: Caricamento in corso
-LoginMenuItem: Accesso
-LoginPrompt: >-
+Message-Login: >-
   Sai che potresti accedere e conservare le tue etichette sotto il tuo nome?
   Supportiamo l'accesso con l'account Wikipedia tramite Oauth.
-LogoutMenuItem: Disconnettersi
-LooksGoodBtnLabel: Sembra buono
-Me: Me
-NameVoteAnnouncement: >-
+Message-NameVoteAnnouncement: >-
   Caro collaboratore, stiamo votando il nuovo nome in sostituzione del "Campo di
   battaglia di WikiLoop" che si concluderà il 13 luglio 2020 00:00 UTC. Per
   favore, Vota.
-NavBar-MenuItem-Code: Codice
-NavBar-MenuItem-Issues: Problemi
-NavBar-MenuItem-Stats: Statistiche
-Next-Card: Scheda successiva
-NextBtnLabel: Il prossimo
-NotSureBtnLabel: Non sono sicuro
-OpenedUrlToRevertBtnLabel: URL aperto da ripristinare
-OresBadfaith: ORES Badfaith
-OresDamging: ORES Danneggiamento
-Overriden: override
-Prompt-Login-Text: >-
+Message-Prompt-Login: >-
   Sai che potresti accedere e conservare i tuoi contributi a tuo nome?
   Supportiamo l'accesso con l'account Wikipedia tramite Oauth.
-Prompt-Login-Title: Accesso
-RevertEditSummary: >-
+Message-RevertEditSummary: >-
   Identificato come test / vandalismo usando {0} versione {1}. Visualizzalo o
   fornisci la tua opinione su {2}
-RevertNowBtnLabel: Ripristina ora
-ReviewFeed: Rivedi feed
-ShouldRevertBtnLabel: Dovrebbe tornare
-ShowJudgements: Mostra giudizi
-Someone: Qualcuno
-ThereIsNoEditSummary: Non esiste un riepilogo di modifica.
-Time: Tempo
-UndoBtnLabel: Disfare
-User: Utente
-Label-Snooze: sonnellino
-Button-Go: Partire
+Message-ThereIsNoEditSummary: Non esiste un riepilogo di modifica.
+Label-None: Nessuna

@@ -1,60 +1,59 @@
-Anonymous: Anoniem
-Author: Auteur
-ContributionsBeforeLoginMenuItem: Mijn bijdragen voordat ik inlog
-ContributionsMenuItem: Mijn bijdragen
-DiffNotAvailable: >-
+Button-Go: Gaan
+Button-HelpTranslate: Help vertalen
+Button-Next: De volgende
+Button-OpenedUrlToRevert: URL geopend om terug te zetten
+Button-RevertNow: Nu terugzetten
+Button-ShowJudgements: Toon oordelen
+Button-Undo: Ongedaan maken
+Label-Anonymous: Anoniem
+Label-ArtificialIntelligence: Kunstmatige intelligentie
+Label-Author: Auteur
+Label-DirectRevertFailed: Direct terugzetten is mislukt
+Label-DirectReverted: Direct teruggedraaid
+Label-EditSummary: Samenvatting bewerken
+Label-EditedAt: bewerkt
+Label-HumanEditors: Menselijke redacteuren
+Label-Judgement: Oordeel
+Label-Loading: Bezig met laden
+Label-Login: Log in
+Label-Logout: Uitloggen
+Label-Looks-Good: Ziet er goed uit
+Label-LooksGood: Ziet er goed uit
+Label-Me: Me
+Label-Not-Sure: Niet zeker
+Label-NotSure: Niet zeker
+Label-OresBadfaith: ORES Badfaith
+Label-OresDamaging: ORES Schadelijk
+Label-Overriden: Overschreven
+Label-Prompt-Login: Log in
+Label-ReviewFeed: Feed beoordelen
+Label-Should-Revert: Moet terugkeren
+Label-ShouldRevert: Moet terugkeren
+Label-Snooze: Snooze
+Label-Someone: Iemand
+Label-Time: Tijd
+Label-User: Gebruiker
+MenuItem-Code: Code
+MenuItem-Contributions: Mijn bijdragen
+MenuItem-ContributionsBeforeLogin: Mijn bijdragen voordat ik inlog
+MenuItem-Issues: Problemen
+MenuItem-Stats: Statistieken
+Message-DiffNotAvailable: >-
   Het wikipedia-artikel diff is tijdelijk niet beschikbaar. Je kunt proberen het
   opnieuw te laden. Soms kon een vernielde revisie worden verwijderd. U kunt de
   paginageschiedenis bekijken.
-DirectRevertFailedBtnLabel: Direct terugzetten is mislukt
-DirectRevertedBtnLabel: Direct teruggedraaid
-EditSummary: Samenvatting bewerken
-EditSummaryLabel: Samenvatting bewerken
-EditedAt: Bewerkt op
-EditedTimeLabel: bewerkt
-HelpTranslate: Help vertalen
-Judgement: Oordeel
-Label-Login: Log in
-Label-Looks-Good: Ziet er goed uit
-Label-Not-Sure: Niet zeker
-Label-Should-Revert: Moet terugkeren
-Loading: Bezig met laden
-LoginMenuItem: Log in
-LoginPrompt: >-
+Message-Login: >-
   Weet u dat u zou kunnen inloggen en uw labels onder uw naam kunt bewaren? We
   ondersteunen Login met Wikipedia-account via Oauth.
-LogoutMenuItem: Uitloggen
-LooksGoodBtnLabel: Ziet er goed uit
-Me: Me
-NameVoteAnnouncement: >-
+Message-NameVoteAnnouncement: >-
   Beste medewerker, we stemmen voor een nieuwe naam ter vervanging van het
   "WikiLoop Battlefield" dat eindigt op 13 juli 2020 00:00 UTC. Alsjeblieft,
   stem.
-NavBar-MenuItem-Code: Code
-NavBar-MenuItem-Issues: Problemen
-NavBar-MenuItem-Stats: Statistieken
-Next-Card: Volgende kaart
-NextBtnLabel: De volgende
-NotSureBtnLabel: Niet zeker
-OpenedUrlToRevertBtnLabel: URL geopend om terug te zetten
-OresBadfaith: ORES Badfaith
-OresDamging: ORES Schadelijk
-Overriden: Overschreven
-Prompt-Login-Text: >-
+Message-Prompt-Login: >-
   Weet u dat u zou kunnen inloggen en uw bijdragen onder uw naam kunt bewaren?
   We ondersteunen inloggen met een Wikipedia-account via Oauth.
-Prompt-Login-Title: Log in
-RevertEditSummary: >-
+Message-RevertEditSummary: >-
   Geïdentificeerd als test / vandalisme met {0} versie {1}. Bekijk het of geef
   uw mening op {2}
-RevertNowBtnLabel: Nu terugzetten
-ReviewFeed: Feed beoordelen
-ShouldRevertBtnLabel: Moet terugkeren
-ShowJudgements: Toon oordelen
-Someone: Iemand
-ThereIsNoEditSummary: Er is geen samenvatting voor bewerken.
-Time: Tijd
-UndoBtnLabel: Ongedaan maken
-User: Gebruiker
-Label-Snooze: Snooze
-Button-Go: Gaan
+Message-ThereIsNoEditSummary: Er is geen samenvatting voor bewerken.
+Label-None: Geen

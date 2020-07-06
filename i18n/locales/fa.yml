@@ -1,60 +1,59 @@
-Anonymous: ناشناس
-Author: نویسنده
 Button-Go: برو
-ContributionsBeforeLoginMenuItem: کمکهای من قبل از ورود
-ContributionsMenuItem: کمکهای من
-DiffNotAvailable: >-
+Button-HelpTranslate: به ترجمه کمک کنید
+Button-Next: بعد
+Button-OpenedUrlToRevert: URL را بازگردانید
+Button-RevertNow: اکنون برگردانید
+Button-ShowJudgements: نمایش قضاوت
+Button-Undo: واگرد
+Label-Anonymous: ناشناس
+Label-ArtificialIntelligence: هوش مصنوعی
+Label-Author: نویسنده
+Label-DirectRevertFailed: برگشت مستقیم انجام نشد
+Label-DirectReverted: بازگردانی مستقیم
+Label-EditSummary: خلاصه ویرایش کنید
+Label-EditedAt: ویرایش شده
+Label-HumanEditors: ویرایشگران انسانی
+Label-Judgement: داوری
+Label-Loading: بارگذاری
+Label-Login: وارد شدن
+Label-Logout: خروج
+Label-Looks-Good: به نظر خوب میاد
+Label-LooksGood: به نظر خوب میاد
+Label-Me: من
+Label-Not-Sure: مطمئن نیستم
+Label-NotSure: مطمئن نیستم
+Label-OresBadfaith: ORES Badfaith
+Label-OresDamaging: ORES آسیب دیده
+Label-Overriden: نادیده گرفته شده
+Label-Prompt-Login: وارد شدن
+Label-ReviewFeed: بررسی فید
+Label-Should-Revert: باید برگرداند
+Label-ShouldRevert: باید برگردد
+Label-Snooze: تعویق
+Label-Someone: کسی
+Label-Time: زمان
+Label-User: کاربر
+MenuItem-Code: کد
+MenuItem-Contributions: کمکهای من
+MenuItem-ContributionsBeforeLogin: کمکهای من قبل از ورود
+MenuItem-Issues: مسائل
+MenuItem-Stats: آمار
+Message-DiffNotAvailable: >-
   مقاله wikipedia به طور موقت در دسترس نیست. می توانید دوباره بارگیری کنید. گاهی
   اوقات یک ویرایش ویران شده می تواند حذف شود. می توانید تاریخچه صفحه را بررسی
   کنید.
-DirectRevertFailedBtnLabel: برگشت مستقیم انجام نشد
-DirectRevertedBtnLabel: بازگردانی مستقیم
-EditSummary: ویرایش خلاصه
-EditSummaryLabel: خلاصه ویرایش کنید
-EditedAt: ویرایش شده در
-EditedTimeLabel: ویرایش شده
-HelpTranslate: به ترجمه کمک کنید
-Judgement: داوری
-Label-Login: وارد شدن
-Label-Looks-Good: به نظر خوب میاد
-Label-Not-Sure: مطمئن نیستم
-Label-Should-Revert: باید برگرداند
-Label-Snooze: تعویق
-Loading: بارگذاری
-LoginMenuItem: وارد شدن
-LoginPrompt: >-
+Message-Login: >-
   آیا می دانید می توانید برچسب های خود را تحت نام خود وارد کرده و آنها را حفظ
   کنید؟ ما از حساب Oauth با حساب ویکی پدیا پشتیبانی می کنیم.
-LogoutMenuItem: خروج
-LooksGoodBtnLabel: به نظر خوب میاد
-Me: من
-NameVoteAnnouncement: >-
+Message-NameVoteAnnouncement: >-
   مشارکت گرامی ، ما در حال رای گیری برای نام جدید هستیم که جایگزین "میدان جنگ
   WikiLoop" شود که در تاریخ 13 ژوئیه 2020 ساعت 00:00 UTC پایان می یابد. لطفا رای
   دهید
-NavBar-MenuItem-Code: کد
-NavBar-MenuItem-Issues: مسائل
-NavBar-MenuItem-Stats: آمار
-Next-Card: کارت بعدی
-NextBtnLabel: بعد
-NotSureBtnLabel: مطمئن نیستم
-OpenedUrlToRevertBtnLabel: URL را بازگردانید
-OresBadfaith: ORES Badfaith
-OresDamging: ORES آسیب دیده
-Overriden: نادیده گرفته شده
-Prompt-Login-Text: >-
+Message-Prompt-Login: >-
   آیا می دانید که می توانید مشارکت خود را تحت نام خود وارد کنید و آنها را حفظ
   کنید؟ ما از طریق Oauth وارد حساب کاربری ویکی پدیا می شویم.
-Prompt-Login-Title: وارد شدن
-RevertEditSummary: >-
+Message-RevertEditSummary: >-
   با استفاده از test 0} نسخه {1 as به عنوان تست / خرابکاری شناخته شده است. آن را
   ببینید یا نظر خود را در 2 {ارائه دهید
-RevertNowBtnLabel: اکنون برگردانید
-ReviewFeed: بررسی فید
-ShouldRevertBtnLabel: باید برگردد
-ShowJudgements: نمایش قضاوت
-Someone: کسی
-ThereIsNoEditSummary: خلاصه ویرایش وجود ندارد
-Time: زمان
-UndoBtnLabel: واگرد
-User: کاربر
+Message-ThereIsNoEditSummary: خلاصه ویرایش وجود ندارد
+Label-None: هیچ یک

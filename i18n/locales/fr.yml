@@ -1,64 +1,63 @@
-Anonymous: Anonyme
-Author: Auteur
-ContributionsBeforeLoginMenuItem: Mes contributions avant la connexion
-ContributionsMenuItem: Contributions
-DiffNotAvailable: |-
+Button-Go: Aller
+Button-HelpTranslate: Aide à traduire
+Button-Next: Suivant
+Button-OpenedUrlToRevert: URL ouverte pour revenir
+Button-RevertNow: Revenir maintenant
+Button-ShowJudgements: Afficher les jugements
+Button-Undo: annuler
+Label-Anonymous: Anonyme
+Label-ArtificialIntelligence: Intelligence artificielle
+Label-Author: Auteur
+Label-DirectRevertFailed: Échec du retour direct
+Label-DirectReverted: Direct inversé
+Label-EditSummary: Modifier le résumé
+Label-EditedAt: édité
+Label-HumanEditors: Éditeurs humains
+Label-Judgement: Jugement
+Label-Loading: Chargement
+Label-Login: Connexion
+Label-Logout: Déconnexion
+Label-Looks-Good: Cela semble bon
+Label-LooksGood: Cela semble bon
+Label-Me: Moi
+Label-Not-Sure: Pas certain
+Label-NotSure: Pas sûr
+Label-OresBadfaith: ORES Badfaith
+Label-OresDamaging: ORES endommageant
+Label-Overriden: Remplacé
+Label-Prompt-Login: S'identifier
+Label-ReviewFeed: Vérifier le flux
+Label-Should-Revert: Devrait revenir
+Label-ShouldRevert: Devrait revenir
+Label-Snooze: Roupillon
+Label-Someone: Quelqu'un
+Label-Time: Temps
+Label-User: Utilisateur
+MenuItem-Code: Code
+MenuItem-Contributions: Contributions
+MenuItem-ContributionsBeforeLogin: Mes contributions avant la connexion
+MenuItem-Issues: Problèmes
+MenuItem-Stats: Statistiques
+Message-DiffNotAvailable: |-
   Le diff article wikipedia n'est temporairement pas disponible. 
   Vous pouvez essayer de le recharger. 
   Parfois, une révision vandalisée peut être supprimée. 
   Vous pouvez consulter l'historique des pages.
-DirectRevertFailedBtnLabel: Échec du retour direct
-DirectRevertedBtnLabel: Direct inversé
-EditSummary: Modifier le résumé
-EditSummaryLabel: Modifier le résumé
-EditedAt: Modifié à
-EditedTimeLabel: édité
-HelpTranslate: Aide à traduire
-Judgement: Jugement
-Label-Login: S'identifier
-Label-Looks-Good: Cela semble bon
-Label-Not-Sure: Pas certain
-Label-Should-Revert: Devrait revenir
-Loading: Chargement
-LoginMenuItem: Connexion
-LoginPrompt: >-
+Message-Login: >-
   Savez-vous que vous pouvez vous connecter et conserver vos étiquettes sous
   votre nom? Nous prenons en charge la connexion avec un compte Wikipedia via
   Oauth.
-LogoutMenuItem: Déconnexion
-LooksGoodBtnLabel: Cela semble bon
-Me: Moi
-NameVoteAnnouncement: >-
+Message-NameVoteAnnouncement: >-
   Cher contributeur, nous organisons un vote pour un nouveau nom remplaçant le
   "WikiLoop Battlefield" se terminant le 13 juillet 2020 à 00h00 UTC. 
 
   S'il vous plait, votez.
-NavBar-MenuItem-Code: Code
-NavBar-MenuItem-Issues: Problèmes
-NavBar-MenuItem-Stats: Statistiques
-Next-Card: Carte suivante
-NextBtnLabel: Suivant
-NotSureBtnLabel: Pas sûr
-OpenedUrlToRevertBtnLabel: URL ouverte pour revenir
-OresBadfaith: ORES Badfaith
-OresDamging: ORES endommageant
-Overriden: Remplacé
-Prompt-Login-Text: >-
+Message-Prompt-Login: >-
   Savez-vous que vous pouvez vous connecter et conserver vos contributions sous
   votre nom? Nous prenons en charge la connexion avec un compte Wikipedia via
   Oauth.
-Prompt-Login-Title: S'identifier
-RevertEditSummary: |-
+Message-RevertEditSummary: |-
   Identifié comme test / vandalisme à l'aide de la version {0} {1}. 
   Consultez-le ou donnez votre avis sur {2}
-RevertNowBtnLabel: Revenir maintenant
-ReviewFeed: Vérifier le flux
-ShouldRevertBtnLabel: Devrait revenir
-ShowJudgements: Afficher les jugements
-Someone: Quelqu'un
-ThereIsNoEditSummary: Il n'y a pas de résumé de modification.
-Time: Temps
-UndoBtnLabel: annuler
-User: Utilisateur
-Label-Snooze: Roupillon
-Button-Go: Aller
+Message-ThereIsNoEditSummary: Il n'y a pas de résumé de modification.
+Label-None: Aucun

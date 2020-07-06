@@ -1,59 +1,58 @@
-Anonymous: Anonymous
-Author: Author
 Button-Go: Go
-ContributionsBeforeLoginMenuItem: My contributions before login
-ContributionsMenuItem: My contributions
-DiffNotAvailable: >-
+Button-HelpTranslate: Help translate
+Button-Next: Next
+Button-OpenedUrlToRevert: Opened URL to revert
+Button-RevertNow: Revert now
+Button-ShowJudgements: Show judgements
+Button-Undo: Undo
+Label-Anonymous: Anonymous
+Label-ArtificialIntelligence: Artificial Intelligence
+Label-Author: Author
+Label-DirectRevertFailed: Direct revert failed
+Label-DirectReverted: Direct reverted
+Label-EditSummary: Edit summary
+Label-EditedAt: edited
+Label-HumanEditors: Human editors
+Label-Judgement: Label
+Label-Loading: Loading
+Label-Login: Login
+Label-Logout: Logout
+Label-Looks-Good: Looks Good
+Label-LooksGood: Looks good
+Label-Me: Me
+Label-None: None
+Label-Not-Sure: Not Sure
+Label-NotSure: Not sure
+Label-OresBadfaith: ORES Badfaith
+Label-OresDamaging: ORES Damaging
+Label-Overriden: Overridden
+Label-Prompt-Login: Login
+Label-ReviewFeed: Review Feed
+Label-Should-Revert: Should Revert
+Label-ShouldRevert: Should revert
+Label-Snooze: Snooze
+Label-Someone: Someone
+Label-Time: Time
+Label-User: User
+MenuItem-Code: Code
+MenuItem-Contributions: My contributions
+MenuItem-ContributionsBeforeLogin: My contributions before login
+MenuItem-Issues: Issues
+MenuItem-Stats: Stats
+Message-DiffNotAvailable: >-
   The wikipedia article diff is temporarily not available. You can try to reload
   it. Sometimes a vandalized revision could be deleted. You can check the page
   history.
-DirectRevertFailedBtnLabel: Direct revert failed
-DirectRevertedBtnLabel: Direct reverted
-EditSummary: Edit Summary
-EditSummaryLabel: Edit summary
-EditedAt: Edited at
-EditedTimeLabel: edited
-HelpTranslate: Help translate
-Judgement: Judgement
-Label-Login: Login
-Label-Looks-Good: Looks Good
-Label-Not-Sure: Not Sure
-Label-Should-Revert: Should Revert
-Label-Snooze: Snooze
-Loading: Loading
-LoginMenuItem: Login
-LoginPrompt: >-
+Message-Login: >-
   Do you know you could Login and preserve your labels under your name? We
   support Login with Wikipedia account through Oauth.
-LogoutMenuItem: Logout
-LooksGoodBtnLabel: Looks good
-Me: Me
-NameVoteAnnouncement: >-
+Message-NameVoteAnnouncement: >-
   Dear contributor, we are holding a voting for new name replacing the "WikiLoop
   Battlefield" ending on July 13, 2020 00:00 UTC. Please vote.
-NavBar-MenuItem-Code: Code
-NavBar-MenuItem-Issues: Issues
-NavBar-MenuItem-Stats: Stats
-Next-Card: Next Card
-NextBtnLabel: Next
-NotSureBtnLabel: Not sure
-OpenedUrlToRevertBtnLabel: Opened URL to revert
-OresBadfaith: ORES Badfaith
-OresDamging: ORES Damaging
-Overriden: Overridden
-Prompt-Login-Text: >-
+Message-Prompt-Login: >-
   Do you know you could login and preserve your contributions under your name?
   We support login with Wikipedia account through Oauth.
-Prompt-Login-Title: Login
-RevertEditSummary: >-
+Message-RevertEditSummary: >-
   Identified as test/vandalism using {0} version {1}. See it or provide your
   opinion at {2}
-RevertNowBtnLabel: Revert now
-ReviewFeed: Review Feed
-ShouldRevertBtnLabel: Should revert
-ShowJudgements: Show judgements
-Someone: Someone
-ThereIsNoEditSummary: There is no edit summary.
-Time: Time
-UndoBtnLabel: Undo
-User: User
+Message-ThereIsNoEditSummary: There is no edit summary.

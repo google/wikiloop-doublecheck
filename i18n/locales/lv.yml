@@ -1,61 +1,60 @@
-Anonymous: Anonīms
-Author: Autors
-ContributionsBeforeLoginMenuItem: Mani ieguldījumi pirms pieteikšanās
-ContributionsMenuItem: Mans devums
-DiffNotAvailable: >-
+Button-Go: Ej
+Button-HelpTranslate: Palīdziet tulkot
+Button-Next: Nākamais
+Button-OpenedUrlToRevert: 'Atjaunots URL, lai to atjaunotu'
+Button-RevertNow: Atcelt tagad
+Button-ShowJudgements: Parādiet spriedumus
+Button-Undo: Atsaukt
+Label-Anonymous: Anonīms
+Label-ArtificialIntelligence: Mākslīgais intelekts
+Label-Author: Autors
+Label-DirectRevertFailed: Tieša atgriešana neizdevās
+Label-DirectReverted: Tieši atgriezts
+Label-EditSummary: Labojuma kopsavilkums
+Label-EditedAt: labots
+Label-HumanEditors: Cilvēku redaktori
+Label-Judgement: Spriedums
+Label-Loading: Ielādē
+Label-Login: Pieslēgties
+Label-Logout: Iziet
+Label-Looks-Good: Izskatās labi
+Label-LooksGood: Izskatās labi
+Label-Me: Es
+Label-Not-Sure: Neesmu pārliecināts
+Label-NotSure: Nav pārliecības
+Label-OresBadfaith: ORES Badfaith
+Label-OresDamaging: ORES bojājums
+Label-Overriden: Pārvērtēts
+Label-Prompt-Login: Pieslēgties
+Label-ReviewFeed: Atsauksmju plūsma
+Label-Should-Revert: Vajadzētu atgriezties
+Label-ShouldRevert: Būtu jāatceļ
+Label-Snooze: Atlikt
+Label-Someone: Kāds
+Label-Time: Laiks
+Label-User: Lietotājs
+MenuItem-Code: Kods
+MenuItem-Contributions: Mans devums
+MenuItem-ContributionsBeforeLogin: Mani ieguldījumi pirms pieteikšanās
+MenuItem-Issues: Jautājumi
+MenuItem-Stats: Statistika
+Message-DiffNotAvailable: >-
   Vikipēdijas raksta izmaiņas attēlošana īslaicīgi nav pieejama. Tu vari mēģināt
   ielādēt to vēlreiz. Dažkārt vandalizētā versija var būt jau dzēsta. Tu vari
   pārbaudīt lapas vēsturi.
-DirectRevertFailedBtnLabel: Tieša atgriešana neizdevās
-DirectRevertedBtnLabel: Tieši atgriezts
-EditSummary: Rediģēt kopsavilkumu
-EditSummaryLabel: Labojuma kopsavilkums
-EditedAt: Rediģēts plkst
-EditedTimeLabel: labots
-HelpTranslate: Palīdziet tulkot
-Judgement: Spriedums
-Label-Login: Pieslēgties
-Label-Looks-Good: Izskatās labi
-Label-Not-Sure: Neesmu pārliecināts
-Label-Should-Revert: Vajadzētu atgriezties
-Loading: Ielādē
-LoginMenuItem: Pieslēgties
-LoginPrompt: >-
+Message-Login: >-
   Vai jūs zināt, ka varētu pieteikties un saglabāt etiķetes ar savu vārdu? Mēs
   atbalstām pieteikšanos ar Wikipedia kontu caur Oauth.
-LogoutMenuItem: Iziet
-LooksGoodBtnLabel: Izskatās labi
-Me: Es
-NameVoteAnnouncement: >-
+Message-NameVoteAnnouncement: >-
   Cienījamais līdzstrādnieks, mēs balsojam par jaunu vārdu, kas aizstāj
   “WikiLoop Battlefield” un beidzas 2020. gada 13. jūlijā plkst. 00:00 pēc UTC. 
 
   Lūdzu balsošanu.
-NavBar-MenuItem-Code: Kods
-NavBar-MenuItem-Issues: Jautājumi
-NavBar-MenuItem-Stats: Statistika
-Next-Card: Nākamā kārts
-NextBtnLabel: Nākamais
-NotSureBtnLabel: Nav pārliecības
-OpenedUrlToRevertBtnLabel: 'Atjaunots URL, lai to atjaunotu'
-OresBadfaith: ORES Badfaith
-OresDamging: ORES bojājums
-Overriden: Pārvērtēts
-Prompt-Login-Text: >-
+Message-Prompt-Login: >-
   Vai jūs zināt, ka varētu pieteikties un saglabāt savu ieguldījumu ar savu
   vārdu? Mēs atbalstām pieteikšanos ar Wikipedia kontu caur Oauth.
-Prompt-Login-Title: Pieslēgties
-RevertEditSummary: >-
+Message-RevertEditSummary: >-
   Identificēts kā izmēģinājums/vandalisms izmantojot {0} versiju {1}. Apskatīt
   to vai piedāvāt savu viedokli {2}
-RevertNowBtnLabel: Atcelt tagad
-ReviewFeed: Atsauksmju plūsma
-ShouldRevertBtnLabel: Būtu jāatceļ
-ShowJudgements: Parādiet spriedumus
-Someone: Kāds
-ThereIsNoEditSummary: Nav rediģēšanas kopsavilkuma.
-Time: Laiks
-UndoBtnLabel: Atsaukt
-User: Lietotājs
-Label-Snooze: Atlikt
-Button-Go: Ej
+Message-ThereIsNoEditSummary: Nav rediģēšanas kopsavilkuma.
+Label-None: Nav

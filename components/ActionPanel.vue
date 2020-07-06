@@ -7,17 +7,17 @@
             <button
               v-on:click="interactionBtn(`LooksGood`)"
               class="btn btn-sm btn-outline-success"
-            >{{$t(`LooksGoodBtnLabel`)}} (g)
+            >{{$t(`Label-LooksGood`)}} (g)
             </button>
             <button
               v-on:click="interactionBtn(`NotSure`)"
               class="btn btn-sm btn-outline-secondary">
-              {{$t(`NotSureBtnLabel`)}} (p)
+              {{$t(`Label-NotSure`)}} (p)
             </button>
             <button
               v-on:click="interactionBtn(`ShouldRevert`)"
               class="btn btn-sm btn-outline-danger" target="_blank"
-            >{{$t(`ShouldRevertBtnLabel`)}} (v)
+            >{{$t(`Label-ShouldRevert`)}} (v)
             </button>
           </div>
         </template>
@@ -29,7 +29,7 @@
             <button
               @click="undo()"
               class="btn btn-outline-secondary"
-            >{{$t(`UndoBtnLabel`)}}(←)
+            >{{$t(`Button-Undo`)}}(←)
             </button>
             <template v-if="enableRevert">
               <button
@@ -37,27 +37,27 @@
                   class="btn btn-outline-primary"
                   @click="performRevert()"
                   >
-                <span>{{$t(`RevertNowBtnLabel`)}} (r)</span>
+                <span>{{$t(`Button-RevertNow`)}} (r)</span>
               </button>
               <button
                   v-else-if="wikiActionProps.type == `RedirectRevert`"
-                  class="btn btn-success">{{$t(`OpenedUrlToRevertBtnLabel`)}}</button>
+                  class="btn btn-success">{{$t(`Button-OpenedUrlToRevert`)}}</button>
               <button
                 v-else-if="wikiActionProps.type == `RedirectToHistory`"
-                class="btn btn-success">{{$t(`OpenedUrlToRevertBtnLabel`)}}</button>
+                class="btn btn-success">{{$t(`Button-OpenedUrlToRevert`)}}</button>
               <button
                 v-else-if="wikiActionProps.type == `DirectRevert` && wikiActionProps._meta && !(wikiActionProps._meta.hasError)"
-                class="btn btn-success">{{$t(`DirectRevertedBtnLabel`)}}
+                class="btn btn-success">{{$t(`Label-DirectReverted`)}}
               </button>
               <button
                 v-else-if="wikiActionProps.type == `DirectRevert` && wikiActionProps._meta && wikiActionProps._meta.hasError"
-                class="btn btn-danger">{{$t(`DirectRevertFailedBtnLabel`)}}
+                class="btn btn-danger">{{$t(`Label-DirectRevertFailed`)}}
               </button>
             </template>
             <button
               @click="$emit(`next-card`)"
               class="btn btn-success"
-            >{{$t(`NextBtnLabel`)}}(→)
+            >{{$t(`Button-Next`)}}(→)
             </button>
           </div>
         </template>
@@ -172,7 +172,7 @@
             if (this.isRevIdCurrent) {
                 const version = await this.$axios.$get(`/api/version`);
                 let revertEditSummary = this.$t(
-                    `RevertEditSummary`,
+                    `Message-RevertEditSummary`,
                     [
                         `[[:m:WikiLoop Battlefield]]`,
                         `${version}`,

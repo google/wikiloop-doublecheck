@@ -1,56 +1,55 @@
-Anonymous: 익명
-Author: 저자
-ContributionsBeforeLoginMenuItem: 로그인 전 나의 기여
-ContributionsMenuItem: 내 공헌
-DiffNotAvailable: >-
+Button-Go: 가다
+Button-HelpTranslate: 번역 도움말
+Button-Next: 다음
+Button-OpenedUrlToRevert: 되돌릴 URL을 열었습니다.
+Button-RevertNow: 지금 되돌리기
+Button-ShowJudgements: 판단 표시
+Button-Undo: 실행 취소
+Label-Anonymous: 익명
+Label-ArtificialIntelligence: 인공 지능
+Label-Author: 저자
+Label-DirectRevertFailed: 직접 되돌리기 실패
+Label-DirectReverted: 직접 복귀
+Label-EditSummary: 요약 편집
+Label-EditedAt: 편집
+Label-HumanEditors: 인간 편집자
+Label-Judgement: 심판
+Label-Loading: 로딩
+Label-Login: 로그인
+Label-Logout: 로그 아웃
+Label-Looks-Good: 좋아 보인다
+Label-LooksGood: 좋아 보인다
+Label-Me: 나를
+Label-Not-Sure: 확실하지 않다
+Label-NotSure: 확실하지 않다
+Label-OresBadfaith: 오 레스 악의
+Label-OresDamaging: 광석 피해
+Label-Overriden: 재정의
+Label-Prompt-Login: 로그인
+Label-ReviewFeed: 피드 검토
+Label-Should-Revert: 되돌려 야한다
+Label-ShouldRevert: 되돌려 야한다
+Label-Snooze: 선잠
+Label-Someone: 어떤 사람
+Label-Time: 시각
+Label-User: 사용자
+MenuItem-Code: 암호
+MenuItem-Contributions: 내 공헌
+MenuItem-ContributionsBeforeLogin: 로그인 전 나의 기여
+MenuItem-Issues: 이슈
+MenuItem-Stats: 통계
+Message-DiffNotAvailable: >-
   위키 백과 기사 diff는 일시적으로 사용할 수 없습니다. 다시로드 할 수 있습니다. 때로는 손상된 개정판을 삭제할 수 있습니다. 페이지
   기록을 확인할 수 있습니다.
-DirectRevertFailedBtnLabel: 직접 되돌리기 실패
-DirectRevertedBtnLabel: 직접 복귀
-EditSummary: 요약 편집
-EditSummaryLabel: 요약 편집
-EditedAt: 에 수정
-EditedTimeLabel: 편집
-HelpTranslate: 번역 도움말
-Judgement: 심판
-Label-Login: 로그인
-Label-Looks-Good: 좋아 보인다
-Label-Not-Sure: 확실하지 않다
-Label-Should-Revert: 되돌려 야한다
-Loading: 로딩
-LoginMenuItem: 로그인
-LoginPrompt: >-
+Message-Login: >-
   당신은 당신의 이름으로 레이블을 로그인하고 보존 할 수 있다는 것을 알고 있습니까? Oauth를 통해 Wikipedia 계정으로 로그인을
   지원합니다.
-LogoutMenuItem: 로그 아웃
-LooksGoodBtnLabel: 좋아 보인다
-Me: 나를
-NameVoteAnnouncement: >-
+Message-NameVoteAnnouncement: >-
   기여자님께, 2020 년 7 월 13 일 00:00 UTC로 끝나는 "WikiLoop Battlefield"를 대체하는 새로운 이름에 대한
   투표를 진행하고 있습니다. 투표 해주세요.
-NavBar-MenuItem-Code: 암호
-NavBar-MenuItem-Issues: 이슈
-NavBar-MenuItem-Stats: 통계
-Next-Card: 다음 카드
-NextBtnLabel: 다음
-NotSureBtnLabel: 확실하지 않다
-OpenedUrlToRevertBtnLabel: 되돌릴 URL을 열었습니다.
-OresBadfaith: 오 레스 악의
-OresDamging: 광석 피해
-Overriden: 재정의
-Prompt-Login-Text: >-
+Message-Prompt-Login: >-
   당신은 당신의 이름으로 기여를 로그인하고 보존 할 수 있다는 것을 알고 있습니까? Oauth를 통한 Wikipedia 계정으로 로그인을
   지원합니다.
-Prompt-Login-Title: 로그인
-RevertEditSummary: '{0} 버전 {1}을 (를) 사용하여 테스트 / 파손 행위로 식별되었습니다. {2}에서 보거나 의견을 보내주십시오'
-RevertNowBtnLabel: 지금 되돌리기
-ReviewFeed: 피드 검토
-ShouldRevertBtnLabel: 되돌려 야한다
-ShowJudgements: 판단 표시
-Someone: 어떤 사람
-ThereIsNoEditSummary: 편집 요약이 없습니다.
-Time: 시각
-UndoBtnLabel: 실행 취소
-User: 사용자
-Label-Snooze: 선잠
-Button-Go: 가다
+Message-RevertEditSummary: '{0} 버전 {1}을 (를) 사용하여 테스트 / 파손 행위로 식별되었습니다. {2}에서 보거나 의견을 보내주십시오'
+Message-ThereIsNoEditSummary: 편집 요약이 없습니다.
+Label-None: 없음

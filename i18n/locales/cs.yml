@@ -1,59 +1,58 @@
-Anonymous: Anonymní
-Author: Autor
 Button-Go: Jít
-ContributionsBeforeLoginMenuItem: Moje příspěvky před přihlášením
-ContributionsMenuItem: Moje příspěvky
-DiffNotAvailable: >-
+Button-HelpTranslate: Pomozte překládat
+Button-Next: další
+Button-OpenedUrlToRevert: Otevřená adresa URL pro vrácení
+Button-RevertNow: Vrátit nyní
+Button-ShowJudgements: Zobrazit soudy
+Button-Undo: vrátit
+Label-Anonymous: Anonymní
+Label-ArtificialIntelligence: Umělá inteligence
+Label-Author: Autor
+Label-DirectRevertFailed: Přímé vrácení selhalo
+Label-DirectReverted: Přímo se vrátil
+Label-EditSummary: Upravit shrnutí
+Label-EditedAt: upraveno
+Label-HumanEditors: Lidští editoři
+Label-Judgement: Rozsudek
+Label-Loading: načítání
+Label-Login: Přihlásit se
+Label-Logout: Odhlásit se
+Label-Looks-Good: Vypadá dobře
+Label-LooksGood: Vypadá dobře
+Label-Me: Mě
+Label-Not-Sure: Nejsem si jistý
+Label-NotSure: Nejsem si jistý
+Label-OresBadfaith: ORES Badfaith
+Label-OresDamaging: Poškození ORES
+Label-Overriden: Přepsáno
+Label-Prompt-Login: Přihlásit se
+Label-ReviewFeed: Zkontrolujte zdroj
+Label-Should-Revert: Měl by se vrátit
+Label-ShouldRevert: Měl by se vrátit
+Label-Snooze: Podřimovat
+Label-Someone: Někdo
+Label-Time: Čas
+Label-User: Uživatel
+MenuItem-Code: Kód
+MenuItem-Contributions: Moje příspěvky
+MenuItem-ContributionsBeforeLogin: Moje příspěvky před přihlášením
+MenuItem-Issues: Problémy
+MenuItem-Stats: Statistiky
+Message-DiffNotAvailable: >-
   Článek wikipedia diff není dočasně k dispozici. Můžete to zkusit znovu načíst.
   Někdy může být vandalizovaná revize odstraněna. Můžete zkontrolovat historii
   stránky.
-DirectRevertFailedBtnLabel: Přímé vrácení selhalo
-DirectRevertedBtnLabel: Přímo se vrátil
-EditSummary: Upravit shrnutí
-EditSummaryLabel: Upravit shrnutí
-EditedAt: Upraveno v
-EditedTimeLabel: upraveno
-HelpTranslate: Pomozte překládat
-Judgement: Rozsudek
-Label-Login: Přihlásit se
-Label-Looks-Good: Vypadá dobře
-Label-Not-Sure: Nejsem si jistý
-Label-Should-Revert: Měl by se vrátit
-Label-Snooze: Podřimovat
-Loading: načítání
-LoginMenuItem: Přihlásit se
-LoginPrompt: >-
+Message-Login: >-
   Víte, že byste se mohli přihlásit a zachovat své štítky pod svým jménem?
   Podporujeme přihlášení pomocí účtu Wikipedia prostřednictvím Oauth.
-LogoutMenuItem: Odhlásit se
-LooksGoodBtnLabel: Vypadá dobře
-Me: Mě
-NameVoteAnnouncement: >-
+Message-NameVoteAnnouncement: >-
   Vážený přispěvateli, hlasujeme pro nové jméno nahrazující „WikiLoop
   Battlefield“ končící 13. července 2020 00:00 UTC. Hlasujte prosím.
-NavBar-MenuItem-Code: Kód
-NavBar-MenuItem-Issues: Problémy
-NavBar-MenuItem-Stats: Statistiky
-Next-Card: Další karta
-NextBtnLabel: další
-NotSureBtnLabel: Nejsem si jistý
-OpenedUrlToRevertBtnLabel: Otevřená adresa URL pro vrácení
-OresBadfaith: ORES Badfaith
-OresDamging: Poškození ORES
-Overriden: Přepsáno
-Prompt-Login-Text: >-
+Message-Prompt-Login: >-
   Víte, že byste se mohli přihlásit a zachovat své příspěvky pod svým jménem?
   Podporujeme přihlášení pomocí účtu Wikipedia prostřednictvím Oauth.
-Prompt-Login-Title: Přihlásit se
-RevertEditSummary: >-
+Message-RevertEditSummary: >-
   Identifikováno jako test / vandalismus pomocí {0} verze {1}. Podívejte se na
   to nebo poskytněte svůj názor na {2}
-RevertNowBtnLabel: Vrátit nyní
-ReviewFeed: Zkontrolujte zdroj
-ShouldRevertBtnLabel: Měl by se vrátit
-ShowJudgements: Zobrazit soudy
-Someone: Někdo
-ThereIsNoEditSummary: Neexistuje žádné shrnutí úprav.
-Time: Čas
-UndoBtnLabel: vrátit
-User: Uživatel
+Message-ThereIsNoEditSummary: Neexistuje žádné shrnutí úprav.
+Label-None: Žádný

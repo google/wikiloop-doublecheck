@@ -1,62 +1,61 @@
-Anonymous: Anonim
-Author: Penulis
-ContributionsBeforeLoginMenuItem: Kontribusi saya sebelum login
-ContributionsMenuItem: Kontribusi
-DiffNotAvailable: >-
+Button-Go: Pergilah
+Button-HelpTranslate: Bantu terjemahkan
+Button-Next: Selanjutnya
+Button-OpenedUrlToRevert: URL yang dibuka untuk kembali
+Button-RevertNow: Batalkan sekarang
+Button-ShowJudgements: Perlihatkan penilaian
+Button-Undo: Membuka
+Label-Anonymous: Anonim
+Label-ArtificialIntelligence: Kecerdasan buatan
+Label-Author: Penulis
+Label-DirectRevertFailed: Pengembalian langsung gagal
+Label-DirectReverted: Langsung dikembalikan
+Label-EditSummary: Ringkasan suntingan
+Label-EditedAt: disunting
+Label-HumanEditors: Editor manusia
+Label-Judgement: Pertimbangan
+Label-Loading: Sedang memuat
+Label-Login: Masuk log
+Label-Logout: Keluar log
+Label-Looks-Good: Kelihatan bagus
+Label-LooksGood: Kelihatan bagus
+Label-Me: Aku
+Label-Not-Sure: Tidak yakin
+Label-NotSure: Tidak yakin
+Label-OresBadfaith: ORF Badfaith
+Label-OresDamaging: ORES Merusak
+Label-Overriden: Ditimpa
+Label-Prompt-Login: Gabung
+Label-ReviewFeed: Tinjau Umpan
+Label-Should-Revert: Harus Kembalikan
+Label-ShouldRevert: Patut dibatalkan
+Label-Snooze: Tidur sebentar
+Label-Someone: Seseorang
+Label-Time: Waktu
+Label-User: Pengguna
+MenuItem-Code: Kode
+MenuItem-Contributions: Kontribusi
+MenuItem-ContributionsBeforeLogin: Kontribusi saya sebelum login
+MenuItem-Issues: Masalah
+MenuItem-Stats: Statistik
+Message-DiffNotAvailable: >-
   Perbedaan revisi tidak tersedia untuk saat ini. Silakan diulang membukanya.
   Kadang revisi yang terkena vandalisme sudah dihapus. Silakan periksa riwayat
   revisi artikel.
-DirectRevertFailedBtnLabel: Pengembalian langsung gagal
-DirectRevertedBtnLabel: Langsung dikembalikan
-EditSummary: Edit Ringkasan
-EditSummaryLabel: Ringkasan suntingan
-EditedAt: Diedit pada
-EditedTimeLabel: disunting
-HelpTranslate: Bantu terjemahkan
-Judgement: Pertimbangan
-Label-Login: Gabung
-Label-Looks-Good: Kelihatan bagus
-Label-Not-Sure: Tidak yakin
-Label-Should-Revert: Harus Kembalikan
-Loading: Sedang memuat
-LoginMenuItem: Masuk log
-LoginPrompt: >-
+Message-Login: >-
   Tahukah Anda bahwa Anda dapat Masuk dan melindungi label Anda dengan nama
   Anda? Kami mendukung Login dengan akun Wikipedia melalui Oauth.
-LogoutMenuItem: Keluar log
-LooksGoodBtnLabel: Kelihatan bagus
-Me: Aku
-NameVoteAnnouncement: >-
+Message-NameVoteAnnouncement: >-
   Kontributor yang terhormat, kami mengadakan pemungutan suara untuk nama baru
   menggantikan "Medan Perang WikiLoop" yang berakhir pada 13 Juli, 2020 00:00
   UTC. 
 
   Tolong pilih.
-NavBar-MenuItem-Code: Kode
-NavBar-MenuItem-Issues: Masalah
-NavBar-MenuItem-Stats: Statistik
-Next-Card: Kartu selanjutnya
-NextBtnLabel: Selanjutnya
-NotSureBtnLabel: Tidak yakin
-OpenedUrlToRevertBtnLabel: URL yang dibuka untuk kembali
-OresBadfaith: ORF Badfaith
-OresDamging: ORES Merusak
-Overriden: Ditimpa
-Prompt-Login-Text: >-
+Message-Prompt-Login: >-
   Apakah Anda tahu Anda bisa masuk dan menyimpan kontribusi Anda dengan nama
   Anda? Kami mendukung login dengan akun Wikipedia melalui Oauth.
-Prompt-Login-Title: Gabung
-RevertEditSummary: >-
+Message-RevertEditSummary: >-
   Batalkan percobaan/vandalisme menggunakan {0} versi {1}. Lihat atau beri
   pendapat di {2}
-RevertNowBtnLabel: Batalkan sekarang
-ReviewFeed: Tinjau Umpan
-ShouldRevertBtnLabel: Patut dibatalkan
-ShowJudgements: Perlihatkan penilaian
-Someone: Seseorang
-ThereIsNoEditSummary: Tidak ada ringkasan edit.
-Time: Waktu
-UndoBtnLabel: Membuka
-User: Pengguna
-Label-Snooze: Tidur sebentar
-Button-Go: Pergilah
+Message-ThereIsNoEditSummary: Tidak ada ringkasan edit.
+Label-None: Tidak ada

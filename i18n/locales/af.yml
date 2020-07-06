@@ -1,61 +1,60 @@
-Anonymous: Anoniem
-Author: skrywer
-ContributionsBeforeLoginMenuItem: My bydraes voor aanmelding
-ContributionsMenuItem: My bydraes
-DiffNotAvailable: >-
+Button-Go: Gaan
+Button-HelpTranslate: Help om te vertaal
+Button-Next: volgende
+Button-OpenedUrlToRevert: URL geopen om terug te keer
+Button-RevertNow: Keer nou terug
+Button-ShowJudgements: Toon uitsprake
+Button-Undo: ongedaan
+Label-Anonymous: Anoniem
+Label-ArtificialIntelligence: Kunsmatige intelligensie
+Label-Author: skrywer
+Label-DirectRevertFailed: Kon nie terugkeer nie
+Label-DirectReverted: Direk teruggedraai
+Label-EditSummary: Opsomming wysig
+Label-EditedAt: geredigeerde
+Label-HumanEditors: Menslike redakteurs
+Label-Judgement: oordeel
+Label-Loading: laai
+Label-Login: Teken aan
+Label-Logout: Teken uit
+Label-Looks-Good: Lyk goed
+Label-LooksGood: Lyk goed
+Label-Me: my
+Label-Not-Sure: Nie seker nie
+Label-NotSure: Nie seker nie
+Label-OresBadfaith: ORES Badfaith
+Label-OresDamaging: Ertse beskadig
+Label-Overriden: geïgnoreer
+Label-Prompt-Login: Teken aan
+Label-ReviewFeed: Hersien voer
+Label-Should-Revert: Moet terugkeer
+Label-ShouldRevert: Moet terugkeer
+Label-Snooze: Sluimer
+Label-Someone: iemand
+Label-Time: tyd
+Label-User: gebruiker
+MenuItem-Code: kode
+MenuItem-Contributions: My bydraes
+MenuItem-ContributionsBeforeLogin: My bydraes voor aanmelding
+MenuItem-Issues: kwessies
+MenuItem-Stats: statistiek
+Message-DiffNotAvailable: >-
   Die wikipedia-artikel verskil is tydelik nie beskikbaar nie. U kan dit probeer
   herlaai. Soms kan 'n gevandaliseerde hersiening verwyder word. U kan die
   bladsygeskiedenis bekyk.
-DirectRevertFailedBtnLabel: Kon nie terugkeer nie
-DirectRevertedBtnLabel: Direk teruggedraai
-EditSummary: Opsomming wysig
-EditSummaryLabel: Opsomming wysig
-EditedAt: Geredigeer om
-EditedTimeLabel: geredigeerde
-HelpTranslate: Help om te vertaal
-Judgement: oordeel
-Label-Login: Teken aan
-Label-Looks-Good: Lyk goed
-Label-Not-Sure: Nie seker nie
-Label-Should-Revert: Moet terugkeer
-Loading: laai
-LoginMenuItem: Teken aan
-LoginPrompt: >-
+Message-Login: >-
   Weet u dat u kan aanmeld en u etikette onder u naam kan bewaar? Ons ondersteun
   Login met Wikipedia-rekening via Oauth.
-LogoutMenuItem: Teken uit
-LooksGoodBtnLabel: Lyk goed
-Me: my
-NameVoteAnnouncement: >-
+Message-NameVoteAnnouncement: >-
   Geagte bydraer, ons hou 'n stemming vir nuwe naam ter vervanging van die
   "WikiLoop Battlefield" wat eindig op 13 Julie 2020 00:00 UTC. 
 
   Stem asb.
-NavBar-MenuItem-Code: kode
-NavBar-MenuItem-Issues: kwessies
-NavBar-MenuItem-Stats: statistiek
-Next-Card: Volgende kaart
-NextBtnLabel: volgende
-NotSureBtnLabel: Nie seker nie
-OpenedUrlToRevertBtnLabel: URL geopen om terug te keer
-OresBadfaith: ORES Badfaith
-OresDamging: Ertse beskadig
-Overriden: geïgnoreer
-Prompt-Login-Text: >-
+Message-Prompt-Login: >-
   Weet u dat u kan inteken en u bydraes onder u naam kan bewaar? Ons ondersteun
   login met Wikipedia-rekening via Oauth.
-Prompt-Login-Title: Teken aan
-RevertEditSummary: >-
+Message-RevertEditSummary: >-
   Word geïdentifiseer as toets/vandalisme met behulp van {0} weergawe {1}. Sien
   dit of gee u mening by {2}
-RevertNowBtnLabel: Keer nou terug
-ReviewFeed: Hersien voer
-ShouldRevertBtnLabel: Moet terugkeer
-ShowJudgements: Toon uitsprake
-Someone: iemand
-ThereIsNoEditSummary: Daar is geen wysigingsopsomming nie.
-Time: tyd
-UndoBtnLabel: ongedaan
-User: gebruiker
-Label-Snooze: Sluimer
-Button-Go: Gaan
+Message-ThereIsNoEditSummary: Daar is geen wysigingsopsomming nie.
+Label-None: Geen

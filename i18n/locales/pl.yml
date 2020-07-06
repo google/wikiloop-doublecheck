@@ -1,62 +1,61 @@
-Anonymous: Anonimowy
-Author: Autor
-ContributionsBeforeLoginMenuItem: Mój wkład przed zalogowaniem
-ContributionsMenuItem: Moje składki
-DiffNotAvailable: >-
+Button-Go: Udać się
+Button-HelpTranslate: Pomóż w tłumaczeniu
+Button-Next: Następny
+Button-OpenedUrlToRevert: Otwarty URL do odwrócenia
+Button-RevertNow: Revert now
+Button-ShowJudgements: Pokaż osądy
+Button-Undo: Cofnij
+Label-Anonymous: Anonimowy
+Label-ArtificialIntelligence: Sztuczna inteligencja
+Label-Author: Autor
+Label-DirectRevertFailed: Bezpośredni odwrót nie powiódł się
+Label-DirectReverted: Bezpośrednie cofnięcie
+Label-EditSummary: Edytuj streszczenie
+Label-EditedAt: edytowane
+Label-HumanEditors: Redaktorzy ludzcy
+Label-Judgement: Osąd
+Label-Loading: Ładowanie
+Label-Login: Zaloguj sie
+Label-Logout: Wyloguj
+Label-Looks-Good: Wygląda dobrze
+Label-LooksGood: Wygląda dobrze
+Label-Me: Ja
+Label-Not-Sure: Niepewny
+Label-NotSure: Nie jestem pewien
+Label-OresBadfaith: ORES Badfaith
+Label-OresDamaging: Uszkodzenie ORES
+Label-Overriden: Zastąpione
+Label-Prompt-Login: Zaloguj sie
+Label-ReviewFeed: Przejrzyj kanał
+Label-Should-Revert: Powinien powrócić
+Label-ShouldRevert: Powinien się odwrócić
+Label-Snooze: Drzemka
+Label-Someone: Ktoś
+Label-Time: Czas
+Label-User: Użytkownik
+MenuItem-Code: Kod
+MenuItem-Contributions: Moje składki
+MenuItem-ContributionsBeforeLogin: Mój wkład przed zalogowaniem
+MenuItem-Issues: Zagadnienia
+MenuItem-Stats: Statystyki
+Message-DiffNotAvailable: >-
   Artykuł w wikipedii diff jest chwilowo niedostępny. Możesz spróbować go
   przeładować. Czasami wandalizowana rewizja może zostać usunięta. Możesz
   sprawdzić historię strony.
-DirectRevertFailedBtnLabel: Bezpośredni odwrót nie powiódł się
-DirectRevertedBtnLabel: Bezpośrednie cofnięcie
-EditSummary: Edytuj podsumowanie
-EditSummaryLabel: Edytuj streszczenie
-EditedAt: Edytowane o
-EditedTimeLabel: edytowane
-HelpTranslate: Pomóż w tłumaczeniu
-Judgement: Osąd
-Label-Login: Zaloguj sie
-Label-Looks-Good: Wygląda dobrze
-Label-Not-Sure: Niepewny
-Label-Should-Revert: Powinien powrócić
-Loading: Ładowanie
-LoginMenuItem: Zaloguj sie
-LoginPrompt: >-
+Message-Login: >-
   Czy wiesz, że możesz się zalogować i zachować swoje etykiety pod swoim
   imieniem? Obsługujemy logowanie za pomocą konta Wikipedia za pośrednictwem
   Oauth.
-LogoutMenuItem: Wyloguj
-LooksGoodBtnLabel: Wygląda dobrze
-Me: Ja
-NameVoteAnnouncement: >-
+Message-NameVoteAnnouncement: >-
   Drogi współpracowniku, głosujemy na nową nazwę, która zastąpi „WikiLoop
   Battlefield”, która zakończy się 13 lipca 2020 r. 00:00 UTC. 
 
   Proszę Głosuj.
-NavBar-MenuItem-Code: Kod
-NavBar-MenuItem-Issues: Zagadnienia
-NavBar-MenuItem-Stats: Statystyki
-Next-Card: Następna karta
-NextBtnLabel: Następny
-NotSureBtnLabel: Nie jestem pewien
-OpenedUrlToRevertBtnLabel: Otwarty URL do odwrócenia
-OresBadfaith: ORES Badfaith
-OresDamging: Uszkodzenie ORES
-Overriden: Zastąpione
-Prompt-Login-Text: >-
+Message-Prompt-Login: >-
   Czy wiesz, że możesz się zalogować i zachować swoje wpisy pod swoim imieniem?
   Obsługujemy logowanie za pomocą konta Wikipedia za pośrednictwem Oauth.
-Prompt-Login-Title: Zaloguj sie
-RevertEditSummary: >-
+Message-RevertEditSummary: >-
   Zidentyfikowany jako test / wandalizm przy użyciu {0} wersji {1}. Zobacz to
   lub przedstaw swoją opinię na stronie {2}
-RevertNowBtnLabel: Revert now
-ReviewFeed: Przejrzyj kanał
-ShouldRevertBtnLabel: Powinien się odwrócić
-ShowJudgements: Pokaż osądy
-Someone: Ktoś
-ThereIsNoEditSummary: Brak podsumowania edycji.
-Time: Czas
-UndoBtnLabel: Cofnij
-User: Użytkownik
-Label-Snooze: Drzemka
-Button-Go: Udać się
+Message-ThereIsNoEditSummary: Brak podsumowania edycji.
+Label-None: Żaden

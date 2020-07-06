@@ -1,59 +1,58 @@
-Anonymous: Anonym
-Author: Författare
 Button-Go: Gå
-ContributionsBeforeLoginMenuItem: Mina bidrag innan inloggning
-ContributionsMenuItem: Mina bidrag
-DiffNotAvailable: >-
+Button-HelpTranslate: Hjälp med att översätta
+Button-Next: Nästa
+Button-OpenedUrlToRevert: Öppnad URL för att återgå
+Button-RevertNow: Gå tillbaka nu
+Button-ShowJudgements: Visa domar
+Button-Undo: Ångra
+Label-Anonymous: Anonym
+Label-ArtificialIntelligence: Artificiell intelligens
+Label-Author: Författare
+Label-DirectRevertFailed: Direkt återgång misslyckades
+Label-DirectReverted: Direkt tillbaka
+Label-EditSummary: Redigera sammanfattningen
+Label-EditedAt: redigerad
+Label-HumanEditors: Mänskliga redaktörer
+Label-Judgement: Dom
+Label-Loading: Läser in
+Label-Login: Logga in
+Label-Logout: Logga ut
+Label-Looks-Good: Ser bra ut
+Label-LooksGood: Ser bra ut
+Label-Me: Mig
+Label-Not-Sure: Vet inte
+Label-NotSure: Vet inte
+Label-OresBadfaith: ORES Badfaith
+Label-OresDamaging: ORES skadar
+Label-Overriden: åsido
+Label-Prompt-Login: Logga in
+Label-ReviewFeed: Granska Feed
+Label-Should-Revert: Bör återgå
+Label-ShouldRevert: Bör återgå
+Label-Snooze: Snooze
+Label-Someone: Någon
+Label-Time: Tid
+Label-User: Användare
+MenuItem-Code: Koda
+MenuItem-Contributions: Mina bidrag
+MenuItem-ContributionsBeforeLogin: Mina bidrag innan inloggning
+MenuItem-Issues: frågor
+MenuItem-Stats: stats
+Message-DiffNotAvailable: >-
   Wikipedia-artikeln diff är tillfälligt inte tillgänglig. Du kan försöka ladda
   den igen. Ibland kan en vandaliserad revision tas bort. Du kan kontrollera
   sidhistoriken.
-DirectRevertFailedBtnLabel: Direkt återgång misslyckades
-DirectRevertedBtnLabel: Direkt tillbaka
-EditSummary: Redigera sammanfattning
-EditSummaryLabel: Redigera sammanfattningen
-EditedAt: Redigerad kl
-EditedTimeLabel: redigerad
-HelpTranslate: Hjälp med att översätta
-Judgement: Dom
-Label-Login: Logga in
-Label-Looks-Good: Ser bra ut
-Label-Not-Sure: Vet inte
-Label-Should-Revert: Bör återgå
-Label-Snooze: Snooze
-Loading: Läser in
-LoginMenuItem: Logga in
-LoginPrompt: >-
+Message-Login: >-
   Vet du att du kan logga in och bevara dina etiketter under ditt namn? Vi
   stöder inloggning med Wikipedia-konto via Oauth.
-LogoutMenuItem: Logga ut
-LooksGoodBtnLabel: Ser bra ut
-Me: Mig
-NameVoteAnnouncement: >-
+Message-NameVoteAnnouncement: >-
   Kära bidragsgivare, vi röstar om ett nytt namn som ersätter "WikiLoop
   Battlefield" som slutar den 13 juli 2020 00:00 UTC. Vänligen rösta.
-NavBar-MenuItem-Code: Koda
-NavBar-MenuItem-Issues: frågor
-NavBar-MenuItem-Stats: stats
-Next-Card: Nästa kort
-NextBtnLabel: Nästa
-NotSureBtnLabel: Vet inte
-OpenedUrlToRevertBtnLabel: Öppnad URL för att återgå
-OresBadfaith: ORES Badfaith
-OresDamging: ORES skadar
-Overriden: åsido
-Prompt-Login-Text: >-
+Message-Prompt-Login: >-
   Vet du att du kan logga in och bevara dina bidrag under ditt namn? Vi stöder
   inloggning med Wikipedia-konto via Oauth.
-Prompt-Login-Title: Logga in
-RevertEditSummary: >-
+Message-RevertEditSummary: >-
   Identifieras som test / vandalism med {0} version {1}. Se det eller ge din
   åsikt på {2}
-RevertNowBtnLabel: Gå tillbaka nu
-ReviewFeed: Granska Feed
-ShouldRevertBtnLabel: Bör återgå
-ShowJudgements: Visa domar
-Someone: Någon
-ThereIsNoEditSummary: Det finns ingen redigeringsöversikt.
-Time: Tid
-UndoBtnLabel: Ångra
-User: Användare
+Message-ThereIsNoEditSummary: Det finns ingen redigeringsöversikt.
+Label-None: Ingen

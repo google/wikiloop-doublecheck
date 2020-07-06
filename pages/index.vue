@@ -13,8 +13,8 @@
                 ></RevisionCard>
         </template>
 
-      <b-modal id="modal-promote-login" title="$t('Prompt-Login-Title')">
-        {{$t('Prompt-Login-Text')}} <br/>
+      <b-modal id="modal-promote-login" title="$t('Label-Prompt-Login')">
+        {{$t('Message-Prompt-Login')}} <br/>
         <template v-slot:modal-footer="{ ok, hide }">
           <a class="btn-sm btn btn-primary" href="/auth/mediawiki/login">{{$t('Label-Login')}}</a>
           <b-button size="sm" variant="secondary" @click="snoozeTipLogin()">

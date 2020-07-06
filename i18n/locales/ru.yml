@@ -1,58 +1,57 @@
-Anonymous: Анонимный
-Author: автор
-ContributionsBeforeLoginMenuItem: Мои взносы перед входом в систему
-ContributionsMenuItem: Мои взносы
-DiffNotAvailable: Статья в Википедии отличается
-DirectRevertFailedBtnLabel: Прямой возврат не удался
-DirectRevertedBtnLabel: Прямой возврат
-EditSummary: Редактировать резюме
-EditSummaryLabel: Редактировать резюме
-EditedAt: Отредактировано в
-EditedTimeLabel: Edited
-HelpTranslate: Помогите перевести
-Judgement: решение
-Label-Login: Авторизоваться
+Button-Go: Идти
+Button-HelpTranslate: Помогите перевести
+Button-Next: Следующий
+Button-OpenedUrlToRevert: Открытый URL для возврата
+Button-RevertNow: Вернуть сейчас
+Button-ShowJudgements: Показать суждения
+Button-Undo: Отменить
+Label-Anonymous: Анонимный
+Label-ArtificialIntelligence: Искуственный интеллект
+Label-Author: автор
+Label-DirectRevertFailed: Прямой возврат не удался
+Label-DirectReverted: Прямой возврат
+Label-EditSummary: Редактировать резюме
+Label-EditedAt: Edited
+Label-HumanEditors: Человеческие редакторы
+Label-Judgement: решение
+Label-Loading: Загрузка
+Label-Login: Логин
+Label-Logout: Выход
 Label-Looks-Good: Выглядит хорошо
+Label-LooksGood: Выглядит хорошо
+Label-Me: Я
 Label-Not-Sure: Точно сказать не могу
+Label-NotSure: Не уверен
+Label-OresBadfaith: ОРЕС Бадфейт
+Label-OresDamaging: Руды Повреждения
+Label-Overriden: Переопределенный
+Label-Prompt-Login: Авторизоваться
+Label-ReviewFeed: Обзорная лента
 Label-Should-Revert: Должен вернуться
-Loading: Загрузка
-LoginMenuItem: Логин
-LoginPrompt: >-
+Label-ShouldRevert: Должен вернуться
+Label-Snooze: вздремнуть
+Label-Someone: Кто-то
+Label-Time: Время
+Label-User: пользователь
+MenuItem-Code: Код
+MenuItem-Contributions: Мои взносы
+MenuItem-ContributionsBeforeLogin: Мои взносы перед входом в систему
+MenuItem-Issues: вопросы
+MenuItem-Stats: Статистика
+Message-DiffNotAvailable: Статья в Википедии отличается
+Message-Login: >-
   Знаете ли вы, что вы можете войти и сохранить свои ярлыки под своим именем? Мы
   поддерживаем логин через Википедию через Oauth.
-LogoutMenuItem: Выход
-LooksGoodBtnLabel: Выглядит хорошо
-Me: Я
-NameVoteAnnouncement: >-
+Message-NameVoteAnnouncement: >-
   Уважаемый участник, мы проводим голосование за новое имя, заменяющее поле
   битвы WikiLoop, заканчивающееся 13 июля 2020 года в 00:00 UTC. 
 
   Пожалуйста, проголосуйте.
-NavBar-MenuItem-Code: Код
-NavBar-MenuItem-Issues: вопросы
-NavBar-MenuItem-Stats: Статистика
-Next-Card: Следующая карта
-NextBtnLabel: Следующий
-NotSureBtnLabel: Не уверен
-OpenedUrlToRevertBtnLabel: Открытый URL для возврата
-OresBadfaith: ОРЕС Бадфейт
-OresDamging: Руды Повреждения
-Overriden: Переопределенный
-Prompt-Login-Text: >-
+Message-Prompt-Login: >-
   Знаете ли вы, что вы можете войти и сохранить свои вклады под своим именем? Мы
   поддерживаем вход в аккаунт в Википедии через Oauth.
-Prompt-Login-Title: Авторизоваться
-RevertEditSummary: >-
+Message-RevertEditSummary: >-
   Идентифицировано как тест/вандализм с использованием {0} версии {1}. Смотрите
   или высказывайте своё мнение по адресу {2}
-RevertNowBtnLabel: Вернуть сейчас
-ReviewFeed: Обзорная лента
-ShouldRevertBtnLabel: Должен вернуться
-ShowJudgements: Показать суждения
-Someone: Кто-то
-ThereIsNoEditSummary: Там нет редактировать резюме.
-Time: Время
-UndoBtnLabel: Отменить
-User: пользователь
-Label-Snooze: вздремнуть
-Button-Go: Идти
+Message-ThereIsNoEditSummary: Там нет редактировать резюме.
+Label-None: Никто

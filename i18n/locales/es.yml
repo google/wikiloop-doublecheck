@@ -1,61 +1,60 @@
-Anonymous: Anónimo
-Author: Autor
-ContributionsBeforeLoginMenuItem: Mis contribuciones antes de iniciar sesión
-ContributionsMenuItem: Mis contribuciones
-DiffNotAvailable: >-
+Button-Go: Vamos
+Button-HelpTranslate: Ayuda a traducir
+Button-Next: próximo
+Button-OpenedUrlToRevert: URL abierta para revertir
+Button-RevertNow: Revertir ahora
+Button-ShowJudgements: Mostrar juicios
+Button-Undo: Deshacer
+Label-Anonymous: Anónimo
+Label-ArtificialIntelligence: Inteligencia artificial
+Label-Author: Autor
+Label-DirectRevertFailed: La reversión directa falló
+Label-DirectReverted: Directo revertido
+Label-EditSummary: Editar resumen
+Label-EditedAt: editado
+Label-HumanEditors: Editores humanos
+Label-Judgement: Juicio
+Label-Loading: Cargando
+Label-Login: Iniciar sesión
+Label-Logout: Cerrar sesión
+Label-Looks-Good: Se ve bien
+Label-LooksGood: Se ve bien
+Label-Me: Yo
+Label-Not-Sure: No estoy seguro
+Label-NotSure: No estoy seguro
+Label-OresBadfaith: ORES Badfaith
+Label-OresDamaging: ORES Daños
+Label-Overriden: Anulado
+Label-Prompt-Login: Iniciar sesión
+Label-ReviewFeed: Revisar feed
+Label-Should-Revert: Debería revertir
+Label-ShouldRevert: Debería revertir
+Label-Snooze: dormitar
+Label-Someone: Alguien
+Label-Time: Hora
+Label-User: Usuario
+MenuItem-Code: Código
+MenuItem-Contributions: Mis contribuciones
+MenuItem-ContributionsBeforeLogin: Mis contribuciones antes de iniciar sesión
+MenuItem-Issues: Cuestiones
+MenuItem-Stats: Estadísticas
+Message-DiffNotAvailable: >-
   El artículo de wikipedia diff no está disponible temporalmente. Puedes
   intentar recargarlo. A veces, una revisión destrozada podría ser eliminada.
   Puedes consultar el historial de la página.
-DirectRevertFailedBtnLabel: La reversión directa falló
-DirectRevertedBtnLabel: Directo revertido
-EditSummary: Editar resumen
-EditSummaryLabel: Editar resumen
-EditedAt: Editado en
-EditedTimeLabel: editado
-HelpTranslate: Ayuda a traducir
-Judgement: Juicio
-Label-Login: Iniciar sesión
-Label-Looks-Good: Se ve bien
-Label-Not-Sure: No estoy seguro
-Label-Should-Revert: Debería revertir
-Loading: Cargando
-LoginMenuItem: Iniciar sesión
-LoginPrompt: >-
+Message-Login: >-
   ¿Sabes que puedes iniciar sesión y conservar tus etiquetas con tu nombre?
   Apoyamos Iniciar sesión con la cuenta de Wikipedia a través de Oauth.
-LogoutMenuItem: Cerrar sesión
-LooksGoodBtnLabel: Se ve bien
-Me: Yo
-NameVoteAnnouncement: >-
+Message-NameVoteAnnouncement: >-
   Estimado colaborador, estamos celebrando una votación para el nuevo nombre que
   reemplaza el "WikiLoop Battlefield" que finaliza el 13 de julio de 2020 a las
   00:00 UTC. Por favor vota.
-NavBar-MenuItem-Code: Código
-NavBar-MenuItem-Issues: Cuestiones
-NavBar-MenuItem-Stats: Estadísticas
-Next-Card: Siguiente carta
-NextBtnLabel: próximo
-NotSureBtnLabel: No estoy seguro
-OpenedUrlToRevertBtnLabel: URL abierta para revertir
-OresBadfaith: ORES Badfaith
-OresDamging: ORES Daños
-Overriden: Anulado
-Prompt-Login-Text: >-
+Message-Prompt-Login: >-
   ¿Sabes que puedes iniciar sesión y preservar tus contribuciones bajo tu
   nombre? Apoyamos el inicio de sesión con la cuenta de Wikipedia a través de
   Oauth.
-Prompt-Login-Title: Iniciar sesión
-RevertEditSummary: >-
+Message-RevertEditSummary: >-
   Identificado como prueba / vandalismo usando {0} versión {1}. Véalo o dé su
   opinión en {2}
-RevertNowBtnLabel: Revertir ahora
-ReviewFeed: Revisar feed
-ShouldRevertBtnLabel: Debería revertir
-ShowJudgements: Mostrar juicios
-Someone: Alguien
-ThereIsNoEditSummary: No hay resumen de edición.
-Time: Hora
-UndoBtnLabel: Deshacer
-User: Usuario
-Label-Snooze: dormitar
-Button-Go: Vamos
+Message-ThereIsNoEditSummary: No hay resumen de edición.
+Label-None: Ninguna

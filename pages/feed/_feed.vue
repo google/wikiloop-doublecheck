@@ -1,6 +1,6 @@
 <template>
     <section>
-        <h1 v-if="feedName"> {{$t('ReviewFeed')}}<sup class="text-warning">β</sup> {{feedName}} </h1>
+        <h1 v-if="feedName"> {{$t('Label-ReviewFeed')}}<sup class="text-warning">β</sup> {{feedName}} </h1>
         <template v-if="!loading">
           <div v-if="currentRevisionPanelItem" class="card shadow h-100">
             <RevisionPanel
@@ -20,7 +20,7 @@
             <template v-if="currentWikiRevId">
               <button class="btn btn-outline-primary"
                 v-if="!showJudgementPanel"
-                @click="showJudgementPanel = !showJudgementPanel">{{$t('ShowJudgements')}}</button>
+                @click="showJudgementPanel = !showJudgementPanel">{{$t('Button-ShowJudgements')}}</button>
               <JudgementPanel v-else="showJudgementPanel" ref="judgementPanel" class="card-body" :wikiRevId="currentWikiRevId" />
             </template>
           </div>
@@ -31,7 +31,7 @@
                 <h5 m-5>Feed <div class="badge badge-success">{{currentFeedItem.feed}}</div> has no new Revisions,
                   click next below.</h5>
                 <button @click="showNext()" class="m-5 btn btn-outline-success">
-                  {{$t(`NextBtnLabel`)}}(→)
+                  {{$t(`Button-Next`)}}(→)
                 </button>
               </div>
             </div>
@@ -49,7 +49,7 @@
         </template>
 
         <b-modal id="modal-promote-login" title="Tip: Login">
-            {{$t('LoginPrompt')}}<br/>
+            {{$t('Message-Login')}}<br/>
             <template v-slot:modal-footer="{ ok, hide }">
                 <a class="btn-sm btn btn-primary" href="/auth/mediawiki/login">{{$t("Label-Login")}}</a>
                 <b-button size="sm" variant="secondary" @click="snoozeTipLogin()">

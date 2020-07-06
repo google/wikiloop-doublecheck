@@ -1,65 +1,64 @@
-Anonymous: Anonym
-Author: Autor
-ContributionsBeforeLoginMenuItem: Meine Beiträge vor dem Login
-ContributionsMenuItem: Beiträge
-DiffNotAvailable: |-
+Button-Go: Gehen
+Button-HelpTranslate: Hilfe beim Übersetzen
+Button-Next: Nächste
+Button-OpenedUrlToRevert: Geöffnete URL zum Zurücksetzen
+Button-RevertNow: Jetzt zurücksetzen
+Button-ShowJudgements: Urteile zeigen
+Button-Undo: Rückgängig machen
+Label-Anonymous: Anonym
+Label-ArtificialIntelligence: Künstliche Intelligenz
+Label-Author: Autor
+Label-DirectRevertFailed: Direktes Zurücksetzen fehlgeschlagen
+Label-DirectReverted: Direkt zurückgesetzt
+Label-EditSummary: Zusammenfassung bearbeiten
+Label-EditedAt: Bearbeitet
+Label-HumanEditors: Menschliche Redakteure
+Label-Judgement: Beurteilung
+Label-Loading: Beladung
+Label-Login: Anmelden
+Label-Logout: Abmelden
+Label-Looks-Good: Sieht gut aus
+Label-LooksGood: Sieht gut aus
+Label-Me: Ich
+Label-Not-Sure: Nicht sicher
+Label-NotSure: Nicht sicher
+Label-OresBadfaith: ORES Badfaith
+Label-OresDamaging: Erze beschädigen
+Label-Overriden: Überschrieben
+Label-Prompt-Login: Anmeldung
+Label-ReviewFeed: Feed überprüfen
+Label-Should-Revert: Sollte zurückkehren
+Label-ShouldRevert: Sollte zurücksetzen
+Label-Snooze: Schlummer
+Label-Someone: Jemand
+Label-Time: Zeit
+Label-User: Benutzer
+MenuItem-Code: Code
+MenuItem-Contributions: Beiträge
+MenuItem-ContributionsBeforeLogin: Meine Beiträge vor dem Login
+MenuItem-Issues: Probleme
+MenuItem-Stats: Statistiken
+Message-DiffNotAvailable: |-
   Der Wikipedia-Artikel diff ist vorübergehend nicht verfügbar. 
   Sie können versuchen, es neu zu laden. 
   Manchmal konnte eine zerstörte Revision gelöscht werden. 
   Sie können den Seitenverlauf überprüfen.
-DirectRevertFailedBtnLabel: Direktes Zurücksetzen fehlgeschlagen
-DirectRevertedBtnLabel: Direkt zurückgesetzt
-EditSummary: Zusammenfassung bearbeiten
-EditSummaryLabel: Zusammenfassung bearbeiten
-EditedAt: Bearbeitet bei
-EditedTimeLabel: Bearbeitet
-HelpTranslate: Hilfe beim Übersetzen
-Judgement: Beurteilung
-Label-Login: Anmeldung
-Label-Looks-Good: Sieht gut aus
-Label-Not-Sure: Nicht sicher
-Label-Should-Revert: Sollte zurückkehren
-Loading: Beladung
-LoginMenuItem: Anmelden
-LoginPrompt: >-
+Message-Login: >-
   Wissen Sie, dass Sie sich anmelden und Ihre Etiketten unter Ihrem Namen
   aufbewahren können? Wir unterstützen die Anmeldung mit Wikipedia-Konto über
   Oauth.
-LogoutMenuItem: Abmelden
-LooksGoodBtnLabel: Sieht gut aus
-Me: Ich
-NameVoteAnnouncement: >-
+Message-NameVoteAnnouncement: >-
   Sehr geehrter Mitwirkender, wir halten eine Abstimmung für einen neuen Namen
   ab, der das "WikiLoop Battlefield" ersetzt und am 13. Juli 2020 um 00:00 UTC
   endet. 
 
   Bitte abstimmen.
-NavBar-MenuItem-Code: Code
-NavBar-MenuItem-Issues: Probleme
-NavBar-MenuItem-Stats: Statistiken
-Next-Card: Nächste Karte
-NextBtnLabel: Nächste
-NotSureBtnLabel: Nicht sicher
-OpenedUrlToRevertBtnLabel: Geöffnete URL zum Zurücksetzen
-OresBadfaith: ORES Badfaith
-OresDamging: Erze beschädigen
-Overriden: Überschrieben
-Prompt-Login-Text: >-
+Message-Prompt-Login: >-
   Wissen Sie, dass Sie sich anmelden und Ihre Beiträge unter Ihrem Namen
   aufbewahren können? Wir unterstützen die Anmeldung mit einem Wikipedia-Konto
   über Oauth.
-Prompt-Login-Title: Anmeldung
-RevertEditSummary: |-
+Message-RevertEditSummary: |-
   Mit {0} Version {1} als Test / Vandalismus identifiziert. 
   Sehen Sie es sich an oder geben Sie Ihre Meinung unter {2} ab
-RevertNowBtnLabel: Jetzt zurücksetzen
-ReviewFeed: Feed überprüfen
-ShouldRevertBtnLabel: Sollte zurücksetzen
-ShowJudgements: Urteile zeigen
-Someone: Jemand
-ThereIsNoEditSummary: Es gibt keine Bearbeitungszusammenfassung.
-Time: Zeit
-UndoBtnLabel: Rückgängig machen
-User: Benutzer
-Label-Snooze: Schlummer
-Button-Go: Gehen
+Message-ThereIsNoEditSummary: Es gibt keine Bearbeitungszusammenfassung.
+Label-None: Keiner

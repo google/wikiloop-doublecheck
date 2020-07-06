@@ -1,62 +1,61 @@
-Anonymous: בעילום שם
-Author: מְחַבֵּר
-ContributionsBeforeLoginMenuItem: התרומות שלי לפני הכניסה
-ContributionsMenuItem: התרומות שלי
-DiffNotAvailable: |-
+Button-Go: ללכת
+Button-HelpTranslate: עזרה בתרגום
+Button-Next: הַבָּא
+Button-OpenedUrlToRevert: כתובת אתר נפתחה להחזרה
+Button-RevertNow: חזור עכשיו
+Button-ShowJudgements: הראו פסקי דין
+Button-Undo: לבטל
+Label-Anonymous: בעילום שם
+Label-ArtificialIntelligence: בינה מלאכותית
+Label-Author: מְחַבֵּר
+Label-DirectRevertFailed: הפעלה ישירה נכשלה
+Label-DirectReverted: ישירות הושבה
+Label-EditSummary: ערוך סיכום
+Label-EditedAt: עָרוּך
+Label-HumanEditors: עורכים אנושיים
+Label-Judgement: פְּסַק דִין
+Label-Loading: טעינה
+Label-Login: התחברות
+Label-Logout: להתנתק
+Label-Looks-Good: נראה טוב
+Label-LooksGood: נראה טוב
+Label-Me: לִי
+Label-Not-Sure: לא בטוח
+Label-NotSure: לא בטוח
+Label-OresBadfaith: אורס בדפית '
+Label-OresDamaging: אורס פוגע
+Label-Overriden: עקף
+Label-Prompt-Login: התחברות
+Label-ReviewFeed: סקור עדכון
+Label-Should-Revert: צריך לחזור
+Label-ShouldRevert: צריך לחזור
+Label-Snooze: נִמנוּם
+Label-Someone: מִישֶׁהוּ
+Label-Time: זְמַן
+Label-User: מִשׁתַמֵשׁ
+MenuItem-Code: קוד
+MenuItem-Contributions: התרומות שלי
+MenuItem-ContributionsBeforeLogin: התרומות שלי לפני הכניסה
+MenuItem-Issues: נושאים
+MenuItem-Stats: נתונים סטטיסטיים
+Message-DiffNotAvailable: |-
   המאמר של הוויקיפדיה אינו זמין באופן זמני. 
   אתה יכול לנסות לטעון אותו מחדש. 
   לפעמים ניתן למחוק עדכון מושחת. 
   אתה יכול לבדוק את היסטוריית הדפים.
-DirectRevertFailedBtnLabel: הפעלה ישירה נכשלה
-DirectRevertedBtnLabel: ישירות הושבה
-EditSummary: ערוך סיכום
-EditSummaryLabel: ערוך סיכום
-EditedAt: נערך בשעה
-EditedTimeLabel: עָרוּך
-HelpTranslate: עזרה בתרגום
-Judgement: פְּסַק דִין
-Label-Login: התחברות
-Label-Looks-Good: נראה טוב
-Label-Not-Sure: לא בטוח
-Label-Should-Revert: צריך לחזור
-Loading: טעינה
-LoginMenuItem: התחברות
-LoginPrompt: >-
+Message-Login: >-
   האם אתה יודע שתוכל להתחבר ולשמור את התוויות שלך תחת שמך? אנו תומכים בכניסה
   לחשבון ויקיפדיה דרך Oauth.
-LogoutMenuItem: להתנתק
-LooksGoodBtnLabel: נראה טוב
-Me: לִי
-NameVoteAnnouncement: >-
+Message-NameVoteAnnouncement: >-
   תורם יקר, אנו מקיימים הצבעה על שם חדש המחליף את "שדה הקרב WikiLoop" המסתיים ב
   -13 ביולי, 2020 00:00 UTC. 
 
   אנא הצבע.
-NavBar-MenuItem-Code: קוד
-NavBar-MenuItem-Issues: נושאים
-NavBar-MenuItem-Stats: נתונים סטטיסטיים
-Next-Card: הכרטיס הבא
-NextBtnLabel: הַבָּא
-NotSureBtnLabel: לא בטוח
-OpenedUrlToRevertBtnLabel: כתובת אתר נפתחה להחזרה
-OresBadfaith: אורס בדפית '
-OresDamging: אורס פוגע
-Overriden: עקף
-Prompt-Login-Text: >-
+Message-Prompt-Login: >-
   האם אתה יודע שתוכל להתחבר ולשמור את התרומות שלך תחת שמך? אנו תומכים בכניסה
   לחשבון ויקיפדיה דרך Oauth.
-Prompt-Login-Title: התחברות
-RevertEditSummary: |-
+Message-RevertEditSummary: |-
   זוהה כמבחן / השחתה באמצעות {0} גרסה {1}. 
   ראה אותו או ספק את דעתך ב {2}
-RevertNowBtnLabel: חזור עכשיו
-ReviewFeed: סקור עדכון
-ShouldRevertBtnLabel: צריך לחזור
-ShowJudgements: הראו פסקי דין
-Someone: מִישֶׁהוּ
-ThereIsNoEditSummary: אין סיכום עריכה.
-Time: זְמַן
-UndoBtnLabel: לבטל
-User: מִשׁתַמֵשׁ
-Label-Snooze: נִמנוּם
-Button-Go: ללכת
+Message-ThereIsNoEditSummary: אין סיכום עריכה.
+Label-None: אף אחד

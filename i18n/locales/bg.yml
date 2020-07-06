@@ -1,59 +1,58 @@
-Anonymous: анонимен
-Author: автор
-ContributionsBeforeLoginMenuItem: Моите вноски преди влизане
-ContributionsMenuItem: Моите приноси
-DiffNotAvailable: >-
+Button-Go: Отивам
+Button-HelpTranslate: Помогнете при превода
+Button-Next: Следващия
+Button-OpenedUrlToRevert: Отворен URL адрес за възстановяване
+Button-RevertNow: Върнете се сега
+Button-ShowJudgements: Показвайте преценки
+Button-Undo: Undo
+Label-Anonymous: анонимен
+Label-ArtificialIntelligence: Изкуствен интелект
+Label-Author: автор
+Label-DirectRevertFailed: Директното възстановяване не бе успешно
+Label-DirectReverted: Директно върнат
+Label-EditSummary: Редактиране на обобщение
+Label-EditedAt: редактирана
+Label-HumanEditors: Човешки редактори
+Label-Judgement: преценка
+Label-Loading: Зареждане
+Label-Login: Влизам
+Label-Logout: Излез от профила си
+Label-Looks-Good: Изглежда добре
+Label-LooksGood: Изглежда добре
+Label-Me: мен
+Label-Not-Sure: Не съм сигурен
+Label-NotSure: Не съм сигурен
+Label-OresBadfaith: ORES Badfaith
+Label-OresDamaging: ORES Увреждане
+Label-Overriden: Заменена
+Label-Prompt-Login: Влизам
+Label-ReviewFeed: Преглед на емисията
+Label-Should-Revert: Трябва да се върне
+Label-ShouldRevert: Трябва да се върне
+Label-Snooze: дрямка
+Label-Someone: Някой
+Label-Time: път
+Label-User: потребител
+MenuItem-Code: код
+MenuItem-Contributions: Моите приноси
+MenuItem-ContributionsBeforeLogin: Моите вноски преди влизане
+MenuItem-Issues: въпроси
+MenuItem-Stats: Статистика
+Message-DiffNotAvailable: >-
   Статията на уикипедията различно временно не е налична. Можете да опитате да
   го презаредите. Понякога вандализирана версия може да бъде изтрита. Можете да
   проверите историята на страниците.
-DirectRevertFailedBtnLabel: Директното възстановяване не бе успешно
-DirectRevertedBtnLabel: Директно върнат
-EditSummary: Редактиране на обобщението
-EditSummaryLabel: Редактиране на обобщение
-EditedAt: Редактирано в
-EditedTimeLabel: редактирана
-HelpTranslate: Помогнете при превода
-Judgement: преценка
-Label-Login: Влизам
-Label-Looks-Good: Изглежда добре
-Label-Not-Sure: Не съм сигурен
-Label-Should-Revert: Трябва да се върне
-Loading: Зареждане
-LoginMenuItem: Влизам
-LoginPrompt: >-
+Message-Login: >-
   Знаете ли, че бихте могли да влезете и да запазите етикетите си под вашето
   име? Поддържаме влизане с акаунт в Wikipedia чрез Oauth.
-LogoutMenuItem: Излез от профила си
-LooksGoodBtnLabel: Изглежда добре
-Me: мен
-NameVoteAnnouncement: >-
+Message-NameVoteAnnouncement: >-
   Уважаеми сътрудници, провеждаме гласуване за ново име, заместващо „WikiLoop
   Battlefield“, завършващо на 13 юли 2020 г. 00:00 UTC. Моля, гласувайте.
-NavBar-MenuItem-Code: код
-NavBar-MenuItem-Issues: въпроси
-NavBar-MenuItem-Stats: Статистика
-Next-Card: Следваща карта
-NextBtnLabel: Следващия
-NotSureBtnLabel: Не съм сигурен
-OpenedUrlToRevertBtnLabel: Отворен URL адрес за възстановяване
-OresBadfaith: ORES Badfaith
-OresDamging: ORES Увреждане
-Overriden: Заменена
-Prompt-Login-Text: >-
+Message-Prompt-Login: >-
   Знаете ли, че бихте могли да влезете и да запазите своите вноски под вашето
   име? Поддържаме влизане с акаунт в Wikipedia чрез Oauth.
-Prompt-Login-Title: Влизам
-RevertEditSummary: >-
+Message-RevertEditSummary: >-
   Идентифициран като тест / вандализъм с помощта на {0} версия {1}. Вижте го или
   дайте мнението си на {2}
-RevertNowBtnLabel: Върнете се сега
-ReviewFeed: Преглед на емисията
-ShouldRevertBtnLabel: Трябва да се върне
-ShowJudgements: Показвайте преценки
-Someone: Някой
-ThereIsNoEditSummary: Няма резюме за редактиране.
-Time: път
-UndoBtnLabel: Undo
-User: потребител
-Label-Snooze: дрямка
-Button-Go: Отивам
+Message-ThereIsNoEditSummary: Няма резюме за редактиране.
+Label-None: Нито един

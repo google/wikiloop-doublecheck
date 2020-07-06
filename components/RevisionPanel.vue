@@ -32,10 +32,10 @@
       <div class="card-subtitle mb-2 text-muted">
         <div class="row">
           <div class="col-sm">
-            <span class="nobreak"><b>{{$t('EditedAt')}}:</b> <timeago :datetime="timeString" :auto-update="60" :locale="$i18n.locale"></timeago></span>
+            <span class="nobreak"><b>{{$t('Label-EditedAt')}}:</b> <timeago :datetime="timeString" :auto-update="60" :locale="$i18n.locale"></timeago></span>
           </div>
           <div class="col-sm">
-            <span class="nobreak"><b>{{$t('Author')}}:</b> <a v-bind:href="authorUrl" target="_blank">{{ item.author }}</a></span>
+            <span class="nobreak"><b>{{$t('Label-Author')}}:</b> <a v-bind:href="authorUrl" target="_blank">{{ item.author }}</a></span>
           </div>
         </div>
       </div>
@@ -46,7 +46,7 @@
           <diff-box v-bind:diffContent="item.diffHtml"/>
         </template>
         <template v-else>
-        <h5>{{$t(`DiffNotAvailable`)}}
+        <h5>{{$t(`Message-DiffNotAvailable`)}}
           <div v-on:click="loadDiff()" class="btn btn-outline-primary btn-small"><i class="fas fa-redo"></i></div>
           <a v-if="item" class="btn btn-outline-primary" :href="revertUrl" target="_blank"><i class="fas fa-external-link-alt"></i></a>
         </h5>

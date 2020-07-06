@@ -1,61 +1,60 @@
-Anonymous: Anonim
-Author: Yazar
-ContributionsBeforeLoginMenuItem: Giriş yapmadan önce yaptığım katkılar
-ContributionsMenuItem: Katkılar
-DiffNotAvailable: >-
+Button-Go: Git
+Button-HelpTranslate: Çeviriye yardım et
+Button-Next: Sonraki
+Button-OpenedUrlToRevert: Geri dönmek için açılan URL
+Button-RevertNow: Şimdi geri dön
+Button-ShowJudgements: Kararları göster
+Button-Undo: Geri alma
+Label-Anonymous: Anonim
+Label-ArtificialIntelligence: Yapay zeka
+Label-Author: Yazar
+Label-DirectRevertFailed: Doğrudan geri alma başarısız
+Label-DirectReverted: Doğrudan geri döndürüldü
+Label-EditSummary: Özeti Düzenle
+Label-EditedAt: düzenlendi
+Label-HumanEditors: İnsan editörleri
+Label-Judgement: yargı
+Label-Loading: Yükleniyor
+Label-Login: Giriş
+Label-Logout: Çıkış
+Label-Looks-Good: İyi görünüyor
+Label-LooksGood: İyi Görünüyor
+Label-Me: Ben
+Label-Not-Sure: Emin değil
+Label-NotSure: Emin Değilim
+Label-OresBadfaith: ORES Badfaith
+Label-OresDamaging: ORES Hasar
+Label-Overriden: Geçersiz kılınan
+Label-Prompt-Login: Oturum aç
+Label-ReviewFeed: Özet Akışı
+Label-Should-Revert: Geri Dönmeli
+Label-ShouldRevert: Eski Haline Dönmeli
+Label-Snooze: Uyuklama
+Label-Someone: Birisi
+Label-Time: Zaman
+Label-User: kullanıcı
+MenuItem-Code: kod
+MenuItem-Contributions: Katkılar
+MenuItem-ContributionsBeforeLogin: Giriş yapmadan önce yaptığım katkılar
+MenuItem-Issues: Sorunlar
+MenuItem-Stats: İstatistikleri
+Message-DiffNotAvailable: >-
   The wikipedia article diff is temporarily not available. You can try to reload
   it. Sometimes a vandalized revision could be deleted. You can check the page
   history.
-DirectRevertFailedBtnLabel: Doğrudan geri alma başarısız
-DirectRevertedBtnLabel: Doğrudan geri döndürüldü
-EditSummary: Özeti Düzenle
-EditSummaryLabel: Özeti Düzenle
-EditedAt: Düzenlendi
-EditedTimeLabel: düzenlendi
-HelpTranslate: Çeviriye yardım et
-Judgement: yargı
-Label-Login: Oturum aç
-Label-Looks-Good: İyi görünüyor
-Label-Not-Sure: Emin değil
-Label-Should-Revert: Geri Dönmeli
-Loading: Yükleniyor
-LoginMenuItem: Giriş
-LoginPrompt: >-
+Message-Login: >-
   Etiketlerinizi adınız altında girip koruyabileceğinizi biliyor musunuz? Oauth
   aracılığıyla Wikipedia hesabıyla giriş yapmayı destekliyoruz.
-LogoutMenuItem: Çıkış
-LooksGoodBtnLabel: İyi Görünüyor
-Me: Ben
-NameVoteAnnouncement: >-
+Message-NameVoteAnnouncement: >-
   Sayın katılımcı, 13 Temmuz 2020 00:00 UTC ile biten "WikiLoop Battlefield"
   yerine yeni bir isim vermek için oy kullanıyoruz. 
 
   Lütfen oy verin.
-NavBar-MenuItem-Code: kod
-NavBar-MenuItem-Issues: Sorunlar
-NavBar-MenuItem-Stats: İstatistikleri
-Next-Card: Sonraki Kart
-NextBtnLabel: Sonraki
-NotSureBtnLabel: Emin Değilim
-OpenedUrlToRevertBtnLabel: Geri dönmek için açılan URL
-OresBadfaith: ORES Badfaith
-OresDamging: ORES Hasar
-Overriden: Geçersiz kılınan
-Prompt-Login-Text: >-
+Message-Prompt-Login: >-
   Giriş yapabilir ve katkılarınızı adınız altında koruyabileceğinizi biliyor
   musunuz? Oauth aracılığıyla Wikipedia hesabıyla giriş yapmayı destekliyoruz.
-Prompt-Login-Title: Oturum aç
-RevertEditSummary: |-
+Message-RevertEditSummary: |-
   {0} {1} sürümü kullanılarak test / vandalizm olarak tanımlandı. 
   {2} adresinde görün veya görüşünüzü belirtin
-RevertNowBtnLabel: Şimdi geri dön
-ReviewFeed: Özet Akışı
-ShouldRevertBtnLabel: Eski Haline Dönmeli
-ShowJudgements: Kararları göster
-Someone: Birisi
-ThereIsNoEditSummary: Düzenleme özeti yok.
-Time: Zaman
-UndoBtnLabel: Geri alma
-User: kullanıcı
-Label-Snooze: Uyuklama
-Button-Go: Git
+Message-ThereIsNoEditSummary: Düzenleme özeti yok.
+Label-None: Yok

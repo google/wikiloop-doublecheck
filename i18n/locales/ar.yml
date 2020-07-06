@@ -1,58 +1,57 @@
-Anonymous: مجهول
-Author: مؤلف
 Button-Go: اذهب
-ContributionsBeforeLoginMenuItem: مساهماتي قبل تسجيل الدخول
-ContributionsMenuItem: مساهماتي
-DiffNotAvailable: >-
+Button-HelpTranslate: ساعد في الترجمة
+Button-Next: التالى
+Button-OpenedUrlToRevert: تم فتح عنوان URL للعودة
+Button-RevertNow: العودة الآن
+Button-ShowJudgements: أظهر الأحكام
+Button-Undo: الغاء التحميل
+Label-Anonymous: مجهول
+Label-ArtificialIntelligence: الذكاء الاصطناعي
+Label-Author: مؤلف
+Label-DirectRevertFailed: فشل التراجع المباشر
+Label-DirectReverted: عادت مباشرة
+Label-EditSummary: تحرير الملخص
+Label-EditedAt: تم تحريره
+Label-HumanEditors: المحررين البشريين
+Label-Judgement: حكم
+Label-Loading: جار التحميل
+Label-Login: تسجيل الدخول
+Label-Logout: تسجيل خروج
+Label-Looks-Good: تبدو جيدا
+Label-LooksGood: تبدو جيدا
+Label-Me: أنا
+Label-Not-Sure: غير متأكد
+Label-NotSure: غير متأكد
+Label-OresBadfaith: ORES بادفيث
+Label-OresDamaging: تلف ORES
+Label-Overriden: تم تجاوزه
+Label-Prompt-Login: تسجيل الدخول
+Label-ReviewFeed: مراجعة الخلاصة
+Label-Should-Revert: يجب العودة
+Label-ShouldRevert: يجب العودة
+Label-Snooze: غفوة
+Label-Someone: شخصا ما
+Label-Time: زمن
+Label-User: المستعمل
+MenuItem-Code: الشفرة
+MenuItem-Contributions: مساهماتي
+MenuItem-ContributionsBeforeLogin: مساهماتي قبل تسجيل الدخول
+MenuItem-Issues: مسائل
+MenuItem-Stats: الإحصائيات
+Message-DiffNotAvailable: >-
   مقال ويكيبيديا غير متاح مؤقتًا. يمكنك محاولة إعادة تحميله. في بعض الأحيان يمكن
   حذف مراجعة مخربة. يمكنك التحقق من تاريخ الصفحة.
-DirectRevertFailedBtnLabel: فشل التراجع المباشر
-DirectRevertedBtnLabel: عادت مباشرة
-EditSummary: تحرير الملخص
-EditSummaryLabel: تحرير الملخص
-EditedAt: تم التحرير في
-EditedTimeLabel: تم تحريره
-HelpTranslate: ساعد في الترجمة
-Judgement: حكم
-Label-Login: تسجيل الدخول
-Label-Looks-Good: تبدو جيدا
-Label-Not-Sure: غير متأكد
-Label-Should-Revert: يجب العودة
-Label-Snooze: غفوة
-Loading: جار التحميل
-LoginMenuItem: تسجيل الدخول
-LoginPrompt: >-
+Message-Login: >-
   هل تعلم أنه يمكنك تسجيل الدخول والحفاظ على التسميات الخاصة بك تحت اسمك؟ نحن
   ندعم تسجيل الدخول باستخدام حساب Wikipedia من خلال Oauth.
-LogoutMenuItem: تسجيل خروج
-LooksGoodBtnLabel: تبدو جيدا
-Me: أنا
-NameVoteAnnouncement: >-
+Message-NameVoteAnnouncement: >-
   عزيزي المساهم ، سنجري تصويتًا على اسم جديد يحل محل "WikiLoop Battlefield"
   ينتهي في 13 يوليو 2020 الساعة 00:00 بالتوقيت العالمي المنسق. الرجاء التصويت.
-NavBar-MenuItem-Code: الشفرة
-NavBar-MenuItem-Issues: مسائل
-NavBar-MenuItem-Stats: الإحصائيات
-Next-Card: البطاقة التالية
-NextBtnLabel: التالى
-NotSureBtnLabel: غير متأكد
-OpenedUrlToRevertBtnLabel: تم فتح عنوان URL للعودة
-OresBadfaith: ORES بادفيث
-OresDamging: تلف ORES
-Overriden: تم تجاوزه
-Prompt-Login-Text: >-
+Message-Prompt-Login: >-
   هل تعلم أنه يمكنك تسجيل الدخول والحفاظ على مساهماتك تحت اسمك؟ نحن ندعم تسجيل
   الدخول باستخدام حساب Wikipedia من خلال Oauth.
-Prompt-Login-Title: تسجيل الدخول
-RevertEditSummary: >-
+Message-RevertEditSummary: >-
   تم تحديده على أنه اختبار / تخريب باستخدام {0} الإصدار {1}. شاهده أو قدم رأيك
   في {2}
-RevertNowBtnLabel: العودة الآن
-ReviewFeed: مراجعة الخلاصة
-ShouldRevertBtnLabel: يجب العودة
-ShowJudgements: أظهر الأحكام
-Someone: شخصا ما
-ThereIsNoEditSummary: لا يوجد ملخص تحرير.
-Time: زمن
-UndoBtnLabel: الغاء التحميل
-User: المستعمل
+Message-ThereIsNoEditSummary: لا يوجد ملخص تحرير.
+Label-None: لا يوجد

@@ -65,7 +65,7 @@ between Client-Side-Rendering and Server-Side-Rendering -->
         </div>
         <div v-if="revision" class="card-subtitle mb-2 text-muted">
           <div class="row p-2">
-            <div class="col-12"><b>{{$t('EditSummaryLabel')}}:</b>
+            <div class="col-12"><b>{{$t('Label-EditSummary')}}:</b>
               <span>{{revision.comment || "(empty)}"}}</span>
             </div>
           </div>
@@ -73,7 +73,7 @@ between Client-Side-Rendering and Server-Side-Rendering -->
         <div class="card-text w-100 pl-sm-0">
           <diff-box v-if="diff && diff.compare && diff.compare['*']" v-bind:diffContent="diff.compare['*']"/>
           <!-- TODO(xinbenlv) update the following text for for i18n -->
-          <h5 v-else>{{$t(`DiffNotAvailable`)}}
+          <h5 v-else>{{$t(`Message-DiffNotAvailable`)}}
             <div v-on:click="loadDiff()" class="btn btn-outline-primary btn-small"><i class="fas fa-redo"></i></div>
             <!--TODO(zzn): v-if="revision.revision" might not be available, handle those cases better. -->
             <a v-if="revision.revision" class="btn btn-outline-primary" :href="`${getUrlBaseByWiki(revision.wiki)}/w/index.php?title=${revision.title}&diff=${revision.revision.old}&oldid=${revision.revision.new}&diffmode=source`" target="_blank"><i class="fas fa-external-link-alt"></i></a>
@@ -86,31 +86,31 @@ between Client-Side-Rendering and Server-Side-Rendering -->
               v-on:click="interactionBtn(`LooksGood`)"
               class="btn btn-sm"
               v-bind:class="{ 'btn-success':getMyJudgement() ===`LooksGood`, 'btn-outline-success': getMyJudgement() !==`LooksGood` }"
-            >{{$t(`LooksGoodBtnLabel`)}}
+            >{{$t(`Label-LooksGood`)}}
             </button>
             <button
               v-on:click="interactionBtn(`NotSure`)"
               v-bind:class="{ 'btn-secondary':getMyJudgement() ===`NotSure`, 'btn-outline-secondary':getMyJudgement() !==`NotSure` }"
               class="btn btn-sm"
-            >{{$t(`NotSureBtnLabel`)}}
+            >{{$t(`Label-NotSure`)}}
             </button>
             <button
               v-on:click="interactionBtn(`ShouldRevert`)"
               v-bind:class="{ 'btn-danger':getMyJudgement() ===`ShouldRevert`, 'btn-outline-danger':getMyJudgement() !== `ShouldRevert` }"
               class="btn btn-sm" target="_blank"
-            >{{$t(`ShouldRevertBtnLabel`)}}
+            >{{$t(`Label-ShouldRevert`)}}
             </button>
             <transition name="fade">
               <template v-if="enableRevertRedirect()">
                 <button v-if="$store.state.flags.useDirectRevert && $store.state.user && $store.state.user.profile"
                         v-on:click="directRevert()"
                         class="btn btn-outline-primary">
-                  <i class="fas fa-broom"></i> {{$t(`RevertNowBtnLabel`)}}
+                  <i class="fas fa-broom"></i> {{$t(`Button-RevertNow`)}}
                 </button>
                 <button v-else
                         v-on:click="redirectToRevert()"
                         class="btn btn-outline-primary">
-                  <i class="fas fa-broom"></i> {{$t(`RevertNowBtnLabel`)}}
+                  <i class="fas fa-broom"></i> {{$t(`Button-RevertNow`)}}
                 </button>
               </template>
             </transition>
@@ -120,7 +120,7 @@ between Client-Side-Rendering and Server-Side-Rendering -->
               v-on:click="$emit(`next-card`)"
               v-if="myJudgement"
               class="btn btn-outline-primary"
-            ><i class="fas fa-arrow-right"></i> {{$t(`NextBtnLabel`)}}
+            ><i class="fas fa-arrow-right"></i> {{$t(`Button-Next`)}}
             </button>
           </div>
         </div>
@@ -128,24 +128,24 @@ between Client-Side-Rendering and Server-Side-Rendering -->
           <table class="b-table table mt-2 w-100">
             <tbody>
             <tr class="row">
-              <td class="col-4">User</td>
-              <td class="col-4">Label</td>
-              <td class="col-4">Time</td>
+              <td class="col-4">{{$t('Label-User')}}</td>
+              <td class="col-4">{{$t('Label-Judgement')}}</td>
+              <td class="col-4">{{$t('Label-Time')}}</td>
             </tr>
             <tr class="row" v-for="judgement of interaction.judgements">
               <td class="col-4">
                 <router-link v-if="judgement.wikiUserName" :to="`/marked/?wikiUserName=${judgement.wikiUserName}`" replace>
                   <object class="avatar-object" v-bind:data="`/api/avatar/${judgement.wikiUserName}`" ></object>
-                  <span v-if="isMine(judgement)">{{$t("Me")}} ({{judgement.wikiUserName}})</span>
+                  <span v-if="isMine(judgement)">{{$t("Label-Me")}} ({{judgement.wikiUserName}})</span>
                   <span v-else>{{judgement.wikiUserName || $t("SomeoneAnonymous")}}</span>
                 </router-link>
                 <router-link v-else :to="`/marked/?userGaId=${judgement.userGaId}`" replace>
                   <object class="avatar-object" v-bind:data="`/api/avatar/${judgement.userGaId}`" ></object>
-                  <span v-if="$cookiez.get('_ga') === judgement.userGaId ">{{$t("Me")}}</span>
-                  <span v-else>{{$t("Someone")}}</span>
+                  <span v-if="$cookiez.get('_ga') === judgement.userGaId ">{{$t("Label-Me")}}</span>
+                  <span v-else>{{$t("Label-Someone")}}</span>
                 </router-link>
               </td>
-              <td class="col-4">{{judgement.judgement}}</td>
+              <td class="col-4">{{$t(`Label-${judgement.judgement}`)}}</td>
               <td class="col-4">{{new Date(judgement.timestamp * 1000).toISOString()}} <br/> (<timeago :locale="$i18n.locale" :datetime="new Date(interaction.lastTimestamp * 1000).toString()" :auto-update="60"></timeago>)</td>
             </tr>
             </tbody>
@@ -154,7 +154,7 @@ between Client-Side-Rendering and Server-Side-Rendering -->
       </div>
       <div v-else class="card-body d-flex flex-column small-screen-padding">
         <div class="spinner-border" role="status">
-          <span class="sr-only">{{$t(`Loading`)}}...</span>
+          <span class="sr-only">{{$t(`Label-Loading`)}}...</span>
         </div>
       </div>
     </div>
@@ -288,7 +288,7 @@ between Client-Side-Rendering and Server-Side-Rendering -->
         if (this.myJudgement === `ShouldRevert` && !this.isOverriden()) {
           const version = await this.$axios.$get(`/api/version`);
           let revertEditSummary = this.$t(
-              `RevertEditSummary`,
+              `Message-RevertEditSummary`,
               [
                 `[[:m:WikiLoop Battlefield]]`,
                 `${version}`,

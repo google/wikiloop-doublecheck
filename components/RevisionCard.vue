@@ -32,7 +32,7 @@
               </a></sup>
             </div>
             <!-- TODO(xinbenlv) update the following text for for i18n -->
-            <div v-if="revision ? revision.pageLatestRevId > revision.revid: false"> {{$t('Overriden')}}</div>
+            <div v-if="revision ? revision.pageLatestRevId > revision.revid: false"> {{$t('Label-Overriden')}}</div>
             <div class="ml-2"> <a :href="`/revision/${revision.wiki}/${revision.wikiRevId.split(`:`)[1]}`"><i class="fas fa-link"></i></a></div>
           </div>
           <div class="my-2" v-if="feedNameProp"><small><span class="badge badge-success">{{feedNameProp}} feed</span></small></div>
@@ -49,7 +49,7 @@
             <div v-if="ores" class="col-lg-2">
               <span data-toggle="tooltip" data-placement="top" title="Damaging Score by WMF ORES">
                 <!-- TODO(xinbenlv) update the following text for for i18n -->
-                <i v-bind:class="{ 'text-danger': ores ? ores.damaging.true > 0.5 : false }" class="fas fa-cloud-rain"></i> {{$t('OresDamging')}}: <a
+                <i v-bind:class="{ 'text-danger': ores ? ores.damaging.true > 0.5 : false }" class="fas fa-cloud-rain"></i> {{$t('Label-OresDamaging')}}: <a
                   :href="`https://ores.wikimedia.org/v3/scores/enwiki/?revids=${revision.wikiRevId.split(`:`)[1]}`" target="_blank">{{ damagingPercent() }}</a>
               </span>
             </div>
@@ -57,7 +57,7 @@
               <span data-toggle="tooltip" data-placement="top"
                     title="Bad-faith Score by WMF ORES (here Bad-faith = 100% - Goodfaith)">
                 <!-- TODO(xinbenlv) update the following text for for i18n -->
-                <i v-bind:class="{ 'text-warning': ores ? ores.goodfaith.false > 0.5: false }" class="fas fa-theater-masks"></i> {{$t('OresBadfaith')}}:  <a
+                <i v-bind:class="{ 'text-warning': ores ? ores.goodfaith.false > 0.5: false }" class="fas fa-theater-masks"></i> {{$t('Label-OresBadfaith')}}:  <a
                   :href="`https://ores.wikimedia.org/v3/scores/enwiki/?revids=${revision.wikiRevId.split(`:`)[1]}`" target="_blank">{{ badfaithPercent() }}</a>
               </span>
             </div>
@@ -79,7 +79,7 @@
         </div>
         <div v-if="revision" class="card-subtitle mb-2 text-muted">
           <div class="row p-2">
-            <div class="col-12"><b>{{$t('EditSummaryLabel')}}:</b>
+            <div class="col-12"><b>{{$t('Label-EditSummary')}}:</b>
               <span>{{revision.comment || "(empty)"}}</span>
             </div>
           </div>
@@ -87,7 +87,7 @@
         <div class="card-text w-100 pl-sm-0">
           <diff-box v-if="diff && diff.compare && diff.compare['*']" v-bind:diffContent="diff.compare['*']"/>
           <!-- TODO(xinbenlv) update the following text for for i18n -->
-          <h5 v-else>{{$t(`DiffNotAvailable`)}}
+          <h5 v-else>{{$t(`Message-DiffNotAvailable`)}}
             <div v-on:click="loadDiff()" class="btn btn-outline-primary btn-small"><i class="fas fa-redo"></i></div>
             <!--TODO(zzn): v-if="revision.revision" might not be available, handle those cases better. -->
             <a v-if="revision.revision" class="btn btn-outline-primary" :href="`${getUrlBaseByWiki(revision.wiki)}/w/index.php?title=${revision.title}&diff=${revision.revision.new}&oldid=${revision.revision.old}&diffmode=source`" target="_blank"><i class="fas fa-external-link-alt"></i></a>
@@ -100,25 +100,25 @@
               v-on:click="interactionBtn(`LooksGood`)"
               class="btn btn-sm"
               v-bind:class="{ 'btn-success':getMyJudgement() ===`LooksGood`, 'btn-outline-success': getMyJudgement() !==`LooksGood` }"
-            >{{$t(`LooksGoodBtnLabel`)}} (g)
+            >{{$t(`Label-LooksGood`)}} (g)
             </button>
             <button
               v-on:click="interactionBtn(`NotSure`)"
               v-bind:class="{ 'btn-secondary':getMyJudgement() ===`NotSure`, 'btn-outline-secondary':getMyJudgement() !==`NotSure` }"
               class="btn btn-sm"
-            >{{$t(`NotSureBtnLabel`)}} (p)
+            >{{$t(`Label-NotSure`)}} (p)
 
             </button>
             <button
               v-on:click="interactionBtn(`ShouldRevert`)"
               v-bind:class="{ 'btn-danger':getMyJudgement() ===`ShouldRevert`, 'btn-outline-danger':getMyJudgement() !== `ShouldRevert` }"
               class="btn btn-sm" target="_blank"
-            >{{$t(`ShouldRevertBtnLabel`)}} (v)
+            >{{$t(`Label-ShouldRevert`)}} (v)
             </button>
             <transition name="fade">
                 <button v-if="action === null && enableRevertRedirect()" v-on:click="performRevert()"
                         class="btn btn-outline-primary">
-                  <i class="fas fa-broom"></i> {{$t(`RevertNowBtnLabel`)}} (r)
+                  <i class="fas fa-broom"></i> {{$t(`Button-RevertNow`)}} (r)
                 </button>
               <button disabled v-if="action !== null" class="btn"
                 v-bind:class="{
@@ -127,9 +127,9 @@
                   'btn-outline-primary': action === null
                 }">
                 <i class="fas fa-broom"></i>
-                <template v-if="action===`DirectReverted`">{{$t(`DirectRevertedBtnLabel`)}}</template>
-                <template v-else-if="action===`DirectRevertFailed`">{{$t(`DirectRevertFailedBtnLabel`)}}</template>
-                <template v-else-if="action===`OpenedUrlToRevert`">{{$t(`OpenedUrlToRevertBtnLabel`)}}</template>
+                <template v-if="action===`DirectReverted`">{{$t(`Label-DirectReverted`)}}</template>
+                <template v-else-if="action===`DirectRevertFailed`">{{$t(`Label-DirectRevertFailed`)}}</template>
+                <template v-else-if="action===`OpenedUrlToRevert`">{{$t(`Button-OpenedUrlToRevert`)}}</template>
               </button>
             </transition>
           </div>
@@ -138,7 +138,7 @@
               v-on:click="$emit(`next-card`)"
               v-if="myJudgement"
               class="btn btn-outline-primary"
-            ><i class="fas fa-arrow-right"></i> {{$t(`NextBtnLabel`)}}(→)
+            ><i class="fas fa-arrow-right"></i> {{$t(`Button-Next`)}}(→)
             </button>
           </div>
         </div>
@@ -146,24 +146,24 @@
           <table class="b-table table mt-2 w-100">
             <tbody>
             <tr class="row">
-              <td class="col-4">{{$t('User')}}</td>
-              <td class="col-4">{{$t('Judgement')}}</td>
-              <td class="col-4">{{$t('Time')}}</td>
+              <td class="col-4">{{$t('Label-User')}}</td>
+              <td class="col-4">{{$t('Label-Judgement')}}</td>
+              <td class="col-4">{{$t('Label-Time')}}</td>
             </tr>
             <tr class="row" v-for="judgement of interaction.judgements">
               <td class="col-4">
                 <router-link v-if="judgement.wikiUserName" :to="`/marked/?wikiUserName=${judgement.wikiUserName}`" replace>
                   <object class="avatar-object" v-bind:data="`/api/avatar/${judgement.wikiUserName}`" ></object>
-                  <span v-if="isMine(judgement)">{{$t("Me")}} ({{judgement.wikiUserName}})</span>
+                  <span v-if="isMine(judgement)">{{$t("Label-Me")}} ({{judgement.wikiUserName}})</span>
                   <span v-else>{{judgement.wikiUserName || $t("SomeoneAnonymous")}}</span>
                 </router-link>
                 <router-link v-else :to="`/marked/?userGaId=${judgement.userGaId}`" replace>
                   <object class="avatar-object" v-bind:data="`/api/avatar/${judgement.userGaId}`" ></object>
-                  <span v-if="$cookiez.get('_ga') === judgement.userGaId ">{{$t("Me")}}</span>
-                  <span v-else>{{$t("Someone")}}</span>
+                  <span v-if="$cookiez.get('_ga') === judgement.userGaId ">{{$t("Label-Me")}}</span>
+                  <span v-else>{{$t("Label-Someone")}}</span>
                 </router-link>
               </td>
-              <td class="col-4">{{judgement.judgement}}</td>
+              <td class="col-4">{{$t(`Label-${judgement.judgement}`)}}</td>
               <td class="col-4">{{new Date(judgement.timestamp * 1000).toISOString()}} <br/> (<timeago :locale="$i18n.locale" :datetime="new Date(interaction.lastTimestamp * 1000).toString()" :auto-update="60"></timeago>)</td>
             </tr>
             </tbody>
@@ -172,7 +172,7 @@
       </div>
       <div v-else class="card-body d-flex flex-column small-screen-padding">
         <div class="spinner-border" role="status">
-          <span class="sr-only">{{$t(`Loading`)}}...</span>
+          <span class="sr-only">{{$t(`Label-Loading`)}}...</span>
         </div>
       </div>
     </div>
@@ -389,7 +389,7 @@
         if (this.myJudgement === `ShouldRevert` && !this.isOverriden()) {
           const version = await this.$axios.$get(`/api/version`);
           let revertEditSummary = this.$t(
-              `RevertEditSummary`,
+              `Message-RevertEditSummary`,
               [
                 `[[:m:WikiLoop Battlefield]]`,
                 `${version}`,

@@ -54,10 +54,10 @@
               <template v-slot:button-content>
                 <i class="fas fa-info"></i>
               </template>
-              <b-dropdown-item href="https://github.com/google/wikiloop-battlefield/issues" target="_blank">{{$t('NavBar-MenuItem-Issues')}}</b-dropdown-item>
-              <b-dropdown-item href="https://github.com/google/wikiloop-battlefield" target="_blank">{{$t('NavBar-MenuItem-Code')}} </b-dropdown-item>
+              <b-dropdown-item href="https://github.com/google/wikiloop-battlefield/issues" target="_blank">{{$t('MenuItem-Issues')}}</b-dropdown-item>
+              <b-dropdown-item href="https://github.com/google/wikiloop-battlefield" target="_blank">{{$t('MenuItem-Code')}} </b-dropdown-item>
               <b-dropdown-item href="https://meta.wikimedia.org/wiki/WikiProject_WikiLoop" target="_blank">WikiProject</b-dropdown-item>
-              <b-dropdown-item href="/api/stats" target="_blank">{{$t('NavBar-MenuItem-Stats')}}</b-dropdown-item>
+              <b-dropdown-item href="/api/stats" target="_blank">{{$t('MenuItem-Stats')}}</b-dropdown-item>
             </b-nav-item-dropdown>
             <b-nav-item>
               <b-form-select @click.native.stop='' class="small" v-model="wiki">
@@ -76,15 +76,15 @@
                 </div>
               </template>
 
-              <b-dropdown-item v-if="$store.state.user.profile && $store.state.user.profile.displayName" :href="`/marked/?wikiUserName=${$store.state.user.profile.displayName}`"><i class="fas fa-list"></i>{{$t(`ContributionsMenuItem`)}}</b-dropdown-item>
-              <b-dropdown-item :href="`/marked/?userGaId=${$cookiez.get('_ga')}`"><i class="fas fa-list"></i>{{$t(`ContributionsBeforeLoginMenuItem`)}}</b-dropdown-item>
+              <b-dropdown-item v-if="$store.state.user.profile && $store.state.user.profile.displayName" :href="`/marked/?wikiUserName=${$store.state.user.profile.displayName}`"><i class="fas fa-list"></i>{{$t(`MenuItem-Contributions`)}}</b-dropdown-item>
+              <b-dropdown-item :href="`/marked/?userGaId=${$cookiez.get('_ga')}`"><i class="fas fa-list"></i>{{$t(`MenuItem-ContributionsBeforeLogin`)}}</b-dropdown-item>
               <template v-if="!($store.state.user.profile)">
                 <b-dropdown-item v-if="!($store.state.user.profile)" href="/auth/mediawiki/login" right>
-                  <i class="fas fa-sign-in-alt"></i>{{$t(`LoginMenuItem`)}}
+                  <i class="fas fa-sign-in-alt"></i>{{$t(`Label-Login`)}}
                 </b-dropdown-item>
               </template>
               <template v-if="($store.state.user.profile)">
-                <b-dropdown-item href="/auth/mediawiki/logout"><i class="fas fa-sign-out-alt"></i>{{$t(`LogoutMenuItem`)}}</b-dropdown-item>
+                <b-dropdown-item href="/auth/mediawiki/logout"><i class="fas fa-sign-out-alt"></i>{{$t(`Label-Logout`)}}</b-dropdown-item>
               </template>
              </b-nav-item-dropdown>
           </b-navbar-nav>
@@ -102,7 +102,7 @@
       V: {{$t('Label-Should-Revert')}}<br/>
       G: {{$t('Label-Looks-Good')}}<br/>
       P: {{$t('Label-Not-Sure')}}<br/>
-      →: {{$t('Next-Card')}}<br/>
+      →: {{$t('Button-Next')}}<br/>
     </b-modal>
   </div>
 </template>

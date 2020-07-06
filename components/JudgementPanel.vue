@@ -2,7 +2,7 @@
   <section>
     <div id="interactions">
       <template v-if="!loadingInteractions">
-        <span>Human: </span>
+        <span>{{$t('Label-HumanEditors')}}: </span>
         <template v-if="interactionPropsList">
           <span class="mr-2" v-for="judgement in ['NotSure', 'LooksGood', 'ShouldRevert']">
             <template v-if="interactionPropsList.filter(i=>i.judgement == judgement).length > 0">
@@ -20,17 +20,17 @@
             </template>
           </span>
         </template>
-        <template v-else>none</template>
+        <template v-else>{{$t('Label-None')}}</template>
       </template>
 
       <template v-else>
         <div class="spinner-border" role="status">
-          <span class="sr-only">Loading...</span>
+          <span class="sr-only">{{$t('Label-Loading')}}...</span>
         </div>
       </template>
     </div>
     <div>
-      <span>Artificial Intelligence: </span>
+      <span>{{$t('Label-ArtificialIntelligence')}}: </span>
       <template v-if="!loadingScores">
         <template v-if="scores">
         <span v-b-tooltip.hover
@@ -41,11 +41,11 @@
           {{badgeText(score.type)}}
         </span>
         </template>
-        <template v-else>none</template>
+        <template v-else>None</template>
       </template>
       <template v-else>
         <div class="spinner-border" role="status">
-          <span class="sr-only">Loading...</span>
+          <span class="sr-only">{{$t('Label-Loading')}}...</span>
         </div>
       </template>
     </div>

@@ -1,62 +1,61 @@
-Anonymous: Anônimo
-Author: Autor
-ContributionsBeforeLoginMenuItem: Minhas contribuições antes de entrar
-ContributionsMenuItem: Minhas contribuições
-DiffNotAvailable: >-
+Button-Go: Ir
+Button-HelpTranslate: Ajude a traduzir
+Button-Next: Próximo
+Button-OpenedUrlToRevert: Aberto URL para desfazer
+Button-RevertNow: Desfazer agora
+Button-ShowJudgements: Mostrar julgamentos
+Button-Undo: Desfazer
+Label-Anonymous: Anônimo
+Label-ArtificialIntelligence: Inteligência artificial
+Label-Author: Autor
+Label-DirectRevertFailed: Houve uma falha ao desfazer diretamente
+Label-DirectReverted: Desfazer diretamente
+Label-EditSummary: Resumo da edição
+Label-EditedAt: editado
+Label-HumanEditors: Editores humanos
+Label-Judgement: Julgamento
+Label-Loading: Carregando
+Label-Login: Entrar
+Label-Logout: Sair
+Label-Looks-Good: Parece bom
+Label-LooksGood: Parece bom
+Label-Me: Eu
+Label-Not-Sure: Não tenho certeza
+Label-NotSure: Não tenho certeza
+Label-OresBadfaith: ORES Badfaith
+Label-OresDamaging: ORES Danificando
+Label-Overriden: Substituído
+Label-Prompt-Login: Conecte-se
+Label-ReviewFeed: Revisar Feed
+Label-Should-Revert: Deve reverter
+Label-ShouldRevert: Deveria ser desfeito
+Label-Snooze: Soneca
+Label-Someone: Alguém
+Label-Time: Tempo
+Label-User: Do utilizador
+MenuItem-Code: Código
+MenuItem-Contributions: Minhas contribuições
+MenuItem-ContributionsBeforeLogin: Minhas contribuições antes de entrar
+MenuItem-Issues: Problemas
+MenuItem-Stats: Estatísticas
+Message-DiffNotAvailable: >-
   O dif do artigo da Wikipédia está temporariamente indisponível. Pode tentar
   recarregá-lo.   Às vezes uma revisão vandalizada pode ser eliminada. Pode
   conferir o histórico da página.
-DirectRevertFailedBtnLabel: Houve uma falha ao desfazer diretamente
-DirectRevertedBtnLabel: Desfazer diretamente
-EditSummary: Editar Resumo
-EditSummaryLabel: Resumo da edição
-EditedAt: Editado em
-EditedTimeLabel: editado
-HelpTranslate: Ajude a traduzir
-Judgement: Julgamento
-Label-Login: Conecte-se
-Label-Looks-Good: Parece bom
-Label-Not-Sure: Não tenho certeza
-Label-Should-Revert: Deve reverter
-Loading: Carregando
-LoginMenuItem: Entrar
-LoginPrompt: >-
+Message-Login: >-
   Você sabia que poderia fazer login e preservar seus rótulos em seu nome?
   Apoiamos o login com a conta da Wikipedia através de Oauth.
-LogoutMenuItem: Sair
-LooksGoodBtnLabel: Parece bom
-Me: Eu
-NameVoteAnnouncement: >-
+Message-NameVoteAnnouncement: >-
   Caro colaborador, estamos mantendo uma votação para um novo nome, substituindo
   o "Campo de Batalha WikiLoop", que termina em 13 de julho de 2020 às 00:00
   UTC. 
 
   Por favor vote.
-NavBar-MenuItem-Code: Código
-NavBar-MenuItem-Issues: Problemas
-NavBar-MenuItem-Stats: Estatísticas
-Next-Card: Cartão seguinte
-NextBtnLabel: Próximo
-NotSureBtnLabel: Não tenho certeza
-OpenedUrlToRevertBtnLabel: Aberto URL para desfazer
-OresBadfaith: ORES Badfaith
-OresDamging: ORES Danificando
-Overriden: Substituído
-Prompt-Login-Text: >-
+Message-Prompt-Login: >-
   Você sabia que poderia fazer login e preservar suas contribuições em seu nome?
   Apoiamos o login com a conta da Wikipedia através do Oauth.
-Prompt-Login-Title: Conecte-se
-RevertEditSummary: >-
+Message-RevertEditSummary: >-
   Identificado como um teste/vandalismo utilizando {0} versão {1}. Ver ou deixar
   sua opinião em {2}
-RevertNowBtnLabel: Desfazer agora
-ReviewFeed: Revisar Feed
-ShouldRevertBtnLabel: Deveria ser desfeito
-ShowJudgements: Mostrar julgamentos
-Someone: Alguém
-ThereIsNoEditSummary: Não há resumo de edição.
-Time: Tempo
-UndoBtnLabel: Desfazer
-User: Do utilizador
-Label-Snooze: Soneca
-Button-Go: Ir
+Message-ThereIsNoEditSummary: Não há resumo de edição.
+Label-None: Nenhum

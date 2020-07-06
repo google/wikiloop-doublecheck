@@ -1,60 +1,59 @@
-Anonymous: Anònim
-Author: Autor
-ContributionsBeforeLoginMenuItem: Les meves contribucions abans de l’inici de sessió
-ContributionsMenuItem: Les meves aportacions
-DiffNotAvailable: >-
+Button-Go: Va
+Button-HelpTranslate: Ajuda a traduir
+Button-Next: Pròxim
+Button-OpenedUrlToRevert: URL obert per tornar
+Button-RevertNow: Torna ara
+Button-ShowJudgements: Mostrar judicis
+Button-Undo: Desfer
+Label-Anonymous: Anònim
+Label-ArtificialIntelligence: Intel · ligència artificial
+Label-Author: Autor
+Label-DirectRevertFailed: Ha fallat el revertiment directe
+Label-DirectReverted: Revertida directa
+Label-EditSummary: Edita el resum
+Label-EditedAt: editat
+Label-HumanEditors: Editors humans
+Label-Judgement: Judici
+Label-Loading: Carregant
+Label-Login: iniciar Sessió
+Label-Logout: Tancar sessió
+Label-Looks-Good: Té bona pinta
+Label-LooksGood: Té bona pinta
+Label-Me: Jo
+Label-Not-Sure: No n'estic segur
+Label-NotSure: No n'estic segur
+Label-OresBadfaith: ORES Badfaith
+Label-OresDamaging: ORES Danyós
+Label-Overriden: Nul
+Label-Prompt-Login: iniciar Sessió
+Label-ReviewFeed: Reviseu el feed
+Label-Should-Revert: Hauria de tornar
+Label-ShouldRevert: Hauria de revertir
+Label-Snooze: Dormitar
+Label-Someone: Algú
+Label-Time: Temps
+Label-User: Usuari
+MenuItem-Code: Codi
+MenuItem-Contributions: Les meves aportacions
+MenuItem-ContributionsBeforeLogin: Les meves contribucions abans de l’inici de sessió
+MenuItem-Issues: Problemes
+MenuItem-Stats: Estadístiques
+Message-DiffNotAvailable: >-
   L'article dif de Wikipedia no està disponible temporalment. Podeu provar de
   tornar-lo a carregar. De vegades es podia eliminar una revisió vandalitzada.
   Podeu consultar l’historial de pàgines.
-DirectRevertFailedBtnLabel: Ha fallat el revertiment directe
-DirectRevertedBtnLabel: Revertida directa
-EditSummary: Edita el resum
-EditSummaryLabel: Edita el resum
-EditedAt: Editat a
-EditedTimeLabel: editat
-HelpTranslate: Ajuda a traduir
-Judgement: Judici
-Label-Login: iniciar Sessió
-Label-Looks-Good: Té bona pinta
-Label-Not-Sure: No n'estic segur
-Label-Should-Revert: Hauria de tornar
-Loading: Carregant
-LoginMenuItem: iniciar Sessió
-LoginPrompt: >-
+Message-Login: >-
   Sabeu que podríeu iniciar la sessió i conservar les vostres etiquetes sota el
   vostre nom? Admetem la sessió amb compte de Wikipedia mitjançant Oauth.
-LogoutMenuItem: Tancar sessió
-LooksGoodBtnLabel: Té bona pinta
-Me: Jo
-NameVoteAnnouncement: >-
+Message-NameVoteAnnouncement: >-
   Benvolgut col·laborador, realitzem una votació per a un nou nom en substitució
   del "Camp de batalla de WikiLoop" que finalitza el 13 de juliol de 2020 a les
   00:00 UTC. Vota si us plau.
-NavBar-MenuItem-Code: Codi
-NavBar-MenuItem-Issues: Problemes
-NavBar-MenuItem-Stats: Estadístiques
-Next-Card: Fitxa següent
-NextBtnLabel: Pròxim
-NotSureBtnLabel: No n'estic segur
-OpenedUrlToRevertBtnLabel: URL obert per tornar
-OresBadfaith: ORES Badfaith
-OresDamging: ORES Danyós
-Overriden: Nul
-Prompt-Login-Text: >-
+Message-Prompt-Login: >-
   Sabeu que podríeu iniciar la sessió i preservar les vostres contribucions al
   vostre nom? Admetem l’accés amb el compte de Wikipedia mitjançant Oauth.
-Prompt-Login-Title: iniciar Sessió
-RevertEditSummary: >-
+Message-RevertEditSummary: >-
   Identificat com a prova / vandalisme mitjançant {0} versió {1}. Vegeu-la o
   proporcioneu la vostra opinió a {2}
-RevertNowBtnLabel: Torna ara
-ReviewFeed: Reviseu el feed
-ShouldRevertBtnLabel: Hauria de revertir
-ShowJudgements: Mostrar judicis
-Someone: Algú
-ThereIsNoEditSummary: No hi ha cap resum d’edició.
-Time: Temps
-UndoBtnLabel: Desfer
-User: Usuari
-Label-Snooze: Dormitar
-Button-Go: Va
+Message-ThereIsNoEditSummary: No hi ha cap resum d’edició.
+Label-None: Cap

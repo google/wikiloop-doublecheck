@@ -1,58 +1,57 @@
-Anonymous: ไม่ระบุชื่อ
-Author: ผู้เขียน
-ContributionsBeforeLoginMenuItem: การมีส่วนร่วมของฉันก่อนเข้าสู่ระบบ
-ContributionsMenuItem: ผลงานของฉัน
-DiffNotAvailable: >-
+Button-Go: ไป
+Button-HelpTranslate: ช่วยแปล
+Button-Next: ต่อไป
+Button-OpenedUrlToRevert: เปิด URL เพื่อเปลี่ยนกลับ
+Button-RevertNow: เปลี่ยนกลับทันที
+Button-ShowJudgements: แสดงการตัดสิน
+Button-Undo: เลิกทำ
+Label-Anonymous: ไม่ระบุชื่อ
+Label-ArtificialIntelligence: ปัญญาประดิษฐ์
+Label-Author: ผู้เขียน
+Label-DirectRevertFailed: การเปลี่ยนกลับโดยตรงล้มเหลว
+Label-DirectReverted: เปลี่ยนกลับโดยตรง
+Label-EditSummary: แก้ไขสรุป
+Label-EditedAt: แก้ไข
+Label-HumanEditors: บรรณาธิการของมนุษย์
+Label-Judgement: การตัดสิน
+Label-Loading: กำลังโหลด
+Label-Login: เข้าสู่ระบบ
+Label-Logout: ออกจากระบบ
+Label-Looks-Good: ดูดี
+Label-LooksGood: ดูดี
+Label-Me: ผม
+Label-Not-Sure: ไม่แน่ใจ
+Label-NotSure: ไม่แน่ใจ
+Label-OresBadfaith: แร่ Badfaith
+Label-OresDamaging: ความเสียหายจาก ORES
+Label-Overriden: แทนที่
+Label-Prompt-Login: เข้าสู่ระบบ
+Label-ReviewFeed: ฟีดรีวิว
+Label-Should-Revert: ควรย้อนกลับ
+Label-ShouldRevert: ควรเปลี่ยนกลับ
+Label-Snooze: การงีบหลับ
+Label-Someone: บางคน
+Label-Time: เวลา
+Label-User: ผู้ใช้งาน
+MenuItem-Code: รหัส
+MenuItem-Contributions: ผลงานของฉัน
+MenuItem-ContributionsBeforeLogin: การมีส่วนร่วมของฉันก่อนเข้าสู่ระบบ
+MenuItem-Issues: ประเด็น
+MenuItem-Stats: สถิติ
+Message-DiffNotAvailable: >-
   บทความวิกิพีเดียต่างกันไม่สามารถใช้ได้ชั่วคราว คุณสามารถลองโหลดซ้ำได้
   บางครั้งอาจมีการลบการแก้ไขที่ถูกทำลาย คุณสามารถตรวจสอบประวัติหน้า
-DirectRevertFailedBtnLabel: การเปลี่ยนกลับโดยตรงล้มเหลว
-DirectRevertedBtnLabel: เปลี่ยนกลับโดยตรง
-EditSummary: แก้ไขสรุป
-EditSummaryLabel: แก้ไขสรุป
-EditedAt: แก้ไขเมื่อ
-EditedTimeLabel: แก้ไข
-HelpTranslate: ช่วยแปล
-Judgement: การตัดสิน
-Label-Login: เข้าสู่ระบบ
-Label-Looks-Good: ดูดี
-Label-Not-Sure: ไม่แน่ใจ
-Label-Should-Revert: ควรย้อนกลับ
-Loading: กำลังโหลด
-LoginMenuItem: เข้าสู่ระบบ
-LoginPrompt: >-
+Message-Login: >-
   คุณรู้หรือไม่ว่าคุณสามารถเข้าสู่ระบบและรักษาป้ายกำกับของคุณไว้ใต้ชื่อ
   เราสนับสนุนการเข้าสู่ระบบด้วยบัญชี Wikipedia ผ่าน Oauth
-LogoutMenuItem: ออกจากระบบ
-LooksGoodBtnLabel: ดูดี
-Me: ผม
-NameVoteAnnouncement: >-
+Message-NameVoteAnnouncement: >-
   เรียนผู้ให้การสนับสนุนเรากำลังลงคะแนนเสียงให้กับชื่อใหม่แทนที่ "WikiLoop
   Battlefield" ซึ่งสิ้นสุดในวันที่ 13 กรกฎาคม 2020 00:00 UTC กรุณาลงคะแนน
-NavBar-MenuItem-Code: รหัส
-NavBar-MenuItem-Issues: ประเด็น
-NavBar-MenuItem-Stats: สถิติ
-Next-Card: บัตรต่อไป
-NextBtnLabel: ต่อไป
-NotSureBtnLabel: ไม่แน่ใจ
-OpenedUrlToRevertBtnLabel: เปิด URL เพื่อเปลี่ยนกลับ
-OresBadfaith: แร่ Badfaith
-OresDamging: ความเสียหายจาก ORES
-Overriden: แทนที่
-Prompt-Login-Text: >-
+Message-Prompt-Login: >-
   คุณรู้หรือไม่ว่าคุณสามารถเข้าสู่ระบบและสงวนรักษาผลงานของคุณภายใต้ชื่อของคุณ?
   เราสนับสนุนการเข้าสู่ระบบด้วยบัญชี Wikipedia ผ่าน Oauth
-Prompt-Login-Title: เข้าสู่ระบบ
-RevertEditSummary: >-
+Message-RevertEditSummary: >-
   ระบุว่าเป็น test / vandalism โดยใช้ {0} เวอร์ชัน {1}
   ดูหรือแสดงความคิดเห็นของคุณที่ {2}
-RevertNowBtnLabel: เปลี่ยนกลับทันที
-ReviewFeed: ฟีดรีวิว
-ShouldRevertBtnLabel: ควรเปลี่ยนกลับ
-ShowJudgements: แสดงการตัดสิน
-Someone: บางคน
-ThereIsNoEditSummary: ไม่มีการสรุปการแก้ไข
-Time: เวลา
-UndoBtnLabel: เลิกทำ
-User: ผู้ใช้งาน
-Label-Snooze: การงีบหลับ
-Button-Go: ไป
+Message-ThereIsNoEditSummary: ไม่มีการสรุปการแก้ไข
+Label-None: ไม่มี
