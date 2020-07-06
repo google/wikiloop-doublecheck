@@ -13,10 +13,12 @@ EditSummaryLabel: Opsomming wysig
 EditedAt: Geredigeer om
 EditedTimeLabel: geredigeerde
 HelpTranslate: Help om te vertaal
-Judgement: ''
+Judgement: oordeel
 Loading: laai
 LoginMenuItem: Teken aan
-LoginPrompt: ''
+LoginPrompt: >-
+  Weet u dat u kan aanmeld en u etikette onder u naam kan bewaar? Ons ondersteun
+  Login met Wikipedia-rekening via Oauth.
 LogoutMenuItem: Teken uit
 LooksGoodBtnLabel: Lyk goed
 Me: my
@@ -28,18 +30,18 @@ NameVoteAnnouncement: >-
 NextBtnLabel: volgende
 NotSureBtnLabel: Nie seker nie
 OpenedUrlToRevertBtnLabel: URL geopen om terug te keer
-OresBadfaith: ''
-OresDamging: ''
-Overriden: ''
+OresBadfaith: ORES Badfaith
+OresDamging: Ertse beskadig
+Overriden: geïgnoreer
 RevertEditSummary: >-
   Word geïdentifiseer as toets/vandalisme met behulp van {0} weergawe {1}. Sien
   dit of gee u mening by {2}
 RevertNowBtnLabel: Keer nou terug
-ReviewFeed: ''
+ReviewFeed: Hersien voer
 ShouldRevertBtnLabel: Moet terugkeer
-ShowJudgements: ''
+ShowJudgements: Toon uitsprake
 Someone: iemand
-ThereIsNoEditSummary: ''
+ThereIsNoEditSummary: Daar is geen wysigingsopsomming nie.
 Time: tyd
 UndoBtnLabel: ongedaan
 User: gebruiker

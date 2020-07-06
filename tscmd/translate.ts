@@ -3,6 +3,7 @@
 const fs = require('fs');
 const yaml = require('js-yaml');
 
+const existingLocales = require(`~/i18n/getlocales`);
 async function translateCmd() {
   console.log(`Start...`);
   const envPath = process.env.DOTENV_PATH || 'template.env';
@@ -21,7 +22,7 @@ async function translateCmd() {
     keyFilename:'.creds/private-key.json'
   });
 
-  let source = require(`~/i18n/getlocales`).en;
+  let sourceKeyMsgMap = existingLocales.en;
 
   async function translateText(texts:string[], target:string) {
     // Translates the text into the target language. "text" can be a string for
@@ -30,20 +31,27 @@ async function translateCmd() {
     let [translations, data] = await translate.translate(texts, target);
     return translations;
   }
-  let targets = ['bg','ca','es','it','ko','nl','th'];
 
-  await Promise.all(targets.map(async target => {
-    console.log(`Working on ${target}`);
-    let translations:string[] = await translateText(Object.values(source), target);
-    let output = {};
-    for (let i = 0; i < Object.keys(source).length; i++) {
-      let key = Object.keys(source)[i];
-      let value = translations[i];
-      output[key] = value;
+  let targetLangs = Object.keys(existingLocales)
+    // .concat(['bg','ca','es','it','ko','nl','th']);
+
+  await Promise.all(targetLangs.map(async targetLang => {
+    console.log(`Working on ${targetLang}`);
+    let targetKeyMsgMap = require(`~/i18n/getlocales`)[targetLang] || {};
+    let keyArray = [];
+    for (let key in sourceKeyMsgMap) {
+      if (sourceKeyMsgMap[key] && !targetKeyMsgMap[key]) {
+        keyArray.push(key);
+      }
+    }
+    let translations:string[] = await translateText(keyArray.map(key => sourceKeyMsgMap[key]), targetLang);
+    for(let i in keyArray) {
+      let key = keyArray[i];
+      targetKeyMsgMap[key] = translations[i];
     }
 
-    fs.writeFileSync(`./i18n/locales/${target}.yml`, yaml.safeDump(output), 'utf8');
-    console.log(`Done with ${target}`);
+    fs.writeFileSync(`./i18n/locales/${targetLang}.yml`, yaml.safeDump(targetKeyMsgMap), 'utf8');
+    console.log(`Done with ${targetLang}`);
   }));
 
 }

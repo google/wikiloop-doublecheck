@@ -13,10 +13,12 @@ EditSummaryLabel: Özeti Düzenle
 EditedAt: Düzenlendi
 EditedTimeLabel: düzenlendi
 HelpTranslate: Çeviriye yardım et
-Judgement: ''
+Judgement: yargı
 Loading: Yükleniyor
 LoginMenuItem: Giriş
-LoginPrompt: ''
+LoginPrompt: >-
+  Etiketlerinizi adınız altında girip koruyabileceğinizi biliyor musunuz? Oauth
+  aracılığıyla Wikipedia hesabıyla giriş yapmayı destekliyoruz.
 LogoutMenuItem: Çıkış
 LooksGoodBtnLabel: İyi Görünüyor
 Me: Ben
@@ -28,18 +30,18 @@ NameVoteAnnouncement: >-
 NextBtnLabel: Sonraki
 NotSureBtnLabel: Emin Değilim
 OpenedUrlToRevertBtnLabel: Geri dönmek için açılan URL
-OresBadfaith: ''
-OresDamging: ''
-Overriden: ''
+OresBadfaith: ORES Badfaith
+OresDamging: ORES Hasar
+Overriden: Geçersiz kılınan
 RevertEditSummary: |-
   {0} {1} sürümü kullanılarak test / vandalizm olarak tanımlandı. 
   {2} adresinde görün veya görüşünüzü belirtin
 RevertNowBtnLabel: Şimdi geri dön
-ReviewFeed: ''
+ReviewFeed: Özet Akışı
 ShouldRevertBtnLabel: Eski Haline Dönmeli
-ShowJudgements: ''
+ShowJudgements: Kararları göster
 Someone: Birisi
-ThereIsNoEditSummary: ''
+ThereIsNoEditSummary: Düzenleme özeti yok.
 Time: Zaman
 UndoBtnLabel: Geri alma
 User: kullanıcı

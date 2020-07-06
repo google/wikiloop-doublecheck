@@ -14,10 +14,13 @@ EditSummaryLabel: Modifier le résumé
 EditedAt: Modifié à
 EditedTimeLabel: édité
 HelpTranslate: Aide à traduire
-Judgement: ''
+Judgement: Jugement
 Loading: Chargement
 LoginMenuItem: Connexion
-LoginPrompt: ''
+LoginPrompt: >-
+  Savez-vous que vous pouvez vous connecter et conserver vos étiquettes sous
+  votre nom? Nous prenons en charge la connexion avec un compte Wikipedia via
+  Oauth.
 LogoutMenuItem: Déconnexion
 LooksGoodBtnLabel: Cela semble bon
 Me: Moi
@@ -29,18 +32,18 @@ NameVoteAnnouncement: >-
 NextBtnLabel: Suivant
 NotSureBtnLabel: Pas sûr
 OpenedUrlToRevertBtnLabel: URL ouverte pour revenir
-OresBadfaith: ''
-OresDamging: ''
-Overriden: ''
+OresBadfaith: ORES Badfaith
+OresDamging: ORES endommageant
+Overriden: Remplacé
 RevertEditSummary: |-
   Identifié comme test / vandalisme à l'aide de la version {0} {1}. 
   Consultez-le ou donnez votre avis sur {2}
 RevertNowBtnLabel: Revenir maintenant
-ReviewFeed: ''
+ReviewFeed: Vérifier le flux
 ShouldRevertBtnLabel: Devrait revenir
-ShowJudgements: ''
+ShowJudgements: Afficher les jugements
 Someone: Quelqu'un
-ThereIsNoEditSummary: ''
+ThereIsNoEditSummary: Il n'y a pas de résumé de modification.
 Time: Temps
 UndoBtnLabel: annuler
 User: Utilisateur

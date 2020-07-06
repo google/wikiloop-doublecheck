@@ -13,10 +13,12 @@ EditSummaryLabel: Редактиране на обобщение
 EditedAt: Редактирано в
 EditedTimeLabel: редактирана
 HelpTranslate: Помогнете при превода
-Judgement: ''
+Judgement: преценка
 Loading: Зареждане
 LoginMenuItem: Влизам
-LoginPrompt: ''
+LoginPrompt: >-
+  Знаете ли, че бихте могли да влезете и да запазите етикетите си под вашето
+  име? Поддържаме влизане с акаунт в Wikipedia чрез Oauth.
 LogoutMenuItem: Излез от профила си
 LooksGoodBtnLabel: Изглежда добре
 Me: мен
@@ -26,18 +28,18 @@ NameVoteAnnouncement: >-
 NextBtnLabel: Следващия
 NotSureBtnLabel: Не съм сигурен
 OpenedUrlToRevertBtnLabel: Отворен URL адрес за възстановяване
-OresBadfaith: ''
-OresDamging: ''
-Overriden: ''
+OresBadfaith: ORES Badfaith
+OresDamging: ORES Увреждане
+Overriden: Заменена
 RevertEditSummary: >-
   Идентифициран като тест / вандализъм с помощта на {0} версия {1}. Вижте го или
   дайте мнението си на {2}
 RevertNowBtnLabel: Върнете се сега
-ReviewFeed: ''
+ReviewFeed: Преглед на емисията
 ShouldRevertBtnLabel: Трябва да се върне
-ShowJudgements: ''
+ShowJudgements: Показвайте преценки
 Someone: Някой
-ThereIsNoEditSummary: ''
+ThereIsNoEditSummary: Няма резюме за редактиране.
 Time: път
 UndoBtnLabel: Undo
 User: потребител

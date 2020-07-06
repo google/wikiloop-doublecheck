@@ -13,10 +13,13 @@ EditSummaryLabel: Edytuj streszczenie
 EditedAt: Edytowane o
 EditedTimeLabel: edytowane
 HelpTranslate: Pomóż w tłumaczeniu
-Judgement: ''
+Judgement: Osąd
 Loading: Ładowanie
 LoginMenuItem: Zaloguj sie
-LoginPrompt: ''
+LoginPrompt: >-
+  Czy wiesz, że możesz się zalogować i zachować swoje etykiety pod swoim
+  imieniem? Obsługujemy logowanie za pomocą konta Wikipedia za pośrednictwem
+  Oauth.
 LogoutMenuItem: Wyloguj
 LooksGoodBtnLabel: Wygląda dobrze
 Me: Ja
@@ -28,18 +31,18 @@ NameVoteAnnouncement: >-
 NextBtnLabel: Następny
 NotSureBtnLabel: Nie jestem pewien
 OpenedUrlToRevertBtnLabel: Otwarty URL do odwrócenia
-OresBadfaith: ''
-OresDamging: ''
-Overriden: ''
+OresBadfaith: ORES Badfaith
+OresDamging: Uszkodzenie ORES
+Overriden: Zastąpione
 RevertEditSummary: >-
   Zidentyfikowany jako test / wandalizm przy użyciu {0} wersji {1}. Zobacz to
   lub przedstaw swoją opinię na stronie {2}
 RevertNowBtnLabel: Revert now
-ReviewFeed: ''
+ReviewFeed: Przejrzyj kanał
 ShouldRevertBtnLabel: Powinien się odwrócić
-ShowJudgements: ''
+ShowJudgements: Pokaż osądy
 Someone: Ktoś
-ThereIsNoEditSummary: ''
+ThereIsNoEditSummary: Brak podsumowania edycji.
 Time: Czas
 UndoBtnLabel: Cofnij
 User: Użytkownik

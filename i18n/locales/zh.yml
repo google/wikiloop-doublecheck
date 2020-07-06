@@ -10,10 +10,10 @@ EditSummaryLabel: 编辑摘要
 EditedAt: 编辑于
 EditedTimeLabel: 编辑于
 HelpTranslate: 帮助翻译
-Judgement: ''
+Judgement: 判断
 Loading: 读取中
 LoginMenuItem: 登录
-LoginPrompt: ''
+LoginPrompt: 您知道您可以登录并使用您的名字保存标签吗？我们支持通过Oauth使用Wikipedia帐户登录。
 LogoutMenuItem: 登出
 LooksGoodBtnLabel: 看着不错
 Me: 我
@@ -23,16 +23,16 @@ NameVoteAnnouncement: |-
 NextBtnLabel: 下一个
 NotSureBtnLabel: 不确定
 OpenedUrlToRevertBtnLabel: 打开的网址即可还原
-OresBadfaith: ''
-OresDamging: ''
-Overriden: ''
+OresBadfaith: ORES Badfaith
+OresDamging: ORES损坏
+Overriden: 覆写
 RevertEditSummary: '使用{0}版本{1}标识为测试/故意破坏。请在{2}上查看或发表您的意见'
 RevertNowBtnLabel: 立即还原
-ReviewFeed: ''
+ReviewFeed: 查看提要
 ShouldRevertBtnLabel: 应该还原
-ShowJudgements: ''
+ShowJudgements: 显示判断
 Someone: 别人
-ThereIsNoEditSummary: ''
+ThereIsNoEditSummary: 没有编辑摘要。
 Time: 时间
 UndoBtnLabel: 撤消
 User: 用户

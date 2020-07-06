@@ -14,10 +14,10 @@ EditSummaryLabel: 概要を編集
 EditedAt: で編集
 EditedTimeLabel: 編集済み
 HelpTranslate: 翻訳を手伝う
-Judgement: ''
+Judgement: 判定
 Loading: 読み込み中
 LoginMenuItem: ログインする
-LoginPrompt: ''
+LoginPrompt: ログインして自分の名前でラベルを保存できることをご存知ですか？ OauthによるWikipediaアカウントでのログインをサポートしています。
 LogoutMenuItem: ログアウト
 LooksGoodBtnLabel: いいね
 Me: わたし
@@ -27,18 +27,18 @@ NameVoteAnnouncement: |-
 NextBtnLabel: 次
 NotSureBtnLabel: わからない
 OpenedUrlToRevertBtnLabel: URLを開いて元に戻しました
-OresBadfaith: ''
-OresDamging: ''
-Overriden: ''
+OresBadfaith: オレスバッドフェイス
+OresDamging: ORESダメージ
+Overriden: オーバーライドされた
 RevertEditSummary: |-
   {0}バージョン{1}を使用したテスト/破壊行為として識別されました。 
   {2}でご覧になるか、意見をお寄せください
 RevertNowBtnLabel: 今すぐ元に戻す
-ReviewFeed: ''
+ReviewFeed: フィードの確認
 ShouldRevertBtnLabel: 元に戻す必要があります
-ShowJudgements: ''
+ShowJudgements: 判断を示す
 Someone: 誰か
-ThereIsNoEditSummary: ''
+ThereIsNoEditSummary: 編集の要約はありません。
 Time: 時間
 UndoBtnLabel: 元に戻す
 User: ユーザー

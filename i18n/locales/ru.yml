@@ -10,10 +10,12 @@ EditSummaryLabel: Редактировать резюме
 EditedAt: Отредактировано в
 EditedTimeLabel: Edited
 HelpTranslate: Помогите перевести
-Judgement: ''
+Judgement: решение
 Loading: Загрузка
 LoginMenuItem: Логин
-LoginPrompt: ''
+LoginPrompt: >-
+  Знаете ли вы, что вы можете войти и сохранить свои ярлыки под своим именем? Мы
+  поддерживаем логин через Википедию через Oauth.
 LogoutMenuItem: Выход
 LooksGoodBtnLabel: Выглядит хорошо
 Me: Я
@@ -25,18 +27,18 @@ NameVoteAnnouncement: >-
 NextBtnLabel: Следующий
 NotSureBtnLabel: Не уверен
 OpenedUrlToRevertBtnLabel: Открытый URL для возврата
-OresBadfaith: ''
-OresDamging: ''
-Overriden: ''
+OresBadfaith: ОРЕС Бадфейт
+OresDamging: Руды Повреждения
+Overriden: Переопределенный
 RevertEditSummary: >-
   Идентифицировано как тест/вандализм с использованием {0} версии {1}. Смотрите
   или высказывайте своё мнение по адресу {2}
 RevertNowBtnLabel: Вернуть сейчас
-ReviewFeed: ''
+ReviewFeed: Обзорная лента
 ShouldRevertBtnLabel: Должен вернуться
-ShowJudgements: ''
+ShowJudgements: Показать суждения
 Someone: Кто-то
-ThereIsNoEditSummary: ''
+ThereIsNoEditSummary: Там нет редактировать резюме.
 Time: Время
 UndoBtnLabel: Отменить
 User: пользователь

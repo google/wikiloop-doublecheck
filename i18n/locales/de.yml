@@ -14,10 +14,13 @@ EditSummaryLabel: Zusammenfassung bearbeiten
 EditedAt: Bearbeitet bei
 EditedTimeLabel: Bearbeitet
 HelpTranslate: Hilfe beim Übersetzen
-Judgement: ''
+Judgement: Beurteilung
 Loading: Beladung
 LoginMenuItem: Anmelden
-LoginPrompt: ''
+LoginPrompt: >-
+  Wissen Sie, dass Sie sich anmelden und Ihre Etiketten unter Ihrem Namen
+  aufbewahren können? Wir unterstützen die Anmeldung mit Wikipedia-Konto über
+  Oauth.
 LogoutMenuItem: Abmelden
 LooksGoodBtnLabel: Sieht gut aus
 Me: Ich
@@ -30,18 +33,18 @@ NameVoteAnnouncement: >-
 NextBtnLabel: Nächste
 NotSureBtnLabel: Nicht sicher
 OpenedUrlToRevertBtnLabel: Geöffnete URL zum Zurücksetzen
-OresBadfaith: ''
-OresDamging: ''
-Overriden: ''
+OresBadfaith: ORES Badfaith
+OresDamging: Erze beschädigen
+Overriden: Überschrieben
 RevertEditSummary: |-
   Mit {0} Version {1} als Test / Vandalismus identifiziert. 
   Sehen Sie es sich an oder geben Sie Ihre Meinung unter {2} ab
 RevertNowBtnLabel: Jetzt zurücksetzen
-ReviewFeed: ''
+ReviewFeed: Feed überprüfen
 ShouldRevertBtnLabel: Sollte zurücksetzen
-ShowJudgements: ''
+ShowJudgements: Urteile zeigen
 Someone: Jemand
-ThereIsNoEditSummary: ''
+ThereIsNoEditSummary: Es gibt keine Bearbeitungszusammenfassung.
 Time: Zeit
 UndoBtnLabel: Rückgängig machen
 User: Benutzer

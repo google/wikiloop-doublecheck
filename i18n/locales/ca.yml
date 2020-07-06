@@ -13,10 +13,12 @@ EditSummaryLabel: Edita el resum
 EditedAt: Editat a
 EditedTimeLabel: editat
 HelpTranslate: Ajuda a traduir
-Judgement: ''
+Judgement: Judici
 Loading: Carregant
 LoginMenuItem: iniciar Sessió
-LoginPrompt: ''
+LoginPrompt: >-
+  Sabeu que podríeu iniciar la sessió i conservar les vostres etiquetes sota el
+  vostre nom? Admetem la sessió amb compte de Wikipedia mitjançant Oauth.
 LogoutMenuItem: Tancar sessió
 LooksGoodBtnLabel: Té bona pinta
 Me: Jo
@@ -27,18 +29,18 @@ NameVoteAnnouncement: >-
 NextBtnLabel: Pròxim
 NotSureBtnLabel: No n'estic segur
 OpenedUrlToRevertBtnLabel: URL obert per tornar
-OresBadfaith: ''
-OresDamging: ''
-Overriden: ''
+OresBadfaith: ORES Badfaith
+OresDamging: ORES Danyós
+Overriden: Nul
 RevertEditSummary: >-
   Identificat com a prova / vandalisme mitjançant {0} versió {1}. Vegeu-la o
   proporcioneu la vostra opinió a {2}
 RevertNowBtnLabel: Torna ara
-ReviewFeed: ''
+ReviewFeed: Reviseu el feed
 ShouldRevertBtnLabel: Hauria de revertir
-ShowJudgements: ''
+ShowJudgements: Mostrar judicis
 Someone: Algú
-ThereIsNoEditSummary: ''
+ThereIsNoEditSummary: No hi ha cap resum d’edició.
 Time: Temps
 UndoBtnLabel: Desfer
 User: Usuari

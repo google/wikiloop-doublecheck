@@ -14,10 +14,12 @@ EditSummaryLabel: ערוך סיכום
 EditedAt: נערך בשעה
 EditedTimeLabel: עָרוּך
 HelpTranslate: עזרה בתרגום
-Judgement: ''
+Judgement: פְּסַק דִין
 Loading: טעינה
 LoginMenuItem: התחברות
-LoginPrompt: ''
+LoginPrompt: >-
+  האם אתה יודע שתוכל להתחבר ולשמור את התוויות שלך תחת שמך? אנו תומכים בכניסה
+  לחשבון ויקיפדיה דרך Oauth.
 LogoutMenuItem: להתנתק
 LooksGoodBtnLabel: נראה טוב
 Me: לִי
@@ -29,18 +31,18 @@ NameVoteAnnouncement: >-
 NextBtnLabel: הַבָּא
 NotSureBtnLabel: לא בטוח
 OpenedUrlToRevertBtnLabel: כתובת אתר נפתחה להחזרה
-OresBadfaith: ''
-OresDamging: ''
-Overriden: ''
+OresBadfaith: אורס בדפית '
+OresDamging: אורס פוגע
+Overriden: עקף
 RevertEditSummary: |-
   זוהה כמבחן / השחתה באמצעות {0} גרסה {1}. 
   ראה אותו או ספק את דעתך ב {2}
 RevertNowBtnLabel: חזור עכשיו
-ReviewFeed: ''
+ReviewFeed: סקור עדכון
 ShouldRevertBtnLabel: צריך לחזור
-ShowJudgements: ''
+ShowJudgements: הראו פסקי דין
 Someone: מִישֶׁהוּ
-ThereIsNoEditSummary: ''
+ThereIsNoEditSummary: אין סיכום עריכה.
 Time: זְמַן
 UndoBtnLabel: לבטל
 User: מִשׁתַמֵשׁ

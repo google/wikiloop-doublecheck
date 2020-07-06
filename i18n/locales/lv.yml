@@ -13,10 +13,12 @@ EditSummaryLabel: Labojuma kopsavilkums
 EditedAt: Rediģēts plkst
 EditedTimeLabel: labots
 HelpTranslate: Palīdziet tulkot
-Judgement: ''
+Judgement: Spriedums
 Loading: Ielādē
 LoginMenuItem: Pieslēgties
-LoginPrompt: ''
+LoginPrompt: >-
+  Vai jūs zināt, ka varētu pieteikties un saglabāt etiķetes ar savu vārdu? Mēs
+  atbalstām pieteikšanos ar Wikipedia kontu caur Oauth.
 LogoutMenuItem: Iziet
 LooksGoodBtnLabel: Izskatās labi
 Me: Es
@@ -28,18 +30,18 @@ NameVoteAnnouncement: >-
 NextBtnLabel: Nākamais
 NotSureBtnLabel: Nav pārliecības
 OpenedUrlToRevertBtnLabel: 'Atjaunots URL, lai to atjaunotu'
-OresBadfaith: ''
-OresDamging: ''
-Overriden: ''
+OresBadfaith: ORES Badfaith
+OresDamging: ORES bojājums
+Overriden: Pārvērtēts
 RevertEditSummary: >-
   Identificēts kā izmēģinājums/vandalisms izmantojot {0} versiju {1}. Apskatīt
   to vai piedāvāt savu viedokli {2}
 RevertNowBtnLabel: Atcelt tagad
-ReviewFeed: ''
+ReviewFeed: Atsauksmju plūsma
 ShouldRevertBtnLabel: Būtu jāatceļ
-ShowJudgements: ''
+ShowJudgements: Parādiet spriedumus
 Someone: Kāds
-ThereIsNoEditSummary: ''
+ThereIsNoEditSummary: Nav rediģēšanas kopsavilkuma.
 Time: Laiks
 UndoBtnLabel: Atsaukt
 User: Lietotājs

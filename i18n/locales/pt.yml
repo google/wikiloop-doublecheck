@@ -13,10 +13,12 @@ EditSummaryLabel: Resumo da edição
 EditedAt: Editado em
 EditedTimeLabel: editado
 HelpTranslate: Ajude a traduzir
-Judgement: ''
+Judgement: Julgamento
 Loading: Carregando
 LoginMenuItem: Entrar
-LoginPrompt: ''
+LoginPrompt: >-
+  Você sabia que poderia fazer login e preservar seus rótulos em seu nome?
+  Apoiamos o login com a conta da Wikipedia através de Oauth.
 LogoutMenuItem: Sair
 LooksGoodBtnLabel: Parece bom
 Me: Eu
@@ -29,18 +31,18 @@ NameVoteAnnouncement: >-
 NextBtnLabel: Próximo
 NotSureBtnLabel: Não tenho certeza
 OpenedUrlToRevertBtnLabel: Aberto URL para desfazer
-OresBadfaith: ''
-OresDamging: ''
-Overriden: ''
+OresBadfaith: ORES Badfaith
+OresDamging: ORES Danificando
+Overriden: Substituído
 RevertEditSummary: >-
   Identificado como um teste/vandalismo utilizando {0} versão {1}. Ver ou deixar
   sua opinião em {2}
 RevertNowBtnLabel: Desfazer agora
-ReviewFeed: ''
+ReviewFeed: Revisar Feed
 ShouldRevertBtnLabel: Deveria ser desfeito
-ShowJudgements: ''
+ShowJudgements: Mostrar julgamentos
 Someone: Alguém
-ThereIsNoEditSummary: ''
+ThereIsNoEditSummary: Não há resumo de edição.
 Time: Tempo
 UndoBtnLabel: Desfazer
 User: Do utilizador

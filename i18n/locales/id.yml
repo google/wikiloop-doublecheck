@@ -13,10 +13,12 @@ EditSummaryLabel: Ringkasan suntingan
 EditedAt: Diedit pada
 EditedTimeLabel: disunting
 HelpTranslate: Bantu terjemahkan
-Judgement: ''
+Judgement: Pertimbangan
 Loading: Sedang memuat
 LoginMenuItem: Masuk log
-LoginPrompt: ''
+LoginPrompt: >-
+  Tahukah Anda bahwa Anda dapat Masuk dan melindungi label Anda dengan nama
+  Anda? Kami mendukung Login dengan akun Wikipedia melalui Oauth.
 LogoutMenuItem: Keluar log
 LooksGoodBtnLabel: Kelihatan bagus
 Me: Aku
@@ -29,18 +31,18 @@ NameVoteAnnouncement: >-
 NextBtnLabel: Selanjutnya
 NotSureBtnLabel: Tidak yakin
 OpenedUrlToRevertBtnLabel: URL yang dibuka untuk kembali
-OresBadfaith: ''
-OresDamging: ''
-Overriden: ''
+OresBadfaith: ORF Badfaith
+OresDamging: ORES Merusak
+Overriden: Ditimpa
 RevertEditSummary: >-
   Batalkan percobaan/vandalisme menggunakan {0} versi {1}. Lihat atau beri
   pendapat di {2}
 RevertNowBtnLabel: Batalkan sekarang
-ReviewFeed: ''
+ReviewFeed: Tinjau Umpan
 ShouldRevertBtnLabel: Patut dibatalkan
-ShowJudgements: ''
+ShowJudgements: Perlihatkan penilaian
 Someone: Seseorang
-ThereIsNoEditSummary: ''
+ThereIsNoEditSummary: Tidak ada ringkasan edit.
 Time: Waktu
 UndoBtnLabel: Membuka
 User: Pengguna

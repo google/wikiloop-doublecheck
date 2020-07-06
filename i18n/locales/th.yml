@@ -12,10 +12,12 @@ EditSummaryLabel: แก้ไขสรุป
 EditedAt: แก้ไขเมื่อ
 EditedTimeLabel: แก้ไข
 HelpTranslate: ช่วยแปล
-Judgement: ''
+Judgement: การตัดสิน
 Loading: กำลังโหลด
 LoginMenuItem: เข้าสู่ระบบ
-LoginPrompt: ''
+LoginPrompt: >-
+  คุณรู้หรือไม่ว่าคุณสามารถเข้าสู่ระบบและรักษาป้ายกำกับของคุณไว้ใต้ชื่อ
+  เราสนับสนุนการเข้าสู่ระบบด้วยบัญชี Wikipedia ผ่าน Oauth
 LogoutMenuItem: ออกจากระบบ
 LooksGoodBtnLabel: ดูดี
 Me: ผม
@@ -25,18 +27,18 @@ NameVoteAnnouncement: >-
 NextBtnLabel: ต่อไป
 NotSureBtnLabel: ไม่แน่ใจ
 OpenedUrlToRevertBtnLabel: เปิด URL เพื่อเปลี่ยนกลับ
-OresBadfaith: ''
-OresDamging: ''
-Overriden: ''
+OresBadfaith: แร่ Badfaith
+OresDamging: ความเสียหายจาก ORES
+Overriden: แทนที่
 RevertEditSummary: >-
   ระบุว่าเป็น test / vandalism โดยใช้ {0} เวอร์ชัน {1}
   ดูหรือแสดงความคิดเห็นของคุณที่ {2}
 RevertNowBtnLabel: เปลี่ยนกลับทันที
-ReviewFeed: ''
+ReviewFeed: ฟีดรีวิว
 ShouldRevertBtnLabel: ควรเปลี่ยนกลับ
-ShowJudgements: ''
+ShowJudgements: แสดงการตัดสิน
 Someone: บางคน
-ThereIsNoEditSummary: ''
+ThereIsNoEditSummary: ไม่มีการสรุปการแก้ไข
 Time: เวลา
 UndoBtnLabel: เลิกทำ
 User: ผู้ใช้งาน
