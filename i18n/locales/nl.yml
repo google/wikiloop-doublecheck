@@ -14,6 +14,10 @@ EditedAt: Bewerkt op
 EditedTimeLabel: bewerkt
 HelpTranslate: Help vertalen
 Judgement: Oordeel
+Label-Login: Log in
+Label-Looks-Good: Ziet er goed uit
+Label-Not-Sure: Niet zeker
+Label-Should-Revert: Moet terugkeren
 Loading: Bezig met laden
 LoginMenuItem: Log in
 LoginPrompt: >-
@@ -26,12 +30,20 @@ NameVoteAnnouncement: >-
   Beste medewerker, we stemmen voor een nieuwe naam ter vervanging van het
   "WikiLoop Battlefield" dat eindigt op 13 juli 2020 00:00 UTC. Alsjeblieft,
   stem.
+NavBar-MenuItem-Code: Code
+NavBar-MenuItem-Issues: Problemen
+NavBar-MenuItem-Stats: Statistieken
+Next-Card: Volgende kaart
 NextBtnLabel: De volgende
 NotSureBtnLabel: Niet zeker
 OpenedUrlToRevertBtnLabel: URL geopend om terug te zetten
 OresBadfaith: ORES Badfaith
 OresDamging: ORES Schadelijk
 Overriden: Overschreven
+Prompt-Login-Text: >-
+  Weet u dat u zou kunnen inloggen en uw bijdragen onder uw naam kunt bewaren?
+  We ondersteunen inloggen met een Wikipedia-account via Oauth.
+Prompt-Login-Title: Log in
 RevertEditSummary: >-
   Geïdentificeerd als test / vandalisme met {0} versie {1}. Bekijk het of geef
   uw mening op {2}
@@ -44,3 +56,5 @@ ThereIsNoEditSummary: Er is geen samenvatting voor bewerken.
 Time: Tijd
 UndoBtnLabel: Ongedaan maken
 User: Gebruiker
+Label-Snooze: Snooze
+Button-Go: Gaan

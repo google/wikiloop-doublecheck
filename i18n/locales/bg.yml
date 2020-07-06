@@ -14,6 +14,10 @@ EditedAt: Редактирано в
 EditedTimeLabel: редактирана
 HelpTranslate: Помогнете при превода
 Judgement: преценка
+Label-Login: Влизам
+Label-Looks-Good: Изглежда добре
+Label-Not-Sure: Не съм сигурен
+Label-Should-Revert: Трябва да се върне
 Loading: Зареждане
 LoginMenuItem: Влизам
 LoginPrompt: >-
@@ -25,12 +29,20 @@ Me: мен
 NameVoteAnnouncement: >-
   Уважаеми сътрудници, провеждаме гласуване за ново име, заместващо „WikiLoop
   Battlefield“, завършващо на 13 юли 2020 г. 00:00 UTC. Моля, гласувайте.
+NavBar-MenuItem-Code: код
+NavBar-MenuItem-Issues: въпроси
+NavBar-MenuItem-Stats: Статистика
+Next-Card: Следваща карта
 NextBtnLabel: Следващия
 NotSureBtnLabel: Не съм сигурен
 OpenedUrlToRevertBtnLabel: Отворен URL адрес за възстановяване
 OresBadfaith: ORES Badfaith
 OresDamging: ORES Увреждане
 Overriden: Заменена
+Prompt-Login-Text: >-
+  Знаете ли, че бихте могли да влезете и да запазите своите вноски под вашето
+  име? Поддържаме влизане с акаунт в Wikipedia чрез Oauth.
+Prompt-Login-Title: Влизам
 RevertEditSummary: >-
   Идентифициран като тест / вандализъм с помощта на {0} версия {1}. Вижте го или
   дайте мнението си на {2}
@@ -43,3 +55,5 @@ ThereIsNoEditSummary: Няма резюме за редактиране.
 Time: път
 UndoBtnLabel: Undo
 User: потребител
+Label-Snooze: дрямка
+Button-Go: Отивам

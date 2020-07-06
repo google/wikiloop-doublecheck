@@ -33,7 +33,7 @@ async function translateCmd() {
   }
 
   let targetLangs = Object.keys(existingLocales)
-    .concat(['bg','ca','es','it','ko','nl','th']);
+    // .concat(['bg','ca','es','it','ko','nl','th']); // for new languages to add
 
   await Promise.all(targetLangs.map(async targetLang => {
     console.log(`Working on ${targetLang}`);
@@ -44,14 +44,19 @@ async function translateCmd() {
         keyArray.push(key);
       }
     }
-    let translations:string[] = await translateText(keyArray.map(key => sourceKeyMsgMap[key]), targetLang);
-    for(let i in keyArray) {
-      let key = keyArray[i];
-      targetKeyMsgMap[key] = translations[i];
+    if (keyArray.length != 0) {
+      let translations:string[] = await translateText(keyArray.map(key => sourceKeyMsgMap[key]), targetLang);
+      for(let i in keyArray) {
+        let key = keyArray[i];
+        targetKeyMsgMap[key] = translations[i];
+      }
+
+      fs.writeFileSync(`./i18n/locales/${targetLang}.yml`, yaml.safeDump(targetKeyMsgMap), 'utf8');
+      console.log(`Done with ${targetLang}`);
+    } else {
+      console.log(`Skipping lang=${targetLang} because there is no update on sources`);
     }
 
-    fs.writeFileSync(`./i18n/locales/${targetLang}.yml`, yaml.safeDump(targetKeyMsgMap), 'utf8');
-    console.log(`Done with ${targetLang}`);
   }));
 
 }

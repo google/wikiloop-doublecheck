@@ -14,6 +14,10 @@ EditedAt: Rediģēts plkst
 EditedTimeLabel: labots
 HelpTranslate: Palīdziet tulkot
 Judgement: Spriedums
+Label-Login: Pieslēgties
+Label-Looks-Good: Izskatās labi
+Label-Not-Sure: Neesmu pārliecināts
+Label-Should-Revert: Vajadzētu atgriezties
 Loading: Ielādē
 LoginMenuItem: Pieslēgties
 LoginPrompt: >-
@@ -27,12 +31,20 @@ NameVoteAnnouncement: >-
   “WikiLoop Battlefield” un beidzas 2020. gada 13. jūlijā plkst. 00:00 pēc UTC. 
 
   Lūdzu balsošanu.
+NavBar-MenuItem-Code: Kods
+NavBar-MenuItem-Issues: Jautājumi
+NavBar-MenuItem-Stats: Statistika
+Next-Card: Nākamā kārts
 NextBtnLabel: Nākamais
 NotSureBtnLabel: Nav pārliecības
 OpenedUrlToRevertBtnLabel: 'Atjaunots URL, lai to atjaunotu'
 OresBadfaith: ORES Badfaith
 OresDamging: ORES bojājums
 Overriden: Pārvērtēts
+Prompt-Login-Text: >-
+  Vai jūs zināt, ka varētu pieteikties un saglabāt savu ieguldījumu ar savu
+  vārdu? Mēs atbalstām pieteikšanos ar Wikipedia kontu caur Oauth.
+Prompt-Login-Title: Pieslēgties
 RevertEditSummary: >-
   Identificēts kā izmēģinājums/vandalisms izmantojot {0} versiju {1}. Apskatīt
   to vai piedāvāt savu viedokli {2}
@@ -45,3 +57,5 @@ ThereIsNoEditSummary: Nav rediģēšanas kopsavilkuma.
 Time: Laiks
 UndoBtnLabel: Atsaukt
 User: Lietotājs
+Label-Snooze: Atlikt
+Button-Go: Ej

@@ -14,6 +14,10 @@ EditedAt: Editado em
 EditedTimeLabel: editado
 HelpTranslate: Ajude a traduzir
 Judgement: Julgamento
+Label-Login: Conecte-se
+Label-Looks-Good: Parece bom
+Label-Not-Sure: Não tenho certeza
+Label-Should-Revert: Deve reverter
 Loading: Carregando
 LoginMenuItem: Entrar
 LoginPrompt: >-
@@ -28,12 +32,20 @@ NameVoteAnnouncement: >-
   UTC. 
 
   Por favor vote.
+NavBar-MenuItem-Code: Código
+NavBar-MenuItem-Issues: Problemas
+NavBar-MenuItem-Stats: Estatísticas
+Next-Card: Cartão seguinte
 NextBtnLabel: Próximo
 NotSureBtnLabel: Não tenho certeza
 OpenedUrlToRevertBtnLabel: Aberto URL para desfazer
 OresBadfaith: ORES Badfaith
 OresDamging: ORES Danificando
 Overriden: Substituído
+Prompt-Login-Text: >-
+  Você sabia que poderia fazer login e preservar suas contribuições em seu nome?
+  Apoiamos o login com a conta da Wikipedia através do Oauth.
+Prompt-Login-Title: Conecte-se
 RevertEditSummary: >-
   Identificado como um teste/vandalismo utilizando {0} versão {1}. Ver ou deixar
   sua opinião em {2}
@@ -46,3 +58,5 @@ ThereIsNoEditSummary: Não há resumo de edição.
 Time: Tempo
 UndoBtnLabel: Desfazer
 User: Do utilizador
+Label-Snooze: Soneca
+Button-Go: Ir

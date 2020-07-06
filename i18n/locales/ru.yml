@@ -11,6 +11,10 @@ EditedAt: Отредактировано в
 EditedTimeLabel: Edited
 HelpTranslate: Помогите перевести
 Judgement: решение
+Label-Login: Авторизоваться
+Label-Looks-Good: Выглядит хорошо
+Label-Not-Sure: Точно сказать не могу
+Label-Should-Revert: Должен вернуться
 Loading: Загрузка
 LoginMenuItem: Логин
 LoginPrompt: >-
@@ -24,12 +28,20 @@ NameVoteAnnouncement: >-
   битвы WikiLoop, заканчивающееся 13 июля 2020 года в 00:00 UTC. 
 
   Пожалуйста, проголосуйте.
+NavBar-MenuItem-Code: Код
+NavBar-MenuItem-Issues: вопросы
+NavBar-MenuItem-Stats: Статистика
+Next-Card: Следующая карта
 NextBtnLabel: Следующий
 NotSureBtnLabel: Не уверен
 OpenedUrlToRevertBtnLabel: Открытый URL для возврата
 OresBadfaith: ОРЕС Бадфейт
 OresDamging: Руды Повреждения
 Overriden: Переопределенный
+Prompt-Login-Text: >-
+  Знаете ли вы, что вы можете войти и сохранить свои вклады под своим именем? Мы
+  поддерживаем вход в аккаунт в Википедии через Oauth.
+Prompt-Login-Title: Авторизоваться
 RevertEditSummary: >-
   Идентифицировано как тест/вандализм с использованием {0} версии {1}. Смотрите
   или высказывайте своё мнение по адресу {2}
@@ -42,3 +54,5 @@ ThereIsNoEditSummary: Там нет редактировать резюме.
 Time: Время
 UndoBtnLabel: Отменить
 User: пользователь
+Label-Snooze: вздремнуть
+Button-Go: Идти

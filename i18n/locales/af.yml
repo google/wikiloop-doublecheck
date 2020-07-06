@@ -14,6 +14,10 @@ EditedAt: Geredigeer om
 EditedTimeLabel: geredigeerde
 HelpTranslate: Help om te vertaal
 Judgement: oordeel
+Label-Login: Teken aan
+Label-Looks-Good: Lyk goed
+Label-Not-Sure: Nie seker nie
+Label-Should-Revert: Moet terugkeer
 Loading: laai
 LoginMenuItem: Teken aan
 LoginPrompt: >-
@@ -27,12 +31,20 @@ NameVoteAnnouncement: >-
   "WikiLoop Battlefield" wat eindig op 13 Julie 2020 00:00 UTC. 
 
   Stem asb.
+NavBar-MenuItem-Code: kode
+NavBar-MenuItem-Issues: kwessies
+NavBar-MenuItem-Stats: statistiek
+Next-Card: Volgende kaart
 NextBtnLabel: volgende
 NotSureBtnLabel: Nie seker nie
 OpenedUrlToRevertBtnLabel: URL geopen om terug te keer
 OresBadfaith: ORES Badfaith
 OresDamging: Ertse beskadig
 Overriden: geïgnoreer
+Prompt-Login-Text: >-
+  Weet u dat u kan inteken en u bydraes onder u naam kan bewaar? Ons ondersteun
+  login met Wikipedia-rekening via Oauth.
+Prompt-Login-Title: Teken aan
 RevertEditSummary: >-
   Word geïdentifiseer as toets/vandalisme met behulp van {0} weergawe {1}. Sien
   dit of gee u mening by {2}
@@ -45,3 +57,5 @@ ThereIsNoEditSummary: Daar is geen wysigingsopsomming nie.
 Time: tyd
 UndoBtnLabel: ongedaan
 User: gebruiker
+Label-Snooze: Sluimer
+Button-Go: Gaan

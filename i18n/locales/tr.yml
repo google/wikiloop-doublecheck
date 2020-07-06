@@ -14,6 +14,10 @@ EditedAt: Düzenlendi
 EditedTimeLabel: düzenlendi
 HelpTranslate: Çeviriye yardım et
 Judgement: yargı
+Label-Login: Oturum aç
+Label-Looks-Good: İyi görünüyor
+Label-Not-Sure: Emin değil
+Label-Should-Revert: Geri Dönmeli
 Loading: Yükleniyor
 LoginMenuItem: Giriş
 LoginPrompt: >-
@@ -27,12 +31,20 @@ NameVoteAnnouncement: >-
   yerine yeni bir isim vermek için oy kullanıyoruz. 
 
   Lütfen oy verin.
+NavBar-MenuItem-Code: kod
+NavBar-MenuItem-Issues: Sorunlar
+NavBar-MenuItem-Stats: İstatistikleri
+Next-Card: Sonraki Kart
 NextBtnLabel: Sonraki
 NotSureBtnLabel: Emin Değilim
 OpenedUrlToRevertBtnLabel: Geri dönmek için açılan URL
 OresBadfaith: ORES Badfaith
 OresDamging: ORES Hasar
 Overriden: Geçersiz kılınan
+Prompt-Login-Text: >-
+  Giriş yapabilir ve katkılarınızı adınız altında koruyabileceğinizi biliyor
+  musunuz? Oauth aracılığıyla Wikipedia hesabıyla giriş yapmayı destekliyoruz.
+Prompt-Login-Title: Oturum aç
 RevertEditSummary: |-
   {0} {1} sürümü kullanılarak test / vandalizm olarak tanımlandı. 
   {2} adresinde görün veya görüşünüzü belirtin
@@ -45,3 +57,5 @@ ThereIsNoEditSummary: Düzenleme özeti yok.
 Time: Zaman
 UndoBtnLabel: Geri alma
 User: kullanıcı
+Label-Snooze: Uyuklama
+Button-Go: Git

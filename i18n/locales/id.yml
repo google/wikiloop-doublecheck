@@ -14,6 +14,10 @@ EditedAt: Diedit pada
 EditedTimeLabel: disunting
 HelpTranslate: Bantu terjemahkan
 Judgement: Pertimbangan
+Label-Login: Gabung
+Label-Looks-Good: Kelihatan bagus
+Label-Not-Sure: Tidak yakin
+Label-Should-Revert: Harus Kembalikan
 Loading: Sedang memuat
 LoginMenuItem: Masuk log
 LoginPrompt: >-
@@ -28,12 +32,20 @@ NameVoteAnnouncement: >-
   UTC. 
 
   Tolong pilih.
+NavBar-MenuItem-Code: Kode
+NavBar-MenuItem-Issues: Masalah
+NavBar-MenuItem-Stats: Statistik
+Next-Card: Kartu selanjutnya
 NextBtnLabel: Selanjutnya
 NotSureBtnLabel: Tidak yakin
 OpenedUrlToRevertBtnLabel: URL yang dibuka untuk kembali
 OresBadfaith: ORF Badfaith
 OresDamging: ORES Merusak
 Overriden: Ditimpa
+Prompt-Login-Text: >-
+  Apakah Anda tahu Anda bisa masuk dan menyimpan kontribusi Anda dengan nama
+  Anda? Kami mendukung login dengan akun Wikipedia melalui Oauth.
+Prompt-Login-Title: Gabung
 RevertEditSummary: >-
   Batalkan percobaan/vandalisme menggunakan {0} versi {1}. Lihat atau beri
   pendapat di {2}
@@ -46,3 +58,5 @@ ThereIsNoEditSummary: Tidak ada ringkasan edit.
 Time: Waktu
 UndoBtnLabel: Membuka
 User: Pengguna
+Label-Snooze: Tidur sebentar
+Button-Go: Pergilah

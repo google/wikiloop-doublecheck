@@ -15,6 +15,10 @@ EditedAt: Modifié à
 EditedTimeLabel: édité
 HelpTranslate: Aide à traduire
 Judgement: Jugement
+Label-Login: S'identifier
+Label-Looks-Good: Cela semble bon
+Label-Not-Sure: Pas certain
+Label-Should-Revert: Devrait revenir
 Loading: Chargement
 LoginMenuItem: Connexion
 LoginPrompt: >-
@@ -29,12 +33,21 @@ NameVoteAnnouncement: >-
   "WikiLoop Battlefield" se terminant le 13 juillet 2020 à 00h00 UTC. 
 
   S'il vous plait, votez.
+NavBar-MenuItem-Code: Code
+NavBar-MenuItem-Issues: Problèmes
+NavBar-MenuItem-Stats: Statistiques
+Next-Card: Carte suivante
 NextBtnLabel: Suivant
 NotSureBtnLabel: Pas sûr
 OpenedUrlToRevertBtnLabel: URL ouverte pour revenir
 OresBadfaith: ORES Badfaith
 OresDamging: ORES endommageant
 Overriden: Remplacé
+Prompt-Login-Text: >-
+  Savez-vous que vous pouvez vous connecter et conserver vos contributions sous
+  votre nom? Nous prenons en charge la connexion avec un compte Wikipedia via
+  Oauth.
+Prompt-Login-Title: S'identifier
 RevertEditSummary: |-
   Identifié comme test / vandalisme à l'aide de la version {0} {1}. 
   Consultez-le ou donnez votre avis sur {2}
@@ -47,3 +60,5 @@ ThereIsNoEditSummary: Il n'y a pas de résumé de modification.
 Time: Temps
 UndoBtnLabel: annuler
 User: Utilisateur
+Label-Snooze: Roupillon
+Button-Go: Aller

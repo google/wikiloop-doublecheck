@@ -14,6 +14,10 @@ EditedAt: Edytowane o
 EditedTimeLabel: edytowane
 HelpTranslate: Pomóż w tłumaczeniu
 Judgement: Osąd
+Label-Login: Zaloguj sie
+Label-Looks-Good: Wygląda dobrze
+Label-Not-Sure: Niepewny
+Label-Should-Revert: Powinien powrócić
 Loading: Ładowanie
 LoginMenuItem: Zaloguj sie
 LoginPrompt: >-
@@ -28,12 +32,20 @@ NameVoteAnnouncement: >-
   Battlefield”, która zakończy się 13 lipca 2020 r. 00:00 UTC. 
 
   Proszę Głosuj.
+NavBar-MenuItem-Code: Kod
+NavBar-MenuItem-Issues: Zagadnienia
+NavBar-MenuItem-Stats: Statystyki
+Next-Card: Następna karta
 NextBtnLabel: Następny
 NotSureBtnLabel: Nie jestem pewien
 OpenedUrlToRevertBtnLabel: Otwarty URL do odwrócenia
 OresBadfaith: ORES Badfaith
 OresDamging: Uszkodzenie ORES
 Overriden: Zastąpione
+Prompt-Login-Text: >-
+  Czy wiesz, że możesz się zalogować i zachować swoje wpisy pod swoim imieniem?
+  Obsługujemy logowanie za pomocą konta Wikipedia za pośrednictwem Oauth.
+Prompt-Login-Title: Zaloguj sie
 RevertEditSummary: >-
   Zidentyfikowany jako test / wandalizm przy użyciu {0} wersji {1}. Zobacz to
   lub przedstaw swoją opinię na stronie {2}
@@ -46,3 +58,5 @@ ThereIsNoEditSummary: Brak podsumowania edycji.
 Time: Czas
 UndoBtnLabel: Cofnij
 User: Użytkownik
+Label-Snooze: Drzemka
+Button-Go: Udać się

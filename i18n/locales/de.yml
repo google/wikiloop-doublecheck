@@ -15,6 +15,10 @@ EditedAt: Bearbeitet bei
 EditedTimeLabel: Bearbeitet
 HelpTranslate: Hilfe beim Übersetzen
 Judgement: Beurteilung
+Label-Login: Anmeldung
+Label-Looks-Good: Sieht gut aus
+Label-Not-Sure: Nicht sicher
+Label-Should-Revert: Sollte zurückkehren
 Loading: Beladung
 LoginMenuItem: Anmelden
 LoginPrompt: >-
@@ -30,12 +34,21 @@ NameVoteAnnouncement: >-
   endet. 
 
   Bitte abstimmen.
+NavBar-MenuItem-Code: Code
+NavBar-MenuItem-Issues: Probleme
+NavBar-MenuItem-Stats: Statistiken
+Next-Card: Nächste Karte
 NextBtnLabel: Nächste
 NotSureBtnLabel: Nicht sicher
 OpenedUrlToRevertBtnLabel: Geöffnete URL zum Zurücksetzen
 OresBadfaith: ORES Badfaith
 OresDamging: Erze beschädigen
 Overriden: Überschrieben
+Prompt-Login-Text: >-
+  Wissen Sie, dass Sie sich anmelden und Ihre Beiträge unter Ihrem Namen
+  aufbewahren können? Wir unterstützen die Anmeldung mit einem Wikipedia-Konto
+  über Oauth.
+Prompt-Login-Title: Anmeldung
 RevertEditSummary: |-
   Mit {0} Version {1} als Test / Vandalismus identifiziert. 
   Sehen Sie es sich an oder geben Sie Ihre Meinung unter {2} ab
@@ -48,3 +61,5 @@ ThereIsNoEditSummary: Es gibt keine Bearbeitungszusammenfassung.
 Time: Zeit
 UndoBtnLabel: Rückgängig machen
 User: Benutzer
+Label-Snooze: Schlummer
+Button-Go: Gehen

@@ -14,6 +14,10 @@ EditedAt: Editat a
 EditedTimeLabel: editat
 HelpTranslate: Ajuda a traduir
 Judgement: Judici
+Label-Login: iniciar Sessió
+Label-Looks-Good: Té bona pinta
+Label-Not-Sure: No n'estic segur
+Label-Should-Revert: Hauria de tornar
 Loading: Carregant
 LoginMenuItem: iniciar Sessió
 LoginPrompt: >-
@@ -26,12 +30,20 @@ NameVoteAnnouncement: >-
   Benvolgut col·laborador, realitzem una votació per a un nou nom en substitució
   del "Camp de batalla de WikiLoop" que finalitza el 13 de juliol de 2020 a les
   00:00 UTC. Vota si us plau.
+NavBar-MenuItem-Code: Codi
+NavBar-MenuItem-Issues: Problemes
+NavBar-MenuItem-Stats: Estadístiques
+Next-Card: Fitxa següent
 NextBtnLabel: Pròxim
 NotSureBtnLabel: No n'estic segur
 OpenedUrlToRevertBtnLabel: URL obert per tornar
 OresBadfaith: ORES Badfaith
 OresDamging: ORES Danyós
 Overriden: Nul
+Prompt-Login-Text: >-
+  Sabeu que podríeu iniciar la sessió i preservar les vostres contribucions al
+  vostre nom? Admetem l’accés amb el compte de Wikipedia mitjançant Oauth.
+Prompt-Login-Title: iniciar Sessió
 RevertEditSummary: >-
   Identificat com a prova / vandalisme mitjançant {0} versió {1}. Vegeu-la o
   proporcioneu la vostra opinió a {2}
@@ -44,3 +56,5 @@ ThereIsNoEditSummary: No hi ha cap resum d’edició.
 Time: Temps
 UndoBtnLabel: Desfer
 User: Usuari
+Label-Snooze: Dormitar
+Button-Go: Va

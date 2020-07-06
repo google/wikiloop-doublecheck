@@ -13,13 +13,12 @@
                 ></RevisionCard>
         </template>
 
-      <b-modal id="modal-promote-login" title="Tip: Login">
-        Do you know you could Login and preserve your labels under your name?
-        We support Login with Wikipedia account through Oauth. <br/>
+      <b-modal id="modal-promote-login" title="$t('Prompt-Login-Title')">
+        {{$t('Prompt-Login-Text')}} <br/>
         <template v-slot:modal-footer="{ ok, hide }">
-          <a class="btn-sm btn btn-primary" href="/auth/mediawiki/login">Login</a>
+          <a class="btn-sm btn btn-primary" href="/auth/mediawiki/login">{{$t('Label-Login')}}</a>
           <b-button size="sm" variant="secondary" @click="snoozeTipLogin()">
-            Snooze
+            {{$t('Label-Snooze')}}
           </b-button>
         </template>
       </b-modal>

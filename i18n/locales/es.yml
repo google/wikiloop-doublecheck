@@ -14,6 +14,10 @@ EditedAt: Editado en
 EditedTimeLabel: editado
 HelpTranslate: Ayuda a traducir
 Judgement: Juicio
+Label-Login: Iniciar sesión
+Label-Looks-Good: Se ve bien
+Label-Not-Sure: No estoy seguro
+Label-Should-Revert: Debería revertir
 Loading: Cargando
 LoginMenuItem: Iniciar sesión
 LoginPrompt: >-
@@ -26,12 +30,21 @@ NameVoteAnnouncement: >-
   Estimado colaborador, estamos celebrando una votación para el nuevo nombre que
   reemplaza el "WikiLoop Battlefield" que finaliza el 13 de julio de 2020 a las
   00:00 UTC. Por favor vota.
+NavBar-MenuItem-Code: Código
+NavBar-MenuItem-Issues: Cuestiones
+NavBar-MenuItem-Stats: Estadísticas
+Next-Card: Siguiente carta
 NextBtnLabel: próximo
 NotSureBtnLabel: No estoy seguro
 OpenedUrlToRevertBtnLabel: URL abierta para revertir
 OresBadfaith: ORES Badfaith
 OresDamging: ORES Daños
 Overriden: Anulado
+Prompt-Login-Text: >-
+  ¿Sabes que puedes iniciar sesión y preservar tus contribuciones bajo tu
+  nombre? Apoyamos el inicio de sesión con la cuenta de Wikipedia a través de
+  Oauth.
+Prompt-Login-Title: Iniciar sesión
 RevertEditSummary: >-
   Identificado como prueba / vandalismo usando {0} versión {1}. Véalo o dé su
   opinión en {2}
@@ -44,3 +57,5 @@ ThereIsNoEditSummary: No hay resumen de edición.
 Time: Hora
 UndoBtnLabel: Deshacer
 User: Usuario
+Label-Snooze: dormitar
+Button-Go: Vamos

@@ -54,10 +54,10 @@
               <template v-slot:button-content>
                 <i class="fas fa-info"></i>
               </template>
-              <b-dropdown-item href="https://github.com/google/wikiloop-battlefield/issues" target="_blank">Issues</b-dropdown-item>
-              <b-dropdown-item href="https://github.com/google/wikiloop-battlefield" target="_blank">Code </b-dropdown-item>
+              <b-dropdown-item href="https://github.com/google/wikiloop-battlefield/issues" target="_blank">{{$t('NavBar-MenuItem-Issues')}}</b-dropdown-item>
+              <b-dropdown-item href="https://github.com/google/wikiloop-battlefield" target="_blank">{{$t('NavBar-MenuItem-Code')}} </b-dropdown-item>
               <b-dropdown-item href="https://meta.wikimedia.org/wiki/WikiProject_WikiLoop" target="_blank">WikiProject</b-dropdown-item>
-              <b-dropdown-item href="/api/stats" target="_blank">Stats</b-dropdown-item>
+              <b-dropdown-item href="/api/stats" target="_blank">{{$t('NavBar-MenuItem-Stats')}}</b-dropdown-item>
             </b-nav-item-dropdown>
             <b-nav-item>
               <b-form-select @click.native.stop='' class="small" v-model="wiki">
@@ -99,15 +99,11 @@
       <nuxt class="pt-lg-4 pt-md-2 pt-sm-1"/>
     </div>
     <b-modal id="modal-keymap" title="Keymap">
-      V: Should Revert<br/>
-      G: Looks Good<br/>
-      P: Not Sure<br/>
-      →: Next Card<br/>
+      V: {{$t('Label-Should-Revert')}}<br/>
+      G: {{$t('Label-Looks-Good')}}<br/>
+      P: {{$t('Label-Not-Sure')}}<br/>
+      →: {{$t('Next-Card')}}<br/>
     </b-modal>
-    <b-toast ref="example-toast-ref" id="example-toast" title="BootstrapVue" class="b-toaster-top-right" no-auto-hide>
-      Hello, world! This is a toast message.
-      <div class="btn btn-primary"> Get Out </div>
-    </b-toast>
   </div>
 </template>
 

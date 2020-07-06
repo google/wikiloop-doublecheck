@@ -1,5 +1,6 @@
 Anonymous: Anonymous
 Author: Author
+Button-Go: Go
 ContributionsBeforeLoginMenuItem: My contributions before login
 ContributionsMenuItem: My contributions
 DiffNotAvailable: >-
@@ -14,23 +15,36 @@ EditedAt: Edited at
 EditedTimeLabel: edited
 HelpTranslate: Help translate
 Judgement: Judgement
+Label-Login: Login
+Label-Looks-Good: Looks Good
+Label-Not-Sure: Not Sure
+Label-Should-Revert: Should Revert
+Label-Snooze: Snooze
 Loading: Loading
 LoginMenuItem: Login
 LoginPrompt: >-
   Do you know you could Login and preserve your labels under your name? We
-  support Login with Wikipedia account through Oauth. 
+  support Login with Wikipedia account through Oauth.
 LogoutMenuItem: Logout
 LooksGoodBtnLabel: Looks good
 Me: Me
 NameVoteAnnouncement: >-
   Dear contributor, we are holding a voting for new name replacing the "WikiLoop
   Battlefield" ending on July 13, 2020 00:00 UTC. Please vote.
+NavBar-MenuItem-Code: Code
+NavBar-MenuItem-Issues: Issues
+NavBar-MenuItem-Stats: Stats
+Next-Card: Next Card
 NextBtnLabel: Next
 NotSureBtnLabel: Not sure
 OpenedUrlToRevertBtnLabel: Opened URL to revert
 OresBadfaith: ORES Badfaith
 OresDamging: ORES Damaging
 Overriden: Overridden
+Prompt-Login-Text: >-
+  Do you know you could login and preserve your contributions under your name?
+  We support login with Wikipedia account through Oauth.
+Prompt-Login-Title: Login
 RevertEditSummary: >-
   Identified as test/vandalism using {0} version {1}. See it or provide your
   opinion at {2}
