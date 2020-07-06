@@ -1,3 +1,4 @@
+
 // Copyright 2019 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -45,20 +46,35 @@ export const wikiLangs = [
   'zh',
 ]
 
-export const wikiToDomain = {
+const _wikiToDomain = {
   "wikidatawiki": "wikidata.org",
   "testwiki": "test.wikipedia.org",
 };
 
-export const wikiToLangMap = {
+const _wikiToLangMap = {
   "wikidatawiki": "en", // TODO(xinbenlv): consider how we deal with wikidata UI languages.
   "testwiki": "en",
 };
 
 wikiLangs.forEach(lang => {
-  wikiToDomain[`${lang}wiki`] = `${lang}.wikipedia.org`;
-  wikiToLangMap[`${lang}wiki`] = lang;
+  _wikiToDomain[`${lang}wiki`] = `${lang}.wikipedia.org`;
+  _wikiToLangMap[`${lang}wiki`] = lang;
 });
+
+export const wikiToDomain = (function() {
+  wikiLangs.forEach(lang => {
+    _wikiToDomain[`${lang}wiki`] = `${lang}.wikipedia.org`;
+  });
+  return _wikiToDomain;
+})();
+
+export const wikiToLangMap = (function() {
+  wikiLangs.forEach(lang => {
+    _wikiToLangMap[`${lang}wiki`] = lang;
+  });
+  return _wikiToLangMap;
+})();
+
 
 export let getUrlBaseByWiki = function(wiki) {
     return `http://${wikiToDomain[wiki]}`;

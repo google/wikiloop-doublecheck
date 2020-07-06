@@ -61,7 +61,7 @@
             </b-nav-item-dropdown>
             <b-nav-item>
               <b-form-select @click.native.stop='' class="small" v-model="wiki">
-                <option v-for="language in languages" :key="language.value" :value="language.value">{{ language.value }}</option>
+                <option v-for="language in languages" :key="language.wiki" :value="language.wiki">{{language.wiki}} - {{ language.nativeText }}  </option>
               </b-form-select>
             </b-nav-item>
           </b-navbar-nav>
@@ -113,11 +113,11 @@
 
 <script lang="ts">
     import socket from '@/plugins/socket.io.js';
-    import languages from '@/i18n/languages.js';
     import {InteractionItem} from "~/shared/schema";
     import UserAvatarWithName from "~/components/UserAvatarWithName.vue";
     import NoticeBanner from '~/components/NoticeBanner.vue';
-    import {wikiToLangMap} from '~/shared/utility-shared';
+    import {wikiToLangMap,  wikiLangs} from '~/shared/utility-shared';
+    import ISO6391 from 'iso-639-1';
 
     export default {
     components: {
@@ -126,7 +126,14 @@
     },
     data() {
       return {
-        languages
+        languages: Object.keys(wikiToLangMap).map(wiki => {
+          let lang = wikiToLangMap[wiki];
+          return {
+            wiki: wiki,
+            lang: lang,
+            nativeText: ISO6391.getNativeName(lang) || wiki
+          }
+        })
       }
     },
     methods: {

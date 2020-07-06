@@ -177,10 +177,11 @@
     </section>
 </template>
 <script lang="ts">
-  import {getUrlBaseByWiki, fetchDiffWithWikiRevId} from '@/shared/utility-shared';
+  import {getUrlBaseByWiki, fetchDiffWithWikiRevId, wikiToLangMap} from '@/shared/utility-shared';
   import BootstrapVue from 'bootstrap-vue';
   import VueTimeago from 'vue-timeago';
-  import languages from '@/i18n/languages.js';
+  import ISO6391 from 'iso-639-1';
+
   export default {
     components: {
       BootstrapVue,
@@ -196,9 +197,9 @@
       isMe: function (leader) {
         return (this.$store.state.user && this.$store.state.user.profile && this.$store.state.user.profile.displayName === leader.wikiUserName) || this.$cookiez.get('_ga') === leader.userGaId;
       }, getWiki: function (wiki) {
-        for (let lang of languages) {
-          if (lang.value === wiki) return lang.text
-        }
+        let lang = wikiToLangMap[wiki];
+        let nativeName = ISO6391.getNativeName(lang)
+        if(nativeName) return nativeName;
         return wiki; // fall back
       }, load: async function () {
         const {loggedIn, anonymous, wikis, totalLoggedIn} = await this.$axios.$get(`/api/leaderboard?days=${this.timeRange}`);
