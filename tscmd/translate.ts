@@ -33,7 +33,7 @@ async function translateCmd() {
   }
 
   let targetLangs = Object.keys(existingLocales)
-    // .concat(['bg','ca','es','it','ko','nl','th']); // for new languages to add
+    .concat(['ar','fa','uk','cs','sv']); // for new languages to add
 
   await Promise.all(targetLangs.map(async targetLang => {
     console.log(`Working on ${targetLang}`);

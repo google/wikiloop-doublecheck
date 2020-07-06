@@ -25,11 +25,14 @@ export enum UserTier {
 
 export const wikiLangs = [
   'af',
+  'ar',
   'bg',
   'ca',
+  'cs',
   'de',
   'en',
   'es',
+  'fa',
   'fr',
   'he',
   'id',
@@ -41,10 +44,12 @@ export const wikiLangs = [
   'pl',
   'pt',
   'ru',
+  'sv',
   'th',
   'tr',
+  'uk',
   'zh',
-]
+];
 
 const _wikiToDomain = {
   "wikidatawiki": "wikidata.org",

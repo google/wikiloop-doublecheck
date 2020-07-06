@@ -19,7 +19,8 @@
     "ci": "circleci local execute build",
     "dev:exec": "ts-node -r tsconfig-paths/register --project tsconfig.json ./server/index.ts",
     "dev:server": "nodemon -w server -w shared -x ts-node ./server/index.ts --server-only",
-    "release": "HUSKY_SKIP_HOOKS=1 standard-version"
+    "release": "HUSKY_SKIP_HOOKS=1 standard-version",
+    "translate": "npx ts-node -r tsconfig-paths/register tscmd/translate.ts"
   },
   "husky": {
     "hooks": {
