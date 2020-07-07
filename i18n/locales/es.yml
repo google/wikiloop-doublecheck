@@ -4,7 +4,9 @@ Button-Go.@meta.@description: >-
   determinada.
 Button-HelpTranslate: Ayuda a traducir
 Button-HelpTranslate.@meta.@description: >-
-  Etiqueta para botón que permite a los usuarios ayudar a traducir mensajes
+  Etiqueta para botón que permite a los u
+  
+  arios ayudar a traducir mensajes
   internacionalizados para este software.
 Button-Next: próximo
 Button-Next.@meta.@description: >-
@@ -15,7 +17,7 @@ Button-RevertNow: Revertir ahora
 Button-ShowJudgements: Mostrar juicios
 Button-Undo: Deshacer
 Label-1Month: 1 mes (30 días)
-Label-1Quarter: 1 cuarto (90d)
+Label-1Quarter: 1 trimestre (90d)
 Label-1Year: 1 año (365d)
 Label-1day: 1 día
 Label-1week: 1 semana (7d)
@@ -24,18 +26,18 @@ Label-AllTime: Todo el tiempo
 Label-Anonymous: Anónimo
 Label-ArtificialIntelligence: Inteligencia artificial
 Label-Author: Autor
-Label-CountOfJudgements: Contar
+Label-CountOfJudgements: Total
 Label-Day: Día
 Label-DiffView: Vista diferida
 Label-DirectRevertFailed: La reversión directa falló
 Label-DirectReverted: Directo revertido
 Label-EditSummary: Editar resumen
 Label-EditedAt: editado
-Label-Feed: Alimentar
-Label-History: Historia
+Label-Feed: Actualizaciónes
+Label-History: Historial
 Label-HumanEditors: Editores humanos
 Label-Judgement: Juicio
-Label-LastActiveTime: Último Activo
+Label-LastActiveTime: Última Actividad
 Label-Loading: Cargando
 Label-Login: Iniciar sesión
 Label-Logout: Cerrar sesión
@@ -52,13 +54,13 @@ Label-OresBadfaith: ORES mala fe
 Label-OresBadfaith.@meta.@isMachineTranslated: true
 Label-OresBadfaith.@meta.@translatedAt: 2020-07-07T01:09:19.142Z
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
-Label-OresDamaging: ORES Daños
+Label-OresDamaging: ORES Dañoso
 Label-Overriden: Anulado
 Label-Prompt-Login: Iniciar sesión
 Label-Rank: Rango
 Label-Reason: Razón
 Label-Result: Resultado
-Label-RevertSucceeded: Revertir tuvo éxito!
+Label-RevertSucceeded: Reversión tuvo éxito!
 Label-ReviewFeed: Revisar feed
 Label-ReviewedAndSays: 'revisado {0} y dice'
 Label-Should-Revert: Debería revertir
@@ -67,27 +69,27 @@ Label-Snooze: dormitar
 Label-Someone: Alguien
 Label-Time: Hora
 Label-TopNumberAnonymousUsers: 'Top {0} Usuarios anónimos'
-Label-TopUsers: Usuarios principales
+Label-TopUsers: Principales Usuarios
 Label-TopWikis: Los mejores wikis
 Label-TotalNumber: Total
 Label-User: Usuario
 Label-Week: Semana
-Label-YourJudgement: Su juicio
+Label-YourJudgement: Tu juicio
 MenuItem-Code: Código
 MenuItem-Contributions: Mis contribuciones
 MenuItem-ContributionsBeforeLogin: Mis contribuciones antes de iniciar sesión
 MenuItem-Issues: Cuestiones
 MenuItem-Stats: Estadísticas
 Message-AJudgementLogged: 'Se ha registrado una sentencia para {0} para revisión {1}.'
-Message-CongratsSuccessfullyReverted: 'Felicidades! has revertido con éxito directamente {0}.'
+Message-CongratsSuccessfullyReverted: '¡Felicidades! has revertido con éxito directamente {0}.'
 Message-DiffNotAvailable: >-
-  El artículo de wikipedia diff no está disponible temporalmente. Puedes
+  El diff del artículo de wikipedia no está disponible temporalmente. Puedes
   intentar recargarlo. A veces, una revisión destrozada podría ser eliminada.
   Puedes consultar el historial de la página.
-Message-FeedHasNoNewRevisionsClickNextBelow: 'El feed {0} no tiene nuevas revisiones, haga clic a continuación.'
+Message-FeedHasNoNewRevisionsClickNextBelow: 'El feed {0} no tiene nuevas revisiones, haz clic a continuación.'
 Message-Login: >-
   ¿Sabes que puedes iniciar sesión y conservar tus etiquetas con tu nombre?
-  Apoyamos Iniciar sesión con la cuenta de Wikipedia a través de Oauth.
+  Es posible iniciar sesión con la cuenta de Wikipedia a través de Oauth.
 Message-NameVoteAnnouncement: >-
   Estimado colaborador, estamos celebrando una votación para el nuevo nombre que
   reemplaza el "WikiLoop Battlefield" que finaliza el 13 de julio de 2020 a las
@@ -96,13 +98,12 @@ Message-NoActiveUsersPleaseStartReview: >-
   No hay usuarios activos en los últimos 15 minutos. Comienza {0} revisando
   revisiones {1} y conviértete en el primero.
 Message-Prompt-Login: >-
-  ¿Sabes que puedes iniciar sesión y preservar tus contribuciones bajo tu
-  nombre? Apoyamos el inicio de sesión con la cuenta de Wikipedia a través de
-  Oauth.
+  ¿Sabes que puedes iniciar sesión y conservar tus etiquetas con tu nombre?
+  Es posible iniciar sesión con la cuenta de Wikipedia a través de Oauth.
 Message-RevertEditSummary: >-
-  Identificado como prueba / vandalismo usando {0} versión {1}. Véalo o dé su
+  Identificado como prueba/vandalismo usando {0} versión {1}. Velo o da tu
   opinión en {2}
 Message-SorryWeFailedToRevert: 'Lo sentimos, no pudimos revertir la revisión {0}.'
 Message-TheRevisionIsSuccessfullyRevertedAs: 'La revisión {0} se revierte con éxito como {1}.'
 Message-ThereIsNoEditSummary: No hay resumen de edición.
-Message-YourJudgementLogged: 'Su juicio para {0} para revisión {1} ha sido registrado.'
+Message-YourJudgementLogged: 'Tu juicio para {0} para revisión {1} ha sido registrado.'
