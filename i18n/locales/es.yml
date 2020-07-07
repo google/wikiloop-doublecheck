@@ -1,6 +1,6 @@
-Button-Go: Vamos
+Button-Go: Ir
 Button-Go.@meta.@description: >-
-  Etiqueta de botones para redirigir al usuario a una URL o ubicación
+  Etiqueta de botones para redirigir al usuario a un enlace o ubicación
   determinada.
 Button-HelpTranslate: Ayuda a traducir
 Button-HelpTranslate.@meta.@description: >-
@@ -8,11 +8,11 @@ Button-HelpTranslate.@meta.@description: >-
   
   arios ayudar a traducir mensajes
   internacionalizados para este software.
-Button-Next: próximo
+Button-Next: Siguiente
 Button-Next.@meta.@description: >-
   Etiqueta para un botón al hacer clic en ir a la página siguiente o mostrar la
   siguiente información.
-Button-OpenedUrlToRevert: URL abierta para revertir
+Button-OpenedUrlToRevert: Enlace abierto para revertir
 Button-RevertNow: Revertir ahora
 Button-ShowJudgements: Mostrar juicios
 Button-Undo: Deshacer
@@ -33,7 +33,7 @@ Label-DirectRevertFailed: La reversión directa falló
 Label-DirectReverted: Directo revertido
 Label-EditSummary: Editar resumen
 Label-EditedAt: editado
-Label-Feed: Actualizaciónes
+Label-Feed: Actualizaciones
 Label-History: Historial
 Label-HumanEditors: Editores humanos
 Label-Judgement: Juicio
@@ -60,16 +60,16 @@ Label-Prompt-Login: Iniciar sesión
 Label-Rank: Rango
 Label-Reason: Razón
 Label-Result: Resultado
-Label-RevertSucceeded: Reversión tuvo éxito!
+Label-RevertSucceeded: ¡Reversión exitosa!
 Label-ReviewFeed: Revisar feed
 Label-ReviewedAndSays: 'revisado {0} y dice'
 Label-Should-Revert: Debería revertir
 Label-ShouldRevert: Debería revertir
-Label-Snooze: dormitar
+Label-Snooze: Dormitar
 Label-Someone: Alguien
 Label-Time: Hora
-Label-TopNumberAnonymousUsers: 'Top {0} Usuarios anónimos'
-Label-TopUsers: Principales Usuarios
+Label-TopNumberAnonymousUsers: 'Mejores {0} usuarios anónimos'
+Label-TopUsers: Mejores usuarios
 Label-TopWikis: Los mejores wikis
 Label-TotalNumber: Total
 Label-User: Usuario
@@ -89,7 +89,7 @@ Message-DiffNotAvailable: >-
 Message-FeedHasNoNewRevisionsClickNextBelow: 'El feed {0} no tiene nuevas revisiones, haz clic a continuación.'
 Message-Login: >-
   ¿Sabes que puedes iniciar sesión y conservar tus etiquetas con tu nombre?
-  Es posible iniciar sesión con la cuenta de Wikipedia a través de Oauth.
+  Soportamos iniciar sesión con la cuenta de Wikipedia a través de Oauth.
 Message-NameVoteAnnouncement: >-
   Estimado colaborador, estamos celebrando una votación para el nuevo nombre que
   reemplaza el "WikiLoop Battlefield" que finaliza el 13 de julio de 2020 a las
@@ -104,6 +104,6 @@ Message-RevertEditSummary: >-
   Identificado como prueba/vandalismo usando {0} versión {1}. Velo o da tu
   opinión en {2}
 Message-SorryWeFailedToRevert: 'Lo sentimos, no pudimos revertir la revisión {0}.'
-Message-TheRevisionIsSuccessfullyRevertedAs: 'La revisión {0} se revierte con éxito como {1}.'
+Message-TheRevisionIsSuccessfullyRevertedAs: 'La revisión {0} se revirtió con éxito como {1}.'
 Message-ThereIsNoEditSummary: No hay resumen de edición.
 Message-YourJudgementLogged: 'Tu juicio para {0} para revisión {1} ha sido registrado.'
