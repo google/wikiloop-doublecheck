@@ -7,70 +7,132 @@ Button-HelpTranslate.@meta.@description: >-
 Button-Next: Next
 Button-Next.@meta.@description: Label for a button when clicked go to next page or display next information.
 Button-OpenedUrlToRevert: Opened URL to revert
+Button-OpenedUrlToRevert.@meta.@description: The label of button "Revert now" will change to "Opened URL to revert" to show the action status after the button being clicked and action being performed.
 Button-RevertNow: Revert now
+Button-RevertNow.@meta.@description: The label for the button to revert a given revision on Wikipedia immediately.
 Button-ShowJudgements: Show judgements
+Button-ShowJudgements.@meta.@description: The label for the button to show judgements given on a Wikipedia edit
 Button-Undo: Undo
+Button-Undo.@meta.@description: A label for the button to undo an action on our software.
 Label-1Month: 1 month (30d)
+Label-1Month.@meta.@description: A label for the time range of statistics to show, which is 1 month or 30 days precisely.
 Label-1Quarter: 1 quarter (90d)
+Label-1Quarter.@meta.@description: A label for the time range of statistics to show, which is 1 quarter or 90 days precisely.
 Label-1Year: 1 year (365d)
+Label-1Year.@meta.@description: A label for the time range of statistics to show, which is 1 year or 365 days precisely.
 Label-1day: 1 day
+Label-1day.@meta.@description: A label for the time range of statistics to show, which is 1 day precisely.
 Label-1week: 1 week (7d)
+Label-1week.@meta.@description: A label for the time range of statistics to show, which is 1 week or 7 days precisely.
 Label-ActiveUsers: Active Users
+Label-ActiveUsers.@meta.@description: A label for the statistics based on the active users of this software.
 Label-AllTime: All time
+Label-AllTime.@meta.@description: A label for the time range for statistics to display which is all time that our software is live.
 Label-Anonymous: Anonymous
 Label-ArtificialIntelligence: Artificial Intelligence
 Label-Author: Author
 Label-CountOfJudgements: Count
+Label-CountOfJudgements.@meta.@description: A label for sum number of judgements for the Wikipedia edits.
 Label-Day: Day
+Label-Day.@meta.@description: A label for the breakdown time granularity of statistics which is broken down by day.
 Label-DiffView: Diff View
+Label-DiffView.@meta.@description: A label for a view showing the difference between snapshots such as two Wikipedia article snapshots.
 Label-DirectRevertFailed: Direct revert failed
+Label-DirectRevertFailed.@meta.@description: A label to show new status of the "Revert now" button. The purpose is to show the status of the action performed by the user which in this case is that the reverting action failed.
 Label-DirectReverted: Directly reverted
+Label-DirectReverted.@meta.@description: A label to show new status of the "Revert now" button. The purpose is to show the status of the action performed by the user which in this case is that the reverting action succeeded.
 Label-EditSummary: Edit summary
+Label-EditSummary.@meta.@description: An edit summary is a brief explanation of an edit to a Wikipedia page, as shown in https://en.wikipedia.org/wiki/Help:Edit_summary
 Label-EditedAt: edited
+Label-EditedAt.@meta.@description: The label of the timestamp of edit on Wikipedia when the edit is created.
 Label-Feed: Feed
+Label-Feed.@meta.@description: The label showing a feed, a flow or a stream of incoming new Wikipedia edits, following the name of that specific feed. For example, we have various feeds of different kinds of Wikipedia edits, such as feed of article topic, feed of edits detected by vandalism detection score systems, etc.
 Label-History: History
+Label-History.@meta.@description: A label for the list of past activities, past judgements contributed etc, of all users or a given user.
 Label-HumanEditors: Human editors
+Label-HumanEditors.@meta.@description: The label for judgements provided by Human editors.
 Label-Judgement: Judgement
+Label-Judgement.@meta.@description: The label for judgement given to Wikipedia edits by our users who review incoming Wikipedia edits.
 Label-LastActiveTime: Last Active
+Label-LastActiveTime.@meta.@description: The label to show the last time that a user was active on our software.
 Label-Loading: Loading
+Label-Loading.@meta.@description: The label to show some parts or data on a webpage is being loaded. Usually this label shows  as a fallback for a loading indicator.
 Label-Login: Login
+Label-Login.@meta.@description: The label for a login button to allow user to login. Or it will also be used in messages or prompt to invite user to login.
 Label-Logout: Logout
+Label-Login.@meta.@description: The label for a login button to allow user to logout. Or it will also be used in messages or prompt to invite user to logout.
 Label-Looks-Good: Looks Good
+Label-Looks-Good.@meta.@description: TO BE DELETED, DO NOT CHANGE OR TRANSLATE.
 Label-LooksGood: Looks good
+Label-LooksGood.@meta.@description: The label of one of the 3 major types of judgments which is saying the Wikipedia edit being reviewed is good and constructive to Wikipedia, as opposed to damaging.
 Label-Me: Me
+Label-Me.@meta.@description: The label to identify the user themselves. Please make sure the translated label here is gender neutral.
 Label-Month: Month
+Label-Month.@meta.@description: A label for the breakdown time granularity of statistics which is broken down by month.
 Label-My-History: My History
+Label-My-History.@meta.@description: A label for the list of past activities, past judgements contributed etc, of the current user who is using our software.
 Label-NewJudgement: New Judgement
+Label-NewJudgement.@meta.@description: A label for a new judgment given to Wikipedia edit by our user.
 Label-None: None
+Label-None.@meta.@description: The label for empty table of rows and cells of content or empty lists. This is usually used in the user interface when there is no content to show.
 Label-Not-Sure: Not Sure
+Label-Not-Sure.@meta.@description: TO BE DELETED, DO NOT CHANGE OR TRANSLATE.
 Label-NotSure: Not sure
+Label-LooksGood.@meta.@description: The label of one of the 3 major types of judgments which is saying the Wikipedia edit being reviewed is unsure and could be either good and constructive or damaging to Wikipedia.
 Label-OresBadfaith: ORES Bad faith
+Label-OresBadfaith.@meta.@description: The label identifying the score and judgement given by WMF Artificial Intelligence scoring system ORES. This label specific refer to the opposite of goodfaith model of ORES. See https://www.mediawiki.org/wiki/ORES#Advanced_support
 Label-OresDamaging: ORES Damaging
+Label-OresDamaging.@meta.@description: The label identifying the score and judgement given by WMF Artificial Intelligence scoring system ORES. This label specific refer to the damaging model of ORES. See https://www.mediawiki.org/wiki/ORES#Advanced_support
 Label-Overriden: Overridden
+Label-Overriden.@meta.@description: The label to say that a given edit on Wikipedia article is being overridden by another newer edit on the same Wikipedia article. This label imply such edit is either already reverted by our current user, or it's reverted or updated by another Wikipedia editor on Wikipedia.
 Label-Prompt-Login: Login
+Label-Prompt-Login.@meta.@description: The label to prompt a user to login on our software. It's more like "please login" tone in languages those formality and honorific speech exist.
 Label-Rank: Rank
+Label-Rank.@meta.@description: The label for rankings of of statistics by a given sorting number, for example, users sorted by their numbers of contributions
 Label-Reason: Reason
+Label-Reason.@meta.@description: The label for the reason of the result of a performed action, such as when a user is reverting a Wikipedia edit.
 Label-Result: Result
+Label-Reason.@meta.@description: The label for the result of a performed action, such as when a user reverted a Wikipedia edit.
 Label-RevertSucceeded: Revert succeeded!
+Label-RevertSucceeded.@meta.@description: The label for the result of a performed action when a user reverted a Wikipedia edit, the action is successful.
 Label-ReviewFeed: Review Feed
+Label-ReviewFeed.@meta.@description: The label for the feed, flow or stream of incoming Wikipedia edits to be reviewed.
 Label-ReviewedAndSays: 'reviewed {0} and says'
+Label-ReviewedAndSays.@meta.@description: The label to start the sentence of judgement and reasons given for a revision.
 Label-Should-Revert: Should Revert
+Label-Should-Revert.@meta.@description: TO BE DELETED, DO NOT CHANGE OR TRANSLATE.
 Label-ShouldRevert: Should revert
+Label-ShouldRevert.@meta.@description: The label of one of the 3 major types of judgments which is saying the Wikipedia edit being reviewed being damaging to Wikipedia as opposed to be good and constructive.
 Label-Snooze: Snooze
+Label-Snooze.@meta.@description: The label of a button to snooze a reminder or a notification, or in other words, it means "remind me later". In reality the snooze button will be used when the reminder or notification message will appear again. So it also mean "not dismissed permanently but just dismissed temporarily".
 Label-Someone: Someone
+Label-Someone.@meta.@description: The label to identify a user other than the current user.
 Label-Time: Time
+Label-Time.@meta.@description: The label of the timestamp of a given judgement or action given by an user.
 Label-TopNumberAnonymousUsers: 'Top {0} Anonymous Users'
+Label-TopNumberAnonymousUsers.@meta.@description: The label for the section of top 20 anonymous users, etc, whereas the number "20" can be replaced in the parameter.
 Label-TopUsers: Top Users
+Label-TopUsers.@meta.@description: The label for the section of top (logged in) users, etc, whereas the number.
 Label-TopWikis: Top Wikis
+Label-TopWikis.@meta.@description: The label for the section of top Wikipedias or its sister projects (Wikidata.org etc), by the amount of judgements given on the Wikipedia.
 Label-TotalNumber: Total
+Label-TotalNumber.@meta.@description: The label for the column of total number of judgements given by a user.
 Label-User: User
+Label-User.@meta.@description: The label for user who gives the judgement of Wikipedia edit.
 Label-Week: Week
+Label-Week.@meta.@description: A label for the breakdown time granularity of statistics which is broken down by week.
 Label-YourJudgement: Your Judgement
+Label-YourJudgement.@meta.@description: The label for the judgement given by the current user.
 MenuItem-Code: Code
+MenuItem-Code.@meta.@description: The menu item label to redirect user to the codebase of this software.
 MenuItem-Contributions: My contributions
+MenuItem-Contributions.@meta.@description: The menu item label directing user to the list of contributions or judgements given by the current user.
 MenuItem-ContributionsBeforeLogin: My contributions before login
+MenuItem-ContributionsBeforeLogin.@meta.@description: TO BE DELETED, DO NOT CHANGE OR TRANSLATE.
 MenuItem-Issues: Issues
+MenuItem-Issues.@meta.@description: The menu item label redirecting user to the Github issues of our software.
 MenuItem-Stats: Stats
+MenuItem-Stats.@meta.@description: The menu item label redirecting user to the statistics page of our software.
 Message-AJudgementLogged: 'A judgement for {0} for revision {1} has been logged.'
 Message-CongratsSuccessfullyReverted: 'Congrats! you''''ve successfully directly reverted {0}.'
 Message-DiffNotAvailable: >-
@@ -96,4 +158,5 @@ Message-RevertEditSummary: >-
 Message-SorryWeFailedToRevert: 'Sorry, we failed to revert the revision {0}.'
 Message-TheRevisionIsSuccessfullyRevertedAs: 'The revision {0} is successfully reverted as {1}.'
 Message-ThereIsNoEditSummary: There is no edit summary.
+Message-ThereIsNoEditSummary.@meta.@description: The message shows that a given Wikipedia edit doesn't have an explanation, see https://en.wikipedia.org/wiki/Help:Edit_summary.
 Message-YourJudgementLogged: 'Your judgement for {0} for revision {1} has been logged.'
