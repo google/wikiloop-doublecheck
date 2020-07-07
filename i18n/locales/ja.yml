@@ -85,7 +85,7 @@ Message-NameVoteAnnouncement: |-
   投稿者の皆様、2020年7月13日00:00 UTCに終了する「WikiLoop Battlefield」に代わる新しい名前の投票を開催しています。
   投票してください。
 Message-NoActiveUsersPleaseStartReview: '過去15分間にアクティブなユーザーはいません。 {0}改訂のレビュー{1}を開始し、最初の改訂になります。'
-Message-Prompt-Login: ログインして自分の名前で投稿を保存できることを知っていますか？ OauthによるWikipediaアカウントでのログインをサポートしています。
+Message-Prompt-Login: ログインして自分の名前で投稿を保存できることをご存知ですか？ OauthによるWikipediaアカウントでのログインをサポートしています。
 Message-RevertEditSummary: |-
   {0}バージョン{1}を使用したテスト/破壊行為として識別されました。
   {2}でご覧になるか、意見をお寄せください
