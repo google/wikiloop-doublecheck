@@ -1,6 +1,15 @@
 Button-Go: Отивам
+Button-Go.@meta.@description: >-
+  Етикет за бутони за пренасочване на потребителя към даден URL адрес или
+  местоположение.
 Button-HelpTranslate: Помогнете при превода
+Button-HelpTranslate.@meta.@description: >-
+  Етикет за бутон, който позволява на потребителите да помагат при превода на
+  интернационализирани съобщения за този софтуер.
 Button-Next: Следващия
+Button-Next.@meta.@description: >-
+  Етикет за бутон при щракване отидете на следващата страница или покажете
+  следваща информация.
 Button-OpenedUrlToRevert: Отворен URL адрес за възстановяване
 Button-RevertNow: Върнете се сега
 Button-ShowJudgements: Показвайте преценки
@@ -66,6 +75,7 @@ MenuItem-Contributions: Моите приноси
 MenuItem-ContributionsBeforeLogin: Моите вноски преди влизане
 MenuItem-Issues: въпроси
 MenuItem-Stats: Статистика
+Message-AJudgementLogged: 'Регистрирано е решение за {0} за преразглеждане {1}.'
 Message-CongratsSuccessfullyReverted: 'Поздравления! успешно завърнахте директно {0}.'
 Message-DiffNotAvailable: >-
   Статията на уикипедията различно временно не е налична. Можете да опитате да
@@ -91,4 +101,3 @@ Message-SorryWeFailedToRevert: 'За съжаление не успяхме да
 Message-TheRevisionIsSuccessfullyRevertedAs: 'Ревизията {0} се възстановява успешно като {1}.'
 Message-ThereIsNoEditSummary: Няма резюме за редактиране.
 Message-YourJudgementLogged: 'Вашето решение за {0} за преразглеждане {1} е записано.'
-Message-AJudgementLogged: 'Регистрирано е решение за {0} за преразглеждане {1}.'

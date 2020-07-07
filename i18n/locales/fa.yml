@@ -1,6 +1,13 @@
 Button-Go: برو
+Button-Go.@meta.@description: برچسب دکمه ها برای هدایت کاربر به آدرس اینترنتی یا مکان مشخص.
 Button-HelpTranslate: به ترجمه کمک کنید
+Button-HelpTranslate.@meta.@description: >-
+  برچسب دکمه ای که به کاربران امکان می دهد برای ترجمه پیام های بین المللی برای
+  این نرم افزار کمک کنند.
 Button-Next: بعد
+Button-Next.@meta.@description: >-
+  هنگام کلیک بر روی دکمه ، برچسب بزنید به صفحه بعدی بروید یا اطلاعات بعدی را
+  نمایش دهید.
 Button-OpenedUrlToRevert: URL را بازگردانید
 Button-RevertNow: اکنون برگردانید
 Button-ShowJudgements: نمایش قضاوت
@@ -66,6 +73,7 @@ MenuItem-Contributions: کمکهای من
 MenuItem-ContributionsBeforeLogin: کمکهای من قبل از ورود
 MenuItem-Issues: مسائل
 MenuItem-Stats: آمار
+Message-AJudgementLogged: 'داوری برای {0} برای تجدید نظر در 1 {ثبت شده است.'
 Message-CongratsSuccessfullyReverted: 'تبریک می گویم! شما با موفقیت مستقیم {0 {برگشتید.'
 Message-DiffNotAvailable: >-
   مقاله wikipedia به طور موقت در دسترس نیست. می توانید دوباره بارگیری کنید. گاهی
@@ -92,4 +100,3 @@ Message-SorryWeFailedToRevert: متأسفیم ، ما نتوانستیم نسخ�
 Message-TheRevisionIsSuccessfullyRevertedAs: 'نسخه {0 successfully با موفقیت به عنوان {1 vert برگردانده شده است.'
 Message-ThereIsNoEditSummary: خلاصه ویرایش وجود ندارد
 Message-YourJudgementLogged: 'داوری شما برای {0} برای بررسی 1} ثبت شده است.'
-Message-AJudgementLogged: 'داوری برای {0} برای تجدید نظر در 1 {ثبت شده است.'

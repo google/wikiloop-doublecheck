@@ -1,6 +1,11 @@
 Button-Go: Go
+Button-Go.@meta.@description: Label for buttons to redirect user to a given url or location.
 Button-HelpTranslate: Help translate
+Button-HelpTranslate.@meta.@description: >-
+  Label for button that allow users to help translate internationalized messages
+  for this software.
 Button-Next: Next
+Button-Next.@meta.@description: Label for a button when clicked go to next page or display next information.
 Button-OpenedUrlToRevert: Opened URL to revert
 Button-RevertNow: Revert now
 Button-ShowJudgements: Show judgements
@@ -48,13 +53,13 @@ Label-Reason: Reason
 Label-Result: Result
 Label-RevertSucceeded: Revert succeeded!
 Label-ReviewFeed: Review Feed
-Label-ReviewedAndSays: reviewed {0} and says
+Label-ReviewedAndSays: 'reviewed {0} and says'
 Label-Should-Revert: Should Revert
 Label-ShouldRevert: Should revert
 Label-Snooze: Snooze
 Label-Someone: Someone
 Label-Time: Time
-Label-TopNumberAnonymousUsers: Top {0} Anonymous Users
+Label-TopNumberAnonymousUsers: 'Top {0} Anonymous Users'
 Label-TopUsers: Top Users
 Label-TopWikis: Top Wikis
 Label-TotalNumber: Total
@@ -66,15 +71,13 @@ MenuItem-Contributions: My contributions
 MenuItem-ContributionsBeforeLogin: My contributions before login
 MenuItem-Issues: Issues
 MenuItem-Stats: Stats
-Message-AJudgementLogged: >-
-  A judgement for {0} for revision
-  {1} has been logged.
-Message-CongratsSuccessfullyReverted: Congrats! you''ve successfully reverted directly {0}.
+Message-AJudgementLogged: 'A judgement for {0} for revision {1} has been logged.'
+Message-CongratsSuccessfullyReverted: 'Congrats! you''''ve successfully reverted directly {0}.'
 Message-DiffNotAvailable: >-
   The wikipedia article diff is temporarily not available. You can try to reload
   it. Sometimes a vandalized revision could be deleted. You can check the page
   history.
-Message-FeedHasNoNewRevisionsClickNextBelow: Feed {0} has no new revisions, click next below.
+Message-FeedHasNoNewRevisionsClickNextBelow: 'Feed {0} has no new revisions, click next below.'
 Message-Login: >-
   Do you know you could Login and preserve your labels under your name? We
   support Login with Wikipedia account through Oauth.
@@ -90,7 +93,7 @@ Message-Prompt-Login: >-
 Message-RevertEditSummary: >-
   Identified as test/vandalism using {0} version {1}. See it or provide your
   opinion at {2}
-Message-SorryWeFailedToRevert: Sorry, we failed to revert the revision {0}.
-Message-TheRevisionIsSuccessfullyRevertedAs: The revision {0} is successfully reverted as {1}.
+Message-SorryWeFailedToRevert: 'Sorry, we failed to revert the revision {0}.'
+Message-TheRevisionIsSuccessfullyRevertedAs: 'The revision {0} is successfully reverted as {1}.'
 Message-ThereIsNoEditSummary: There is no edit summary.
-Message-YourJudgementLogged: Your judgement for {0} for revision {1} has been logged.
+Message-YourJudgementLogged: 'Your judgement for {0} for revision {1} has been logged.'

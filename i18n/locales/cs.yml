@@ -1,6 +1,13 @@
 Button-Go: Jít
+Button-Go.@meta.@description: Označte tlačítka pro přesměrování uživatele na danou adresu URL nebo umístění.
 Button-HelpTranslate: Pomozte překládat
+Button-HelpTranslate.@meta.@description: >-
+  Označte tlačítko, které uživatelům umožňuje překládat internacionalizované
+  zprávy pro tento software.
 Button-Next: další
+Button-Next.@meta.@description: >-
+  Označení tlačítka po kliknutí přejde na další stránku nebo zobrazí další
+  informace.
 Button-OpenedUrlToRevert: Otevřená adresa URL pro vrácení
 Button-RevertNow: Vrátit nyní
 Button-ShowJudgements: Zobrazit soudy
@@ -66,6 +73,7 @@ MenuItem-Contributions: Moje příspěvky
 MenuItem-ContributionsBeforeLogin: Moje příspěvky před přihlášením
 MenuItem-Issues: Problémy
 MenuItem-Stats: Statistiky
+Message-AJudgementLogged: 'Byl zaznamenán rozsudek pro {0} pro revizi {1}.'
 Message-CongratsSuccessfullyReverted: 'Gratuluji! úspěšně jste se vrátili přímo {0}.'
 Message-DiffNotAvailable: >-
   Článek wikipedia diff není dočasně k dispozici. Můžete to zkusit znovu načíst.
@@ -91,4 +99,3 @@ Message-SorryWeFailedToRevert: 'Litujeme, nepodařilo se nám vrátit revizi {0}
 Message-TheRevisionIsSuccessfullyRevertedAs: 'Revize {0} je úspěšně vrácena jako {1}.'
 Message-ThereIsNoEditSummary: Neexistuje žádné shrnutí úprav.
 Message-YourJudgementLogged: 'Váš úsudek o {0} revizi {1} byl zaznamenán.'
-Message-AJudgementLogged: 'Byl zaznamenán rozsudek pro {0} pro revizi {1}.'

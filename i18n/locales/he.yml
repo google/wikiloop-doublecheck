@@ -1,6 +1,9 @@
 Button-Go: ללכת
+Button-Go.@meta.@description: תווית עבור כפתורים להפניית משתמש לכתובת אתר או למיקום נתון.
 Button-HelpTranslate: עזרה בתרגום
+Button-HelpTranslate.@meta.@description: תווית עבור כפתור המאפשרת למשתמשים לתרגם הודעות בינלאומיות עבור תוכנה זו.
 Button-Next: הַבָּא
+Button-Next.@meta.@description: תווית עבור לחצן כאשר לוחצים עליו עבור לדף הבא או הצגת מידע הבא.
 Button-OpenedUrlToRevert: כתובת אתר נפתחה להחזרה
 Button-RevertNow: חזור עכשיו
 Button-ShowJudgements: הראו פסקי דין
@@ -66,6 +69,7 @@ MenuItem-Contributions: התרומות שלי
 MenuItem-ContributionsBeforeLogin: התרומות שלי לפני הכניסה
 MenuItem-Issues: נושאים
 MenuItem-Stats: נתונים סטטיסטיים
+Message-AJudgementLogged: 'נפסק פסק דין ל {0} לתיקון {1}.'
 Message-CongratsSuccessfullyReverted: 'מזל טוב! חזרת בהצלחה ישירות {0}.'
 Message-DiffNotAvailable: |-
   המאמר של הוויקיפדיה אינו זמין באופן זמני. 
@@ -94,4 +98,3 @@ Message-SorryWeFailedToRevert: 'מצטערים, לא הצלחנו להחזיר �
 Message-TheRevisionIsSuccessfullyRevertedAs: 'המהפכה {0} מבוטלת בהצלחה בתור {1}.'
 Message-ThereIsNoEditSummary: אין סיכום עריכה.
 Message-YourJudgementLogged: 'פסק הדין שלך לגבי {0} לתיקון {1} נרשם.'
-Message-AJudgementLogged: 'נפסק פסק דין ל {0} לתיקון {1}.'

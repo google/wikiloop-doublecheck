@@ -1,6 +1,15 @@
 Button-Go: Gaan
+Button-Go.@meta.@description: >-
+  Label voor knoppen om de gebruiker om te leiden naar een bepaalde URL of
+  locatie.
 Button-HelpTranslate: Help vertalen
+Button-HelpTranslate.@meta.@description: >-
+  Label voor knop waarmee gebruikers kunnen helpen bij het vertalen van
+  geïnternationaliseerde berichten voor deze software.
 Button-Next: De volgende
+Button-Next.@meta.@description: >-
+  Label voor een knop wanneer erop wordt geklikt, ga naar de volgende pagina of
+  geef de volgende informatie weer.
 Button-OpenedUrlToRevert: URL geopend om terug te zetten
 Button-RevertNow: Nu terugzetten
 Button-ShowJudgements: Toon oordelen
@@ -66,6 +75,7 @@ MenuItem-Contributions: Mijn bijdragen
 MenuItem-ContributionsBeforeLogin: Mijn bijdragen voordat ik inlog
 MenuItem-Issues: Problemen
 MenuItem-Stats: Statistieken
+Message-AJudgementLogged: 'Een oordeel voor {0} voor herziening {1} is vastgelegd.'
 Message-CongratsSuccessfullyReverted: 'Proficiat! u bent met succes rechtstreeks teruggezet {0}.'
 Message-DiffNotAvailable: >-
   Het wikipedia-artikel diff is tijdelijk niet beschikbaar. Je kunt proberen het
@@ -92,4 +102,3 @@ Message-SorryWeFailedToRevert: 'Sorry, we hebben de revisie {0} niet ongedaan ge
 Message-TheRevisionIsSuccessfullyRevertedAs: 'De revisie {0} is teruggedraaid als {1}.'
 Message-ThereIsNoEditSummary: Er is geen samenvatting voor bewerken.
 Message-YourJudgementLogged: 'Uw oordeel voor {0} herziening {1} is vastgelegd.'
-Message-AJudgementLogged: 'Een oordeel voor {0} voor herziening {1} is vastgelegd.'

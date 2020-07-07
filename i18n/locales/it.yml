@@ -1,6 +1,15 @@
 Button-Go: Partire
+Button-Go.@meta.@description: >-
+  Etichetta per i pulsanti per reindirizzare l'utente a un determinato URL o
+  posizione.
 Button-HelpTranslate: Aiuta a tradurre
+Button-HelpTranslate.@meta.@description: >-
+  Etichetta per pulsante che consente agli utenti di aiutare a tradurre messaggi
+  internazionalizzati per questo software.
 Button-Next: Il prossimo
+Button-Next.@meta.@description: >-
+  Etichetta per un pulsante quando si fa clic per andare alla pagina successiva
+  o visualizzare le informazioni successive.
 Button-OpenedUrlToRevert: URL aperto da ripristinare
 Button-RevertNow: Ripristina ora
 Button-ShowJudgements: Mostra giudizi
@@ -66,6 +75,7 @@ MenuItem-Contributions: I miei contributi
 MenuItem-ContributionsBeforeLogin: I miei contributi prima dell'accesso
 MenuItem-Issues: Problemi
 MenuItem-Stats: Statistiche
+Message-AJudgementLogged: 'È stato registrato un giudizio per {0} per revisione {1}.'
 Message-CongratsSuccessfullyReverted: 'Congratulazioni! hai ripristinato con successo direttamente {0}.'
 Message-DiffNotAvailable: >-
   L'articolo diff di Wikipedia non è temporaneamente disponibile. Puoi provare a
@@ -92,4 +102,3 @@ Message-SorryWeFailedToRevert: 'Spiacenti, non è stato possibile ripristinare l
 Message-TheRevisionIsSuccessfullyRevertedAs: 'La revisione {0} è stata ripristinata correttamente come {1}.'
 Message-ThereIsNoEditSummary: Non esiste un riepilogo di modifica.
 Message-YourJudgementLogged: 'Il tuo giudizio per {0} per la revisione {1} è stato registrato.'
-Message-AJudgementLogged: 'È stato registrato un giudizio per {0} per revisione {1}.'

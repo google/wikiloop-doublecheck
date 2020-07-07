@@ -1,6 +1,9 @@
 Button-Go: 行く
+Button-Go.@meta.@description: ユーザーを特定のURLまたは場所にリダイレクトするためのボタンのラベル。
 Button-HelpTranslate: 翻訳を手伝う
+Button-HelpTranslate.@meta.@description: ユーザーがこのソフトウェアの国際化されたメッセージの翻訳を支援できるようにするボタンのラベル。
 Button-Next: 次
+Button-Next.@meta.@description: ボタンのラベルをクリックすると、次のページに移動するか、次の情報を表示します。
 Button-OpenedUrlToRevert: URLを開いて元に戻しました
 Button-RevertNow: 今すぐ元に戻す
 Button-ShowJudgements: 判断を示す
@@ -66,6 +69,7 @@ MenuItem-Contributions: 私の貢献
 MenuItem-ContributionsBeforeLogin: ログイン前の私の貢献
 MenuItem-Issues: 問題
 MenuItem-Stats: 統計
+Message-AJudgementLogged: 'リビジョン{1}の{0}の判断が記録されました。'
 Message-CongratsSuccessfullyReverted: 'おめでとうございます！直接{0}に戻しました。'
 Message-DiffNotAvailable: |-
   ウィキペディアの記事の差分は一時的に利用できません。
@@ -86,4 +90,3 @@ Message-SorryWeFailedToRevert: 'リビジョン{0}を元に戻すことができ
 Message-TheRevisionIsSuccessfullyRevertedAs: 'リビジョン{0}は正常に{1}に戻されました。'
 Message-ThereIsNoEditSummary: 編集の要約はありません。
 Message-YourJudgementLogged: 'リビジョン{1}に対する{0}の判断が記録されました。'
-Message-AJudgementLogged: 'リビジョン{1}の{0}の判断が記録されました。'

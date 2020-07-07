@@ -54,11 +54,11 @@
       </div>
       <div class="card-text w-100 pl-sm-0 mb-3">
         <template v-if="item.summary">
-          <h5 class="w-100">{{$t('EditSummary')}}</h5>
+          <h5 class="w-100">{{$t('Label-EditSummary')}}</h5>
           <span>{{item.summary}}</span>
         </template>
         <template v-else>
-          <h5 class="text-danger w-100">{{$t('ThereIsNoEditSummary')}}</h5>
+          <h5 class="text-danger w-100">{{$t('Message-ThereIsNoEditSummary')}}</h5>
         </template>
       </div>
     </div>

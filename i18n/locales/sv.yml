@@ -1,6 +1,15 @@
 Button-Go: Gå
+Button-Go.@meta.@description: >-
+  Etikett för knappar för att omdirigera användare till en given url eller
+  plats.
 Button-HelpTranslate: Hjälp med att översätta
+Button-HelpTranslate.@meta.@description: >-
+  Etikett för knapp som gör det möjligt för användare att översätta
+  internationaliserade meddelanden för den här programvaran.
 Button-Next: Nästa
+Button-Next.@meta.@description: >-
+  Etikett för en knapp när du klickar på den till nästa sida eller visa nästa
+  information.
 Button-OpenedUrlToRevert: Öppnad URL för att återgå
 Button-RevertNow: Gå tillbaka nu
 Button-ShowJudgements: Visa domar
@@ -66,6 +75,7 @@ MenuItem-Contributions: Mina bidrag
 MenuItem-ContributionsBeforeLogin: Mina bidrag innan inloggning
 MenuItem-Issues: frågor
 MenuItem-Stats: stats
+Message-AJudgementLogged: 'En dom för {0} för revision {1} har loggats.'
 Message-CongratsSuccessfullyReverted: 'grattis! har du lyckats återgå direkt {0}.'
 Message-DiffNotAvailable: >-
   Wikipedia-artikeln diff är tillfälligt inte tillgänglig. Du kan försöka ladda
@@ -91,4 +101,3 @@ Message-SorryWeFailedToRevert: 'Vi kunde tyvärr inte återställa revisionen {0
 Message-TheRevisionIsSuccessfullyRevertedAs: 'Revisionen {0} har återgått till {1}.'
 Message-ThereIsNoEditSummary: Det finns ingen redigeringsöversikt.
 Message-YourJudgementLogged: 'Din bedömning för {0} för revision {1} har loggats.'
-Message-AJudgementLogged: 'En dom för {0} för revision {1} har loggats.'

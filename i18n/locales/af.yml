@@ -1,6 +1,13 @@
 Button-Go: Gaan
+Button-Go.@meta.@description: Benoem vir knoppies om die gebruiker na 'n gegewe url of plek te herlei.
 Button-HelpTranslate: Help om te vertaal
+Button-HelpTranslate.@meta.@description: >-
+  Etiket vir knoppie waarmee gebruikers kan help om internasionaliseerde
+  boodskappe vir hierdie sagteware te vertaal.
 Button-Next: volgende
+Button-Next.@meta.@description: >-
+  Benoem vir 'n knoppie as dit geklik word, gaan na die volgende bladsy of
+  vertoon die volgende inligting.
 Button-OpenedUrlToRevert: URL geopen om terug te keer
 Button-RevertNow: Keer nou terug
 Button-ShowJudgements: Toon uitsprake
@@ -66,6 +73,7 @@ MenuItem-Contributions: My bydraes
 MenuItem-ContributionsBeforeLogin: My bydraes voor aanmelding
 MenuItem-Issues: kwessies
 MenuItem-Stats: statistiek
+Message-AJudgementLogged: '''N Vonnis van {0} vir hersiening {1} is aangeteken.'
 Message-CongratsSuccessfullyReverted: 'Geluk! jy het direk {0} teruggeskakel.'
 Message-DiffNotAvailable: >-
   Die wikipedia-artikel verskil is tydelik nie beskikbaar nie. U kan dit probeer
@@ -93,4 +101,3 @@ Message-SorryWeFailedToRevert: 'Jammer, ons kon nie die hersiening {0} terugstel
 Message-TheRevisionIsSuccessfullyRevertedAs: 'Die hersiening {0} is suksesvol teruggeskakel as {1}.'
 Message-ThereIsNoEditSummary: Daar is geen wysigingsopsomming nie.
 Message-YourJudgementLogged: 'U oordeel vir {0} vir hersiening {1} is aangeteken.'
-Message-AJudgementLogged: '''N Vonnis van {0} vir hersiening {1} is aangeteken.'

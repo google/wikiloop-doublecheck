@@ -1,6 +1,13 @@
 Button-Go: Ej
+Button-Go.@meta.@description: 'Marķējums pogām, lai novirzītu lietotāju uz doto URL vai atrašanās vietu.'
 Button-HelpTranslate: Palīdziet tulkot
+Button-HelpTranslate.@meta.@description: >-
+  Pogas etiķete, kas lietotājiem ļauj palīdzēt tulkot šīs programmatūras
+  internacionalizētus ziņojumus.
 Button-Next: Nākamais
+Button-Next.@meta.@description: >-
+  Pogas etiķete, kad tā noklikšķina, dodieties uz nākamo lapu vai parādiet
+  nākamo informāciju.
 Button-OpenedUrlToRevert: 'Atjaunots URL, lai to atjaunotu'
 Button-RevertNow: Atcelt tagad
 Button-ShowJudgements: Parādiet spriedumus
@@ -66,6 +73,7 @@ MenuItem-Contributions: Mans devums
 MenuItem-ContributionsBeforeLogin: Mani ieguldījumi pirms pieteikšanās
 MenuItem-Issues: Jautājumi
 MenuItem-Stats: Statistika
+Message-AJudgementLogged: '{0} spriedums par pārskatīšanu {1} ir reģistrēts.'
 Message-CongratsSuccessfullyReverted: 'Apsveicu! jūs esat veiksmīgi atgriezis tieši vietni {0}.'
 Message-DiffNotAvailable: >-
   Vikipēdijas raksta izmaiņas attēlošana īslaicīgi nav pieejama. Tu vari mēģināt
@@ -93,4 +101,3 @@ Message-SorryWeFailedToRevert: 'Diemžēl mums neizdevās atsaukt versiju {0}.'
 Message-TheRevisionIsSuccessfullyRevertedAs: 'Versija {0} tiek veiksmīgi atjaunota kā {1}.'
 Message-ThereIsNoEditSummary: Nav rediģēšanas kopsavilkuma.
 Message-YourJudgementLogged: 'Jūsu spriedums par {0} pārskatīšanai {1} ir reģistrēts.'
-Message-AJudgementLogged: '{0} spriedums par pārskatīšanu {1} ir reģistrēts.'

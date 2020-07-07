@@ -1,6 +1,11 @@
 Button-Go: اذهب
+Button-Go.@meta.@description: تسمية الأزرار لإعادة توجيه المستخدم إلى عنوان URL أو موقع معين.
 Button-HelpTranslate: ساعد في الترجمة
+Button-HelpTranslate.@meta.@description: >-
+  تسمية الزر الذي يسمح للمستخدمين بالمساعدة في ترجمة الرسائل الدولية لهذا
+  البرنامج.
 Button-Next: التالى
+Button-Next.@meta.@description: تسمية زر عند النقر عليه ، انتقل إلى الصفحة التالية أو عرض المعلومات التالية.
 Button-OpenedUrlToRevert: تم فتح عنوان URL للعودة
 Button-RevertNow: العودة الآن
 Button-ShowJudgements: أظهر الأحكام
@@ -66,6 +71,7 @@ MenuItem-Contributions: مساهماتي
 MenuItem-ContributionsBeforeLogin: مساهماتي قبل تسجيل الدخول
 MenuItem-Issues: مسائل
 MenuItem-Stats: الإحصائيات
+Message-AJudgementLogged: 'تم تسجيل حكم {0} للمراجعة {1}.'
 Message-CongratsSuccessfullyReverted: 'مبروك! لقد نجحت في العودة مباشرةً {0}.'
 Message-DiffNotAvailable: >-
   مقال ويكيبيديا غير متاح مؤقتًا. يمكنك محاولة إعادة تحميله. في بعض الأحيان يمكن
@@ -90,4 +96,3 @@ Message-SorryWeFailedToRevert: 'عذرًا ، فشلنا في التراجع ع�
 Message-TheRevisionIsSuccessfullyRevertedAs: 'تمت مراجعة النسخة {0} بنجاح على أنها {1}.'
 Message-ThereIsNoEditSummary: لا يوجد ملخص تحرير.
 Message-YourJudgementLogged: 'تم تسجيل حكمك على {0} للمراجعة {1}.'
-Message-AJudgementLogged: 'تم تسجيل حكم {0} للمراجعة {1}.'

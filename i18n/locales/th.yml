@@ -1,6 +1,9 @@
 Button-Go: ไป
+Button-Go.@meta.@description: ป้ายกำกับปุ่มเพื่อเปลี่ยนเส้นทางผู้ใช้ไปยัง URL หรือตำแหน่งที่กำหนด
 Button-HelpTranslate: ช่วยแปล
+Button-HelpTranslate.@meta.@description: ป้ายกำกับปุ่มที่อนุญาตให้ผู้ใช้แปลข้อความสากลสำหรับซอฟต์แวร์นี้
 Button-Next: ต่อไป
+Button-Next.@meta.@description: ป้ายกำกับสำหรับปุ่มเมื่อคลิกไปที่หน้าถัดไปหรือแสดงข้อมูลถัดไป
 Button-OpenedUrlToRevert: เปิด URL เพื่อเปลี่ยนกลับ
 Button-RevertNow: เปลี่ยนกลับทันที
 Button-ShowJudgements: แสดงการตัดสิน
@@ -66,6 +69,7 @@ MenuItem-Contributions: ผลงานของฉัน
 MenuItem-ContributionsBeforeLogin: การมีส่วนร่วมของฉันก่อนเข้าสู่ระบบ
 MenuItem-Issues: ประเด็น
 MenuItem-Stats: สถิติ
+Message-AJudgementLogged: 'คำตัดสินของ {0} สำหรับการแก้ไข {1} ถูกบันทึกไว้'
 Message-CongratsSuccessfullyReverted: 'ยินดีด้วย! คุณได้คืนค่าเรียบร้อยแล้วโดยตรง {0}'
 Message-DiffNotAvailable: >-
   บทความวิกิพีเดียต่างกันไม่สามารถใช้ได้ชั่วคราว คุณสามารถลองโหลดซ้ำได้
@@ -90,4 +94,3 @@ Message-SorryWeFailedToRevert: 'ขออภัยเราไม่สามา
 Message-TheRevisionIsSuccessfullyRevertedAs: 'การแก้ไข {0} ถูกเปลี่ยนกลับเป็นสำเร็จเป็น {1}'
 Message-ThereIsNoEditSummary: ไม่มีการสรุปการแก้ไข
 Message-YourJudgementLogged: 'การตัดสินใจของคุณสำหรับ {0} เพื่อแก้ไข {1} ถูกบันทึกไว้'
-Message-AJudgementLogged: 'คำตัดสินของ {0} สำหรับการแก้ไข {1} ถูกบันทึกไว้'

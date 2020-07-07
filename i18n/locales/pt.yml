@@ -1,6 +1,15 @@
 Button-Go: Ir
+Button-Go.@meta.@description: >-
+  Rótulo para botões para redirecionar o usuário para um determinado URL ou
+  local.
 Button-HelpTranslate: Ajude a traduzir
+Button-HelpTranslate.@meta.@description: >-
+  Etiqueta para o botão que permite que os usuários ajudem a traduzir mensagens
+  internacionalizadas para este software.
 Button-Next: Próximo
+Button-Next.@meta.@description: >-
+  Rótulo para um botão ao clicar em ir para a próxima página ou exibir a próxima
+  informação.
 Button-OpenedUrlToRevert: Aberto URL para desfazer
 Button-RevertNow: Desfazer agora
 Button-ShowJudgements: Mostrar julgamentos
@@ -66,6 +75,7 @@ MenuItem-Contributions: Minhas contribuições
 MenuItem-ContributionsBeforeLogin: Minhas contribuições antes de entrar
 MenuItem-Issues: Problemas
 MenuItem-Stats: Estatísticas
+Message-AJudgementLogged: 'Um julgamento para {0} para a revisão {1} foi registrado.'
 Message-CongratsSuccessfullyReverted: 'Parabéns! você reverteu diretamente {0}.'
 Message-DiffNotAvailable: >-
   O dif do artigo da Wikipédia está temporariamente indisponível. Pode tentar
@@ -94,4 +104,3 @@ Message-SorryWeFailedToRevert: 'Desculpe, não foi possível reverter a revisão
 Message-TheRevisionIsSuccessfullyRevertedAs: 'A revisão {0} foi revertida com sucesso como {1}.'
 Message-ThereIsNoEditSummary: Não há resumo de edição.
 Message-YourJudgementLogged: 'Seu julgamento de {0} para a revisão {1} foi registrado.'
-Message-AJudgementLogged: 'Um julgamento para {0} para a revisão {1} foi registrado.'

@@ -1,6 +1,9 @@
 Button-Go: 走
+Button-Go.@meta.@description: 按钮标签，用于将用户重定向到给定的URL或位置。
 Button-HelpTranslate: 帮助翻译
+Button-HelpTranslate.@meta.@description: 按钮标签，允许用户帮助翻译该软件的国际化消息。
 Button-Next: 下一个
+Button-Next.@meta.@description: 单击按钮的标签时转到下一页或显示下一个信息。
 Button-OpenedUrlToRevert: 打开的网址即可还原
 Button-RevertNow: 立即还原
 Button-ShowJudgements: 显示判断
@@ -66,6 +69,7 @@ MenuItem-Contributions: 我的贡献
 MenuItem-ContributionsBeforeLogin: 我的匿名贡献
 MenuItem-Issues: 问题
 MenuItem-Stats: 统计
+Message-AJudgementLogged: '已记录针对修订版{1}的{0}的判断。'
 Message-CongratsSuccessfullyReverted: '恭喜！您已成功直接还原为{0}。'
 Message-DiffNotAvailable: 该页面的版本差异暂时无法读取，可以嘗試重新載入。有时被破壞的版本可能被完全删除，您可以查看页面历史。
 Message-FeedHasNoNewRevisionsClickNextBelow: 'Feed {0}没有新修订，请单击下面的下一步。'
@@ -80,4 +84,3 @@ Message-SorryWeFailedToRevert: '抱歉，我们无法还原修订版{0}。'
 Message-TheRevisionIsSuccessfullyRevertedAs: '修订版{0}已成功还原为{1}。'
 Message-ThereIsNoEditSummary: 没有编辑摘要。
 Message-YourJudgementLogged: '您对版本{1}的{0}的判断已记录下来。'
-Message-AJudgementLogged: '已记录针对修订版{1}的{0}的判断。'

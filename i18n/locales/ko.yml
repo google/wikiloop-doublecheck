@@ -1,6 +1,9 @@
 Button-Go: 가다
+Button-Go.@meta.@description: 사용자를 지정된 URL 또는 위치로 리디렉션하는 버튼의 레이블입니다.
 Button-HelpTranslate: 번역 도움말
+Button-HelpTranslate.@meta.@description: 사용자가이 소프트웨어의 국제화 된 메시지를 번역하는 데 도움을주는 단추 레이블입니다.
 Button-Next: 다음
+Button-Next.@meta.@description: 클릭시 버튼 레이블 다음 페이지로 이동하거나 다음 정보를 표시합니다.
 Button-OpenedUrlToRevert: 되돌릴 URL을 열었습니다.
 Button-RevertNow: 지금 되돌리기
 Button-ShowJudgements: 판단 표시
@@ -66,6 +69,7 @@ MenuItem-Contributions: 내 공헌
 MenuItem-ContributionsBeforeLogin: 로그인 전 나의 기여
 MenuItem-Issues: 이슈
 MenuItem-Stats: 통계
+Message-AJudgementLogged: '개정 {1}에 대한 {0}에 대한 판단이 기록되었습니다.'
 Message-CongratsSuccessfullyReverted: '축하합니다! {0}을 (를) 직접 되돌 렸습니다.'
 Message-DiffNotAvailable: >-
   위키 백과 기사 diff는 일시적으로 사용할 수 없습니다. 다시로드 할 수 있습니다. 때로는 손상된 개정판을 삭제할 수 있습니다. 페이지
@@ -86,4 +90,3 @@ Message-SorryWeFailedToRevert: '죄송합니다. 개정판 {0}을 (를) 되 돌�
 Message-TheRevisionIsSuccessfullyRevertedAs: '개정판 {0}이 (가) {1} (으)로 되돌아갔습니다.'
 Message-ThereIsNoEditSummary: 편집 요약이 없습니다.
 Message-YourJudgementLogged: '개정 {1}에 대한 {0}에 대한 판단이 기록되었습니다.'
-Message-AJudgementLogged: '개정 {1}에 대한 {0}에 대한 판단이 기록되었습니다.'

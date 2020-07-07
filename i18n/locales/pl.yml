@@ -1,6 +1,15 @@
 Button-Go: Udać się
+Button-Go.@meta.@description: >-
+  Etykieta przycisków, aby przekierować użytkownika do podanego adresu URL lub
+  lokalizacji.
 Button-HelpTranslate: Pomóż w tłumaczeniu
+Button-HelpTranslate.@meta.@description: >-
+  Etykieta przycisku, która pozwala użytkownikom pomóc w tłumaczeniu
+  międzynarodowych wiadomości dla tego oprogramowania.
 Button-Next: Następny
+Button-Next.@meta.@description: >-
+  Po kliknięciu etykiety przycisku, przejdź do następnej strony lub wyświetl
+  następną informację.
 Button-OpenedUrlToRevert: Otwarty URL do odwrócenia
 Button-RevertNow: Revert now
 Button-ShowJudgements: Pokaż osądy
@@ -66,6 +75,7 @@ MenuItem-Contributions: Moje składki
 MenuItem-ContributionsBeforeLogin: Mój wkład przed zalogowaniem
 MenuItem-Issues: Zagadnienia
 MenuItem-Stats: Statystyki
+Message-AJudgementLogged: 'Wyrok dla {0} dla wersji {1} został zarejestrowany.'
 Message-CongratsSuccessfullyReverted: 'Gratulacje! przywróciłeś bezpośrednio {0}.'
 Message-DiffNotAvailable: >-
   Artykuł w wikipedii diff jest chwilowo niedostępny. Możesz spróbować go
@@ -94,4 +104,3 @@ Message-SorryWeFailedToRevert: 'Niestety nie udało się przywrócić wersji {0}
 Message-TheRevisionIsSuccessfullyRevertedAs: 'Wersja {0} została pomyślnie przywrócona jako {1}.'
 Message-ThereIsNoEditSummary: Brak podsumowania edycji.
 Message-YourJudgementLogged: 'Twoja ocena {0} dla wersji {1} została zarejestrowana.'
-Message-AJudgementLogged: 'Wyrok dla {0} dla wersji {1} został zarejestrowany.'

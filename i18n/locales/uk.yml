@@ -1,6 +1,15 @@
 Button-Go: Іди
+Button-Go.@meta.@description: >-
+  Мітка для кнопок, щоб перенаправити користувача на певний URL-адресу або
+  місцеположення.
 Button-HelpTranslate: Допоможіть перекласти
+Button-HelpTranslate.@meta.@description: >-
+  Мітка для кнопки, яка дозволяє користувачам допомагати перекладати
+  інтернаціоналізовані повідомлення для цього програмного забезпечення.
 Button-Next: Далі
+Button-Next.@meta.@description: >-
+  Мітка для кнопки при натисканні переходить на наступну сторінку або відображає
+  наступну інформацію.
 Button-OpenedUrlToRevert: Відкрито URL-адресу для відновлення
 Button-RevertNow: Поверніться зараз
 Button-ShowJudgements: Покажіть судження
@@ -66,6 +75,7 @@ MenuItem-Contributions: Мої внески
 MenuItem-ContributionsBeforeLogin: Мої внески перед входом у систему
 MenuItem-Issues: Випуски
 MenuItem-Stats: Статистика
+Message-AJudgementLogged: 'Рішення про {0} про перегляд {1} було записано.'
 Message-CongratsSuccessfullyReverted: 'Вітаю! ви успішно повернули {0}.'
 Message-DiffNotAvailable: >-
   Стаття у Вікіпедії різниця тимчасово недоступна. Ви можете спробувати його
@@ -92,4 +102,3 @@ Message-SorryWeFailedToRevert: 'На жаль, нам не вдалося від
 Message-TheRevisionIsSuccessfullyRevertedAs: 'Версію {0} успішно повернено як {1}.'
 Message-ThereIsNoEditSummary: Підсумок редагування відсутній.
 Message-YourJudgementLogged: 'Ваше рішення щодо {0} для перегляду {1} було записано.'
-Message-AJudgementLogged: 'Рішення про {0} про перегляд {1} було записано.'

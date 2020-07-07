@@ -1,6 +1,13 @@
 Button-Go: Va
+Button-Go.@meta.@description: Etiqueta dels botons per redirigir l'usuari a una URL o ubicació determinada.
 Button-HelpTranslate: Ajuda a traduir
+Button-HelpTranslate.@meta.@description: >-
+  Etiqueta de botó que permet als usuaris ajudar a traduir missatges
+  internacionalitzats per aquest programari.
 Button-Next: Pròxim
+Button-Next.@meta.@description: >-
+  Etiquetar un botó quan es fa clic a l'opció anar a la pàgina següent o mostrar
+  la informació següent.
 Button-OpenedUrlToRevert: URL obert per tornar
 Button-RevertNow: Torna ara
 Button-ShowJudgements: Mostrar judicis
@@ -66,6 +73,7 @@ MenuItem-Contributions: Les meves aportacions
 MenuItem-ContributionsBeforeLogin: Les meves contribucions abans de l’inici de sessió
 MenuItem-Issues: Problemes
 MenuItem-Stats: Estadístiques
+Message-AJudgementLogged: 'S''ha registrat un judici de {0} per a la revisió {1}.'
 Message-CongratsSuccessfullyReverted: 'Felicitats! heu revertit correctament directament {0}.'
 Message-DiffNotAvailable: >-
   L'article dif de Wikipedia no està disponible temporalment. Podeu provar de
@@ -92,4 +100,3 @@ Message-SorryWeFailedToRevert: 'Ho sentim, no hem pogut revertir la revisió {0}
 Message-TheRevisionIsSuccessfullyRevertedAs: 'La revisió {0} es reverteix correctament com a {1}.'
 Message-ThereIsNoEditSummary: No hi ha cap resum d’edició.
 Message-YourJudgementLogged: 'S''ha registrat el vostre judici sobre {0} per a la revisió {1}.'
-Message-AJudgementLogged: 'S''ha registrat un judici de {0} per a la revisió {1}.'

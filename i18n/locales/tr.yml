@@ -1,6 +1,15 @@
 Button-Go: Git
+Button-Go.@meta.@description: >-
+  Kullanıcıyı belirli bir URL'ye veya konuma yönlendirmek için düğmelerin
+  etiketi.
 Button-HelpTranslate: Çeviriye yardım et
+Button-HelpTranslate.@meta.@description: >-
+  Kullanıcıların bu yazılım için uluslararası mesajların çevrilmesine yardımcı
+  olan düğme etiketi.
 Button-Next: Sonraki
+Button-Next.@meta.@description: >-
+  Tıklandığında bir düğmenin etiketi sonraki sayfaya gidin veya sonraki
+  bilgileri görüntüleyin.
 Button-OpenedUrlToRevert: Geri dönmek için açılan URL
 Button-RevertNow: Şimdi geri dön
 Button-ShowJudgements: Kararları göster
@@ -66,6 +75,7 @@ MenuItem-Contributions: Katkılar
 MenuItem-ContributionsBeforeLogin: Giriş yapmadan önce yaptığım katkılar
 MenuItem-Issues: Sorunlar
 MenuItem-Stats: İstatistikleri
+Message-AJudgementLogged: '{1} düzeltmesi için {0} kararı günlüğe kaydedildi.'
 Message-CongratsSuccessfullyReverted: 'Tebrikler! doğrudan {0} başarıyla geri döndünüz.'
 Message-DiffNotAvailable: >-
   The wikipedia article diff is temporarily not available. You can try to reload
@@ -93,4 +103,3 @@ Message-SorryWeFailedToRevert: 'Maalesef, {0} düzeltmesini geri alamadık.'
 Message-TheRevisionIsSuccessfullyRevertedAs: '{0} düzeltmesi başarıyla {1} olarak geri döndürüldü.'
 Message-ThereIsNoEditSummary: Düzenleme özeti yok.
 Message-YourJudgementLogged: '{1} düzeltmesi için {0} kararınız günlüğe kaydedildi.'
-Message-AJudgementLogged: '{1} düzeltmesi için {0} kararı günlüğe kaydedildi.'

@@ -1,6 +1,15 @@
 Button-Go: Pergilah
+Button-Go.@meta.@description: >-
+  Beri label untuk tombol untuk mengalihkan pengguna ke url atau lokasi yang
+  diberikan.
 Button-HelpTranslate: Bantu terjemahkan
+Button-HelpTranslate.@meta.@description: >-
+  Beri label untuk tombol yang memungkinkan pengguna membantu menerjemahkan
+  pesan yang diinternasionalkan untuk perangkat lunak ini.
 Button-Next: Selanjutnya
+Button-Next.@meta.@description: >-
+  Beri label untuk tombol ketika diklik pergi ke halaman berikutnya atau
+  tampilkan informasi berikutnya.
 Button-OpenedUrlToRevert: URL yang dibuka untuk kembali
 Button-RevertNow: Batalkan sekarang
 Button-ShowJudgements: Perlihatkan penilaian
@@ -66,6 +75,7 @@ MenuItem-Contributions: Kontribusi
 MenuItem-ContributionsBeforeLogin: Kontribusi saya sebelum login
 MenuItem-Issues: Masalah
 MenuItem-Stats: Statistik
+Message-AJudgementLogged: 'Penilaian untuk {0} untuk revisi {1} telah dicatat.'
 Message-CongratsSuccessfullyReverted: 'Selamat! Anda telah berhasil dikembalikan secara langsung {0}.'
 Message-DiffNotAvailable: >-
   Perbedaan revisi tidak tersedia untuk saat ini. Silakan diulang membukanya.
@@ -94,4 +104,3 @@ Message-SorryWeFailedToRevert: 'Maaf, kami gagal mengembalikan revisi {0}.'
 Message-TheRevisionIsSuccessfullyRevertedAs: 'Revisi {0} berhasil dikembalikan menjadi {1}.'
 Message-ThereIsNoEditSummary: Tidak ada ringkasan edit.
 Message-YourJudgementLogged: 'Penilaian Anda untuk {0} untuk revisi {1} telah dicatat.'
-Message-AJudgementLogged: 'Penilaian untuk {0} untuk revisi {1} telah dicatat.'

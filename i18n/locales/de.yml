@@ -1,6 +1,15 @@
 Button-Go: Gehen
+Button-Go.@meta.@description: >-
+  Beschriftung für Schaltflächen, mit denen Benutzer zu einer bestimmten URL
+  oder einem bestimmten Speicherort umgeleitet werden können.
 Button-HelpTranslate: Hilfe beim Übersetzen
+Button-HelpTranslate.@meta.@description: >-
+  Beschriftung für Schaltfläche, mit der Benutzer internationalisierte
+  Nachrichten für diese Software übersetzen können.
 Button-Next: Nächste
+Button-Next.@meta.@description: >-
+  Beschriften Sie eine Schaltfläche, wenn Sie darauf klicken, gehen Sie zur
+  nächsten Seite oder zeigen Sie die nächsten Informationen an.
 Button-OpenedUrlToRevert: Geöffnete URL zum Zurücksetzen
 Button-RevertNow: Jetzt zurücksetzen
 Button-ShowJudgements: Urteile zeigen
@@ -66,6 +75,7 @@ MenuItem-Contributions: Beiträge
 MenuItem-ContributionsBeforeLogin: Meine Beiträge vor dem Login
 MenuItem-Issues: Probleme
 MenuItem-Stats: Statistiken
+Message-AJudgementLogged: 'Ein Urteil für {0} für Revision {1} wurde protokolliert.'
 Message-CongratsSuccessfullyReverted: 'Glückwunsch! Sie haben erfolgreich direkt {0} zurückgesetzt.'
 Message-DiffNotAvailable: |-
   Der Wikipedia-Artikel diff ist vorübergehend nicht verfügbar. 
@@ -97,4 +107,3 @@ Message-SorryWeFailedToRevert: 'Leider konnten wir die Revision {0} nicht zurüc
 Message-TheRevisionIsSuccessfullyRevertedAs: 'Die Revision {0} wird erfolgreich als {1} zurückgesetzt.'
 Message-ThereIsNoEditSummary: Es gibt keine Bearbeitungszusammenfassung.
 Message-YourJudgementLogged: 'Ihr Urteil für {0} für Revision {1} wurde protokolliert.'
-Message-AJudgementLogged: 'Ein Urteil für {0} für Revision {1} wurde protokolliert.'

@@ -137,7 +137,7 @@ between Client-Side-Rendering and Server-Side-Rendering -->
                 <router-link v-if="judgement.wikiUserName" :to="`/marked/?wikiUserName=${judgement.wikiUserName}`" replace>
                   <object class="avatar-object" v-bind:data="`/api/avatar/${judgement.wikiUserName}`" ></object>
                   <span v-if="isMine(judgement)">{{$t("Label-Me")}} ({{judgement.wikiUserName}})</span>
-                  <span v-else>{{judgement.wikiUserName || $t("SomeoneAnonymous")}}</span>
+                  <span v-else>{{judgement.wikiUserName || $t("Label-Anonymous")}}</span>
                 </router-link>
                 <router-link v-else :to="`/marked/?userGaId=${judgement.userGaId}`" replace>
                   <object class="avatar-object" v-bind:data="`/api/avatar/${judgement.userGaId}`" ></object>

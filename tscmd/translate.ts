@@ -33,17 +33,20 @@ async function translateCmd() {
   }
 
   let targetLangs = Object.keys(existingLocales)
-    .concat(['ar','fa','uk','cs','sv']); // for new languages to add
-
+    // .concat(['ar','fa','uk','cs','sv']); // for new languages to add
+  let forceUpdatedKeys = [
+    `Button-Go.@meta.@description`
+  ];
   await Promise.all(targetLangs.map(async targetLang => {
     console.log(`Working on ${targetLang}`);
     let targetKeyMsgMap = require(`~/i18n/getlocales`)[targetLang] || {};
     let keyArray = [];
     for (let key in sourceKeyMsgMap) {
-      if (sourceKeyMsgMap[key] && !targetKeyMsgMap[key]) {
+      if (forceUpdatedKeys.indexOf(key) >=0 || sourceKeyMsgMap[key] && !targetKeyMsgMap[key]) {
         keyArray.push(key);
       }
     }
+
     if (keyArray.length != 0) {
       let translations:string[] = await translateText(keyArray.map(key => sourceKeyMsgMap[key]), targetLang);
       for(let i in keyArray) {
@@ -51,7 +54,7 @@ async function translateCmd() {
         targetKeyMsgMap[key] = translations[i];
       }
 
-      fs.writeFileSync(`./i18n/locales/${targetLang}.yml`, yaml.safeDump(targetKeyMsgMap), 'utf8');
+      fs.writeFileSync(`./i18n/locales/${targetLang}.yml`, yaml.safeDump(targetKeyMsgMap, { sortKeys: true }), 'utf8');
       console.log(`Done with ${targetLang}`);
     } else {
       console.log(`Skipping lang=${targetLang} because there is no update on sources`);
