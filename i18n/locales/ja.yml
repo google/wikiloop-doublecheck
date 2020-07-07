@@ -6,7 +6,7 @@ Button-Next: 次
 Button-Next.@meta.@description: ボタンのラベルをクリックすると、次のページに移動するか、次の情報を表示します。
 Button-OpenedUrlToRevert: URLを開いて元に戻しました
 Button-RevertNow: 今すぐ元に戻す
-Button-ShowJudgements: 判断を示す
+Button-ShowJudgements: 判定を表示
 Button-Undo: 元に戻す
 Label-1Month: 1か月（30日）
 Label-1Quarter: 1四半期（90日）
@@ -15,7 +15,7 @@ Label-1day: 1日
 Label-1week: 1週間（7d）
 Label-ActiveUsers: アクティブユーザー
 Label-AllTime: いつも
-Label-Anonymous: 匿名の
+Label-Anonymous: 匿名
 Label-ArtificialIntelligence: 人工知能
 Label-Author: 著者
 Label-CountOfJudgements: カウント
@@ -26,10 +26,10 @@ Label-DirectReverted: 直接復帰
 Label-EditSummary: 概要を編集
 Label-EditedAt: 編集済み
 Label-Feed: フィード
-Label-History: 歴史
+Label-History: 履歴
 Label-HumanEditors: 人間の編集者
 Label-Judgement: 判定
-Label-LastActiveTime: 最後にログインした時
+Label-LastActiveTime: 最後のログイン時刻
 Label-Loading: 読み込み中
 Label-Login: ログインする
 Label-Logout: ログアウト
@@ -37,8 +37,8 @@ Label-Looks-Good: いいね
 Label-LooksGood: いいね
 Label-Me: わたし
 Label-Month: 月
-Label-My-History: 私の歴史
-Label-NewJudgement: 新しい判断
+Label-My-History: 私の履歴
+Label-NewJudgement: 新しい判定
 Label-None: なし
 Label-Not-Sure: わからない
 Label-NotSure: わからない
@@ -55,18 +55,18 @@ Label-Result: 結果
 Label-RevertSucceeded: 元に戻しました。
 Label-ReviewFeed: フィードの確認
 Label-ReviewedAndSays: '{0}を確認して言った'
-Label-Should-Revert: 元に戻す必要があります
-Label-ShouldRevert: 元に戻す必要があります
+Label-Should-Revert: 元に戻す必要がある
+Label-ShouldRevert: 元に戻す必要がある
 Label-Snooze: スヌーズ
 Label-Someone: 誰か
-Label-Time: 時間
+Label-Time: 時刻
 Label-TopNumberAnonymousUsers: '上位{0}人の匿名ユーザー'
 Label-TopUsers: トップユーザー
 Label-TopWikis: トップウィキ
 Label-TotalNumber: 合計
 Label-User: ユーザー
 Label-Week: 週間
-Label-YourJudgement: あなたの判断
+Label-YourJudgement: あなたの判定
 MenuItem-Code: コード
 MenuItem-Contributions: 私の貢献
 MenuItem-ContributionsBeforeLogin: ログイン前の私の貢献
@@ -85,7 +85,7 @@ Message-NameVoteAnnouncement: |-
   投稿者の皆様、2020年7月13日00:00 UTCに終了する「WikiLoop Battlefield」に代わる新しい名前の投票を開催しています。
   投票してください。
 Message-NoActiveUsersPleaseStartReview: '過去15分間にアクティブなユーザーはいません。 {0}改訂のレビュー{1}を開始し、最初の改訂になります。'
-Message-Prompt-Login: ログインして自分の名前で投稿を保存できることを知っていますか？ OauthによるWikipediaアカウントでのログインをサポートしています。
+Message-Prompt-Login: ログインして自分の名前で投稿を保存できることをご存知ですか？ OauthによるWikipediaアカウントでのログインをサポートしています。
 Message-RevertEditSummary: |-
   {0}バージョン{1}を使用したテスト/破壊行為として識別されました。
   {2}でご覧になるか、意見をお寄せください

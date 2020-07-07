@@ -24,7 +24,7 @@ Label-CountOfJudgements: Count
 Label-Day: Day
 Label-DiffView: Diff View
 Label-DirectRevertFailed: Direct revert failed
-Label-DirectReverted: Direct reverted
+Label-DirectReverted: Directly reverted
 Label-EditSummary: Edit summary
 Label-EditedAt: edited
 Label-Feed: Feed
@@ -72,24 +72,24 @@ MenuItem-ContributionsBeforeLogin: My contributions before login
 MenuItem-Issues: Issues
 MenuItem-Stats: Stats
 Message-AJudgementLogged: 'A judgement for {0} for revision {1} has been logged.'
-Message-CongratsSuccessfullyReverted: 'Congrats! you''''ve successfully reverted directly {0}.'
+Message-CongratsSuccessfullyReverted: 'Congrats! you''''ve successfully directly reverted {0}.'
 Message-DiffNotAvailable: >-
-  The wikipedia article diff is temporarily not available. You can try to reload
+  The Wikipedia article diff is temporarily not available. You can try to reload
   it. Sometimes a vandalized revision could be deleted. You can check the page
   history.
 Message-FeedHasNoNewRevisionsClickNextBelow: 'Feed {0} has no new revisions, click next below.'
 Message-Login: >-
-  Do you know you could Login and preserve your labels under your name? We
-  support Login with Wikipedia account through Oauth.
+  Do you know you could login and preserve your labels under your name? We
+  support logging in with your Wikipedia account through OAuth.
 Message-NameVoteAnnouncement: >-
-  Dear contributor, we are holding a voting for new name replacing the "WikiLoop
+  Dear contributor, we are holding a voting for a new name replacing "WikiLoop
   Battlefield" ending on July 13, 2020 00:00 UTC. Please vote.
 Message-NoActiveUsersPleaseStartReview: >-
   No active users in last 15min. Start {0} reviewing revisions {1} and become
   the first one.
 Message-Prompt-Login: >-
   Do you know you could login and preserve your contributions under your name?
-  We support login with Wikipedia account through Oauth.
+  We support logging in with your Wikipedia account through OAuth.
 Message-RevertEditSummary: >-
   Identified as test/vandalism using {0} version {1}. See it or provide your
   opinion at {2}

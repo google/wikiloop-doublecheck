@@ -1,4 +1,4 @@
-Button-Go: 走
+Button-Go: 跳转
 Button-Go.@meta.@description: 按钮标签，用于将用户重定向到给定的URL或位置。
 Button-HelpTranslate: 帮助翻译
 Button-HelpTranslate.@meta.@description: 按钮标签，允许用户帮助翻译该软件的国际化消息。
@@ -25,7 +25,7 @@ Label-DirectRevertFailed: 直接还原失败
 Label-DirectReverted: 直接还原
 Label-EditSummary: 编辑摘要
 Label-EditedAt: 编辑于
-Label-Feed: 饲料
+Label-Feed: 源
 Label-History: 历史
 Label-HumanEditors: 人工编辑
 Label-Judgement: 判断
@@ -57,7 +57,7 @@ Label-ReviewFeed: 查看提要
 Label-ReviewedAndSays: '评论了{0}并说'
 Label-Should-Revert: 应该还原
 Label-ShouldRevert: 应该还原
-Label-Snooze: 打盹
+Label-Snooze: 关闭
 Label-Someone: 别人
 Label-Time: 时间
 Label-TopNumberAnonymousUsers: '排名前{0}的匿名用户'

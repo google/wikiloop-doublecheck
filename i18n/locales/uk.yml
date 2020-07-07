@@ -1,21 +1,21 @@
-Button-Go: Іди
+Button-Go: Перейти
 Button-Go.@meta.@description: >-
-  Мітка для кнопок, щоб перенаправити користувача на певний URL-адресу або
+  Мітка для кнопок для перенаправлення користувача на певну URL-адресу або
   місцеположення.
-Button-HelpTranslate: Допоможіть перекласти
+Button-HelpTranslate: Допомогти перекласти
 Button-HelpTranslate.@meta.@description: >-
   Мітка для кнопки, яка дозволяє користувачам допомагати перекладати
   інтернаціоналізовані повідомлення для цього програмного забезпечення.
 Button-Next: Далі
 Button-Next.@meta.@description: >-
-  Мітка для кнопки при натисканні переходить на наступну сторінку або відображає
+  Мітка для кнопки, яка при натисканні переходить на наступну сторінку або відображає
   наступну інформацію.
 Button-OpenedUrlToRevert: Відкрито URL-адресу для відновлення
-Button-RevertNow: Поверніться зараз
-Button-ShowJudgements: Покажіть судження
+Button-RevertNow: Відновити зараз
+Button-ShowJudgements: Показати судження
 Button-Undo: Скасувати
 Label-1Month: 1 місяць (30d)
-Label-1Quarter: 1 чверть (90d)
+Label-1Quarter: 1 квартал (90d)
 Label-1Year: 1 рік (365d)
 Label-1day: 1 день
 Label-1week: 1 тиждень (7d)
@@ -24,16 +24,16 @@ Label-AllTime: Весь час
 Label-Anonymous: Анонімний
 Label-ArtificialIntelligence: Штучний інтелект
 Label-Author: Автор
-Label-CountOfJudgements: Рахувати
+Label-CountOfJudgements: Кількість
 Label-Day: День
-Label-DiffView: Різний вигляд
-Label-DirectRevertFailed: Не вдалось відновити пряме відновлення
+Label-DiffView: Перегляд відмінностей
+Label-DirectRevertFailed: Не вдалось відновити напряму
 Label-DirectReverted: Прямий відмінений
 Label-EditSummary: Редагувати резюме
 Label-EditedAt: відредаговано
-Label-Feed: Корм
+Label-Feed: Стрічка
 Label-History: Історія
-Label-HumanEditors: Людські редактори
+Label-HumanEditors: Редактори 
 Label-Judgement: Судження
 Label-LastActiveTime: Останній активний
 Label-Loading: Завантаження
@@ -44,7 +44,7 @@ Label-LooksGood: Виглядає добре
 Label-Me: Я
 Label-Month: Місяць
 Label-My-History: Моя історія
-Label-NewJudgement: Новий Суд
+Label-NewJudgement: Нове судження
 Label-None: Жоден
 Label-Not-Sure: Не впевнений
 Label-NotSure: Не впевнений
@@ -53,36 +53,36 @@ Label-OresBadfaith.@meta.@isMachineTranslated: true
 Label-OresBadfaith.@meta.@translatedAt: 2020-07-07T01:09:19.145Z
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: Пошкодження ORES
-Label-Overriden: Переоцінений
+Label-Overriden: Переглянуто
 Label-Prompt-Login: Вхід
 Label-Rank: Ранг
 Label-Reason: Причина
 Label-Result: Результат
-Label-RevertSucceeded: Повернення вдалося!
-Label-ReviewFeed: Огляд каналу
-Label-ReviewedAndSays: 'переглянув {0} і каже'
-Label-Should-Revert: Потрібно повернути
-Label-ShouldRevert: Слід повернути
-Label-Snooze: Дрімота
+Label-RevertSucceeded: Відновлення успішне!
+Label-ReviewFeed: Огляд стрічки
+Label-ReviewedAndSays: 'переглянув(-ла) {0} і каже'
+Label-Should-Revert: Потрібно відновити
+Label-ShouldRevert: Потрібно відновити
+Label-Snooze: Відкласти
 Label-Someone: Хтось
 Label-Time: Час
-Label-TopNumberAnonymousUsers: 'Вгору {0} Анонімні користувачі'
+Label-TopNumberAnonymousUsers: 'Топ {0} анонімних користувачів'
 Label-TopUsers: Топ користувачів
 Label-TopWikis: Топ Вікі
 Label-TotalNumber: Всього
 Label-User: Користувач
 Label-Week: Тиждень
-Label-YourJudgement: Ваш Суд
+Label-YourJudgement: Ваше судження
 MenuItem-Code: Код
 MenuItem-Contributions: Мої внески
 MenuItem-ContributionsBeforeLogin: Мої внески перед входом у систему
-MenuItem-Issues: Випуски
+MenuItem-Issues: Питання
 MenuItem-Stats: Статистика
-Message-AJudgementLogged: 'Рішення про {0} про перегляд {1} було записано.'
-Message-CongratsSuccessfullyReverted: 'Вітаю! ви успішно повернули {0}.'
+Message-AJudgementLogged: 'Рішення для {0} про версію {1} було записано.'
+Message-CongratsSuccessfullyReverted: 'Вітаємо! Ви успішно відновили {0}.'
 Message-DiffNotAvailable: >-
-  Стаття у Вікіпедії різниця тимчасово недоступна. Ви можете спробувати його
-  перезавантажити. Іноді вандалізовану версію можна видалити. Ви можете
+  Перегляд відмінностей статті Вікіпедії тимчасово недоступний. Ви можете спробувати його
+  перезавантажити. Подекуди трапляється, що вандалізована версія статті може бути видалена. Ви можете
   перевірити історію сторінки.
 Message-FeedHasNoNewRevisionsClickNextBelow: 'У стрічці {0} немає нових версій, натисніть наступну нижче.'
 Message-Login: >-
@@ -94,14 +94,14 @@ Message-NameVoteAnnouncement: >-
   ласка, голосуйте.
 Message-NoActiveUsersPleaseStartReview: >-
   Немає активних користувачів за останні 15 хв. Почніть {0} з перегляду версій
-  {1} і станьте першою.
+  {1} і станьте першим/першою.
 Message-Prompt-Login: >-
-  Чи знаєте ви, що можете ввійти та зберегти внески під своїм ім’ям? Ми
+  Чи знаєте Ви, що можете ввійти та зберегти внески під своїм ім’ям? Ми
   підтримуємо вхід в обліковий запис Вікіпедії через Oauth.
 Message-RevertEditSummary: >-
   Ідентифіковано як тест / вандалізм з використанням {0} версії {1}. Перегляньте
-  це або висловіть свою думку за {2}
+  це або висловіть свою думку у {2}
 Message-SorryWeFailedToRevert: 'На жаль, нам не вдалося відновити версію {0}.'
-Message-TheRevisionIsSuccessfullyRevertedAs: 'Версію {0} успішно повернено як {1}.'
-Message-ThereIsNoEditSummary: Підсумок редагування відсутній.
+Message-TheRevisionIsSuccessfullyRevertedAs: 'Версію {0} успішно відновлено як {1}.'
+Message-ThereIsNoEditSummary: Резюме правки відсутнє.
 Message-YourJudgementLogged: 'Ваше рішення щодо {0} для перегляду {1} було записано.'

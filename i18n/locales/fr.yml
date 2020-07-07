@@ -1,72 +1,72 @@
 Button-Go: Aller
 Button-Go.@meta.@description: >-
-  Étiquette pour les boutons pour rediriger l'utilisateur vers une URL ou un
+  Libellé pour les boutons pour rediriger l'utilisateur vers une URL ou un
   emplacement donné.
-Button-HelpTranslate: Aide à traduire
+Button-HelpTranslate: Aider à traduire
 Button-HelpTranslate.@meta.@description: >-
-  Étiquette pour le bouton qui permet aux utilisateurs d'aider à traduire les
-  messages internationalisés pour ce logiciel.
+  Libellé pour le bouton qui permet aux utilisateurs d'aider à traduire les
+  messages traduits pour ce logiciel.
 Button-Next: Suivant
 Button-Next.@meta.@description: >-
-  Libellé d'un bouton lorsque vous cliquez dessus, passez à la page suivante ou
-  affichez les informations suivantes.
-Button-OpenedUrlToRevert: URL ouverte pour revenir
-Button-RevertNow: Revenir maintenant
+  Libellé d'un bouton permettant de passer à la page suivante ou
+  d'afficher les informations suivantes.
+Button-OpenedUrlToRevert: URL ouverte pour restaurer
+Button-RevertNow: Restaurer maintenant
 Button-ShowJudgements: Afficher les jugements
 Button-Undo: annuler
-Label-1Month: 1 mois (30j)
-Label-1Quarter: 1 quart (90d)
+Label-1Month: 1 mois (30 jours)
+Label-1Quarter: 1 trimestre (90 jours)
 Label-1Year: 1 an (365 jours)
-Label-1day: Un jour
-Label-1week: 1 semaine (7j)
+Label-1day: 1 jour
+Label-1week: 1 semaine (7 jours)
 Label-ActiveUsers: Utilisateurs actifs
 Label-AllTime: Tout le temps
 Label-Anonymous: Anonyme
 Label-ArtificialIntelligence: Intelligence artificielle
 Label-Author: Auteur
-Label-CountOfJudgements: Compter
+Label-CountOfJudgements: Compteur
 Label-Day: journée
-Label-DiffView: Vue différentielle
-Label-DirectRevertFailed: Échec du retour direct
-Label-DirectReverted: Direct inversé
+Label-DiffView: Vue de comparaison
+Label-DirectRevertFailed: Échec de la restauration directe
+Label-DirectReverted: Restauré directement
 Label-EditSummary: Modifier le résumé
 Label-EditedAt: édité
-Label-Feed: Alimentation
-Label-History: L'histoire
+Label-Feed: Flux
+Label-History: Historique
 Label-HumanEditors: Éditeurs humains
 Label-Judgement: Jugement
 Label-LastActiveTime: Dernière activité
 Label-Loading: Chargement
 Label-Login: Connexion
 Label-Logout: Déconnexion
-Label-Looks-Good: Cela semble bon
-Label-LooksGood: Cela semble bon
+Label-Looks-Good: Semble bon
+Label-LooksGood: Semble bon
 Label-Me: Moi
 Label-Month: Mois
-Label-My-History: Mon histoire
+Label-My-History: Mon historique
 Label-NewJudgement: Nouveau jugement
 Label-None: Aucun
 Label-Not-Sure: Pas certain
-Label-NotSure: Pas sûr
+Label-NotSure: Pas certain
 Label-OresBadfaith: ORES Mauvaise foi
 Label-OresBadfaith.@meta.@isMachineTranslated: true
 Label-OresBadfaith.@meta.@translatedAt: 2020-07-07T01:09:19.143Z
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: ORES endommageant
 Label-Overriden: Remplacé
-Label-Prompt-Login: S'identifier
+Label-Prompt-Login: Se connecter
 Label-Rank: Rang
 Label-Reason: Raison
 Label-Result: Résultat
-Label-RevertSucceeded: Revert a réussi!
+Label-RevertSucceeded: La restauration a réussi!
 Label-ReviewFeed: Vérifier le flux
 Label-ReviewedAndSays: 'a examiné {0} et dit'
-Label-Should-Revert: Devrait revenir
-Label-ShouldRevert: Devrait revenir
-Label-Snooze: Roupillon
+Label-Should-Revert: Devrait restaurer
+Label-ShouldRevert: Devrait restaurer
+Label-Snooze: Rappel
 Label-Someone: Quelqu'un
 Label-Time: Temps
-Label-TopNumberAnonymousUsers: 'Top {0} utilisateurs anonymes'
+Label-TopNumberAnonymousUsers: 'Top {0} des utilisateurs anonymes'
 Label-TopUsers: Top utilisateurs
 Label-TopWikis: Top Wikis
 Label-TotalNumber: Total
@@ -79,29 +79,29 @@ MenuItem-ContributionsBeforeLogin: Mes contributions avant la connexion
 MenuItem-Issues: Problèmes
 MenuItem-Stats: Statistiques
 Message-AJudgementLogged: 'Un jugement pour {0} pour la révision {1} a été enregistré.'
-Message-CongratsSuccessfullyReverted: 'Félicitations! vous avez réussi à revenir directement {0}.'
+Message-CongratsSuccessfullyReverted: 'Félicitations! vous avez réussi à restaurer directement {0}.'
 Message-DiffNotAvailable: |-
-  Le diff article wikipedia n'est temporairement pas disponible.
+  Le diff de l'article Wikipédia n'est temporairement pas disponible.
   Vous pouvez essayer de le recharger.
   Parfois, une révision vandalisée peut être supprimée.
   Vous pouvez consulter l'historique des pages.
 Message-FeedHasNoNewRevisionsClickNextBelow: 'Le flux {0} n''a pas de nouvelles révisions, cliquez sur suivant ci-dessous.'
 Message-Login: >-
   Savez-vous que vous pouvez vous connecter et conserver vos étiquettes sous
-  votre nom? Nous prenons en charge la connexion avec un compte Wikipedia via
-  Oauth.
+  votre nom? Nous prenons en charge la connexion avec un compte Wikipédia via
+  OAuth.
 Message-NameVoteAnnouncement: >-
-  Cher contributeur, nous organisons un vote pour un nouveau nom remplaçant le
+  Cher contributeur, nous organisons un vote pour un nouveau nom remplaçant
   "WikiLoop Battlefield" se terminant le 13 juillet 2020 à 00h00 UTC.
 
   S'il vous plait, votez.
 Message-NoActiveUsersPleaseStartReview: >-
   Aucun utilisateur actif au cours des 15 dernières minutes. Commencez {0} à
-  réviser les révisions {1} et devenez la première.
+  réviser les révisions {1} et devenez le premier.
 Message-Prompt-Login: >-
   Savez-vous que vous pouvez vous connecter et conserver vos contributions sous
   votre nom? Nous prenons en charge la connexion avec un compte Wikipedia via
-  Oauth.
+  OAuth.
 Message-RevertEditSummary: |-
   Identifié comme test / vandalisme à l'aide de la version {0} {1}.
   Consultez-le ou donnez votre avis sur {2}
