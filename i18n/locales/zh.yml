@@ -1,10 +1,10 @@
-Button-Go: 跳转
+Button-Go: 立即前往
 Button-Go.@meta.@description: 按钮标签，用于将用户重定向到给定的URL或位置。
 Button-HelpTranslate: 帮助翻译
 Button-HelpTranslate.@meta.@description: 按钮标签，允许用户帮助翻译该软件的国际化消息。
 Button-Next: 下一个
 Button-Next.@meta.@description: 单击按钮的标签时转到下一页或显示下一个信息。
-Button-OpenedUrlToRevert: 打开的网址即可还原
+Button-OpenedUrlToRevert: 打开的网址进行还原
 Button-OpenedUrlToRevert.@meta.@description: 按钮“立即还原”的标签将更改为“打开的URL以还原”，以显示单击按钮并执行操作后的操作状态。
 Button-RevertNow: 立即还原
 Button-RevertNow.@meta.@description: 立即在Wikipedia上还原给定修订的按钮标签。
@@ -24,7 +24,7 @@ Label-1week: 1周（7天）
 Label-1week.@meta.@description: 要显示的统计时间范围的标签，精确到1周或7天。
 Label-ActiveUsers: 活跃用户
 Label-ActiveUsers.@meta.@description: 基于该软件活动用户的统计信息标签。
-Label-AllTime: 整天
+Label-AllTime: 所有时间
 Label-AllTime.@meta.@description: 标签的时间范围，以便统计数据显示，这是我们的软件一直处于运行状态。
 Label-Anonymous: 游客
 Label-ArtificialIntelligence: 人工智能
@@ -43,12 +43,12 @@ Label-EditSummary: 编辑摘要
 Label-EditSummary.@meta.@description: '编辑摘要是对Wikipedia页面进行编辑的简要说明，如https://en.wikipedia.org/wiki/Help:Edit_summary中所示'
 Label-EditedAt: 编辑于
 Label-EditedAt.@meta.@description: 创建编辑时在Wikipedia上的编辑时间戳记的标签。
-Label-Feed: 源
+Label-Feed: 编辑流
 Label-Feed.@meta.@description: >-
   该标签显示了特定提要名称之后的提要，传入的新Wikipedia编辑流或流。例如，我们具有各种不同的Wikipedia编辑的供稿，例如文章主题的供稿，被故意破坏检测评分系统检测到的编辑的供稿等。
 Label-History: 历史
 Label-History.@meta.@description: 所有用户或给定用户的过去活动，做出的过去判断等的列表的标签。
-Label-HumanEditors: 人工编辑
+Label-HumanEditors: 人类编辑
 Label-HumanEditors.@meta.@description: 人工编辑提供的判断标签。
 Label-Judgement: 判断
 Label-Judgement.@meta.@description: 审查传入的Wikipedia编辑的用户给予Wikipedia编辑的判断标签。
@@ -71,7 +71,7 @@ Label-MyHistory.@meta.@description: 使用我们软件的当前用户的过去�
 Label-MyHistory.@meta.@isMachineTranslated: true
 Label-MyHistory.@meta.@translatedAt: '2020-07-07T19:26:51.447Z'
 Label-MyHistory.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
-Label-NewJudgement: 新审判
+Label-NewJudgement: 新的判断
 Label-NewJudgement.@meta.@description: 用户对Wikipedia做出的新判断的标签。
 Label-None: 没有
 Label-None.@meta.@description: 空行表和内容单元格或空列表的标签。当没有内容可显示时，通常在用户界面中使用它。
@@ -86,7 +86,7 @@ Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: ORES破坏
 Label-OresDamaging.@meta.@description: >-
   由WMF人工智能评分系统ORES给出的得分和判断标签。该标签特定指的是ORES的破坏模型。请参阅https://www.mediawiki.org/wiki/ORES/zh#高级支持
-Label-Overridden: 覆写
+Label-Overridden: 已覆盖
 Label-Overridden.@meta.@description: >-
   表示在Wikipedia文章上进行给定编辑的标签被同一Wikipedia文章上的另一个较新编辑所覆盖。此标签表示这样的编辑已由我们当前的用户还原，或者已由Wikipedia上的另一个Wikipedia编辑器还原或更新。
 Label-Overridden.@meta.@isMachineTranslated: true
@@ -97,7 +97,7 @@ Label-PromptLogin.@meta.@description: 提示用户登录我们软件的标签。
 Label-PromptLogin.@meta.@isMachineTranslated: true
 Label-PromptLogin.@meta.@translatedAt: '2020-07-07T19:26:51.447Z'
 Label-PromptLogin.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
-Label-Rank: 秩
+Label-Rank: 排名
 Label-Rank.@meta.@description: 按给定的分类号对统计数据进行排名的标签，例如，用户按其贡献数进行分类
 Label-Reason: 原因
 Label-Reason.@meta.@description: 由于执行操作的结果而导致的标签，例如当用户还原Wikipedia编辑时。
@@ -105,9 +105,9 @@ Label-Result: 结果
 Label-Result.@meta.@description: 所执行操作的结果的标签，例如用户还原Wikipedia编辑时的标签。
 Label-RevertSucceeded: 还原成功！
 Label-RevertSucceeded.@meta.@description: 当用户还原了Wikipedia编辑时，所执行操作的结果标签，表明操作成功。
-Label-ReviewFeed: 查看提要
+Label-ReviewFeed: 查看编辑流
 Label-ReviewFeed.@meta.@description: 供查阅的Wikipedia的提要，流或流的标签。
-Label-ReviewedAndSays: '评论了{0}并说'
+Label-ReviewedAndSays: '审阅了{0}并说'
 Label-ReviewedAndSays.@meta.@description: 开始判决的标签和给出修改的理由。
 Label-ShouldRevert: 应该还原
 Label-ShouldRevert.@meta.@description: 三种主要判断类型之一的标签是说，正在审查的Wikipedia编辑对Wikipedia有破坏性而非建设性。
@@ -120,11 +120,11 @@ Label-Time: 时间
 Label-Time.@meta.@description: 用户给定的判断或操作的时间戳记的标签。
 Label-TopNumberAnonymousUsers: '排名前{0}的匿名用户'
 Label-TopNumberAnonymousUsers.@meta.@description: 前20位匿名用户等的标签，等等，而数字“ 20”可以在参数中替换。
-Label-TopUsers: 最高用户
+Label-TopUsers: 用户英雄榜
 Label-TopUsers.@meta.@description: 顶级（已登录）用户等部分的标签，而数字。
-Label-TopWikis: 顶级维基
+Label-TopWikis: 维基百科语言英雄榜
 Label-TopWikis.@meta.@description: 顶级Wikipedias或其姊妹项目（Wikidata.org等）部分的标签，取决于Wikipedia上给出的判断量。
-Label-TotalNumber: 总
+Label-TotalNumber: 总数
 Label-TotalNumber.@meta.@description: 用户给出的判断总数列的标签。
 Label-User: 用户
 Label-User.@meta.@description: 给出Wikipedia判断的用户的标签。
@@ -142,29 +142,29 @@ MenuItem-Issues: 问题
 MenuItem-Issues.@meta.@description: 菜单项标签将用户重定向到我们软件的Github问题。
 MenuItem-Stats: 统计
 MenuItem-Stats.@meta.@description: 菜单项标签将用户重定向到我们软件的统计页面。
-Message-AJudgementLogged: '已记录针对修订版{1}的{0}的判断。'
-Message-AJudgementLogged.@meta.@description: '正在记录对给定修订的判断的消息。参数{0}是Wikipedia文章的名称。参数{0}是修订的修订标识符（Wikipedia编辑）。'
+Message-AJudgementLogged: '已记录您对“{0}”文章的编辑ID{1}做出的判断。'
+Message-AJudgementLogged.@meta.@description: '正在记录对给定修订的判断的消息。参数{0}是Wikipedia文章的名称。参数{1}是修订的修订标识符（Wikipedia编辑）。'
 Message-CongratsSuccessfullyReverted: '恭喜！您已成功直接还原为{0}。'
 Message-DiffNotAvailable: 该页面的版本差异暂时无法读取，可以嘗試重新載入。有时被破壞的版本可能被完全删除，您可以查看页面历史。
-Message-FeedHasNoNewRevisionsClickNextBelow: 'Feed {0}没有新修订，请单击下面的下一步。'
+Message-FeedHasNoNewRevisionsClickNextBelow: '{0}编辑流没有新编辑，请单击下面的下一步。'
 Message-FeedHasNoNewRevisionsClickNextBelow.@meta.@description: '该消息告诉用户给定的要查看的Wikipedia提要或流没有新的修订/编辑。参数{0}指给定提要的名称。'
-Message-Login: 您知道您可以登录并使用您的名字保存标签吗？我们支持通过Oauth使用Wikipedia帐户登录。
+Message-Login: 您知道您可以登录并使用您的名字保存您的判断吗？我们支持通过Oauth使用Wikipedia帐户登录。
 Message-NameVoteAnnouncement: |-
   尊敬的贡献者，我们正在为新名称进行投票，以替换将于2020年7月13日UTC结束的“ WikiLoop Battlefield”。
   请投票。
-Message-NoActiveUsersPleaseStartReview: '最近15分钟内没有活跃用户。开始{0}复审修订版{1}，并成为第一个。'
+Message-NoActiveUsersPleaseStartReview: '最近15分钟内没有活跃用户，立即开始{0}审阅编辑{1}吧！'
 Message-NoActiveUsersPleaseStartReview.@meta.@description: '邀请用户开始还原的消息。 {0}和{1}是带有URL参数的HTML锚标记对<a>和</a>。'
-Message-PromptLogin: 您知道您可以使用您的名字登录并保存您的捐款吗？我们支持通过Oauth使用Wikipedia帐户登录。
-Message-RevertEditSummary: '使用{0}版本{1}标识为测试/故意破坏。请在{2}上查看或发表您的意见'
+Message-PromptLogin: 您知道吗，您可以登录并保存您的审阅记录吗。我们支持通过Oauth使用Wikipedia帐户登录。
+Message-RevertEditSummary: '使用{0}工具（v{1}）对该编辑版本进行判断，判定为“测试/故意破坏”。请在{2}上查看或发表您的意见。'
 Message-RevertEditSummary.@meta.@description: >-
   当我们的软件生成新的Wikipedia编辑以提交到Wikipedia网站时，编辑摘要的消息。参数{0}是我们的软件的名称，当前为“ WikiLoop
   Battlefield”。参数{1}是我们软件的版本号，当前为4.0.1。 {2}是我们工具的网站网址，当前为“
   battlefield.wikiloop.org”。
-Message-SorryWeFailedToRevert: '抱歉，我们无法还原修订版{0}。'
+Message-SorryWeFailedToRevert: '抱歉，我们无法还原修订版本{0}。'
 Message-SorryWeFailedToRevert.@meta.@description: '告诉用户给定编辑的还原失败的消息。参数{0}是修订版标识符。'
-Message-TheRevisionIsSuccessfullyRevertedAs: '修订版{0}已成功还原为{1}。'
+Message-TheRevisionIsSuccessfullyRevertedAs: '编辑编号{0}已成功还原为编辑编号{1}。'
 Message-TheRevisionIsSuccessfullyRevertedAs.@meta.@description: >-
   消息表明已成功还原给定的Wikipedia编辑（修订）。参数{0}是要还原的Wikipedia编辑的修订版标识符。参数{1}是新Wikipedia编辑的第二个修订版本标识符，它是先前Wikipedia编辑的顶部，这是还原的结果。
 Message-ThereIsNoEditSummary: 没有编辑摘要。
 Message-ThereIsNoEditSummary.@meta.@description: '该消息显示给定的Wikipedia编辑没有解释，请参阅https://en.wikipedia.org/wiki/Help:Edit_summary。'
-Message-YourJudgementLogged: '您对版本{1}的{0}的判断已记录下来。'
+Message-YourJudgementLogged: '您对编辑版本{1}的“{0}”的判断已被记录下来。'

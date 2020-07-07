@@ -218,7 +218,7 @@ MenuItem-Issues.@meta.@description: The menu item label redirecting user to the 
 MenuItem-Stats: Stats
 MenuItem-Stats.@meta.@description: The menu item label redirecting user to the statistics page of our software.
 Message-AJudgementLogged: 'A judgement for {0} for revision {1} has been logged.'
-Message-AJudgementLogged.@meta.@description: The message that a judgement for a given revision is being recorded. The parameter {0} is the name of Wikipedia article. The parameter {0} is the revision identifier of the revision (Wikipedia edit).
+Message-AJudgementLogged.@meta.@description: The message that a judgement for a given revision is being recorded. The parameter {0} is the name of Wikipedia article. The parameter {1} is the revision identifier of the revision (Wikipedia edit).
 Message-CongratsSuccessfullyReverted: 'Congrats! you''''ve successfully directly reverted {0}.'
 Message-DiffNotAvailable: >-
   The Wikipedia article diff is temporarily not available. You can try to reload
