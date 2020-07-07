@@ -37,18 +37,16 @@ Label-LastActiveTime: poslední aktivní
 Label-Loading: načítání
 Label-Login: Přihlásit se
 Label-Logout: Odhlásit se
-Label-Looks-Good: Vypadá dobře
 Label-LooksGood: Vypadá dobře
 Label-Me: Mě
 Label-Month: Měsíc
 Label-My-History: Moje historie
 Label-NewJudgement: Nový soud
 Label-None: Žádný
-Label-Not-Sure: Nejsem si jistý
 Label-NotSure: Nejsem si jistý
 Label-OresBadfaith: ORES Špatná víra
 Label-OresBadfaith.@meta.@isMachineTranslated: true
-Label-OresBadfaith.@meta.@translatedAt: 2020-07-07T01:09:19.142Z
+Label-OresBadfaith.@meta.@translatedAt: '2020-07-07T01:09:19.142Z'
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: Poškození ORES
 Label-Overriden: Přepsáno
@@ -59,7 +57,6 @@ Label-Result: Výsledek
 Label-RevertSucceeded: Vrácení bylo úspěšné!
 Label-ReviewFeed: Zkontrolujte zdroj
 Label-ReviewedAndSays: 'zkontrolováno {0} a říká'
-Label-Should-Revert: Měl by se vrátit
 Label-ShouldRevert: Měl by se vrátit
 Label-Snooze: Podřimovat
 Label-Someone: Někdo
@@ -92,7 +89,7 @@ Message-NameVoteAnnouncement: >-
 Message-NoActiveUsersPleaseStartReview: >-
   Žádní aktivní uživatelé za posledních 15 minut. Začněte {0} revize revizí {1}
   a staňte se první.
-Message-Prompt-Login: >-
+Message-PromptLogin: >-
   Víte, že byste se mohli přihlásit a zachovat své příspěvky pod svým jménem?
   Podporujeme přihlášení pomocí účtu Wikipedia prostřednictvím Oauth.
 Message-RevertEditSummary: >-

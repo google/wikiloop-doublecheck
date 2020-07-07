@@ -8,8 +8,8 @@ Button-HelpTranslate.@meta.@description: >-
   інтернаціоналізовані повідомлення для цього програмного забезпечення.
 Button-Next: Далі
 Button-Next.@meta.@description: >-
-  Мітка для кнопки, яка переходить до наступної сторінки або відображає
-  наступну інформацію.
+  Мітка для кнопки, яка переходить до наступної сторінки або відображає наступну
+  інформацію.
 Button-OpenedUrlToRevert: Відкрита URL-адреса для відміни
 Button-RevertNow: Відмінити зараз
 Button-ShowJudgements: Показати судження
@@ -39,18 +39,16 @@ Label-LastActiveTime: Останній активний час
 Label-Loading: Завантаження
 Label-Login: Увійти
 Label-Logout: Вийти
-Label-Looks-Good: Виглядає добре
 Label-LooksGood: Виглядає добре
 Label-Me: Я
 Label-Month: Місяць
 Label-My-History: Моя історія
 Label-NewJudgement: Нове судження
 Label-None: Жоден
-Label-Not-Sure: Не впевнений
 Label-NotSure: Не впевнений
 Label-OresBadfaith: ORES Недобросовісність
 Label-OresBadfaith.@meta.@isMachineTranslated: true
-Label-OresBadfaith.@meta.@translatedAt: 2020-07-07T01:09:19.145Z
+Label-OresBadfaith.@meta.@translatedAt: '2020-07-07T01:09:19.145Z'
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: Пошкодження ORES
 Label-Overriden: Перекрито
@@ -61,7 +59,6 @@ Label-Result: Результат
 Label-RevertSucceeded: Віміна успішна!
 Label-ReviewFeed: Огляд стрічки
 Label-ReviewedAndSays: 'переглянув(-ла) {0} і каже'
-Label-Should-Revert: Потрібно відмінити
 Label-ShouldRevert: Потрібно відмінити
 Label-Snooze: Відкласти
 Label-Someone: Хтось
@@ -81,13 +78,13 @@ MenuItem-Stats: Статистика
 Message-AJudgementLogged: 'Рішення для {0} про версію {1} записано.'
 Message-CongratsSuccessfullyReverted: 'Вітаємо! Ви успішно відмінили {0}.'
 Message-DiffNotAvailable: >-
-  Перегляд відмінностей статті Вікіпедії тимчасово недоступний. Ви можете спробувати його
-  перезавантажити. Іноді трапляється що вандалізована версія статті може бути видалена. Ви можете
-  перевірити історію сторінки.
+  Перегляд відмінностей статті Вікіпедії тимчасово недоступний. Ви можете
+  спробувати його перезавантажити. Іноді трапляється що вандалізована версія
+  статті може бути видалена. Ви можете перевірити історію сторінки.
 Message-FeedHasNoNewRevisionsClickNextBelow: 'У стрічці {0} немає нових версій, натисніть наступну нижче.'
 Message-Login: >-
-  Знаєте що можна ввійти та зберегти свої мітки під своїм ім’ям? Ми
-  підтримуємо вхід з обліковим записом Вікіпедії через Oauth.
+  Знаєте що можна ввійти та зберегти свої мітки під своїм ім’ям? Ми підтримуємо
+  вхід з обліковим записом Вікіпедії через Oauth.
 Message-NameVoteAnnouncement: >-
   Шановний дописувач, ми проводимо голосування за нове ім'я, яке замінить
   "WikiLoop Battlefield", що закінчується 13 липня 2020 р. 00:00 UTC. Будь
@@ -95,9 +92,9 @@ Message-NameVoteAnnouncement: >-
 Message-NoActiveUsersPleaseStartReview: >-
   Немає активних користувачів за останні 15 хв. Почніть {0} з перегляду версій
   {1} і станьте першим/першою.
-Message-Prompt-Login: >-
-  Знаєте що можна ввійти та зберегти внески під своїм ім’ям? Ми
-  підтримуємо вхід в обліковий запис Вікіпедії через Oauth.
+Message-PromptLogin: >-
+  Знаєте що можна ввійти та зберегти внески під своїм ім’ям? Ми підтримуємо вхід
+  в обліковий запис Вікіпедії через Oauth.
 Message-RevertEditSummary: >-
   Ідентифіковано як тест / вандалізм з використанням {0} версії {1}. Перегляньте
   це або висловіть свою думку у {2}

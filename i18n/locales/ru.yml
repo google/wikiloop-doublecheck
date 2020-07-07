@@ -39,18 +39,16 @@ Label-LastActiveTime: Последнее посещение
 Label-Loading: Загрузка
 Label-Login: Логин
 Label-Logout: Выход
-Label-Looks-Good: Выглядит хорошо
 Label-LooksGood: Выглядит хорошо
 Label-Me: Я
 Label-Month: Месяц
 Label-My-History: Моя история
 Label-NewJudgement: Новое суждение
 Label-None: Никто
-Label-Not-Sure: Точно сказать не могу
 Label-NotSure: Не уверен
 Label-OresBadfaith: Руды Дурная вера
 Label-OresBadfaith.@meta.@isMachineTranslated: true
-Label-OresBadfaith.@meta.@translatedAt: 2020-07-07T01:09:19.145Z
+Label-OresBadfaith.@meta.@translatedAt: '2020-07-07T01:09:19.145Z'
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: Руды Повреждения
 Label-Overriden: Переопределенный
@@ -61,7 +59,6 @@ Label-Result: результат
 Label-RevertSucceeded: Вернуть удалось!
 Label-ReviewFeed: Обзорная лента
 Label-ReviewedAndSays: 'просмотрел {0} и говорит'
-Label-Should-Revert: Должен вернуться
 Label-ShouldRevert: Должен вернуться
 Label-Snooze: вздремнуть
 Label-Someone: Кто-то
@@ -93,7 +90,7 @@ Message-NameVoteAnnouncement: >-
 Message-NoActiveUsersPleaseStartReview: >-
   Нет активных пользователей за последние 15 минут. Начните {0} просматривать
   ревизии {1} и станьте первым.
-Message-Prompt-Login: >-
+Message-PromptLogin: >-
   Знаете ли вы, что вы можете войти и сохранить свои вклады под своим именем? Мы
   поддерживаем вход в аккаунт в Википедии через Oauth.
 Message-RevertEditSummary: >-

@@ -37,18 +37,16 @@ Label-LastActiveTime: Últim actiu
 Label-Loading: Carregant
 Label-Login: iniciar Sessió
 Label-Logout: Tancar sessió
-Label-Looks-Good: Té bona pinta
 Label-LooksGood: Té bona pinta
 Label-Me: Jo
 Label-Month: Mes
 Label-My-History: La meva història
 Label-NewJudgement: Nou judici
 Label-None: Cap
-Label-Not-Sure: No n'estic segur
 Label-NotSure: No n'estic segur
 Label-OresBadfaith: ORES Mala fe
 Label-OresBadfaith.@meta.@isMachineTranslated: true
-Label-OresBadfaith.@meta.@translatedAt: 2020-07-07T01:09:19.141Z
+Label-OresBadfaith.@meta.@translatedAt: '2020-07-07T01:09:19.141Z'
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: ORES Danyós
 Label-Overriden: Nul
@@ -59,7 +57,6 @@ Label-Result: Resultat
 Label-RevertSucceeded: Tornar a reeixir
 Label-ReviewFeed: Reviseu el feed
 Label-ReviewedAndSays: 'ha revisat {0} i afirma'
-Label-Should-Revert: Hauria de tornar
 Label-ShouldRevert: Hauria de revertir
 Label-Snooze: Dormitar
 Label-Someone: Algú
@@ -93,7 +90,7 @@ Message-NameVoteAnnouncement: >-
 Message-NoActiveUsersPleaseStartReview: >-
   No hi ha usuaris actius durant els darrers 15 minuts. Comenceu {0} a revisar
   les revisions {1} i convertiu-vos en la primera.
-Message-Prompt-Login: >-
+Message-PromptLogin: >-
   Sabeu que podríeu iniciar la sessió i preservar les vostres contribucions al
   vostre nom? Admetem l’accés amb el compte de Wikipedia mitjançant Oauth.
 Message-RevertEditSummary: >-

@@ -3,11 +3,9 @@ Button-Go.@meta.@description: >-
   Etiqueta de botones para redirigir al usuario a un enlace o ubicación
   determinada.
 Button-HelpTranslate: Ayuda a traducir
-Button-HelpTranslate.@meta.@description: >-
+Button-HelpTranslate.@meta.@description: |-
   Etiqueta para botón que permite a los u
-  
-  arios ayudar a traducir mensajes
-  internacionalizados para este software.
+  arios ayudar a traducir mensajes internacionalizados para este software.
 Button-Next: Siguiente
 Button-Next.@meta.@description: >-
   Etiqueta para un botón al hacer clic en ir a la página siguiente o mostrar la
@@ -41,18 +39,16 @@ Label-LastActiveTime: Última Actividad
 Label-Loading: Cargando
 Label-Login: Iniciar sesión
 Label-Logout: Cerrar sesión
-Label-Looks-Good: Se ve bien
 Label-LooksGood: Se ve bien
 Label-Me: Yo
 Label-Month: Mes
 Label-My-History: Mi historia
 Label-NewJudgement: Nuevo juicio
 Label-None: Ninguna
-Label-Not-Sure: No estoy seguro
 Label-NotSure: No estoy seguro
 Label-OresBadfaith: ORES mala fe
 Label-OresBadfaith.@meta.@isMachineTranslated: true
-Label-OresBadfaith.@meta.@translatedAt: 2020-07-07T01:09:19.142Z
+Label-OresBadfaith.@meta.@translatedAt: '2020-07-07T01:09:19.142Z'
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: ORES Dañoso
 Label-Overriden: Anulado
@@ -63,7 +59,6 @@ Label-Result: Resultado
 Label-RevertSucceeded: ¡Reversión exitosa!
 Label-ReviewFeed: Revisar feed
 Label-ReviewedAndSays: 'revisado {0} y dice'
-Label-Should-Revert: Debería revertir
 Label-ShouldRevert: Debería revertir
 Label-Snooze: Dormitar
 Label-Someone: Alguien
@@ -97,9 +92,9 @@ Message-NameVoteAnnouncement: >-
 Message-NoActiveUsersPleaseStartReview: >-
   No hay usuarios activos en los últimos 15 minutos. Comienza {0} revisando
   revisiones {1} y conviértete en el primero.
-Message-Prompt-Login: >-
-  ¿Sabes que puedes iniciar sesión y conservar tus etiquetas con tu nombre?
-  Es posible iniciar sesión con la cuenta de Wikipedia a través de Oauth.
+Message-PromptLogin: >-
+  ¿Sabes que puedes iniciar sesión y conservar tus etiquetas con tu nombre? Es
+  posible iniciar sesión con la cuenta de Wikipedia a través de Oauth.
 Message-RevertEditSummary: >-
   Identificado como prueba/vandalismo usando {0} versión {1}. Velo o da tu
   opinión en {2}

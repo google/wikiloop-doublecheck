@@ -35,18 +35,16 @@ Label-LastActiveTime: آخر نشاط
 Label-Loading: جار التحميل
 Label-Login: تسجيل الدخول
 Label-Logout: تسجيل خروج
-Label-Looks-Good: تبدو جيدا
 Label-LooksGood: تبدو جيدا
 Label-Me: أنا
 Label-Month: شهر
 Label-My-History: تاريخي
 Label-NewJudgement: حكم جديد
 Label-None: لا يوجد
-Label-Not-Sure: غير متأكد
 Label-NotSure: غير متأكد
 Label-OresBadfaith: ORES سوء النية
 Label-OresBadfaith.@meta.@isMachineTranslated: true
-Label-OresBadfaith.@meta.@translatedAt: 2020-07-07T01:09:19.141Z
+Label-OresBadfaith.@meta.@translatedAt: '2020-07-07T01:09:19.141Z'
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: تلف ORES
 Label-Overriden: تم تجاوزه
@@ -57,7 +55,6 @@ Label-Result: نتيجة
 Label-RevertSucceeded: نجحت العودة!
 Label-ReviewFeed: مراجعة الخلاصة
 Label-ReviewedAndSays: 'راجعت {0} وتقول'
-Label-Should-Revert: يجب العودة
 Label-ShouldRevert: يجب العودة
 Label-Snooze: غفوة
 Label-Someone: شخصا ما
@@ -89,7 +86,7 @@ Message-NameVoteAnnouncement: >-
 Message-NoActiveUsersPleaseStartReview: >-
   لا يوجد مستخدمون نشطون في آخر 15 دقيقة. ابدأ {0} مراجعة المراجعات {1} وكن
   الأول.
-Message-Prompt-Login: >-
+Message-PromptLogin: >-
   هل تعلم أنه يمكنك تسجيل الدخول والحفاظ على مساهماتك تحت اسمك؟ نحن ندعم تسجيل
   الدخول باستخدام حساب Wikipedia من خلال Oauth.
 Message-RevertEditSummary: >-

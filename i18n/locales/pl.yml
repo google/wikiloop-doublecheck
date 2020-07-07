@@ -39,18 +39,16 @@ Label-LastActiveTime: Ostatnio aktywny
 Label-Loading: Ładowanie
 Label-Login: Zaloguj sie
 Label-Logout: Wyloguj
-Label-Looks-Good: Wygląda dobrze
 Label-LooksGood: Wygląda dobrze
 Label-Me: Ja
 Label-Month: Miesiąc
 Label-My-History: Moja historia
 Label-NewJudgement: Nowy wyrok
 Label-None: Żaden
-Label-Not-Sure: Niepewny
 Label-NotSure: Nie jestem pewien
 Label-OresBadfaith: ORES Zła wiara
 Label-OresBadfaith.@meta.@isMachineTranslated: true
-Label-OresBadfaith.@meta.@translatedAt: 2020-07-07T01:09:19.144Z
+Label-OresBadfaith.@meta.@translatedAt: '2020-07-07T01:09:19.144Z'
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: Uszkodzenie ORES
 Label-Overriden: Zastąpione
@@ -61,7 +59,6 @@ Label-Result: Wynik
 Label-RevertSucceeded: Przywrócenie powiodło się!
 Label-ReviewFeed: Przejrzyj kanał
 Label-ReviewedAndSays: 'sprawdził {0} i mówi'
-Label-Should-Revert: Powinien powrócić
 Label-ShouldRevert: Powinien się odwrócić
 Label-Snooze: Drzemka
 Label-Someone: Ktoś
@@ -97,7 +94,7 @@ Message-NameVoteAnnouncement: >-
 Message-NoActiveUsersPleaseStartReview: >-
   Brak aktywnych użytkowników w ciągu ostatnich 15 minut. Rozpocznij {0}
   przeglądając wersje {1} i zostań pierwszym.
-Message-Prompt-Login: >-
+Message-PromptLogin: >-
   Czy wiesz, że możesz się zalogować i zachować swoje wpisy pod swoim imieniem?
   Obsługujemy logowanie za pomocą konta Wikipedia za pośrednictwem Oauth.
 Message-RevertEditSummary: >-

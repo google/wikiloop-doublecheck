@@ -37,18 +37,16 @@ Label-LastActiveTime: Laaste aktief
 Label-Loading: laai
 Label-Login: Teken aan
 Label-Logout: Teken uit
-Label-Looks-Good: Lyk goed
 Label-LooksGood: Lyk goed
 Label-Me: my
 Label-Month: maand
 Label-My-History: My geskiedenis
 Label-NewJudgement: Nuwe oordeel
 Label-None: Geen
-Label-Not-Sure: Nie seker nie
 Label-NotSure: Nie seker nie
 Label-OresBadfaith: ORES Slegte geloof
 Label-OresBadfaith.@meta.@isMachineTranslated: true
-Label-OresBadfaith.@meta.@translatedAt: 2020-07-07T01:09:19.138Z
+Label-OresBadfaith.@meta.@translatedAt: '2020-07-07T01:09:19.138Z'
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: Ertse beskadig
 Label-Overriden: geïgnoreer
@@ -59,7 +57,6 @@ Label-Result: gevolg
 Label-RevertSucceeded: Terugkeer het geslaag!
 Label-ReviewFeed: Hersien voer
 Label-ReviewedAndSays: '{0} nagegaan en gesê'
-Label-Should-Revert: Moet terugkeer
 Label-ShouldRevert: Moet terugkeer
 Label-Snooze: Sluimer
 Label-Someone: iemand
@@ -94,7 +91,7 @@ Message-NameVoteAnnouncement: >-
 Message-NoActiveUsersPleaseStartReview: >-
   Geen aktiewe gebruikers in die afgelope 15 minute nie. Begin {0} om
   hersienings {1} te hersien en word die eerste.
-Message-Prompt-Login: >-
+Message-PromptLogin: >-
   Weet u dat u kan inteken en u bydraes onder u naam kan bewaar? Ons ondersteun
   login met Wikipedia-rekening via Oauth.
 Message-RevertEditSummary: >-

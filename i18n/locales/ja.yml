@@ -33,18 +33,16 @@ Label-LastActiveTime: 最後のログイン時刻
 Label-Loading: 読み込み中
 Label-Login: ログインする
 Label-Logout: ログアウト
-Label-Looks-Good: いいね
 Label-LooksGood: いいね
 Label-Me: わたし
 Label-Month: 月
 Label-My-History: 私の履歴
 Label-NewJudgement: 新しい判定
 Label-None: なし
-Label-Not-Sure: わからない
 Label-NotSure: わからない
 Label-OresBadfaith: ORES悪意
 Label-OresBadfaith.@meta.@isMachineTranslated: true
-Label-OresBadfaith.@meta.@translatedAt: 2020-07-07T01:09:19.143Z
+Label-OresBadfaith.@meta.@translatedAt: '2020-07-07T01:09:19.143Z'
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: ORESダメージ
 Label-Overriden: オーバーライドされた
@@ -55,7 +53,6 @@ Label-Result: 結果
 Label-RevertSucceeded: 元に戻しました。
 Label-ReviewFeed: フィードの確認
 Label-ReviewedAndSays: '{0}を確認して言った'
-Label-Should-Revert: 元に戻す必要がある
 Label-ShouldRevert: 元に戻す必要がある
 Label-Snooze: スヌーズ
 Label-Someone: 誰か
@@ -85,7 +82,7 @@ Message-NameVoteAnnouncement: |-
   投稿者の皆様、2020年7月13日00:00 UTCに終了する「WikiLoop Battlefield」に代わる新しい名前の投票を開催しています。
   投票してください。
 Message-NoActiveUsersPleaseStartReview: '過去15分間にアクティブなユーザーはいません。 {0}改訂のレビュー{1}を開始し、最初の改訂になります。'
-Message-Prompt-Login: ログインして自分の名前で投稿を保存できることをご存知ですか？ OauthによるWikipediaアカウントでのログインをサポートしています。
+Message-PromptLogin: ログインして自分の名前で投稿を保存できることをご存知ですか？ OauthによるWikipediaアカウントでのログインをサポートしています。
 Message-RevertEditSummary: |-
   {0}バージョン{1}を使用したテスト/破壊行為として識別されました。
   {2}でご覧になるか、意見をお寄せください

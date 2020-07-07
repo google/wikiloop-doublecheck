@@ -99,9 +99,9 @@
       <nuxt class="pt-lg-4 pt-md-2 pt-sm-1"/>
     </div>
     <b-modal id="modal-keymap" title="Keymap">
-      V: {{$t('Label-Should-Revert')}}<br/>
-      G: {{$t('Label-Looks-Good')}}<br/>
-      P: {{$t('Label-Not-Sure')}}<br/>
+      V: {{$t('Label-ShouldRevert')}}<br/>
+      G: {{$t('Label-LooksGood')}}<br/>
+      P: {{$t('Label-NotSure')}}<br/>
       →: {{$t('Button-Next')}}<br/>
     </b-modal>
   </div>

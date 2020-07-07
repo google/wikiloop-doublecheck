@@ -14,7 +14,7 @@
         </template>
 
       <b-modal id="modal-promote-login" v-bind:title="$t('Label-Prompt-Login')">
-        {{$t('Message-Prompt-Login')}} <br/>
+        {{$t('Message-PromptLogin')}} <br/>
         <template v-slot:modal-footer="{ ok, hide }">
           <a class="btn-sm btn btn-primary" href="/auth/mediawiki/login">{{$t('Label-Login')}}</a>
           <b-button size="sm" variant="secondary" @click="snoozeTipLogin()">

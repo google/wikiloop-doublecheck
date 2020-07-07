@@ -37,18 +37,16 @@ Label-LastActiveTime: Pēdējais aktīvais
 Label-Loading: Ielādē
 Label-Login: Pieslēgties
 Label-Logout: Iziet
-Label-Looks-Good: Izskatās labi
 Label-LooksGood: Izskatās labi
 Label-Me: Es
 Label-Month: Mēnesis
 Label-My-History: Mana vēsture
 Label-NewJudgement: Jauns spriedums
 Label-None: Nav
-Label-Not-Sure: Neesmu pārliecināts
 Label-NotSure: Nav pārliecības
 Label-OresBadfaith: ORES Ļaunprātība
 Label-OresBadfaith.@meta.@isMachineTranslated: true
-Label-OresBadfaith.@meta.@translatedAt: 2020-07-07T01:09:19.144Z
+Label-OresBadfaith.@meta.@translatedAt: '2020-07-07T01:09:19.144Z'
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: ORES bojājums
 Label-Overriden: Pārvērtēts
@@ -59,7 +57,6 @@ Label-Result: Rezultāts
 Label-RevertSucceeded: Atgriezties izdevās!
 Label-ReviewFeed: Atsauksmju plūsma
 Label-ReviewedAndSays: 'pārskatīja {0} un saka'
-Label-Should-Revert: Vajadzētu atgriezties
 Label-ShouldRevert: Būtu jāatceļ
 Label-Snooze: Atlikt
 Label-Someone: Kāds
@@ -94,7 +91,7 @@ Message-NameVoteAnnouncement: >-
 Message-NoActiveUsersPleaseStartReview: >-
   Pēdējo 15 minūšu laikā nav aktīvu lietotāju. Sāciet {0} pārskatīt {1}
   pārskatus un kļūsiet par pirmo.
-Message-Prompt-Login: >-
+Message-PromptLogin: >-
   Vai jūs zināt, ka varētu pieteikties un saglabāt savu ieguldījumu ar savu
   vārdu? Mēs atbalstām pieteikšanos ar Wikipedia kontu caur Oauth.
 Message-RevertEditSummary: >-

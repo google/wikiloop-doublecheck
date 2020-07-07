@@ -33,18 +33,16 @@ Label-LastActiveTime: 最后登录
 Label-Loading: 读取中
 Label-Login: 登录
 Label-Logout: 登出
-Label-Looks-Good: 看起来挺好的
 Label-LooksGood: 看着不错
 Label-Me: 我
 Label-Month: 月
 Label-My-History: 我的历史
 Label-NewJudgement: 新审判
 Label-None: 没有
-Label-Not-Sure: 不确定
 Label-NotSure: 不确定
 Label-OresBadfaith: ORES恶意
 Label-OresBadfaith.@meta.@isMachineTranslated: true
-Label-OresBadfaith.@meta.@translatedAt: 2020-07-07T01:09:19.146Z
+Label-OresBadfaith.@meta.@translatedAt: '2020-07-07T01:09:19.146Z'
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: ORES损坏
 Label-Overriden: 覆写
@@ -55,7 +53,6 @@ Label-Result: 结果
 Label-RevertSucceeded: 还原成功！
 Label-ReviewFeed: 查看提要
 Label-ReviewedAndSays: '评论了{0}并说'
-Label-Should-Revert: 应该还原
 Label-ShouldRevert: 应该还原
 Label-Snooze: 关闭
 Label-Someone: 别人
@@ -81,7 +78,7 @@ Message-NameVoteAnnouncement: |-
   尊敬的贡献者，我们正在为新名称进行投票，以替换将于2020年7月13日UTC结束的“ WikiLoop Battlefield”。
   请投票。
 Message-NoActiveUsersPleaseStartReview: '最近15分钟内没有活跃用户。开始{0}复审修订版{1}，并成为第一个。'
-Message-Prompt-Login: 您知道您可以使用您的名字登录并保存您的捐款吗？我们支持通过Oauth使用Wikipedia帐户登录。
+Message-PromptLogin: 您知道您可以使用您的名字登录并保存您的捐款吗？我们支持通过Oauth使用Wikipedia帐户登录。
 Message-RevertEditSummary: '使用{0}版本{1}标识为测试/故意破坏。请在{2}上查看或发表您的意见'
 Message-SorryWeFailedToRevert: '抱歉，我们无法还原修订版{0}。'
 Message-TheRevisionIsSuccessfullyRevertedAs: '修订版{0}已成功还原为{1}。'

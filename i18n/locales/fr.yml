@@ -8,8 +8,8 @@ Button-HelpTranslate.@meta.@description: >-
   messages traduits pour ce logiciel.
 Button-Next: Suivant
 Button-Next.@meta.@description: >-
-  Libellé d'un bouton permettant de passer à la page suivante ou
-  d'afficher les informations suivantes.
+  Libellé d'un bouton permettant de passer à la page suivante ou d'afficher les
+  informations suivantes.
 Button-OpenedUrlToRevert: URL ouverte pour restaurer
 Button-RevertNow: Restaurer maintenant
 Button-ShowJudgements: Afficher les jugements
@@ -39,18 +39,16 @@ Label-LastActiveTime: Dernière activité
 Label-Loading: Chargement
 Label-Login: Connexion
 Label-Logout: Déconnexion
-Label-Looks-Good: Semble bon
 Label-LooksGood: Semble bon
 Label-Me: Moi
 Label-Month: Mois
 Label-My-History: Mon historique
 Label-NewJudgement: Nouveau jugement
 Label-None: Aucun
-Label-Not-Sure: Pas certain
 Label-NotSure: Pas certain
 Label-OresBadfaith: ORES Mauvaise foi
 Label-OresBadfaith.@meta.@isMachineTranslated: true
-Label-OresBadfaith.@meta.@translatedAt: 2020-07-07T01:09:19.143Z
+Label-OresBadfaith.@meta.@translatedAt: '2020-07-07T01:09:19.143Z'
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: ORES endommageant
 Label-Overriden: Remplacé
@@ -61,7 +59,6 @@ Label-Result: Résultat
 Label-RevertSucceeded: La restauration a réussi!
 Label-ReviewFeed: Vérifier le flux
 Label-ReviewedAndSays: 'a examiné {0} et dit'
-Label-Should-Revert: Devrait restaurer
 Label-ShouldRevert: Devrait restaurer
 Label-Snooze: Rappel
 Label-Someone: Quelqu'un
@@ -98,7 +95,7 @@ Message-NameVoteAnnouncement: >-
 Message-NoActiveUsersPleaseStartReview: >-
   Aucun utilisateur actif au cours des 15 dernières minutes. Commencez {0} à
   réviser les révisions {1} et devenez le premier.
-Message-Prompt-Login: >-
+Message-PromptLogin: >-
   Savez-vous que vous pouvez vous connecter et conserver vos contributions sous
   votre nom? Nous prenons en charge la connexion avec un compte Wikipedia via
   OAuth.

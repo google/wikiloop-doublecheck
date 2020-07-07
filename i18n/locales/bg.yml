@@ -39,18 +39,16 @@ Label-LastActiveTime: Последно активно
 Label-Loading: Зареждане
 Label-Login: Влизам
 Label-Logout: Излез от профила си
-Label-Looks-Good: Изглежда добре
 Label-LooksGood: Изглежда добре
 Label-Me: мен
 Label-Month: месец
 Label-My-History: Моята история
 Label-NewJudgement: Ново решение
 Label-None: Нито един
-Label-Not-Sure: Не съм сигурен
 Label-NotSure: Не съм сигурен
 Label-OresBadfaith: ORES Лоша вяра
 Label-OresBadfaith.@meta.@isMachineTranslated: true
-Label-OresBadfaith.@meta.@translatedAt: 2020-07-07T01:09:19.141Z
+Label-OresBadfaith.@meta.@translatedAt: '2020-07-07T01:09:19.141Z'
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: ORES Увреждане
 Label-Overriden: Заменена
@@ -61,7 +59,6 @@ Label-Result: резултат
 Label-RevertSucceeded: Възвръщането успя!
 Label-ReviewFeed: Преглед на емисията
 Label-ReviewedAndSays: 'прегледа {0} и казва'
-Label-Should-Revert: Трябва да се върне
 Label-ShouldRevert: Трябва да се върне
 Label-Snooze: дрямка
 Label-Someone: Някой
@@ -94,7 +91,7 @@ Message-NameVoteAnnouncement: >-
 Message-NoActiveUsersPleaseStartReview: >-
   Няма активни потребители през последните 15 минути. Започнете {0} преглед на
   версиите {1} и станете първата.
-Message-Prompt-Login: >-
+Message-PromptLogin: >-
   Знаете ли, че бихте могли да влезете и да запазите своите вноски под вашето
   име? Поддържаме влизане с акаунт в Wikipedia чрез Oauth.
 Message-RevertEditSummary: >-

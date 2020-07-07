@@ -39,18 +39,16 @@ Label-LastActiveTime: Senast aktiv
 Label-Loading: Läser in
 Label-Login: Logga in
 Label-Logout: Logga ut
-Label-Looks-Good: Ser bra ut
 Label-LooksGood: Ser bra ut
 Label-Me: Mig
 Label-Month: Månad
 Label-My-History: Min historia
 Label-NewJudgement: Ny dom
 Label-None: Ingen
-Label-Not-Sure: Vet inte
 Label-NotSure: Vet inte
 Label-OresBadfaith: ORES Dålig tro
 Label-OresBadfaith.@meta.@isMachineTranslated: true
-Label-OresBadfaith.@meta.@translatedAt: 2020-07-07T01:09:19.145Z
+Label-OresBadfaith.@meta.@translatedAt: '2020-07-07T01:09:19.145Z'
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: ORES skadar
 Label-Overriden: åsido
@@ -61,7 +59,6 @@ Label-Result: Resultat
 Label-RevertSucceeded: Återvänd lyckades!
 Label-ReviewFeed: Granska Feed
 Label-ReviewedAndSays: 'granskade {0} och säger'
-Label-Should-Revert: Bör återgå
 Label-ShouldRevert: Bör återgå
 Label-Snooze: Snooze
 Label-Someone: Någon
@@ -94,7 +91,7 @@ Message-NameVoteAnnouncement: >-
 Message-NoActiveUsersPleaseStartReview: >-
   Inga aktiva användare under de senaste 15 min. Börja {0} granska revisioner
   {1} och bli den första.
-Message-Prompt-Login: >-
+Message-PromptLogin: >-
   Vet du att du kan logga in och bevara dina bidrag under ditt namn? Vi stöder
   inloggning med Wikipedia-konto via Oauth.
 Message-RevertEditSummary: >-

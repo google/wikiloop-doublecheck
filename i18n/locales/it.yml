@@ -39,18 +39,16 @@ Label-LastActiveTime: Ultimo attivo
 Label-Loading: Caricamento in corso
 Label-Login: Accesso
 Label-Logout: Disconnettersi
-Label-Looks-Good: Sembra buono
 Label-LooksGood: Sembra buono
 Label-Me: Me
 Label-Month: Mese
 Label-My-History: La mia storia
 Label-NewJudgement: Nuovo giudizio
 Label-None: Nessuna
-Label-Not-Sure: Non sono sicuro
 Label-NotSure: Non sono sicuro
 Label-OresBadfaith: ORES Cattiva fede
 Label-OresBadfaith.@meta.@isMachineTranslated: true
-Label-OresBadfaith.@meta.@translatedAt: 2020-07-07T01:09:19.143Z
+Label-OresBadfaith.@meta.@translatedAt: '2020-07-07T01:09:19.143Z'
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: ORES Danneggiamento
 Label-Overriden: override
@@ -61,7 +59,6 @@ Label-Result: Risultato
 Label-RevertSucceeded: Ripristino riuscito!
 Label-ReviewFeed: Recensisci feed
 Label-ReviewedAndSays: 'recensito {0} e dice'
-Label-Should-Revert: Dovrebbe ripristinare
 Label-ShouldRevert: Dovrebbe ripristinare
 Label-Snooze: Pisolino
 Label-Someone: Qualcuno
@@ -95,7 +92,7 @@ Message-NameVoteAnnouncement: >-
 Message-NoActiveUsersPleaseStartReview: >-
   Nessun utente attivo negli ultimi 15 minuti. Inizia {0} a rivedere le
   revisioni {1} e diventa il primo.
-Message-Prompt-Login: >-
+Message-PromptLogin: >-
   Sai che potresti accedere e conservare i tuoi contributi a tuo nome?
   Supportiamo l'accesso con l'account Wikipedia tramite Oauth.
 Message-RevertEditSummary: >-

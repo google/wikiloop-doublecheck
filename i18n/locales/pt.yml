@@ -39,18 +39,16 @@ Label-LastActiveTime: ativo pela última vez
 Label-Loading: Carregando
 Label-Login: Entrar
 Label-Logout: Sair
-Label-Looks-Good: Parece bom
 Label-LooksGood: Parece bom
 Label-Me: Eu
 Label-Month: Mês
 Label-My-History: Meu histórico
 Label-NewJudgement: Novo julgamento
 Label-None: Nenhum
-Label-Not-Sure: Não tenho certeza
 Label-NotSure: Não tenho certeza
 Label-OresBadfaith: ORES Má fé
 Label-OresBadfaith.@meta.@isMachineTranslated: true
-Label-OresBadfaith.@meta.@translatedAt: 2020-07-07T01:09:19.144Z
+Label-OresBadfaith.@meta.@translatedAt: '2020-07-07T01:09:19.144Z'
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: ORES Danoso
 Label-Overriden: Substituído
@@ -61,7 +59,6 @@ Label-Result: Resultado
 Label-RevertSucceeded: A reversão foi bem-sucedida!
 Label-ReviewFeed: Revisar Feed
 Label-ReviewedAndSays: 'revisou {0} e diz'
-Label-Should-Revert: Deveria ser revertido
 Label-ShouldRevert: Deveria ser revertido
 Label-Snooze: Soneca
 Label-Someone: Alguém
@@ -86,8 +83,8 @@ Message-DiffNotAvailable: >-
   conferir o histórico da página.
 Message-FeedHasNoNewRevisionsClickNextBelow: 'O feed {0} não tem novas revisões, clique em próximo abaixo.'
 Message-Login: >-
-  Você sabia que pode fazer login e preservar seus rótulos em seu nome?
-  O login com a conta da Wikipedia pode ser feito através de Oauth.
+  Você sabia que pode fazer login e preservar seus rótulos em seu nome? O login
+  com a conta da Wikipedia pode ser feito através de Oauth.
 Message-NameVoteAnnouncement: >-
   Caro colaborador, estamos mantendo uma votação para um novo nome, substituindo
   o "Campo de Batalha WikiLoop", que termina em 13 de julho de 2020 às 00:00
@@ -97,9 +94,9 @@ Message-NameVoteAnnouncement: >-
 Message-NoActiveUsersPleaseStartReview: >-
   Nenhum usuário ativo nos últimos 15 minutos. Comece {0} revisando as revisões
   {1} e seja o primeiro.
-Message-Prompt-Login: >-
-  Você sabia que pode fazer login e preservar seus rótulos em seu nome?
-  O login com a conta da Wikipedia pode ser feito através de Oauth.
+Message-PromptLogin: >-
+  Você sabia que pode fazer login e preservar seus rótulos em seu nome? O login
+  com a conta da Wikipedia pode ser feito através de Oauth.
 Message-RevertEditSummary: >-
   Identificado como um teste/vandalismo utilizando {0} versão {1}. Ver ou deixar
   sua opinião em {2}
