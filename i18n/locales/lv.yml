@@ -46,7 +46,10 @@ Label-NewJudgement: Jauns spriedums
 Label-None: Nav
 Label-Not-Sure: Neesmu pārliecināts
 Label-NotSure: Nav pārliecības
-Label-OresBadfaith: ORES Badfaith
+Label-OresBadfaith: ORES Ļaunprātība
+Label-OresBadfaith.@isMachineTranslated: true
+Label-OresBadfaith.@translatedAt: 2020-07-07T01:00:20.533Z
+Label-OresBadfaith.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: ORES bojājums
 Label-Overriden: Pārvērtēts
 Label-Prompt-Login: Pieslēgties

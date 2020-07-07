@@ -48,7 +48,10 @@ Label-NewJudgement: Novo julgamento
 Label-None: Nenhum
 Label-Not-Sure: Não tenho certeza
 Label-NotSure: Não tenho certeza
-Label-OresBadfaith: ORES Badfaith
+Label-OresBadfaith: ORES Má fé
+Label-OresBadfaith.@isMachineTranslated: true
+Label-OresBadfaith.@translatedAt: 2020-07-07T01:00:20.534Z
+Label-OresBadfaith.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: ORES Danificando
 Label-Overriden: Substituído
 Label-Prompt-Login: Conecte-se

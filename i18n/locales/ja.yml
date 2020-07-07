@@ -42,7 +42,10 @@ Label-NewJudgement: 新しい判断
 Label-None: なし
 Label-Not-Sure: わからない
 Label-NotSure: わからない
-Label-OresBadfaith: オレスバッドフェイス
+Label-OresBadfaith: ORES悪意
+Label-OresBadfaith.@isMachineTranslated: true
+Label-OresBadfaith.@translatedAt: 2020-07-07T01:00:20.533Z
+Label-OresBadfaith.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: ORESダメージ
 Label-Overriden: オーバーライドされた
 Label-Prompt-Login: ログインする

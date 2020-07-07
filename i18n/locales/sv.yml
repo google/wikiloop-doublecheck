@@ -48,7 +48,10 @@ Label-NewJudgement: Ny dom
 Label-None: Ingen
 Label-Not-Sure: Vet inte
 Label-NotSure: Vet inte
-Label-OresBadfaith: ORES Badfaith
+Label-OresBadfaith: ORES Dålig tro
+Label-OresBadfaith.@isMachineTranslated: true
+Label-OresBadfaith.@translatedAt: 2020-07-07T01:00:20.534Z
+Label-OresBadfaith.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: ORES skadar
 Label-Overriden: åsido
 Label-Prompt-Login: Logga in

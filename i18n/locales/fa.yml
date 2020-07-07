@@ -46,7 +46,10 @@ Label-NewJudgement: داوری جدید
 Label-None: هیچ یک
 Label-Not-Sure: مطمئن نیستم
 Label-NotSure: مطمئن نیستم
-Label-OresBadfaith: ORES Badfaith
+Label-OresBadfaith: ایمان بد
+Label-OresBadfaith.@isMachineTranslated: true
+Label-OresBadfaith.@translatedAt: 2020-07-07T01:00:20.532Z
+Label-OresBadfaith.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: ORES آسیب دیده
 Label-Overriden: نادیده گرفته شده
 Label-Prompt-Login: وارد شدن

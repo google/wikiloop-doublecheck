@@ -46,7 +46,10 @@ Label-NewJudgement: Nuwe oordeel
 Label-None: Geen
 Label-Not-Sure: Nie seker nie
 Label-NotSure: Nie seker nie
-Label-OresBadfaith: ORES Badfaith
+Label-OresBadfaith: ORES Slegte geloof
+Label-OresBadfaith.@isMachineTranslated: true
+Label-OresBadfaith.@translatedAt: 2020-07-07T01:00:20.527Z
+Label-OresBadfaith.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: Ertse beskadig
 Label-Overriden: geïgnoreer
 Label-Prompt-Login: Teken aan

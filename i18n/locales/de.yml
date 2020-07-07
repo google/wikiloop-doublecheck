@@ -48,7 +48,10 @@ Label-NewJudgement: Neues Urteil
 Label-None: Keiner
 Label-Not-Sure: Nicht sicher
 Label-NotSure: Nicht sicher
-Label-OresBadfaith: ORES Badfaith
+Label-OresBadfaith: ORES Böser Glaube
+Label-OresBadfaith.@isMachineTranslated: true
+Label-OresBadfaith.@translatedAt: 2020-07-07T01:00:20.531Z
+Label-OresBadfaith.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: Erze beschädigen
 Label-Overriden: Überschrieben
 Label-Prompt-Login: Anmeldung

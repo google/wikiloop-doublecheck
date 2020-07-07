@@ -48,7 +48,10 @@ Label-NewJudgement: Nieuw oordeel
 Label-None: Geen
 Label-Not-Sure: Niet zeker
 Label-NotSure: Niet zeker
-Label-OresBadfaith: ORES Badfaith
+Label-OresBadfaith: ORES Kwade trouw
+Label-OresBadfaith.@isMachineTranslated: true
+Label-OresBadfaith.@translatedAt: 2020-07-07T01:00:20.534Z
+Label-OresBadfaith.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: ORES Schadelijk
 Label-Overriden: Overschreven
 Label-Prompt-Login: Log in

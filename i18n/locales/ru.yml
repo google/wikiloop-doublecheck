@@ -48,7 +48,10 @@ Label-NewJudgement: Новое суждение
 Label-None: Никто
 Label-Not-Sure: Точно сказать не могу
 Label-NotSure: Не уверен
-Label-OresBadfaith: ОРЕС Бадфейт
+Label-OresBadfaith: Руды Дурная вера
+Label-OresBadfaith.@isMachineTranslated: true
+Label-OresBadfaith.@translatedAt: 2020-07-07T01:00:20.534Z
+Label-OresBadfaith.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: Руды Повреждения
 Label-Overriden: Переопределенный
 Label-Prompt-Login: Авторизоваться

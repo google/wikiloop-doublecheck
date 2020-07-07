@@ -46,7 +46,10 @@ Label-NewJudgement: Nový soud
 Label-None: Žádný
 Label-Not-Sure: Nejsem si jistý
 Label-NotSure: Nejsem si jistý
-Label-OresBadfaith: ORES Badfaith
+Label-OresBadfaith: ORES Špatná víra
+Label-OresBadfaith.@isMachineTranslated: true
+Label-OresBadfaith.@translatedAt: 2020-07-07T01:00:20.531Z
+Label-OresBadfaith.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: Poškození ORES
 Label-Overriden: Přepsáno
 Label-Prompt-Login: Přihlásit se

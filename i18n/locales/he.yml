@@ -42,7 +42,10 @@ Label-NewJudgement: פסק דין חדש
 Label-None: אף אחד
 Label-Not-Sure: לא בטוח
 Label-NotSure: לא בטוח
-Label-OresBadfaith: אורס בדפית '
+Label-OresBadfaith: אורס תום לב
+Label-OresBadfaith.@isMachineTranslated: true
+Label-OresBadfaith.@translatedAt: 2020-07-07T01:00:20.532Z
+Label-OresBadfaith.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: אורס פוגע
 Label-Overriden: עקף
 Label-Prompt-Login: התחברות

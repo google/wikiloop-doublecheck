@@ -42,7 +42,10 @@ Label-NewJudgement: คำพิพากษาใหม่
 Label-None: ไม่มี
 Label-Not-Sure: ไม่แน่ใจ
 Label-NotSure: ไม่แน่ใจ
-Label-OresBadfaith: แร่ Badfaith
+Label-OresBadfaith: ORES ศรัทธาที่ไม่ดี
+Label-OresBadfaith.@isMachineTranslated: true
+Label-OresBadfaith.@translatedAt: 2020-07-07T01:00:20.535Z
+Label-OresBadfaith.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: ความเสียหายจาก ORES
 Label-Overriden: แทนที่
 Label-Prompt-Login: เข้าสู่ระบบ

@@ -48,7 +48,10 @@ Label-NewJudgement: Penghakiman Baru
 Label-None: Tidak ada
 Label-Not-Sure: Tidak yakin
 Label-NotSure: Tidak yakin
-Label-OresBadfaith: ORF Badfaith
+Label-OresBadfaith: ORES Iman yang buruk
+Label-OresBadfaith.@isMachineTranslated: true
+Label-OresBadfaith.@translatedAt: 2020-07-07T01:00:20.533Z
+Label-OresBadfaith.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: ORES Merusak
 Label-Overriden: Ditimpa
 Label-Prompt-Login: Gabung

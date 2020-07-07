@@ -44,7 +44,10 @@ Label-NewJudgement: حكم جديد
 Label-None: لا يوجد
 Label-Not-Sure: غير متأكد
 Label-NotSure: غير متأكد
-Label-OresBadfaith: ORES بادفيث
+Label-OresBadfaith: ORES سوء النية
+Label-OresBadfaith.@isMachineTranslated: true
+Label-OresBadfaith.@translatedAt: 2020-07-07T01:00:20.530Z
+Label-OresBadfaith.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: تلف ORES
 Label-Overriden: تم تجاوزه
 Label-Prompt-Login: تسجيل الدخول

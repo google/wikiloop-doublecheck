@@ -48,7 +48,10 @@ Label-NewJudgement: Yeni Karar
 Label-None: Yok
 Label-Not-Sure: Emin değil
 Label-NotSure: Emin Değilim
-Label-OresBadfaith: ORES Badfaith
+Label-OresBadfaith: ORES Kötü niyet
+Label-OresBadfaith.@isMachineTranslated: true
+Label-OresBadfaith.@translatedAt: 2020-07-07T01:00:20.535Z
+Label-OresBadfaith.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: ORES Hasar
 Label-Overriden: Geçersiz kılınan
 Label-Prompt-Login: Oturum aç

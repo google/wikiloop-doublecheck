@@ -16,9 +16,11 @@ async function translateCmd() {
   // Imports the Google Cloud client library
   const {Translate} = require('@google-cloud/translate').v2;
 
+  let projectId = `project-wikiloop`;
+
   // Creates a client
   const translate = new Translate({
-    projectId: `project-wikiloop`,
+    projectId,
     keyFilename:'.creds/private-key.json'
   });
 
@@ -35,23 +37,41 @@ async function translateCmd() {
   let targetLangs = Object.keys(existingLocales)
     // .concat(['ar','fa','uk','cs','sv']); // for new languages to add
   let forceUpdatedKeys = [
-    `Button-Go.@meta.@description`
+    `Button-Go.@meta.@description`,
+    `Label-OresBadfaith`
   ];
+
+  let ignoredMetaPostfix = [
+    `@translator`,
+    `@translatedAt`,
+    `@isMachineTranslated`,
+  ];
+
   await Promise.all(targetLangs.map(async targetLang => {
     console.log(`Working on ${targetLang}`);
     let targetKeyMsgMap = require(`~/i18n/getlocales`)[targetLang] || {};
     let keyArray = [];
     for (let key in sourceKeyMsgMap) {
-      if (forceUpdatedKeys.indexOf(key) >=0 || sourceKeyMsgMap[key] && !targetKeyMsgMap[key]) {
-        keyArray.push(key);
+      if (forceUpdatedKeys.indexOf(key) >=0) keyArray.push(key);
+      else if (sourceKeyMsgMap[key] && !targetKeyMsgMap[key]) {
+        let segments = key.split('.');
+        let postfix = segments[segments.length-1];
+        if (ignoredMetaPostfix.indexOf(postfix) >= 0) { } // ignore
+        else keyArray.push(key);
       }
     }
-
+    let now = new Date();
     if (keyArray.length != 0) {
       let translations:string[] = await translateText(keyArray.map(key => sourceKeyMsgMap[key]), targetLang);
       for(let i in keyArray) {
         let key = keyArray[i];
         targetKeyMsgMap[key] = translations[i];
+        if (! (/@meta.@description$/.test(key))) { // if not a @description
+          targetKeyMsgMap[`${key}.@translator`] = `GoogleCloudTranslationAPI ${projectId}`;
+          targetKeyMsgMap[`${key}.@translatedAt`] = now;
+          targetKeyMsgMap[`${key}.@isMachineTranslated`] = true;
+        }
+
       }
 
       fs.writeFileSync(`./i18n/locales/${targetLang}.yml`, yaml.safeDump(targetKeyMsgMap, { sortKeys: true }), 'utf8');
