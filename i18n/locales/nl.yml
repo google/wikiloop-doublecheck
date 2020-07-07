@@ -5,43 +5,73 @@ Button-OpenedUrlToRevert: URL geopend om terug te zetten
 Button-RevertNow: Nu terugzetten
 Button-ShowJudgements: Toon oordelen
 Button-Undo: Ongedaan maken
+Label-1Month: 1 maand (30d)
+Label-1Quarter: 1 kwart (90d)
+Label-1Year: 1 jaar (365d)
+Label-1day: 1 dag
+Label-1week: 1 week (7d)
+Label-ActiveUsers: Actieve gebruikers
+Label-AllTime: Altijd
 Label-Anonymous: Anoniem
 Label-ArtificialIntelligence: Kunstmatige intelligentie
 Label-Author: Auteur
+Label-CountOfJudgements: Tel
+Label-Day: Dag
+Label-DiffView: Diff View
 Label-DirectRevertFailed: Direct terugzetten is mislukt
 Label-DirectReverted: Direct teruggedraaid
 Label-EditSummary: Samenvatting bewerken
 Label-EditedAt: bewerkt
+Label-Feed: Eten geven
+Label-History: Geschiedenis
 Label-HumanEditors: Menselijke redacteuren
 Label-Judgement: Oordeel
+Label-LastActiveTime: Laatst actief
 Label-Loading: Bezig met laden
 Label-Login: Log in
 Label-Logout: Uitloggen
 Label-Looks-Good: Ziet er goed uit
 Label-LooksGood: Ziet er goed uit
 Label-Me: Me
+Label-Month: Maand
+Label-My-History: Mijn geschiedenis
+Label-NewJudgement: Nieuw oordeel
+Label-None: Geen
 Label-Not-Sure: Niet zeker
 Label-NotSure: Niet zeker
 Label-OresBadfaith: ORES Badfaith
 Label-OresDamaging: ORES Schadelijk
 Label-Overriden: Overschreven
 Label-Prompt-Login: Log in
+Label-Rank: Rang
+Label-Reason: Reden
+Label-Result: Resultaat
+Label-RevertSucceeded: Revert geslaagd!
 Label-ReviewFeed: Feed beoordelen
+Label-ReviewedAndSays: 'heeft {0} beoordeeld en zegt'
 Label-Should-Revert: Moet terugkeren
 Label-ShouldRevert: Moet terugkeren
 Label-Snooze: Snooze
 Label-Someone: Iemand
 Label-Time: Tijd
+Label-TopNumberAnonymousUsers: 'Top {0} anonieme gebruikers'
+Label-TopUsers: Top gebruikers
+Label-TopWikis: Top Wiki's
+Label-TotalNumber: Totaal
 Label-User: Gebruiker
+Label-Week: Week
+Label-YourJudgement: Uw oordeel
 MenuItem-Code: Code
 MenuItem-Contributions: Mijn bijdragen
 MenuItem-ContributionsBeforeLogin: Mijn bijdragen voordat ik inlog
 MenuItem-Issues: Problemen
 MenuItem-Stats: Statistieken
+Message-CongratsSuccessfullyReverted: 'Proficiat! u bent met succes rechtstreeks teruggezet {0}.'
 Message-DiffNotAvailable: >-
   Het wikipedia-artikel diff is tijdelijk niet beschikbaar. Je kunt proberen het
   opnieuw te laden. Soms kon een vernielde revisie worden verwijderd. U kunt de
   paginageschiedenis bekijken.
+Message-FeedHasNoNewRevisionsClickNextBelow: 'Feed {0} heeft geen nieuwe revisies, klik hieronder op ''Volgende''.'
 Message-Login: >-
   Weet u dat u zou kunnen inloggen en uw labels onder uw naam kunt bewaren? We
   ondersteunen Login met Wikipedia-account via Oauth.
@@ -49,11 +79,17 @@ Message-NameVoteAnnouncement: >-
   Beste medewerker, we stemmen voor een nieuwe naam ter vervanging van het
   "WikiLoop Battlefield" dat eindigt op 13 juli 2020 00:00 UTC. Alsjeblieft,
   stem.
+Message-NoActiveUsersPleaseStartReview: >-
+  Geen actieve gebruikers in de afgelopen 15 minuten. Begin met het {0}
+  beoordelen van revisies {1} en word de eerste.
 Message-Prompt-Login: >-
   Weet u dat u zou kunnen inloggen en uw bijdragen onder uw naam kunt bewaren?
   We ondersteunen inloggen met een Wikipedia-account via Oauth.
 Message-RevertEditSummary: >-
   Geïdentificeerd als test / vandalisme met {0} versie {1}. Bekijk het of geef
   uw mening op {2}
+Message-SorryWeFailedToRevert: 'Sorry, we hebben de revisie {0} niet ongedaan gemaakt.'
+Message-TheRevisionIsSuccessfullyRevertedAs: 'De revisie {0} is teruggedraaid als {1}.'
 Message-ThereIsNoEditSummary: Er is geen samenvatting voor bewerken.
-Label-None: Geen
+Message-YourJudgementLogged: 'Uw oordeel voor {0} herziening {1} is vastgelegd.'
+Message-AJudgementLogged: 'Een oordeel voor {0} voor herziening {1} is vastgelegd.'

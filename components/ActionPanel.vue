@@ -62,27 +62,29 @@
           </div>
         </template>
       </div>
+
+
       <template v-if="wikiActionProps && wikiActionProps.type ==`DirectRevert`">
-        <h5>Result</h5>
+        <h5>{{$t('Label-Result')}}</h5>
         <template v-if="wikiActionProps.resultRevId">
-          <i class="text-success fas fa-check-circle mr-1"></i><span>The
-          revision <a :href="`${getDiffLinkByRevId(revId)}`">{{revId}}</a>
-          is successfully reverted as
-          <a :href="`${getDiffLinkByRevId(wikiActionProps.resultRevId)}`">{{wikiActionProps.resultRevId}}</a>.
+          <i class="text-success fas fa-check-circle mr-1"></i><span>
+            {{$t('Message-TheRevisionIsSuccessfullyRevertedAs',
+            [
+              `<a :href="'${getDiffLinkByRevId(revId)}'">${revId}</a>`,
+              `<a :href="'${getDiffLinkByRevId(wikiActionProps.resultRevId)}'">${wikiActionProps.resultRevId}</a>`
+            ])}}
           </span>
         </template>
         <template v-else-if="wikiActionProps && wikiActionProps._meta && wikiActionProps._meta.hasError">
-          <i class="text-danger fas fa-times-circle mr-1"></i>The
-          revision <a :href="`${getDiffLinkByRevId(revId)}`">{{revId}}</a>
-          is failed to be reverted
+          <i class="text-danger fas fa-times-circle mr-1"></i>{{$t('Message-SorryWeFailedToRevert', [`<a :href="'${getDiffLinkByRevId(revId)}'">${revId}</a>`])}}
           <span v-if="wikiActionProps._meta.rawResult && wikiActionProps._meta.rawResult.error">
-            because <b>{{wikiActionProps._meta.rawResult.error.code}}</b>: {{wikiActionProps._meta.rawResult.error.info}}
+            {{$t('Label-Reason')}}(<b>{{wikiActionProps._meta.rawResult.error.code}}</b>) {{wikiActionProps._meta.rawResult.error.info}}
           </span>
           <span v-else>.</span>
         </template>
       </template>
       <div v-if="isPending" class="spinner-border" role="status">
-        <span class="sr-only">Loading...</span>
+        <span class="sr-only">{{$t('Label-Loading')}}...</span>
       </div>
     </div>
   </section>

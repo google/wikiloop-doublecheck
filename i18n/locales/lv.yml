@@ -5,43 +5,73 @@ Button-OpenedUrlToRevert: 'Atjaunots URL, lai to atjaunotu'
 Button-RevertNow: Atcelt tagad
 Button-ShowJudgements: Parādiet spriedumus
 Button-Undo: Atsaukt
+Label-1Month: 1 mēnesis (30.d)
+Label-1Quarter: 1 ceturksnis (90d)
+Label-1Year: 1 gads (365d)
+Label-1day: 1 diena
+Label-1week: 1 nedēļa (7d)
+Label-ActiveUsers: Aktīvie lietotāji
+Label-AllTime: Visu laiku
 Label-Anonymous: Anonīms
 Label-ArtificialIntelligence: Mākslīgais intelekts
 Label-Author: Autors
+Label-CountOfJudgements: Grāfs
+Label-Day: Diena
+Label-DiffView: Diff View
 Label-DirectRevertFailed: Tieša atgriešana neizdevās
 Label-DirectReverted: Tieši atgriezts
 Label-EditSummary: Labojuma kopsavilkums
 Label-EditedAt: labots
+Label-Feed: Barība
+Label-History: Vēsture
 Label-HumanEditors: Cilvēku redaktori
 Label-Judgement: Spriedums
+Label-LastActiveTime: Pēdējais aktīvais
 Label-Loading: Ielādē
 Label-Login: Pieslēgties
 Label-Logout: Iziet
 Label-Looks-Good: Izskatās labi
 Label-LooksGood: Izskatās labi
 Label-Me: Es
+Label-Month: Mēnesis
+Label-My-History: Mana vēsture
+Label-NewJudgement: Jauns spriedums
+Label-None: Nav
 Label-Not-Sure: Neesmu pārliecināts
 Label-NotSure: Nav pārliecības
 Label-OresBadfaith: ORES Badfaith
 Label-OresDamaging: ORES bojājums
 Label-Overriden: Pārvērtēts
 Label-Prompt-Login: Pieslēgties
+Label-Rank: Rank
+Label-Reason: Iemesls
+Label-Result: Rezultāts
+Label-RevertSucceeded: Atgriezties izdevās!
 Label-ReviewFeed: Atsauksmju plūsma
+Label-ReviewedAndSays: 'pārskatīja {0} un saka'
 Label-Should-Revert: Vajadzētu atgriezties
 Label-ShouldRevert: Būtu jāatceļ
 Label-Snooze: Atlikt
 Label-Someone: Kāds
 Label-Time: Laiks
+Label-TopNumberAnonymousUsers: 'Populārākie {0} anonīmi lietotāji'
+Label-TopUsers: Labākie lietotāji
+Label-TopWikis: Top Wikis
+Label-TotalNumber: Kopā
 Label-User: Lietotājs
+Label-Week: Nedēļa
+Label-YourJudgement: Jūsu spriedums
 MenuItem-Code: Kods
 MenuItem-Contributions: Mans devums
 MenuItem-ContributionsBeforeLogin: Mani ieguldījumi pirms pieteikšanās
 MenuItem-Issues: Jautājumi
 MenuItem-Stats: Statistika
+Message-CongratsSuccessfullyReverted: 'Apsveicu! jūs esat veiksmīgi atgriezis tieši vietni {0}.'
 Message-DiffNotAvailable: >-
   Vikipēdijas raksta izmaiņas attēlošana īslaicīgi nav pieejama. Tu vari mēģināt
   ielādēt to vēlreiz. Dažkārt vandalizētā versija var būt jau dzēsta. Tu vari
   pārbaudīt lapas vēsturi.
+Message-FeedHasNoNewRevisionsClickNextBelow: 'Plūsmā {0} nav jaunu versiju, noklikšķiniet uz nākamās zemāk.'
 Message-Login: >-
   Vai jūs zināt, ka varētu pieteikties un saglabāt etiķetes ar savu vārdu? Mēs
   atbalstām pieteikšanos ar Wikipedia kontu caur Oauth.
@@ -50,11 +80,17 @@ Message-NameVoteAnnouncement: >-
   “WikiLoop Battlefield” un beidzas 2020. gada 13. jūlijā plkst. 00:00 pēc UTC. 
 
   Lūdzu balsošanu.
+Message-NoActiveUsersPleaseStartReview: >-
+  Pēdējo 15 minūšu laikā nav aktīvu lietotāju. Sāciet {0} pārskatīt {1}
+  pārskatus un kļūsiet par pirmo.
 Message-Prompt-Login: >-
   Vai jūs zināt, ka varētu pieteikties un saglabāt savu ieguldījumu ar savu
   vārdu? Mēs atbalstām pieteikšanos ar Wikipedia kontu caur Oauth.
 Message-RevertEditSummary: >-
   Identificēts kā izmēģinājums/vandalisms izmantojot {0} versiju {1}. Apskatīt
   to vai piedāvāt savu viedokli {2}
+Message-SorryWeFailedToRevert: 'Diemžēl mums neizdevās atsaukt versiju {0}.'
+Message-TheRevisionIsSuccessfullyRevertedAs: 'Versija {0} tiek veiksmīgi atjaunota kā {1}.'
 Message-ThereIsNoEditSummary: Nav rediģēšanas kopsavilkuma.
-Label-None: Nav
+Message-YourJudgementLogged: 'Jūsu spriedums par {0} pārskatīšanai {1} ir reģistrēts.'
+Message-AJudgementLogged: '{0} spriedums par pārskatīšanu {1} ir reģistrēts.'

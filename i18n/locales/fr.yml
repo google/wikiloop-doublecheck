@@ -5,44 +5,74 @@ Button-OpenedUrlToRevert: URL ouverte pour revenir
 Button-RevertNow: Revenir maintenant
 Button-ShowJudgements: Afficher les jugements
 Button-Undo: annuler
+Label-1Month: 1 mois (30j)
+Label-1Quarter: 1 quart (90d)
+Label-1Year: 1 an (365 jours)
+Label-1day: Un jour
+Label-1week: 1 semaine (7j)
+Label-ActiveUsers: Utilisateurs actifs
+Label-AllTime: Tout le temps
 Label-Anonymous: Anonyme
 Label-ArtificialIntelligence: Intelligence artificielle
 Label-Author: Auteur
+Label-CountOfJudgements: Compter
+Label-Day: journée
+Label-DiffView: Vue différentielle
 Label-DirectRevertFailed: Échec du retour direct
 Label-DirectReverted: Direct inversé
 Label-EditSummary: Modifier le résumé
 Label-EditedAt: édité
+Label-Feed: Alimentation
+Label-History: L'histoire
 Label-HumanEditors: Éditeurs humains
 Label-Judgement: Jugement
+Label-LastActiveTime: Dernière activité
 Label-Loading: Chargement
 Label-Login: Connexion
 Label-Logout: Déconnexion
 Label-Looks-Good: Cela semble bon
 Label-LooksGood: Cela semble bon
 Label-Me: Moi
+Label-Month: Mois
+Label-My-History: Mon histoire
+Label-NewJudgement: Nouveau jugement
+Label-None: Aucun
 Label-Not-Sure: Pas certain
 Label-NotSure: Pas sûr
 Label-OresBadfaith: ORES Badfaith
 Label-OresDamaging: ORES endommageant
 Label-Overriden: Remplacé
 Label-Prompt-Login: S'identifier
+Label-Rank: Rang
+Label-Reason: Raison
+Label-Result: Résultat
+Label-RevertSucceeded: Revert a réussi!
 Label-ReviewFeed: Vérifier le flux
+Label-ReviewedAndSays: 'a examiné {0} et dit'
 Label-Should-Revert: Devrait revenir
 Label-ShouldRevert: Devrait revenir
 Label-Snooze: Roupillon
 Label-Someone: Quelqu'un
 Label-Time: Temps
+Label-TopNumberAnonymousUsers: 'Top {0} utilisateurs anonymes'
+Label-TopUsers: Top utilisateurs
+Label-TopWikis: Top Wikis
+Label-TotalNumber: Total
 Label-User: Utilisateur
+Label-Week: La semaine
+Label-YourJudgement: Votre jugement
 MenuItem-Code: Code
 MenuItem-Contributions: Contributions
 MenuItem-ContributionsBeforeLogin: Mes contributions avant la connexion
 MenuItem-Issues: Problèmes
 MenuItem-Stats: Statistiques
+Message-CongratsSuccessfullyReverted: 'Félicitations! vous avez réussi à revenir directement {0}.'
 Message-DiffNotAvailable: |-
   Le diff article wikipedia n'est temporairement pas disponible. 
   Vous pouvez essayer de le recharger. 
   Parfois, une révision vandalisée peut être supprimée. 
   Vous pouvez consulter l'historique des pages.
+Message-FeedHasNoNewRevisionsClickNextBelow: 'Le flux {0} n''a pas de nouvelles révisions, cliquez sur suivant ci-dessous.'
 Message-Login: >-
   Savez-vous que vous pouvez vous connecter et conserver vos étiquettes sous
   votre nom? Nous prenons en charge la connexion avec un compte Wikipedia via
@@ -52,6 +82,9 @@ Message-NameVoteAnnouncement: >-
   "WikiLoop Battlefield" se terminant le 13 juillet 2020 à 00h00 UTC. 
 
   S'il vous plait, votez.
+Message-NoActiveUsersPleaseStartReview: >-
+  Aucun utilisateur actif au cours des 15 dernières minutes. Commencez {0} à
+  réviser les révisions {1} et devenez la première.
 Message-Prompt-Login: >-
   Savez-vous que vous pouvez vous connecter et conserver vos contributions sous
   votre nom? Nous prenons en charge la connexion avec un compte Wikipedia via
@@ -59,5 +92,8 @@ Message-Prompt-Login: >-
 Message-RevertEditSummary: |-
   Identifié comme test / vandalisme à l'aide de la version {0} {1}. 
   Consultez-le ou donnez votre avis sur {2}
+Message-SorryWeFailedToRevert: 'Désolé, nous n''avons pas réussi à rétablir la révision {0}.'
+Message-TheRevisionIsSuccessfullyRevertedAs: 'La révision {0} est correctement rétablie en tant que {1}.'
 Message-ThereIsNoEditSummary: Il n'y a pas de résumé de modification.
-Label-None: Aucun
+Message-YourJudgementLogged: 'Votre jugement pour {0} pour la révision {1} a été enregistré.'
+Message-AJudgementLogged: 'Un jugement pour {0} pour la révision {1} a été enregistré.'

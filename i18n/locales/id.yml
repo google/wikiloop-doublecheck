@@ -5,43 +5,73 @@ Button-OpenedUrlToRevert: URL yang dibuka untuk kembali
 Button-RevertNow: Batalkan sekarang
 Button-ShowJudgements: Perlihatkan penilaian
 Button-Undo: Membuka
+Label-1Month: 1 bulan (30d)
+Label-1Quarter: 1 perempat (90d)
+Label-1Year: 1 tahun (365d)
+Label-1day: 1 hari
+Label-1week: 1 minggu (7d)
+Label-ActiveUsers: Pengguna Aktif
+Label-AllTime: Sepanjang waktu
 Label-Anonymous: Anonim
 Label-ArtificialIntelligence: Kecerdasan buatan
 Label-Author: Penulis
+Label-CountOfJudgements: Menghitung
+Label-Day: Hari
+Label-DiffView: Tampilan Diff
 Label-DirectRevertFailed: Pengembalian langsung gagal
 Label-DirectReverted: Langsung dikembalikan
 Label-EditSummary: Ringkasan suntingan
 Label-EditedAt: disunting
+Label-Feed: Makan
+Label-History: Sejarah
 Label-HumanEditors: Editor manusia
 Label-Judgement: Pertimbangan
+Label-LastActiveTime: Aktif Terakhir
 Label-Loading: Sedang memuat
 Label-Login: Masuk log
 Label-Logout: Keluar log
 Label-Looks-Good: Kelihatan bagus
 Label-LooksGood: Kelihatan bagus
 Label-Me: Aku
+Label-Month: Bulan
+Label-My-History: Sejarahku
+Label-NewJudgement: Penghakiman Baru
+Label-None: Tidak ada
 Label-Not-Sure: Tidak yakin
 Label-NotSure: Tidak yakin
 Label-OresBadfaith: ORF Badfaith
 Label-OresDamaging: ORES Merusak
 Label-Overriden: Ditimpa
 Label-Prompt-Login: Gabung
+Label-Rank: Pangkat
+Label-Reason: Alasan
+Label-Result: Hasil
+Label-RevertSucceeded: Kembalikan berhasil!
 Label-ReviewFeed: Tinjau Umpan
+Label-ReviewedAndSays: 'Ulasan {0} dan berkata'
 Label-Should-Revert: Harus Kembalikan
 Label-ShouldRevert: Patut dibatalkan
 Label-Snooze: Tidur sebentar
 Label-Someone: Seseorang
 Label-Time: Waktu
+Label-TopNumberAnonymousUsers: '{0} Pengguna Anonim teratas'
+Label-TopUsers: Pengguna Teratas
+Label-TopWikis: Wiki top
+Label-TotalNumber: Total
 Label-User: Pengguna
+Label-Week: Minggu
+Label-YourJudgement: Penghakiman Anda
 MenuItem-Code: Kode
 MenuItem-Contributions: Kontribusi
 MenuItem-ContributionsBeforeLogin: Kontribusi saya sebelum login
 MenuItem-Issues: Masalah
 MenuItem-Stats: Statistik
+Message-CongratsSuccessfullyReverted: 'Selamat! Anda telah berhasil dikembalikan secara langsung {0}.'
 Message-DiffNotAvailable: >-
   Perbedaan revisi tidak tersedia untuk saat ini. Silakan diulang membukanya.
   Kadang revisi yang terkena vandalisme sudah dihapus. Silakan periksa riwayat
   revisi artikel.
+Message-FeedHasNoNewRevisionsClickNextBelow: 'Umpan {0} tidak memiliki revisi baru, klik berikutnya di bawah ini.'
 Message-Login: >-
   Tahukah Anda bahwa Anda dapat Masuk dan melindungi label Anda dengan nama
   Anda? Kami mendukung Login dengan akun Wikipedia melalui Oauth.
@@ -51,11 +81,17 @@ Message-NameVoteAnnouncement: >-
   UTC. 
 
   Tolong pilih.
+Message-NoActiveUsersPleaseStartReview: >-
+  Tidak ada pengguna aktif dalam 15 menit terakhir. Mulai {0} meninjau revisi
+  {1} dan menjadi yang pertama.
 Message-Prompt-Login: >-
   Apakah Anda tahu Anda bisa masuk dan menyimpan kontribusi Anda dengan nama
   Anda? Kami mendukung login dengan akun Wikipedia melalui Oauth.
 Message-RevertEditSummary: >-
   Batalkan percobaan/vandalisme menggunakan {0} versi {1}. Lihat atau beri
   pendapat di {2}
+Message-SorryWeFailedToRevert: 'Maaf, kami gagal mengembalikan revisi {0}.'
+Message-TheRevisionIsSuccessfullyRevertedAs: 'Revisi {0} berhasil dikembalikan menjadi {1}.'
 Message-ThereIsNoEditSummary: Tidak ada ringkasan edit.
-Label-None: Tidak ada
+Message-YourJudgementLogged: 'Penilaian Anda untuk {0} untuk revisi {1} telah dicatat.'
+Message-AJudgementLogged: 'Penilaian untuk {0} untuk revisi {1} telah dicatat.'

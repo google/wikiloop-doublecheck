@@ -5,44 +5,74 @@ Button-OpenedUrlToRevert: Geöffnete URL zum Zurücksetzen
 Button-RevertNow: Jetzt zurücksetzen
 Button-ShowJudgements: Urteile zeigen
 Button-Undo: Rückgängig machen
+Label-1Month: 1 Monat (30 Tage)
+Label-1Quarter: 1 Viertel (90d)
+Label-1Year: 1 Jahr (365d)
+Label-1day: 1 Tag
+Label-1week: 1 Woche (7d)
+Label-ActiveUsers: Aktive Benutzer
+Label-AllTime: Alle Zeit
 Label-Anonymous: Anonym
 Label-ArtificialIntelligence: Künstliche Intelligenz
 Label-Author: Autor
+Label-CountOfJudgements: Anzahl
+Label-Day: Tag
+Label-DiffView: Diff View
 Label-DirectRevertFailed: Direktes Zurücksetzen fehlgeschlagen
 Label-DirectReverted: Direkt zurückgesetzt
 Label-EditSummary: Zusammenfassung bearbeiten
 Label-EditedAt: Bearbeitet
+Label-Feed: Futter
+Label-History: Geschichte
 Label-HumanEditors: Menschliche Redakteure
 Label-Judgement: Beurteilung
+Label-LastActiveTime: letzte Aktivität
 Label-Loading: Beladung
 Label-Login: Anmelden
 Label-Logout: Abmelden
 Label-Looks-Good: Sieht gut aus
 Label-LooksGood: Sieht gut aus
 Label-Me: Ich
+Label-Month: Monat
+Label-My-History: Meine Geschichte
+Label-NewJudgement: Neues Urteil
+Label-None: Keiner
 Label-Not-Sure: Nicht sicher
 Label-NotSure: Nicht sicher
 Label-OresBadfaith: ORES Badfaith
 Label-OresDamaging: Erze beschädigen
 Label-Overriden: Überschrieben
 Label-Prompt-Login: Anmeldung
+Label-Rank: Rang
+Label-Reason: Grund
+Label-Result: Ergebnis
+Label-RevertSucceeded: Zurücksetzen gelungen!
 Label-ReviewFeed: Feed überprüfen
+Label-ReviewedAndSays: 'überprüft {0} und sagt'
 Label-Should-Revert: Sollte zurückkehren
 Label-ShouldRevert: Sollte zurücksetzen
 Label-Snooze: Schlummer
 Label-Someone: Jemand
 Label-Time: Zeit
+Label-TopNumberAnonymousUsers: 'Top {0} anonyme Benutzer'
+Label-TopUsers: Top-Benutzer
+Label-TopWikis: Top Wikis
+Label-TotalNumber: Gesamt
 Label-User: Benutzer
+Label-Week: Woche
+Label-YourJudgement: Dein Urteil
 MenuItem-Code: Code
 MenuItem-Contributions: Beiträge
 MenuItem-ContributionsBeforeLogin: Meine Beiträge vor dem Login
 MenuItem-Issues: Probleme
 MenuItem-Stats: Statistiken
+Message-CongratsSuccessfullyReverted: 'Glückwunsch! Sie haben erfolgreich direkt {0} zurückgesetzt.'
 Message-DiffNotAvailable: |-
   Der Wikipedia-Artikel diff ist vorübergehend nicht verfügbar. 
   Sie können versuchen, es neu zu laden. 
   Manchmal konnte eine zerstörte Revision gelöscht werden. 
   Sie können den Seitenverlauf überprüfen.
+Message-FeedHasNoNewRevisionsClickNextBelow: 'Feed {0} hat keine neuen Revisionen. Klicken Sie unten auf Weiter.'
 Message-Login: >-
   Wissen Sie, dass Sie sich anmelden und Ihre Etiketten unter Ihrem Namen
   aufbewahren können? Wir unterstützen die Anmeldung mit Wikipedia-Konto über
@@ -53,6 +83,9 @@ Message-NameVoteAnnouncement: >-
   endet. 
 
   Bitte abstimmen.
+Message-NoActiveUsersPleaseStartReview: >-
+  Keine aktiven Benutzer in den letzten 15 Minuten. Beginnen Sie mit der
+  Überprüfung von {0} Revisionen {1} und werden Sie die erste.
 Message-Prompt-Login: >-
   Wissen Sie, dass Sie sich anmelden und Ihre Beiträge unter Ihrem Namen
   aufbewahren können? Wir unterstützen die Anmeldung mit einem Wikipedia-Konto
@@ -60,5 +93,8 @@ Message-Prompt-Login: >-
 Message-RevertEditSummary: |-
   Mit {0} Version {1} als Test / Vandalismus identifiziert. 
   Sehen Sie es sich an oder geben Sie Ihre Meinung unter {2} ab
+Message-SorryWeFailedToRevert: 'Leider konnten wir die Revision {0} nicht zurücksetzen.'
+Message-TheRevisionIsSuccessfullyRevertedAs: 'Die Revision {0} wird erfolgreich als {1} zurückgesetzt.'
 Message-ThereIsNoEditSummary: Es gibt keine Bearbeitungszusammenfassung.
-Label-None: Keiner
+Message-YourJudgementLogged: 'Ihr Urteil für {0} für Revision {1} wurde protokolliert.'
+Message-AJudgementLogged: 'Ein Urteil für {0} für Revision {1} wurde protokolliert.'

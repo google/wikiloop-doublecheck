@@ -5,43 +5,73 @@ Button-OpenedUrlToRevert: Geri dönmek için açılan URL
 Button-RevertNow: Şimdi geri dön
 Button-ShowJudgements: Kararları göster
 Button-Undo: Geri alma
+Label-1Month: 1 ay (30 g)
+Label-1Quarter: 1 çeyrek (90 g)
+Label-1Year: 1 yıl (365d)
+Label-1day: 1 gün
+Label-1week: 1 hafta (7 gün)
+Label-ActiveUsers: Aktif Kullanıcılar
+Label-AllTime: Her zaman
 Label-Anonymous: Anonim
 Label-ArtificialIntelligence: Yapay zeka
 Label-Author: Yazar
+Label-CountOfJudgements: Miktar
+Label-Day: Gün
+Label-DiffView: Farklı Görünüm
 Label-DirectRevertFailed: Doğrudan geri alma başarısız
 Label-DirectReverted: Doğrudan geri döndürüldü
 Label-EditSummary: Özeti Düzenle
 Label-EditedAt: düzenlendi
+Label-Feed: besleme
+Label-History: Tarih
 Label-HumanEditors: İnsan editörleri
 Label-Judgement: yargı
+Label-LastActiveTime: Son Etkin
 Label-Loading: Yükleniyor
 Label-Login: Giriş
 Label-Logout: Çıkış
 Label-Looks-Good: İyi görünüyor
 Label-LooksGood: İyi Görünüyor
 Label-Me: Ben
+Label-Month: Ay
+Label-My-History: Benim tarihim
+Label-NewJudgement: Yeni Karar
+Label-None: Yok
 Label-Not-Sure: Emin değil
 Label-NotSure: Emin Değilim
 Label-OresBadfaith: ORES Badfaith
 Label-OresDamaging: ORES Hasar
 Label-Overriden: Geçersiz kılınan
 Label-Prompt-Login: Oturum aç
+Label-Rank: rütbe
+Label-Reason: neden
+Label-Result: Sonuç
+Label-RevertSucceeded: Geri alma başarılı oldu!
 Label-ReviewFeed: Özet Akışı
+Label-ReviewedAndSays: '{0} incelendi ve diyor'
 Label-Should-Revert: Geri Dönmeli
 Label-ShouldRevert: Eski Haline Dönmeli
 Label-Snooze: Uyuklama
 Label-Someone: Birisi
 Label-Time: Zaman
+Label-TopNumberAnonymousUsers: 'En İyi {0} Anonim Kullanıcılar'
+Label-TopUsers: En İyi Kullanıcılar
+Label-TopWikis: En İyi Vikisözler
+Label-TotalNumber: Toplam
 Label-User: kullanıcı
+Label-Week: Hafta
+Label-YourJudgement: Kararınız
 MenuItem-Code: kod
 MenuItem-Contributions: Katkılar
 MenuItem-ContributionsBeforeLogin: Giriş yapmadan önce yaptığım katkılar
 MenuItem-Issues: Sorunlar
 MenuItem-Stats: İstatistikleri
+Message-CongratsSuccessfullyReverted: 'Tebrikler! doğrudan {0} başarıyla geri döndünüz.'
 Message-DiffNotAvailable: >-
   The wikipedia article diff is temporarily not available. You can try to reload
   it. Sometimes a vandalized revision could be deleted. You can check the page
   history.
+Message-FeedHasNoNewRevisionsClickNextBelow: '{0} feed''inde yeni düzeltme yok, aşağıya tıklayın.'
 Message-Login: >-
   Etiketlerinizi adınız altında girip koruyabileceğinizi biliyor musunuz? Oauth
   aracılığıyla Wikipedia hesabıyla giriş yapmayı destekliyoruz.
@@ -50,11 +80,17 @@ Message-NameVoteAnnouncement: >-
   yerine yeni bir isim vermek için oy kullanıyoruz. 
 
   Lütfen oy verin.
+Message-NoActiveUsersPleaseStartReview: >-
+  Son 15 dakika içinde aktif kullanıcı yok. {0} Düzeltmeleri {1} gözden
+  geçirmeye başlayın ve birincisi olun.
 Message-Prompt-Login: >-
   Giriş yapabilir ve katkılarınızı adınız altında koruyabileceğinizi biliyor
   musunuz? Oauth aracılığıyla Wikipedia hesabıyla giriş yapmayı destekliyoruz.
 Message-RevertEditSummary: |-
   {0} {1} sürümü kullanılarak test / vandalizm olarak tanımlandı. 
   {2} adresinde görün veya görüşünüzü belirtin
+Message-SorryWeFailedToRevert: 'Maalesef, {0} düzeltmesini geri alamadık.'
+Message-TheRevisionIsSuccessfullyRevertedAs: '{0} düzeltmesi başarıyla {1} olarak geri döndürüldü.'
 Message-ThereIsNoEditSummary: Düzenleme özeti yok.
-Label-None: Yok
+Message-YourJudgementLogged: '{1} düzeltmesi için {0} kararınız günlüğe kaydedildi.'
+Message-AJudgementLogged: '{1} düzeltmesi için {0} kararı günlüğe kaydedildi.'

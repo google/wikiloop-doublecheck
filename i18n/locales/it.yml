@@ -5,43 +5,73 @@ Button-OpenedUrlToRevert: URL aperto da ripristinare
 Button-RevertNow: Ripristina ora
 Button-ShowJudgements: Mostra giudizi
 Button-Undo: Disfare
+Label-1Month: 1 mese (30 g)
+Label-1Quarter: 1 quarto (90 g)
+Label-1Year: 1 anno (365 g)
+Label-1day: 1 giorno
+Label-1week: 1 settimana (7 giorni)
+Label-ActiveUsers: Utenti attivi
+Label-AllTime: Sempre
 Label-Anonymous: Anonimo
 Label-ArtificialIntelligence: Intelligenza artificiale
 Label-Author: Autore
+Label-CountOfJudgements: Contare
+Label-Day: Giorno
+Label-DiffView: Vista diff
 Label-DirectRevertFailed: Ripristino diretto non riuscito
 Label-DirectReverted: Diretto ripristinato
 Label-EditSummary: Modifica riepilogo
 Label-EditedAt: modificato
+Label-Feed: Alimentazione
+Label-History: Storia
 Label-HumanEditors: Redattori umani
 Label-Judgement: Giudizio
+Label-LastActiveTime: Ultimo attivo
 Label-Loading: Caricamento in corso
 Label-Login: Accesso
 Label-Logout: Disconnettersi
 Label-Looks-Good: Sembra buono
 Label-LooksGood: Sembra buono
 Label-Me: Me
+Label-Month: Mese
+Label-My-History: La mia storia
+Label-NewJudgement: Nuovo giudizio
+Label-None: Nessuna
 Label-Not-Sure: Non sono sicuro
 Label-NotSure: Non sono sicuro
 Label-OresBadfaith: ORES Badfaith
 Label-OresDamaging: ORES Danneggiamento
 Label-Overriden: override
 Label-Prompt-Login: Accesso
+Label-Rank: Rango
+Label-Reason: Motivo
+Label-Result: Risultato
+Label-RevertSucceeded: Ripristino riuscito!
 Label-ReviewFeed: Rivedi feed
+Label-ReviewedAndSays: 'recensito {0} e dice'
 Label-Should-Revert: Dovrebbe tornare
 Label-ShouldRevert: Dovrebbe tornare
 Label-Snooze: sonnellino
 Label-Someone: Qualcuno
 Label-Time: Tempo
+Label-TopNumberAnonymousUsers: 'Primi {0} utenti anonimi'
+Label-TopUsers: Utenti migliori
+Label-TopWikis: Top Wiki
+Label-TotalNumber: Totale
 Label-User: Utente
+Label-Week: Settimana
+Label-YourJudgement: Il tuo giudizio
 MenuItem-Code: Codice
 MenuItem-Contributions: I miei contributi
 MenuItem-ContributionsBeforeLogin: I miei contributi prima dell'accesso
 MenuItem-Issues: Problemi
 MenuItem-Stats: Statistiche
+Message-CongratsSuccessfullyReverted: 'Congratulazioni! hai ripristinato con successo direttamente {0}.'
 Message-DiffNotAvailable: >-
   L'articolo diff di Wikipedia non è temporaneamente disponibile. Puoi provare a
   ricaricarlo. A volte una revisione vandalizzata potrebbe essere eliminata.
   Puoi controllare la cronologia delle pagine.
+Message-FeedHasNoNewRevisionsClickNextBelow: 'Il feed {0} non ha nuove revisioni, fai clic su successivo di seguito.'
 Message-Login: >-
   Sai che potresti accedere e conservare le tue etichette sotto il tuo nome?
   Supportiamo l'accesso con l'account Wikipedia tramite Oauth.
@@ -49,11 +79,17 @@ Message-NameVoteAnnouncement: >-
   Caro collaboratore, stiamo votando il nuovo nome in sostituzione del "Campo di
   battaglia di WikiLoop" che si concluderà il 13 luglio 2020 00:00 UTC. Per
   favore, Vota.
+Message-NoActiveUsersPleaseStartReview: >-
+  Nessun utente attivo negli ultimi 15 minuti. Inizia {0} a rivedere le
+  revisioni {1} e diventa il primo.
 Message-Prompt-Login: >-
   Sai che potresti accedere e conservare i tuoi contributi a tuo nome?
   Supportiamo l'accesso con l'account Wikipedia tramite Oauth.
 Message-RevertEditSummary: >-
   Identificato come test / vandalismo usando {0} versione {1}. Visualizzalo o
   fornisci la tua opinione su {2}
+Message-SorryWeFailedToRevert: 'Spiacenti, non è stato possibile ripristinare la revisione {0}.'
+Message-TheRevisionIsSuccessfullyRevertedAs: 'La revisione {0} è stata ripristinata correttamente come {1}.'
 Message-ThereIsNoEditSummary: Non esiste un riepilogo di modifica.
-Label-None: Nessuna
+Message-YourJudgementLogged: 'Il tuo giudizio per {0} per la revisione {1} è stato registrato.'
+Message-AJudgementLogged: 'È stato registrato un giudizio per {0} per revisione {1}.'

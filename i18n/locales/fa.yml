@@ -5,43 +5,73 @@ Button-OpenedUrlToRevert: URL را بازگردانید
 Button-RevertNow: اکنون برگردانید
 Button-ShowJudgements: نمایش قضاوت
 Button-Undo: واگرد
+Label-1Month: 1 ماه (30d)
+Label-1Quarter: 1 چهارم (90d)
+Label-1Year: 1 سال (365d)
+Label-1day: 1 روز
+Label-1week: 1 هفته (7d)
+Label-ActiveUsers: کاربران فعال
+Label-AllTime: همیشه
 Label-Anonymous: ناشناس
 Label-ArtificialIntelligence: هوش مصنوعی
 Label-Author: نویسنده
+Label-CountOfJudgements: شمردن
+Label-Day: روز
+Label-DiffView: نمای متفاوت
 Label-DirectRevertFailed: برگشت مستقیم انجام نشد
 Label-DirectReverted: بازگردانی مستقیم
 Label-EditSummary: خلاصه ویرایش کنید
 Label-EditedAt: ویرایش شده
+Label-Feed: خوراک
+Label-History: تاریخ
 Label-HumanEditors: ویرایشگران انسانی
 Label-Judgement: داوری
+Label-LastActiveTime: آخرین فعالیت
 Label-Loading: بارگذاری
 Label-Login: وارد شدن
 Label-Logout: خروج
 Label-Looks-Good: به نظر خوب میاد
 Label-LooksGood: به نظر خوب میاد
 Label-Me: من
+Label-Month: ماه
+Label-My-History: تاریخ من
+Label-NewJudgement: داوری جدید
+Label-None: هیچ یک
 Label-Not-Sure: مطمئن نیستم
 Label-NotSure: مطمئن نیستم
 Label-OresBadfaith: ORES Badfaith
 Label-OresDamaging: ORES آسیب دیده
 Label-Overriden: نادیده گرفته شده
 Label-Prompt-Login: وارد شدن
+Label-Rank: رتبه
+Label-Reason: دلیل
+Label-Result: نتیجه
+Label-RevertSucceeded: بازگشت موفق شد!
 Label-ReviewFeed: بررسی فید
+Label-ReviewedAndSays: '{0 ed بررسی کرده و می گوید'
 Label-Should-Revert: باید برگرداند
 Label-ShouldRevert: باید برگردد
 Label-Snooze: تعویق
 Label-Someone: کسی
 Label-Time: زمان
+Label-TopNumberAnonymousUsers: '{0 Top برتر کاربران ناشناس'
+Label-TopUsers: کاربران برتر
+Label-TopWikis: ویکی ویزیت برتر
+Label-TotalNumber: جمع
 Label-User: کاربر
+Label-Week: هفته
+Label-YourJudgement: داوری شما
 MenuItem-Code: کد
 MenuItem-Contributions: کمکهای من
 MenuItem-ContributionsBeforeLogin: کمکهای من قبل از ورود
 MenuItem-Issues: مسائل
 MenuItem-Stats: آمار
+Message-CongratsSuccessfullyReverted: 'تبریک می گویم! شما با موفقیت مستقیم {0 {برگشتید.'
 Message-DiffNotAvailable: >-
   مقاله wikipedia به طور موقت در دسترس نیست. می توانید دوباره بارگیری کنید. گاهی
   اوقات یک ویرایش ویران شده می تواند حذف شود. می توانید تاریخچه صفحه را بررسی
   کنید.
+Message-FeedHasNoNewRevisionsClickNextBelow: 'فید {0} هیچ نسخه جدیدی ندارد ، در زیر روی بعدی کلیک کنید.'
 Message-Login: >-
   آیا می دانید می توانید برچسب های خود را تحت نام خود وارد کرده و آنها را حفظ
   کنید؟ ما از حساب Oauth با حساب ویکی پدیا پشتیبانی می کنیم.
@@ -49,11 +79,17 @@ Message-NameVoteAnnouncement: >-
   مشارکت گرامی ، ما در حال رای گیری برای نام جدید هستیم که جایگزین "میدان جنگ
   WikiLoop" شود که در تاریخ 13 ژوئیه 2020 ساعت 00:00 UTC پایان می یابد. لطفا رای
   دهید
+Message-NoActiveUsersPleaseStartReview: >-
+  هیچ کاربر فعال در 15 دقیقه گذشته {0 Start شروع به بررسی نسخه های {1} کنید و
+  اولین نفر شوید.
 Message-Prompt-Login: >-
   آیا می دانید که می توانید مشارکت خود را تحت نام خود وارد کنید و آنها را حفظ
   کنید؟ ما از طریق Oauth وارد حساب کاربری ویکی پدیا می شویم.
 Message-RevertEditSummary: >-
   با استفاده از test 0} نسخه {1 as به عنوان تست / خرابکاری شناخته شده است. آن را
   ببینید یا نظر خود را در 2 {ارائه دهید
+Message-SorryWeFailedToRevert: متأسفیم ، ما نتوانستیم نسخه 0 re را برگردانیم.
+Message-TheRevisionIsSuccessfullyRevertedAs: 'نسخه {0 successfully با موفقیت به عنوان {1 vert برگردانده شده است.'
 Message-ThereIsNoEditSummary: خلاصه ویرایش وجود ندارد
-Label-None: هیچ یک
+Message-YourJudgementLogged: 'داوری شما برای {0} برای بررسی 1} ثبت شده است.'
+Message-AJudgementLogged: 'داوری برای {0} برای تجدید نظر در 1 {ثبت شده است.'

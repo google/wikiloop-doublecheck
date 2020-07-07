@@ -5,51 +5,85 @@ Button-OpenedUrlToRevert: URLを開いて元に戻しました
 Button-RevertNow: 今すぐ元に戻す
 Button-ShowJudgements: 判断を示す
 Button-Undo: 元に戻す
+Label-1Month: 1か月（30日）
+Label-1Quarter: 1四半期（90日）
+Label-1Year: 1年（365d）
+Label-1day: 1日
+Label-1week: 1週間（7d）
+Label-ActiveUsers: アクティブユーザー
+Label-AllTime: いつも
 Label-Anonymous: 匿名の
 Label-ArtificialIntelligence: 人工知能
 Label-Author: 著者
+Label-CountOfJudgements: カウント
+Label-Day: 日
+Label-DiffView: 差分ビュー
 Label-DirectRevertFailed: 直接の復帰に失敗しました
 Label-DirectReverted: 直接復帰
 Label-EditSummary: 概要を編集
 Label-EditedAt: 編集済み
+Label-Feed: フィード
+Label-History: 歴史
 Label-HumanEditors: 人間の編集者
 Label-Judgement: 判定
+Label-LastActiveTime: 最後にログインした時
 Label-Loading: 読み込み中
 Label-Login: ログインする
 Label-Logout: ログアウト
 Label-Looks-Good: いいね
 Label-LooksGood: いいね
 Label-Me: わたし
+Label-Month: 月
+Label-My-History: 私の歴史
+Label-NewJudgement: 新しい判断
+Label-None: なし
 Label-Not-Sure: わからない
 Label-NotSure: わからない
 Label-OresBadfaith: オレスバッドフェイス
 Label-OresDamaging: ORESダメージ
 Label-Overriden: オーバーライドされた
 Label-Prompt-Login: ログインする
+Label-Rank: ランク
+Label-Reason: 理由
+Label-Result: 結果
+Label-RevertSucceeded: 元に戻しました。
 Label-ReviewFeed: フィードの確認
+Label-ReviewedAndSays: '{0}を確認して言った'
 Label-Should-Revert: 元に戻す必要があります
 Label-ShouldRevert: 元に戻す必要があります
 Label-Snooze: スヌーズ
 Label-Someone: 誰か
 Label-Time: 時間
+Label-TopNumberAnonymousUsers: '上位{0}人の匿名ユーザー'
+Label-TopUsers: トップユーザー
+Label-TopWikis: トップウィキ
+Label-TotalNumber: 合計
 Label-User: ユーザー
+Label-Week: 週間
+Label-YourJudgement: あなたの判断
 MenuItem-Code: コード
 MenuItem-Contributions: 私の貢献
 MenuItem-ContributionsBeforeLogin: ログイン前の私の貢献
 MenuItem-Issues: 問題
 MenuItem-Stats: 統計
+Message-CongratsSuccessfullyReverted: 'おめでとうございます！直接{0}に戻しました。'
 Message-DiffNotAvailable: |-
   ウィキペディアの記事の差分は一時的に利用できません。
   リロードしてみてください。
   破壊されたリビジョンが削除される場合があります。
   ページ履歴を確認できます。
+Message-FeedHasNoNewRevisionsClickNextBelow: 'フィード{0}には新しいリビジョンがありません。下の[次へ]をクリックしてください。'
 Message-Login: ログインして自分の名前でラベルを保存できることをご存知ですか？ OauthによるWikipediaアカウントでのログインをサポートしています。
 Message-NameVoteAnnouncement: |-
   投稿者の皆様、2020年7月13日00:00 UTCに終了する「WikiLoop Battlefield」に代わる新しい名前の投票を開催しています。
   投票してください。
+Message-NoActiveUsersPleaseStartReview: '過去15分間にアクティブなユーザーはいません。 {0}改訂のレビュー{1}を開始し、最初の改訂になります。'
 Message-Prompt-Login: ログインして自分の名前で投稿を保存できることを知っていますか？ OauthによるWikipediaアカウントでのログインをサポートしています。
 Message-RevertEditSummary: |-
   {0}バージョン{1}を使用したテスト/破壊行為として識別されました。 
   {2}でご覧になるか、意見をお寄せください
+Message-SorryWeFailedToRevert: 'リビジョン{0}を元に戻すことができませんでした。'
+Message-TheRevisionIsSuccessfullyRevertedAs: 'リビジョン{0}は正常に{1}に戻されました。'
 Message-ThereIsNoEditSummary: 編集の要約はありません。
-Label-None: なし
+Message-YourJudgementLogged: 'リビジョン{1}に対する{0}の判断が記録されました。'
+Message-AJudgementLogged: 'リビジョン{1}の{0}の判断が記録されました。'

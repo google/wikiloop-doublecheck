@@ -5,43 +5,73 @@ Button-OpenedUrlToRevert: URL obert per tornar
 Button-RevertNow: Torna ara
 Button-ShowJudgements: Mostrar judicis
 Button-Undo: Desfer
+Label-1Month: 1 mes (30 d)
+Label-1Quarter: 1 quart (90d)
+Label-1Year: 1 any (365d)
+Label-1day: 1 dia
+Label-1week: 1 setmana (diades)
+Label-ActiveUsers: Usuaris actius
+Label-AllTime: Tot el temps
 Label-Anonymous: Anònim
 Label-ArtificialIntelligence: Intel · ligència artificial
 Label-Author: Autor
+Label-CountOfJudgements: Comptar
+Label-Day: Dia
+Label-DiffView: Vista Diff
 Label-DirectRevertFailed: Ha fallat el revertiment directe
 Label-DirectReverted: Revertida directa
 Label-EditSummary: Edita el resum
 Label-EditedAt: editat
+Label-Feed: Feed
+Label-History: Història
 Label-HumanEditors: Editors humans
 Label-Judgement: Judici
+Label-LastActiveTime: Últim actiu
 Label-Loading: Carregant
 Label-Login: iniciar Sessió
 Label-Logout: Tancar sessió
 Label-Looks-Good: Té bona pinta
 Label-LooksGood: Té bona pinta
 Label-Me: Jo
+Label-Month: Mes
+Label-My-History: La meva història
+Label-NewJudgement: Nou judici
+Label-None: Cap
 Label-Not-Sure: No n'estic segur
 Label-NotSure: No n'estic segur
 Label-OresBadfaith: ORES Badfaith
 Label-OresDamaging: ORES Danyós
 Label-Overriden: Nul
 Label-Prompt-Login: iniciar Sessió
+Label-Rank: Rànquing
+Label-Reason: Raó
+Label-Result: Resultat
+Label-RevertSucceeded: Tornar a reeixir
 Label-ReviewFeed: Reviseu el feed
+Label-ReviewedAndSays: 'ha revisat {0} i afirma'
 Label-Should-Revert: Hauria de tornar
 Label-ShouldRevert: Hauria de revertir
 Label-Snooze: Dormitar
 Label-Someone: Algú
 Label-Time: Temps
+Label-TopNumberAnonymousUsers: Top 0 Usuaris anònims
+Label-TopUsers: Usuaris principals
+Label-TopWikis: Inici de Wikis
+Label-TotalNumber: Total
 Label-User: Usuari
+Label-Week: Setmana
+Label-YourJudgement: El teu judici
 MenuItem-Code: Codi
 MenuItem-Contributions: Les meves aportacions
 MenuItem-ContributionsBeforeLogin: Les meves contribucions abans de l’inici de sessió
 MenuItem-Issues: Problemes
 MenuItem-Stats: Estadístiques
+Message-CongratsSuccessfullyReverted: 'Felicitats! heu revertit correctament directament {0}.'
 Message-DiffNotAvailable: >-
   L'article dif de Wikipedia no està disponible temporalment. Podeu provar de
   tornar-lo a carregar. De vegades es podia eliminar una revisió vandalitzada.
   Podeu consultar l’historial de pàgines.
+Message-FeedHasNoNewRevisionsClickNextBelow: 'El feed {0} no té cap revisió nova, feu clic a continuació a continuació.'
 Message-Login: >-
   Sabeu que podríeu iniciar la sessió i conservar les vostres etiquetes sota el
   vostre nom? Admetem la sessió amb compte de Wikipedia mitjançant Oauth.
@@ -49,11 +79,17 @@ Message-NameVoteAnnouncement: >-
   Benvolgut col·laborador, realitzem una votació per a un nou nom en substitució
   del "Camp de batalla de WikiLoop" que finalitza el 13 de juliol de 2020 a les
   00:00 UTC. Vota si us plau.
+Message-NoActiveUsersPleaseStartReview: >-
+  No hi ha usuaris actius durant els darrers 15 minuts. Comenceu {0} a revisar
+  les revisions {1} i convertiu-vos en la primera.
 Message-Prompt-Login: >-
   Sabeu que podríeu iniciar la sessió i preservar les vostres contribucions al
   vostre nom? Admetem l’accés amb el compte de Wikipedia mitjançant Oauth.
 Message-RevertEditSummary: >-
   Identificat com a prova / vandalisme mitjançant {0} versió {1}. Vegeu-la o
   proporcioneu la vostra opinió a {2}
+Message-SorryWeFailedToRevert: 'Ho sentim, no hem pogut revertir la revisió {0}.'
+Message-TheRevisionIsSuccessfullyRevertedAs: 'La revisió {0} es reverteix correctament com a {1}.'
 Message-ThereIsNoEditSummary: No hi ha cap resum d’edició.
-Label-None: Cap
+Message-YourJudgementLogged: 'S''ha registrat el vostre judici sobre {0} per a la revisió {1}.'
+Message-AJudgementLogged: 'S''ha registrat un judici de {0} per a la revisió {1}.'

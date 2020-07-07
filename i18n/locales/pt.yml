@@ -5,43 +5,73 @@ Button-OpenedUrlToRevert: Aberto URL para desfazer
 Button-RevertNow: Desfazer agora
 Button-ShowJudgements: Mostrar julgamentos
 Button-Undo: Desfazer
+Label-1Month: 1 mês (30d)
+Label-1Quarter: 1 quarto (90d)
+Label-1Year: 1 ano (365d)
+Label-1day: 1 dia
+Label-1week: 1 semana (7d)
+Label-ActiveUsers: Usuários ativos
+Label-AllTime: Tempo todo
 Label-Anonymous: Anônimo
 Label-ArtificialIntelligence: Inteligência artificial
 Label-Author: Autor
+Label-CountOfJudgements: Contagem
+Label-Day: Dia
+Label-DiffView: Diff View
 Label-DirectRevertFailed: Houve uma falha ao desfazer diretamente
 Label-DirectReverted: Desfazer diretamente
 Label-EditSummary: Resumo da edição
 Label-EditedAt: editado
+Label-Feed: Alimentação
+Label-History: História
 Label-HumanEditors: Editores humanos
 Label-Judgement: Julgamento
+Label-LastActiveTime: ativo pela última vez
 Label-Loading: Carregando
 Label-Login: Entrar
 Label-Logout: Sair
 Label-Looks-Good: Parece bom
 Label-LooksGood: Parece bom
 Label-Me: Eu
+Label-Month: Mês
+Label-My-History: Minha história
+Label-NewJudgement: Novo julgamento
+Label-None: Nenhum
 Label-Not-Sure: Não tenho certeza
 Label-NotSure: Não tenho certeza
 Label-OresBadfaith: ORES Badfaith
 Label-OresDamaging: ORES Danificando
 Label-Overriden: Substituído
 Label-Prompt-Login: Conecte-se
+Label-Rank: Classificação
+Label-Reason: Razão
+Label-Result: Resultado
+Label-RevertSucceeded: A reversão foi bem-sucedida!
 Label-ReviewFeed: Revisar Feed
+Label-ReviewedAndSays: 'revisou {0} e diz'
 Label-Should-Revert: Deve reverter
 Label-ShouldRevert: Deveria ser desfeito
 Label-Snooze: Soneca
 Label-Someone: Alguém
 Label-Time: Tempo
+Label-TopNumberAnonymousUsers: 'Principais {0} usuários anônimos'
+Label-TopUsers: Usuários principais
+Label-TopWikis: Principais Wikis
+Label-TotalNumber: Total
 Label-User: Do utilizador
+Label-Week: Semana
+Label-YourJudgement: Seu julgamento
 MenuItem-Code: Código
 MenuItem-Contributions: Minhas contribuições
 MenuItem-ContributionsBeforeLogin: Minhas contribuições antes de entrar
 MenuItem-Issues: Problemas
 MenuItem-Stats: Estatísticas
+Message-CongratsSuccessfullyReverted: 'Parabéns! você reverteu diretamente {0}.'
 Message-DiffNotAvailable: >-
   O dif do artigo da Wikipédia está temporariamente indisponível. Pode tentar
   recarregá-lo.   Às vezes uma revisão vandalizada pode ser eliminada. Pode
   conferir o histórico da página.
+Message-FeedHasNoNewRevisionsClickNextBelow: 'O feed {0} não tem novas revisões, clique no próximo abaixo.'
 Message-Login: >-
   Você sabia que poderia fazer login e preservar seus rótulos em seu nome?
   Apoiamos o login com a conta da Wikipedia através de Oauth.
@@ -51,11 +81,17 @@ Message-NameVoteAnnouncement: >-
   UTC. 
 
   Por favor vote.
+Message-NoActiveUsersPleaseStartReview: >-
+  Nenhum usuário ativo nos últimos 15 minutos. Comece {0} revisando as revisões
+  {1} e torne-se o primeiro.
 Message-Prompt-Login: >-
   Você sabia que poderia fazer login e preservar suas contribuições em seu nome?
   Apoiamos o login com a conta da Wikipedia através do Oauth.
 Message-RevertEditSummary: >-
   Identificado como um teste/vandalismo utilizando {0} versão {1}. Ver ou deixar
   sua opinião em {2}
+Message-SorryWeFailedToRevert: 'Desculpe, não foi possível reverter a revisão {0}.'
+Message-TheRevisionIsSuccessfullyRevertedAs: 'A revisão {0} foi revertida com sucesso como {1}.'
 Message-ThereIsNoEditSummary: Não há resumo de edição.
-Label-None: Nenhum
+Message-YourJudgementLogged: 'Seu julgamento de {0} para a revisão {1} foi registrado.'
+Message-AJudgementLogged: 'Um julgamento para {0} para a revisão {1} foi registrado.'

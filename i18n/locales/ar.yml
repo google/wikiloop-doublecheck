@@ -5,53 +5,89 @@ Button-OpenedUrlToRevert: تم فتح عنوان URL للعودة
 Button-RevertNow: العودة الآن
 Button-ShowJudgements: أظهر الأحكام
 Button-Undo: الغاء التحميل
+Label-1Month: شهر واحد (30 يومًا)
+Label-1Quarter: 1 ربع (90 د)
+Label-1Year: سنة واحدة (365 د)
+Label-1day: يوم 1
+Label-1week: 1 week (7d)
+Label-ActiveUsers: المستخدمين النشطين
+Label-AllTime: كل الوقت
 Label-Anonymous: مجهول
 Label-ArtificialIntelligence: الذكاء الاصطناعي
 Label-Author: مؤلف
+Label-CountOfJudgements: العد
+Label-Day: يوم
+Label-DiffView: عرض الاختلاف
 Label-DirectRevertFailed: فشل التراجع المباشر
 Label-DirectReverted: عادت مباشرة
 Label-EditSummary: تحرير الملخص
 Label-EditedAt: تم تحريره
+Label-Feed: تغذية
+Label-History: التاريخ
 Label-HumanEditors: المحررين البشريين
 Label-Judgement: حكم
+Label-LastActiveTime: آخر نشاط
 Label-Loading: جار التحميل
 Label-Login: تسجيل الدخول
 Label-Logout: تسجيل خروج
 Label-Looks-Good: تبدو جيدا
 Label-LooksGood: تبدو جيدا
 Label-Me: أنا
+Label-Month: شهر
+Label-My-History: تاريخي
+Label-NewJudgement: حكم جديد
+Label-None: لا يوجد
 Label-Not-Sure: غير متأكد
 Label-NotSure: غير متأكد
 Label-OresBadfaith: ORES بادفيث
 Label-OresDamaging: تلف ORES
 Label-Overriden: تم تجاوزه
 Label-Prompt-Login: تسجيل الدخول
+Label-Rank: مرتبة
+Label-Reason: السبب
+Label-Result: نتيجة
+Label-RevertSucceeded: نجحت العودة!
 Label-ReviewFeed: مراجعة الخلاصة
+Label-ReviewedAndSays: 'راجعت {0} وتقول'
 Label-Should-Revert: يجب العودة
 Label-ShouldRevert: يجب العودة
 Label-Snooze: غفوة
 Label-Someone: شخصا ما
 Label-Time: زمن
+Label-TopNumberAnonymousUsers: 'أفضل {0} مستخدمين مجهولين'
+Label-TopUsers: كبار المستخدمين
+Label-TopWikis: أعلى الويكي
+Label-TotalNumber: مجموع
 Label-User: المستعمل
+Label-Week: أسبوع
+Label-YourJudgement: حكمك
 MenuItem-Code: الشفرة
 MenuItem-Contributions: مساهماتي
 MenuItem-ContributionsBeforeLogin: مساهماتي قبل تسجيل الدخول
 MenuItem-Issues: مسائل
 MenuItem-Stats: الإحصائيات
+Message-CongratsSuccessfullyReverted: 'مبروك! لقد نجحت في العودة مباشرةً {0}.'
 Message-DiffNotAvailable: >-
   مقال ويكيبيديا غير متاح مؤقتًا. يمكنك محاولة إعادة تحميله. في بعض الأحيان يمكن
   حذف مراجعة مخربة. يمكنك التحقق من تاريخ الصفحة.
+Message-FeedHasNoNewRevisionsClickNextBelow: 'الخلاصة {0} لا تحتوي على مراجعات جديدة ، انقر فوق التالي أدناه.'
 Message-Login: >-
   هل تعلم أنه يمكنك تسجيل الدخول والحفاظ على التسميات الخاصة بك تحت اسمك؟ نحن
   ندعم تسجيل الدخول باستخدام حساب Wikipedia من خلال Oauth.
 Message-NameVoteAnnouncement: >-
   عزيزي المساهم ، سنجري تصويتًا على اسم جديد يحل محل "WikiLoop Battlefield"
   ينتهي في 13 يوليو 2020 الساعة 00:00 بالتوقيت العالمي المنسق. الرجاء التصويت.
+Message-NoActiveUsersPleaseStartReview: >-
+  لا يوجد مستخدمون نشطون في آخر 15 دقيقة. ابدأ {0} مراجعة المراجعات {1} وكن
+  الأول.
 Message-Prompt-Login: >-
   هل تعلم أنه يمكنك تسجيل الدخول والحفاظ على مساهماتك تحت اسمك؟ نحن ندعم تسجيل
   الدخول باستخدام حساب Wikipedia من خلال Oauth.
 Message-RevertEditSummary: >-
   تم تحديده على أنه اختبار / تخريب باستخدام {0} الإصدار {1}. شاهده أو قدم رأيك
   في {2}
+Message-SorryWeFailedToRevert: 'عذرًا ، فشلنا في التراجع عن المراجعة {0}.'
+Message-TheRevisionIsSuccessfullyRevertedAs: 'تمت مراجعة النسخة {0} بنجاح على أنها {1}.'
 Message-ThereIsNoEditSummary: لا يوجد ملخص تحرير.
-Label-None: لا يوجد
+Message-YourJudgementLogged: 'تم تسجيل حكمك على {0} للمراجعة {1}.'
+Message-AJudgementLogged: 'تم تسجيل حكم {0} للمراجعة {1}.'

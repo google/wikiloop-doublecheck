@@ -15,11 +15,11 @@
 -->
 <template>
   <section>
-    <h1>Active Users</h1>
+    <h1>{{$t('Label-ActiveUsers')}}</h1>
     <table v-if="$store.state.metrics.activeLoggedInUser.length || $store.state.metrics.activeAnonymousUser.length" class="table table-bordered" >
       <thead>
-        <th>User</th>
-        <th>Last Active</th>
+        <th>{{$t('Label-User')}}</th>
+        <th>{{$t('Label-LastActiveTime')}}</th>
       </thead>
       <tbody>
         <tr v-for="(client, index) of $store.state.metrics.activeLoggedInUser">
@@ -27,7 +27,7 @@
             <router-link :to="`/marked/?wikiUserName=${client.wikiUserName}`" replace>
               <object class="avatar-object" v-bind:data="`/api/avatar/${client.wikiUserName}`" >
               </object><span>{{client.wikiUserName}} </span>
-              <span v-if="isMe(client)">(Me)</span>
+              <span v-if="isMe(client)">({{$t('Label-Me')}})</span>
             </router-link>
           </td>
           <td scope="col"><timeago :datetime="new Date(client.lastActive*1000)"></timeago></td>
@@ -36,8 +36,8 @@
           <td scope="col">
             <router-link :to="`/marked/?userGaId=${client.userGaId}`" replace>
               <object class="avatar-object" v-bind:data="`/api/avatar/${client.userGaId}`" >
-              </object><span>Anonymous </span>
-              <span v-if="isMe(client)">(Me)</span>
+              </object><span>{{$t('Label-Anonymous')}} </span>
+              <span v-if="isMe(client)">({{$t('Label-Me')}})</span>
             </router-link>
           </td>
           <td scope="col"><timeago :datetime="new Date(client.lastActive*1000)"></timeago></td>
@@ -45,7 +45,7 @@
       </tbody>
     </table>
     <h2 v-else><br/>:(<br/></h2>
-    <p>No active users in last 15min. Start <a class="btn btn-outline-primary" href="/">reviewing revisions</a> and become the first one.</p>
+    <p>{{$t('Message-NoActiveUsersPleaseStartReview', [`<a class="btn btn-outline-primary" href="/">`, `</a>`])}}</p>
   </section>
 </template>
 <script lang="ts">

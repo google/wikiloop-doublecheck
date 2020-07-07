@@ -5,44 +5,74 @@ Button-OpenedUrlToRevert: כתובת אתר נפתחה להחזרה
 Button-RevertNow: חזור עכשיו
 Button-ShowJudgements: הראו פסקי דין
 Button-Undo: לבטל
+Label-1Month: חודש (30 ד)
+Label-1Quarter: רבע 1 (90 ד)
+Label-1Year: שנה אחת (365d)
+Label-1day: יום 1
+Label-1week: שבוע (7 ד)
+Label-ActiveUsers: משתמשים פעילים
+Label-AllTime: כל הזמן
 Label-Anonymous: בעילום שם
 Label-ArtificialIntelligence: בינה מלאכותית
 Label-Author: מְחַבֵּר
+Label-CountOfJudgements: לספור
+Label-Day: יְוֹם
+Label-DiffView: דיף נוף
 Label-DirectRevertFailed: הפעלה ישירה נכשלה
 Label-DirectReverted: ישירות הושבה
 Label-EditSummary: ערוך סיכום
 Label-EditedAt: עָרוּך
+Label-Feed: הזנה
+Label-History: הִיסטוֹרִיָה
 Label-HumanEditors: עורכים אנושיים
 Label-Judgement: פְּסַק דִין
+Label-LastActiveTime: פעיל אחרון
 Label-Loading: טעינה
 Label-Login: התחברות
 Label-Logout: להתנתק
 Label-Looks-Good: נראה טוב
 Label-LooksGood: נראה טוב
 Label-Me: לִי
+Label-Month: חוֹדֶשׁ
+Label-My-History: ההיסטוריה שלי
+Label-NewJudgement: פסק דין חדש
+Label-None: אף אחד
 Label-Not-Sure: לא בטוח
 Label-NotSure: לא בטוח
 Label-OresBadfaith: אורס בדפית '
 Label-OresDamaging: אורס פוגע
 Label-Overriden: עקף
 Label-Prompt-Login: התחברות
+Label-Rank: דַרגָה
+Label-Reason: סיבה
+Label-Result: תוֹצָאָה
+Label-RevertSucceeded: Revert הצליח!
 Label-ReviewFeed: סקור עדכון
+Label-ReviewedAndSays: 'בדק את {0} ואומר'
 Label-Should-Revert: צריך לחזור
 Label-ShouldRevert: צריך לחזור
 Label-Snooze: נִמנוּם
 Label-Someone: מִישֶׁהוּ
 Label-Time: זְמַן
+Label-TopNumberAnonymousUsers: '{0} משתמשים אנונימיים מובילים'
+Label-TopUsers: משתמשים מובילים
+Label-TopWikis: ויקיסיות מובילות
+Label-TotalNumber: סה"כ
 Label-User: מִשׁתַמֵשׁ
+Label-Week: שָׁבוּעַ
+Label-YourJudgement: פסק הדין שלך
 MenuItem-Code: קוד
 MenuItem-Contributions: התרומות שלי
 MenuItem-ContributionsBeforeLogin: התרומות שלי לפני הכניסה
 MenuItem-Issues: נושאים
 MenuItem-Stats: נתונים סטטיסטיים
+Message-CongratsSuccessfullyReverted: 'מזל טוב! חזרת בהצלחה ישירות {0}.'
 Message-DiffNotAvailable: |-
   המאמר של הוויקיפדיה אינו זמין באופן זמני. 
   אתה יכול לנסות לטעון אותו מחדש. 
   לפעמים ניתן למחוק עדכון מושחת. 
   אתה יכול לבדוק את היסטוריית הדפים.
+Message-FeedHasNoNewRevisionsClickNextBelow: 'בעדכון {0} אין עדכונים חדשים, לחץ על הבא למטה.'
 Message-Login: >-
   האם אתה יודע שתוכל להתחבר ולשמור את התוויות שלך תחת שמך? אנו תומכים בכניסה
   לחשבון ויקיפדיה דרך Oauth.
@@ -51,11 +81,17 @@ Message-NameVoteAnnouncement: >-
   -13 ביולי, 2020 00:00 UTC. 
 
   אנא הצבע.
+Message-NoActiveUsersPleaseStartReview: >-
+  אין משתמשים פעילים ב -15 הדקות האחרונות. התחל {0} לבדוק גרסאות {1} והפוך
+  לראשון.
 Message-Prompt-Login: >-
   האם אתה יודע שתוכל להתחבר ולשמור את התרומות שלך תחת שמך? אנו תומכים בכניסה
   לחשבון ויקיפדיה דרך Oauth.
 Message-RevertEditSummary: |-
   זוהה כמבחן / השחתה באמצעות {0} גרסה {1}. 
   ראה אותו או ספק את דעתך ב {2}
+Message-SorryWeFailedToRevert: 'מצטערים, לא הצלחנו להחזיר את המהדורה {0}.'
+Message-TheRevisionIsSuccessfullyRevertedAs: 'המהפכה {0} מבוטלת בהצלחה בתור {1}.'
 Message-ThereIsNoEditSummary: אין סיכום עריכה.
-Label-None: אף אחד
+Message-YourJudgementLogged: 'פסק הדין שלך לגבי {0} לתיקון {1} נרשם.'
+Message-AJudgementLogged: 'נפסק פסק דין ל {0} לתיקון {1}.'

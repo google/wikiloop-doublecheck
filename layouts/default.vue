@@ -179,15 +179,15 @@
         try {
             if (interaction.newJudgement.userGaId === this.$cookiez.get('_ga')) {
                 this.$bvToast.toast(
-                    `Your judgement for ${interaction.recentChange.title} for revision ${interaction.wikiRevId} has been logged.`, {
-                        title: 'Your Judgement',
+                    this.$t('Message-YourJudgementLogged', [interaction.recentChange.title, interaction.wikiRevId]), {
+                        title: this.$t('Label-YourJudgement'),
                         //autoHideDelay: 3000,
                         appendToast: true
                     });
             } else {
                 this.$bvToast.toast(
-                    `A judgement for ${interaction.recentChange.title} for revision ${interaction.wikiRevId} has been logged.`, {
-                        title: 'New Judgement',
+                    this.$t('Message-AJudgementLogged', [interaction.recentChange.title, interaction.wikiRevId]), {
+                        title: this.$t('Label-NewJudgement'),
                         //autoHideDelay: 3000,
                         appendToast: true
                     });
@@ -199,14 +199,14 @@
         socket.on('interaction-item', async (interaction: InteractionItem) => {
             if (interaction.userGaId === this.$cookiez.get('_ga')) {
                 this.$bvToast.toast(
-                    `Your judgement for ${interaction.title} for revision ${interaction.wikiRevId} has been logged.`, {
-                        title: 'Your Judgement',
+                    this.$t('Message-YourJudgementLogged', [interaction.title, interaction.wikiRevId]), {
+                        title: this.$t('Label-YourJudgement'),
                         //autoHideDelay: 3000,
                         appendToast: true
                     });
             } else {
                 this.$bvToast.toast(
-                    `A judgement for ${interaction.title} for revision ${interaction.wikiRevId} has been logged.`, {
+                    this.$t('Message-AJudgementLogged', [interaction.title, interaction.wikiRevId]), {
                         title: 'New Judgement',
                         //autoHideDelay: 3000,
                         appendToast: true

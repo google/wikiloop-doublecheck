@@ -18,8 +18,8 @@
 
   <section>
     <div class="container small-screen-padding" style="margin-top:80px">
-      <h4 v-if="$router.history.current.query.userGaId === $cookiez.get('_ga')">My History</h4>
-      <h4 v-else >History</h4>
+      <h4 v-if="$router.history.current.query.userGaId === $cookiez.get('_ga')">{{$t('Label-My-History')}}</h4>
+      <h4 v-else >{{$t('Label-History')}}</h4>
       <div v-for="wikiRevId of wikiRevIds"
            v-bind:key="wikiRevId"
            class="col-12 p-2"
@@ -33,7 +33,7 @@
       </div>
       <div class="col-12 p-2" v-if="!isEnd && loading">
         <div class="spinner-border" role="status">
-          <span class="sr-only">Loading...</span>
+          <span class="sr-only">{{$t('Label-Loading')}}...</span>
         </div>
       </div>
     </div>

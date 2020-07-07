@@ -22,12 +22,12 @@
           <div class="flex-grow-1">
             [[<a :href="wikiPageUrl" target="_blank">{{ item.title }}</a>]]
             <sup><a v-bind:href="diffUrl" target="_blank">
-              <small>rev.{{item.revId}}</small>
+              <small>rev.{{item.revId}} <!-- no translation, specific term --></small>
             </a></sup>
           </div>
           <div class="ml-2"><a :href="permUrl"><i class="fas fa-link"></i></a></div>
         </div>
-        <div v-if="feedName"><small><span class="badge badge-success">{{feedName}} feed</span></small></div>
+        <div v-if="feedName"><small><span class="badge badge-success">{{feedName}} feed<!-- no translation, specific term --></span></small></div>
       </h5>
       <div class="card-subtitle mb-2 text-muted">
         <div class="row">
@@ -42,7 +42,7 @@
 
       <div class="card-text w-100 pl-sm-0 mb-3">
         <template  v-if="item.diffHtml">
-          <h5 class="w-100">Diff View</h5>
+          <h5 class="w-100">{{$t('Label-DiffView')}}</h5>
           <diff-box v-bind:diffContent="item.diffHtml"/>
         </template>
         <template v-else>

@@ -2,7 +2,7 @@
   <section>
     <div v-if="loading">
       <div class="spinner-border" role="status">
-        <span class="sr-only">Loading...</span>
+        <span class="sr-only">{{$t('Label-Loading')}}...</span>
       </div>
     </div>
     <template v-else>
@@ -10,7 +10,7 @@
       <div class="card-body">
         <div class="d-flex">
         <user-avatar-with-name :wikiUserName="item.wikiUserName" :userGaId="item.userGaId"></user-avatar-with-name>
-        <div style="line-height: 32px">reviewed {{item.wikiRevId}} and says
+        <div style="line-height: 32px">{{$t('Label-ReviewedAndSays', item.wikiRevId)}}
         <span :class="['badge', {
           'badge-success': item.judgement === 'LooksGood',
           'badge-secondary': item.judgement === 'NotSure',

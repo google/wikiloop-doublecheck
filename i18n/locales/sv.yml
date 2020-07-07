@@ -5,54 +5,90 @@ Button-OpenedUrlToRevert: Öppnad URL för att återgå
 Button-RevertNow: Gå tillbaka nu
 Button-ShowJudgements: Visa domar
 Button-Undo: Ångra
+Label-1Month: 1 månad (30d)
+Label-1Quarter: 1 kvartal (90d)
+Label-1Year: 1 år (365d)
+Label-1day: 1 dag
+Label-1week: 1 vecka (7d)
+Label-ActiveUsers: Aktiva användare
+Label-AllTime: Hela tiden
 Label-Anonymous: Anonym
 Label-ArtificialIntelligence: Artificiell intelligens
 Label-Author: Författare
+Label-CountOfJudgements: Räkna
+Label-Day: Dag
+Label-DiffView: Diff View
 Label-DirectRevertFailed: Direkt återgång misslyckades
 Label-DirectReverted: Direkt tillbaka
 Label-EditSummary: Redigera sammanfattningen
 Label-EditedAt: redigerad
+Label-Feed: Utfodra
+Label-History: Historia
 Label-HumanEditors: Mänskliga redaktörer
 Label-Judgement: Dom
+Label-LastActiveTime: Senast aktiv
 Label-Loading: Läser in
 Label-Login: Logga in
 Label-Logout: Logga ut
 Label-Looks-Good: Ser bra ut
 Label-LooksGood: Ser bra ut
 Label-Me: Mig
+Label-Month: Månad
+Label-My-History: Min historia
+Label-NewJudgement: Ny dom
+Label-None: Ingen
 Label-Not-Sure: Vet inte
 Label-NotSure: Vet inte
 Label-OresBadfaith: ORES Badfaith
 Label-OresDamaging: ORES skadar
 Label-Overriden: åsido
 Label-Prompt-Login: Logga in
+Label-Rank: Rang
+Label-Reason: Anledning
+Label-Result: Resultat
+Label-RevertSucceeded: Återvänd lyckades!
 Label-ReviewFeed: Granska Feed
+Label-ReviewedAndSays: 'granskade {0} och säger'
 Label-Should-Revert: Bör återgå
 Label-ShouldRevert: Bör återgå
 Label-Snooze: Snooze
 Label-Someone: Någon
 Label-Time: Tid
+Label-TopNumberAnonymousUsers: 'Topp {0} Anonyma användare'
+Label-TopUsers: Toppanvändare
+Label-TopWikis: Topp Wikis
+Label-TotalNumber: Total
 Label-User: Användare
+Label-Week: Vecka
+Label-YourJudgement: Din dom
 MenuItem-Code: Koda
 MenuItem-Contributions: Mina bidrag
 MenuItem-ContributionsBeforeLogin: Mina bidrag innan inloggning
 MenuItem-Issues: frågor
 MenuItem-Stats: stats
+Message-CongratsSuccessfullyReverted: 'grattis! har du lyckats återgå direkt {0}.'
 Message-DiffNotAvailable: >-
   Wikipedia-artikeln diff är tillfälligt inte tillgänglig. Du kan försöka ladda
   den igen. Ibland kan en vandaliserad revision tas bort. Du kan kontrollera
   sidhistoriken.
+Message-FeedHasNoNewRevisionsClickNextBelow: 'Feed {0} har inga nya versioner, klicka på nästa nedan.'
 Message-Login: >-
   Vet du att du kan logga in och bevara dina etiketter under ditt namn? Vi
   stöder inloggning med Wikipedia-konto via Oauth.
 Message-NameVoteAnnouncement: >-
   Kära bidragsgivare, vi röstar om ett nytt namn som ersätter "WikiLoop
   Battlefield" som slutar den 13 juli 2020 00:00 UTC. Vänligen rösta.
+Message-NoActiveUsersPleaseStartReview: >-
+  Inga aktiva användare under de senaste 15 min. Börja {0} granska revisioner
+  {1} och bli den första.
 Message-Prompt-Login: >-
   Vet du att du kan logga in och bevara dina bidrag under ditt namn? Vi stöder
   inloggning med Wikipedia-konto via Oauth.
 Message-RevertEditSummary: >-
   Identifieras som test / vandalism med {0} version {1}. Se det eller ge din
   åsikt på {2}
+Message-SorryWeFailedToRevert: 'Vi kunde tyvärr inte återställa revisionen {0}.'
+Message-TheRevisionIsSuccessfullyRevertedAs: 'Revisionen {0} har återgått till {1}.'
 Message-ThereIsNoEditSummary: Det finns ingen redigeringsöversikt.
-Label-None: Ingen
+Message-YourJudgementLogged: 'Din bedömning för {0} för revision {1} har loggats.'
+Message-AJudgementLogged: 'En dom för {0} för revision {1} har loggats.'

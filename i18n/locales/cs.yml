@@ -5,54 +5,90 @@ Button-OpenedUrlToRevert: Otevřená adresa URL pro vrácení
 Button-RevertNow: Vrátit nyní
 Button-ShowJudgements: Zobrazit soudy
 Button-Undo: vrátit
+Label-1Month: 1 měsíc (30d)
+Label-1Quarter: 1 čtvrtina (90 d)
+Label-1Year: 1 rok (365 d)
+Label-1day: 1 den
+Label-1week: 1 týden (7d)
+Label-ActiveUsers: Aktivní uživatelé
+Label-AllTime: Pořád
 Label-Anonymous: Anonymní
 Label-ArtificialIntelligence: Umělá inteligence
 Label-Author: Autor
+Label-CountOfJudgements: Počet
+Label-Day: Den
+Label-DiffView: Diff View
 Label-DirectRevertFailed: Přímé vrácení selhalo
 Label-DirectReverted: Přímo se vrátil
 Label-EditSummary: Upravit shrnutí
 Label-EditedAt: upraveno
+Label-Feed: Krmit
+Label-History: Dějiny
 Label-HumanEditors: Lidští editoři
 Label-Judgement: Rozsudek
+Label-LastActiveTime: poslední aktivní
 Label-Loading: načítání
 Label-Login: Přihlásit se
 Label-Logout: Odhlásit se
 Label-Looks-Good: Vypadá dobře
 Label-LooksGood: Vypadá dobře
 Label-Me: Mě
+Label-Month: Měsíc
+Label-My-History: Moje historie
+Label-NewJudgement: Nový soud
+Label-None: Žádný
 Label-Not-Sure: Nejsem si jistý
 Label-NotSure: Nejsem si jistý
 Label-OresBadfaith: ORES Badfaith
 Label-OresDamaging: Poškození ORES
 Label-Overriden: Přepsáno
 Label-Prompt-Login: Přihlásit se
+Label-Rank: Hodnost
+Label-Reason: Důvod
+Label-Result: Výsledek
+Label-RevertSucceeded: Vrácení bylo úspěšné!
 Label-ReviewFeed: Zkontrolujte zdroj
+Label-ReviewedAndSays: 'zkontrolováno {0} a říká'
 Label-Should-Revert: Měl by se vrátit
 Label-ShouldRevert: Měl by se vrátit
 Label-Snooze: Podřimovat
 Label-Someone: Někdo
 Label-Time: Čas
+Label-TopNumberAnonymousUsers: 'Top {0} anonymních uživatelů'
+Label-TopUsers: Hlavní uživatelé
+Label-TopWikis: Nejlepší Wikis
+Label-TotalNumber: Celkový
 Label-User: Uživatel
+Label-Week: Týden
+Label-YourJudgement: Váš soud
 MenuItem-Code: Kód
 MenuItem-Contributions: Moje příspěvky
 MenuItem-ContributionsBeforeLogin: Moje příspěvky před přihlášením
 MenuItem-Issues: Problémy
 MenuItem-Stats: Statistiky
+Message-CongratsSuccessfullyReverted: 'Gratuluji! úspěšně jste se vrátili přímo {0}.'
 Message-DiffNotAvailable: >-
   Článek wikipedia diff není dočasně k dispozici. Můžete to zkusit znovu načíst.
   Někdy může být vandalizovaná revize odstraněna. Můžete zkontrolovat historii
   stránky.
+Message-FeedHasNoNewRevisionsClickNextBelow: 'Zdroj {0} nemá žádné nové revize, klikněte níže.'
 Message-Login: >-
   Víte, že byste se mohli přihlásit a zachovat své štítky pod svým jménem?
   Podporujeme přihlášení pomocí účtu Wikipedia prostřednictvím Oauth.
 Message-NameVoteAnnouncement: >-
   Vážený přispěvateli, hlasujeme pro nové jméno nahrazující „WikiLoop
   Battlefield“ končící 13. července 2020 00:00 UTC. Hlasujte prosím.
+Message-NoActiveUsersPleaseStartReview: >-
+  Žádní aktivní uživatelé za posledních 15 minut. Začněte {0} revize revizí {1}
+  a staňte se první.
 Message-Prompt-Login: >-
   Víte, že byste se mohli přihlásit a zachovat své příspěvky pod svým jménem?
   Podporujeme přihlášení pomocí účtu Wikipedia prostřednictvím Oauth.
 Message-RevertEditSummary: >-
   Identifikováno jako test / vandalismus pomocí {0} verze {1}. Podívejte se na
   to nebo poskytněte svůj názor na {2}
+Message-SorryWeFailedToRevert: 'Litujeme, nepodařilo se nám vrátit revizi {0}.'
+Message-TheRevisionIsSuccessfullyRevertedAs: 'Revize {0} je úspěšně vrácena jako {1}.'
 Message-ThereIsNoEditSummary: Neexistuje žádné shrnutí úprav.
-Label-None: Žádný
+Message-YourJudgementLogged: 'Váš úsudek o {0} revizi {1} byl zaznamenán.'
+Message-AJudgementLogged: 'Byl zaznamenán rozsudek pro {0} pro revizi {1}.'

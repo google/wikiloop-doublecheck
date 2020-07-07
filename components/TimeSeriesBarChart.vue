@@ -4,18 +4,18 @@
                    @click.native.stop=''
                    v-model="breakdownBy"
                    v-on:change="createSvg()">
-      <option :value="null">None</option>
-      <option :value="`judgement`">Judgement</option>
-      <option :value="`feed`">Feed</option>
+      <option :value="null">{{$t('Label-None')}}</option>
+      <option :value="`judgement`">{{$t('Label-Judgement')}}</option>
+      <option :value="`feed`">{{$t('Label-Feed')}}</option>
     </b-form-select>
 
     <b-form-select class="mt-4"
                    @click.native.stop=''
                    v-model="granularity"
                    v-on:change="createSvg()">
-      <option :value="`month`">Month</option>
-      <option :value="`week`">Week</option>
-      <option :value="`day`">Day</option>
+      <option :value="`month`">{{$t('Label-Month')}}</option>
+      <option :value="`week`">{{$t('Label-Week')}}</option>
+      <option :value="`day`">{{$t('Label-Day')}}</option>
     </b-form-select>
     <canvas id="myChart" class="w-100" style="height:400px"></canvas>
   </section>

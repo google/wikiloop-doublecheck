@@ -5,43 +5,73 @@ Button-OpenedUrlToRevert: Otwarty URL do odwrócenia
 Button-RevertNow: Revert now
 Button-ShowJudgements: Pokaż osądy
 Button-Undo: Cofnij
+Label-1Month: 1 miesiąc (30 dni)
+Label-1Quarter: 1 kwartał (90d)
+Label-1Year: 1 rok (365d)
+Label-1day: 1 dzień
+Label-1week: 1 tydzień (7 dni)
+Label-ActiveUsers: Aktywni użytkownicy
+Label-AllTime: Cały czas
 Label-Anonymous: Anonimowy
 Label-ArtificialIntelligence: Sztuczna inteligencja
 Label-Author: Autor
+Label-CountOfJudgements: Liczyć
+Label-Day: Dzień
+Label-DiffView: Zróżnicowany widok
 Label-DirectRevertFailed: Bezpośredni odwrót nie powiódł się
 Label-DirectReverted: Bezpośrednie cofnięcie
 Label-EditSummary: Edytuj streszczenie
 Label-EditedAt: edytowane
+Label-Feed: Karmić
+Label-History: Historia
 Label-HumanEditors: Redaktorzy ludzcy
 Label-Judgement: Osąd
+Label-LastActiveTime: Ostatnio aktywny
 Label-Loading: Ładowanie
 Label-Login: Zaloguj sie
 Label-Logout: Wyloguj
 Label-Looks-Good: Wygląda dobrze
 Label-LooksGood: Wygląda dobrze
 Label-Me: Ja
+Label-Month: Miesiąc
+Label-My-History: Moja historia
+Label-NewJudgement: Nowy wyrok
+Label-None: Żaden
 Label-Not-Sure: Niepewny
 Label-NotSure: Nie jestem pewien
 Label-OresBadfaith: ORES Badfaith
 Label-OresDamaging: Uszkodzenie ORES
 Label-Overriden: Zastąpione
 Label-Prompt-Login: Zaloguj sie
+Label-Rank: Ranga
+Label-Reason: Powód
+Label-Result: Wynik
+Label-RevertSucceeded: Przywrócenie powiodło się!
 Label-ReviewFeed: Przejrzyj kanał
+Label-ReviewedAndSays: 'sprawdził {0} i mówi'
 Label-Should-Revert: Powinien powrócić
 Label-ShouldRevert: Powinien się odwrócić
 Label-Snooze: Drzemka
 Label-Someone: Ktoś
 Label-Time: Czas
+Label-TopNumberAnonymousUsers: 'Najlepsi anonimowi użytkownicy {0}'
+Label-TopUsers: Najlepsi użytkownicy
+Label-TopWikis: Najlepsze strony wiki
+Label-TotalNumber: Całkowity
 Label-User: Użytkownik
+Label-Week: Tydzień
+Label-YourJudgement: Twój osąd
 MenuItem-Code: Kod
 MenuItem-Contributions: Moje składki
 MenuItem-ContributionsBeforeLogin: Mój wkład przed zalogowaniem
 MenuItem-Issues: Zagadnienia
 MenuItem-Stats: Statystyki
+Message-CongratsSuccessfullyReverted: 'Gratulacje! przywróciłeś bezpośrednio {0}.'
 Message-DiffNotAvailable: >-
   Artykuł w wikipedii diff jest chwilowo niedostępny. Możesz spróbować go
   przeładować. Czasami wandalizowana rewizja może zostać usunięta. Możesz
   sprawdzić historię strony.
+Message-FeedHasNoNewRevisionsClickNextBelow: 'W kanale {0} nie ma nowych wersji, kliknij przycisk Dalej poniżej.'
 Message-Login: >-
   Czy wiesz, że możesz się zalogować i zachować swoje etykiety pod swoim
   imieniem? Obsługujemy logowanie za pomocą konta Wikipedia za pośrednictwem
@@ -51,11 +81,17 @@ Message-NameVoteAnnouncement: >-
   Battlefield”, która zakończy się 13 lipca 2020 r. 00:00 UTC. 
 
   Proszę Głosuj.
+Message-NoActiveUsersPleaseStartReview: >-
+  Brak aktywnych użytkowników w ciągu ostatnich 15 minut. Rozpocznij {0}
+  przeglądając wersje {1} i zostań pierwszym.
 Message-Prompt-Login: >-
   Czy wiesz, że możesz się zalogować i zachować swoje wpisy pod swoim imieniem?
   Obsługujemy logowanie za pomocą konta Wikipedia za pośrednictwem Oauth.
 Message-RevertEditSummary: >-
   Zidentyfikowany jako test / wandalizm przy użyciu {0} wersji {1}. Zobacz to
   lub przedstaw swoją opinię na stronie {2}
+Message-SorryWeFailedToRevert: 'Niestety nie udało się przywrócić wersji {0}.'
+Message-TheRevisionIsSuccessfullyRevertedAs: 'Wersja {0} została pomyślnie przywrócona jako {1}.'
 Message-ThereIsNoEditSummary: Brak podsumowania edycji.
-Label-None: Żaden
+Message-YourJudgementLogged: 'Twoja ocena {0} dla wersji {1} została zarejestrowana.'
+Message-AJudgementLogged: 'Wyrok dla {0} dla wersji {1} został zarejestrowany.'

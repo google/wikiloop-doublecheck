@@ -17,7 +17,7 @@
 <template>
     <section>
     <div data-empty-uuid="0312d9be-c661-492b-89a1-781e36fd75b5">
-        empty page for measuring latency
+        empty page for measuring latency <!-- No transaltion, only for debugging purpose -->
     </div>
 
     </section>

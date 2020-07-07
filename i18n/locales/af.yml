@@ -5,43 +5,73 @@ Button-OpenedUrlToRevert: URL geopen om terug te keer
 Button-RevertNow: Keer nou terug
 Button-ShowJudgements: Toon uitsprake
 Button-Undo: ongedaan
+Label-1Month: 1 maand (30d)
+Label-1Quarter: 1 kwart (90d)
+Label-1Year: 1 jaar (365d)
+Label-1day: 1 dag
+Label-1week: 1 week (7d)
+Label-ActiveUsers: Aktiewe gebruikers
+Label-AllTime: Van alle tye
 Label-Anonymous: Anoniem
 Label-ArtificialIntelligence: Kunsmatige intelligensie
 Label-Author: skrywer
+Label-CountOfJudgements: tel
+Label-Day: dag
+Label-DiffView: Diff View
 Label-DirectRevertFailed: Kon nie terugkeer nie
 Label-DirectReverted: Direk teruggedraai
 Label-EditSummary: Opsomming wysig
 Label-EditedAt: geredigeerde
+Label-Feed: Voer
+Label-History: geskiedenis
 Label-HumanEditors: Menslike redakteurs
 Label-Judgement: oordeel
+Label-LastActiveTime: Laaste aktief
 Label-Loading: laai
 Label-Login: Teken aan
 Label-Logout: Teken uit
 Label-Looks-Good: Lyk goed
 Label-LooksGood: Lyk goed
 Label-Me: my
+Label-Month: maand
+Label-My-History: My geskiedenis
+Label-NewJudgement: Nuwe oordeel
+Label-None: Geen
 Label-Not-Sure: Nie seker nie
 Label-NotSure: Nie seker nie
 Label-OresBadfaith: ORES Badfaith
 Label-OresDamaging: Ertse beskadig
 Label-Overriden: geïgnoreer
 Label-Prompt-Login: Teken aan
+Label-Rank: rang
+Label-Reason: rede
+Label-Result: gevolg
+Label-RevertSucceeded: Terugkeer het geslaag!
 Label-ReviewFeed: Hersien voer
+Label-ReviewedAndSays: '{0} nagegaan en gesê'
 Label-Should-Revert: Moet terugkeer
 Label-ShouldRevert: Moet terugkeer
 Label-Snooze: Sluimer
 Label-Someone: iemand
 Label-Time: tyd
+Label-TopNumberAnonymousUsers: 'Top {0} Anonieme gebruikers'
+Label-TopUsers: Top gebruikers
+Label-TopWikis: Top Wikis
+Label-TotalNumber: totale
 Label-User: gebruiker
+Label-Week: week
+Label-YourJudgement: U oordeel
 MenuItem-Code: kode
 MenuItem-Contributions: My bydraes
 MenuItem-ContributionsBeforeLogin: My bydraes voor aanmelding
 MenuItem-Issues: kwessies
 MenuItem-Stats: statistiek
+Message-CongratsSuccessfullyReverted: 'Geluk! jy het direk {0} teruggeskakel.'
 Message-DiffNotAvailable: >-
   Die wikipedia-artikel verskil is tydelik nie beskikbaar nie. U kan dit probeer
   herlaai. Soms kan 'n gevandaliseerde hersiening verwyder word. U kan die
   bladsygeskiedenis bekyk.
+Message-FeedHasNoNewRevisionsClickNextBelow: 'Voer {0} het geen nuwe wysigings nie, klik volgende onder.'
 Message-Login: >-
   Weet u dat u kan aanmeld en u etikette onder u naam kan bewaar? Ons ondersteun
   Login met Wikipedia-rekening via Oauth.
@@ -50,11 +80,17 @@ Message-NameVoteAnnouncement: >-
   "WikiLoop Battlefield" wat eindig op 13 Julie 2020 00:00 UTC. 
 
   Stem asb.
+Message-NoActiveUsersPleaseStartReview: >-
+  Geen aktiewe gebruikers in die afgelope 15 minute nie. Begin {0} om
+  hersienings {1} te hersien en word die eerste.
 Message-Prompt-Login: >-
   Weet u dat u kan inteken en u bydraes onder u naam kan bewaar? Ons ondersteun
   login met Wikipedia-rekening via Oauth.
 Message-RevertEditSummary: >-
   Word geïdentifiseer as toets/vandalisme met behulp van {0} weergawe {1}. Sien
   dit of gee u mening by {2}
+Message-SorryWeFailedToRevert: 'Jammer, ons kon nie die hersiening {0} terugstel nie.'
+Message-TheRevisionIsSuccessfullyRevertedAs: 'Die hersiening {0} is suksesvol teruggeskakel as {1}.'
 Message-ThereIsNoEditSummary: Daar is geen wysigingsopsomming nie.
-Label-None: Geen
+Message-YourJudgementLogged: 'U oordeel vir {0} vir hersiening {1} is aangeteken.'
+Message-AJudgementLogged: '''N Vonnis van {0} vir hersiening {1} is aangeteken.'

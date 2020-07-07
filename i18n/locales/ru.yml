@@ -5,40 +5,70 @@ Button-OpenedUrlToRevert: Открытый URL для возврата
 Button-RevertNow: Вернуть сейчас
 Button-ShowJudgements: Показать суждения
 Button-Undo: Отменить
+Label-1Month: 1 месяц (30 дней)
+Label-1Quarter: 1 квартал (90 дней)
+Label-1Year: 1 год (365 дней)
+Label-1day: 1 день
+Label-1week: 1 неделя (7 дней)
+Label-ActiveUsers: Активные пользователи
+Label-AllTime: Все время
 Label-Anonymous: Анонимный
 Label-ArtificialIntelligence: Искуственный интеллект
 Label-Author: автор
+Label-CountOfJudgements: подсчитывать
+Label-Day: День
+Label-DiffView: Diff View
 Label-DirectRevertFailed: Прямой возврат не удался
 Label-DirectReverted: Прямой возврат
 Label-EditSummary: Редактировать резюме
 Label-EditedAt: Edited
+Label-Feed: Подача
+Label-History: история
 Label-HumanEditors: Человеческие редакторы
 Label-Judgement: решение
+Label-LastActiveTime: Последнее посещение
 Label-Loading: Загрузка
 Label-Login: Логин
 Label-Logout: Выход
 Label-Looks-Good: Выглядит хорошо
 Label-LooksGood: Выглядит хорошо
 Label-Me: Я
+Label-Month: Месяц
+Label-My-History: Моя история
+Label-NewJudgement: Новое суждение
+Label-None: Никто
 Label-Not-Sure: Точно сказать не могу
 Label-NotSure: Не уверен
 Label-OresBadfaith: ОРЕС Бадфейт
 Label-OresDamaging: Руды Повреждения
 Label-Overriden: Переопределенный
 Label-Prompt-Login: Авторизоваться
+Label-Rank: Ранг
+Label-Reason: причина
+Label-Result: результат
+Label-RevertSucceeded: Вернуть удалось!
 Label-ReviewFeed: Обзорная лента
+Label-ReviewedAndSays: 'просмотрел {0} и говорит'
 Label-Should-Revert: Должен вернуться
 Label-ShouldRevert: Должен вернуться
 Label-Snooze: вздремнуть
 Label-Someone: Кто-то
 Label-Time: Время
+Label-TopNumberAnonymousUsers: 'Топ {0} анонимных пользователей'
+Label-TopUsers: Топ пользователей
+Label-TopWikis: Топ Вики
+Label-TotalNumber: Общее количество
 Label-User: пользователь
+Label-Week: Неделя
+Label-YourJudgement: Ваше суждение
 MenuItem-Code: Код
 MenuItem-Contributions: Мои взносы
 MenuItem-ContributionsBeforeLogin: Мои взносы перед входом в систему
 MenuItem-Issues: вопросы
 MenuItem-Stats: Статистика
+Message-CongratsSuccessfullyReverted: 'Congrats! Вы успешно вернулись прямо {0}.'
 Message-DiffNotAvailable: Статья в Википедии отличается
+Message-FeedHasNoNewRevisionsClickNextBelow: 'Канал {0} не имеет новых ревизий, нажмите далее ниже.'
 Message-Login: >-
   Знаете ли вы, что вы можете войти и сохранить свои ярлыки под своим именем? Мы
   поддерживаем логин через Википедию через Oauth.
@@ -47,11 +77,17 @@ Message-NameVoteAnnouncement: >-
   битвы WikiLoop, заканчивающееся 13 июля 2020 года в 00:00 UTC. 
 
   Пожалуйста, проголосуйте.
+Message-NoActiveUsersPleaseStartReview: >-
+  Нет активных пользователей за последние 15 минут. Начните {0} просматривать
+  ревизии {1} и станьте первым.
 Message-Prompt-Login: >-
   Знаете ли вы, что вы можете войти и сохранить свои вклады под своим именем? Мы
   поддерживаем вход в аккаунт в Википедии через Oauth.
 Message-RevertEditSummary: >-
   Идентифицировано как тест/вандализм с использованием {0} версии {1}. Смотрите
   или высказывайте своё мнение по адресу {2}
+Message-SorryWeFailedToRevert: 'К сожалению, нам не удалось отменить ревизию {0}.'
+Message-TheRevisionIsSuccessfullyRevertedAs: 'Редакция {0} успешно восстановлена как {1}.'
 Message-ThereIsNoEditSummary: Там нет редактировать резюме.
-Label-None: Никто
+Message-YourJudgementLogged: 'Ваше суждение о {0} для ревизии {1} было зарегистрировано.'
+Message-AJudgementLogged: 'Решение для {0} для редакции {1} было зарегистрировано.'

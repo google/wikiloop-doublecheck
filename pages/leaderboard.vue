@@ -22,24 +22,24 @@
                     @click.native.stop=''
                     v-model="timeRange"
                     v-on:change="load()">
-                <option :value="null">All time</option>
-                <option :value="1">1 day</option>
-                <option :value="7">1 week (7d)</option>
-                <option :value="30">1 month (30d)</option>
-                <option :value="90">1 quarter (90d)</option>
-                <option :value="365">1 year (365d)</option>
+                <option :value="null">{{$t('Label-AllTime')}}</option>
+                <option :value="1">{{$t('Label-1day')}}</option>
+                <option :value="7">{{$t('Label-1week')}}</option>
+                <option :value="30">{{$t('Label-1Month')}}</option>
+                <option :value="90">{{$t('Label-1Quarter')}}</option>
+                <option :value="365">{{$t('Label-1Year')}}</option>
             </b-form-select>
             <div class="card mt-4">
-                <div class="card-header"><h2>Top Wikis</h2></div>
+                <div class="card-header"><h2>{{$t('Label-TopWikis')}}</h2></div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped">
                             <thead>
                             <tr>
-                                <th scope="row">Rank</th>
-                                <th>Wiki</th>
-                                <th>Count</th>
-                                <th>Last Active</th>
+                                <th scope="row">{{$t('Label-Rank')}}</th>
+                                <th>Wikis</th>
+                                <th>{{$t('Label-CountOfJudgements')}}</th>
+                                <th>{{$t('Label-LastActiveTime')}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -63,7 +63,7 @@
                             </tbody>
                             <tfoot>
                               <tr>
-                                <th scope="row">Total</th>
+                                <th scope="row">{{$t('Label-TotalNumber')}}</th>
                                 <th></th>
                                 <th>{{wikis.map(wiki=>wiki.count).reduce((a, b) => a+b, 0)}}</th>
                                 <th>
@@ -83,18 +83,18 @@
 
             <div class="card mt-4">
                 <div class="card-header">
-                    <h2>Top Users ({{totalLoggedIn}})</h2>
+                    <h2>{{$t('Label-TopUsers')}} ({{totalLoggedIn}})</h2>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped">
                             <thead>
                             <tr>
-                                <th scope="row">Rank</th>
-                                <th>User</th>
+                                <th scope="row">{{$t('Label-Rank')}}</th>
+                                <th>{{$t('Label-User')}}</th>
                                 <th>Wikis</th>
-                                <th>Count</th>
-                                <th>Last Active</th>
+                                <th>{{$t('Label-CountOfJudgements')}}</th>
+                                <th>{{$t('Label-LastActiveTime')}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -107,8 +107,8 @@
                                         <router-link :to="`/marked/?wikiUserName=${leader.wikiUserName}`" replace>
                                             <object class="avatar-object"
                                                     v-bind:data="`/api/avatar/${leader.wikiUserName}`"></object>
-                                            <span v-if="isMe(leader)">Me (User:{{leader.wikiUserName}})</span>
-                                            <span v-else>User:{{leader.wikiUserName}}</span>
+                                            <span v-if="isMe(leader)">{{$t('Label-Me')}} ({{$t('Label-User')}}:{{leader.wikiUserName}})</span>
+                                            <span v-else>{{$t('Label-User')}}:{{leader.wikiUserName}}</span>
                                         </router-link>
                                     </td>
                                     <td scope="col">
@@ -130,18 +130,18 @@
             </div>
             <div class="card mt-4">
                 <div class="card-header">
-                    <h2>Top 20 Anonymous Users</h2>
+                    <h2>{{$t('Label-TopNumberAnonymousUsers', 20)}}</h2>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped">
                             <thead>
                             <tr>
-                                <th scope="row">Rank</th>
-                                <th>User</th>
+                                <th scope="row">{{$t('Label-Rank')}}</th>
+                                <th>{{$t('Label-User')}}</th>
                                 <th>Wikis</th>
-                                <th>Count</th>
-                                <th>Last Active</th>
+                                <th>{{$t('Label-CountOfJudgements')}}</th>
+                                <th>{{$t('Label-LastActiveTime')}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -154,8 +154,8 @@
                                         <router-link :to="`/marked/?userGaId=${leader.userGaId}`" replace>
                                             <object class="avatar-object"
                                                     v-bind:data="`/api/avatar/${leader.userGaId}`"></object>
-                                            <span v-if="isMe(leader) ">Me</span>
-                                            <span v-else>Someone</span>
+                                            <span v-if="isMe(leader) ">{{$t('Label-Me')}}</span>
+                                            <span v-else>{{$t('Label-Someone')}}</span>
                                         </router-link>
                                     </td>
                                     <td scope="col">

@@ -5,21 +5,37 @@ Button-OpenedUrlToRevert: Opened URL to revert
 Button-RevertNow: Revert now
 Button-ShowJudgements: Show judgements
 Button-Undo: Undo
+Label-1Month: 1 month (30d)
+Label-1Quarter: 1 quarter (90d)
+Label-1Year: 1 year (365d)
+Label-1day: 1 day
+Label-1week: 1 week (7d)
+Label-ActiveUsers: Active Users
+Label-AllTime: All time
 Label-Anonymous: Anonymous
 Label-ArtificialIntelligence: Artificial Intelligence
 Label-Author: Author
+Label-CountOfJudgements: Count
+Label-Day: Day
+Label-DiffView: Diff View
 Label-DirectRevertFailed: Direct revert failed
 Label-DirectReverted: Direct reverted
 Label-EditSummary: Edit summary
 Label-EditedAt: edited
+Label-Feed: Feed
+Label-History: History
 Label-HumanEditors: Human editors
-Label-Judgement: Label
+Label-Judgement: Judgement
+Label-LastActiveTime: Last Active
 Label-Loading: Loading
 Label-Login: Login
 Label-Logout: Logout
 Label-Looks-Good: Looks Good
 Label-LooksGood: Looks good
 Label-Me: Me
+Label-Month: Month
+Label-My-History: My History
+Label-NewJudgement: New Judgement
 Label-None: None
 Label-Not-Sure: Not Sure
 Label-NotSure: Not sure
@@ -27,32 +43,54 @@ Label-OresBadfaith: ORES Badfaith
 Label-OresDamaging: ORES Damaging
 Label-Overriden: Overridden
 Label-Prompt-Login: Login
+Label-Rank: Rank
+Label-Reason: Reason
+Label-Result: Result
+Label-RevertSucceeded: Revert succeeded!
 Label-ReviewFeed: Review Feed
+Label-ReviewedAndSays: reviewed {0} and says
 Label-Should-Revert: Should Revert
 Label-ShouldRevert: Should revert
 Label-Snooze: Snooze
 Label-Someone: Someone
 Label-Time: Time
+Label-TopNumberAnonymousUsers: Top {0} Anonymous Users
+Label-TopUsers: Top Users
+Label-TopWikis: Top Wikis
+Label-TotalNumber: Total
 Label-User: User
+Label-Week: Week
+Label-YourJudgement: Your Judgement
 MenuItem-Code: Code
 MenuItem-Contributions: My contributions
 MenuItem-ContributionsBeforeLogin: My contributions before login
 MenuItem-Issues: Issues
 MenuItem-Stats: Stats
+Message-AJudgementLogged: >-
+  A judgement for {0} for revision
+  {1} has been logged.
+Message-CongratsSuccessfullyReverted: Congrats! you''ve successfully reverted directly {0}.
 Message-DiffNotAvailable: >-
   The wikipedia article diff is temporarily not available. You can try to reload
   it. Sometimes a vandalized revision could be deleted. You can check the page
   history.
+Message-FeedHasNoNewRevisionsClickNextBelow: Feed {0} has no new revisions, click next below.
 Message-Login: >-
   Do you know you could Login and preserve your labels under your name? We
   support Login with Wikipedia account through Oauth.
 Message-NameVoteAnnouncement: >-
   Dear contributor, we are holding a voting for new name replacing the "WikiLoop
   Battlefield" ending on July 13, 2020 00:00 UTC. Please vote.
+Message-NoActiveUsersPleaseStartReview: >-
+  No active users in last 15min. Start {0} reviewing revisions {1} and become
+  the first one.
 Message-Prompt-Login: >-
   Do you know you could login and preserve your contributions under your name?
   We support login with Wikipedia account through Oauth.
 Message-RevertEditSummary: >-
   Identified as test/vandalism using {0} version {1}. See it or provide your
   opinion at {2}
+Message-SorryWeFailedToRevert: Sorry, we failed to revert the revision {0}.
+Message-TheRevisionIsSuccessfullyRevertedAs: The revision {0} is successfully reverted as {1}.
 Message-ThereIsNoEditSummary: There is no edit summary.
+Message-YourJudgementLogged: Your judgement for {0} for revision {1} has been logged.
