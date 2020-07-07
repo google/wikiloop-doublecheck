@@ -2,6 +2,7 @@
 
 const fs = require('fs');
 const yaml = require('js-yaml');
+const ISO6391 = require('iso-639-1');
 
 const existingLocales = require(`~/i18n/getlocales`);
 async function translateCmd() {
@@ -36,9 +37,9 @@ async function translateCmd() {
 
   let targetLangs = Object.keys(existingLocales).filter(key => key !== sourceLang);
     // .concat(['ar','fa','uk','cs','sv']); // for new languages to add
+  console.log(`Working on langauges of ${targetLangs.map(lang => `${ISO6391.getNativeName(lang)}(${lang})`)}`)
   let forceUpdatedKeys = [
-    `Button-Go.@meta.@description`,
-    `Label-OresBadfaith`
+
   ];
 
   let ignoredMetaPostfix = [
