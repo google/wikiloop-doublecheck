@@ -59,12 +59,20 @@
               <b-dropdown-item href="https://meta.wikimedia.org/wiki/WikiProject_WikiLoop" target="_blank">WikiProject</b-dropdown-item>
               <b-dropdown-item href="/api/stats" target="_blank">{{$t('MenuItem-Stats')}}</b-dropdown-item>
             </b-nav-item-dropdown>
+            <b-nav-item
+              target="_blank"
+              :href="`https://github.com/google/wikiloop-battlefield/edit/master/i18n/locales/${$i18n.locale}.yml`"
+              v-b-tooltip.hover :title="$t('Button-HelpTranslate')"
+            >
+              <i class="fas fa-language"></i>
+            </b-nav-item>
             <b-nav-item>
               <b-form-select @click.native.stop='' class="small" v-model="wiki">
                 <option v-for="language in languages" :key="language.wiki" :value="language.wiki">{{language.wiki}} - {{ language.nativeText }}  </option>
               </b-form-select>
             </b-nav-item>
           </b-navbar-nav>
+
           <b-navbar-nav class="ml-auto">
             <b-nav-item-dropdown right>
               <template v-slot:button-content>
