@@ -78,7 +78,7 @@ Label-EditedAt: editado
 Label-EditedAt.@meta.@description: >-
   O rótulo do carimbo de data e hora da edição na Wikipedia quando a edição é
   criada.
-Label-Feed: Atualizações
+Label-Feed: Feed
 Label-Feed.@meta.@description: >-
   O rótulo que mostra um feed, um fluxo ou um fluxo de novas edições da
   Wikipedia recebidas, seguindo o nome desse feed específico. Por exemplo, temos
@@ -209,7 +209,7 @@ Label-ShouldRevert.@meta.@description: >-
   O rótulo de um dos três principais tipos de julgamento, que diz que a edição
   da Wikipedia está sendo revisada, é prejudicial à Wikipedia, em vez de ser bom
   e construtivo.
-Label-Snooze: Soneca
+Label-Snooze: Adiar
 Label-Snooze.@meta.@description: >-
   O rótulo de um botão para adiar um lembrete ou uma notificação ou, em outras
   palavras, significa "lembrar mais tarde". Na realidade, o botão soneca será

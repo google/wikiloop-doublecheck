@@ -1,4 +1,4 @@
-Button-Go: Идти
+Button-Go: Перейти
 Button-Go.@meta.@description: >-
   Ярлык для кнопок для перенаправления пользователя на указанный URL-адрес или
   местоположение.
@@ -6,19 +6,19 @@ Button-HelpTranslate: Помогите перевести
 Button-HelpTranslate.@meta.@description: >-
   Ярлык для кнопки, которая позволяет пользователям помогать переводить
   интернационализированные сообщения для этого программного обеспечения.
-Button-Next: Следующий
+Button-Next: Далее
 Button-Next.@meta.@description: >-
   Метка для кнопки при нажатии перейти на следующую страницу или отобразить
   следующую информацию.
-Button-OpenedUrlToRevert: Открытый URL для возврата
+Button-OpenedUrlToRevert: Открыта страница для отмены
 Button-OpenedUrlToRevert.@meta.@description: >-
   Ярлык кнопки «Вернуть сейчас» изменится на «Открытый URL для возврата», чтобы
   показать состояние действия после нажатия кнопки и выполнения действия.
-Button-RevertNow: Вернуть сейчас
+Button-RevertNow: Отменить сейчас
 Button-RevertNow.@meta.@description: 'Метка для кнопки, чтобы немедленно вернуть данную ревизию в Википедии.'
-Button-ShowJudgements: Показать суждения
+Button-ShowJudgements: Показать оценки
 Button-ShowJudgements.@meta.@description: 'Метка для кнопки, чтобы показать суждения, данные в редактировании Википедии'
-Button-Undo: Отменить
+Button-Undo: Вернуться
 Button-Undo.@meta.@description: 'Метка для кнопки, чтобы отменить действие в нашем программном обеспечении.'
 Label-1Month: 1 месяц (30 дней)
 Label-1Month.@meta.@description: >-
@@ -48,44 +48,44 @@ Label-AllTime.@meta.@description: >-
   показывает, что наше программное обеспечение работает.
 Label-Anonymous: Анонимный
 Label-ArtificialIntelligence: Искуственный интеллект
-Label-Author: автор
-Label-CountOfJudgements: подсчитывать
+Label-Author: Автор
+Label-CountOfJudgements: Количество
 Label-CountOfJudgements.@meta.@description: Метка для суммы количества суждений для правок Википедии.
 Label-Day: День
 Label-Day.@meta.@description: Метка для разбивки статистики по времени разбивки по дням.
-Label-DiffView: Diff View
+Label-DiffView: Изменения
 Label-DiffView.@meta.@description: >-
   Метка для представления, показывающая разницу между снимками, такими как два
   снимка статей из Википедии.
-Label-DirectRevertFailed: Прямой возврат не удался
+Label-DirectRevertFailed: Не удалось отменить
 Label-DirectRevertFailed.@meta.@description: >-
   Метка для отображения нового статуса кнопки «Восстановить сейчас». Цель
   состоит в том, чтобы показать состояние действия, выполненного пользователем,
   которое в этом случае является неудачным действием возврата.
-Label-DirectReverted: Прямой возврат
+Label-DirectReverted: Отменено
 Label-DirectReverted.@meta.@description: >-
   Метка для отображения нового статуса кнопки «Восстановить сейчас». Цель
   состоит в том, чтобы показать состояние действия, выполненного пользователем,
   которое в этом случае является успешным действием возврата.
-Label-EditSummary: Редактировать резюме
+Label-EditSummary: Описание изменений
 Label-EditSummary.@meta.@description: >-
   Сводка редактирования - это краткое объяснение правки страницы Википедии, как
   показано в https://en.wikipedia.org/wiki/Help:Edit_summary
-Label-EditedAt: Edited
+Label-EditedAt: отредактировано
 Label-EditedAt.@meta.@description: >-
   Метка метки времени редактирования в Википедии, когда редактирование
   создается.
-Label-Feed: Подача
+Label-Feed: Лента
 Label-Feed.@meta.@description: >-
   Метка, показывающая канал, поток или поток входящих новых правок Википедии,
   после названия этого конкретного канала. Например, у нас есть различные каналы
   различных видов правок Википедии, таких как канал темы статьи, канал правок,
   обнаруженных системами оценки вандализма, и т. Д.
-Label-History: история
+Label-History: История
 Label-History.@meta.@description: >-
   Метка для списка прошлых действий, прошлых решений и т. Д. Всех пользователей
   или данного пользователя.
-Label-HumanEditors: Человеческие редакторы
+Label-HumanEditors: Редакторы
 Label-HumanEditors.@meta.@description: Этикетка для суждений предоставлена редакторами Human.
 Label-Judgement: решение
 Label-Judgement.@meta.@description: >-
@@ -99,11 +99,11 @@ Label-Loading: Загрузка
 Label-Loading.@meta.@description: >-
   Загружается ярлык для отображения некоторых частей или данных на веб-странице.
   Обычно эта метка отображается как запасной индикатор загрузки.
-Label-Login: Логин
+Label-Login: Войти
 Label-Login.@meta.@description: >-
   Метка для кнопки входа, чтобы позволить пользователю войти. Или он также будет
   использоваться в сообщениях или приглашать пользователя для входа в систему.
-Label-Logout: Выход
+Label-Logout: Выйти
 Label-Logout.@meta.@description: >-
   Метка для кнопки входа, чтобы позволить пользователю выйти из системы. Или он
   также будет использоваться в сообщениях или приглашать пользователя выйти из
@@ -126,7 +126,7 @@ Label-MyHistory.@meta.@description: >-
 Label-MyHistory.@meta.@isMachineTranslated: true
 Label-MyHistory.@meta.@translatedAt: '2020-07-07T19:26:51.445Z'
 Label-MyHistory.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
-Label-NewJudgement: Новое суждение
+Label-NewJudgement: Новая оценка
 Label-NewJudgement.@meta.@description: >-
   Метка для нового суждения, предоставленного Википедии, отредактированной нашим
   пользователем.
@@ -135,12 +135,12 @@ Label-None.@meta.@description: >-
   Метка для пустой таблицы строк и ячеек содержимого или пустых списков. Это
   обычно используется в пользовательском интерфейсе, когда нет контента для
   показа.
-Label-NotSure: Не уверен
+Label-NotSure: Сомневаюсь
 Label-NotSure.@meta.@description: >-
   Ярлык одного из 3 основных типов суждений, который гласит, что редактируемая
   редакция Википедии является неуверенным и может быть либо хорошим и
   конструктивным, либо вредным для Википедии.
-Label-OresBadfaith: Руды Дурная вера
+Label-OresBadfaith: ORES Недобросовестность
 Label-OresBadfaith.@meta.@description: >-
   Этикетка, обозначающая оценку и оценку, присуждаемые системой оценки
   искусственного интеллекта WMF ORES. Эта метка относится к противоположности
@@ -149,7 +149,7 @@ Label-OresBadfaith.@meta.@description: >-
 Label-OresBadfaith.@meta.@isMachineTranslated: true
 Label-OresBadfaith.@meta.@translatedAt: '2020-07-07T01:09:19.145Z'
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
-Label-OresDamaging: Руды Повреждения
+Label-OresDamaging: ORES Вредная правка
 Label-OresDamaging.@meta.@description: >-
   Этикетка, обозначающая оценку и оценку, присуждаемые системой оценки
   искусственного интеллекта WMF ORES. Этот ярлык относится к разрушающей модели
@@ -176,30 +176,30 @@ Label-Rank: Ранг
 Label-Rank.@meta.@description: >-
   Метка для ранжирования статистики по заданному номеру сортировки, например,
   пользователей, отсортированных по количеству вкладов.
-Label-Reason: причина
+Label-Reason: Причина
 Label-Reason.@meta.@description: >-
   Метка для причины результата выполненного действия, например, когда
   пользователь отменяет редактирование Википедии.
-Label-Result: результат
+Label-Result: Результат
 Label-Result.@meta.@description: >-
   Метка для результата выполненного действия, например, когда пользователь
   отменил редактирование Википедии.
-Label-RevertSucceeded: Вернуть удалось!
+Label-RevertSucceeded: Правка успешно отменена!
 Label-RevertSucceeded.@meta.@description: >-
   Метка для результата выполненного действия, когда пользователь отменил
   редактирование Википедии, действие успешно.
-Label-ReviewFeed: Обзорная лента
+Label-ReviewFeed: Обзор ленты
 Label-ReviewFeed.@meta.@description: >-
   Метка для подачи, потока или потока входящих изменений в Википедии, подлежащих
   рассмотрению.
-Label-ReviewedAndSays: 'просмотрел {0} и говорит'
+Label-ReviewedAndSays: 'просмотрел {0} и решил'
 Label-ReviewedAndSays.@meta.@description: 'Метка для начала приговора и причины, приведенные для пересмотра.'
-Label-ShouldRevert: Должен вернуться
+Label-ShouldRevert: Нужно отменить
 Label-ShouldRevert.@meta.@description: >-
   Ярлык одного из 3 основных типов суждений, который гласит, что редактируемая
   редакция Википедии наносит ущерб Википедии, а не является хорошим и
   конструктивным.
-Label-Snooze: вздремнуть
+Label-Snooze: Не сейчас
 Label-Snooze.@meta.@description: >-
   Метка кнопки, чтобы отложить напоминание или уведомление, или другими словами,
   это означает «напомнить мне позже». На самом деле кнопка повтора будет
@@ -223,23 +223,23 @@ Label-TopWikis.@meta.@description: >-
   и т. Д.), По количеству суждений, приведенных в Википедии.
 Label-TotalNumber: Общее количество
 Label-TotalNumber.@meta.@description: 'Метка для столбца общего количества оценок, вынесенных пользователем.'
-Label-User: пользователь
+Label-User: Пользователь
 Label-User.@meta.@description: 'Ярлык для пользователя, который дает оценку правке Википедии.'
 Label-Week: Неделя
 Label-Week.@meta.@description: Метка для детализации времени разбивки статистики с разбивкой по неделям.
-Label-YourJudgement: Ваше суждение
+Label-YourJudgement: Ваша оценка
 Label-YourJudgement.@meta.@description: Метка для суждения данного пользователя.
-MenuItem-Code: Код
+MenuItem-Code: Исходный код
 MenuItem-Code.@meta.@description: >-
   Ярлык пункта меню для перенаправления пользователя в кодовую базу этого
   программного обеспечения.
-MenuItem-Contributions: Мои взносы
+MenuItem-Contributions: Мой вклад
 MenuItem-Contributions.@meta.@description: >-
   Ярлык пункта меню направляет пользователя к списку вкладов или суждений,
   данных текущим пользователем.
-MenuItem-ContributionsBeforeLogin: Мои взносы перед входом в систему
+MenuItem-ContributionsBeforeLogin: Мой вклад перед входом в систему
 MenuItem-ContributionsBeforeLogin.@meta.@description: 'ЧТОБЫ УДАЛИТЬ, НЕ ИЗМЕНЯЙТЕ И НЕ ПЕРЕВОДИТЕ.'
-MenuItem-Issues: вопросы
+MenuItem-Issues: Вопросы
 MenuItem-Issues.@meta.@description: >-
   Ярлык пункта меню, перенаправляющий пользователя на проблемы Github нашего
   программного обеспечения.
@@ -247,38 +247,38 @@ MenuItem-Stats: Статистика
 MenuItem-Stats.@meta.@description: >-
   Ярлык пункта меню, перенаправляющий пользователя на страницу статистики нашего
   программного обеспечения.
-Message-AJudgementLogged: 'Решение для {0} для редакции {1} было зарегистрировано.'
+Message-AJudgementLogged: 'Оценка для {0} версии {1} была зарегистрирована.'
 Message-AJudgementLogged.@meta.@description: >-
   Сообщение о том, что решение по данной ревизии записывается. Параметр {0} -
   это название статьи в Википедии. Параметр {0} является идентификатором ревизии
   (правка Википедии).
-Message-CongratsSuccessfullyReverted: 'Congrats! Вы успешно вернулись прямо {0}.'
+Message-CongratsSuccessfullyReverted: 'Поздравляем! Вы успешно отменили {0}.'
 Message-DiffNotAvailable: Статья в Википедии отличается
-Message-FeedHasNoNewRevisionsClickNextBelow: 'Канал {0} не имеет новых ревизий, нажмите далее ниже.'
+Message-FeedHasNoNewRevisionsClickNextBelow: 'В ленте {0} нет новых правок, нажмите "Далее" ниже.'
 Message-FeedHasNoNewRevisionsClickNextBelow.@meta.@description: >-
   Сообщение, сообщающее пользователю о том, что данный канал или поток правок
   Википедии должны быть просмотрены, не имеет новых изменений / правок. Параметр
   {0} ссылается на имя данного канала.
 Message-Login: >-
   Знаете ли вы, что вы можете войти и сохранить свои ярлыки под своим именем? Мы
-  поддерживаем логин через Википедию через Oauth.
+  поддерживаем вход с помощью аккаунта в Википедии через Oauth.
 Message-NameVoteAnnouncement: >-
-  Уважаемый участник, мы проводим голосование за новое имя, заменяющее поле
-  битвы WikiLoop, заканчивающееся 13 июля 2020 года в 00:00 UTC.
+  Уважаемый участник, мы проводим голосование за новое имя на замену "WikiLoop
+  Battlefield", заканчивающееся 13 июля 2020 года в 00:00 UTC.
 
   Пожалуйста, проголосуйте.
 Message-NoActiveUsersPleaseStartReview: >-
-  Нет активных пользователей за последние 15 минут. Начните {0} просматривать
-  ревизии {1} и станьте первым.
+  Нет активных пользователей за последние 15 минут. Начните {0} оценивать
+  правки {1} и станьте первым.
 Message-NoActiveUsersPleaseStartReview.@meta.@description: >-
   Сообщение, которое предлагает пользователю начать возвращаться. {0} и {1}
   являются парами тегов привязки HTML <a> и </a> с параметрами URL.
 Message-PromptLogin: >-
-  Знаете ли вы, что вы можете войти и сохранить свои вклады под своим именем? Мы
-  поддерживаем вход в аккаунт в Википедии через Oauth.
+  Знаете ли вы, что вы можете войти и сохранить свой вклад под своим именем? Мы
+  поддерживаем вход с помощью аккаунта в Википедии через Oauth.
 Message-RevertEditSummary: >-
-  Идентифицировано как тест/вандализм с использованием {0} версии {1}. Смотрите
-  или высказывайте своё мнение по адресу {2}
+  Идентифицировано как тест/вандализм с использованием {0} версии {1}. Узнать больше
+  или дать обратную связь можно по ссылке {2}
 Message-RevertEditSummary.@meta.@description: >-
   Сообщение о сводке по редактированию, когда наше программное обеспечение
   генерирует новое редактирование Википедии, которое будет зафиксировано на
@@ -286,19 +286,19 @@ Message-RevertEditSummary.@meta.@description: >-
   обеспечения, в настоящее время "WikiLoop Battlefield". Параметр {1} является
   номером версии нашего программного обеспечения, в настоящее время 4.0.1. {2} -
   это веб-сайт нашего инструмента, в настоящее время "battlefield.wikiloop.org".
-Message-SorryWeFailedToRevert: 'К сожалению, нам не удалось отменить ревизию {0}.'
+Message-SorryWeFailedToRevert: 'К сожалению, нам не удалось отменить правку {0}.'
 Message-SorryWeFailedToRevert.@meta.@description: >-
   Сообщение, сообщающее пользователю, что возврат заданного редактирования
   завершился неудачно. Параметр {0} является идентификатором ревизии.
-Message-TheRevisionIsSuccessfullyRevertedAs: 'Редакция {0} успешно восстановлена как {1}.'
+Message-TheRevisionIsSuccessfullyRevertedAs: 'Правка {0} успешно отменена как {1}.'
 Message-TheRevisionIsSuccessfullyRevertedAs.@meta.@description: >-
   Сообщение о том, что данное редактирование (ревизия) Википедии успешно
   отменено. Параметр {0} является идентификатором ревизии редактируемой редакции
   Википедии. Параметр {1} является идентификатором второй ревизии, который
   редактирует новая редакция Википедии, которая находится поверх предыдущей
   редакции Википедии, которая является результатом возврата.
-Message-ThereIsNoEditSummary: Там нет редактировать резюме.
+Message-ThereIsNoEditSummary: Нет описания изменений.
 Message-ThereIsNoEditSummary.@meta.@description: >-
   Сообщение показывает, что данное редактирование Википедии не имеет объяснения,
   см. Https://en.wikipedia.org/wiki/Help:Edit_summary.
-Message-YourJudgementLogged: 'Ваше суждение о {0} для ревизии {1} было зарегистрировано.'
+Message-YourJudgementLogged: 'Ваша оценка для {0} версии {1} была зарегистрирована.'
