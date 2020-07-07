@@ -1,24 +1,24 @@
 Button-Go: Перейти
 Button-Go.@meta.@description: >-
   Мітка для кнопок для перенаправлення користувача на певну URL-адресу або
-  місцеположення.
+  місце.
 Button-HelpTranslate: Допомогти перекласти
 Button-HelpTranslate.@meta.@description: >-
   Мітка для кнопки, яка дозволяє користувачам допомагати перекладати
   інтернаціоналізовані повідомлення для цього програмного забезпечення.
 Button-Next: Далі
 Button-Next.@meta.@description: >-
-  Мітка для кнопки, яка при натисканні переходить на наступну сторінку або відображає
+  Мітка для кнопки, яка переходить до наступної сторінки або відображає
   наступну інформацію.
-Button-OpenedUrlToRevert: Відкрито URL-адресу для відновлення
-Button-RevertNow: Відновити зараз
+Button-OpenedUrlToRevert: Відкрита URL-адреса для відміни
+Button-RevertNow: Відмінити зараз
 Button-ShowJudgements: Показати судження
 Button-Undo: Скасувати
-Label-1Month: 1 місяць (30d)
-Label-1Quarter: 1 квартал (90d)
-Label-1Year: 1 рік (365d)
+Label-1Month: 1 місяць (30д)
+Label-1Quarter: 1 квартал (90д)
+Label-1Year: 1 рік (365д)
 Label-1day: 1 день
-Label-1week: 1 тиждень (7d)
+Label-1week: 1 тиждень (7д)
 Label-ActiveUsers: Активні користувачі
 Label-AllTime: Весь час
 Label-Anonymous: Анонімний
@@ -27,17 +27,17 @@ Label-Author: Автор
 Label-CountOfJudgements: Кількість
 Label-Day: День
 Label-DiffView: Перегляд відмінностей
-Label-DirectRevertFailed: Не вдалось відновити напряму
-Label-DirectReverted: Прямий відмінений
+Label-DirectRevertFailed: Не вдалося відмінити напряму
+Label-DirectReverted: Відмінено напряму
 Label-EditSummary: Редагувати резюме
 Label-EditedAt: відредаговано
 Label-Feed: Стрічка
 Label-History: Історія
-Label-HumanEditors: Редактори 
+Label-HumanEditors: Редактори
 Label-Judgement: Судження
-Label-LastActiveTime: Останній активний
+Label-LastActiveTime: Останній активний час
 Label-Loading: Завантаження
-Label-Login: Вхід
+Label-Login: Увійти
 Label-Logout: Вийти
 Label-Looks-Good: Виглядає добре
 Label-LooksGood: Виглядає добре
@@ -53,16 +53,16 @@ Label-OresBadfaith.@meta.@isMachineTranslated: true
 Label-OresBadfaith.@meta.@translatedAt: 2020-07-07T01:09:19.145Z
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: Пошкодження ORES
-Label-Overriden: Переглянуто
+Label-Overriden: Перекрито
 Label-Prompt-Login: Вхід
 Label-Rank: Ранг
 Label-Reason: Причина
 Label-Result: Результат
-Label-RevertSucceeded: Відновлення успішне!
+Label-RevertSucceeded: Віміна успішна!
 Label-ReviewFeed: Огляд стрічки
 Label-ReviewedAndSays: 'переглянув(-ла) {0} і каже'
-Label-Should-Revert: Потрібно відновити
-Label-ShouldRevert: Потрібно відновити
+Label-Should-Revert: Потрібно відмінити
+Label-ShouldRevert: Потрібно відмінити
 Label-Snooze: Відкласти
 Label-Someone: Хтось
 Label-Time: Час
@@ -75,33 +75,33 @@ Label-Week: Тиждень
 Label-YourJudgement: Ваше судження
 MenuItem-Code: Код
 MenuItem-Contributions: Мої внески
-MenuItem-ContributionsBeforeLogin: Мої внески перед входом у систему
+MenuItem-ContributionsBeforeLogin: Мої внески до входу в систему
 MenuItem-Issues: Питання
 MenuItem-Stats: Статистика
-Message-AJudgementLogged: 'Рішення для {0} про версію {1} було записано.'
-Message-CongratsSuccessfullyReverted: 'Вітаємо! Ви успішно відновили {0}.'
+Message-AJudgementLogged: 'Рішення для {0} про версію {1} записано.'
+Message-CongratsSuccessfullyReverted: 'Вітаємо! Ви успішно відмінили {0}.'
 Message-DiffNotAvailable: >-
   Перегляд відмінностей статті Вікіпедії тимчасово недоступний. Ви можете спробувати його
-  перезавантажити. Подекуди трапляється, що вандалізована версія статті може бути видалена. Ви можете
+  перезавантажити. Іноді трапляється що вандалізована версія статті може бути видалена. Ви можете
   перевірити історію сторінки.
 Message-FeedHasNoNewRevisionsClickNextBelow: 'У стрічці {0} немає нових версій, натисніть наступну нижче.'
 Message-Login: >-
-  Чи знаєте ви, що можете ввійти та зберегти свої мітки під своїм ім’ям? Ми
-  підтримуємо Вхід з обліковим записом Вікіпедії через Oauth.
+  Знаєте що можна ввійти та зберегти свої мітки під своїм ім’ям? Ми
+  підтримуємо вхід з обліковим записом Вікіпедії через Oauth.
 Message-NameVoteAnnouncement: >-
   Шановний дописувач, ми проводимо голосування за нове ім'я, яке замінить
   "WikiLoop Battlefield", що закінчується 13 липня 2020 р. 00:00 UTC. Будь
-  ласка, голосуйте.
+  ласка, проголосуйте.
 Message-NoActiveUsersPleaseStartReview: >-
   Немає активних користувачів за останні 15 хв. Почніть {0} з перегляду версій
   {1} і станьте першим/першою.
 Message-Prompt-Login: >-
-  Чи знаєте Ви, що можете ввійти та зберегти внески під своїм ім’ям? Ми
+  Знаєте що можна ввійти та зберегти внески під своїм ім’ям? Ми
   підтримуємо вхід в обліковий запис Вікіпедії через Oauth.
 Message-RevertEditSummary: >-
   Ідентифіковано як тест / вандалізм з використанням {0} версії {1}. Перегляньте
   це або висловіть свою думку у {2}
-Message-SorryWeFailedToRevert: 'На жаль, нам не вдалося відновити версію {0}.'
-Message-TheRevisionIsSuccessfullyRevertedAs: 'Версію {0} успішно відновлено як {1}.'
+Message-SorryWeFailedToRevert: 'На жаль, нам не вдалося відмінити версію {0}.'
+Message-TheRevisionIsSuccessfullyRevertedAs: 'Версію {0} успішно відмінено як {1}.'
 Message-ThereIsNoEditSummary: Резюме правки відсутнє.
 Message-YourJudgementLogged: 'Ваше рішення щодо {0} для перегляду {1} було записано.'
