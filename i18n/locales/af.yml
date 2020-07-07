@@ -264,12 +264,20 @@ MenuItem-Stats.@meta.@description: >-
   Die menu-itemetiket wat die gebruiker na die statistiekbladsy van ons
   sagteware herlei.
 Message-AJudgementLogged: '''N Vonnis van {0} vir hersiening {1} is aangeteken.'
+Message-AJudgementLogged.@meta.@description: >-
+  Die boodskap dat 'n beslissing vir 'n gegewe hersiening opgeneem word. Die
+  parameter {0} is die naam van Wikipedia-artikel. Die parameter {0} is die
+  hersieningsidentifisering van die hersiening (Wikipedia bewerk).
 Message-CongratsSuccessfullyReverted: 'Geluk! jy het direk {0} teruggeskakel.'
 Message-DiffNotAvailable: >-
   Die wikipedia-artikel verskil is tydelik nie beskikbaar nie. U kan dit probeer
   herlaai. Soms kan 'n gevandaliseerde hersiening verwyder word. U kan die
   bladsygeskiedenis bekyk.
 Message-FeedHasNoNewRevisionsClickNextBelow: 'Voer {0} het geen nuwe wysigings nie, klik volgende onder.'
+Message-FeedHasNoNewRevisionsClickNextBelow.@meta.@description: >-
+  Die boodskap waarin die gebruiker 'n gegewe stroom of stroom
+  Wikipedia-wysigings vertel wat moet hersien word, het geen nuwe wysigings /
+  wysigings nie. Die parameter {0} verwys na die naam van die gegewe voer.
 Message-Login: >-
   Weet u dat u kan aanmeld en u etikette onder u naam kan bewaar? Ons ondersteun
   Login met Wikipedia-rekening via Oauth.
@@ -281,14 +289,33 @@ Message-NameVoteAnnouncement: >-
 Message-NoActiveUsersPleaseStartReview: >-
   Geen aktiewe gebruikers in die afgelope 15 minute nie. Begin {0} om
   hersienings {1} te hersien en word die eerste.
+Message-NoActiveUsersPleaseStartReview.@meta.@description: >-
+  Die boodskap wat die gebruiker uitnooi om terug te keer. Die {0} en {1} is die
+  HTML-ankermerkerpare <a> en </a> met URL-parameters.
 Message-PromptLogin: >-
   Weet u dat u kan inteken en u bydraes onder u naam kan bewaar? Ons ondersteun
   login met Wikipedia-rekening via Oauth.
 Message-RevertEditSummary: >-
   Word geïdentifiseer as toets/vandalisme met behulp van {0} weergawe {1}. Sien
   dit of gee u mening by {2}
+Message-RevertEditSummary.@meta.@description: >-
+  Die boodskap van die opsomming van redigering wanneer ons sagteware 'n nuwe
+  Wikipedia-weergawe wysig wat op die Wikipedia-webwerf gepleeg word. Die
+  parameter {0} is die naam van ons sagteware, tans "WikiLoop Battlefield". Die
+  parameter {1} is die weergawenommer van ons sagteware, tans 4.0.1. Die {2} is
+  die webwerf-url van ons instrument, tans "slagveld.wikiloop.org".
 Message-SorryWeFailedToRevert: 'Jammer, ons kon nie die hersiening {0} terugstel nie.'
+Message-SorryWeFailedToRevert.@meta.@description: >-
+  Die boodskap om die gebruiker te vertel dat die omkering van 'n gegewe
+  wysiging misluk het. Die parameter {0} is die hersieningsidentifiseerder.
 Message-TheRevisionIsSuccessfullyRevertedAs: 'Die hersiening {0} is suksesvol teruggeskakel as {1}.'
+Message-TheRevisionIsSuccessfullyRevertedAs.@meta.@description: >-
+  Die boodskap waarin aangedui word dat 'n bepaalde Wikipedia-wysiging
+  (hersiening) suksesvol teruggewerk is. Die parameter {0} is die
+  hersieningsidentifisering van die Wikipedia-wysiging wat teruggestel word. Die
+  parameter {1} is die tweede hersieningsidentifisering wat die nuwe
+  Wikipedia-wysiging wat bo-op die vorige Wikipedia-wysiging is, is die
+  resultaat van die terugkeer.
 Message-ThereIsNoEditSummary: Daar is geen wysigingsopsomming nie.
 Message-ThereIsNoEditSummary.@meta.@description: >-
   Die boodskap wys dat 'n bepaalde wysiging van Wikipedia nie 'n verduideliking

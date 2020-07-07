@@ -278,6 +278,10 @@ MenuItem-Stats.@meta.@description: >-
   Die Menüpunktbezeichnung leitet den Benutzer zur Statistikseite unserer
   Software weiter.
 Message-AJudgementLogged: 'Ein Urteil für {0} für Revision {1} wurde protokolliert.'
+Message-AJudgementLogged.@meta.@description: >-
+  Die Nachricht, dass ein Urteil für eine bestimmte Revision aufgezeichnet wird.
+  Der Parameter {0} ist der Name des Wikipedia-Artikels. Der Parameter {0} ist
+  die Revisionskennung der Revision (Wikipedia-Bearbeitung).
 Message-CongratsSuccessfullyReverted: 'Glückwunsch! Sie haben erfolgreich direkt {0} zurückgesetzt.'
 Message-DiffNotAvailable: |-
   Der Wikipedia-Artikel diff ist vorübergehend nicht verfügbar.
@@ -285,6 +289,11 @@ Message-DiffNotAvailable: |-
   Manchmal konnte eine zerstörte Revision gelöscht werden.
   Sie können den Seitenverlauf überprüfen.
 Message-FeedHasNoNewRevisionsClickNextBelow: 'Feed {0} hat keine neuen Revisionen. Klicken Sie unten auf Weiter.'
+Message-FeedHasNoNewRevisionsClickNextBelow.@meta.@description: >-
+  Die Nachricht, die dem Benutzer mitteilt, dass ein bestimmter Feed oder Stream
+  von Wikipedia-Änderungen überprüft werden soll, enthält keine neuen
+  Überarbeitungen / Änderungen. Der Parameter {0} bezieht sich auf den Namen des
+  angegebenen Feeds.
 Message-Login: >-
   Wissen Sie, dass Sie sich anmelden und Ihre Etiketten unter Ihrem Namen
   aufbewahren können? Wir unterstützen die Anmeldung mit Wikipedia-Konto über
@@ -298,6 +307,9 @@ Message-NameVoteAnnouncement: >-
 Message-NoActiveUsersPleaseStartReview: >-
   Keine aktiven Benutzer in den letzten 15 Minuten. Beginnen Sie mit der
   Überprüfung von {0} Revisionen {1} und werden Sie die erste.
+Message-NoActiveUsersPleaseStartReview.@meta.@description: >-
+  Die Nachricht, die den Benutzer zum Zurücksetzen einlädt. {0} und {1} sind die
+  HTML-Ankertag-Paare <a> und </a> mit URL-Parametern.
 Message-PromptLogin: >-
   Wissen Sie, dass Sie sich anmelden und Ihre Beiträge unter Ihrem Namen
   aufbewahren können? Wir unterstützen die Anmeldung mit einem Wikipedia-Konto
@@ -305,8 +317,25 @@ Message-PromptLogin: >-
 Message-RevertEditSummary: |-
   Mit {0} Version {1} als Test / Vandalismus identifiziert.
   Sehen Sie es sich an oder geben Sie Ihre Meinung unter {2} ab
+Message-RevertEditSummary.@meta.@description: >-
+  Die Meldung "Zusammenfassung der Bearbeitung", wenn unsere Software eine neue
+  Wikipedia-Bearbeitung generiert, die auf der Wikipedia-Website festgeschrieben
+  werden soll. Der Parameter {0} ist der Name unserer Software, derzeit
+  "WikiLoop Battlefield". Der Parameter {1} ist die Versionsnummer unserer
+  Software, derzeit 4.0.1. Die {2} ist die Website-URL unseres Tools, derzeit
+  "Battlefield.wikiloop.org".
 Message-SorryWeFailedToRevert: 'Leider konnten wir die Revision {0} nicht zurücksetzen.'
+Message-SorryWeFailedToRevert.@meta.@description: >-
+  Die Meldung, die den Benutzer darüber informiert, dass die Umkehrung einer
+  bestimmten Bearbeitung fehlgeschlagen ist. Der Parameter {0} ist die
+  Revisionskennung.
 Message-TheRevisionIsSuccessfullyRevertedAs: 'Die Revision {0} wird erfolgreich als {1} zurückgesetzt.'
+Message-TheRevisionIsSuccessfullyRevertedAs.@meta.@description: >-
+  Die Meldung, dass eine bestimmte Wikipedia-Bearbeitung (Revision) erfolgreich
+  zurückgesetzt wurde. Der Parameter {0} ist die Revisionskennung der
+  Wikipedia-Bearbeitung, die zurückgesetzt wird. Der Parameter {1} ist die
+  zweite Revisionskennung, die die neue Wikipedia-Bearbeitung über der
+  vorherigen Wikipedia-Bearbeitung hat, die ein Ergebnis des Zurücksetzens ist.
 Message-ThereIsNoEditSummary: Es gibt keine Bearbeitungszusammenfassung.
 Message-ThereIsNoEditSummary.@meta.@description: >-
   Die Nachricht zeigt, dass eine bestimmte Wikipedia-Bearbeitung keine Erklärung

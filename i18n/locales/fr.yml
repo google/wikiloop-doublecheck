@@ -275,6 +275,11 @@ MenuItem-Stats.@meta.@description: >-
   L'étiquette de l'élément de menu redirigeant l'utilisateur vers la page de
   statistiques de notre logiciel.
 Message-AJudgementLogged: 'Un jugement pour {0} pour la révision {1} a été enregistré.'
+Message-AJudgementLogged.@meta.@description: >-
+  Le message qu'un jugement pour une révision donnée est en cours
+  d'enregistrement. Le paramètre {0} est le nom de l'article Wikipedia. Le
+  paramètre {0} est l'identifiant de révision de la révision (modification
+  Wikipedia).
 Message-CongratsSuccessfullyReverted: 'Félicitations! vous avez réussi à restaurer directement {0}.'
 Message-DiffNotAvailable: |-
   Le diff de l'article Wikipédia n'est temporairement pas disponible.
@@ -282,6 +287,10 @@ Message-DiffNotAvailable: |-
   Parfois, une révision vandalisée peut être supprimée.
   Vous pouvez consulter l'historique des pages.
 Message-FeedHasNoNewRevisionsClickNextBelow: 'Le flux {0} n''a pas de nouvelles révisions, cliquez sur suivant ci-dessous.'
+Message-FeedHasNoNewRevisionsClickNextBelow.@meta.@description: >-
+  Le message indiquant à l'utilisateur un flux ou un flux donné de modifications
+  de Wikipédia à examiner n'a pas de nouvelles révisions / modifications. Le
+  paramètre {0} fait référence au nom du flux donné.
 Message-Login: >-
   Savez-vous que vous pouvez vous connecter et conserver vos étiquettes sous
   votre nom? Nous prenons en charge la connexion avec un compte Wikipédia via
@@ -294,6 +303,10 @@ Message-NameVoteAnnouncement: >-
 Message-NoActiveUsersPleaseStartReview: >-
   Aucun utilisateur actif au cours des 15 dernières minutes. Commencez {0} à
   réviser les révisions {1} et devenez le premier.
+Message-NoActiveUsersPleaseStartReview.@meta.@description: >-
+  Le message qui invite l'utilisateur à commencer à revenir en arrière. Les {0}
+  et {1} sont les paires de balises d'ancrage HTML <a> et </a> avec les
+  paramètres d'URL.
 Message-PromptLogin: >-
   Savez-vous que vous pouvez vous connecter et conserver vos contributions sous
   votre nom? Nous prenons en charge la connexion avec un compte Wikipedia via
@@ -301,8 +314,24 @@ Message-PromptLogin: >-
 Message-RevertEditSummary: |-
   Identifié comme test / vandalisme à l'aide de la version {0} {1}.
   Consultez-le ou donnez votre avis sur {2}
+Message-RevertEditSummary.@meta.@description: >-
+  Le message de résumé de modification lorsque notre logiciel génère une
+  nouvelle modification de Wikipédia à valider sur le site Web de Wikipédia. Le
+  paramètre {0} est le nom de notre logiciel, actuellement "WikiLoop
+  Battlefield". Le paramètre {1} est le numéro de version de notre logiciel,
+  actuellement 4.0.1. Le {2} est l'URL du site Web de notre outil, actuellement
+  "battlefield.wikiloop.org".
 Message-SorryWeFailedToRevert: 'Désolé, nous n''avons pas réussi à rétablir la révision {0}.'
+Message-SorryWeFailedToRevert.@meta.@description: >-
+  Message indiquant à l'utilisateur que la réversion d'une modification donnée a
+  échoué. Le paramètre {0} est l'identifiant de révision.
 Message-TheRevisionIsSuccessfullyRevertedAs: 'La révision {0} est correctement rétablie en tant que {1}.'
+Message-TheRevisionIsSuccessfullyRevertedAs.@meta.@description: >-
+  Le message indiquant qu'une modification (révision) Wikipédia donnée a bien
+  été annulée. Le paramètre {0} est l'identifiant de révision de la modification
+  de Wikipédia à annuler. Le paramètre {1} est le deuxième identifiant de
+  révision que la nouvelle modification de Wikipédia est au-dessus de la
+  précédente modification de Wikipédia, résultat de la restauration.
 Message-ThereIsNoEditSummary: Il n'y a pas de résumé de modification.
 Message-ThereIsNoEditSummary.@meta.@description: >-
   Le message montre qu'une modification Wikipédia donnée n'a pas d'explication,

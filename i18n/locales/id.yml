@@ -250,12 +250,20 @@ MenuItem-Stats.@meta.@description: >-
   Label item menu mengarahkan pengguna ke halaman statistik perangkat lunak
   kami.
 Message-AJudgementLogged: 'Penilaian untuk {0} untuk revisi {1} telah dicatat.'
+Message-AJudgementLogged.@meta.@description: >-
+  Pesan bahwa penilaian untuk revisi yang diberikan sedang direkam. Parameter
+  {0} adalah nama artikel Wikipedia. Parameter {0} adalah pengenal revisi dari
+  revisi tersebut (edit Wikipedia).
 Message-CongratsSuccessfullyReverted: 'Selamat! Anda telah berhasil dikembalikan secara langsung {0}.'
 Message-DiffNotAvailable: >-
   Perbedaan revisi tidak tersedia untuk saat ini. Silakan diulang membukanya.
   Kadang revisi yang terkena vandalisme sudah dihapus. Silakan periksa riwayat
   revisi artikel.
 Message-FeedHasNoNewRevisionsClickNextBelow: 'Umpan {0} tidak memiliki revisi baru, klik berikutnya di bawah ini.'
+Message-FeedHasNoNewRevisionsClickNextBelow.@meta.@description: >-
+  Pesan yang memberi tahu pengguna umpan atau aliran suntingan Wikipedia yang
+  akan ditinjau tidak memiliki revisi / suntingan baru. Parameter {0} mengacu
+  pada nama umpan yang diberikan.
 Message-Login: >-
   Tahukah Anda bahwa Anda dapat Masuk dan melindungi label Anda dengan nama
   Anda? Kami mendukung Login dengan akun Wikipedia melalui Oauth.
@@ -268,14 +276,32 @@ Message-NameVoteAnnouncement: >-
 Message-NoActiveUsersPleaseStartReview: >-
   Tidak ada pengguna aktif dalam 15 menit terakhir. Mulai {0} meninjau revisi
   {1} dan menjadi yang pertama.
+Message-NoActiveUsersPleaseStartReview.@meta.@description: >-
+  Pesan yang mengundang pengguna untuk mulai kembali. {0} dan {1} adalah
+  pasangan tag anchor HTML <a> dan </a> dengan parameter URL.
 Message-PromptLogin: >-
   Apakah Anda tahu Anda bisa masuk dan menyimpan kontribusi Anda dengan nama
   Anda? Kami mendukung login dengan akun Wikipedia melalui Oauth.
 Message-RevertEditSummary: >-
   Batalkan percobaan/vandalisme menggunakan {0} versi {1}. Lihat atau beri
   pendapat di {2}
+Message-RevertEditSummary.@meta.@description: >-
+  Pesan ringkasan edit ketika perangkat lunak kami menghasilkan suntingan
+  Wikipedia baru untuk dikomit ke situs web Wikipedia. Parameter {0} adalah nama
+  perangkat lunak kami, saat ini "WikiLoop Battlefield". Parameter {1} adalah
+  nomor versi perangkat lunak kami, saat ini 4.0.1. {2} adalah url situs web
+  alat kami, saat ini "battlefield.wikiloop.org".
 Message-SorryWeFailedToRevert: 'Maaf, kami gagal mengembalikan revisi {0}.'
+Message-SorryWeFailedToRevert.@meta.@description: >-
+  Pesan untuk memberi tahu pengguna bahwa pengembalian edit yang diberikan
+  gagal. Parameter {0} adalah pengidentifikasi revisi.
 Message-TheRevisionIsSuccessfullyRevertedAs: 'Revisi {0} berhasil dikembalikan menjadi {1}.'
+Message-TheRevisionIsSuccessfullyRevertedAs.@meta.@description: >-
+  Pesan yang menyatakan bahwa edit Wikipedia yang diberikan (revisi) berhasil
+  dikembalikan. Parameter {0} adalah pengidentifikasi revisi dari pengeditan
+  Wikipedia yang dikembalikan. Parameter {1} adalah pengidentifikasi revisi
+  kedua yang diedit Wikipedia baru yang ada di atas edit Wikipedia sebelumnya
+  yang merupakan hasil dari reverting.
 Message-ThereIsNoEditSummary: Tidak ada ringkasan edit.
 Message-ThereIsNoEditSummary.@meta.@description: >-
   Pesan menunjukkan bahwa edit Wikipedia yang diberikan tidak memiliki

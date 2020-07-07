@@ -231,12 +231,20 @@ MenuItem-Stats.@meta.@description: >-
   Štítek položky nabídky přesměruje uživatele na statistickou stránku našeho
   softwaru.
 Message-AJudgementLogged: 'Byl zaznamenán rozsudek pro {0} pro revizi {1}.'
+Message-AJudgementLogged.@meta.@description: >-
+  Zpráva, že rozsudek pro danou revizi se zaznamenává. Parametr {0} je název
+  článku na Wikipedii. Parametr {0} je identifikátor revize revize (editace
+  Wikipedia).
 Message-CongratsSuccessfullyReverted: 'Gratuluji! úspěšně jste se vrátili přímo {0}.'
 Message-DiffNotAvailable: >-
   Článek wikipedia diff není dočasně k dispozici. Můžete to zkusit znovu načíst.
   Někdy může být vandalizovaná revize odstraněna. Můžete zkontrolovat historii
   stránky.
 Message-FeedHasNoNewRevisionsClickNextBelow: 'Zdroj {0} nemá žádné nové revize, klikněte níže.'
+Message-FeedHasNoNewRevisionsClickNextBelow.@meta.@description: >-
+  Zpráva sdělující uživateli, že daný zdroj nebo proud úprav Wikipedie má být
+  zkontrolován, nemá žádné nové revize / úpravy. Parametr {0} odkazuje na název
+  daného zdroje.
 Message-Login: >-
   Víte, že byste se mohli přihlásit a zachovat své štítky pod svým jménem?
   Podporujeme přihlášení pomocí účtu Wikipedia prostřednictvím Oauth.
@@ -246,14 +254,31 @@ Message-NameVoteAnnouncement: >-
 Message-NoActiveUsersPleaseStartReview: >-
   Žádní aktivní uživatelé za posledních 15 minut. Začněte {0} revize revizí {1}
   a staňte se první.
+Message-NoActiveUsersPleaseStartReview.@meta.@description: >-
+  Zpráva, která uživatele vyzývá k zahájení vracení. {0} a {1} jsou páry HTML
+  kotevních značek <a> a </a> s parametry adresy URL.
 Message-PromptLogin: >-
   Víte, že byste se mohli přihlásit a zachovat své příspěvky pod svým jménem?
   Podporujeme přihlášení pomocí účtu Wikipedia prostřednictvím Oauth.
 Message-RevertEditSummary: >-
   Identifikováno jako test / vandalismus pomocí {0} verze {1}. Podívejte se na
   to nebo poskytněte svůj názor na {2}
+Message-RevertEditSummary.@meta.@description: >-
+  Zpráva souhrnu úprav, když náš software generuje novou úpravu Wikipedie, která
+  má být odevzdána na web Wikipedia. Parametr {0} je název našeho softwaru,
+  aktuálně "WikiLoop Battlefield". Parametr {1} je číslo verze našeho softwaru,
+  v současné době 4.0.1. {2} je webová adresa našeho nástroje, v současné době
+  "battlefield.wikiloop.org".
 Message-SorryWeFailedToRevert: 'Litujeme, nepodařilo se nám vrátit revizi {0}.'
+Message-SorryWeFailedToRevert.@meta.@description: >-
+  Zpráva oznamující uživateli, že vrácení dané úpravy selhalo. Parametr {0} je
+  identifikátor revize.
 Message-TheRevisionIsSuccessfullyRevertedAs: 'Revize {0} je úspěšně vrácena jako {1}.'
+Message-TheRevisionIsSuccessfullyRevertedAs.@meta.@description: >-
+  Zpráva oznamující, že daná editace (revize) Wikipedie je úspěšně vrácena.
+  Parametr {0} je identifikátor revize vrácené úpravy Wikipedie. Parametr {1} je
+  druhý identifikátor revize, který nová editace Wikipedie, která je nad
+  předchozí úpravou Wikipedie, která je výsledkem vrácení.
 Message-ThereIsNoEditSummary: Neexistuje žádné shrnutí úprav.
 Message-ThereIsNoEditSummary.@meta.@description: >-
   Zpráva ukazuje, že daná úprava Wikipedie nemá vysvětlení, viz

@@ -246,12 +246,20 @@ MenuItem-Stats.@meta.@description: >-
   Etykieta pozycji menu przekierowująca użytkownika do strony statystyk naszego
   oprogramowania.
 Message-AJudgementLogged: 'Wyrok dla {0} dla wersji {1} został zarejestrowany.'
+Message-AJudgementLogged.@meta.@description: >-
+  Komunikat, że rejestrowana jest ocena dla danej wersji. Parametr {0} to nazwa
+  artykułu z Wikipedii. Parametr {0} to identyfikator zmiany wersji (edycja w
+  Wikipedii).
 Message-CongratsSuccessfullyReverted: 'Gratulacje! przywróciłeś bezpośrednio {0}.'
 Message-DiffNotAvailable: >-
   Artykuł w wikipedii diff jest chwilowo niedostępny. Możesz spróbować go
   przeładować. Czasami wandalizowana rewizja może zostać usunięta. Możesz
   sprawdzić historię strony.
 Message-FeedHasNoNewRevisionsClickNextBelow: 'W kanale {0} nie ma nowych wersji, kliknij przycisk Dalej poniżej.'
+Message-FeedHasNoNewRevisionsClickNextBelow.@meta.@description: >-
+  Wiadomość informująca użytkownika o danym kanale lub strumieniu edycji
+  Wikipedii do przejrzenia nie zawiera żadnych nowych wersji / edycji. Parametr
+  {0} odnosi się do nazwy podanego kanału.
 Message-Login: >-
   Czy wiesz, że możesz się zalogować i zachować swoje etykiety pod swoim
   imieniem? Obsługujemy logowanie za pomocą konta Wikipedia za pośrednictwem
@@ -264,14 +272,31 @@ Message-NameVoteAnnouncement: >-
 Message-NoActiveUsersPleaseStartReview: >-
   Brak aktywnych użytkowników w ciągu ostatnich 15 minut. Rozpocznij {0}
   przeglądając wersje {1} i zostań pierwszym.
+Message-NoActiveUsersPleaseStartReview.@meta.@description: >-
+  Komunikat zachęcający użytkownika do przywracania. {0} i {1} to pary tagów
+  kotwicy HTML <a> i </a> z parametrami URL.
 Message-PromptLogin: >-
   Czy wiesz, że możesz się zalogować i zachować swoje wpisy pod swoim imieniem?
   Obsługujemy logowanie za pomocą konta Wikipedia za pośrednictwem Oauth.
 Message-RevertEditSummary: >-
   Zidentyfikowany jako test / wandalizm przy użyciu {0} wersji {1}. Zobacz to
   lub przedstaw swoją opinię na stronie {2}
+Message-RevertEditSummary.@meta.@description: >-
+  Komunikat podsumowania edycji, gdy nasze oprogramowanie generuje nową edycję
+  Wikipedii, która zostanie zatwierdzona na stronie Wikipedii. Parametr {0} to
+  nazwa naszego oprogramowania, obecnie „WikiLoop Battlefield”. Parametr {1} to
+  numer wersji naszego oprogramowania, obecnie 4.0.1. {2} to adres URL naszego
+  narzędzia, obecnie „battlefield.wikiloop.org”.
 Message-SorryWeFailedToRevert: 'Niestety nie udało się przywrócić wersji {0}.'
+Message-SorryWeFailedToRevert.@meta.@description: >-
+  Komunikat informujący użytkownika, że przywrócenie danej edycji nie powiodło
+  się. Parametr {0} jest identyfikatorem wersji.
 Message-TheRevisionIsSuccessfullyRevertedAs: 'Wersja {0} została pomyślnie przywrócona jako {1}.'
+Message-TheRevisionIsSuccessfullyRevertedAs.@meta.@description: >-
+  Komunikat informujący, że dana edycja Wikipedii (poprawka) została pomyślnie
+  cofnięta. Parametr {0} jest identyfikatorem wersji cofniętej edycji Wikipedii.
+  Parametr {1} jest drugim identyfikatorem wersji, który nowa edycja w Wikipedii
+  jest na górze poprzedniej edycji w Wikipedii, która jest wynikiem cofnięcia.
 Message-ThereIsNoEditSummary: Brak podsumowania edycji.
 Message-ThereIsNoEditSummary.@meta.@description: >-
   Komunikat pokazuje, że dana edycja Wikipedii nie ma wyjaśnienia, patrz

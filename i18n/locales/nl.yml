@@ -272,12 +272,20 @@ MenuItem-Stats.@meta.@description: >-
   Het menu-itemlabel verwijst de gebruiker door naar de statistiekenpagina van
   onze software.
 Message-AJudgementLogged: 'Een oordeel voor {0} voor herziening {1} is vastgelegd.'
+Message-AJudgementLogged.@meta.@description: >-
+  Het bericht dat een oordeel voor een bepaalde herziening wordt opgenomen. De
+  parameter {0} is de naam van het Wikipedia-artikel. De parameter {0} is de
+  revisie-ID van de revisie (Wikipedia-bewerking).
 Message-CongratsSuccessfullyReverted: 'Proficiat! u bent met succes rechtstreeks teruggezet {0}.'
 Message-DiffNotAvailable: >-
   Het wikipedia-artikel diff is tijdelijk niet beschikbaar. Je kunt proberen het
   opnieuw te laden. Soms kon een vernielde revisie worden verwijderd. U kunt de
   paginageschiedenis bekijken.
 Message-FeedHasNoNewRevisionsClickNextBelow: 'Feed {0} heeft geen nieuwe revisies, klik hieronder op ''Volgende''.'
+Message-FeedHasNoNewRevisionsClickNextBelow.@meta.@description: >-
+  Het bericht dat de gebruiker vertelt dat een bepaalde feed of stream van
+  Wikipedia-bewerkingen moet worden beoordeeld, heeft geen nieuwe revisies /
+  bewerkingen. De parameter {0} verwijst naar de naam van de gegeven feed.
 Message-Login: >-
   Weet u dat u zou kunnen inloggen en uw labels onder uw naam kunt bewaren? We
   ondersteunen Login met Wikipedia-account via Oauth.
@@ -288,14 +296,33 @@ Message-NameVoteAnnouncement: >-
 Message-NoActiveUsersPleaseStartReview: >-
   Geen actieve gebruikers in de afgelopen 15 minuten. Begin met het {0}
   beoordelen van revisies {1} en word de eerste.
+Message-NoActiveUsersPleaseStartReview.@meta.@description: >-
+  Het bericht dat de gebruiker uitnodigt om terug te keren. De {0} en {1} zijn
+  de HTML-ankertagparen <a> en </a> met URL-parameters.
 Message-PromptLogin: >-
   Weet u dat u zou kunnen inloggen en uw bijdragen onder uw naam kunt bewaren?
   We ondersteunen inloggen met een Wikipedia-account via Oauth.
 Message-RevertEditSummary: >-
   Geïdentificeerd als test / vandalisme met {0} versie {1}. Bekijk het of geef
   uw mening op {2}
+Message-RevertEditSummary.@meta.@description: >-
+  Het bericht met de samenvatting van de bewerking wanneer onze software een
+  nieuwe Wikipedia-bewerking genereert die op de Wikipedia-website moet worden
+  vastgelegd. De parameter {0} is de naam van onze software, momenteel "WikiLoop
+  Battlefield". De parameter {1} is het versienummer van onze software,
+  momenteel 4.0.1. De {2} is de website-url van onze tool, momenteel
+  "battlefield.wikiloop.org".
 Message-SorryWeFailedToRevert: 'Sorry, we hebben de revisie {0} niet ongedaan gemaakt.'
+Message-SorryWeFailedToRevert.@meta.@description: >-
+  Het bericht om de gebruiker te vertellen dat het ongedaan maken van een
+  bepaalde bewerking is mislukt. De parameter {0} is de revisie-ID.
 Message-TheRevisionIsSuccessfullyRevertedAs: 'De revisie {0} is teruggedraaid als {1}.'
+Message-TheRevisionIsSuccessfullyRevertedAs.@meta.@description: >-
+  Het bericht waarin staat dat een bepaalde Wikipedia-bewerking (revisie) met
+  succes is teruggedraaid. De parameter {0} is de revisie-ID van de
+  Wikipedia-bewerking die wordt teruggedraaid. De parameter {1} is de tweede
+  revisie-ID die de nieuwe Wikipedia-bewerking is die bovenop de vorige
+  Wikipedia-bewerking staat die het resultaat is van het terugzetten.
 Message-ThereIsNoEditSummary: Er is geen samenvatting voor bewerken.
 Message-ThereIsNoEditSummary.@meta.@description: >-
   Het bericht laat zien dat een bepaalde Wikipedia-bewerking geen uitleg heeft,

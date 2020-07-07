@@ -232,12 +232,20 @@ MenuItem-Stats.@meta.@description: >-
   Izvēlnes elementa etiķete, novirzot lietotāju uz mūsu programmatūras
   statistikas lapu.
 Message-AJudgementLogged: '{0} spriedums par pārskatīšanu {1} ir reģistrēts.'
+Message-AJudgementLogged.@meta.@description: >-
+  Ziņojums, ka tiek reģistrēts spriedums par noteiktu pārskatīšanu. Parametrs
+  {0} ir Vikipēdijas raksta nosaukums. Parametrs {0} ir versijas versijas
+  identifikators (Wikipedia edit).
 Message-CongratsSuccessfullyReverted: 'Apsveicu! jūs esat veiksmīgi atgriezis tieši vietni {0}.'
 Message-DiffNotAvailable: >-
   Vikipēdijas raksta izmaiņas attēlošana īslaicīgi nav pieejama. Tu vari mēģināt
   ielādēt to vēlreiz. Dažkārt vandalizētā versija var būt jau dzēsta. Tu vari
   pārbaudīt lapas vēsturi.
 Message-FeedHasNoNewRevisionsClickNextBelow: 'Plūsmā {0} nav jaunu versiju, noklikšķiniet uz nākamās zemāk.'
+Message-FeedHasNoNewRevisionsClickNextBelow.@meta.@description: >-
+  Ziņojumā, kurā lietotājam tiek norādīta attiecīgā pārskata Wikipedia labojumu
+  plūsma vai straume, nav jaunu labojumu / labojumu. Parametrs {0} attiecas uz
+  dotās plūsmas nosaukumu.
 Message-Login: >-
   Vai jūs zināt, ka varētu pieteikties un saglabāt etiķetes ar savu vārdu? Mēs
   atbalstām pieteikšanos ar Wikipedia kontu caur Oauth.
@@ -249,14 +257,32 @@ Message-NameVoteAnnouncement: >-
 Message-NoActiveUsersPleaseStartReview: >-
   Pēdējo 15 minūšu laikā nav aktīvu lietotāju. Sāciet {0} pārskatīt {1}
   pārskatus un kļūsiet par pirmo.
+Message-NoActiveUsersPleaseStartReview.@meta.@description: >-
+  Ziņojums, kas uzaicina lietotāju sākt atgriešanos. {0} un {1} ir HTML enkura
+  tagu pāri <a> un </a> ar URL parametriem.
 Message-PromptLogin: >-
   Vai jūs zināt, ka varētu pieteikties un saglabāt savu ieguldījumu ar savu
   vārdu? Mēs atbalstām pieteikšanos ar Wikipedia kontu caur Oauth.
 Message-RevertEditSummary: >-
   Identificēts kā izmēģinājums/vandalisms izmantojot {0} versiju {1}. Apskatīt
   to vai piedāvāt savu viedokli {2}
+Message-RevertEditSummary.@meta.@description: >-
+  Rediģēšanas kopsavilkuma ziņojums, kad mūsu programmatūra ģenerē jaunu
+  Wikipedia labojumu, kas jāievieto Wikipedia vietnē. Parametrs {0} ir mūsu
+  programmatūras nosaukums, šobrīd "WikiLoop Battlefield". Parametrs {1} ir mūsu
+  programmatūras versijas numurs, šobrīd 4.0.1. {2} ir mūsu rīka vietnes URL,
+  šobrīd “battlefield.wikiloop.org”.
 Message-SorryWeFailedToRevert: 'Diemžēl mums neizdevās atsaukt versiju {0}.'
+Message-SorryWeFailedToRevert.@meta.@description: >-
+  Ziņojums, kas informē lietotāju, ka dotā labojuma apgriešana nav izdevusies.
+  Parametrs {0} ir versijas identifikators.
 Message-TheRevisionIsSuccessfullyRevertedAs: 'Versija {0} tiek veiksmīgi atjaunota kā {1}.'
+Message-TheRevisionIsSuccessfullyRevertedAs.@meta.@description: >-
+  Ziņojums, kurā norādīts, ka dotā Wikipedia rediģēšana (pārskatīšana) ir
+  veiksmīgi atgriezta. Parametrs {0} ir atgriezeniskās Wikipedia rediģēšanas
+  versijas identifikators. Parametrs {1} ir otrais rediģēšanas identifikators,
+  ko jaunā Wikipedia rediģēšana, kas atrodas virs iepriekšējās Wikipedia
+  rediģēšanas, kas ir atjaunošanas rezultāts.
 Message-ThereIsNoEditSummary: Nav rediģēšanas kopsavilkuma.
 Message-ThereIsNoEditSummary.@meta.@description: >-
   Ziņojums parāda, ka dotajam Wikipedia labojumam nav skaidrojuma, skatiet

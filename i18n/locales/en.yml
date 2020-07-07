@@ -218,12 +218,14 @@ MenuItem-Issues.@meta.@description: The menu item label redirecting user to the 
 MenuItem-Stats: Stats
 MenuItem-Stats.@meta.@description: The menu item label redirecting user to the statistics page of our software.
 Message-AJudgementLogged: 'A judgement for {0} for revision {1} has been logged.'
+Message-AJudgementLogged.@meta.@description: The message that a judgement for a given revision is being recorded. The parameter {0} is the name of Wikipedia article. The parameter {0} is the revision identifier of the revision (Wikipedia edit).
 Message-CongratsSuccessfullyReverted: 'Congrats! you''''ve successfully directly reverted {0}.'
 Message-DiffNotAvailable: >-
   The Wikipedia article diff is temporarily not available. You can try to reload
   it. Sometimes a vandalized revision could be deleted. You can check the page
   history.
 Message-FeedHasNoNewRevisionsClickNextBelow: 'Feed {0} has no new revisions, click next below.'
+Message-FeedHasNoNewRevisionsClickNextBelow.@meta.@description: The message telling user a given feed or stream of Wikipedia edits to be reviewed has no new revisions/edits. The parameter {0} refers to the name of the given feed.
 Message-Login: >-
   Do you know you could login and preserve your labels under your name? We
   support logging in with your Wikipedia account through OAuth.
@@ -233,14 +235,18 @@ Message-NameVoteAnnouncement: >-
 Message-NoActiveUsersPleaseStartReview: >-
   No active users in last 15min. Start {0} reviewing revisions {1} and become
   the first one.
+Message-NoActiveUsersPleaseStartReview.@meta.@description: The message that invites the user to start reverting. The {0} and {1} are the HTML anchor tag pairs <a> and </a> with URL parameters.
 Message-PromptLogin: >-
   Do you know you could login and preserve your contributions under your name?
   We support logging in with your Wikipedia account through OAuth.
 Message-RevertEditSummary: >-
   Identified as test/vandalism using {0} version {1}. See it or provide your
   opinion at {2}
+Message-RevertEditSummary.@meta.@description: The message of edit summary when our software is generating a new Wikipedia edit to be committed onto the Wikipedia website. The parameter {0} is the name of our software, currently "WikiLoop Battlefield". The parameter {1} is the version number of our software, currently 4.0.1. The {2} is the website url of our tool, currently "battlefield.wikiloop.org".
 Message-SorryWeFailedToRevert: 'Sorry, we failed to revert the revision {0}.'
+Message-SorryWeFailedToRevert.@meta.@description: The message to tell user that the reversion of a given edit failed. The parameter {0} is the revision identifier.
 Message-TheRevisionIsSuccessfullyRevertedAs: 'The revision {0} is successfully reverted as {1}.'
+Message-TheRevisionIsSuccessfullyRevertedAs.@meta.@description: The message stating that a given Wikipedia edit (revision) is reverted successfully. The parameter {0} is the revision identifier of the Wikipedia edit being reverted. The parameter {1} is the second revision identifier that the new Wikipedia edit that is on top of the previous Wikipedia edit which is a result of the reverting.
 Message-ThereIsNoEditSummary: There is no edit summary.
 Message-ThereIsNoEditSummary.@meta.@description: >-
   The message shows that a given Wikipedia edit doesn't have an explanation, see

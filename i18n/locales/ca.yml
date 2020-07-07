@@ -261,12 +261,20 @@ MenuItem-Stats.@meta.@description: >-
   L’etiqueta de l’element del menú redirecciona l’usuari a la pàgina
   d’estadístiques del nostre programari.
 Message-AJudgementLogged: 'S''ha registrat un judici de {0} per a la revisió {1}.'
+Message-AJudgementLogged.@meta.@description: >-
+  S’està enregistrant el missatge que es diu un judici per a una revisió
+  determinada. El paràmetre {0} és el nom de l'article de Wikipedia. El
+  paràmetre {0} és l'identificador de revisió de la revisió (edit Wikipedia).
 Message-CongratsSuccessfullyReverted: 'Felicitats! heu revertit correctament directament {0}.'
 Message-DiffNotAvailable: >-
   L'article dif de Wikipedia no està disponible temporalment. Podeu provar de
   tornar-lo a carregar. De vegades es podia eliminar una revisió vandalitzada.
   Podeu consultar l’historial de pàgines.
 Message-FeedHasNoNewRevisionsClickNextBelow: 'El feed {0} no té cap revisió nova, feu clic a continuació a continuació.'
+Message-FeedHasNoNewRevisionsClickNextBelow.@meta.@description: >-
+  El missatge que indica a l’usuari un flux o un flux d’edicions de Wikipedia
+  que s’ha de revisar no té noves revisions / modificacions. El paràmetre {0} fa
+  referència al nom del feed indicat.
 Message-Login: >-
   Sabeu que podríeu iniciar la sessió i conservar les vostres etiquetes sota el
   vostre nom? Admetem la sessió amb compte de Wikipedia mitjançant Oauth.
@@ -277,14 +285,32 @@ Message-NameVoteAnnouncement: >-
 Message-NoActiveUsersPleaseStartReview: >-
   No hi ha usuaris actius durant els darrers 15 minuts. Comenceu {0} a revisar
   les revisions {1} i convertiu-vos en la primera.
+Message-NoActiveUsersPleaseStartReview.@meta.@description: >-
+  El missatge que convida a l'usuari a començar a revertir. Els {0} i {1} són
+  els parells d’etiquetes d’ancoratge HTML <a> i </a> amb paràmetres d’URL.
 Message-PromptLogin: >-
   Sabeu que podríeu iniciar la sessió i preservar les vostres contribucions al
   vostre nom? Admetem l’accés amb el compte de Wikipedia mitjançant Oauth.
 Message-RevertEditSummary: >-
   Identificat com a prova / vandalisme mitjançant {0} versió {1}. Vegeu-la o
   proporcioneu la vostra opinió a {2}
+Message-RevertEditSummary.@meta.@description: >-
+  El missatge del resum de l’edició quan el nostre programari genera una nova
+  edició de Wikipedia es compromet al lloc web de Wikipedia. El paràmetre {0} és
+  el nom del nostre programari, actualment "WikiLoop Battlefield". El paràmetre
+  {1} és el número de versió del nostre programari, actualment 4.0.1. La {2} és
+  la URL del lloc web de la nostra eina, actualment "battlefield.wikiloop.org".
 Message-SorryWeFailedToRevert: 'Ho sentim, no hem pogut revertir la revisió {0}.'
+Message-SorryWeFailedToRevert.@meta.@description: >-
+  El missatge per indicar a l'usuari que la reversió d'una determinada edició ha
+  fallat. El paràmetre {0} és l'identificador de revisió.
 Message-TheRevisionIsSuccessfullyRevertedAs: 'La revisió {0} es reverteix correctament com a {1}.'
+Message-TheRevisionIsSuccessfullyRevertedAs.@meta.@description: >-
+  El missatge que indica que una edició (revisió) de Wikipedia es reverteix
+  correctament. El paràmetre {0} és l'identificador de revisió de l'edició de
+  Wikipedia que es reverteix. El paràmetre {1} és el segon identificador de
+  revisió que la nova edició de Wikipedia que es troba a la part superior de
+  l’edició de Viquipèdia anterior, resultat de la reversió.
 Message-ThereIsNoEditSummary: No hi ha cap resum d’edició.
 Message-ThereIsNoEditSummary.@meta.@description: >-
   El missatge mostra que una edició de Viquipèdia determinada no té cap

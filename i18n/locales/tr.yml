@@ -244,12 +244,20 @@ MenuItem-Issues.@meta.@description: Kullanıcıyı yazılımımızın Github sor
 MenuItem-Stats: İstatistikleri
 MenuItem-Stats.@meta.@description: Kullanıcıyı yazılımımızın istatistik sayfasına yönlendiren menü öğesi etiketi.
 Message-AJudgementLogged: '{1} düzeltmesi için {0} kararı günlüğe kaydedildi.'
+Message-AJudgementLogged.@meta.@description: >-
+  Belirli bir düzeltme için bir kararın kaydedildiği mesajı. {0} parametresi
+  Wikipedia makalesinin adıdır. {0} parametresi, revizyonun revizyon
+  tanımlayıcısıdır (Wikipedia düzenleme).
 Message-CongratsSuccessfullyReverted: 'Tebrikler! doğrudan {0} başarıyla geri döndünüz.'
 Message-DiffNotAvailable: >-
   The wikipedia article diff is temporarily not available. You can try to reload
   it. Sometimes a vandalized revision could be deleted. You can check the page
   history.
 Message-FeedHasNoNewRevisionsClickNextBelow: '{0} feed''inde yeni düzeltme yok, aşağıya tıklayın.'
+Message-FeedHasNoNewRevisionsClickNextBelow.@meta.@description: >-
+  Kullanıcıya, incelenecek Vikipedi düzenlemelerinin belirli bir özet akışını
+  veya akışını bildiren yeni bir düzeltme / düzenleme yok. {0} parametresi,
+  verilen yayının adını belirtir.
 Message-Login: >-
   Etiketlerinizi adınız altında girip koruyabileceğinizi biliyor musunuz? Oauth
   aracılığıyla Wikipedia hesabıyla giriş yapmayı destekliyoruz.
@@ -261,14 +269,32 @@ Message-NameVoteAnnouncement: >-
 Message-NoActiveUsersPleaseStartReview: >-
   Son 15 dakika içinde aktif kullanıcı yok. {0} Düzeltmeleri {1} gözden
   geçirmeye başlayın ve birincisi olun.
+Message-NoActiveUsersPleaseStartReview.@meta.@description: >-
+  Kullanıcıyı geri dönmeye davet eden mesaj. {0} ve {1}, URL parametreleriyle
+  <a> ve </a> HTML bağlantı etiketi çiftleridir.
 Message-PromptLogin: >-
   Giriş yapabilir ve katkılarınızı adınız altında koruyabileceğinizi biliyor
   musunuz? Oauth aracılığıyla Wikipedia hesabıyla giriş yapmayı destekliyoruz.
 Message-RevertEditSummary: |-
   {0} {1} sürümü kullanılarak test / vandalizm olarak tanımlandı.
   {2} adresinde görün veya görüşünüzü belirtin
+Message-RevertEditSummary.@meta.@description: >-
+  Yazılımımız Wikipedia web sitesine yüklenmek üzere yeni bir Wikipedia
+  düzenlemesi oluştururken düzenleme özeti mesajı. {0} parametresi, şu anda
+  "WikiLoop Battlefield" olan yazılımımızın adıdır. {1} parametresi şu anda
+  4.0.1 olan yazılımımızın sürüm numarasıdır. {2}, şu anda
+  "battlefield.wikiloop.org" olan aracımızın web sitesi URL'sidir.
 Message-SorryWeFailedToRevert: 'Maalesef, {0} düzeltmesini geri alamadık.'
+Message-SorryWeFailedToRevert.@meta.@description: >-
+  Kullanıcıya belirli bir düzenlemenin geri alınmasının başarısız olduğunu
+  bildiren mesaj. {0} parametresi revizyon tanımlayıcıdır.
 Message-TheRevisionIsSuccessfullyRevertedAs: '{0} düzeltmesi başarıyla {1} olarak geri döndürüldü.'
+Message-TheRevisionIsSuccessfullyRevertedAs.@meta.@description: >-
+  Belirli bir Wikipedia düzenlemesinin (revizyonunun) başarıyla geri alındığını
+  belirten mesaj. {0} parametresi, geri döndürülen Wikipedia düzenlemesinin
+  düzeltme tanımlayıcısıdır. {1} parametresi, geri dönmenin bir sonucu olan
+  önceki Wikipedia düzenlemesinin üstünde bulunan yeni Wikipedia düzenlemesinin
+  ikinci düzeltme tanımlayıcısıdır.
 Message-ThereIsNoEditSummary: Düzenleme özeti yok.
 Message-ThereIsNoEditSummary.@meta.@description: >-
   İleti, belirli bir Wikipedia düzenlemesinin bir açıklaması olmadığını

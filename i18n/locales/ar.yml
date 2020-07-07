@@ -213,11 +213,18 @@ MenuItem-Stats.@meta.@description: >-
   عنصر عنصر القائمة الذي يعيد توجيه المستخدم إلى صفحة الإحصائيات الخاصة
   ببرنامجنا.
 Message-AJudgementLogged: 'تم تسجيل حكم {0} للمراجعة {1}.'
+Message-AJudgementLogged.@meta.@description: >-
+  الرسالة التي يتم تسجيل حكم لمراجعة معينة. المعلمة {0} هي اسم مقالة ويكيبيديا.
+  المعلمة {0} هي معرّف المراجعة للمراجعة (تحرير Wikipedia).
 Message-CongratsSuccessfullyReverted: 'مبروك! لقد نجحت في العودة مباشرةً {0}.'
 Message-DiffNotAvailable: >-
   مقال ويكيبيديا غير متاح مؤقتًا. يمكنك محاولة إعادة تحميله. في بعض الأحيان يمكن
   حذف مراجعة مخربة. يمكنك التحقق من تاريخ الصفحة.
 Message-FeedHasNoNewRevisionsClickNextBelow: 'الخلاصة {0} لا تحتوي على مراجعات جديدة ، انقر فوق التالي أدناه.'
+Message-FeedHasNoNewRevisionsClickNextBelow.@meta.@description: >-
+  الرسالة التي تخبر المستخدم بتغذية أو دفق معين من تعديلات Wikipedia المراد
+  مراجعتها ليس لها مراجعات / تعديلات جديدة. تشير المعلمة {0} إلى اسم الموجز
+  المحدد.
 Message-Login: >-
   هل تعلم أنه يمكنك تسجيل الدخول والحفاظ على التسميات الخاصة بك تحت اسمك؟ نحن
   ندعم تسجيل الدخول باستخدام حساب Wikipedia من خلال Oauth.
@@ -227,14 +234,30 @@ Message-NameVoteAnnouncement: >-
 Message-NoActiveUsersPleaseStartReview: >-
   لا يوجد مستخدمون نشطون في آخر 15 دقيقة. ابدأ {0} مراجعة المراجعات {1} وكن
   الأول.
+Message-NoActiveUsersPleaseStartReview.@meta.@description: >-
+  الرسالة التي تدعو المستخدم لبدء التراجع. {0} و {1} هما زوجا علامة رابط <a> و
+  </a> مع معلمات URL.
 Message-PromptLogin: >-
   هل تعلم أنه يمكنك تسجيل الدخول والحفاظ على مساهماتك تحت اسمك؟ نحن ندعم تسجيل
   الدخول باستخدام حساب Wikipedia من خلال Oauth.
 Message-RevertEditSummary: >-
   تم تحديده على أنه اختبار / تخريب باستخدام {0} الإصدار {1}. شاهده أو قدم رأيك
   في {2}
+Message-RevertEditSummary.@meta.@description: >-
+  رسالة ملخص التحرير عندما يقوم برنامجنا بإنشاء تحرير Wikipedia جديد يتم
+  الالتزام به على موقع Wikipedia على الويب. المعلمة {0} هي اسم برنامجنا ، حاليًا
+  "WikiLoop Battlefield". المعلمة {1} هي رقم إصدار برنامجنا ، حاليًا 4.0.1. {2}
+  هو عنوان URL لموقع الويب الخاص بأداتنا ، حاليًا "battlefield.wikiloop.org".
 Message-SorryWeFailedToRevert: 'عذرًا ، فشلنا في التراجع عن المراجعة {0}.'
+Message-SorryWeFailedToRevert.@meta.@description: >-
+  رسالة لإخبار المستخدم أن التراجع عن تعديل معين فشل. المعلمة {0} هي معرف
+  المراجعة.
 Message-TheRevisionIsSuccessfullyRevertedAs: 'تمت مراجعة النسخة {0} بنجاح على أنها {1}.'
+Message-TheRevisionIsSuccessfullyRevertedAs.@meta.@description: >-
+  تشير الرسالة إلى أنه تم تعديل (مراجعة) تعديل ويكيبيديا معين بنجاح. المعلمة {0}
+  هي معرّف المراجعة لتعديل تحرير Wikipedia. المعلمة {1} هي معرف المراجعة الثاني
+  الذي يحرره ويكيبيديا الجديد الموجود أعلى تحرير ويكيبيديا السابق والذي هو نتيجة
+  للإرجاع.
 Message-ThereIsNoEditSummary: لا يوجد ملخص تحرير.
 Message-ThereIsNoEditSummary.@meta.@description: >-
   تظهر الرسالة أن تحرير Wikipedia معين لا يحتوي على تفسير ، راجع

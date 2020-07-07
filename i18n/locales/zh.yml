@@ -143,18 +143,28 @@ MenuItem-Issues.@meta.@description: 菜单项标签将用户重定向到我们�
 MenuItem-Stats: 统计
 MenuItem-Stats.@meta.@description: 菜单项标签将用户重定向到我们软件的统计页面。
 Message-AJudgementLogged: '已记录针对修订版{1}的{0}的判断。'
+Message-AJudgementLogged.@meta.@description: '正在记录对给定修订的判断的消息。参数{0}是Wikipedia文章的名称。参数{0}是修订的修订标识符（Wikipedia编辑）。'
 Message-CongratsSuccessfullyReverted: '恭喜！您已成功直接还原为{0}。'
 Message-DiffNotAvailable: 该页面的版本差异暂时无法读取，可以嘗試重新載入。有时被破壞的版本可能被完全删除，您可以查看页面历史。
 Message-FeedHasNoNewRevisionsClickNextBelow: 'Feed {0}没有新修订，请单击下面的下一步。'
+Message-FeedHasNoNewRevisionsClickNextBelow.@meta.@description: '该消息告诉用户给定的要查看的Wikipedia提要或流没有新的修订/编辑。参数{0}指给定提要的名称。'
 Message-Login: 您知道您可以登录并使用您的名字保存标签吗？我们支持通过Oauth使用Wikipedia帐户登录。
 Message-NameVoteAnnouncement: |-
   尊敬的贡献者，我们正在为新名称进行投票，以替换将于2020年7月13日UTC结束的“ WikiLoop Battlefield”。
   请投票。
 Message-NoActiveUsersPleaseStartReview: '最近15分钟内没有活跃用户。开始{0}复审修订版{1}，并成为第一个。'
+Message-NoActiveUsersPleaseStartReview.@meta.@description: '邀请用户开始还原的消息。 {0}和{1}是带有URL参数的HTML锚标记对<a>和</a>。'
 Message-PromptLogin: 您知道您可以使用您的名字登录并保存您的捐款吗？我们支持通过Oauth使用Wikipedia帐户登录。
 Message-RevertEditSummary: '使用{0}版本{1}标识为测试/故意破坏。请在{2}上查看或发表您的意见'
+Message-RevertEditSummary.@meta.@description: >-
+  当我们的软件生成新的Wikipedia编辑以提交到Wikipedia网站时，编辑摘要的消息。参数{0}是我们的软件的名称，当前为“ WikiLoop
+  Battlefield”。参数{1}是我们软件的版本号，当前为4.0.1。 {2}是我们工具的网站网址，当前为“
+  battlefield.wikiloop.org”。
 Message-SorryWeFailedToRevert: '抱歉，我们无法还原修订版{0}。'
+Message-SorryWeFailedToRevert.@meta.@description: '告诉用户给定编辑的还原失败的消息。参数{0}是修订版标识符。'
 Message-TheRevisionIsSuccessfullyRevertedAs: '修订版{0}已成功还原为{1}。'
+Message-TheRevisionIsSuccessfullyRevertedAs.@meta.@description: >-
+  消息表明已成功还原给定的Wikipedia编辑（修订）。参数{0}是要还原的Wikipedia编辑的修订版标识符。参数{1}是新Wikipedia编辑的第二个修订版本标识符，它是先前Wikipedia编辑的顶部，这是还原的结果。
 Message-ThereIsNoEditSummary: 没有编辑摘要。
 Message-ThereIsNoEditSummary.@meta.@description: '该消息显示给定的Wikipedia编辑没有解释，请参阅https://en.wikipedia.org/wiki/Help:Edit_summary。'
 Message-YourJudgementLogged: '您对版本{1}的{0}的判断已记录下来。'

@@ -194,6 +194,9 @@ MenuItem-Issues.@meta.@description: תווית פריט התפריט המפנה 
 MenuItem-Stats: נתונים סטטיסטיים
 MenuItem-Stats.@meta.@description: תווית פריט התפריט המפנה את המשתמש לדף הסטטיסטי של התוכנה שלנו.
 Message-AJudgementLogged: 'נפסק פסק דין ל {0} לתיקון {1}.'
+Message-AJudgementLogged.@meta.@description: >-
+  ההודעה לפיה מתעדים פסק דין לגבי עדכון נתון. הפרמטר {0} הוא שם המאמר
+  בוויקיפדיה. הפרמטר {0} הוא מזהה הגרסאות של הגרסה (עריכת ויקיפדיה).
 Message-CongratsSuccessfullyReverted: 'מזל טוב! חזרת בהצלחה ישירות {0}.'
 Message-DiffNotAvailable: |-
   המאמר של הוויקיפדיה אינו זמין באופן זמני.
@@ -201,6 +204,9 @@ Message-DiffNotAvailable: |-
   לפעמים ניתן למחוק עדכון מושחת.
   אתה יכול לבדוק את היסטוריית הדפים.
 Message-FeedHasNoNewRevisionsClickNextBelow: 'בעדכון {0} אין עדכונים חדשים, לחץ על הבא למטה.'
+Message-FeedHasNoNewRevisionsClickNextBelow.@meta.@description: >-
+  ההודעה המציינת למשתמש עדכון או זרם נתון של עריכה בוויקיפדיה שיש לבדוק אינה
+  מכילה גרסאות / עריכות חדשות. הפרמטר {0} מתייחס לשם העדכון הנתון.
 Message-Login: >-
   האם אתה יודע שתוכל להתחבר ולשמור את התוויות שלך תחת שמך? אנו תומכים בכניסה
   לחשבון ויקיפדיה דרך Oauth.
@@ -212,14 +218,27 @@ Message-NameVoteAnnouncement: >-
 Message-NoActiveUsersPleaseStartReview: >-
   אין משתמשים פעילים ב -15 הדקות האחרונות. התחל {0} לבדוק גרסאות {1} והפוך
   לראשון.
+Message-NoActiveUsersPleaseStartReview.@meta.@description: >-
+  ההודעה שמזמינה את המשתמש להתחיל לחזור. {0} ו- {1} הם צמדי תג העוגן HTML <a> ו-
+  </a> עם פרמטרים של URL.
 Message-PromptLogin: >-
   האם אתה יודע שתוכל להתחבר ולשמור את התרומות שלך תחת שמך? אנו תומכים בכניסה
   לחשבון ויקיפדיה דרך Oauth.
 Message-RevertEditSummary: |-
   זוהה כמבחן / השחתה באמצעות {0} גרסה {1}.
   ראה אותו או ספק את דעתך ב {2}
+Message-RevertEditSummary.@meta.@description: >-
+  הודעת סיכום העריכה כאשר התוכנה שלנו מייצרת עריכה חדשה בוויקיפדיה שתחויב באתר
+  ויקיפדיה. הפרמטר {0} הוא שם התוכנה שלנו, כרגע "שדה הקרב WikiLoop". הפרמטר {1}
+  הוא מספר הגרסאות של התוכנה שלנו, כרגע 4.0.1. {2} היא כתובת האתר של הכלי שלנו,
+  כרגע "battlefield.wikiloop.org".
 Message-SorryWeFailedToRevert: 'מצטערים, לא הצלחנו להחזיר את המהדורה {0}.'
+Message-SorryWeFailedToRevert.@meta.@description: 'ההודעה לספר למשתמש שההיפוך של עריכה נתונה נכשל. הפרמטר {0} הוא מזהה הגרסאות.'
 Message-TheRevisionIsSuccessfullyRevertedAs: 'המהפכה {0} מבוטלת בהצלחה בתור {1}.'
+Message-TheRevisionIsSuccessfullyRevertedAs.@meta.@description: >-
+  ההודעה המציינת כי עריכה נתונה בוויקיפדיה מושבתת בהצלחה. הפרמטר {0} הוא מזהה
+  הגרסאות של עריכת ויקיפדיה מבוטלת. הפרמטר {1} הוא מזהה הגרסא השני כי עריכת
+  הוויקיפדיה החדשה שנמצאת בראש עריכת הקודם בוויקיפדיה היא תוצאה של ההחזרה.
 Message-ThereIsNoEditSummary: אין סיכום עריכה.
 Message-ThereIsNoEditSummary.@meta.@description: >-
   ההודעה מראה שלעריכה מסוימת בוויקיפדיה אין הסבר, ראה

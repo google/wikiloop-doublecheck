@@ -216,12 +216,19 @@ MenuItem-Issues.@meta.@description: برچسب مورد فهرست کاربر ر
 MenuItem-Stats: آمار
 MenuItem-Stats.@meta.@description: برچسب مورد فهرست کاربر را به صفحه آمار نرم افزار ما هدایت می کند.
 Message-AJudgementLogged: 'داوری برای {0} برای تجدید نظر در 1 {ثبت شده است.'
+Message-AJudgementLogged.@meta.@description: >-
+  پیامی مبنی بر اینکه داوری برای تجدید نظر در حال ضبط است. پارامتر {0} نام مقاله
+  ویکی پدیا است. پارامتر {0} شناسه اصلاح نسخه (ویرایش ویکی پدیا) است.
 Message-CongratsSuccessfullyReverted: 'تبریک می گویم! شما با موفقیت مستقیم {0 {برگشتید.'
 Message-DiffNotAvailable: >-
   مقاله wikipedia به طور موقت در دسترس نیست. می توانید دوباره بارگیری کنید. گاهی
   اوقات یک ویرایش ویران شده می تواند حذف شود. می توانید تاریخچه صفحه را بررسی
   کنید.
 Message-FeedHasNoNewRevisionsClickNextBelow: 'فید {0} هیچ نسخه جدیدی ندارد ، در زیر روی بعدی کلیک کنید.'
+Message-FeedHasNoNewRevisionsClickNextBelow.@meta.@description: >-
+  پیغامی که به کاربر فید یا جریان خاص ویرایش های ویکی پدیا را برای بررسی ارسال
+  می کند ، هیچ ویرایش / ویرایش جدیدی ندارد. پارامتر {0 to به نام خوراک داده شده
+  اشاره دارد.
 Message-Login: >-
   آیا می دانید می توانید برچسب های خود را تحت نام خود وارد کرده و آنها را حفظ
   کنید؟ ما از حساب Oauth با حساب ویکی پدیا پشتیبانی می کنیم.
@@ -232,14 +239,31 @@ Message-NameVoteAnnouncement: >-
 Message-NoActiveUsersPleaseStartReview: >-
   هیچ کاربر فعال در 15 دقیقه گذشته {0 Start شروع به بررسی نسخه های {1} کنید و
   اولین نفر شوید.
+Message-NoActiveUsersPleaseStartReview.@meta.@description: >-
+  پیغامی که کاربر را برای شروع بازگرداندن دعوت می کند. {0} و 1 {جفت های برچسب
+  لنگر HTML <a> و </a> با پارامترهای URL هستند.
 Message-PromptLogin: >-
   آیا می دانید که می توانید مشارکت خود را تحت نام خود وارد کنید و آنها را حفظ
   کنید؟ ما از طریق Oauth وارد حساب کاربری ویکی پدیا می شویم.
 Message-RevertEditSummary: >-
   با استفاده از test 0} نسخه {1 as به عنوان تست / خرابکاری شناخته شده است. آن را
   ببینید یا نظر خود را در 2 {ارائه دهید
+Message-RevertEditSummary.@meta.@description: >-
+  پیام ویرایش خلاصه هنگامی که نرم افزار ما ویرایش جدید ویکی پدیا را ایجاد می کند
+  تا به وب سایت ویکی پدیا متعهد شود. پارامتر {0} نام نرم افزار ما است ، در حال
+  حاضر "WikiLoop Battlefield". پارامتر {1 the شماره نسخه نرم افزار ما ، در حال
+  حاضر 4.0.1 است. {2 ur آدرس وب سایت ابزار ما ، در حال حاضر
+  "Battlefield.wikiloop.org" است.
 Message-SorryWeFailedToRevert: متأسفیم ، ما نتوانستیم نسخه 0 re را برگردانیم.
+Message-SorryWeFailedToRevert.@meta.@description: >-
+  این پیام به کاربر می گوید که تغییر یک ویرایش داده شده انجام نشد. پارامتر {0}
+  شناسه تجدید نظر است.
 Message-TheRevisionIsSuccessfullyRevertedAs: 'نسخه {0 successfully با موفقیت به عنوان {1 vert برگردانده شده است.'
+Message-TheRevisionIsSuccessfullyRevertedAs.@meta.@description: >-
+  این پیام که می گوید ویرایش شده (ویرایش) ویکی پدیا با موفقیت برگردانده شده است.
+  پارامتر {0} شناسه تجدید نظر در ویرایش ویکی پدیا است. پارامتر {1 the دومین
+  شناسه تجدید نظر در ویرایش ویکی پدیا جدید است که در بالای ویرایش ویکی پدیا قبلی
+  است که نتیجه بازگشت است.
 Message-ThereIsNoEditSummary: خلاصه ویرایش وجود ندارد
 Message-ThereIsNoEditSummary.@meta.@description: >-
   این پیام نشان می دهد که ویرایش ویکی پدیا توضیحی ندارد ، به

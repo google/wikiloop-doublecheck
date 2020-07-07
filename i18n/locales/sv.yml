@@ -250,12 +250,20 @@ MenuItem-Stats.@meta.@description: >-
   Menyalternativet etikett omdirigerar användaren till statistik sidan för vår
   programvara.
 Message-AJudgementLogged: 'En dom för {0} för revision {1} har loggats.'
+Message-AJudgementLogged.@meta.@description: >-
+  Meddelandet om att en dom för en viss revision spelas in. Parametern {0} är
+  namnet på Wikipedia-artikeln. Parametern {0} är revisionsidentifieraren för
+  revisionen (Wikipedia-redigering).
 Message-CongratsSuccessfullyReverted: 'grattis! har du lyckats återgå direkt {0}.'
 Message-DiffNotAvailable: >-
   Wikipedia-artikeln diff är tillfälligt inte tillgänglig. Du kan försöka ladda
   den igen. Ibland kan en vandaliserad revision tas bort. Du kan kontrollera
   sidhistoriken.
 Message-FeedHasNoNewRevisionsClickNextBelow: 'Feed {0} har inga nya versioner, klicka på nästa nedan.'
+Message-FeedHasNoNewRevisionsClickNextBelow.@meta.@description: >-
+  Meddelandet som berättar användaren om en viss flöde eller ström av
+  Wikipedia-redigeringar som ska granskas har inga nya revideringar /
+  redigeringar. Parametern {0} hänvisar till namnet på det givna flödet.
 Message-Login: >-
   Vet du att du kan logga in och bevara dina etiketter under ditt namn? Vi
   stöder inloggning med Wikipedia-konto via Oauth.
@@ -265,14 +273,32 @@ Message-NameVoteAnnouncement: >-
 Message-NoActiveUsersPleaseStartReview: >-
   Inga aktiva användare under de senaste 15 min. Börja {0} granska revisioner
   {1} och bli den första.
+Message-NoActiveUsersPleaseStartReview.@meta.@description: >-
+  Meddelandet som uppmanar användaren att börja återgå. {0} och {1} är
+  HTML-ankarparpar <a> och </a> med URL-parametrar.
 Message-PromptLogin: >-
   Vet du att du kan logga in och bevara dina bidrag under ditt namn? Vi stöder
   inloggning med Wikipedia-konto via Oauth.
 Message-RevertEditSummary: >-
   Identifieras som test / vandalism med {0} version {1}. Se det eller ge din
   åsikt på {2}
+Message-RevertEditSummary.@meta.@description: >-
+  Meddelandet om redigeringsöversikt när vår programvara genererar en ny
+  Wikipedia-redigering som kommer att begås på Wikipedia-webbplatsen. Parametern
+  {0} är namnet på vår programvara, för närvarande "WikiLoop Battlefield".
+  Parametern {1} är versionnumret för vår programvara, för närvarande 4.0.1. {2}
+  är webbadressen till vårt verktyg, för närvarande "battlefield.wikiloop.org".
 Message-SorryWeFailedToRevert: 'Vi kunde tyvärr inte återställa revisionen {0}.'
+Message-SorryWeFailedToRevert.@meta.@description: >-
+  Meddelandet för att berätta för användaren att omvändningen av en given
+  redigering misslyckades. Parametern {0} är revisionsidentifieraren.
 Message-TheRevisionIsSuccessfullyRevertedAs: 'Revisionen {0} har återgått till {1}.'
+Message-TheRevisionIsSuccessfullyRevertedAs.@meta.@description: >-
+  Meddelandet som anger att en viss Wikipedia-redigering (revision) återställs
+  framgångsrikt. Parametern {0} är revisionsidentifieraren för
+  Wikipedia-redigeringen som återställs. Parametern {1} är den andra
+  revisionsidentifieraren som den nya Wikipedia-redigeringen som är ovanpå den
+  föregående Wikipedia-redigeringen som är ett resultat av omvändningen.
 Message-ThereIsNoEditSummary: Det finns ingen redigeringsöversikt.
 Message-ThereIsNoEditSummary.@meta.@description: >-
   Meddelandet visar att en viss Wikipedia-redigering inte har någon förklaring,

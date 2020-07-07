@@ -263,12 +263,20 @@ MenuItem-Stats.@meta.@description: >-
   O rótulo do item de menu redireciona o usuário para a página de estatísticas
   do nosso software.
 Message-AJudgementLogged: 'Um julgamento para {0} para a revisão {1} foi registrado.'
+Message-AJudgementLogged.@meta.@description: >-
+  A mensagem de que um julgamento para uma determinada revisão está sendo
+  registrado. O parâmetro {0} é o nome do artigo da Wikipedia. O parâmetro {0} é
+  o identificador de revisão da revisão (edição da Wikipedia).
 Message-CongratsSuccessfullyReverted: 'Parabéns! você reverteu diretamente {0}.'
 Message-DiffNotAvailable: >-
   O diff do artigo da Wikipédia está temporariamente indisponível. Você tentar
   recarregá-lo. Às vezes uma revisão vandalizada pode ser eliminada. Você pode
   conferir o histórico da página.
 Message-FeedHasNoNewRevisionsClickNextBelow: 'O feed {0} não tem novas revisões, clique em próximo abaixo.'
+Message-FeedHasNoNewRevisionsClickNextBelow.@meta.@description: >-
+  A mensagem informando ao usuário um determinado feed ou fluxo de edições da
+  Wikipedia a serem revisadas não possui novas revisões / edições. O parâmetro
+  {0} refere-se ao nome do feed fornecido.
 Message-Login: >-
   Você sabia que pode fazer login e preservar seus rótulos em seu nome? O login
   com a conta da Wikipedia pode ser feito através de Oauth.
@@ -281,14 +289,32 @@ Message-NameVoteAnnouncement: >-
 Message-NoActiveUsersPleaseStartReview: >-
   Nenhum usuário ativo nos últimos 15 minutos. Comece {0} revisando as revisões
   {1} e seja o primeiro.
+Message-NoActiveUsersPleaseStartReview.@meta.@description: >-
+  A mensagem que convida o usuário a começar a reverter. O {0} e o {1} são os
+  pares de tags âncora HTML <a> e </a> com os parâmetros de URL.
 Message-PromptLogin: >-
   Você sabia que pode fazer login e preservar seus rótulos em seu nome? O login
   com a conta da Wikipedia pode ser feito através de Oauth.
 Message-RevertEditSummary: >-
   Identificado como um teste/vandalismo utilizando {0} versão {1}. Ver ou deixar
   sua opinião em {2}
+Message-RevertEditSummary.@meta.@description: >-
+  A mensagem do resumo da edição quando o nosso software está gerando uma nova
+  edição da Wikipedia a ser confirmada no site da Wikipedia. O parâmetro {0} é o
+  nome do nosso software, atualmente "WikiLoop Battlefield". O parâmetro {1} é o
+  número da versão do nosso software, atualmente 4.0.1. O {2} é o URL do site da
+  nossa ferramenta, atualmente "battlefield.wikiloop.org".
 Message-SorryWeFailedToRevert: 'Desculpe, não foi possível reverter a revisão {0}.'
+Message-SorryWeFailedToRevert.@meta.@description: >-
+  A mensagem para informar ao usuário que a reversão de uma determinada edição
+  falhou. O parâmetro {0} é o identificador de revisão.
 Message-TheRevisionIsSuccessfullyRevertedAs: 'A revisão {0} foi revertida com sucesso como {1}.'
+Message-TheRevisionIsSuccessfullyRevertedAs.@meta.@description: >-
+  A mensagem informando que uma determinada edição (revisão) da Wikipedia é
+  revertida com sucesso. O parâmetro {0} é o identificador de revisão da edição
+  da Wikipedia que está sendo revertida. O parâmetro {1} é o segundo
+  identificador de revisão que a nova edição da Wikipedia está no topo da edição
+  anterior da Wikipedia, resultado da reversão.
 Message-ThereIsNoEditSummary: Não há resumo de edição.
 Message-ThereIsNoEditSummary.@meta.@description: >-
   A mensagem mostra que uma determinada edição da Wikipedia não possui uma
