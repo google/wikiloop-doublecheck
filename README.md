@@ -130,6 +130,16 @@ npx all-contributors add $NEW_CONTRIBUTOR translation
   </tr>
 </table>
 
+We greatly appreciate the following volunteers for helping us translate / proofread our (machine translated) texts.
+- **ZH**: @tzuhsiao
+- **UK**: @MT-Wizard, @adehtiarov 
+- **IT**: @alex-martelli
+- **ES**: @apatronl, @fmobus
+- **PT**: @fmobus, @he7d3r, Ted Hardie, 
+- **JA**: @luisfors-g, @renamoo
+- **RU**: Andrei Goriachev
+
+
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
