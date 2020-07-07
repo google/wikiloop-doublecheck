@@ -11,70 +11,257 @@ Button-Next.@meta.@description: >-
   Rótulo para um botão ao clicar em ir para a próxima página ou exibir a próxima
   informação.
 Button-OpenedUrlToRevert: Aberto URL para desfazer
+Button-OpenedUrlToRevert.@meta.@description: >-
+  O rótulo do botão "Reverter agora" será alterado para "URL aberto para
+  reverter" para mostrar o status da ação após o clique e a ação.
 Button-RevertNow: Desfazer agora
+Button-RevertNow.@meta.@description: >-
+  O rótulo do botão para reverter uma determinada revisão na Wikipedia
+  imediatamente.
 Button-ShowJudgements: Mostrar julgamentos
+Button-ShowJudgements.@meta.@description: O rótulo do botão para mostrar os julgamentos dados em uma edição da Wikipedia
 Button-Undo: Desfazer
+Button-Undo.@meta.@description: Uma etiqueta para o botão desfazer uma ação em nosso software.
 Label-1Month: 1 mês (30d)
+Label-1Month.@meta.@description: >-
+  Um rótulo para o período de estatísticas a ser exibido, com precisão de 1 mês
+  ou 30 dias.
 Label-1Quarter: 1 trimestre (90d)
+Label-1Quarter.@meta.@description: >-
+  Um rótulo para o período de estatísticas a ser exibido, com precisão de um
+  quarto ou 90 dias.
 Label-1Year: 1 ano (365d)
+Label-1Year.@meta.@description: >-
+  Um rótulo para o período de estatísticas a mostrar, que é de 1 ano ou 365 dias
+  com precisão.
 Label-1day: 1 dia
+Label-1day.@meta.@description: 'Um rótulo para o período de estatísticas a ser exibido, com precisão de 1 dia.'
 Label-1week: 1 semana (7d)
+Label-1week.@meta.@description: >-
+  Um rótulo para o período de estatísticas a ser exibido, com precisão de 1
+  semana ou 7 dias.
 Label-ActiveUsers: Usuários ativos
+Label-ActiveUsers.@meta.@description: Um rótulo para as estatísticas com base nos usuários ativos deste software.
 Label-AllTime: De todos os tempos
+Label-AllTime.@meta.@description: >-
+  Um rótulo para o intervalo de tempo para exibição das estatísticas, o tempo
+  todo em que nosso software está ativo.
 Label-Anonymous: Anônimo
 Label-ArtificialIntelligence: Inteligência artificial
 Label-Author: Autor
 Label-CountOfJudgements: Contagem
+Label-CountOfJudgements.@meta.@description: Um rótulo para o número de sentenças das edições da Wikipedia.
 Label-Day: Dia
+Label-Day.@meta.@description: >-
+  Um rótulo para a granularidade das estatísticas do tempo de detalhamento, que
+  é dividido por dia.
 Label-DiffView: Visão Diff
+Label-DiffView.@meta.@description: >-
+  Um rótulo para uma exibição mostrando a diferença entre os instantâneos, como
+  dois instantâneos de artigos da Wikipedia.
 Label-DirectRevertFailed: Houve uma falha ao reverter diretamente
+Label-DirectRevertFailed.@meta.@description: >-
+  Um rótulo para mostrar o novo status do botão "Reverter agora". O objetivo é
+  mostrar o status da ação executada pelo usuário que, nesse caso, é que a ação
+  de reversão falhou.
 Label-DirectReverted: Reverter diretamente
+Label-DirectReverted.@meta.@description: >-
+  Um rótulo para mostrar o novo status do botão "Reverter agora". O objetivo é
+  mostrar o status da ação executada pelo usuário que, nesse caso, é que a ação
+  de reversão foi bem-sucedida.
 Label-EditSummary: Resumo da edição
+Label-EditSummary.@meta.@description: >-
+  Um resumo de edição é uma breve explicação de uma edição para uma página da
+  Wikipedia, conforme mostrado em
+  https://en.wikipedia.org/wiki/Help:Edit_summary
 Label-EditedAt: editado
+Label-EditedAt.@meta.@description: >-
+  O rótulo do carimbo de data e hora da edição na Wikipedia quando a edição é
+  criada.
 Label-Feed: Atualizações
+Label-Feed.@meta.@description: >-
+  O rótulo que mostra um feed, um fluxo ou um fluxo de novas edições da
+  Wikipedia recebidas, seguindo o nome desse feed específico. Por exemplo, temos
+  vários feeds de diferentes tipos de edições da Wikipedia, como feed do tópico
+  do artigo, feed de edições detectadas pelos sistemas de pontuação de detecção
+  de vandalismo, etc.
 Label-History: Histórico
+Label-History.@meta.@description: >-
+  Um rótulo para a lista de atividades passadas, julgamentos passados
+  contribuídos, etc., de todos os usuários ou de um determinado usuário.
 Label-HumanEditors: Editores humanos
+Label-HumanEditors.@meta.@description: O rótulo para julgamentos fornecidos pelos editores da Human.
 Label-Judgement: Julgamento
+Label-Judgement.@meta.@description: >-
+  O rótulo para julgamento dado às edições da Wikipedia por nossos usuários que
+  revisam as edições recebidas da Wikipedia.
 Label-LastActiveTime: ativo pela última vez
+Label-LastActiveTime.@meta.@description: >-
+  O rótulo para mostrar a última vez que um usuário esteve ativo em nosso
+  software.
 Label-Loading: Carregando
+Label-Loading.@meta.@description: >-
+  O rótulo para mostrar algumas partes ou dados em uma página da web está sendo
+  carregado. Normalmente, esse rótulo é exibido como um substituto para um
+  indicador de carregamento.
 Label-Login: Entrar
+Label-Login.@meta.@description: >-
+  O rótulo para um botão de login para permitir que o usuário faça login. Ou
+  também será usado em mensagens ou prompt para convidar o usuário a fazer
+  login.
 Label-Logout: Sair
+Label-Logout.@meta.@description: >-
+  O rótulo para um botão de login para permitir que o usuário efetue logout. Ou
+  também será usado em mensagens ou prompt para convidar o usuário a sair.
 Label-LooksGood: Parece bom
+Label-LooksGood.@meta.@description: >-
+  O rótulo de um dos três principais tipos de julgamento, que diz que a edição
+  da Wikipedia está sendo revisada, é bom e construtivo para a Wikipedia, em vez
+  de prejudicial.
 Label-Me: Eu
+Label-Me.@meta.@description: >-
+  O rótulo para identificar o próprio usuário. Verifique se o rótulo traduzido
+  aqui é de gênero neutro.
 Label-Month: Mês
-Label-My-History: Meu histórico
+Label-Month.@meta.@description: >-
+  Um rótulo para a granularidade das estatísticas do tempo de detalhamento,
+  dividido por mês.
+Label-MyHistory: Minha história
+Label-MyHistory.@meta.@description: >-
+  Um rótulo para a lista de atividades passadas, julgamentos passados
+  contribuídos, etc., do usuário atual que está usando nosso software.
+Label-MyHistory.@meta.@isMachineTranslated: true
+Label-MyHistory.@meta.@translatedAt: '2020-07-07T19:26:51.445Z'
+Label-MyHistory.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-NewJudgement: Novo julgamento
+Label-NewJudgement.@meta.@description: >-
+  Um rótulo para um novo julgamento dado à edição da Wikipedia por nosso
+  usuário.
 Label-None: Nenhum
+Label-None.@meta.@description: >-
+  O rótulo para tabela vazia de linhas e células de conteúdo ou listas vazias.
+  Isso geralmente é usado na interface do usuário quando não há conteúdo para
+  mostrar.
 Label-NotSure: Não tenho certeza
+Label-NotSure.@meta.@description: >-
+  O rótulo de um dos três principais tipos de julgamento que diz que a edição da
+  Wikipedia está sendo revisada é incerto e pode ser bom e construtivo ou
+  prejudicial à Wikipedia.
 Label-OresBadfaith: ORES Má fé
+Label-OresBadfaith.@meta.@description: >-
+  O rótulo que identifica a pontuação e o julgamento do sistema ORES da WMF
+  Artificial Intelligence. Este rótulo específico refere-se ao oposto do modelo
+  de boa fé do ORES. Consulte
+  https://www.mediawiki.org/wiki/ORES#Advanced_support
 Label-OresBadfaith.@meta.@isMachineTranslated: true
 Label-OresBadfaith.@meta.@translatedAt: '2020-07-07T01:09:19.144Z'
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: ORES Danoso
-Label-Overriden: Substituído
-Label-Prompt-Login: Conecte-se
+Label-OresDamaging.@meta.@description: >-
+  O rótulo que identifica a pontuação e o julgamento do sistema ORES da WMF
+  Artificial Intelligence. Este rótulo específico refere-se ao modelo
+  prejudicial do ORES. Consulte
+  https://www.mediawiki.org/wiki/ORES#Advanced_support
+Label-Overridden: Substituído
+Label-Overridden.@meta.@description: >-
+  O rótulo para dizer que uma determinada edição no artigo da Wikipedia está
+  sendo substituída por outra edição mais recente no mesmo artigo da Wikipedia.
+  Esse rótulo indica que essa edição já foi revertida por nosso usuário atual ou
+  revertida ou atualizada por outro editor da Wikipedia.
+Label-Overridden.@meta.@isMachineTranslated: true
+Label-Overridden.@meta.@translatedAt: '2020-07-07T19:26:51.445Z'
+Label-Overridden.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-PromptLogin: Conecte-se
+Label-PromptLogin.@meta.@description: >-
+  A etiqueta para solicitar que um usuário efetue login em nosso software. É
+  mais como o tom "faça login" nos idiomas em que existem formalidade e discurso
+  honorífico.
+Label-PromptLogin.@meta.@isMachineTranslated: true
+Label-PromptLogin.@meta.@translatedAt: '2020-07-07T19:26:51.445Z'
+Label-PromptLogin.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-Rank: Classificação
+Label-Rank.@meta.@description: >-
+  O rótulo para classificações de estatísticas por um determinado número de
+  classificação, por exemplo, usuários classificados pelo número de
+  contribuições
 Label-Reason: Razão
+Label-Reason.@meta.@description: >-
+  O rótulo do motivo do resultado de uma ação executada, como quando um usuário
+  está revertendo uma edição da Wikipedia.
 Label-Result: Resultado
+Label-Result.@meta.@description: >-
+  O rótulo para o resultado de uma ação executada, como quando um usuário
+  reverteu uma edição da Wikipedia.
 Label-RevertSucceeded: A reversão foi bem-sucedida!
+Label-RevertSucceeded.@meta.@description: >-
+  O rótulo para o resultado de uma ação executada quando um usuário reverte uma
+  edição da Wikipedia, a ação é bem-sucedida.
 Label-ReviewFeed: Revisar Feed
+Label-ReviewFeed.@meta.@description: >-
+  O rótulo do feed, fluxo ou fluxo das edições recebidas da Wikipedia a serem
+  revisadas.
 Label-ReviewedAndSays: 'revisou {0} e diz'
+Label-ReviewedAndSays.@meta.@description: >-
+  O rótulo para iniciar a sentença de julgamento e os motivos apresentados para
+  uma revisão.
 Label-ShouldRevert: Deveria ser revertido
+Label-ShouldRevert.@meta.@description: >-
+  O rótulo de um dos três principais tipos de julgamento, que diz que a edição
+  da Wikipedia está sendo revisada, é prejudicial à Wikipedia, em vez de ser bom
+  e construtivo.
 Label-Snooze: Soneca
+Label-Snooze.@meta.@description: >-
+  O rótulo de um botão para adiar um lembrete ou uma notificação ou, em outras
+  palavras, significa "lembrar mais tarde". Na realidade, o botão soneca será
+  usado quando o lembrete ou a mensagem de notificação aparecer novamente. Por
+  isso, também significa "não demitido permanentemente, mas apenas
+  temporariamente".
 Label-Someone: Alguém
+Label-Someone.@meta.@description: O rótulo para identificar um usuário que não seja o usuário atual.
 Label-Time: Tempo
+Label-Time.@meta.@description: >-
+  O rótulo do registro de data e hora de um determinado julgamento ou ação dado
+  por um usuário.
 Label-TopNumberAnonymousUsers: 'Principais {0} usuários anônimos'
+Label-TopNumberAnonymousUsers.@meta.@description: >-
+  O rótulo da seção dos 20 principais usuários anônimos, etc., enquanto o número
+  "20" pode ser substituído no parâmetro
 Label-TopUsers: Principais Usuários
+Label-TopUsers.@meta.@description: >-
+  O rótulo da seção dos principais usuários (conectados) etc., enquanto o
+  número.
 Label-TopWikis: Principais Wikis
+Label-TopWikis.@meta.@description: >-
+  O rótulo da seção dos principais Wikipedias ou de seus projetos irmãos
+  (Wikidata.org etc.), pela quantidade de julgamentos dados na Wikipedia.
 Label-TotalNumber: Total
+Label-TotalNumber.@meta.@description: O rótulo da coluna do número total de julgamentos dados por um usuário.
 Label-User: Do usuário
+Label-User.@meta.@description: O rótulo para o usuário que julga a edição da Wikipedia.
 Label-Week: Semana
+Label-Week.@meta.@description: >-
+  Um rótulo para a granularidade das estatísticas do tempo de detalhamento,
+  dividido por semana.
 Label-YourJudgement: Seu julgamento
+Label-YourJudgement.@meta.@description: O rótulo para o julgamento dado pelo usuário atual.
 MenuItem-Code: Código
+MenuItem-Code.@meta.@description: >-
+  O rótulo do item de menu para redirecionar o usuário para a base de código
+  deste software.
 MenuItem-Contributions: Minhas contribuições
+MenuItem-Contributions.@meta.@description: >-
+  O rótulo do item de menu direciona o usuário para a lista de contribuições ou
+  julgamentos fornecidos pelo usuário atual.
 MenuItem-ContributionsBeforeLogin: Minhas contribuições antes de entrar
+MenuItem-ContributionsBeforeLogin.@meta.@description: 'PARA EXCLUIR, NÃO MUDE OU TRADUTE.'
 MenuItem-Issues: Problemas
+MenuItem-Issues.@meta.@description: >-
+  O rótulo do item de menu redireciona o usuário para os problemas do Github do
+  nosso software.
 MenuItem-Stats: Estatísticas
+MenuItem-Stats.@meta.@description: >-
+  O rótulo do item de menu redireciona o usuário para a página de estatísticas
+  do nosso software.
 Message-AJudgementLogged: 'Um julgamento para {0} para a revisão {1} foi registrado.'
 Message-CongratsSuccessfullyReverted: 'Parabéns! você reverteu diretamente {0}.'
 Message-DiffNotAvailable: >-
@@ -103,4 +290,7 @@ Message-RevertEditSummary: >-
 Message-SorryWeFailedToRevert: 'Desculpe, não foi possível reverter a revisão {0}.'
 Message-TheRevisionIsSuccessfullyRevertedAs: 'A revisão {0} foi revertida com sucesso como {1}.'
 Message-ThereIsNoEditSummary: Não há resumo de edição.
+Message-ThereIsNoEditSummary.@meta.@description: >-
+  A mensagem mostra que uma determinada edição da Wikipedia não possui uma
+  explicação, consulte https://en.wikipedia.org/wiki/Help:Edit_summary.
 Message-YourJudgementLogged: 'Seu julgamento de {0} para a revisão {1} foi registrado.'

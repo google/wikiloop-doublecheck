@@ -11,70 +11,242 @@ Button-Next.@meta.@description: >-
   Метка для кнопки при нажатии перейти на следующую страницу или отобразить
   следующую информацию.
 Button-OpenedUrlToRevert: Открытый URL для возврата
+Button-OpenedUrlToRevert.@meta.@description: >-
+  Ярлык кнопки «Вернуть сейчас» изменится на «Открытый URL для возврата», чтобы
+  показать состояние действия после нажатия кнопки и выполнения действия.
 Button-RevertNow: Вернуть сейчас
+Button-RevertNow.@meta.@description: 'Метка для кнопки, чтобы немедленно вернуть данную ревизию в Википедии.'
 Button-ShowJudgements: Показать суждения
+Button-ShowJudgements.@meta.@description: 'Метка для кнопки, чтобы показать суждения, данные в редактировании Википедии'
 Button-Undo: Отменить
+Button-Undo.@meta.@description: 'Метка для кнопки, чтобы отменить действие в нашем программном обеспечении.'
 Label-1Month: 1 месяц (30 дней)
+Label-1Month.@meta.@description: >-
+  Метка для временного диапазона отображаемой статистики, который составляет 1
+  месяц или 30 дней точно.
 Label-1Quarter: 1 квартал (90 дней)
+Label-1Quarter.@meta.@description: >-
+  Метка для временного диапазона отображаемой статистики, который составляет 1
+  квартал или 90 дней точно.
 Label-1Year: 1 год (365 дней)
+Label-1Year.@meta.@description: >-
+  Метка для временного диапазона отображаемой статистики, который составляет 1
+  год или 365 дней.
 Label-1day: 1 день
+Label-1day.@meta.@description: 'Метка для временного диапазона статистики, который составляет 1 день.'
 Label-1week: 1 неделя (7 дней)
+Label-1week.@meta.@description: >-
+  Метка для временного диапазона отображаемой статистики, которая составляет 1
+  неделю или 7 дней.
 Label-ActiveUsers: Активные пользователи
+Label-ActiveUsers.@meta.@description: >-
+  Метка для статистики, основанной на активных пользователей этого программного
+  обеспечения.
 Label-AllTime: Все время
+Label-AllTime.@meta.@description: >-
+  Метка для временного диапазона для отображения статистики, которая постоянно
+  показывает, что наше программное обеспечение работает.
 Label-Anonymous: Анонимный
 Label-ArtificialIntelligence: Искуственный интеллект
 Label-Author: автор
 Label-CountOfJudgements: подсчитывать
+Label-CountOfJudgements.@meta.@description: Метка для суммы количества суждений для правок Википедии.
 Label-Day: День
+Label-Day.@meta.@description: Метка для разбивки статистики по времени разбивки по дням.
 Label-DiffView: Diff View
+Label-DiffView.@meta.@description: >-
+  Метка для представления, показывающая разницу между снимками, такими как два
+  снимка статей из Википедии.
 Label-DirectRevertFailed: Прямой возврат не удался
+Label-DirectRevertFailed.@meta.@description: >-
+  Метка для отображения нового статуса кнопки «Восстановить сейчас». Цель
+  состоит в том, чтобы показать состояние действия, выполненного пользователем,
+  которое в этом случае является неудачным действием возврата.
 Label-DirectReverted: Прямой возврат
+Label-DirectReverted.@meta.@description: >-
+  Метка для отображения нового статуса кнопки «Восстановить сейчас». Цель
+  состоит в том, чтобы показать состояние действия, выполненного пользователем,
+  которое в этом случае является успешным действием возврата.
 Label-EditSummary: Редактировать резюме
+Label-EditSummary.@meta.@description: >-
+  Сводка редактирования - это краткое объяснение правки страницы Википедии, как
+  показано в https://en.wikipedia.org/wiki/Help:Edit_summary
 Label-EditedAt: Edited
+Label-EditedAt.@meta.@description: >-
+  Метка метки времени редактирования в Википедии, когда редактирование
+  создается.
 Label-Feed: Подача
+Label-Feed.@meta.@description: >-
+  Метка, показывающая канал, поток или поток входящих новых правок Википедии,
+  после названия этого конкретного канала. Например, у нас есть различные каналы
+  различных видов правок Википедии, таких как канал темы статьи, канал правок,
+  обнаруженных системами оценки вандализма, и т. Д.
 Label-History: история
+Label-History.@meta.@description: >-
+  Метка для списка прошлых действий, прошлых решений и т. Д. Всех пользователей
+  или данного пользователя.
 Label-HumanEditors: Человеческие редакторы
+Label-HumanEditors.@meta.@description: Этикетка для суждений предоставлена редакторами Human.
 Label-Judgement: решение
+Label-Judgement.@meta.@description: >-
+  Метка для суждения, присваиваемая правкам Википедии нашими пользователями,
+  которые проверяют поступающие правки Википедии.
 Label-LastActiveTime: Последнее посещение
+Label-LastActiveTime.@meta.@description: >-
+  Ярлык, показывающий, когда пользователь в последний раз работал с нашим
+  программным обеспечением.
 Label-Loading: Загрузка
+Label-Loading.@meta.@description: >-
+  Загружается ярлык для отображения некоторых частей или данных на веб-странице.
+  Обычно эта метка отображается как запасной индикатор загрузки.
 Label-Login: Логин
+Label-Login.@meta.@description: >-
+  Метка для кнопки входа, чтобы позволить пользователю войти. Или он также будет
+  использоваться в сообщениях или приглашать пользователя для входа в систему.
 Label-Logout: Выход
+Label-Logout.@meta.@description: >-
+  Метка для кнопки входа, чтобы позволить пользователю выйти из системы. Или он
+  также будет использоваться в сообщениях или приглашать пользователя выйти из
+  системы.
 Label-LooksGood: Выглядит хорошо
+Label-LooksGood.@meta.@description: >-
+  Ярлык одного из 3 основных типов суждений, который гласит, что редактируемая
+  редакция Википедии хороша и конструктивна для Википедии, а не для нанесения
+  ущерба.
 Label-Me: Я
+Label-Me.@meta.@description: >-
+  Метка для идентификации пользователя. Пожалуйста, убедитесь, что переведённая
+  этикетка является гендерно нейтральной.
 Label-Month: Месяц
-Label-My-History: Моя история
+Label-Month.@meta.@description: Метка для детализации времени разбивки статистики с разбивкой по месяцам.
+Label-MyHistory: Моя история
+Label-MyHistory.@meta.@description: >-
+  Ярлык для списка прошлых действий, прошлых решений и т. Д. Текущего
+  пользователя, который использует наше программное обеспечение.
+Label-MyHistory.@meta.@isMachineTranslated: true
+Label-MyHistory.@meta.@translatedAt: '2020-07-07T19:26:51.445Z'
+Label-MyHistory.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-NewJudgement: Новое суждение
+Label-NewJudgement.@meta.@description: >-
+  Метка для нового суждения, предоставленного Википедии, отредактированной нашим
+  пользователем.
 Label-None: Никто
+Label-None.@meta.@description: >-
+  Метка для пустой таблицы строк и ячеек содержимого или пустых списков. Это
+  обычно используется в пользовательском интерфейсе, когда нет контента для
+  показа.
 Label-NotSure: Не уверен
+Label-NotSure.@meta.@description: >-
+  Ярлык одного из 3 основных типов суждений, который гласит, что редактируемая
+  редакция Википедии является неуверенным и может быть либо хорошим и
+  конструктивным, либо вредным для Википедии.
 Label-OresBadfaith: Руды Дурная вера
+Label-OresBadfaith.@meta.@description: >-
+  Этикетка, обозначающая оценку и оценку, присуждаемые системой оценки
+  искусственного интеллекта WMF ORES. Эта метка относится к противоположности
+  добросовестной модели ORES. См.
+  Https://www.mediawiki.org/wiki/ORES#Advanced_support.
 Label-OresBadfaith.@meta.@isMachineTranslated: true
 Label-OresBadfaith.@meta.@translatedAt: '2020-07-07T01:09:19.145Z'
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: Руды Повреждения
-Label-Overriden: Переопределенный
-Label-Prompt-Login: Авторизоваться
+Label-OresDamaging.@meta.@description: >-
+  Этикетка, обозначающая оценку и оценку, присуждаемые системой оценки
+  искусственного интеллекта WMF ORES. Этот ярлык относится к разрушающей модели
+  ORES. См. Https://www.mediawiki.org/wiki/ORES#Advanced_support.
+Label-Overridden: Переопределенный
+Label-Overridden.@meta.@description: >-
+  Ярлык, указывающий, что данное редактирование в статье Википедии заменяется
+  другим новым редактированием в той же статье Википедии. Этот ярлык
+  подразумевает, что такое редактирование уже отменено нашим текущим
+  пользователем, или оно отменено или обновлено другим редактором Википедии в
+  Википедии.
+Label-Overridden.@meta.@isMachineTranslated: true
+Label-Overridden.@meta.@translatedAt: '2020-07-07T19:26:51.445Z'
+Label-Overridden.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-PromptLogin: Авторизоваться
+Label-PromptLogin.@meta.@description: >-
+  Метка, чтобы предложить пользователю войти в нашу программу. Это больше похоже
+  на тон "пожалуйста, войдите" на языках, в которых существуют формальность и
+  почетная речь.
+Label-PromptLogin.@meta.@isMachineTranslated: true
+Label-PromptLogin.@meta.@translatedAt: '2020-07-07T19:26:51.445Z'
+Label-PromptLogin.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-Rank: Ранг
+Label-Rank.@meta.@description: >-
+  Метка для ранжирования статистики по заданному номеру сортировки, например,
+  пользователей, отсортированных по количеству вкладов.
 Label-Reason: причина
+Label-Reason.@meta.@description: >-
+  Метка для причины результата выполненного действия, например, когда
+  пользователь отменяет редактирование Википедии.
 Label-Result: результат
+Label-Result.@meta.@description: >-
+  Метка для результата выполненного действия, например, когда пользователь
+  отменил редактирование Википедии.
 Label-RevertSucceeded: Вернуть удалось!
+Label-RevertSucceeded.@meta.@description: >-
+  Метка для результата выполненного действия, когда пользователь отменил
+  редактирование Википедии, действие успешно.
 Label-ReviewFeed: Обзорная лента
+Label-ReviewFeed.@meta.@description: >-
+  Метка для подачи, потока или потока входящих изменений в Википедии, подлежащих
+  рассмотрению.
 Label-ReviewedAndSays: 'просмотрел {0} и говорит'
+Label-ReviewedAndSays.@meta.@description: 'Метка для начала приговора и причины, приведенные для пересмотра.'
 Label-ShouldRevert: Должен вернуться
+Label-ShouldRevert.@meta.@description: >-
+  Ярлык одного из 3 основных типов суждений, который гласит, что редактируемая
+  редакция Википедии наносит ущерб Википедии, а не является хорошим и
+  конструктивным.
 Label-Snooze: вздремнуть
+Label-Snooze.@meta.@description: >-
+  Метка кнопки, чтобы отложить напоминание или уведомление, или другими словами,
+  это означает «напомнить мне позже». На самом деле кнопка повтора будет
+  использоваться, когда напоминание или уведомление появится снова. Таким
+  образом, это также означает «не уволен навсегда, а только временно уволен».
 Label-Someone: Кто-то
+Label-Someone.@meta.@description: 'Метка для идентификации пользователя, отличного от текущего пользователя.'
 Label-Time: Время
+Label-Time.@meta.@description: 'Метка временной метки данного суждения или действия, данного пользователем.'
 Label-TopNumberAnonymousUsers: 'Топ {0} анонимных пользователей'
+Label-TopNumberAnonymousUsers.@meta.@description: >-
+  Метка для раздела топ-20 анонимных пользователей и т. Д., А число «20» можно
+  заменить в параметре.
 Label-TopUsers: Топ пользователей
+Label-TopUsers.@meta.@description: >-
+  Метка для раздела топ (вошедших в систему) пользователей и т. Д., Тогда как
+  номер.
 Label-TopWikis: Топ Вики
+Label-TopWikis.@meta.@description: >-
+  Ярлык для раздела лучших Википедий или его родственных проектов (Wikidata.org
+  и т. Д.), По количеству суждений, приведенных в Википедии.
 Label-TotalNumber: Общее количество
+Label-TotalNumber.@meta.@description: 'Метка для столбца общего количества оценок, вынесенных пользователем.'
 Label-User: пользователь
+Label-User.@meta.@description: 'Ярлык для пользователя, который дает оценку правке Википедии.'
 Label-Week: Неделя
+Label-Week.@meta.@description: Метка для детализации времени разбивки статистики с разбивкой по неделям.
 Label-YourJudgement: Ваше суждение
+Label-YourJudgement.@meta.@description: Метка для суждения данного пользователя.
 MenuItem-Code: Код
+MenuItem-Code.@meta.@description: >-
+  Ярлык пункта меню для перенаправления пользователя в кодовую базу этого
+  программного обеспечения.
 MenuItem-Contributions: Мои взносы
+MenuItem-Contributions.@meta.@description: >-
+  Ярлык пункта меню направляет пользователя к списку вкладов или суждений,
+  данных текущим пользователем.
 MenuItem-ContributionsBeforeLogin: Мои взносы перед входом в систему
+MenuItem-ContributionsBeforeLogin.@meta.@description: 'ЧТОБЫ УДАЛИТЬ, НЕ ИЗМЕНЯЙТЕ И НЕ ПЕРЕВОДИТЕ.'
 MenuItem-Issues: вопросы
+MenuItem-Issues.@meta.@description: >-
+  Ярлык пункта меню, перенаправляющий пользователя на проблемы Github нашего
+  программного обеспечения.
 MenuItem-Stats: Статистика
+MenuItem-Stats.@meta.@description: >-
+  Ярлык пункта меню, перенаправляющий пользователя на страницу статистики нашего
+  программного обеспечения.
 Message-AJudgementLogged: 'Решение для {0} для редакции {1} было зарегистрировано.'
 Message-CongratsSuccessfullyReverted: 'Congrats! Вы успешно вернулись прямо {0}.'
 Message-DiffNotAvailable: Статья в Википедии отличается
@@ -99,4 +271,7 @@ Message-RevertEditSummary: >-
 Message-SorryWeFailedToRevert: 'К сожалению, нам не удалось отменить ревизию {0}.'
 Message-TheRevisionIsSuccessfullyRevertedAs: 'Редакция {0} успешно восстановлена как {1}.'
 Message-ThereIsNoEditSummary: Там нет редактировать резюме.
+Message-ThereIsNoEditSummary.@meta.@description: >-
+  Сообщение показывает, что данное редактирование Википедии не имеет объяснения,
+  см. Https://en.wikipedia.org/wiki/Help:Edit_summary.
 Message-YourJudgementLogged: 'Ваше суждение о {0} для ревизии {1} было зарегистрировано.'

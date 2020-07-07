@@ -9,70 +9,260 @@ Button-Next.@meta.@description: >-
   Benoem vir 'n knoppie as dit geklik word, gaan na die volgende bladsy of
   vertoon die volgende inligting.
 Button-OpenedUrlToRevert: URL geopen om terug te keer
+Button-OpenedUrlToRevert.@meta.@description: >-
+  Die etiket van die knoppie "Terugkeer nou" sal verander na "Geopende URL om
+  terug te keer" om die aksiestatus te wys nadat die knoppie geklik is en die
+  aksie uitgevoer is.
 Button-RevertNow: Keer nou terug
+Button-RevertNow.@meta.@description: >-
+  Die etiket vir die knoppie om onmiddellik 'n gegewe weergawe op Wikipedia
+  terug te keer.
 Button-ShowJudgements: Toon uitsprake
+Button-ShowJudgements.@meta.@description: Die etiket vir die knoppie om oordeel te wys op 'n Wikipedia-wysiging
 Button-Undo: ongedaan
+Button-Undo.@meta.@description: '''N Etiket vir die knoppie om ''n aksie op ons sagteware te ongedaan te maak.'
 Label-1Month: 1 maand (30d)
+Label-1Month.@meta.@description: >-
+  'N Etiket vir die tydsberekening van statistieke wat presies 1 maand of 30 dae
+  is.
 Label-1Quarter: 1 kwart (90d)
+Label-1Quarter.@meta.@description: >-
+  'N Etiket vir die tydsbestek van statistieke, wat presies 'n kwartier of 90
+  dae is.
 Label-1Year: 1 jaar (365d)
+Label-1Year.@meta.@description: '''N Etiket vir die tydsbestek van statistieke wat presies 1 jaar of 365 dae is.'
 Label-1day: 1 dag
+Label-1day.@meta.@description: >-
+  'N Etiket vir die tydsbestek van statistieke om te wys, wat presies een dag
+  is.
 Label-1week: 1 week (7d)
+Label-1week.@meta.@description: >-
+  'N Etiket vir die tydsberekening van statistieke wat presies 1 week of 7 dae
+  is, te wys.
 Label-ActiveUsers: Aktiewe gebruikers
+Label-ActiveUsers.@meta.@description: >-
+  'N Etiket vir die statistiek gebaseer op die aktiewe gebruikers van hierdie
+  sagteware.
 Label-AllTime: Van alle tye
+Label-AllTime.@meta.@description: >-
+  'N Etiket vir die tydsbestek vir statistieke wat vertoon moet word, en dit is
+  altyd nodig vir ons sagteware.
 Label-Anonymous: Anoniem
 Label-ArtificialIntelligence: Kunsmatige intelligensie
 Label-Author: skrywer
 Label-CountOfJudgements: tel
+Label-CountOfJudgements.@meta.@description: '''N Etiket vir die somtal vonnisse vir die Wikipedia-bewerkings.'
 Label-Day: dag
+Label-Day.@meta.@description: >-
+  'N Etiket vir die uiteensetting van die tydsduur van statistieke wat bedags
+  opgeskort is.
 Label-DiffView: Diff View
+Label-DiffView.@meta.@description: >-
+  'N Etiket vir 'n aansig wat die verskil tussen foto's soos twee
+  Wikipedia-artikels in die artikel toon.
 Label-DirectRevertFailed: Kon nie terugkeer nie
+Label-DirectRevertFailed.@meta.@description: >-
+  'N Etiket om die nuwe status van die' Terugkeer nou '-knoppie te wys. Die doel
+  is om die status van die handeling wat deur die gebruiker uitgevoer is, aan te
+  toon, wat in hierdie geval is dat die terugkerende aksie misluk het.
 Label-DirectReverted: Direk teruggedraai
+Label-DirectReverted.@meta.@description: >-
+  'N Etiket om die nuwe status van die' Terugkeer nou '-knoppie te wys. Die doel
+  is om die status van die handeling wat deur die gebruiker uitgevoer is, aan te
+  toon, wat in hierdie geval is dat die terugkerende aksie geslaag het.
 Label-EditSummary: Opsomming wysig
+Label-EditSummary.@meta.@description: >-
+  'N Opsomming van bewerkings is 'n kort uiteensetting van 'n bewerking op 'n
+  Wikipedia-bladsy, soos aangetoon in
+  https://en.wikipedia.org/wiki/Help:Edit_summary
 Label-EditedAt: geredigeerde
+Label-EditedAt.@meta.@description: >-
+  Die etiket van die tydstempel van wysiging op Wikipedia wanneer die wysiging
+  geskep word.
 Label-Feed: Voer
+Label-Feed.@meta.@description: >-
+  Die etiket wat 'n voer, 'n stroom of 'n stroom inkomende nuwe
+  Wikipedia-wysigings toon, volg die naam van die spesifieke voer. Ons het
+  byvoorbeeld verskillende feeds van verskillende soorte Wikipedia-wysigings,
+  soos voer van artikel-onderwerp, voer van wysigings wat opgespoor is deur die
+  opsporingstelsels van vandalisme, ens.
 Label-History: geskiedenis
+Label-History.@meta.@description: >-
+  'N Etiket vir die lys van vorige aktiwiteite, vorige oordele wat bygedra is,
+  ens. Van alle gebruikers of 'n gegewe gebruiker.
 Label-HumanEditors: Menslike redakteurs
+Label-HumanEditors.@meta.@description: Die etiket vir uitsprake deur Human-redakteurs.
 Label-Judgement: oordeel
+Label-Judgement.@meta.@description: >-
+  Die etiket vir oordeel wat aan Wikipedia-wysigings gegee is deur ons
+  gebruikers wat inkomende Wikipedia-wysigings nagaan.
 Label-LastActiveTime: Laaste aktief
+Label-LastActiveTime.@meta.@description: >-
+  Die etiket om die laaste keer aan te toon dat 'n gebruiker op ons sagteware
+  aktief was.
 Label-Loading: laai
+Label-Loading.@meta.@description: >-
+  Die etiket om dele of data op 'n webblad te wys, word gelaai. Hierdie etiket
+  verskyn gewoonlik as 'n terugslag vir 'n laai-aanwyser.
 Label-Login: Teken aan
+Label-Login.@meta.@description: >-
+  Die etiket vir 'n aanmeldknoppie om gebruikers toe te laat om aan te meld. Of
+  dit sal ook in boodskappe gebruik word of om die gebruiker te versoek om aan
+  te meld.
 Label-Logout: Teken uit
+Label-Logout.@meta.@description: >-
+  Die etiket vir 'n aanmeldknoppie om gebruikers uit te log. Of dit sal ook in
+  boodskappe gebruik word of as 'n vraag gevra word om gebruikers uit te nooi om
+  af te meld.
 Label-LooksGood: Lyk goed
+Label-LooksGood.@meta.@description: >-
+  Die etiket van een van die drie hooftipes uitsprake wat sê dat die
+  Wikipedia-wysiging wat hersien word, is goed en opbouend vir Wikipedia, in
+  teenstelling met skade.
 Label-Me: my
+Label-Me.@meta.@description: >-
+  Die etiket om die gebruiker self te identifiseer. Sorg dat die vertaalde
+  etiket hier geslagsneutraal is.
 Label-Month: maand
-Label-My-History: My geskiedenis
+Label-Month.@meta.@description: >-
+  'N Etiket vir die uiteensetting van die tydsduur van statistieke wat per maand
+  ingedeel is.
+Label-MyHistory: My geskiedenis
+Label-MyHistory.@meta.@description: >-
+  'N Etiket vir die lys van vorige aktiwiteite, vorige oordele wat bygedra is,
+  ens. Van die huidige gebruiker wat ons sagteware gebruik.
+Label-MyHistory.@meta.@isMachineTranslated: true
+Label-MyHistory.@meta.@translatedAt: '2020-07-07T19:26:51.435Z'
+Label-MyHistory.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-NewJudgement: Nuwe oordeel
+Label-NewJudgement.@meta.@description: >-
+  'N Etiket vir 'n nuwe uitspraak wat deur ons gebruiker aan Wikipedia uitgereik
+  is.
 Label-None: Geen
+Label-None.@meta.@description: >-
+  Die etiket vir 'n leë tabel met rye en selle met inhoud of leë lyste. Dit word
+  gewoonlik in die gebruikerskoppelvlak gebruik as daar geen inhoud is om te wys
+  nie.
 Label-NotSure: Nie seker nie
+Label-NotSure.@meta.@description: >-
+  Die etiket van een van die drie hooftipes uitsprake wat sê dat die
+  Wikipedia-wysiging wat hersien word, is onseker en kan óf goed en opbouend of
+  skadelik wees vir Wikipedia.
 Label-OresBadfaith: ORES Slegte geloof
+Label-OresBadfaith.@meta.@description: >-
+  Die etiket wat die partituur en beoordeling beoordeel deur WMF Artificial
+  Intelligence-puntestelsel ORES. Hierdie etiket spesifiek verwys na die
+  teenoorgestelde van die goeie geloofsmodel van ORES. Kyk
+  https://www.mediawiki.org/wiki/ORES#Advanced_support
 Label-OresBadfaith.@meta.@isMachineTranslated: true
 Label-OresBadfaith.@meta.@translatedAt: '2020-07-07T01:09:19.138Z'
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: Ertse beskadig
-Label-Overriden: geïgnoreer
-Label-Prompt-Login: Teken aan
+Label-OresDamaging.@meta.@description: >-
+  Die etiket wat die partituur en beoordeling beoordeel deur WMF Artificial
+  Intelligence-puntestelsel ORES. Hierdie etiket spesifiek verwys na die
+  skadelike model van ORES. Kyk
+  https://www.mediawiki.org/wiki/ORES#Advanced_support
+Label-Overridden: geïgnoreer
+Label-Overridden.@meta.@description: >-
+  Die etiket om te sê dat 'n gegewe wysiging op Wikipedia-artikel deur 'n ander
+  nuwer wysiging op dieselfde Wikipedia-artikel oorheers word. Hierdie etiket
+  impliseer dat sodanige wysiging alreeds deur ons huidige gebruiker teruggestel
+  is, óf dit word deur 'n ander Wikipedia-redakteur op Wikipedia teruggeskakel
+  of bygewerk.
+Label-Overridden.@meta.@isMachineTranslated: true
+Label-Overridden.@meta.@translatedAt: '2020-07-07T19:26:51.435Z'
+Label-Overridden.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-PromptLogin: Teken aan
+Label-PromptLogin.@meta.@description: >-
+  Die etiket om 'n gebruiker te versoek om op ons sagteware aan te meld. Dit is
+  meer soos 'toon' asb. Aan in tale waarin formaliteit en eerlike toespraak
+  bestaan.
+Label-PromptLogin.@meta.@isMachineTranslated: true
+Label-PromptLogin.@meta.@translatedAt: '2020-07-07T19:26:51.435Z'
+Label-PromptLogin.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-Rank: rang
+Label-Rank.@meta.@description: >-
+  Die etiket vir die ranglys van statistieke volgens 'n gegewe sorteer nommer,
+  byvoorbeeld gebruikers gesorteer volgens hul aantal bydraes
 Label-Reason: rede
+Label-Reason.@meta.@description: >-
+  Die etiket om die rede vir die resultaat van 'n uitgevoerde handeling, soos
+  wanneer 'n gebruiker 'n Wikipedia-bewerking terugwys.
 Label-Result: gevolg
+Label-Result.@meta.@description: >-
+  Die etiket vir die resultaat van 'n uitgevoer handeling, soos wanneer 'n
+  gebruiker 'n Wikipedia-bewerking teruggewys het.
 Label-RevertSucceeded: Terugkeer het geslaag!
+Label-RevertSucceeded.@meta.@description: >-
+  Die etiket vir die resultaat van 'n handeling wat uitgevoer is toe 'n
+  gebruiker 'n Wikipedia-bewerking teruggewys het, is die aksie suksesvol.
 Label-ReviewFeed: Hersien voer
+Label-ReviewFeed.@meta.@description: >-
+  Die etiket vir die invoer, stroom of stroom van inkomende Wikipedia-wysigings
+  wat hersien moet word.
 Label-ReviewedAndSays: '{0} nagegaan en gesê'
+Label-ReviewedAndSays.@meta.@description: Die etiket om die vonnisoplegging te begin en redes vir 'n hersiening.
 Label-ShouldRevert: Moet terugkeer
+Label-ShouldRevert.@meta.@description: >-
+  Die etiket van een van die drie hooftipes uitsprake wat sê dat die
+  Wikipedia-weergawe wat hersien word, is skadelik vir Wikipedia, in
+  teenstelling met die goeie en konstruktiewe.
 Label-Snooze: Sluimer
+Label-Snooze.@meta.@description: >-
+  Die etiket van 'n knoppie om 'n herinnering of kennisgewing uit te snuffel, of
+  met ander woorde, dit beteken "herinner my later". In werklikheid word die
+  sluimerknoppie gebruik wanneer die herinnering of kennisgewing weer verskyn.
+  Dit beteken dus ook "nie permanent ontslaan word nie, maar net tydelik
+  ontslaan word".
 Label-Someone: iemand
+Label-Someone.@meta.@description: Die etiket om 'n ander gebruiker as die huidige gebruiker te identifiseer.
 Label-Time: tyd
+Label-Time.@meta.@description: >-
+  Die etiket van die tydstempel van 'n gegewe oordeel of handeling wat deur die
+  gebruiker gegee is.
 Label-TopNumberAnonymousUsers: 'Top {0} Anonieme gebruikers'
+Label-TopNumberAnonymousUsers.@meta.@description: >-
+  Die etiket vir die afdeling van die top 20 anonieme gebruikers, ens., Terwyl
+  die nommer "20" in die parameter vervang kan word.
 Label-TopUsers: Top gebruikers
+Label-TopUsers.@meta.@description: >-
+  Die etiket vir die afdeling van die top (aangemelde) gebruikers, ens., Terwyl
+  die nommer.
 Label-TopWikis: Top Wikis
+Label-TopWikis.@meta.@description: >-
+  Die etiket vir die afdeling top-Wikipedia of sy susterprojekte (Wikidata.org,
+  ens.) Volgens die hoeveelheid uitsprake op die Wikipedia.
 Label-TotalNumber: totale
+Label-TotalNumber.@meta.@description: >-
+  Die etiket vir die kolom van die totale aantal uitsprake wat deur 'n gebruiker
+  gegee is.
 Label-User: gebruiker
+Label-User.@meta.@description: Die etiket vir gebruiker wat die oordeel oor Wikipedia bewerk.
 Label-Week: week
+Label-Week.@meta.@description: >-
+  'N Etiket vir die uiteensetting van die tydsduur van statistieke wat per week
+  ingedeel is.
 Label-YourJudgement: U oordeel
+Label-YourJudgement.@meta.@description: Die etiket vir die uitspraak deur die huidige gebruiker.
 MenuItem-Code: kode
+MenuItem-Code.@meta.@description: >-
+  Die menu-itemetiket om die gebruiker na die kodebasis van hierdie sagteware te
+  herlei.
 MenuItem-Contributions: My bydraes
+MenuItem-Contributions.@meta.@description: >-
+  Die menu-itemetiket wat die gebruiker lei na die lys van bydraes of uitsprake
+  wat deur die huidige gebruiker gegee is.
 MenuItem-ContributionsBeforeLogin: My bydraes voor aanmelding
+MenuItem-ContributionsBeforeLogin.@meta.@description: 'OM VERTROULIK TE WORD, MOENIE VERANDER OF VERPLAAS NIE.'
 MenuItem-Issues: kwessies
+MenuItem-Issues.@meta.@description: >-
+  Die menu-itemetiket wat die gebruiker na die Github-kwessies van ons sagteware
+  herlei.
 MenuItem-Stats: statistiek
+MenuItem-Stats.@meta.@description: >-
+  Die menu-itemetiket wat die gebruiker na die statistiekbladsy van ons
+  sagteware herlei.
 Message-AJudgementLogged: '''N Vonnis van {0} vir hersiening {1} is aangeteken.'
 Message-CongratsSuccessfullyReverted: 'Geluk! jy het direk {0} teruggeskakel.'
 Message-DiffNotAvailable: >-
@@ -100,4 +290,7 @@ Message-RevertEditSummary: >-
 Message-SorryWeFailedToRevert: 'Jammer, ons kon nie die hersiening {0} terugstel nie.'
 Message-TheRevisionIsSuccessfullyRevertedAs: 'Die hersiening {0} is suksesvol teruggeskakel as {1}.'
 Message-ThereIsNoEditSummary: Daar is geen wysigingsopsomming nie.
+Message-ThereIsNoEditSummary.@meta.@description: >-
+  Die boodskap wys dat 'n bepaalde wysiging van Wikipedia nie 'n verduideliking
+  het nie, sien https://en.wikipedia.org/wiki/Help:Edit_summary.
 Message-YourJudgementLogged: 'U oordeel vir {0} vir hersiening {1} is aangeteken.'

@@ -11,70 +11,266 @@ Button-Next.@meta.@description: >-
   Label voor een knop wanneer erop wordt geklikt, ga naar de volgende pagina of
   geef de volgende informatie weer.
 Button-OpenedUrlToRevert: URL geopend om terug te zetten
+Button-OpenedUrlToRevert.@meta.@description: >-
+  Het label van de knop "Nu terugzetten" verandert in "Geopende URL om terug te
+  keren" om de actiestatus weer te geven nadat op de knop is geklikt en de actie
+  is uitgevoerd.
 Button-RevertNow: Nu terugzetten
+Button-RevertNow.@meta.@description: >-
+  Het label voor de knop om een bepaalde revisie onmiddellijk terug te zetten op
+  Wikipedia.
 Button-ShowJudgements: Toon oordelen
+Button-ShowJudgements.@meta.@description: >-
+  Het label voor de knop om oordelen weer te geven die op een
+  Wikipedia-bewerking zijn gegeven
 Button-Undo: Ongedaan maken
+Button-Undo.@meta.@description: Een label voor de knop om een actie op onze software ongedaan te maken.
 Label-1Month: 1 maand (30d)
+Label-1Month.@meta.@description: >-
+  Een label voor het tijdsbereik van statistieken om weer te geven, dat is 1
+  maand of 30 dagen precies.
 Label-1Quarter: 1 kwart (90d)
+Label-1Quarter.@meta.@description: >-
+  Een label voor het tijdsbestek van statistieken dat moet worden weergegeven,
+  namelijk 1 kwartier of 90 dagen precies.
 Label-1Year: 1 jaar (365d)
+Label-1Year.@meta.@description: >-
+  Een label om het tijdsbereik van de statistieken weer te geven, namelijk 1
+  jaar of 365 dagen precies.
 Label-1day: 1 dag
+Label-1day.@meta.@description: >-
+  Een label om het tijdsbestek van de statistieken weer te geven, dat is precies
+  1 dag.
 Label-1week: 1 week (7d)
+Label-1week.@meta.@description: >-
+  Een label voor het tijdsbereik van statistieken om weer te geven, namelijk 1
+  week of 7 dagen precies.
 Label-ActiveUsers: Actieve gebruikers
+Label-ActiveUsers.@meta.@description: >-
+  Een label voor de statistieken op basis van de actieve gebruikers van deze
+  software.
 Label-AllTime: Altijd
+Label-AllTime.@meta.@description: >-
+  Een label voor het tijdsbestek voor het weergeven van statistieken, dat is de
+  hele tijd dat onze software live is.
 Label-Anonymous: Anoniem
 Label-ArtificialIntelligence: Kunstmatige intelligentie
 Label-Author: Auteur
 Label-CountOfJudgements: Tel
+Label-CountOfJudgements.@meta.@description: >-
+  Een label voor het totaal aantal beoordelingen voor de bewerkingen van
+  Wikipedia.
 Label-Day: Dag
+Label-Day.@meta.@description: >-
+  Een label voor de uitsplitsingstijd granulariteit van statistieken die is
+  uitgesplitst naar dag.
 Label-DiffView: Diff View
+Label-DiffView.@meta.@description: >-
+  Een label voor een weergave die het verschil laat zien tussen snapshots, zoals
+  twee snapshots van Wikipedia-artikelen.
 Label-DirectRevertFailed: Direct terugzetten is mislukt
+Label-DirectRevertFailed.@meta.@description: >-
+  Een label om de nieuwe status van de knop "Nu terugzetten" weer te geven. Het
+  doel is om de status weer te geven van de actie die door de gebruiker is
+  uitgevoerd, wat in dit geval is dat de actie voor terugzetten is mislukt.
 Label-DirectReverted: Direct teruggedraaid
+Label-DirectReverted.@meta.@description: >-
+  Een label om de nieuwe status van de knop "Nu terugzetten" weer te geven. Het
+  doel is om de status van de door de gebruiker uitgevoerde actie te tonen, wat
+  in dit geval is dat de terugdraaiende actie is geslaagd.
 Label-EditSummary: Samenvatting bewerken
+Label-EditSummary.@meta.@description: >-
+  Een samenvatting van een bewerking is een korte uitleg van een bewerking op
+  een Wikipedia-pagina, zoals weergegeven in
+  https://en.wikipedia.org/wiki/Help:Edit_summary
 Label-EditedAt: bewerkt
+Label-EditedAt.@meta.@description: >-
+  Het label van het tijdstempel van bewerken op Wikipedia wanneer de bewerking
+  is gemaakt.
 Label-Feed: Eten geven
+Label-Feed.@meta.@description: >-
+  Het label met een feed, een stroom of een stroom van inkomende nieuwe
+  Wikipedia-bewerkingen, gevolgd door de naam van die specifieke feed. We hebben
+  bijvoorbeeld verschillende feeds van verschillende soorten
+  Wikipedia-bewerkingen, zoals feed van artikelonderwerpen, feed van bewerkingen
+  die zijn gedetecteerd door scoringssystemen voor vandalismedetectie, enz.
 Label-History: Geschiedenis
+Label-History.@meta.@description: >-
+  Een label voor de lijst met activiteiten uit het verleden, bijgedragen
+  oordelen uit het verleden enz. Van alle gebruikers of een bepaalde gebruiker.
 Label-HumanEditors: Menselijke redacteuren
+Label-HumanEditors.@meta.@description: Het label voor uitspraken van Human Editors.
 Label-Judgement: Oordeel
+Label-Judgement.@meta.@description: >-
+  Het label ter beoordeling van bewerkingen van Wikipedia door onze gebruikers
+  die binnenkomende bewerkingen van Wikipedia beoordelen.
 Label-LastActiveTime: Laatst actief
+Label-LastActiveTime.@meta.@description: >-
+  Het label om de laatste keer aan te geven dat een gebruiker actief was op onze
+  software.
 Label-Loading: Bezig met laden
+Label-Loading.@meta.@description: >-
+  Het label om sommige onderdelen of gegevens op een webpagina weer te geven,
+  wordt geladen. Meestal wordt dit label weergegeven als een terugval voor een
+  laadindicator.
 Label-Login: Log in
+Label-Login.@meta.@description: >-
+  Het label voor een inlogknop waarmee de gebruiker kan inloggen. Of het wordt
+  ook gebruikt in berichten of als prompt om de gebruiker uit te nodigen om in
+  te loggen.
 Label-Logout: Uitloggen
+Label-Logout.@meta.@description: >-
+  Het label voor een inlogknop waarmee de gebruiker kan uitloggen. Of het wordt
+  ook gebruikt in berichten of als prompt om de gebruiker uit te nodigen om uit
+  te loggen.
 Label-LooksGood: Ziet er goed uit
+Label-LooksGood.@meta.@description: >-
+  Het label van een van de 3 belangrijkste soorten oordelen dat zegt dat de
+  Wikipedia-bewerking wordt herzien, is goed en constructief voor Wikipedia, in
+  tegenstelling tot schadelijk.
 Label-Me: Me
+Label-Me.@meta.@description: >-
+  Het label om de gebruiker zelf te identificeren. Zorg ervoor dat het vertaalde
+  label hier sekseneutraal is.
 Label-Month: Maand
-Label-My-History: Mijn geschiedenis
+Label-Month.@meta.@description: >-
+  Een label voor de granulariteit van de uitsplitsing van statistieken,
+  uitgesplitst naar maand.
+Label-MyHistory: Mijn geschiedenis
+Label-MyHistory.@meta.@description: >-
+  Een label voor de lijst met activiteiten uit het verleden, bijdragen in het
+  verleden enz., Van de huidige gebruiker die onze software gebruikt.
+Label-MyHistory.@meta.@isMachineTranslated: true
+Label-MyHistory.@meta.@translatedAt: '2020-07-07T19:26:51.444Z'
+Label-MyHistory.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-NewJudgement: Nieuw oordeel
+Label-NewJudgement.@meta.@description: >-
+  Een label voor een nieuw oordeel dat door onze gebruiker aan Wikipedia is
+  gegeven.
 Label-None: Geen
+Label-None.@meta.@description: >-
+  Het label voor lege tabel met rijen en cellen met inhoud of lege lijsten. Dit
+  wordt meestal gebruikt in de gebruikersinterface wanneer er geen inhoud wordt
+  weergegeven.
 Label-NotSure: Niet zeker
+Label-NotSure.@meta.@description: >-
+  Het label van een van de 3 belangrijkste soorten oordelen dat zegt dat de
+  Wikipedia-bewerking wordt herzien, is onzeker en kan goed en constructief zijn
+  of schadelijk voor Wikipedia.
 Label-OresBadfaith: ORES Kwade trouw
+Label-OresBadfaith.@meta.@description: >-
+  Het label met de score en het oordeel van WMF Artificial Intelligence
+  scoresysteem ORES. Dit specifieke label verwijst naar het tegenovergestelde
+  van het model van goede trouw van ORES. Zie
+  https://www.mediawiki.org/wiki/ORES#Advanced_support
 Label-OresBadfaith.@meta.@isMachineTranslated: true
 Label-OresBadfaith.@meta.@translatedAt: '2020-07-07T01:09:19.144Z'
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: ORES Schadelijk
-Label-Overriden: Overschreven
-Label-Prompt-Login: Log in
+Label-OresDamaging.@meta.@description: >-
+  Het label met de score en het oordeel van WMF Artificial Intelligence
+  scoresysteem ORES. Dit specifieke label verwijst naar het schadelijke model
+  van ORES. Zie https://www.mediawiki.org/wiki/ORES#Advanced_support
+Label-Overridden: Overschreven
+Label-Overridden.@meta.@description: >-
+  Het label om te zeggen dat een bepaalde bewerking in een Wikipedia-artikel
+  wordt overschreven door een andere nieuwere bewerking in hetzelfde
+  Wikipedia-artikel. Dit label impliceert dat een dergelijke bewerking ofwel al
+  is teruggedraaid door onze huidige gebruiker, of is teruggedraaid of
+  bijgewerkt door een andere Wikipedia-editor op Wikipedia.
+Label-Overridden.@meta.@isMachineTranslated: true
+Label-Overridden.@meta.@translatedAt: '2020-07-07T19:26:51.444Z'
+Label-Overridden.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-PromptLogin: Log in
+Label-PromptLogin.@meta.@description: >-
+  Het label om een gebruiker te vragen zich aan te melden bij onze software. Het
+  lijkt meer op "gelieve in te loggen" toon in talen die formaliteit en eervolle
+  spraak bestaan.
+Label-PromptLogin.@meta.@isMachineTranslated: true
+Label-PromptLogin.@meta.@translatedAt: '2020-07-07T19:26:51.444Z'
+Label-PromptLogin.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-Rank: Rang
+Label-Rank.@meta.@description: >-
+  Het label voor het rangschikken van statistieken op een bepaald sorteernummer,
+  bijvoorbeeld gebruikers gesorteerd op hun aantal bijdragen
 Label-Reason: Reden
+Label-Reason.@meta.@description: >-
+  Het label voor de reden van het resultaat van een uitgevoerde actie,
+  bijvoorbeeld wanneer een gebruiker een Wikipedia-bewerking terugzet.
 Label-Result: Resultaat
+Label-Result.@meta.@description: >-
+  Het label voor het resultaat van een uitgevoerde actie, zoals wanneer een
+  gebruiker een Wikipedia-bewerking heeft teruggedraaid.
 Label-RevertSucceeded: Revert geslaagd!
+Label-RevertSucceeded.@meta.@description: >-
+  Het label voor het resultaat van een uitgevoerde actie wanneer een gebruiker
+  een Wikipedia-bewerking heeft teruggedraaid, de actie is geslaagd.
 Label-ReviewFeed: Feed beoordelen
+Label-ReviewFeed.@meta.@description: >-
+  Het label voor de feed, stroom of stroom van inkomende Wikipedia-bewerkingen
+  die moeten worden beoordeeld.
 Label-ReviewedAndSays: 'heeft {0} beoordeeld en zegt'
+Label-ReviewedAndSays.@meta.@description: Het label om de uitspraak te beginnen en de redenen voor een herziening.
 Label-ShouldRevert: Moet terugkeren
+Label-ShouldRevert.@meta.@description: >-
+  Het label van een van de 3 belangrijkste soorten oordelen dat zegt dat de
+  Wikipedia-bewerking die wordt beoordeeld, schadelijk is voor Wikipedia in
+  plaats van goed en constructief is.
 Label-Snooze: Snooze
+Label-Snooze.@meta.@description: >-
+  Het label van een knop om een herinnering of melding in de sluimerstand te
+  zetten, of met andere woorden, het betekent "herinner me later". In
+  werkelijkheid wordt de snooze-knop gebruikt wanneer de herinnering of het
+  meldingsbericht opnieuw verschijnt. Het betekent dus ook "niet permanent
+  ontslagen, maar gewoon tijdelijk ontslagen".
 Label-Someone: Iemand
+Label-Someone.@meta.@description: Het label om een andere gebruiker dan de huidige gebruiker te identificeren.
 Label-Time: Tijd
+Label-Time.@meta.@description: >-
+  Het label van het tijdstempel van een bepaald oordeel of actie gegeven door
+  een gebruiker.
 Label-TopNumberAnonymousUsers: 'Top {0} anonieme gebruikers'
+Label-TopNumberAnonymousUsers.@meta.@description: >-
+  Het label voor het gedeelte van de top 20 anonieme gebruikers, enz., Terwijl
+  het nummer "20" kan worden vervangen in de parameter.
 Label-TopUsers: Top gebruikers
+Label-TopUsers.@meta.@description: >-
+  Het label voor het gedeelte van de top (ingelogde) gebruikers, enz., Terwijl
+  het nummer.
 Label-TopWikis: Top Wiki's
+Label-TopWikis.@meta.@description: >-
+  Het label voor de sectie van top Wikipedias of zijn zusterprojecten
+  (Wikidata.org enz.), Naar het aantal beoordelingen op de Wikipedia.
 Label-TotalNumber: Totaal
+Label-TotalNumber.@meta.@description: >-
+  Het label voor de kolom met het totale aantal beoordelingen dat door een
+  gebruiker is gegeven.
 Label-User: Gebruiker
+Label-User.@meta.@description: Het label voor gebruiker die het oordeel over Wikipedia geeft.
 Label-Week: Week
+Label-Week.@meta.@description: >-
+  Een label voor de granulariteit van de uitsplitsingstijd van statistieken,
+  uitgesplitst naar week.
 Label-YourJudgement: Uw oordeel
+Label-YourJudgement.@meta.@description: Het label voor het oordeel van de huidige gebruiker.
 MenuItem-Code: Code
+MenuItem-Code.@meta.@description: >-
+  Het menu-itemlabel om de gebruiker om te leiden naar de codebasis van deze
+  software.
 MenuItem-Contributions: Mijn bijdragen
+MenuItem-Contributions.@meta.@description: >-
+  Het menu-itemlabel dat de gebruiker naar de lijst met bijdragen of
+  beoordelingen van de huidige gebruiker leidt.
 MenuItem-ContributionsBeforeLogin: Mijn bijdragen voordat ik inlog
+MenuItem-ContributionsBeforeLogin.@meta.@description: WIJZIG OF VERTAAL NIET OM TE VERWIJDEREN.
 MenuItem-Issues: Problemen
+MenuItem-Issues.@meta.@description: >-
+  Het menu-itemlabel verwijst de gebruiker door naar de Github-problemen van
+  onze software.
 MenuItem-Stats: Statistieken
+MenuItem-Stats.@meta.@description: >-
+  Het menu-itemlabel verwijst de gebruiker door naar de statistiekenpagina van
+  onze software.
 Message-AJudgementLogged: 'Een oordeel voor {0} voor herziening {1} is vastgelegd.'
 Message-CongratsSuccessfullyReverted: 'Proficiat! u bent met succes rechtstreeks teruggezet {0}.'
 Message-DiffNotAvailable: >-
@@ -101,4 +297,7 @@ Message-RevertEditSummary: >-
 Message-SorryWeFailedToRevert: 'Sorry, we hebben de revisie {0} niet ongedaan gemaakt.'
 Message-TheRevisionIsSuccessfullyRevertedAs: 'De revisie {0} is teruggedraaid als {1}.'
 Message-ThereIsNoEditSummary: Er is geen samenvatting voor bewerken.
+Message-ThereIsNoEditSummary.@meta.@description: >-
+  Het bericht laat zien dat een bepaalde Wikipedia-bewerking geen uitleg heeft,
+  zie https://en.wikipedia.org/wiki/Help:Edit_summary.
 Message-YourJudgementLogged: 'Uw oordeel voor {0} herziening {1} is vastgelegd.'

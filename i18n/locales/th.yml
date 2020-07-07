@@ -5,70 +5,208 @@ Button-HelpTranslate.@meta.@description: ป้ายกำกับปุ่ม
 Button-Next: ต่อไป
 Button-Next.@meta.@description: ป้ายกำกับสำหรับปุ่มเมื่อคลิกไปที่หน้าถัดไปหรือแสดงข้อมูลถัดไป
 Button-OpenedUrlToRevert: เปิด URL เพื่อเปลี่ยนกลับ
+Button-OpenedUrlToRevert.@meta.@description: >-
+  ป้ายกำกับของปุ่ม "เปลี่ยนกลับทันที" จะเปลี่ยนเป็น "เปิด URL เพื่อเปลี่ยนกลับ"
+  เพื่อแสดงสถานะการดำเนินการหลังจากที่คลิกปุ่มแล้วและกำลังดำเนินการ
 Button-RevertNow: เปลี่ยนกลับทันที
+Button-RevertNow.@meta.@description: ป้ายกำกับสำหรับปุ่มเพื่อย้อนกลับการแก้ไขที่กำหนดใน Wikipedia ทันที
 Button-ShowJudgements: แสดงการตัดสิน
+Button-ShowJudgements.@meta.@description: ป้ายกำกับสำหรับปุ่มเพื่อแสดงการตัดสินที่ระบุในการแก้ไข Wikipedia
 Button-Undo: เลิกทำ
+Button-Undo.@meta.@description: ป้ายกำกับของปุ่มเพื่อเลิกทำการกระทำบนซอฟต์แวร์ของเรา
 Label-1Month: 1 เดือน (30 วัน)
+Label-1Month.@meta.@description: >-
+  ป้ายกำกับสำหรับช่วงเวลาของสถิติที่จะแสดงซึ่งก็คือ 1 เดือนหรือ 30
+  วันอย่างแม่นยำ
 Label-1Quarter: 1 ไตรมาส (90d)
+Label-1Quarter.@meta.@description: >-
+  ป้ายกำกับสำหรับช่วงเวลาของสถิติที่จะแสดงซึ่งก็คือ 1 ใน 4 หรือ 90
+  วันอย่างแม่นยำ
 Label-1Year: 1 ปี (365d)
+Label-1Year.@meta.@description: ป้ายกำกับสำหรับช่วงเวลาของสถิติที่จะแสดงซึ่งก็คือ 1 ปีหรือ 365 วันอย่างแม่นยำ
 Label-1day: 1 วัน
+Label-1day.@meta.@description: ป้ายกำกับสำหรับช่วงเวลาของสถิติที่จะแสดงซึ่งเป็น 1 วันอย่างแม่นยำ
 Label-1week: 1 สัปดาห์ (7d)
+Label-1week.@meta.@description: >-
+  ป้ายกำกับสำหรับช่วงเวลาของสถิติที่จะแสดงซึ่งก็คือ 1 สัปดาห์หรือ 7
+  วันอย่างแม่นยำ
 Label-ActiveUsers: ผู้ใช้ที่ใช้งานอยู่
+Label-ActiveUsers.@meta.@description: ป้ายกำกับของสถิติตามผู้ใช้ที่ใช้งานอยู่ของซอฟต์แวร์นี้
 Label-AllTime: ตลอดเวลา
+Label-AllTime.@meta.@description: >-
+  ป้ายกำกับสำหรับช่วงเวลาสำหรับสถิติที่จะแสดงซึ่งเป็นตลอดเวลาที่ซอฟต์แวร์ของเราเผยแพร่
 Label-Anonymous: ไม่ระบุชื่อ
 Label-ArtificialIntelligence: ปัญญาประดิษฐ์
 Label-Author: ผู้เขียน
 Label-CountOfJudgements: นับ
+Label-CountOfJudgements.@meta.@description: ป้ายกำกับสำหรับจำนวนรวมของการตัดสินสำหรับการแก้ไขวิกิพีเดีย
 Label-Day: วัน
+Label-Day.@meta.@description: ป้ายกำกับสำหรับเวลาย่อยสลายของสถิติซึ่งแบ่งย่อยตามวัน
 Label-DiffView: มุมมองต่าง
+Label-DiffView.@meta.@description: >-
+  ป้ายกำกับสำหรับมุมมองที่แสดงความแตกต่างระหว่างสแน็ปช็อตเช่นสแน็ปช็อตบทความ
+  Wikipedia สองรายการ
 Label-DirectRevertFailed: การเปลี่ยนกลับโดยตรงล้มเหลว
+Label-DirectRevertFailed.@meta.@description: >-
+  ป้ายกำกับเพื่อแสดงสถานะใหม่ของปุ่ม "เปลี่ยนกลับทันที"
+  วัตถุประสงค์คือเพื่อแสดงสถานะของการกระทำที่ดำเนินการโดยผู้ใช้ซึ่งในกรณีนี้คือการดำเนินการคืนค่าล้มเหลว
 Label-DirectReverted: เปลี่ยนกลับโดยตรง
+Label-DirectReverted.@meta.@description: >-
+  ป้ายกำกับเพื่อแสดงสถานะใหม่ของปุ่ม "เปลี่ยนกลับทันที"
+  มีวัตถุประสงค์เพื่อแสดงสถานะของการกระทำที่ผู้ใช้ทำซึ่งในกรณีนี้คือการดำเนินการคืนค่าสำเร็จ
 Label-EditSummary: แก้ไขสรุป
+Label-EditSummary.@meta.@description: >-
+  สรุปการแก้ไขคือคำอธิบายสั้น ๆ ของการแก้ไขในหน้า Wikipedia ดังที่แสดงใน
+  https://en.wikipedia.org/wiki/Help:Edit_summary
 Label-EditedAt: แก้ไข
+Label-EditedAt.@meta.@description: ป้ายกำกับของการประทับเวลาของการแก้ไขใน Wikipedia เมื่อมีการสร้างการแก้ไข
 Label-Feed: อาหาร
+Label-Feed.@meta.@description: >-
+  ป้ายกำกับที่แสดงฟีดโฟลว์หรือสตรีมของการแก้ไข Wikipedia
+  ใหม่ที่เข้ามาตามชื่อฟีดเฉพาะนั้น ตัวอย่างเช่นเรามีฟีดต่าง ๆ
+  ของการแก้ไขวิกิพีเดียประเภทต่าง ๆ
+  เช่นฟีดหัวข้อบทความฟีดการแก้ไขที่ตรวจพบโดยระบบคะแนนการตรวจจับการป่าเถื่อน ฯลฯ
 Label-History: ประวัติศาสตร์
+Label-History.@meta.@description: >-
+  ป้ายกำกับสำหรับรายการกิจกรรมที่ผ่านมาการตัดสินที่ผ่านมามีส่วนช่วย ฯลฯ
+  ของผู้ใช้ทั้งหมดหรือผู้ใช้ที่กำหนด
 Label-HumanEditors: บรรณาธิการของมนุษย์
+Label-HumanEditors.@meta.@description: ฉลากสำหรับการตัดสินที่จัดทำโดยบรรณาธิการของมนุษย์
 Label-Judgement: การตัดสิน
+Label-Judgement.@meta.@description: >-
+  ป้ายกำกับสำหรับการตัดสินที่ให้แก่การแก้ไขโดยผู้ใช้ของเราซึ่งตรวจสอบการแก้ไข
+  Wikipedia ที่เข้ามา
 Label-LastActiveTime: ใช้งานล่าสุด
+Label-LastActiveTime.@meta.@description: ป้ายกำกับเพื่อแสดงครั้งสุดท้ายที่ผู้ใช้เปิดใช้งานซอฟต์แวร์ของเรา
 Label-Loading: กำลังโหลด
+Label-Loading.@meta.@description: >-
+  กำลังโหลดป้ายกำกับเพื่อแสดงบางส่วนหรือข้อมูลบนเว็บเพจ
+  โดยปกติป้ายกำกับนี้จะแสดงเป็นทางเลือกสำหรับตัวบ่งชี้การโหลด
 Label-Login: เข้าสู่ระบบ
+Label-Login.@meta.@description: >-
+  เลเบลสำหรับปุ่มล็อกอินเพื่ออนุญาตให้ผู้ใช้ล็อกอิน
+  หรือมันจะถูกใช้ในข้อความหรือพรอมต์เพื่อเชิญผู้ใช้เข้าสู่ระบบ
 Label-Logout: ออกจากระบบ
+Label-Logout.@meta.@description: >-
+  ป้ายกำกับสำหรับปุ่มเข้าสู่ระบบเพื่อให้ผู้ใช้ออกจากระบบ
+  หรือจะใช้ในข้อความหรือพร้อมท์เพื่อเชิญผู้ใช้ให้ออกจากระบบ
 Label-LooksGood: ดูดี
+Label-LooksGood.@meta.@description: >-
+  ฉลากของการตัดสินหนึ่งในสามประเภทหลักที่กล่าวว่าการแก้ไข Wikipedia
+  ที่ได้รับการตรวจสอบนั้นเป็นสิ่งที่ดีและสร้างสรรค์ต่อ Wikipedia
+  ซึ่งต่างจากการทำลาย
 Label-Me: ผม
+Label-Me.@meta.@description: >-
+  เลเบลเพื่อระบุผู้ใช้เอง
+  โปรดตรวจสอบให้แน่ใจว่าป้ายกำกับที่แปลตรงนี้เป็นเพศที่เป็นกลาง
 Label-Month: เดือน
-Label-My-History: ประวัติศาสตร์ของฉัน
+Label-Month.@meta.@description: ป้ายกำกับสำหรับเวลาย่อยสลายของสถิติซึ่งแบ่งย่อยตามเดือน
+Label-MyHistory: ประวัติศาสตร์ของฉัน
+Label-MyHistory.@meta.@description: >-
+  ป้ายกำกับสำหรับรายการกิจกรรมที่ผ่านมาการตัดสินที่ผ่านมามีส่วนช่วย ฯลฯ
+  ของผู้ใช้ปัจจุบันที่ใช้ซอฟต์แวร์ของเรา
+Label-MyHistory.@meta.@isMachineTranslated: true
+Label-MyHistory.@meta.@translatedAt: '2020-07-07T19:26:51.446Z'
+Label-MyHistory.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-NewJudgement: คำพิพากษาใหม่
+Label-NewJudgement.@meta.@description: ป้ายกำกับสำหรับการตัดสินใหม่ที่กำหนดให้กับการแก้ไข Wikipedia โดยผู้ใช้ของเรา
 Label-None: ไม่มี
+Label-None.@meta.@description: >-
+  เลเบลสำหรับตารางว่างของแถวและเซลล์ของเนื้อหาหรือรายการว่าง
+  โดยปกติจะใช้ในส่วนติดต่อผู้ใช้เมื่อไม่มีเนื้อหาที่จะแสดง
 Label-NotSure: ไม่แน่ใจ
+Label-NotSure.@meta.@description: >-
+  ฉลากของการตัดสินหนึ่งในสามประเภทหลักที่กล่าวว่าการแก้ไขวิกิพีเดียที่กำลังตรวจสอบนั้นไม่แน่ใจและอาจเป็นสิ่งที่ดีและสร้างสรรค์หรือเป็นอันตรายต่อวิกิพีเดีย
 Label-OresBadfaith: ORES ศรัทธาที่ไม่ดี
+Label-OresBadfaith.@meta.@description: >-
+  ฉลากระบุคะแนนและการตัดสินที่กำหนดโดยระบบการให้คะแนนปัญญาประดิษฐ์ WMF ORES
+  ป้ายกำกับนี้เฉพาะอ้างถึงตรงข้ามกับรุ่นที่ดีของ ORES ดู
+  https://www.mediawiki.org/wiki/ORES#Advanced_support
 Label-OresBadfaith.@meta.@isMachineTranslated: true
 Label-OresBadfaith.@meta.@translatedAt: '2020-07-07T01:09:19.145Z'
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: ความเสียหายจาก ORES
-Label-Overriden: แทนที่
-Label-Prompt-Login: เข้าสู่ระบบ
+Label-OresDamaging.@meta.@description: >-
+  ฉลากระบุคะแนนและการตัดสินที่กำหนดโดยระบบการให้คะแนนปัญญาประดิษฐ์ WMF ORES
+  ฉลากเฉพาะนี้อ้างถึงรูปแบบการทำลายของ ORES ดู
+  https://www.mediawiki.org/wiki/ORES#Advanced_support
+Label-Overridden: แทนที่
+Label-Overridden.@meta.@description: >-
+  ป้ายกำกับที่บอกว่าการแก้ไขที่ระบุในบทความ Wikipedia
+  กำลังถูกแทนที่โดยการแก้ไขที่ใหม่กว่าในบทความ Wikipedia เดียวกัน
+  ป้ายกำกับนี้บอกเป็นนัยถึงการแก้ไขดังกล่าวอาจถูกเปลี่ยนกลับโดยผู้ใช้ปัจจุบันของเราหรือถูกเปลี่ยนกลับหรืออัปเดตโดยผู้แก้ไข
+  Wikipedia อีกคนบน Wikipedia
+Label-Overridden.@meta.@isMachineTranslated: true
+Label-Overridden.@meta.@translatedAt: '2020-07-07T19:26:51.446Z'
+Label-Overridden.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-PromptLogin: เข้าสู่ระบบ
+Label-PromptLogin.@meta.@description: >-
+  ป้ายกำกับเพื่อแจ้งให้ผู้ใช้ลงชื่อเข้าใช้ซอฟต์แวร์ของเรา มันเหมือนเสียง
+  "โปรดเข้าสู่ระบบ" ในภาษาที่มีพิธีการและคำพูดที่ให้เกียรติ
+Label-PromptLogin.@meta.@isMachineTranslated: true
+Label-PromptLogin.@meta.@translatedAt: '2020-07-07T19:26:51.446Z'
+Label-PromptLogin.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-Rank: ยศ
+Label-Rank.@meta.@description: >-
+  เลเบลสำหรับการจัดอันดับของสถิติตามจำนวนการเรียงลำดับที่กำหนดตัวอย่างเช่นผู้ใช้ที่เรียงลำดับตามจำนวนการมีส่วนร่วม
 Label-Reason: เหตุผล
+Label-Reason.@meta.@description: >-
+  ป้ายกำกับสำหรับเหตุผลของผลลัพธ์ของการกระทำที่ดำเนินการเช่นเมื่อผู้ใช้กำลังย้อนกลับการแก้ไข
+  Wikipedia
 Label-Result: ผลลัพธ์
+Label-Result.@meta.@description: ป้ายกำกับสำหรับผลลัพธ์ของการดำเนินการเช่นเมื่อผู้ใช้ย้อนกลับการแก้ไข Wikipedia
 Label-RevertSucceeded: ย้อนกลับสำเร็จแล้ว!
+Label-RevertSucceeded.@meta.@description: >-
+  ป้ายกำกับสำหรับผลลัพธ์ของการดำเนินการเมื่อผู้ใช้ย้อนกลับการแก้ไข Wikipedia
+  การกระทำนั้นสำเร็จ
 Label-ReviewFeed: ฟีดรีวิว
+Label-ReviewFeed.@meta.@description: เลเบลสำหรับฟีดโฟลว์หรือสตรีมของการแก้ไข Wikipedia ที่เข้ามาเพื่อตรวจสอบ
 Label-ReviewedAndSays: 'ตรวจทานแล้ว {0} และพูดว่า'
+Label-ReviewedAndSays.@meta.@description: ฉลากเพื่อเริ่มประโยคการตัดสินและเหตุผลที่กำหนดสำหรับการแก้ไข
 Label-ShouldRevert: ควรเปลี่ยนกลับ
+Label-ShouldRevert.@meta.@description: >-
+  ฉลากของการตัดสินประเภทหนึ่งในสามประเภทที่กล่าวว่าการแก้ไข Wikipedia
+  ที่ได้รับการตรวจสอบนั้นสร้างความเสียหายให้กับ Wikipedia
+  ซึ่งตรงกันข้ามกับความดีและสร้างสรรค์
 Label-Snooze: การงีบหลับ
+Label-Snooze.@meta.@description: >-
+  ป้ายชื่อของปุ่มเพื่อเลื่อนการเตือนความจำหรือการแจ้งเตือนหรือในคำอื่น ๆ
+  ก็หมายความว่า "เตือนฉันภายหลัง"
+  ในความเป็นจริงปุ่มเลื่อนจะถูกใช้เมื่อข้อความเตือนหรือข้อความแจ้งเตือนปรากฏขึ้นอีกครั้ง
+  ดังนั้นมันจึงหมายถึง "ไม่เลิกถาวร แต่เพียงแค่เลิกชั่วคราว"
 Label-Someone: บางคน
+Label-Someone.@meta.@description: เลเบลเพื่อระบุผู้ใช้อื่นที่ไม่ใช่ผู้ใช้ปัจจุบัน
 Label-Time: เวลา
+Label-Time.@meta.@description: เลเบลของการประทับเวลาของการตัดสินหรือการดำเนินการที่กำหนดโดยผู้ใช้
 Label-TopNumberAnonymousUsers: '{0} ผู้ใช้ที่ไม่ระบุชื่อสูงสุด'
+Label-TopNumberAnonymousUsers.@meta.@description: >-
+  เลเบลสำหรับส่วนของผู้ใช้ที่ไม่ระบุชื่อ 20 อันดับแรก ฯลฯ ขณะที่หมายเลข "20"
+  สามารถถูกแทนที่ในพารามิเตอร์ได้
 Label-TopUsers: ผู้ใช้งานสูงสุด
+Label-TopUsers.@meta.@description: เลเบลสำหรับส่วนของผู้ใช้บนสุด (ล็อกอิน) ฯลฯ ขณะที่จำนวน
 Label-TopWikis: Wikis ยอดนิยม
+Label-TopWikis.@meta.@description: >-
+  ฉลากสำหรับส่วนของ Wikipedias ชั้นนำหรือโครงการน้องสาว (Wikidata.org ฯลฯ )
+  ตามจำนวนการตัดสินที่กำหนดใน Wikipedia
 Label-TotalNumber: รวม
+Label-TotalNumber.@meta.@description: ป้ายกำกับสำหรับคอลัมน์ของจำนวนการตัดสินทั้งหมดที่กำหนดโดยผู้ใช้
 Label-User: ผู้ใช้งาน
+Label-User.@meta.@description: ป้ายกำกับสำหรับผู้ใช้ที่ตัดสินการแก้ไข Wikipedia
 Label-Week: สัปดาห์
+Label-Week.@meta.@description: ป้ายกำกับสำหรับเวลาย่อยสลายของสถิติซึ่งแบ่งย่อยเป็นรายสัปดาห์
 Label-YourJudgement: คำพิพากษาของคุณ
+Label-YourJudgement.@meta.@description: ฉลากสำหรับการตัดสินที่กำหนดโดยผู้ใช้ปัจจุบัน
 MenuItem-Code: รหัส
+MenuItem-Code.@meta.@description: เลเบลไอเท็มเมนูเพื่อเปลี่ยนทิศทางผู้ใช้ไปยัง codebase ของซอฟต์แวร์นี้
 MenuItem-Contributions: ผลงานของฉัน
+MenuItem-Contributions.@meta.@description: >-
+  เลเบลไอเท็มเมนูนำผู้ใช้ไปยังรายการของการสนับสนุนหรือการตัดสินที่กำหนดโดยผู้ใช้ปัจจุบัน
 MenuItem-ContributionsBeforeLogin: การมีส่วนร่วมของฉันก่อนเข้าสู่ระบบ
+MenuItem-ContributionsBeforeLogin.@meta.@description: ที่จะถูกลบออกอย่าเปลี่ยนหรือแปล
 MenuItem-Issues: ประเด็น
+MenuItem-Issues.@meta.@description: เลเบลรายการเมนูที่เปลี่ยนเส้นทางผู้ใช้ไปยังปัญหา Github ของซอฟต์แวร์ของเรา
 MenuItem-Stats: สถิติ
+MenuItem-Stats.@meta.@description: ป้ายรายการเมนูเปลี่ยนเส้นทางผู้ใช้ไปยังหน้าสถิติของซอฟต์แวร์ของเรา
 Message-AJudgementLogged: 'คำตัดสินของ {0} สำหรับการแก้ไข {1} ถูกบันทึกไว้'
 Message-CongratsSuccessfullyReverted: 'ยินดีด้วย! คุณได้คืนค่าเรียบร้อยแล้วโดยตรง {0}'
 Message-DiffNotAvailable: >-
@@ -93,4 +231,7 @@ Message-RevertEditSummary: >-
 Message-SorryWeFailedToRevert: 'ขออภัยเราไม่สามารถคืนค่าการแก้ไข {0}'
 Message-TheRevisionIsSuccessfullyRevertedAs: 'การแก้ไข {0} ถูกเปลี่ยนกลับเป็นสำเร็จเป็น {1}'
 Message-ThereIsNoEditSummary: ไม่มีการสรุปการแก้ไข
+Message-ThereIsNoEditSummary.@meta.@description: >-
+  ข้อความแสดงให้เห็นว่าการแก้ไข Wikipedia ที่ระบุไม่มีคำอธิบายให้ดูที่
+  https://en.wikipedia.org/wiki/Help:Edit_summary
 Message-YourJudgementLogged: 'การตัดสินใจของคุณสำหรับ {0} เพื่อแก้ไข {1} ถูกบันทึกไว้'

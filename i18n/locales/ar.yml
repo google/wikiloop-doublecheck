@@ -7,70 +7,211 @@ Button-HelpTranslate.@meta.@description: >-
 Button-Next: التالى
 Button-Next.@meta.@description: تسمية زر عند النقر عليه ، انتقل إلى الصفحة التالية أو عرض المعلومات التالية.
 Button-OpenedUrlToRevert: تم فتح عنوان URL للعودة
+Button-OpenedUrlToRevert.@meta.@description: >-
+  سيتم تغيير تسمية الزر "تراجع الآن" إلى "فتح عنوان URL للعودة" لإظهار حالة
+  الإجراء بعد النقر على الزر وتنفيذ الإجراء.
 Button-RevertNow: العودة الآن
+Button-RevertNow.@meta.@description: تسمية الزر لإرجاع مراجعة معينة على ويكيبيديا على الفور.
 Button-ShowJudgements: أظهر الأحكام
+Button-ShowJudgements.@meta.@description: تسمية الزر لإظهار الأحكام الواردة في تعديل ويكيبيديا
 Button-Undo: الغاء التحميل
+Button-Undo.@meta.@description: تسمية الزر للتراجع عن إجراء على برنامجنا.
 Label-1Month: شهر واحد (30 يومًا)
+Label-1Month.@meta.@description: تصنيف للنطاق الزمني للإحصاءات المراد عرضها ، وهو شهر واحد أو 30 يومًا بدقة.
 Label-1Quarter: 1 ربع (90 د)
+Label-1Quarter.@meta.@description: >-
+  تصنيف للنطاق الزمني للإحصاءات المراد عرضها ، وهو ربع أو 90 يومًا على وجه
+  التحديد.
 Label-1Year: سنة واحدة (365 د)
+Label-1Year.@meta.@description: تصنيف للنطاق الزمني للإحصاءات المراد عرضها ، وهو عام واحد أو 365 يومًا بدقة.
 Label-1day: يوم 1
+Label-1day.@meta.@description: تصنيف للنطاق الزمني للإحصاءات المراد عرضها ، وهو يوم واحد على وجه التحديد.
 Label-1week: 1 week (7d)
+Label-1week.@meta.@description: >-
+  تصنيف للنطاق الزمني للإحصاءات المراد عرضها ، وهو أسبوع أو 7 أيام على وجه
+  التحديد.
 Label-ActiveUsers: المستخدمين النشطين
+Label-ActiveUsers.@meta.@description: تسمية للإحصاءات تستند إلى المستخدمين النشطين لهذا البرنامج.
 Label-AllTime: كل الوقت
+Label-AllTime.@meta.@description: >-
+  تسمية للنطاق الزمني لعرض الإحصائيات في جميع الأوقات التي يكون فيها برنامجنا
+  مباشرًا.
 Label-Anonymous: مجهول
 Label-ArtificialIntelligence: الذكاء الاصطناعي
 Label-Author: مؤلف
 Label-CountOfJudgements: العد
+Label-CountOfJudgements.@meta.@description: تصنيف لعدد الأحكام في تعديلات ويكيبيديا.
 Label-Day: يوم
+Label-Day.@meta.@description: تصنيف لدقّة تفاصيل وقت تفصيل الإحصاءات مفصّلًا حسب اليوم.
 Label-DiffView: عرض الاختلاف
+Label-DiffView.@meta.@description: ملصق لعرض يوضح الفرق بين اللقطات مثل اللقطتين في مقالة ويكيبيديا.
 Label-DirectRevertFailed: فشل التراجع المباشر
+Label-DirectRevertFailed.@meta.@description: >-
+  تصنيف لعرض الحالة الجديدة لزر "الرجوع الآن". الغرض هو إظهار حالة الإجراء الذي
+  قام به المستخدم والذي في هذه الحالة هو فشل إجراء التراجع.
 Label-DirectReverted: عادت مباشرة
+Label-DirectReverted.@meta.@description: >-
+  تصنيف لعرض الحالة الجديدة لزر "الرجوع الآن". الغرض هو إظهار حالة الإجراء الذي
+  قام به المستخدم والذي في هذه الحالة هو نجاح إجراء التراجع.
 Label-EditSummary: تحرير الملخص
+Label-EditSummary.@meta.@description: >-
+  ملخص التعديل هو شرح موجز لتحرير على صفحة ويكيبيديا ، كما هو موضح في
+  https://en.wikipedia.org/wiki/Help:Edit_summary
 Label-EditedAt: تم تحريره
+Label-EditedAt.@meta.@description: تسمية الطابع الزمني للتعديل على ويكيبيديا عند إنشاء التعديل.
 Label-Feed: تغذية
+Label-Feed.@meta.@description: >-
+  يعرض الملصق موجزًا أو تدفقًا أو دفقًا من تعديلات ويكيبيديا الجديدة الواردة ،
+  متبوعًا باسم هذا الموجز المحدد. على سبيل المثال ، لدينا العديد من الخلاصات
+  لأنواع مختلفة من تعديلات ويكيبيديا ، مثل خلاصة موضوع المقالة ، خلاصة التعديلات
+  التي تم اكتشافها بواسطة أنظمة درجات الكشف عن التخريب ، إلخ.
 Label-History: التاريخ
+Label-History.@meta.@description: >-
+  تصنيف لقائمة الأنشطة السابقة والأحكام السابقة التي ساهم بها وما إلى ذلك ،
+  لجميع المستخدمين أو مستخدم معين.
 Label-HumanEditors: المحررين البشريين
+Label-HumanEditors.@meta.@description: تسمية الأحكام المقدمة من المحررين البشريين.
 Label-Judgement: حكم
+Label-Judgement.@meta.@description: >-
+  التسمية للحكم المقدمة إلى تعديلات ويكيبيديا من قبل مستخدمينا الذين يراجعون
+  تعديلات ويكيبيديا الواردة.
 Label-LastActiveTime: آخر نشاط
+Label-LastActiveTime.@meta.@description: الملصق الذي يُظهر آخر مرة نشط فيها المستخدم في برنامجنا.
 Label-Loading: جار التحميل
+Label-Loading.@meta.@description: >-
+  جاري تحميل التسمية لإظهار بعض الأجزاء أو البيانات على صفحة ويب. عادة ما يظهر
+  هذا الملصق كعامل احتياطي لمؤشر التحميل.
 Label-Login: تسجيل الدخول
+Label-Login.@meta.@description: >-
+  تسمية زر تسجيل الدخول للسماح للمستخدم بتسجيل الدخول. أو سيتم استخدامه أيضًا في
+  الرسائل أو المطالبة بدعوة المستخدم لتسجيل الدخول.
 Label-Logout: تسجيل خروج
+Label-Logout.@meta.@description: >-
+  تسمية زر تسجيل الدخول للسماح للمستخدم بتسجيل الخروج. أو سيتم استخدامه أيضًا في
+  الرسائل أو المطالبة بدعوة المستخدم لتسجيل الخروج.
 Label-LooksGood: تبدو جيدا
+Label-LooksGood.@meta.@description: >-
+  تسمية أحد الأنواع الرئيسية الثلاثة من الأحكام التي تقول أن تحرير ويكيبيديا قيد
+  المراجعة جيد وبناء لـ ويكيبيديا ، على عكس الضرر.
 Label-Me: أنا
+Label-Me.@meta.@description: >-
+  التسمية لتعريف المستخدم نفسه. يرجى التأكد من أن العلامة المترجمة هنا محايدة من
+  حيث نوع الجنس.
 Label-Month: شهر
-Label-My-History: تاريخي
+Label-Month.@meta.@description: تصنيف للدقة التفصيلية للإحصاءات المفصولة حسب الشهر.
+Label-MyHistory: تاريخي
+Label-MyHistory.@meta.@description: >-
+  تصنيف لقائمة الأنشطة السابقة والأحكام السابقة التي ساهم بها وما إلى ذلك ،
+  للمستخدم الحالي الذي يستخدم برنامجنا.
+Label-MyHistory.@meta.@isMachineTranslated: true
+Label-MyHistory.@meta.@translatedAt: '2020-07-07T19:26:51.439Z'
+Label-MyHistory.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-NewJudgement: حكم جديد
+Label-NewJudgement.@meta.@description: تسمية لحكم جديد قدمه مستخدمنا لتحرير ويكيبيديا.
 Label-None: لا يوجد
+Label-None.@meta.@description: >-
+  تسمية جدول فارغ للصفوف وخلايا المحتوى أو القوائم الفارغة. يُستخدم هذا عادةً في
+  واجهة المستخدم عندما لا يكون هناك محتوى لعرضه.
 Label-NotSure: غير متأكد
+Label-NotSure.@meta.@description: >-
+  تسمية أحد أنواع الأحكام الرئيسية الثلاثة التي تقول أن تحرير ويكيبيديا قيد
+  المراجعة غير مؤكد ويمكن أن يكون جيدًا وبناءًا أو ضارًا لويكيبيديا.
 Label-OresBadfaith: ORES سوء النية
+Label-OresBadfaith.@meta.@description: >-
+  الملصق الذي يحدد الدرجة والحكم الصادر عن نظام تسجيل الذكاء الاصطناعي التابع لـ
+  WMF ORES. تشير هذه العلامة المحددة إلى عكس نموذج الإيمان الجيد لشركة ORES.
+  راجع https://www.mediawiki.org/wiki/ORES#Advanced_support
 Label-OresBadfaith.@meta.@isMachineTranslated: true
 Label-OresBadfaith.@meta.@translatedAt: '2020-07-07T01:09:19.141Z'
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: تلف ORES
-Label-Overriden: تم تجاوزه
-Label-Prompt-Login: تسجيل الدخول
+Label-OresDamaging.@meta.@description: >-
+  الملصق الذي يحدد الدرجة والحكم الصادر عن نظام تسجيل الذكاء الاصطناعي التابع لـ
+  WMF ORES. يشير هذا الملصق المحدد إلى النموذج التالف لـ ORES. راجع
+  https://www.mediawiki.org/wiki/ORES#Advanced_support
+Label-Overridden: تم تجاوزه
+Label-Overridden.@meta.@description: >-
+  الملصق الذي يشير إلى أن تعديلًا معينًا على مقالة ويكيبيديا يتم تجاوزه بواسطة
+  تعديل آخر أحدث على نفس مقالة ويكيبيديا. يشير هذا التصنيف إلى أن هذا التعديل قد
+  تم إرجاعه بالفعل من قبل مستخدمنا الحالي ، أو أنه تم إرجاعه أو تحديثه بواسطة
+  محرر Wikipedia آخر على Wikipedia.
+Label-Overridden.@meta.@isMachineTranslated: true
+Label-Overridden.@meta.@translatedAt: '2020-07-07T19:26:51.439Z'
+Label-Overridden.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-PromptLogin: تسجيل الدخول
+Label-PromptLogin.@meta.@description: >-
+  تسمية مطالبة المستخدم بتسجيل الدخول إلى برنامجنا. إنه أشبه بنبرة "الرجاء تسجيل
+  الدخول" في اللغات التي توجد بها تلك الرسمية والكلام الشرفي.
+Label-PromptLogin.@meta.@isMachineTranslated: true
+Label-PromptLogin.@meta.@translatedAt: '2020-07-07T19:26:51.439Z'
+Label-PromptLogin.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-Rank: مرتبة
+Label-Rank.@meta.@description: >-
+  تسمية تصنيفات الإحصائيات حسب رقم فرز معين ، على سبيل المثال ، المستخدمين مرتبة
+  حسب عدد مساهماتهم
 Label-Reason: السبب
+Label-Reason.@meta.@description: >-
+  التسمية لسبب نتيجة إجراء تم تنفيذه ، مثل عندما يقوم مستخدم بإرجاع تعديل
+  ويكيبيديا.
 Label-Result: نتيجة
+Label-Result.@meta.@description: >-
+  تسمية نتيجة إجراء تم إجراؤه ، على سبيل المثال عندما أعاد مستخدم تعديل
+  Wikipedia.
 Label-RevertSucceeded: نجحت العودة!
+Label-RevertSucceeded.@meta.@description: >-
+  تسمية نتيجة إجراء تم تنفيذه عندما قام مستخدم بإرجاع تعديل ويكيبيديا ، كان
+  الإجراء ناجحًا.
 Label-ReviewFeed: مراجعة الخلاصة
+Label-ReviewFeed.@meta.@description: ملصق لتغذية أو تدفق أو تدفق تعديلات ويكيبيديا الواردة للمراجعة.
 Label-ReviewedAndSays: 'راجعت {0} وتقول'
+Label-ReviewedAndSays.@meta.@description: تسمية لبدء حكم الحكم والأسباب المعطاة للمراجعة.
 Label-ShouldRevert: يجب العودة
+Label-ShouldRevert.@meta.@description: >-
+  تسمية أحد أنواع الأحكام الرئيسية الثلاثة التي تقول أن تحرير ويكيبيديا قيد
+  المراجعة يضر بالويكيبيديا بدلاً من أن يكون جيدًا وبناءً.
 Label-Snooze: غفوة
+Label-Snooze.@meta.@description: >-
+  تسمية زر لتأجيل تذكير أو إشعار ، أو بعبارة أخرى ، "ذكرني لاحقًا". في الواقع ،
+  سيتم استخدام زر الغفوة عند ظهور التذكير أو رسالة الإعلام مرة أخرى. لذلك يعني
+  ذلك أيضًا "عدم الفصل بشكل دائم ولكن تم فصله مؤقتًا".
 Label-Someone: شخصا ما
+Label-Someone.@meta.@description: التسمية لتعريف مستخدم غير المستخدم الحالي.
 Label-Time: زمن
+Label-Time.@meta.@description: تسمية الطابع الزمني لحكم أو إجراء معين من قبل المستخدم.
 Label-TopNumberAnonymousUsers: 'أفضل {0} مستخدمين مجهولين'
+Label-TopNumberAnonymousUsers.@meta.@description: >-
+  تسمية القسم الخاص بأعلى 20 مستخدم مجهول ، إلخ ، بينما يمكن استبدال الرقم "20"
+  في المعلمة.
 Label-TopUsers: كبار المستخدمين
+Label-TopUsers.@meta.@description: تسمية القسم الخاص بأعلى المستخدمين (المسجلين) ، إلخ ، بينما الرقم.
 Label-TopWikis: أعلى الويكي
+Label-TopWikis.@meta.@description: >-
+  تسمية القسم الخاص بأهم مواقع ويكيبيديا أو مشاريعها الشقيقة (Wikidata.org إلخ)
+  ، حسب مقدار الأحكام الصادرة على ويكيبيديا.
 Label-TotalNumber: مجموع
+Label-TotalNumber.@meta.@description: تصنيف عمود العدد الإجمالي للأحكام الصادرة عن المستخدم.
 Label-User: المستعمل
+Label-User.@meta.@description: تسمية المستخدم الذي يعطي الحكم على تحرير ويكيبيديا.
 Label-Week: أسبوع
+Label-Week.@meta.@description: تصنيف لدقائق وقت تفصيل الإحصاءات مفصلاً حسب الأسبوع.
 Label-YourJudgement: حكمك
+Label-YourJudgement.@meta.@description: تسمية الحكم التي قدمها المستخدم الحالي.
 MenuItem-Code: الشفرة
+MenuItem-Code.@meta.@description: >-
+  تسمية عنصر القائمة لإعادة توجيه المستخدم إلى قاعدة التعليمات البرمجية لهذا
+  البرنامج.
 MenuItem-Contributions: مساهماتي
+MenuItem-Contributions.@meta.@description: >-
+  ملصق عنصر القائمة يوجه المستخدم إلى قائمة المساهمات أو الأحكام التي يقدمها
+  المستخدم الحالي.
 MenuItem-ContributionsBeforeLogin: مساهماتي قبل تسجيل الدخول
+MenuItem-ContributionsBeforeLogin.@meta.@description: للحذف ، لا تغير أو تترجم.
 MenuItem-Issues: مسائل
+MenuItem-Issues.@meta.@description: عنصر قائمة القائمة الذي يعيد توجيه المستخدم إلى مشكلات Github في برنامجنا.
 MenuItem-Stats: الإحصائيات
+MenuItem-Stats.@meta.@description: >-
+  عنصر عنصر القائمة الذي يعيد توجيه المستخدم إلى صفحة الإحصائيات الخاصة
+  ببرنامجنا.
 Message-AJudgementLogged: 'تم تسجيل حكم {0} للمراجعة {1}.'
 Message-CongratsSuccessfullyReverted: 'مبروك! لقد نجحت في العودة مباشرةً {0}.'
 Message-DiffNotAvailable: >-
@@ -95,4 +236,7 @@ Message-RevertEditSummary: >-
 Message-SorryWeFailedToRevert: 'عذرًا ، فشلنا في التراجع عن المراجعة {0}.'
 Message-TheRevisionIsSuccessfullyRevertedAs: 'تمت مراجعة النسخة {0} بنجاح على أنها {1}.'
 Message-ThereIsNoEditSummary: لا يوجد ملخص تحرير.
+Message-ThereIsNoEditSummary.@meta.@description: >-
+  تظهر الرسالة أن تحرير Wikipedia معين لا يحتوي على تفسير ، راجع
+  https://en.wikipedia.org/wiki/Help:Edit_summary.
 Message-YourJudgementLogged: 'تم تسجيل حكمك على {0} للمراجعة {1}.'

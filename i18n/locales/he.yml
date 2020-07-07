@@ -5,70 +5,194 @@ Button-HelpTranslate.@meta.@description: תווית עבור כפתור המאפ
 Button-Next: הַבָּא
 Button-Next.@meta.@description: תווית עבור לחצן כאשר לוחצים עליו עבור לדף הבא או הצגת מידע הבא.
 Button-OpenedUrlToRevert: כתובת אתר נפתחה להחזרה
+Button-OpenedUrlToRevert.@meta.@description: >-
+  תווית הלחצן "חזור כעת" תשתנה ל"כתובת URL שנפתחה כדי לחזור "כדי להציג את מצב
+  הפעולה לאחר לחיצה על הכפתור וביצוע הפעולה.
 Button-RevertNow: חזור עכשיו
+Button-RevertNow.@meta.@description: התווית של הכפתור לביטול מיד של עדכון נתון בוויקיפדיה.
 Button-ShowJudgements: הראו פסקי דין
+Button-ShowJudgements.@meta.@description: התווית של הכפתור כדי להציג פסקי דין שניתנו בעריכה בוויקיפדיה
 Button-Undo: לבטל
+Button-Undo.@meta.@description: תווית עבור הכפתור לביטול פעולה בתוכנה שלנו.
 Label-1Month: חודש (30 ד)
+Label-1Month.@meta.@description: 'תווית לטווח הזמן הסטטיסטי שיוצג, שהוא חודש או 30 יום בדיוק.'
 Label-1Quarter: רבע 1 (90 ד)
+Label-1Quarter.@meta.@description: 'תווית לטווח הזמן הסטטיסטי שיוצג, שהוא רבע או 90 יום בדיוק.'
 Label-1Year: שנה אחת (365d)
+Label-1Year.@meta.@description: 'תווית לטווח הזמן הסטטיסטי שיוצג, שהוא שנה או 365 יום בדיוק.'
 Label-1day: יום 1
+Label-1day.@meta.@description: 'תווית לטווח הזמן הסטטיסטי שיוצג, שהוא יום אחד בדיוק.'
 Label-1week: שבוע (7 ד)
+Label-1week.@meta.@description: 'תווית לטווח הזמן הסטטיסטי שיוצג, שהוא שבוע או 7 ימים בדיוק.'
 Label-ActiveUsers: משתמשים פעילים
+Label-ActiveUsers.@meta.@description: תווית לסטטיסטיקה המבוססת על המשתמשים הפעילים בתוכנה זו.
 Label-AllTime: כל הזמן
+Label-AllTime.@meta.@description: תווית לטווח הזמנים של נתונים סטטיסטיים להצגה שכל הזמן בו התוכנה שלנו חיה.
 Label-Anonymous: בעילום שם
 Label-ArtificialIntelligence: בינה מלאכותית
 Label-Author: מְחַבֵּר
 Label-CountOfJudgements: לספור
+Label-CountOfJudgements.@meta.@description: תווית למספר סכומים של פסקי דין לעריכות ויקיפדיה.
 Label-Day: יְוֹם
+Label-Day.@meta.@description: תווית לפרוטוקול זמן ההתפלגות של נתונים סטטיסטיים המחולקת לפי יום.
 Label-DiffView: דיף נוף
+Label-DiffView.@meta.@description: תווית לתצוגה המציגה את ההבדל בין תמונות תמונות כמו שתי תמונות מאמר בוויקיפדיה.
 Label-DirectRevertFailed: הפעלה ישירה נכשלה
+Label-DirectRevertFailed.@meta.@description: >-
+  תווית המציגה סטטוס חדש של כפתור "חזור עכשיו". המטרה היא להציג את סטטוס הפעולה
+  שבוצעה על ידי המשתמש, ובמקרה זה הפעולה החוזרת נכשלה.
 Label-DirectReverted: ישירות הושבה
+Label-DirectReverted.@meta.@description: >-
+  תווית המציגה סטטוס חדש של כפתור "חזור עכשיו". המטרה היא להציג את סטטוס הפעולה
+  שבוצעה על ידי המשתמש, ובמקרה זה הפעולה החוזרת הצליחה.
 Label-EditSummary: ערוך סיכום
+Label-EditSummary.@meta.@description: >-
+  סיכום עריכה הוא הסבר קצר על עריכה לדף ויקיפדיה, כפי שמוצג
+  https://en.wikipedia.org/wiki/Help:Edit_summary
 Label-EditedAt: עָרוּך
+Label-EditedAt.@meta.@description: התווית של חותמת הזמן של העריכה בויקיפדיה כשנוצרת העריכה.
 Label-Feed: הזנה
+Label-Feed.@meta.@description: >-
+  התווית המציגה עדכון, זרימה או זרם של עריכות חדשות בוויקיפדיה נכנסות, על שם השם
+  של אותה עדכון ספציפי. לדוגמא, יש לנו עדכונים שונים מסוגים שונים של עריכות
+  בוויקיפדיה, כמו עדכון נושא המאמר, עדכון עריכות שאותרו על ידי מערכות ניקוד
+  וונדליזם וכו '.
 Label-History: הִיסטוֹרִיָה
+Label-History.@meta.@description: >-
+  תווית לרשימת פעילויות העבר, פסקי דין שתרמו וכו ', של כל המשתמשים או משתמש
+  נתון.
 Label-HumanEditors: עורכים אנושיים
+Label-HumanEditors.@meta.@description: התווית לפסקי הדין שניתנו על ידי עורכי אנוש.
 Label-Judgement: פְּסַק דִין
+Label-Judgement.@meta.@description: >-
+  התווית לשיפוט שניתנה לעריכות ויקיפדיה על ידי המשתמשים שלנו הסוקרים עריכות
+  נכנסות בוויקיפדיה.
 Label-LastActiveTime: פעיל אחרון
+Label-LastActiveTime.@meta.@description: התווית שתראה בפעם האחרונה שמשתמש פעיל בתוכנה שלנו.
 Label-Loading: טעינה
+Label-Loading.@meta.@description: >-
+  נטען התווית המציגה חלקים או נתונים בדף אינטרנט. בדרך כלל תווית זו מוצגת כגיבוי
+  עבור אינדיקטור טעינה.
 Label-Login: התחברות
+Label-Login.@meta.@description: >-
+  התווית של כפתור כניסה כדי לאפשר למשתמש להתחבר. לחלופין, ישמש גם בהודעות או
+  בבקשה להזמין משתמש להתחברות.
 Label-Logout: להתנתק
+Label-Logout.@meta.@description: >-
+  התווית של כפתור כניסה כדי לאפשר למשתמש להתנתק. לחלופין, ישמש גם בהודעות או
+  בבקשה להזמין משתמש להתנתק.
 Label-LooksGood: נראה טוב
+Label-LooksGood.@meta.@description: >-
+  התווית של אחד משלושת הסוגים העיקריים של פסקי דין שאומרת כי עריכת ויקיפדיה
+  הנסקרת טובה ובונה עבור ויקיפדיה, בניגוד לפגיעה.
 Label-Me: לִי
+Label-Me.@meta.@description: התווית לזיהוי המשתמש בעצמם. אנא וודא שהתווית המתורגמת כאן היא ניטרלית מגדרית.
 Label-Month: חוֹדֶשׁ
-Label-My-History: ההיסטוריה שלי
+Label-Month.@meta.@description: תווית לפרוטוקול זמן ההתפלגות של נתונים סטטיסטיים המחולקת לפי חודש.
+Label-MyHistory: ההיסטוריה שלי
+Label-MyHistory.@meta.@description: >-
+  תווית לרשימת פעילויות העבר, פסקי דין שתרמו וכו 'של המשתמש הנוכחי המשתמש בתוכנה
+  שלנו.
+Label-MyHistory.@meta.@isMachineTranslated: true
+Label-MyHistory.@meta.@translatedAt: '2020-07-07T19:26:51.442Z'
+Label-MyHistory.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-NewJudgement: פסק דין חדש
+Label-NewJudgement.@meta.@description: תווית לפסק דין חדש שניתן לעריכת ויקיפדיה על ידי המשתמש שלנו.
 Label-None: אף אחד
+Label-None.@meta.@description: >-
+  התווית לטבלת שורות ריקה ותאים של תוכן או רשימות ריקות. בדרך כלל משתמשים בזה
+  בממשק המשתמש כאשר אין תוכן להצגה.
 Label-NotSure: לא בטוח
+Label-NotSure.@meta.@description: >-
+  התווית של אחד משלושת הסוגים העיקריים של פסקי דין שאומרת כי עריכת ויקיפדיה
+  הנבדקת אינה בטוחה ויכולה להיות טובה ובונה או מזיקה לוויקיפדיה.
 Label-OresBadfaith: אורס תום לב
+Label-OresBadfaith.@meta.@description: >-
+  התווית המזהה את הניקוד והשיפוט שניתנו על ידי מערכת הניקוד הבינה המלאכותית WMF
+  ORES. תווית ספציפית זו מתייחסת להיפך ממודל טוב-אמית של ORES. ראה
+  https://www.mediawiki.org/wiki/ORES#Advanced_support
 Label-OresBadfaith.@meta.@isMachineTranslated: true
 Label-OresBadfaith.@meta.@translatedAt: '2020-07-07T01:09:19.143Z'
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: אורס פוגע
-Label-Overriden: עקף
-Label-Prompt-Login: התחברות
+Label-OresDamaging.@meta.@description: >-
+  התווית המזהה את הניקוד והשיפוט שניתנו על ידי מערכת הניקוד הבינה המלאכותית WMF
+  ORES. תווית ספציפית זו מתייחסת למודל המזיק של ORES. ראה
+  https://www.mediawiki.org/wiki/ORES#Advanced_support
+Label-Overridden: עקף
+Label-Overridden.@meta.@description: >-
+  התווית לומר כי עריכה נתונה במאמר בוויקיפדיה עוברת על ידי עריכה חדשה יותר באותו
+  מאמר בוויקיפדיה. תווית זו מרמזת על עריכה כזו או אחרת כבר הופעלה על ידי המשתמש
+  הנוכחי שלנו, או שהיא חוזרת או מעודכנת על ידי עורך אחר בוויקיפדיה בוויקיפדיה.
+Label-Overridden.@meta.@isMachineTranslated: true
+Label-Overridden.@meta.@translatedAt: '2020-07-07T19:26:51.442Z'
+Label-Overridden.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-PromptLogin: התחברות
+Label-PromptLogin.@meta.@description: >-
+  התווית שתבקש ממשתמש להתחבר בתוכנה שלנו. זה יותר כמו נימה "בבקשה להתחבר" בשפות
+  שהרשמיות והדיבור המכובד האלה קיימים.
+Label-PromptLogin.@meta.@isMachineTranslated: true
+Label-PromptLogin.@meta.@translatedAt: '2020-07-07T19:26:51.442Z'
+Label-PromptLogin.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-Rank: דַרגָה
+Label-Rank.@meta.@description: >-
+  התווית לדירוג של נתונים סטטיסטיים לפי מספר מיון נתון, לדוגמה, משתמשים הממוינים
+  לפי מספר התרומות שלהם
 Label-Reason: סיבה
+Label-Reason.@meta.@description: 'התווית מסיבת תוצאת פעולה שבוצעה, למשל כאשר משתמש מחזיר עריכה בוויקיפדיה.'
 Label-Result: תוֹצָאָה
+Label-Result.@meta.@description: 'התווית עבור תוצאת פעולה שבוצעה, למשל כאשר משתמש החזיר עריכה בוויקיפדיה.'
 Label-RevertSucceeded: Revert הצליח!
+Label-RevertSucceeded.@meta.@description: >-
+  התווית לתוצאה של פעולה שבוצעה כאשר משתמש החזיר את עריכת ויקיפדיה, הפעולה
+  מוצלחת.
 Label-ReviewFeed: סקור עדכון
+Label-ReviewFeed.@meta.@description: 'התווית עבור העדכון, הזרימה או הזרם של עריכות ויקיפדיה נכנסות שייבדקו.'
 Label-ReviewedAndSays: 'בדק את {0} ואומר'
+Label-ReviewedAndSays.@meta.@description: התווית שתתחיל את משפט פסק הדין והנימוקים שניתנו לתיקון.
 Label-ShouldRevert: צריך לחזור
+Label-ShouldRevert.@meta.@description: >-
+  התווית של אחד משלושת הסוגים העיקריים של פסקי דין שאומרת כי עריכת ויקיפדיה
+  הנבדקת פוגעת בוויקיפדיה, בניגוד להיות טובה ובונה.
 Label-Snooze: נִמנוּם
+Label-Snooze.@meta.@description: >-
+  תווית של כפתור כדי להשהות תזכורת או הודעה, או במילים אחרות, זה אומר "להזכיר לי
+  אחר כך". במציאות כפתור ההמתנה ישמש כאשר התזכורת או הודעת ההודעות יופיעו שוב.
+  פירוש הדבר גם "לא פוטר לצמיתות אלא פשוט פוטר באופן זמני".
 Label-Someone: מִישֶׁהוּ
+Label-Someone.@meta.@description: התווית לזיהוי משתמש שאינו המשתמש הנוכחי.
 Label-Time: זְמַן
+Label-Time.@meta.@description: התווית של חותמת הזמן של פסק דין נתון או פעולה שניתנים על ידי משתמש.
 Label-TopNumberAnonymousUsers: '{0} משתמשים אנונימיים מובילים'
+Label-TopNumberAnonymousUsers.@meta.@description: >-
+  התווית עבור החלק של 20 המשתמשים האלמוניים המובילים וכו ', ואילו ניתן להחליף את
+  המספר "20" בפרמטר.
 Label-TopUsers: משתמשים מובילים
+Label-TopUsers.@meta.@description: 'התווית לחלק של המשתמשים המובילים (המחוברים) וכו '', ואילו המספר.'
 Label-TopWikis: ויקיסיות מובילות
+Label-TopWikis.@meta.@description: >-
+  התווית למדור של ויקיפדיות מובילות או פרויקטים של אחיות שלה (Wikidata.org וכו
+  '), לפי כמות הפסקי דין שניתנו בוויקיפדיה.
 Label-TotalNumber: סה"כ
+Label-TotalNumber.@meta.@description: התווית לטור הכולל של מספר פסקי הדין שניתנו על ידי משתמש.
 Label-User: מִשׁתַמֵשׁ
+Label-User.@meta.@description: התווית למשתמש שנותן את פסק הדין בוויקיפדיה עריכה.
 Label-Week: שָׁבוּעַ
+Label-Week.@meta.@description: תווית לפרוטוקול זמן ההתפלגות של נתונים סטטיסטיים המחולקת לפי שבוע.
 Label-YourJudgement: פסק הדין שלך
+Label-YourJudgement.@meta.@description: התווית לפסק הדין שניתן על ידי המשתמש הנוכחי.
 MenuItem-Code: קוד
+MenuItem-Code.@meta.@description: תווית פריט התפריט להפניית משתמש לבסיס הקוד של תוכנה זו.
 MenuItem-Contributions: התרומות שלי
+MenuItem-Contributions.@meta.@description: >-
+  תווית פריט התפריט המפנה את המשתמש לרשימת התרומות או פסקי הדין שניתנו על ידי
+  המשתמש הנוכחי.
 MenuItem-ContributionsBeforeLogin: התרומות שלי לפני הכניסה
+MenuItem-ContributionsBeforeLogin.@meta.@description: 'כדי למחוק, אל תשנה או תעבור.'
 MenuItem-Issues: נושאים
+MenuItem-Issues.@meta.@description: תווית פריט התפריט המפנה את המשתמש לנושאי Github של התוכנה שלנו.
 MenuItem-Stats: נתונים סטטיסטיים
+MenuItem-Stats.@meta.@description: תווית פריט התפריט המפנה את המשתמש לדף הסטטיסטי של התוכנה שלנו.
 Message-AJudgementLogged: 'נפסק פסק דין ל {0} לתיקון {1}.'
 Message-CongratsSuccessfullyReverted: 'מזל טוב! חזרת בהצלחה ישירות {0}.'
 Message-DiffNotAvailable: |-
@@ -97,4 +221,7 @@ Message-RevertEditSummary: |-
 Message-SorryWeFailedToRevert: 'מצטערים, לא הצלחנו להחזיר את המהדורה {0}.'
 Message-TheRevisionIsSuccessfullyRevertedAs: 'המהפכה {0} מבוטלת בהצלחה בתור {1}.'
 Message-ThereIsNoEditSummary: אין סיכום עריכה.
+Message-ThereIsNoEditSummary.@meta.@description: >-
+  ההודעה מראה שלעריכה מסוימת בוויקיפדיה אין הסבר, ראה
+  https://en.wikipedia.org/wiki/Help:Edit_summary.
 Message-YourJudgementLogged: 'פסק הדין שלך לגבי {0} לתיקון {1} נרשם.'

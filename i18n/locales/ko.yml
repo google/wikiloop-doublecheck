@@ -5,70 +5,158 @@ Button-HelpTranslate.@meta.@description: 사용자가이 소프트웨어의 국�
 Button-Next: 다음
 Button-Next.@meta.@description: 클릭시 버튼 레이블 다음 페이지로 이동하거나 다음 정보를 표시합니다.
 Button-OpenedUrlToRevert: 되돌릴 URL을 열었습니다.
+Button-OpenedUrlToRevert.@meta.@description: '"지금 되돌리기"단추 레이블은 "열기 위해 열린 URL"로 변경되어 단추를 클릭하고 조치가 수행 된 후 조치 상태를 표시합니다.'
 Button-RevertNow: 지금 되돌리기
+Button-RevertNow.@meta.@description: 위키 백과에 대해 지정된 개정을 즉시 되 돌리는 버튼의 레이블입니다.
 Button-ShowJudgements: 판단 표시
+Button-ShowJudgements.@meta.@description: Wikipedia에 제공된 판단을 표시하는 버튼의 레이블
 Button-Undo: 실행 취소
+Button-Undo.@meta.@description: 소프트웨어에서 작업을 취소하는 버튼의 레이블입니다.
 Label-1Month: 1 개월 (30 일)
+Label-1Month.@meta.@description: '표시 할 통계 시간 범위의 레이블로, 정확히 1 개월 또는 30 일입니다.'
 Label-1Quarter: 1 쿼터 (90 일)
+Label-1Quarter.@meta.@description: '표시 할 통계 시간 범위의 레이블로, 정확히 1/4 또는 90 일입니다.'
 Label-1Year: 1 년 (365d)
+Label-1Year.@meta.@description: '표시 할 통계 시간 범위의 레이블로, 정확히 1 년 또는 365 일입니다.'
 Label-1day: 1 일
+Label-1day.@meta.@description: '표시 할 통계 시간 범위의 레이블로, 정확히 1 일입니다.'
 Label-1week: 1 주일 (7 일)
+Label-1week.@meta.@description: 표시 할 통계 시간 범위의 레이블로 정확히 1 주일 또는 7 일입니다.
 Label-ActiveUsers: 활성 사용자
+Label-ActiveUsers.@meta.@description: 이 소프트웨어의 활성 사용자를 기반으로 한 통계 레이블입니다.
 Label-AllTime: 항상
+Label-AllTime.@meta.@description: '통계가 표시되는 시간 범위의 레이블로, 소프트웨어가 항상 가동됩니다.'
 Label-Anonymous: 익명
 Label-ArtificialIntelligence: 인공 지능
 Label-Author: 저자
 Label-CountOfJudgements: 카운트
+Label-CountOfJudgements.@meta.@description: 위키 백과 편집에 대한 총 판단 수 레이블입니다.
 Label-Day: 일
+Label-Day.@meta.@description: 일별로 분류되는 통계의 세분화 시간 세분성에 대한 레이블입니다.
 Label-DiffView: Diff View
+Label-DiffView.@meta.@description: 두 개의 Wikipedia 기사 스냅 샷과 같은 스냅 샷 간의 차이점을 보여주는보기의 레이블입니다.
 Label-DirectRevertFailed: 직접 되돌리기 실패
+Label-DirectRevertFailed.@meta.@description: >-
+  "지금 되돌리기"버튼의 새로운 상태를 나타내는 레이블입니다. 사용자가 수행 한 작업의 상태를 표시하는 것이 목적인데,이 경우 되돌리기 작업이
+  실패했습니다.
 Label-DirectReverted: 직접 복귀
+Label-DirectReverted.@meta.@description: >-
+  "지금 되돌리기"버튼의 새로운 상태를 나타내는 레이블입니다. 목적은 사용자가 수행 한 작업의 상태를 표시하는 것이며,이 경우 되돌리기 작업이
+  성공한 것입니다.
 Label-EditSummary: 요약 편집
+Label-EditSummary.@meta.@description: >-
+  편집 요약은 https://en.wikipedia.org/wiki/Help:Edit_summary에 표시된 Wikipedia 페이지 편집에
+  대한 간략한 설명입니다.
 Label-EditedAt: 편집
+Label-EditedAt.@meta.@description: 편집이 작성 될 때 위키 백과에 대한 편집 시간 소인 레이블.
 Label-Feed: 먹이다
+Label-Feed.@meta.@description: >-
+  특정 피드의 이름에 따라 피드, 플로우 또는 수신되는 새 Wikipedia 편집 스트림을 표시하는 레이블입니다. 예를 들어 기사 주제 피드,
+  기물 파손 감지 점수 시스템에 의해 감지 된 편집 피드 등과 같은 다양한 종류의 위키 백과 편집 피드가 있습니다.
 Label-History: 역사
+Label-History.@meta.@description: '모든 사용자 또는 지정된 사용자의 과거 활동 목록, 과거에 기여한 판단 등의 레이블입니다.'
 Label-HumanEditors: 인간 편집자
+Label-HumanEditors.@meta.@description: Human 편집자가 제공 한 판단에 대한 레이블입니다.
 Label-Judgement: 심판
+Label-Judgement.@meta.@description: 수신 위키 백과 편집을 검토하는 사용자가 위키 백과 편집에 제공 한 판단 레이블입니다.
 Label-LastActiveTime: 마지막 활성
+Label-LastActiveTime.@meta.@description: 사용자가 소프트웨어를 마지막으로 활성화 한 시간을 나타내는 레이블입니다.
 Label-Loading: 로딩
+Label-Loading.@meta.@description: 웹 페이지에 일부 부품 또는 데이터를 표시하는 레이블을로드 중입니다. 일반적으로이 레이블은로드 표시기의 대체로 표시됩니다.
 Label-Login: 로그인
+Label-Login.@meta.@description: 사용자가 로그인 할 수있는 로그인 버튼의 레이블입니다. 또는 메시지 나 프롬프트에 사용되어 사용자를 로그인하도록 초대합니다.
 Label-Logout: 로그 아웃
+Label-Logout.@meta.@description: 사용자가 로그 아웃 할 수있는 로그인 버튼의 레이블입니다. 또는 메시지 나 프롬프트에서 사용자를 로그 아웃하도록 초대하는 데에도 사용됩니다.
 Label-LooksGood: 좋아 보인다
+Label-LooksGood.@meta.@description: 위키 백과 편집이 검토되고 있다고 말하는 3 가지 주요 판단 유형 중 하나의 레이블은 손상과 반대로 위키 백과에 좋고 건설적입니다.
 Label-Me: 나를
+Label-Me.@meta.@description: 사용자 자신을 식별하기위한 레이블입니다. 여기에서 번역 된 라벨이 성별 중립인지 확인하십시오.
 Label-Month: 달
-Label-My-History: 나의 역사
+Label-Month.@meta.@description: 월별로 세분화 된 통계의 세분화 시간 세분성에 대한 레이블입니다.
+Label-MyHistory: 나의 역사
+Label-MyHistory.@meta.@description: '우리 소프트웨어를 사용하는 현재 사용자의 과거 활동, 과거의 판단 등의 목록에 대한 레이블.'
+Label-MyHistory.@meta.@isMachineTranslated: true
+Label-MyHistory.@meta.@translatedAt: '2020-07-07T19:26:51.444Z'
+Label-MyHistory.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-NewJudgement: 새로운 판단
+Label-NewJudgement.@meta.@description: 사용자가 위키 백과에 편집 한 새로운 판단에 대한 레이블입니다.
 Label-None: 없음
+Label-None.@meta.@description: 빈 행 테이블과 내용의 셀 또는 빈 목록의 레이블입니다. 표시 할 내용이없는 경우 일반적으로 사용자 인터페이스에서 사용됩니다.
 Label-NotSure: 확실하지 않다
+Label-NotSure.@meta.@description: >-
+  위키 백과 편집이 검토되고 있다고 말하는 3 가지 주요 판단 유형 중 하나의 레이블은 확실하지 않으며 위키 백과에 좋고 건설적이거나 손상을
+  줄 수 있습니다.
 Label-OresBadfaith: 오 레스 악의
+Label-OresBadfaith.@meta.@description: >-
+  WMF 인공 지능 점수 시스템 ORES에서 제공 한 점수와 판단을 식별하는 레이블. 이 레이블은 ORES의 선의의 반대 모델을 나타냅니다.
+  https://www.mediawiki.org/wiki/ORES#Advanced_support를 참조하십시오.
 Label-OresBadfaith.@meta.@isMachineTranslated: true
 Label-OresBadfaith.@meta.@translatedAt: '2020-07-07T01:09:19.144Z'
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: 광석 피해
-Label-Overriden: 재정의
-Label-Prompt-Login: 로그인
+Label-OresDamaging.@meta.@description: >-
+  WMF 인공 지능 점수 시스템 ORES에서 제공 한 점수와 판단을 식별하는 레이블. 이 레이블은 ORES의 손상 모델을 나타냅니다.
+  https://www.mediawiki.org/wiki/ORES#Advanced_support를 참조하십시오.
+Label-Overridden: 재정의
+Label-Overridden.@meta.@description: >-
+  위키피디아 기사에 대한 특정 수정 사항이 동일한 위키피디아 기사에 대한 다른 최신 편집 사항으로 대체되고 있음을 나타내는 레이블입니다. 이
+  레이블은 이러한 수정 사항이 현재 사용자가 이미 되돌 렸거나 위키 백과의 다른 위키 백과 편집기에서 되돌 리거나 업데이트했음을 나타냅니다.
+Label-Overridden.@meta.@isMachineTranslated: true
+Label-Overridden.@meta.@translatedAt: '2020-07-07T19:26:51.444Z'
+Label-Overridden.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-PromptLogin: 로그인
+Label-PromptLogin.@meta.@description: >-
+  사용자가 소프트웨어에 로그인하라는 메시지를 표시하는 레이블입니다. 형식과 명예로운 연설이 존재하는 언어에서는 "로그인하십시오"라는 말과
+  비슷합니다.
+Label-PromptLogin.@meta.@isMachineTranslated: true
+Label-PromptLogin.@meta.@translatedAt: '2020-07-07T19:26:51.444Z'
+Label-PromptLogin.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-Rank: 계급
+Label-Rank.@meta.@description: '주어진 정렬 번호를 기준으로 통계 순위 순위에 대한 레이블입니다 (예 : 사용자가 기여도를 기준으로 정렬 한 경우).'
 Label-Reason: 이유
+Label-Reason.@meta.@description: 사용자가 위키 백과 편집을 되돌릴 때와 같이 수행 된 조치의 결과에 대한 레이블입니다.
 Label-Result: 결과
+Label-Result.@meta.@description: 사용자가 위키 백과 편집을 되돌릴 때와 같이 수행 된 조치의 결과에 대한 레이블입니다.
 Label-RevertSucceeded: 복귀 성공!
+Label-RevertSucceeded.@meta.@description: 사용자가 위키 백과 편집을 되돌릴 때 수행 된 조치의 결과에 대한 레이블이며 조치가 완료되었습니다.
 Label-ReviewFeed: 피드 검토
+Label-ReviewFeed.@meta.@description: '들어오는 Wikipedia 편집의 피드, 흐름 또는 스트림 레이블을 검토합니다.'
 Label-ReviewedAndSays: '{0}을 (를) 검토하고 말합니다.'
+Label-ReviewedAndSays.@meta.@description: 판결문 및 개정 사유를 시작하기위한 레이블.
 Label-ShouldRevert: 되돌려 야한다
+Label-ShouldRevert.@meta.@description: 위키피디아 편집이 양호하고 건설적인 것이 아니라 위키피디아에 피해를 입히고 있음을 검토하는 3 가지 주요 판단 유형 중 하나의 레이블.
 Label-Snooze: 선잠
+Label-Snooze.@meta.@description: >-
+  알림 또는 알림을 일시 중지하는 버튼의 레이블, 즉 "나에게 알림"을 의미합니다. 실제로 알림 또는 알림 메시지가 다시 나타날 때 다시 알림
+  버튼이 사용됩니다. 따라서 "영구적으로 해고되지 않고 일시적으로 해고"를 의미합니다.
 Label-Someone: 어떤 사람
+Label-Someone.@meta.@description: 현재 사용자 이외의 사용자를 식별하기위한 레이블입니다.
 Label-Time: 시각
+Label-Time.@meta.@description: 사용자가 제공 한 특정 판단 또는 조치의 타임 스탬프 레이블.
 Label-TopNumberAnonymousUsers: '상위 {0} 익명 사용자'
+Label-TopNumberAnonymousUsers.@meta.@description: 상위 20 명의 익명 사용자 등의 섹션 레이블은 숫자 "20"이 매개 변수에서 대체 될 수 있습니다.
 Label-TopUsers: 최고 사용자
+Label-TopUsers.@meta.@description: 상위 (로그인 한) 사용자 등의 섹션 레이블이며 숫자는 아닙니다.
 Label-TopWikis: 톱 위키
+Label-TopWikis.@meta.@description: '위키 백과 또는 그 자매 프로젝트 (Wikidata.org 등)의 섹션에 대한 레이블로, 위키 백과에 주어진 판단의 양입니다.'
 Label-TotalNumber: 합계
+Label-TotalNumber.@meta.@description: 사용자가 제공 한 총 판단 수 열에 대한 레이블입니다.
 Label-User: 사용자
+Label-User.@meta.@description: 위키 백과의 편집을 판단하는 사용자의 레이블입니다.
 Label-Week: 주
+Label-Week.@meta.@description: 통계별로 분류 시간 세분성 레이블로 주 단위로 분류됩니다.
 Label-YourJudgement: 당신의 판단
+Label-YourJudgement.@meta.@description: 현재 사용자가 제공 한 판단에 대한 레이블입니다.
 MenuItem-Code: 암호
+MenuItem-Code.@meta.@description: 이 소프트웨어의 코드베이스로 사용자를 리디렉션하는 메뉴 항목 레이블입니다.
 MenuItem-Contributions: 내 공헌
+MenuItem-Contributions.@meta.@description: 메뉴 항목 레이블은 현재 사용자가 제공 한 기여 또는 판단 목록으로 사용자를 안내합니다.
 MenuItem-ContributionsBeforeLogin: 로그인 전 나의 기여
+MenuItem-ContributionsBeforeLogin.@meta.@description: 삭제하려면 변경하거나 번역하지 마십시오.
 MenuItem-Issues: 이슈
+MenuItem-Issues.@meta.@description: 메뉴 항목 레이블은 소프트웨어의 Github 문제로 사용자를 리디렉션합니다.
 MenuItem-Stats: 통계
+MenuItem-Stats.@meta.@description: 사용자를 당사 소프트웨어의 통계 페이지로 리디렉션하는 메뉴 항목 레이블입니다.
 Message-AJudgementLogged: '개정 {1}에 대한 {0}에 대한 판단이 기록되었습니다.'
 Message-CongratsSuccessfullyReverted: '축하합니다! {0}을 (를) 직접 되돌 렸습니다.'
 Message-DiffNotAvailable: >-
@@ -89,4 +177,7 @@ Message-RevertEditSummary: '{0} 버전 {1}을 (를) 사용하여 테스트 / 파
 Message-SorryWeFailedToRevert: '죄송합니다. 개정판 {0}을 (를) 되 돌리지 못했습니다.'
 Message-TheRevisionIsSuccessfullyRevertedAs: '개정판 {0}이 (가) {1} (으)로 되돌아갔습니다.'
 Message-ThereIsNoEditSummary: 편집 요약이 없습니다.
+Message-ThereIsNoEditSummary.@meta.@description: >-
+  이 메시지는 지정된 Wikipedia 편집에 설명이 없음을 나타냅니다
+  (https://en.wikipedia.org/wiki/Help:Edit_summary 참조).
 Message-YourJudgementLogged: '개정 {1}에 대한 {0}에 대한 판단이 기록되었습니다.'

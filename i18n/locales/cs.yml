@@ -9,70 +9,227 @@ Button-Next.@meta.@description: >-
   Označení tlačítka po kliknutí přejde na další stránku nebo zobrazí další
   informace.
 Button-OpenedUrlToRevert: Otevřená adresa URL pro vrácení
+Button-OpenedUrlToRevert.@meta.@description: >-
+  Štítek tlačítka „Vrátit nyní“ se změní na „Otevřená adresa URL pro návrat“,
+  aby se po kliknutí na tlačítko a provedení akce zobrazil stav akce.
 Button-RevertNow: Vrátit nyní
+Button-RevertNow.@meta.@description: Popisek tlačítka pro okamžité vrácení dané revize na Wikipedii.
 Button-ShowJudgements: Zobrazit soudy
+Button-ShowJudgements.@meta.@description: Popisek tlačítka pro zobrazení úsudků při úpravách Wikipedie
 Button-Undo: vrátit
+Button-Undo.@meta.@description: Popis tlačítka pro zrušení akce na našem softwaru.
 Label-1Month: 1 měsíc (30d)
+Label-1Month.@meta.@description: >-
+  Popisek pro časové rozmezí statistik, které se mají zobrazit, což je přesně 1
+  měsíc nebo 30 dní.
 Label-1Quarter: 1 čtvrtina (90 d)
+Label-1Quarter.@meta.@description: >-
+  Popisek pro časové rozmezí statistik, které se mají zobrazit, což je přesně
+  čtvrtina nebo 90 dní.
 Label-1Year: 1 rok (365 d)
+Label-1Year.@meta.@description: >-
+  Popisek pro časové rozmezí statistik, které se mají zobrazit, což je přesně 1
+  rok nebo 365 dní.
 Label-1day: 1 den
+Label-1day.@meta.@description: >-
+  Popisek pro časové rozmezí statistik, které se mají zobrazit, což je přesně 1
+  den.
 Label-1week: 1 týden (7d)
+Label-1week.@meta.@description: >-
+  Popisek pro časové rozmezí statistik, které se mají zobrazit, což je přesně 1
+  týden nebo 7 dní.
 Label-ActiveUsers: Aktivní uživatelé
+Label-ActiveUsers.@meta.@description: Štítek pro statistiky založené na aktivních uživatelích tohoto softwaru.
 Label-AllTime: Pořád
+Label-AllTime.@meta.@description: >-
+  Štítek pro časové rozmezí statistik, které se mají zobrazit, a to po celou
+  dobu, kdy je náš software aktivní.
 Label-Anonymous: Anonymní
 Label-ArtificialIntelligence: Umělá inteligence
 Label-Author: Autor
 Label-CountOfJudgements: Počet
+Label-CountOfJudgements.@meta.@description: Popisek pro součet počtu rozsudků pro úpravy Wikipedie.
 Label-Day: Den
+Label-Day.@meta.@description: 'Štítek pro podrobnost statistik členění podle času, který je členěn podle dne.'
 Label-DiffView: Diff View
+Label-DiffView.@meta.@description: >-
+  Popisek pohledu zobrazující rozdíl mezi snímky, například dva snímky článků na
+  Wikipedii.
 Label-DirectRevertFailed: Přímé vrácení selhalo
+Label-DirectRevertFailed.@meta.@description: >-
+  Štítek, který zobrazuje nový stav tlačítka Vrátit nyní. Účelem je ukázat stav
+  akce prováděné uživatelem, což je v tomto případě, že akce vrácení selhala.
 Label-DirectReverted: Přímo se vrátil
+Label-DirectReverted.@meta.@description: >-
+  Štítek, který zobrazuje nový stav tlačítka Vrátit nyní. Účelem je ukázat stav
+  akce prováděné uživatelem, což je v tomto případě, že akce vrácení byla
+  úspěšná.
 Label-EditSummary: Upravit shrnutí
+Label-EditSummary.@meta.@description: >-
+  Souhrn úprav je stručné vysvětlení úpravy stránky Wikipedie, jak je vidět na
+  https://en.wikipedia.org/wiki/Help:Edit_summary
 Label-EditedAt: upraveno
+Label-EditedAt.@meta.@description: Štítek časové značky úpravy na Wikipedii při vytvoření úpravy.
 Label-Feed: Krmit
+Label-Feed.@meta.@description: >-
+  Štítek zobrazující zdroj, tok nebo tok příchozích nových úprav Wikipedie za
+  názvem konkrétního zdroje. Máme například různé zdroje různých druhů úprav
+  Wikipedie, jako je například téma článku, zdroj úprav detekovaných systémy
+  skóre detekce vandalismu atd.
 Label-History: Dějiny
+Label-History.@meta.@description: >-
+  Štítek pro seznam minulých aktivit, minulých rozsudků atd. Všech uživatelů
+  nebo daného uživatele.
 Label-HumanEditors: Lidští editoři
+Label-HumanEditors.@meta.@description: Štítek pro rozsudky poskytnuté Lidskými editory.
 Label-Judgement: Rozsudek
+Label-Judgement.@meta.@description: >-
+  Štítek pro úsudek určený pro úpravy na Wikipedii našimi uživateli, kteří
+  kontrolují příchozí úpravy na Wikipedii.
 Label-LastActiveTime: poslední aktivní
+Label-LastActiveTime.@meta.@description: 'Štítek, který ukazuje, kdy byl uživatel v našem softwaru naposledy aktivní.'
 Label-Loading: načítání
+Label-Loading.@meta.@description: >-
+  Načítá se štítek pro zobrazení některých částí nebo dat na webové stránce.
+  Tento štítek se obvykle zobrazuje jako záložní ukazatel pro indikátor
+  zatížení.
 Label-Login: Přihlásit se
+Label-Login.@meta.@description: >-
+  Štítek pro přihlašovací tlačítko umožňující uživateli přihlášení. Nebo bude
+  také použit ve zprávách nebo výzvách k pozvání uživatele k přihlášení.
 Label-Logout: Odhlásit se
+Label-Logout.@meta.@description: >-
+  Štítek tlačítka pro přihlášení umožňující uživateli odhlásit se. Nebo se také
+  použije ve zprávách nebo výzvách k pozvání uživatele k odhlášení.
 Label-LooksGood: Vypadá dobře
+Label-LooksGood.@meta.@description: >-
+  Štítek jednoho ze 3 hlavních typů rozsudků, který říká, že editovaná editace
+  Wikipedie je na Wikipedii dobrá a konstruktivní, na rozdíl od poškození.
 Label-Me: Mě
+Label-Me.@meta.@description: >-
+  Štítek pro identifikaci samotného uživatele. Ujistěte se, že přeložený štítek
+  je genderově neutrální.
 Label-Month: Měsíc
-Label-My-History: Moje historie
+Label-Month.@meta.@description: 'Štítek pro časovou podrobnost statistik členění, který je členěn podle měsíců.'
+Label-MyHistory: Moje historie
+Label-MyHistory.@meta.@description: >-
+  Štítek pro seznam minulých činností, minulých rozsudků atd., Aktuálního
+  uživatele, který používá náš software.
+Label-MyHistory.@meta.@isMachineTranslated: true
+Label-MyHistory.@meta.@translatedAt: '2020-07-07T19:26:51.441Z'
+Label-MyHistory.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-NewJudgement: Nový soud
+Label-NewJudgement.@meta.@description: 'Štítek pro nový úsudek, který náš uživatel udělal Wikipedii.'
 Label-None: Žádný
+Label-None.@meta.@description: >-
+  Štítek pro prázdnou tabulku řádků a buněk obsahu nebo prázdné seznamy. To se
+  obvykle používá v uživatelském rozhraní, když není k dispozici žádný obsah.
 Label-NotSure: Nejsem si jistý
+Label-NotSure.@meta.@description: >-
+  Štítek jednoho ze 3 hlavních typů úsudků, který říká, že editace editace
+  Wikipedie je nejistá, by mohl být Wikipedii buď dobrý a konstruktivní nebo
+  škodlivý.
 Label-OresBadfaith: ORES Špatná víra
+Label-OresBadfaith.@meta.@description: >-
+  Štítek identifikující skóre a úsudek udělovaný bodovacím systémem ORM WMF
+  Artificial Intelligence. Tento specifický štítek odkazuje na opak dobrého
+  modelu ORES. Viz https://www.mediawiki.org/wiki/ORES#Advanced_support
 Label-OresBadfaith.@meta.@isMachineTranslated: true
 Label-OresBadfaith.@meta.@translatedAt: '2020-07-07T01:09:19.142Z'
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: Poškození ORES
-Label-Overriden: Přepsáno
-Label-Prompt-Login: Přihlásit se
+Label-OresDamaging.@meta.@description: >-
+  Štítek identifikující skóre a úsudek udělovaný bodovacím systémem ORM WMF
+  Artificial Intelligence. Tento specifický štítek se týká škodlivého modelu
+  ORES. Viz https://www.mediawiki.org/wiki/ORES#Advanced_support
+Label-Overridden: Přepsáno
+Label-Overridden.@meta.@description: >-
+  Štítek, který říká, že daná úprava v článku na Wikipedii je přepsána jinou
+  novější úpravou na stejném článku na Wikipedii. Toto označení naznačuje, že
+  takováto úprava je již vrácena naším současným uživatelem, nebo je vrácena
+  nebo aktualizována jiným editorem Wikipedia na Wikipedii.
+Label-Overridden.@meta.@isMachineTranslated: true
+Label-Overridden.@meta.@translatedAt: '2020-07-07T19:26:51.441Z'
+Label-Overridden.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-PromptLogin: Přihlásit se
+Label-PromptLogin.@meta.@description: >-
+  Štítek, který uživatele vyzve k přihlášení k našemu softwaru. Je to spíš jako
+  tón „prosím přihlaste se“ v jazycích, kde existují formality a čestná řeč.
+Label-PromptLogin.@meta.@isMachineTranslated: true
+Label-PromptLogin.@meta.@translatedAt: '2020-07-07T19:26:51.441Z'
+Label-PromptLogin.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-Rank: Hodnost
+Label-Rank.@meta.@description: >-
+  Štítek pro hodnocení statistik podle zadaného čísla řazení, například
+  uživatelé seřazení podle počtu příspěvků
 Label-Reason: Důvod
+Label-Reason.@meta.@description: >-
+  Štítek z důvodu výsledku provedené akce, například když uživatel vrací úpravu
+  na Wikipedii.
 Label-Result: Výsledek
+Label-Result.@meta.@description: >-
+  Štítek pro výsledek provedené akce, například když uživatel vrátil úpravu
+  Wikipedie.
 Label-RevertSucceeded: Vrácení bylo úspěšné!
+Label-RevertSucceeded.@meta.@description: >-
+  Štítek pro výsledek provedené akce, když uživatel vrátil editaci Wikipedie, je
+  akce úspěšná.
 Label-ReviewFeed: Zkontrolujte zdroj
+Label-ReviewFeed.@meta.@description: >-
+  Štítek zdroje, toku nebo proudu příchozích úprav Wikipedie, které mají být
+  zkontrolovány.
 Label-ReviewedAndSays: 'zkontrolováno {0} a říká'
+Label-ReviewedAndSays.@meta.@description: Štítek pro zahájení rozsudku a důvody revize.
 Label-ShouldRevert: Měl by se vrátit
+Label-ShouldRevert.@meta.@description: >-
+  Štítek jednoho ze 3 hlavních typů rozsudků, který říká, že revidovaná editace
+  Wikipedie poškozuje Wikipedii, je na rozdíl od dobrého a konstruktivního.
 Label-Snooze: Podřimovat
+Label-Snooze.@meta.@description: >-
+  Štítek tlačítka odloží připomenutí nebo oznámení, jinými slovy to znamená
+  „připomenout mi později“. Ve skutečnosti bude tlačítko odloženo použito, když
+  se znovu objeví upozornění nebo upozornění. Znamená to také „nepřetržitě
+  propuštěno, ale dočasně propuštěno“.
 Label-Someone: Někdo
+Label-Someone.@meta.@description: Štítek pro identifikaci jiného uživatele než současného uživatele.
 Label-Time: Čas
+Label-Time.@meta.@description: Štítek časové značky daného úsudku nebo jednání uživatele.
 Label-TopNumberAnonymousUsers: 'Top {0} anonymních uživatelů'
+Label-TopNumberAnonymousUsers.@meta.@description: >-
+  Štítek pro sekci 20 nejlepších anonymních uživatelů atd., V parametru lze
+  nahradit číslo „20“.
 Label-TopUsers: Hlavní uživatelé
+Label-TopUsers.@meta.@description: 'Štítek pro sekci top (přihlášených) uživatelů atd., Zatímco číslo.'
 Label-TopWikis: Nejlepší Wikis
+Label-TopWikis.@meta.@description: >-
+  Štítek pro sekci nejlepších Wikipedií nebo sesterských projektů (Wikidata.org
+  atd.) Podle množství rozsudků vydaných na Wikipedii.
 Label-TotalNumber: Celkový
+Label-TotalNumber.@meta.@description: Štítek pro sloupec celkového počtu úsudků vydaných uživatelem.
 Label-User: Uživatel
+Label-User.@meta.@description: 'Štítek pro uživatele, který rozhoduje o úpravách Wikipedie.'
 Label-Week: Týden
+Label-Week.@meta.@description: 'Štítek pro časovou podrobnost statistik členění, který je členěn podle týdnů.'
 Label-YourJudgement: Váš soud
+Label-YourJudgement.@meta.@description: Štítek pro úsudek vydaný současným uživatelem.
 MenuItem-Code: Kód
+MenuItem-Code.@meta.@description: >-
+  Štítek položky nabídky pro přesměrování uživatele do kódové základny tohoto
+  softwaru.
 MenuItem-Contributions: Moje příspěvky
+MenuItem-Contributions.@meta.@description: >-
+  Štítek položky nabídky, který uživatele nasměruje na seznam příspěvků nebo
+  úsudků aktuálního uživatele.
 MenuItem-ContributionsBeforeLogin: Moje příspěvky před přihlášením
+MenuItem-ContributionsBeforeLogin.@meta.@description: K ODSTRANĚNÍ NEZMĚNĚTE NEBO PŘEHRÁVEJTE.
 MenuItem-Issues: Problémy
+MenuItem-Issues.@meta.@description: >-
+  Štítek položky nabídky přesměrovává uživatele na problémy Githubu našeho
+  softwaru.
 MenuItem-Stats: Statistiky
+MenuItem-Stats.@meta.@description: >-
+  Štítek položky nabídky přesměruje uživatele na statistickou stránku našeho
+  softwaru.
 Message-AJudgementLogged: 'Byl zaznamenán rozsudek pro {0} pro revizi {1}.'
 Message-CongratsSuccessfullyReverted: 'Gratuluji! úspěšně jste se vrátili přímo {0}.'
 Message-DiffNotAvailable: >-
@@ -98,4 +255,7 @@ Message-RevertEditSummary: >-
 Message-SorryWeFailedToRevert: 'Litujeme, nepodařilo se nám vrátit revizi {0}.'
 Message-TheRevisionIsSuccessfullyRevertedAs: 'Revize {0} je úspěšně vrácena jako {1}.'
 Message-ThereIsNoEditSummary: Neexistuje žádné shrnutí úprav.
+Message-ThereIsNoEditSummary.@meta.@description: >-
+  Zpráva ukazuje, že daná úprava Wikipedie nemá vysvětlení, viz
+  https://en.wikipedia.org/wiki/Help:Edit_summary.
 Message-YourJudgementLogged: 'Váš úsudek o {0} revizi {1} byl zaznamenán.'

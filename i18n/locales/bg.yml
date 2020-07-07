@@ -11,70 +11,250 @@ Button-Next.@meta.@description: >-
   Етикет за бутон при щракване отидете на следващата страница или покажете
   следваща информация.
 Button-OpenedUrlToRevert: Отворен URL адрес за възстановяване
+Button-OpenedUrlToRevert.@meta.@description: >-
+  Етикетът на бутона „Върни се сега“ ще се промени на „Отварян URL адрес за
+  връщане“, за да се покаже състоянието на действието след натискане на бутона и
+  извършване на действие.
 Button-RevertNow: Върнете се сега
+Button-RevertNow.@meta.@description: Етикетът за бутона за незабавно възстановяване на дадена редакция в Wikipedia.
 Button-ShowJudgements: Показвайте преценки
+Button-ShowJudgements.@meta.@description: 'Етикетът за бутона за показване на решения, дадени в редакция на Wikipedia'
 Button-Undo: Undo
+Button-Undo.@meta.@description: Етикет за бутона за отмяна на действие на нашия софтуер.
 Label-1Month: 1 месец (30г)
+Label-1Month.@meta.@description: >-
+  Етикет за статистическия период, който трябва да се покаже, който е точно 1
+  месец или 30 дни.
 Label-1Quarter: 1 четвърт (90г)
+Label-1Quarter.@meta.@description: >-
+  Етикет за времевия диапазон на статистиката, който трябва да се покаже, който
+  е точно 1 четвърт или 90 дни.
 Label-1Year: 1 година (365г)
+Label-1Year.@meta.@description: >-
+  Етикет за времевия диапазон на статистиката, който трябва да се покаже, който
+  е точно 1 година или 365 дни.
 Label-1day: 1 ден
+Label-1day.@meta.@description: >-
+  Етикет за времевия диапазон на статистиката, който трябва да се покаже, който
+  е точно 1 ден.
 Label-1week: 1 седмица (7г)
+Label-1week.@meta.@description: >-
+  Етикет за времевия диапазон на статистиката, който трябва да се покаже, който
+  е точно 1 седмица или 7 дни.
 Label-ActiveUsers: Активни потребители
+Label-ActiveUsers.@meta.@description: >-
+  Етикет за статистическите данни въз основа на активните потребители на този
+  софтуер.
 Label-AllTime: През цялото време
+Label-AllTime.@meta.@description: >-
+  Етикет за времевия диапазон за показване на статистически данни, който е през
+  цялото време, че нашият софтуер е на живо.
 Label-Anonymous: анонимен
 Label-ArtificialIntelligence: Изкуствен интелект
 Label-Author: автор
 Label-CountOfJudgements: Броя
+Label-CountOfJudgements.@meta.@description: Етикет за сборния брой решения за редакциите на Wikipedia.
 Label-Day: ден
+Label-Day.@meta.@description: >-
+  Етикет за подробността на статистическите данни за времето на разбивката,
+  която се разгражда по дни.
 Label-DiffView: Различен изглед
+Label-DiffView.@meta.@description: >-
+  Етикет за изглед, показващ разликата между моментни снимки, като две снимки на
+  статията в Wikipedia.
 Label-DirectRevertFailed: Директното възстановяване не бе успешно
+Label-DirectRevertFailed.@meta.@description: >-
+  Етикет, който показва ново състояние на бутона „Върни се сега“. Целта е да се
+  покаже състоянието на действието, извършено от потребителя, което в този
+  случай е, че възвръщащото действие се е провалило.
 Label-DirectReverted: Директно върнат
+Label-DirectReverted.@meta.@description: >-
+  Етикет, който показва ново състояние на бутона „Върни се сега“. Целта е да се
+  покаже състоянието на действието, извършено от потребителя, което в този
+  случай е, че действието, което се връща, е успяло.
 Label-EditSummary: Редактиране на обобщение
+Label-EditSummary.@meta.@description: >-
+  Резюмето за редактиране е кратко обяснение на редакция на страница в
+  Уикипедия, както е показано на https://bg.wikipedia.org/wiki/Help:Edit_summary
 Label-EditedAt: редактирана
+Label-EditedAt.@meta.@description: >-
+  Етикетът на времевата маркировка за редактиране в Wikipedia, когато редакцията
+  е създадена.
 Label-Feed: фураж
+Label-Feed.@meta.@description: >-
+  Етикетът, показващ емисия, поток или поток от нови редакции в Уикипедия,
+  следвайки името на тази конкретна емисия. Например, имаме различни емисии от
+  различни видове редакции в Wikipedia, като емисия на тема статия, емисия на
+  редакции, открити от системи за оценка на вандализъм и др.
 Label-History: история
+Label-History.@meta.@description: >-
+  Етикет за списъка на минали дейности, досегашни преценки и т.н. на всички
+  потребители или даден потребител.
 Label-HumanEditors: Човешки редактори
+Label-HumanEditors.@meta.@description: 'Етикетът за решения, предоставени от редакторите на Human.'
 Label-Judgement: преценка
+Label-Judgement.@meta.@description: >-
+  Етикетът за преценка, даден на редакциите на Wikipedia от нашите потребители,
+  които преглеждат входящите редакции на Wikipedia.
 Label-LastActiveTime: Последно активно
+Label-LastActiveTime.@meta.@description: >-
+  Етикетът да показва последния път, когато даден потребител е бил активен на
+  нашия софтуер.
 Label-Loading: Зареждане
+Label-Loading.@meta.@description: >-
+  Зарежда се етикетът за показване на някои части или данни на уеб страница.
+  Обикновено този етикет се показва като резервен за индикатор за зареждане.
 Label-Login: Влизам
+Label-Login.@meta.@description: >-
+  Етикетът за бутон за вход, за да позволи на потребителя да влезе. Или ще бъде
+  използван и в съобщения или подкана да покани потребителя да влезе.
 Label-Logout: Излез от профила си
+Label-Logout.@meta.@description: >-
+  Етикетът за бутон за вход, за да позволи на потребителя да излезе. Или ще бъде
+  използван и в съобщения или подкана да покани потребителя да излезе.
 Label-LooksGood: Изглежда добре
+Label-LooksGood.@meta.@description: >-
+  Етикетът на един от 3-те основни вида решения, който казва, че редакцията на
+  Wikipedia се преразглежда, е добра и конструктивна за Wikipedia, за разлика от
+  вредата.
 Label-Me: мен
+Label-Me.@meta.@description: >-
+  Етикетът за идентифициране на самия потребител. Моля, уверете се, че
+  преведеният етикет тук е неутрален по пол.
 Label-Month: месец
-Label-My-History: Моята история
+Label-Month.@meta.@description: >-
+  Етикет за подробност на статистическите данни за времето на разбивката, който
+  е разбит по месеци.
+Label-MyHistory: Моята история
+Label-MyHistory.@meta.@description: >-
+  Етикет за списъка на минали дейности, досегашни преценки и т.н. на текущия
+  потребител, който използва нашия софтуер.
+Label-MyHistory.@meta.@isMachineTranslated: true
+Label-MyHistory.@meta.@translatedAt: '2020-07-07T19:26:51.440Z'
+Label-MyHistory.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-NewJudgement: Ново решение
+Label-NewJudgement.@meta.@description: 'Етикет за ново решение, дадено на редакцията на Wikipedia от нашия потребител.'
 Label-None: Нито един
+Label-None.@meta.@description: >-
+  Етикетът за празна таблица от редове и клетки със съдържание или празни
+  списъци. Това обикновено се използва в потребителския интерфейс, когато няма
+  съдържание за показване.
 Label-NotSure: Не съм сигурен
+Label-NotSure.@meta.@description: >-
+  Етикетът на едно от трите основни вида решения, според който редакцията на
+  Wikipedia се преразглежда, не е сигурен и може да бъде или добър, и
+  конструктивен или вреден за Wikipedia.
 Label-OresBadfaith: ORES Лоша вяра
+Label-OresBadfaith.@meta.@description: >-
+  Етикетът, идентифициращ резултата и преценката, даден от системата за оценка
+  на изкуствен интелект WMF ORES. Този специфичен етикет се отнася до обратното
+  на добрия модел на ORES. Вижте
+  https://www.mediawiki.org/wiki/ORES#Advanced_support
 Label-OresBadfaith.@meta.@isMachineTranslated: true
 Label-OresBadfaith.@meta.@translatedAt: '2020-07-07T01:09:19.141Z'
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: ORES Увреждане
-Label-Overriden: Заменена
-Label-Prompt-Login: Влизам
+Label-OresDamaging.@meta.@description: >-
+  Етикетът, идентифициращ резултата и преценката, даден от системата за оценка
+  на изкуствен интелект WMF ORES. Този специфичен етикет се отнася до вредния
+  модел на ORES. Вижте https://www.mediawiki.org/wiki/ORES#Advanced_support
+Label-Overridden: Заменена
+Label-Overridden.@meta.@description: >-
+  Етикетът, в който се казва, че дадена редакция в статията на Wikipedia се
+  отменя от друга по-нова редакция в същата статия в Wikipedia. Този етикет
+  предполага, че такава редакция е вече възстановена от настоящия ни потребител,
+  или е възстановена или актуализирана от друг редактор на Wikipedia в
+  Wikipedia.
+Label-Overridden.@meta.@isMachineTranslated: true
+Label-Overridden.@meta.@translatedAt: '2020-07-07T19:26:51.440Z'
+Label-Overridden.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-PromptLogin: Влизам
+Label-PromptLogin.@meta.@description: >-
+  Етикетът да подкани потребителя да влезе в нашия софтуер. Това е по-скоро като
+  "моля влезте" тон на езици, когато съществува формалност и почетна реч.
+Label-PromptLogin.@meta.@isMachineTranslated: true
+Label-PromptLogin.@meta.@translatedAt: '2020-07-07T19:26:51.440Z'
+Label-PromptLogin.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-Rank: ранг
+Label-Rank.@meta.@description: >-
+  Етикетът за класиране на статистически данни по даден сортиращ номер, например
+  потребители, сортирани по броя на техните вноски
 Label-Reason: причина
+Label-Reason.@meta.@description: >-
+  Етикетът поради причината за резултата от извършено действие, например когато
+  потребител възстановява редакция на Wikipedia.
 Label-Result: резултат
+Label-Result.@meta.@description: >-
+  Етикетът за резултата от извършено действие, например когато потребител отмени
+  редакция на Wikipedia.
 Label-RevertSucceeded: Възвръщането успя!
+Label-RevertSucceeded.@meta.@description: >-
+  Етикетът за резултата от извършено действие, когато потребителят отмени
+  редакция на Wikipedia, действието е успешно.
 Label-ReviewFeed: Преглед на емисията
+Label-ReviewFeed.@meta.@description: >-
+  Етикетът за емисията, потока или потока на входящите редакции в Уикипедия,
+  които ще бъдат прегледани.
 Label-ReviewedAndSays: 'прегледа {0} и казва'
+Label-ReviewedAndSays.@meta.@description: Етикетът за започване на присъдата и мотивите за ревизия.
 Label-ShouldRevert: Трябва да се върне
+Label-ShouldRevert.@meta.@description: >-
+  Етикетът на един от 3-те основни вида решения, който казва, че редакцията на
+  Wikipedia се преразглежда, е вредна за Wikipedia, за разлика от това, че е
+  добра и конструктивна.
 Label-Snooze: дрямка
+Label-Snooze.@meta.@description: >-
+  Етикетът на бутон за отлагане на напомняне или известие, или с други думи,
+  означава „напомнете ми по-късно“. В действителност бутонът за отлагане ще се
+  използва, когато напомнянето или съобщението за известие ще се появи отново.
+  Така че това също означава "не е уволнен за постоянно, а просто е уволнен
+  временно".
 Label-Someone: Някой
+Label-Someone.@meta.@description: 'Етикетът за идентифициране на потребител, различен от настоящия потребител.'
 Label-Time: път
+Label-Time.@meta.@description: >-
+  Етикетът на времевата марка на дадено решение или действие, дадено от
+  потребител.
 Label-TopNumberAnonymousUsers: 'Най-{0} анонимни потребители'
+Label-TopNumberAnonymousUsers.@meta.@description: >-
+  Етикетът за секцията от топ 20 анонимни потребители и т.н., докато числото
+  "20" може да бъде заменено в параметъра.
 Label-TopUsers: Топ потребители
+Label-TopUsers.@meta.@description: >-
+  Етикетът за секцията на най-добрите (влезли) потребители и т.н., докато
+  номерът.
 Label-TopWikis: Топ Уикис
+Label-TopWikis.@meta.@description: >-
+  Етикетът за секцията на най-добрите Wikipedias или нейните сестрински проекти
+  (Wikidata.org и т.н.) според размера на съдебните решения, дадени в Wikipedia.
 Label-TotalNumber: Обща сума
+Label-TotalNumber.@meta.@description: 'Етикетът за колоната с общ брой решения, дадени от потребител.'
 Label-User: потребител
+Label-User.@meta.@description: 'Етикетът за потребител, който преценява редакцията на Wikipedia.'
 Label-Week: седмица
+Label-Week.@meta.@description: >-
+  Етикет за подробност на статистическите данни за времето на разбивката, който
+  е разбит по седмици.
 Label-YourJudgement: Вашето решение
+Label-YourJudgement.@meta.@description: 'Етикетът за преценката, даден от текущия потребител.'
 MenuItem-Code: код
+MenuItem-Code.@meta.@description: >-
+  Етикетът на елемента от менюто за пренасочване на потребителя към кодовата
+  база на този софтуер.
 MenuItem-Contributions: Моите приноси
+MenuItem-Contributions.@meta.@description: >-
+  Етикетът на елемента от менюто насочва потребителя към списъка с вноски или
+  преценки, даден от текущия потребител.
 MenuItem-ContributionsBeforeLogin: Моите вноски преди влизане
+MenuItem-ContributionsBeforeLogin.@meta.@description: 'ЗА ДА СЕ ИЗПЪЛНИТЕ, НЕ ПРОМЯНЕТЕ ИЛИ НЕ ПРЕВЪРШЕТЕ.'
 MenuItem-Issues: въпроси
+MenuItem-Issues.@meta.@description: >-
+  Етикетът на елемента от менюто пренасочва потребителя към проблемите на Github
+  на нашия софтуер.
 MenuItem-Stats: Статистика
+MenuItem-Stats.@meta.@description: >-
+  Етикетът на елемента от менюто пренасочва потребителя към страницата със
+  статистически данни на нашия софтуер.
 Message-AJudgementLogged: 'Регистрирано е решение за {0} за преразглеждане {1}.'
 Message-CongratsSuccessfullyReverted: 'Поздравления! успешно завърнахте директно {0}.'
 Message-DiffNotAvailable: >-
@@ -100,4 +280,7 @@ Message-RevertEditSummary: >-
 Message-SorryWeFailedToRevert: 'За съжаление не успяхме да върнем версията {0}.'
 Message-TheRevisionIsSuccessfullyRevertedAs: 'Ревизията {0} се възстановява успешно като {1}.'
 Message-ThereIsNoEditSummary: Няма резюме за редактиране.
+Message-ThereIsNoEditSummary.@meta.@description: >-
+  Съобщението показва, че дадена редакция на Wikipedia няма обяснение, вижте
+  https://en.wikipedia.org/wiki/Help:Edit_summary.
 Message-YourJudgementLogged: 'Вашето решение за {0} за преразглеждане {1} е записано.'

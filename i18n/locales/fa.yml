@@ -9,70 +9,212 @@ Button-Next.@meta.@description: >-
   هنگام کلیک بر روی دکمه ، برچسب بزنید به صفحه بعدی بروید یا اطلاعات بعدی را
   نمایش دهید.
 Button-OpenedUrlToRevert: URL را بازگردانید
+Button-OpenedUrlToRevert.@meta.@description: >-
+  برچسب دکمه "اکنون دوباره برگردید" به "باز کردن URL برای بازگشت" تغییر می کند
+  تا وضعیت عملکرد پس از کلیک بر روی دکمه و عملکرد انجام شود.
 Button-RevertNow: اکنون برگردانید
+Button-RevertNow.@meta.@description: برچسب دکمه برای بازگشت سریع به نسخه خاص در ویکی پدیا.
 Button-ShowJudgements: نمایش قضاوت
+Button-ShowJudgements.@meta.@description: برچسب دکمه برای نمایش قضاوت های داده شده در ویرایش ویکی پدیا
 Button-Undo: واگرد
+Button-Undo.@meta.@description: برچسب دکمه برای خنثی کردن عملی روی نرم افزار ما.
 Label-1Month: 1 ماه (30d)
+Label-1Month.@meta.@description: یک برچسب برای محدوده زمانی آمار برای نشان دادن ، که دقیقا 1 ماه یا 30 روز است.
 Label-1Quarter: 1 چهارم (90d)
+Label-1Quarter.@meta.@description: >-
+  یک برچسب برای محدوده زمانی آمار برای نشان دادن ، که دقیقا 1 چهارم یا 90 روز
+  است.
 Label-1Year: 1 سال (365d)
+Label-1Year.@meta.@description: >-
+  یک برچسب برای محدوده زمانی آمار برای نشان دادن ، که دقیقا 1 سال یا 365 روز
+  است.
 Label-1day: 1 روز
+Label-1day.@meta.@description: یک برچسب برای محدوده زمانی آمار برای نشان دادن ، که دقیقا 1 روز است.
 Label-1week: 1 هفته (7d)
+Label-1week.@meta.@description: >-
+  یک برچسب برای محدوده زمانی آمار برای نشان دادن ، که دقیقاً 1 هفته یا 7 روز
+  است.
 Label-ActiveUsers: کاربران فعال
+Label-ActiveUsers.@meta.@description: برچسب آمار مبتنی بر کاربران فعال این نرم افزار.
 Label-AllTime: همیشه
+Label-AllTime.@meta.@description: برچسب محدوده زمانی برای نمایش آماری که تمام مدت زنده بودن نرم افزار ماست.
 Label-Anonymous: ناشناس
 Label-ArtificialIntelligence: هوش مصنوعی
 Label-Author: نویسنده
 Label-CountOfJudgements: شمردن
+Label-CountOfJudgements.@meta.@description: برچسب مبلغ داوری برای ویرایش های ویکی پدیا.
 Label-Day: روز
+Label-Day.@meta.@description: برچسب برای زمان انقباض آمار که به روز تقسیم می شود.
 Label-DiffView: نمای متفاوت
+Label-DiffView.@meta.@description: >-
+  یک برچسب برای نمایانگر تفاوت بین عکسهای فوری مانند دو عکس فوری مقاله ویکی
+  پدیا.
 Label-DirectRevertFailed: برگشت مستقیم انجام نشد
+Label-DirectRevertFailed.@meta.@description: >-
+  برچسب برای نشان دادن وضعیت جدید دکمه "بازگشت اکنون". هدف این است که وضعیت
+  عملکردی را که توسط کاربر انجام شده است نشان دهیم که در این حالت عمل برگشتی
+  انجام نشد.
 Label-DirectReverted: بازگردانی مستقیم
+Label-DirectReverted.@meta.@description: >-
+  برچسب برای نشان دادن وضعیت جدید دکمه "بازگشت اکنون". هدف این است که وضعیت
+  عملکردی را که توسط کاربر انجام شده است نشان دهیم که در این حالت عمل بازگرداندن
+  موفق شد.
 Label-EditSummary: خلاصه ویرایش کنید
+Label-EditSummary.@meta.@description: >-
+  خلاصه ویرایش توضیحی مختصر درباره ویرایش یک صفحه ویکی پدیا است ، همانطور که در
+  https://en.wikipedia.org/wiki/Help:Edit_summary نشان داده شده است
 Label-EditedAt: ویرایش شده
+Label-EditedAt.@meta.@description: هنگامی که ویرایش ایجاد شد ، برچسب گاهشمار ویرایش در ویکی پدیا است.
 Label-Feed: خوراک
+Label-Feed.@meta.@description: >-
+  برچسب نشان دهنده فید ، جریان یا جریان ویرایش های جدید ویکی پدیا ، به دنبال نام
+  آن خوراک خاص. به عنوان مثال ، ما انواع مختلفی از ویرایش های ویکی پدیا ، انواع
+  مختلفی از قبیل فید موضوع مقاله ، خوراک ویرایش های شناسایی شده توسط سیستم های
+  شناسایی نمره خرابکاری و غیره را داریم.
 Label-History: تاریخ
+Label-History.@meta.@description: >-
+  برچسب لیستی از فعالیتهای گذشته ، داوریهای گذشته و غیره ، کلیه کاربران یا یک
+  کاربر معین.
 Label-HumanEditors: ویرایشگران انسانی
+Label-HumanEditors.@meta.@description: برچسب داوری های ارائه شده توسط ویراستاران Human.
 Label-Judgement: داوری
+Label-Judgement.@meta.@description: >-
+  برچسب داوری برای ویرایشهای ویکی پدیا توسط کاربرانی که ویرایشهای ورودی ویکی
+  پدیا را بررسی می کنند.
 Label-LastActiveTime: آخرین فعالیت
+Label-LastActiveTime.@meta.@description: برچسب برای نشان دادن آخرین باری که کاربر در نرم افزار ما فعال بود.
 Label-Loading: بارگذاری
+Label-Loading.@meta.@description: >-
+  برچسب برای نشان دادن برخی از قسمت ها یا داده ها در صفحه وب بارگیری می شود.
+  معمولاً این برچسب به عنوان علامت برگشت پذیر برای نشانگر بارگذاری نشان می دهد.
 Label-Login: وارد شدن
+Label-Login.@meta.@description: >-
+  برچسب یک دکمه ورود به سیستم برای ورود کاربر امکان پذیر است. یا از آن در پیامها
+  یا فوراً دعوت کاربر برای ورود به سیستم استفاده می شود.
 Label-Logout: خروج
+Label-Logout.@meta.@description: >-
+  برچسب دکمه ورود به سیستم برای ورود کاربر امکان ورود به سیستم. یا در پیامها یا
+  فوراً دعوت کاربر برای خروج از سیستم نیز استفاده خواهد شد.
 Label-LooksGood: به نظر خوب میاد
+Label-LooksGood.@meta.@description: >-
+  برچسب یکی از 3 نوع اصلی داوری که می گوید ویرایش ویکی پدیا در حال بررسی است ،
+  برخلاف آسیب رساندن ، برای ویکی پدیا خوب و سازنده است.
 Label-Me: من
+Label-Me.@meta.@description: >-
+  برچسب برای شناسایی خود کاربر. لطفاً اطمینان حاصل کنید که برچسب ترجمه شده در
+  اینجا بی طرف جنسیت است.
 Label-Month: ماه
-Label-My-History: تاریخ من
+Label-Month.@meta.@description: برچسب مربوط به زمان انقباض آمار که ماهها تقسیم می شود.
+Label-MyHistory: تاریخ من
+Label-MyHistory.@meta.@description: >-
+  برچسب لیستی از فعالیتهای گذشته ، داوریهای گذشته و غیره کاربر فعلی که از نرم
+  افزار ما استفاده می کند
+Label-MyHistory.@meta.@isMachineTranslated: true
+Label-MyHistory.@meta.@translatedAt: '2020-07-07T19:26:51.442Z'
+Label-MyHistory.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-NewJudgement: داوری جدید
+Label-NewJudgement.@meta.@description: برچسب داوری جدیدی که توسط کاربر ما به ویکی پدیا داده شده است.
 Label-None: هیچ یک
+Label-None.@meta.@description: >-
+  برچسب جدول خالی سطرها و سلولهای محتوا یا لیستهای خالی. این معمولاً در رابط
+  کاربری مورد استفاده قرار می گیرد که هیچ محتوایی برای نمایش وجود ندارد.
 Label-NotSure: مطمئن نیستم
+Label-NotSure.@meta.@description: >-
+  برچسب یکی از 3 نوع اصلی داوری که می گوید ویرایش ویکی پدیا در حال بررسی است
+  مطمئن نیست و می تواند برای ویکی پدیا خوب یا سازنده باشد.
 Label-OresBadfaith: ایمان بد
+Label-OresBadfaith.@meta.@description: >-
+  برچسب نمره و داوری داده شده توسط سیستم امتیاز دهی هوش مصنوعی WMF ORES. این
+  برچسب خاص به خلاف مدل حسن نیت ORES اشاره دارد. به
+  https://www.mediawiki.org/wiki/ORES#Advanced_support مراجعه کنید
 Label-OresBadfaith.@meta.@isMachineTranslated: true
 Label-OresBadfaith.@meta.@translatedAt: '2020-07-07T01:09:19.142Z'
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: ORES آسیب دیده
-Label-Overriden: نادیده گرفته شده
-Label-Prompt-Login: وارد شدن
+Label-OresDamaging.@meta.@description: >-
+  برچسب نمره و داوری داده شده توسط سیستم امتیاز دهی هوش مصنوعی WMF ORES. این
+  برچسب خاص به مدل آسیب رسان ORES اشاره دارد. به
+  https://www.mediawiki.org/wiki/ORES#Advanced_support مراجعه کنید
+Label-Overridden: نادیده گرفته شده
+Label-Overridden.@meta.@description: >-
+  این برچسب که می گوید ویرایش داده شده در مقاله ویکی پدیا توسط ویرایش جدید دیگری
+  در همان مقاله ویکی پدیا رد شده است. این برچسب حاکی از این است که چنین ویرایش
+  از قبل توسط کاربر فعلی ما برگردانده شده است ، یا توسط ویرایشگر ویکی پدیا دیگر
+  در ویکی پدیا برگردانده شده است.
+Label-Overridden.@meta.@isMachineTranslated: true
+Label-Overridden.@meta.@translatedAt: '2020-07-07T19:26:51.442Z'
+Label-Overridden.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-PromptLogin: وارد شدن
+Label-PromptLogin.@meta.@description: >-
+  برچسب اعلان یک کاربر برای ورود به نرم افزار ما. این بیشتر شبیه به لحن "لطفاً
+  وارد شوید" در زبانهایی است که تشریفات و گفتار افتخاری وجود دارد.
+Label-PromptLogin.@meta.@isMachineTranslated: true
+Label-PromptLogin.@meta.@translatedAt: '2020-07-07T19:26:51.442Z'
+Label-PromptLogin.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-Rank: رتبه
+Label-Rank.@meta.@description: >-
+  برای مثال ، برچسب برای رتبه بندی آمار با شماره مرتب سازی معین ، کاربران مرتب
+  شده بر اساس تعداد مشارکت هایشان
 Label-Reason: دلیل
+Label-Reason.@meta.@description: >-
+  برچسب به دلیل نتیجه عملکرد انجام شده ، مانند زمانی که کاربر در حال برگشت به
+  ویرایش ویکی پدیا است.
 Label-Result: نتیجه
+Label-Result.@meta.@description: >-
+  برچسب نتیجه یک عملکرد انجام شده ، مانند وقتی کاربر یک ویرایش ویکی پدیا را
+  برگرداند.
 Label-RevertSucceeded: بازگشت موفق شد!
+Label-RevertSucceeded.@meta.@description: >-
+  برچسب نتیجه عملکرد انجام شده در هنگام بازگشت کاربر ، ویرایش ویکی پدیا ، این
+  عمل موفقیت آمیز است.
 Label-ReviewFeed: بررسی فید
+Label-ReviewFeed.@meta.@description: برچسب برای فید ، جریان یا جریان ویرایش های ویکی پدیا وارد شده برای بررسی.
 Label-ReviewedAndSays: '{0 ed بررسی کرده و می گوید'
+Label-ReviewedAndSays.@meta.@description: برچسب برای شروع حکم قضاوت و دلایل ارائه شده برای تجدید نظر.
 Label-ShouldRevert: باید برگردد
+Label-ShouldRevert.@meta.@description: >-
+  برچسب یکی از 3 نوع اصلی داوری که می گوید ویرایش ویکی پدیا در حال بررسی است ،
+  به دلیل مخالفت خوب و سازنده به ویکی پدیا آسیب می رساند.
 Label-Snooze: تعویق
+Label-Snooze.@meta.@description: >-
+  برچسب یک دکمه برای به تعویق انداختن یک یادآوری یا یک اعلان یا به عبارت دیگر به
+  معنای "بعداً یادآوری من" است. در واقعیت ، هنگامی که دوباره یادآوری یا پیام
+  اطلاع رسانی ظاهر می شود ، از دکمه تعویق استفاده می شود. بنابراین این همچنین به
+  معنای "عزل نشدن به طور دائم بلکه فقط موقت برکنار شده" است.
 Label-Someone: کسی
+Label-Someone.@meta.@description: برچسب برای شناسایی کاربر غیر از کاربر فعلی.
 Label-Time: زمان
+Label-Time.@meta.@description: برچسب زمان سنجی یک قضاوت یا عملکرد خاص داده شده توسط کاربر.
 Label-TopNumberAnonymousUsers: '{0 Top برتر کاربران ناشناس'
+Label-TopNumberAnonymousUsers.@meta.@description: >-
+  برچسب مربوط به 20 کاربر برتر ناشناس و غیره ، در حالی که می توانید عدد "20" را
+  در پارامتر جایگزین کنید.
 Label-TopUsers: کاربران برتر
+Label-TopUsers.@meta.@description: برچسب برای بخش کاربران برتر (ورود به سیستم) ، و غیره ، در حالی که تعداد.
 Label-TopWikis: ویکی ویزیت برتر
+Label-TopWikis.@meta.@description: >-
+  برچسب مربوط به بخش ویکی پدیای برتر یا پروژه های خواهرش (Wikidata.org و غیره) ،
+  با توجه به میزان داوری های موجود در ویکی پدیا.
 Label-TotalNumber: جمع
+Label-TotalNumber.@meta.@description: برچسب ستون تعداد کل داوری توسط کاربر.
 Label-User: کاربر
+Label-User.@meta.@description: برچسب برای کاربرانی که داوری ویکی پدیا را ویرایش می کند.
 Label-Week: هفته
+Label-Week.@meta.@description: برچسب مربوط به زمان انقباض آمار که در هفته تقسیم می شود.
 Label-YourJudgement: داوری شما
+Label-YourJudgement.@meta.@description: برچسب داوری داده شده توسط کاربر فعلی.
 MenuItem-Code: کد
+MenuItem-Code.@meta.@description: برچسب مورد منو برای هدایت کاربر به پایگاه کد این نرم افزار.
 MenuItem-Contributions: کمکهای من
+MenuItem-Contributions.@meta.@description: >-
+  برچسب مورد فهرست کاربر را به لیست مشارکت یا داوری داده شده توسط کاربر فعلی
+  هدایت می کند.
 MenuItem-ContributionsBeforeLogin: کمکهای من قبل از ورود
+MenuItem-ContributionsBeforeLogin.@meta.@description: برای پخش شدن ، تغییر یا ترجمه نکنید.
 MenuItem-Issues: مسائل
+MenuItem-Issues.@meta.@description: برچسب مورد فهرست کاربر را به سمت موارد Github از نرم افزار ما هدایت می کند.
 MenuItem-Stats: آمار
+MenuItem-Stats.@meta.@description: برچسب مورد فهرست کاربر را به صفحه آمار نرم افزار ما هدایت می کند.
 Message-AJudgementLogged: 'داوری برای {0} برای تجدید نظر در 1 {ثبت شده است.'
 Message-CongratsSuccessfullyReverted: 'تبریک می گویم! شما با موفقیت مستقیم {0 {برگشتید.'
 Message-DiffNotAvailable: >-
@@ -99,4 +241,7 @@ Message-RevertEditSummary: >-
 Message-SorryWeFailedToRevert: متأسفیم ، ما نتوانستیم نسخه 0 re را برگردانیم.
 Message-TheRevisionIsSuccessfullyRevertedAs: 'نسخه {0 successfully با موفقیت به عنوان {1 vert برگردانده شده است.'
 Message-ThereIsNoEditSummary: خلاصه ویرایش وجود ندارد
+Message-ThereIsNoEditSummary.@meta.@description: >-
+  این پیام نشان می دهد که ویرایش ویکی پدیا توضیحی ندارد ، به
+  https://en.wikipedia.org/wiki/Help:Edit_summary مراجعه کنید.
 Message-YourJudgementLogged: 'داوری شما برای {0} برای بررسی 1} ثبت شده است.'

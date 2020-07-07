@@ -11,70 +11,263 @@ Button-Next.@meta.@description: >-
   Etichetta per un pulsante quando si fa clic per andare alla pagina successiva
   o visualizzare le informazioni successive.
 Button-OpenedUrlToRevert: URL aperta da ripristinare
+Button-OpenedUrlToRevert.@meta.@description: >-
+  L'etichetta del pulsante "Ripristina ora" cambierà in "URL aperto per
+  ripristinare" per mostrare lo stato dell'azione dopo aver fatto clic sul
+  pulsante e dopo aver eseguito l'azione.
 Button-RevertNow: Ripristina ora
+Button-RevertNow.@meta.@description: >-
+  L'etichetta del pulsante per ripristinare immediatamente una determinata
+  revisione su Wikipedia.
 Button-ShowJudgements: Mostra giudizi
+Button-ShowJudgements.@meta.@description: >-
+  L'etichetta del pulsante per mostrare i giudizi dati su una modifica di
+  Wikipedia
 Button-Undo: Disfare
+Button-Undo.@meta.@description: Un'etichetta per il pulsante per annullare un'azione sul nostro software.
 Label-1Month: 1 mese (30 g)
+Label-1Month.@meta.@description: >-
+  Un'etichetta per l'intervallo di tempo delle statistiche da mostrare, che è
+  precisamente 1 mese o 30 giorni.
 Label-1Quarter: 1 trimestre (90 g)
+Label-1Quarter.@meta.@description: >-
+  Un'etichetta per l'intervallo di tempo delle statistiche da mostrare, che è
+  precisamente 1 trimestre o 90 giorni.
 Label-1Year: 1 anno (365 g)
+Label-1Year.@meta.@description: >-
+  Un'etichetta per l'intervallo di tempo delle statistiche da mostrare, che è
+  precisamente 1 anno o 365 giorni.
 Label-1day: 1 giorno
+Label-1day.@meta.@description: >-
+  Un'etichetta per l'intervallo di tempo delle statistiche da mostrare, che è
+  esattamente 1 giorno.
 Label-1week: 1 settimana (7 giorni)
+Label-1week.@meta.@description: >-
+  Un'etichetta per l'intervallo di tempo delle statistiche da mostrare, che è
+  precisamente 1 settimana o 7 giorni.
 Label-ActiveUsers: Utenti attivi
+Label-ActiveUsers.@meta.@description: Un'etichetta per le statistiche basata sugli utenti attivi di questo software.
 Label-AllTime: Sempre
+Label-AllTime.@meta.@description: >-
+  Un'etichetta per l'intervallo di tempo per la visualizzazione delle
+  statistiche che è sempre attivo dal vivo del nostro software.
 Label-Anonymous: Anonimo
 Label-ArtificialIntelligence: Intelligenza artificiale
 Label-Author: Autore
 Label-CountOfJudgements: Conteggio giudizi
+Label-CountOfJudgements.@meta.@description: Un'etichetta per la somma del numero di giudizi per le modifiche di Wikipedia.
 Label-Day: Giorno
+Label-Day.@meta.@description: >-
+  Un'etichetta per la granularità del tempo di analisi delle statistiche che
+  viene suddivisa per giorno.
 Label-DiffView: Vista differenze
+Label-DiffView.@meta.@description: >-
+  Un'etichetta per una vista che mostra la differenza tra istantanee come due
+  istantanee di articoli di Wikipedia.
 Label-DirectRevertFailed: Ripristino diretto non riuscito
+Label-DirectRevertFailed.@meta.@description: >-
+  Un'etichetta per mostrare il nuovo stato del pulsante "Ripristina ora". Lo
+  scopo è mostrare lo stato dell'azione eseguita dall'utente che in questo caso
+  è che l'azione di ripristino non è riuscita.
 Label-DirectReverted: Ripristino diretto riuscito
+Label-DirectReverted.@meta.@description: >-
+  Un'etichetta per mostrare il nuovo stato del pulsante "Ripristina ora". Lo
+  scopo è mostrare lo stato dell'azione eseguita dall'utente che in questo caso
+  è che l'azione di ripristino è riuscita.
 Label-EditSummary: Modifica riepilogo
+Label-EditSummary.@meta.@description: >-
+  Un riepilogo della modifica è una breve spiegazione di una modifica a una
+  pagina di Wikipedia, come mostrato in
+  https://en.wikipedia.org/wiki/Help:Edit_summary
 Label-EditedAt: modificato
+Label-EditedAt.@meta.@description: >-
+  L'etichetta del timestamp della modifica su Wikipedia quando viene creata la
+  modifica.
 Label-Feed: Alimentazione
+Label-Feed.@meta.@description: >-
+  L'etichetta che mostra un feed, un flusso o un flusso di nuove modifiche
+  Wikipedia in arrivo, seguendo il nome di quel feed specifico. Ad esempio,
+  abbiamo vari feed di diversi tipi di modifiche di Wikipedia, come feed
+  dell'argomento dell'articolo, feed di modifiche rilevate dai sistemi di
+  punteggio per il rilevamento di atti di vandalismo, ecc.
 Label-History: Storia
+Label-History.@meta.@description: >-
+  Un'etichetta per l'elenco delle attività passate, delle valutazioni passate
+  fornite, ecc., Di tutti gli utenti o di un determinato utente.
 Label-HumanEditors: Redattori umani
+Label-HumanEditors.@meta.@description: L'etichetta per le sentenze fornita dagli editori umani.
 Label-Judgement: Giudizio
+Label-Judgement.@meta.@description: >-
+  L'etichetta di giudizio data alle modifiche di Wikipedia dai nostri utenti che
+  esaminano le modifiche di Wikipedia in arrivo.
 Label-LastActiveTime: Ultimo attivo
+Label-LastActiveTime.@meta.@description: >-
+  L'etichetta mostra l'ultima volta che un utente è stato attivo sul nostro
+  software.
 Label-Loading: Caricamento in corso
+Label-Loading.@meta.@description: >-
+  È stata caricata l'etichetta per mostrare alcune parti o dati su una pagina
+  Web. Di solito questa etichetta viene visualizzata come fallback per un
+  indicatore di caricamento.
 Label-Login: Accesso
+Label-Login.@meta.@description: >-
+  L'etichetta per un pulsante di accesso per consentire all'utente di accedere.
+  Oppure verrà utilizzato anche nei messaggi o nel prompt per invitare l'utente
+  ad accedere.
 Label-Logout: Disconnettersi
+Label-Logout.@meta.@description: >-
+  L'etichetta per un pulsante di accesso per consentire all'utente di
+  disconnettersi. Oppure verrà utilizzato anche nei messaggi o nel prompt per
+  invitare l'utente a disconnettersi.
 Label-LooksGood: Sembra buono
+Label-LooksGood.@meta.@description: >-
+  L'etichetta di uno dei 3 principali tipi di giudizi che afferma che la
+  modifica di Wikipedia in fase di revisione è buona e costruttiva per
+  Wikipedia, al contrario del danneggiamento.
 Label-Me: Me
+Label-Me.@meta.@description: >-
+  L'etichetta per identificare l'utente stesso. Assicurati che l'etichetta
+  tradotta qui sia neutra rispetto al genere.
 Label-Month: Mese
-Label-My-History: La mia storia
+Label-Month.@meta.@description: >-
+  Un'etichetta per la granularità del tempo di analisi delle statistiche che
+  viene suddivisa per mese.
+Label-MyHistory: La mia storia
+Label-MyHistory.@meta.@description: >-
+  Un'etichetta per l'elenco delle attività passate, i giudizi passati forniti,
+  ecc., Dell'utente corrente che sta utilizzando il nostro software.
+Label-MyHistory.@meta.@isMachineTranslated: true
+Label-MyHistory.@meta.@translatedAt: '2020-07-07T19:26:51.443Z'
+Label-MyHistory.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-NewJudgement: Nuovo giudizio
+Label-NewJudgement.@meta.@description: >-
+  Un'etichetta per un nuovo giudizio dato a Wikipedia modificata dal nostro
+  utente.
 Label-None: Nessuna
+Label-None.@meta.@description: >-
+  L'etichetta per una tabella vuota di righe e celle di contenuto o elenchi
+  vuoti. Questo è di solito usato nell'interfaccia utente quando non ci sono
+  contenuti da mostrare.
 Label-NotSure: Non sono sicuro
+Label-NotSure.@meta.@description: >-
+  L'etichetta di uno dei 3 principali tipi di giudizi che afferma che la
+  modifica di Wikipedia in fase di revisione non è certa e potrebbe essere
+  valida e costruttiva o dannosa per Wikipedia.
 Label-OresBadfaith: ORES Cattiva fede
+Label-OresBadfaith.@meta.@description: >-
+  L'etichetta che identifica il punteggio e il giudizio dato dal sistema di
+  punteggio di intelligenza artificiale WMF ORES. Questa specifica etichetta si
+  riferisce al contrario del modello goodfaith di ORES. Vedi
+  https://www.mediawiki.org/wiki/ORES#Advanced_support
 Label-OresBadfaith.@meta.@isMachineTranslated: true
 Label-OresBadfaith.@meta.@translatedAt: '2020-07-07T01:09:19.143Z'
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: ORES Danneggiamento
-Label-Overriden: override
-Label-Prompt-Login: Accesso
+Label-OresDamaging.@meta.@description: >-
+  L'etichetta che identifica il punteggio e il giudizio dato dal sistema di
+  punteggio di intelligenza artificiale WMF ORES. Questa specifica etichetta si
+  riferisce al modello dannoso di ORES. Vedi
+  https://www.mediawiki.org/wiki/ORES#Advanced_support
+Label-Overridden: override
+Label-Overridden.@meta.@description: >-
+  L'etichetta indica che una determinata modifica sull'articolo di Wikipedia
+  viene sostituita da un'altra modifica più recente nello stesso articolo di
+  Wikipedia. Questa etichetta implica che tale modifica è già stata ripristinata
+  dal nostro attuale utente o è ripristinata o aggiornata da un altro editor di
+  Wikipedia su Wikipedia.
+Label-Overridden.@meta.@isMachineTranslated: true
+Label-Overridden.@meta.@translatedAt: '2020-07-07T19:26:51.443Z'
+Label-Overridden.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-PromptLogin: Accesso
+Label-PromptLogin.@meta.@description: >-
+  L'etichetta che richiede a un utente di accedere al nostro software. È più
+  simile al tono di "login" nelle lingue in cui esistono formalità e discorsi
+  onorifici.
+Label-PromptLogin.@meta.@isMachineTranslated: true
+Label-PromptLogin.@meta.@translatedAt: '2020-07-07T19:26:51.443Z'
+Label-PromptLogin.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-Rank: Rango
+Label-Rank.@meta.@description: >-
+  L'etichetta per le classifiche delle statistiche in base a un determinato
+  numero di ordinamento, ad esempio gli utenti ordinati in base al loro numero
+  di contributi
 Label-Reason: Motivo
+Label-Reason.@meta.@description: >-
+  L'etichetta per il motivo del risultato di un'azione eseguita, ad esempio
+  quando un utente sta ripristinando una modifica di Wikipedia.
 Label-Result: Risultato
+Label-Result.@meta.@description: >-
+  L'etichetta per il risultato di un'azione eseguita, ad esempio quando un
+  utente ha ripristinato una modifica di Wikipedia.
 Label-RevertSucceeded: Ripristino riuscito!
+Label-RevertSucceeded.@meta.@description: >-
+  L'etichetta per il risultato di un'azione eseguita quando un utente ha
+  ripristinato una modifica di Wikipedia, l'azione ha esito positivo.
 Label-ReviewFeed: Recensisci feed
+Label-ReviewFeed.@meta.@description: >-
+  L'etichetta per il feed, il flusso o il flusso di modifiche Wikipedia in
+  arrivo da rivedere.
 Label-ReviewedAndSays: 'recensito {0} e dice'
+Label-ReviewedAndSays.@meta.@description: L'etichetta per iniziare la sentenza e le ragioni fornite per una revisione.
 Label-ShouldRevert: Dovrebbe ripristinare
+Label-ShouldRevert.@meta.@description: >-
+  L'etichetta di uno dei 3 principali tipi di giudizi che afferma che la
+  modifica di Wikipedia in fase di revisione sia dannosa per Wikipedia invece di
+  essere buona e costruttiva.
 Label-Snooze: Pisolino
+Label-Snooze.@meta.@description: >-
+  L'etichetta di un pulsante per posticipare un promemoria o una notifica o, in
+  altre parole, significa "ricordamelo più tardi". In realtà il pulsante snooze
+  verrà utilizzato quando verrà visualizzato nuovamente il promemoria o il
+  messaggio di notifica. Quindi significa anche "non licenziato in modo
+  permanente, ma semplicemente respinto temporaneamente".
 Label-Someone: Qualcuno
+Label-Someone.@meta.@description: L'etichetta per identificare un utente diverso dall'utente corrente.
 Label-Time: Tempo
+Label-Time.@meta.@description: >-
+  L'etichetta del timestamp di un determinato giudizio o azione fornita da un
+  utente.
 Label-TopNumberAnonymousUsers: 'Primi {0} utenti anonimi'
+Label-TopNumberAnonymousUsers.@meta.@description: >-
+  L'etichetta per la sezione dei primi 20 utenti anonimi, ecc., Mentre il
+  parametro "20" può essere sostituito nel parametro.
 Label-TopUsers: Utenti migliori
+Label-TopUsers.@meta.@description: >-
+  L'etichetta per la sezione degli utenti principali (registrati), ecc., Mentre
+  il numero.
 Label-TopWikis: Top Wiki
+Label-TopWikis.@meta.@description: >-
+  L'etichetta per la sezione dei principali Wikipedias o dei suoi progetti
+  consociati (Wikidata.org ecc.), Per la quantità di giudizi espressi su
+  Wikipedia.
 Label-TotalNumber: Totale
+Label-TotalNumber.@meta.@description: L'etichetta per la colonna del numero totale di giudizi dati da un utente.
 Label-User: Utente
+Label-User.@meta.@description: L'etichetta per l'utente che dà il giudizio di Wikipedia modifica.
 Label-Week: Settimana
+Label-Week.@meta.@description: >-
+  Un'etichetta per la granularità del tempo di analisi delle statistiche che
+  viene suddivisa per settimana.
 Label-YourJudgement: Il tuo giudizio
+Label-YourJudgement.@meta.@description: L'etichetta per il giudizio dato dall'utente corrente.
 MenuItem-Code: Codice
+MenuItem-Code.@meta.@description: >-
+  L'etichetta della voce di menu per reindirizzare l'utente alla base di codice
+  di questo software.
 MenuItem-Contributions: I miei contributi
+MenuItem-Contributions.@meta.@description: >-
+  L'etichetta della voce di menu che indirizza l'utente all'elenco di contributi
+  o giudizi forniti dall'utente corrente.
 MenuItem-ContributionsBeforeLogin: I miei contributi prima dell'accesso
+MenuItem-ContributionsBeforeLogin.@meta.@description: 'DA ELIMINARE, NON CAMBIARE O TRADURRE.'
 MenuItem-Issues: Problemi
+MenuItem-Issues.@meta.@description: >-
+  L'etichetta della voce di menu che reindirizza l'utente ai problemi di Github
+  del nostro software.
 MenuItem-Stats: Statistiche
+MenuItem-Stats.@meta.@description: >-
+  L'etichetta della voce di menu che reindirizza l'utente alla pagina delle
+  statistiche del nostro software.
 Message-AJudgementLogged: 'È stato registrato un giudizio per {0} per revisione {1}.'
 Message-CongratsSuccessfullyReverted: 'Congratulazioni! hai ripristinato con successo direttamente {0}.'
 Message-DiffNotAvailable: >-
@@ -101,4 +294,7 @@ Message-RevertEditSummary: >-
 Message-SorryWeFailedToRevert: 'Spiacenti, non è stato possibile ripristinare la revisione {0}.'
 Message-TheRevisionIsSuccessfullyRevertedAs: 'La revisione {0} è stata ripristinata correttamente come {1}.'
 Message-ThereIsNoEditSummary: Non esiste un riepilogo di modifica.
+Message-ThereIsNoEditSummary.@meta.@description: >-
+  Il messaggio mostra che una determinata modifica di Wikipedia non ha una
+  spiegazione, vedi https://en.wikipedia.org/wiki/Help:Edit_summary.
 Message-YourJudgementLogged: 'Il tuo giudizio per {0} per la revisione {1} è stato registrato.'
