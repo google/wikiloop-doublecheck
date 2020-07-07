@@ -1,6 +1,6 @@
 # WikiLoop Battlefield: Fight vandalism on Wikipedia together
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-15-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-16-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![WikiLoop Logo](static/wikiloop-battlefield-logo.svg)](https://meta.wikimedia.org/wiki/WikiProject_WikiLoop)
@@ -126,6 +126,7 @@ npx all-contributors add $NEW_CONTRIBUTOR translation
   </tr>
   <tr>
     <td align="center"><a href="https://bhavyakaria.github.io/"><img src="https://avatars3.githubusercontent.com/u/16178833?v=4" width="100px;" alt=""/><br /><sub><b>Bhavya Karia</b></sub></a><br /><a href="#translation-bhavyakaria" title="Translation">🌍</a></td>
+    <td align="center"><a href="https://github.com/fmobus"><img src="https://avatars0.githubusercontent.com/u/396521?v=4" width="100px;" alt=""/><br /><sub><b>Felipe Mobus</b></sub></a><br /><a href="#translation-fmobus" title="Translation">🌍</a></td>
   </tr>
 </table>
 
