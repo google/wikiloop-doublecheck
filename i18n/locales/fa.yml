@@ -47,9 +47,9 @@ Label-None: هیچ یک
 Label-Not-Sure: مطمئن نیستم
 Label-NotSure: مطمئن نیستم
 Label-OresBadfaith: ایمان بد
-Label-OresBadfaith.@isMachineTranslated: true
-Label-OresBadfaith.@translatedAt: 2020-07-07T01:00:20.532Z
-Label-OresBadfaith.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-OresBadfaith.@meta.@isMachineTranslated: true
+Label-OresBadfaith.@meta.@translatedAt: 2020-07-07T01:09:19.142Z
+Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: ORES آسیب دیده
 Label-Overriden: نادیده گرفته شده
 Label-Prompt-Login: وارد شدن

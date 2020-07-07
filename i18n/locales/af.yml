@@ -47,9 +47,9 @@ Label-None: Geen
 Label-Not-Sure: Nie seker nie
 Label-NotSure: Nie seker nie
 Label-OresBadfaith: ORES Slegte geloof
-Label-OresBadfaith.@isMachineTranslated: true
-Label-OresBadfaith.@translatedAt: 2020-07-07T01:00:20.527Z
-Label-OresBadfaith.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-OresBadfaith.@meta.@isMachineTranslated: true
+Label-OresBadfaith.@meta.@translatedAt: 2020-07-07T01:09:19.138Z
+Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: Ertse beskadig
 Label-Overriden: geïgnoreer
 Label-Prompt-Login: Teken aan
@@ -88,7 +88,7 @@ Message-Login: >-
   Login met Wikipedia-rekening via Oauth.
 Message-NameVoteAnnouncement: >-
   Geagte bydraer, ons hou 'n stemming vir nuwe naam ter vervanging van die
-  "WikiLoop Battlefield" wat eindig op 13 Julie 2020 00:00 UTC. 
+  "WikiLoop Battlefield" wat eindig op 13 Julie 2020 00:00 UTC.
 
   Stem asb.
 Message-NoActiveUsersPleaseStartReview: >-

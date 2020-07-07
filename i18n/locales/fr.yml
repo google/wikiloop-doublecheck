@@ -49,9 +49,9 @@ Label-None: Aucun
 Label-Not-Sure: Pas certain
 Label-NotSure: Pas sûr
 Label-OresBadfaith: ORES Mauvaise foi
-Label-OresBadfaith.@isMachineTranslated: true
-Label-OresBadfaith.@translatedAt: 2020-07-07T01:00:20.532Z
-Label-OresBadfaith.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-OresBadfaith.@meta.@isMachineTranslated: true
+Label-OresBadfaith.@meta.@translatedAt: 2020-07-07T01:09:19.143Z
+Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: ORES endommageant
 Label-Overriden: Remplacé
 Label-Prompt-Login: S'identifier
@@ -81,9 +81,9 @@ MenuItem-Stats: Statistiques
 Message-AJudgementLogged: 'Un jugement pour {0} pour la révision {1} a été enregistré.'
 Message-CongratsSuccessfullyReverted: 'Félicitations! vous avez réussi à revenir directement {0}.'
 Message-DiffNotAvailable: |-
-  Le diff article wikipedia n'est temporairement pas disponible. 
-  Vous pouvez essayer de le recharger. 
-  Parfois, une révision vandalisée peut être supprimée. 
+  Le diff article wikipedia n'est temporairement pas disponible.
+  Vous pouvez essayer de le recharger.
+  Parfois, une révision vandalisée peut être supprimée.
   Vous pouvez consulter l'historique des pages.
 Message-FeedHasNoNewRevisionsClickNextBelow: 'Le flux {0} n''a pas de nouvelles révisions, cliquez sur suivant ci-dessous.'
 Message-Login: >-
@@ -92,7 +92,7 @@ Message-Login: >-
   Oauth.
 Message-NameVoteAnnouncement: >-
   Cher contributeur, nous organisons un vote pour un nouveau nom remplaçant le
-  "WikiLoop Battlefield" se terminant le 13 juillet 2020 à 00h00 UTC. 
+  "WikiLoop Battlefield" se terminant le 13 juillet 2020 à 00h00 UTC.
 
   S'il vous plait, votez.
 Message-NoActiveUsersPleaseStartReview: >-
@@ -103,7 +103,7 @@ Message-Prompt-Login: >-
   votre nom? Nous prenons en charge la connexion avec un compte Wikipedia via
   Oauth.
 Message-RevertEditSummary: |-
-  Identifié comme test / vandalisme à l'aide de la version {0} {1}. 
+  Identifié comme test / vandalisme à l'aide de la version {0} {1}.
   Consultez-le ou donnez votre avis sur {2}
 Message-SorryWeFailedToRevert: 'Désolé, nous n''avons pas réussi à rétablir la révision {0}.'
 Message-TheRevisionIsSuccessfullyRevertedAs: 'La révision {0} est correctement rétablie en tant que {1}.'

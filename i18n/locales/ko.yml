@@ -43,9 +43,9 @@ Label-None: 없음
 Label-Not-Sure: 확실하지 않다
 Label-NotSure: 확실하지 않다
 Label-OresBadfaith: 오 레스 악의
-Label-OresBadfaith.@isMachineTranslated: true
-Label-OresBadfaith.@translatedAt: 2020-07-07T01:00:20.533Z
-Label-OresBadfaith.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-OresBadfaith.@meta.@isMachineTranslated: true
+Label-OresBadfaith.@meta.@translatedAt: 2020-07-07T01:09:19.144Z
+Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: 광석 피해
 Label-Overriden: 재정의
 Label-Prompt-Login: 로그인

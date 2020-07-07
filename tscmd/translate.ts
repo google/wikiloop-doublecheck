@@ -23,8 +23,8 @@ async function translateCmd() {
     projectId,
     keyFilename:'.creds/private-key.json'
   });
-
-  let sourceKeyMsgMap = existingLocales.en;
+  let sourceLang = 'en'
+  let sourceKeyMsgMap = existingLocales[sourceLang];
 
   async function translateText(texts:string[], target:string) {
     // Translates the text into the target language. "text" can be a string for
@@ -34,7 +34,7 @@ async function translateCmd() {
     return translations;
   }
 
-  let targetLangs = Object.keys(existingLocales)
+  let targetLangs = Object.keys(existingLocales).filter(key => key !== sourceLang);
     // .concat(['ar','fa','uk','cs','sv']); // for new languages to add
   let forceUpdatedKeys = [
     `Button-Go.@meta.@description`,
@@ -67,9 +67,9 @@ async function translateCmd() {
         let key = keyArray[i];
         targetKeyMsgMap[key] = translations[i];
         if (! (/@meta.@description$/.test(key))) { // if not a @description
-          targetKeyMsgMap[`${key}.@translator`] = `GoogleCloudTranslationAPI ${projectId}`;
-          targetKeyMsgMap[`${key}.@translatedAt`] = now;
-          targetKeyMsgMap[`${key}.@isMachineTranslated`] = true;
+          targetKeyMsgMap[`${key}.@meta.@translator`] = `GoogleCloudTranslationAPI ${projectId}`;
+          targetKeyMsgMap[`${key}.@meta.@translatedAt`] = now;
+          targetKeyMsgMap[`${key}.@meta.@isMachineTranslated`] = true;
         }
 
       }

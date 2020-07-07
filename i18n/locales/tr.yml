@@ -49,9 +49,9 @@ Label-None: Yok
 Label-Not-Sure: Emin değil
 Label-NotSure: Emin Değilim
 Label-OresBadfaith: ORES Kötü niyet
-Label-OresBadfaith.@isMachineTranslated: true
-Label-OresBadfaith.@translatedAt: 2020-07-07T01:00:20.535Z
-Label-OresBadfaith.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-OresBadfaith.@meta.@isMachineTranslated: true
+Label-OresBadfaith.@meta.@translatedAt: 2020-07-07T01:09:19.145Z
+Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: ORES Hasar
 Label-Overriden: Geçersiz kılınan
 Label-Prompt-Login: Oturum aç
@@ -90,7 +90,7 @@ Message-Login: >-
   aracılığıyla Wikipedia hesabıyla giriş yapmayı destekliyoruz.
 Message-NameVoteAnnouncement: >-
   Sayın katılımcı, 13 Temmuz 2020 00:00 UTC ile biten "WikiLoop Battlefield"
-  yerine yeni bir isim vermek için oy kullanıyoruz. 
+  yerine yeni bir isim vermek için oy kullanıyoruz.
 
   Lütfen oy verin.
 Message-NoActiveUsersPleaseStartReview: >-
@@ -100,7 +100,7 @@ Message-Prompt-Login: >-
   Giriş yapabilir ve katkılarınızı adınız altında koruyabileceğinizi biliyor
   musunuz? Oauth aracılığıyla Wikipedia hesabıyla giriş yapmayı destekliyoruz.
 Message-RevertEditSummary: |-
-  {0} {1} sürümü kullanılarak test / vandalizm olarak tanımlandı. 
+  {0} {1} sürümü kullanılarak test / vandalizm olarak tanımlandı.
   {2} adresinde görün veya görüşünüzü belirtin
 Message-SorryWeFailedToRevert: 'Maalesef, {0} düzeltmesini geri alamadık.'
 Message-TheRevisionIsSuccessfullyRevertedAs: '{0} düzeltmesi başarıyla {1} olarak geri döndürüldü.'

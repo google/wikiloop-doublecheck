@@ -45,9 +45,6 @@ Label-None: None
 Label-Not-Sure: Not Sure
 Label-NotSure: Not sure
 Label-OresBadfaith: ORES Bad faith
-Label-OresBadfaith.@isMachineTranslated: true
-Label-OresBadfaith.@translatedAt: 2020-07-07T01:00:20.531Z
-Label-OresBadfaith.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: ORES Damaging
 Label-Overriden: Overridden
 Label-Prompt-Login: Login

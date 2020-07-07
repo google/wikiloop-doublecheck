@@ -43,9 +43,9 @@ Label-None: אף אחד
 Label-Not-Sure: לא בטוח
 Label-NotSure: לא בטוח
 Label-OresBadfaith: אורס תום לב
-Label-OresBadfaith.@isMachineTranslated: true
-Label-OresBadfaith.@translatedAt: 2020-07-07T01:00:20.532Z
-Label-OresBadfaith.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-OresBadfaith.@meta.@isMachineTranslated: true
+Label-OresBadfaith.@meta.@translatedAt: 2020-07-07T01:09:19.143Z
+Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: אורס פוגע
 Label-Overriden: עקף
 Label-Prompt-Login: התחברות
@@ -75,9 +75,9 @@ MenuItem-Stats: נתונים סטטיסטיים
 Message-AJudgementLogged: 'נפסק פסק דין ל {0} לתיקון {1}.'
 Message-CongratsSuccessfullyReverted: 'מזל טוב! חזרת בהצלחה ישירות {0}.'
 Message-DiffNotAvailable: |-
-  המאמר של הוויקיפדיה אינו זמין באופן זמני. 
-  אתה יכול לנסות לטעון אותו מחדש. 
-  לפעמים ניתן למחוק עדכון מושחת. 
+  המאמר של הוויקיפדיה אינו זמין באופן זמני.
+  אתה יכול לנסות לטעון אותו מחדש.
+  לפעמים ניתן למחוק עדכון מושחת.
   אתה יכול לבדוק את היסטוריית הדפים.
 Message-FeedHasNoNewRevisionsClickNextBelow: 'בעדכון {0} אין עדכונים חדשים, לחץ על הבא למטה.'
 Message-Login: >-
@@ -85,7 +85,7 @@ Message-Login: >-
   לחשבון ויקיפדיה דרך Oauth.
 Message-NameVoteAnnouncement: >-
   תורם יקר, אנו מקיימים הצבעה על שם חדש המחליף את "שדה הקרב WikiLoop" המסתיים ב
-  -13 ביולי, 2020 00:00 UTC. 
+  -13 ביולי, 2020 00:00 UTC.
 
   אנא הצבע.
 Message-NoActiveUsersPleaseStartReview: >-
@@ -95,7 +95,7 @@ Message-Prompt-Login: >-
   האם אתה יודע שתוכל להתחבר ולשמור את התרומות שלך תחת שמך? אנו תומכים בכניסה
   לחשבון ויקיפדיה דרך Oauth.
 Message-RevertEditSummary: |-
-  זוהה כמבחן / השחתה באמצעות {0} גרסה {1}. 
+  זוהה כמבחן / השחתה באמצעות {0} גרסה {1}.
   ראה אותו או ספק את דעתך ב {2}
 Message-SorryWeFailedToRevert: 'מצטערים, לא הצלחנו להחזיר את המהדורה {0}.'
 Message-TheRevisionIsSuccessfullyRevertedAs: 'המהפכה {0} מבוטלת בהצלחה בתור {1}.'

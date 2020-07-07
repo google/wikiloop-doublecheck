@@ -49,9 +49,9 @@ Label-None: Keiner
 Label-Not-Sure: Nicht sicher
 Label-NotSure: Nicht sicher
 Label-OresBadfaith: ORES Böser Glaube
-Label-OresBadfaith.@isMachineTranslated: true
-Label-OresBadfaith.@translatedAt: 2020-07-07T01:00:20.531Z
-Label-OresBadfaith.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-OresBadfaith.@meta.@isMachineTranslated: true
+Label-OresBadfaith.@meta.@translatedAt: 2020-07-07T01:09:19.142Z
+Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: Erze beschädigen
 Label-Overriden: Überschrieben
 Label-Prompt-Login: Anmeldung
@@ -81,9 +81,9 @@ MenuItem-Stats: Statistiken
 Message-AJudgementLogged: 'Ein Urteil für {0} für Revision {1} wurde protokolliert.'
 Message-CongratsSuccessfullyReverted: 'Glückwunsch! Sie haben erfolgreich direkt {0} zurückgesetzt.'
 Message-DiffNotAvailable: |-
-  Der Wikipedia-Artikel diff ist vorübergehend nicht verfügbar. 
-  Sie können versuchen, es neu zu laden. 
-  Manchmal konnte eine zerstörte Revision gelöscht werden. 
+  Der Wikipedia-Artikel diff ist vorübergehend nicht verfügbar.
+  Sie können versuchen, es neu zu laden.
+  Manchmal konnte eine zerstörte Revision gelöscht werden.
   Sie können den Seitenverlauf überprüfen.
 Message-FeedHasNoNewRevisionsClickNextBelow: 'Feed {0} hat keine neuen Revisionen. Klicken Sie unten auf Weiter.'
 Message-Login: >-
@@ -93,7 +93,7 @@ Message-Login: >-
 Message-NameVoteAnnouncement: >-
   Sehr geehrter Mitwirkender, wir halten eine Abstimmung für einen neuen Namen
   ab, der das "WikiLoop Battlefield" ersetzt und am 13. Juli 2020 um 00:00 UTC
-  endet. 
+  endet.
 
   Bitte abstimmen.
 Message-NoActiveUsersPleaseStartReview: >-
@@ -104,7 +104,7 @@ Message-Prompt-Login: >-
   aufbewahren können? Wir unterstützen die Anmeldung mit einem Wikipedia-Konto
   über Oauth.
 Message-RevertEditSummary: |-
-  Mit {0} Version {1} als Test / Vandalismus identifiziert. 
+  Mit {0} Version {1} als Test / Vandalismus identifiziert.
   Sehen Sie es sich an oder geben Sie Ihre Meinung unter {2} ab
 Message-SorryWeFailedToRevert: 'Leider konnten wir die Revision {0} nicht zurücksetzen.'
 Message-TheRevisionIsSuccessfullyRevertedAs: 'Die Revision {0} wird erfolgreich als {1} zurückgesetzt.'
