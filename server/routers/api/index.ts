@@ -30,6 +30,7 @@ import { statsRouter } from "./stats";
 import { leaderboardRouter } from "./leaderboard";
 import { markedRevsCsv, markedRevs } from "./marked";
 import { asyncHandler } from "~/server/common";
+import { useStiki } from '~/server/common';
 
 const express = require('express');
 export const apiRouter = express.Router();
@@ -44,7 +45,7 @@ apiRouter.use(`/feed`, feedRouter);
 apiRouter.use(`/metrics`, metricsRouter);
 apiRouter.get('/test', (req, res) => { res.send('test ok') });
 
-if (process.env.STIKI_MYSQL) {
+if (useStiki) {
   apiRouter.use(`/score`, scoreRouter);
   apiRouter.use(`/extra`, scoreRouter);
 }

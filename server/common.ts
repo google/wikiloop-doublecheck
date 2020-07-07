@@ -371,3 +371,5 @@ export function ensureAuthenticated(req, res, next) {
     res.send( 'Login required for this endpoint' );
   }
 }
+
+export const useStiki = /mysql:\/\//.test(process.env.STIKI_MYSQL);
