@@ -18,22 +18,22 @@ Button-Undo: Undo
 Button-Undo.@meta.@description: A label for the button to undo an action on our software.
 Label-1Month: 1 month (30d)
 Label-1Month.@meta.@description: >-
-  A label for the time range of statistics to show, which is 1 month or 30 days
-  precisely.
+  A label for the time range of statistics to show, which is 1 month or precisely
+  30 days.
 Label-1Quarter: 1 quarter (90d)
 Label-1Quarter.@meta.@description: >-
-  A label for the time range of statistics to show, which is 1 quarter or 90
-  days precisely.
+  A label for the time range of statistics to show, which is 1 quarter or precisely
+  90 days.
 Label-1Year: 1 year (365d)
 Label-1Year.@meta.@description: >-
-  A label for the time range of statistics to show, which is 1 year or 365 days
-  precisely.
+  A label for the time range of statistics to show, which is 1 year or precisely
+  365 days.
 Label-1day: 1 day
-Label-1day.@meta.@description: 'A label for the time range of statistics to show, which is 1 day precisely.'
+Label-1day.@meta.@description: 'A label for the time range of statistics to show, which precisely 1 day.'
 Label-1week: 1 week (7d)
 Label-1week.@meta.@description: >-
-  A label for the time range of statistics to show, which is 1 week or 7 days
-  precisely.
+  A label for the time range of statistics to show, which is 1 week or precisely
+  7 days.
 Label-ActiveUsers: Active Users
 Label-ActiveUsers.@meta.@description: A label for the statistics based on the active users of this software.
 Label-AllTime: All time
