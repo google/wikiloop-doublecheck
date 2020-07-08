@@ -151,7 +151,7 @@ Label-PromptLogin.@meta.@description: >-
 Label-Rank: Rank
 Label-Rank.@meta.@description: >-
   The label for rankings of of statistics by a given sorting number, for
-  example, users sorted by their numbers of contributions
+  example users sorted by the number of their contributions.
 Label-Reason: Reason
 Label-Reason.@meta.@description: >-
   The label for the reason of the result of a performed action, such as when a
