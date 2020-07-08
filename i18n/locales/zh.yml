@@ -111,9 +111,9 @@ Label-ReviewedAndSays: '审阅了{0}并说'
 Label-ReviewedAndSays.@meta.@description: 开始判决的标签和给出修改的理由。
 Label-ShouldRevert: 应该还原
 Label-ShouldRevert.@meta.@description: 三种主要判断类型之一的标签是说，正在审查的Wikipedia编辑对Wikipedia有破坏性而非建设性。
-Label-Snooze: 关闭
+Label-Snooze: 稍后提醒
 Label-Snooze.@meta.@description: >-
-  暂停提醒或通知的按钮标签，换句话说，它的意思是“稍后提醒我”。实际上，当提醒或通知消息再次出现时，将使用贪睡按钮。因此，这也意味着“不是永久解雇，而是暂时解雇”。
+  暂停提醒或通知的按钮标签，换句话说，它的意思是“稍后提醒我”。“稍后提醒”按钮会被用于将会重复出现的提醒或通知。因此，这也意味着“不是永久关闭，而是暂时关闭”。
 Label-Someone: 别人
 Label-Someone.@meta.@description: 用于标识当前用户以外的用户的标签。
 Label-Time: 时间
