@@ -119,11 +119,11 @@ Label-NewJudgement: Nowa ocena
 Label-NewJudgement.@meta.@description: >-
   Etykieta nowej oceny przyznanej na Wikipedii dla zmiana dokonanej przez naszego
   użytkownika.
-Label-None: Żadne
+Label-None: Brak
 Label-None.@meta.@description: >-
   Etykieta pustej tabeli treści lub pustych list. Jest to
   zwykle używane w interfejsie użytkownika, gdy nie ma treści do wyświetlenia.
-Label-NotSure: Nie jestem pewien
+Label-NotSure: Niepewne
 Label-NotSure.@meta.@description: >-
   Etykieta jednej z 3 głównych rodzajów ocen, która mówi że recenzowana
   zmiana na Wikipedii jest niepewna, może być dobra i konstruktywna, lub szkodliwa
@@ -142,12 +142,12 @@ Label-Overridden: Zastąpienie
 Label-Overridden.@meta.@description: >-
   Etykieta informująca, że dana zmiana artykułu na Wikipedii jest zastąpiona
   przez inną, nowszą zmiane tego samego artykułu na Wikipedii. Ta etykieta
-  sugeruje, że taka edycja jest już cofnięta przez naszego obecnego użytkownika,
-  lub jest cofnięta lub zaktualizowana przez innego edytora Wikipedii.
+  sugeruje, że taka zmiana już była cofnięta przez obecnego użytkownika,
+  lub została cofnięta lub zaktualizowana przez innego edytora Wikipedii.
 Label-PromptLogin: Zaloguj się
 Label-PromptLogin.@meta.@description: >-
   Etykieta zachęcająca użytkownika do zalogowania się w naszym oprogramowaniu.
-  Przypomina tonsm „zaloguj się” w językach, w których istnieją formy grzecznościowe.
+  Przypomina tonem „zaloguj się” w językach, w których istnieją formy grzecznościowe.
 Label-Rank: Ranking
 Label-Rank.@meta.@description: >-
   Etykieta rankingów statystyk według danego sposobu sortowania, na przykład
@@ -155,7 +155,7 @@ Label-Rank.@meta.@description: >-
 Label-Reason: Powód
 Label-Reason.@meta.@description: >-
   Etykieta powodu wykonania danej akcji, na przykład gdy użytkownik przywraca
-  zmiane na Wikipedii.
+  zmianę na Wikipedii.
 Label-Result: Wynik
 Label-Result.@meta.@description: >-
   Etykieta wyniku wykonanej akcji, na przykład gdy użytkownik cofnął zmianę
@@ -169,28 +169,28 @@ Label-ReviewFeed.@meta.@description: >-
   Etykieta kanału, przepływu lub strumienia nadchodzących zmian na Wikipedii do
   sprawdzenia.
 Label-ReviewedAndSays: 'sprawdził {0} i mówi'
-Label-ReviewedAndSays.@meta.@description: Etykieta rozpoczynająca zdanie oecnypa
+Label-ReviewedAndSays.@meta.@description: Etykieta rozpoczynająca ocenę
 i uzasadnienie zmiany.
-Label-ShouldRevert: Powinien się odwrócić
+Label-ShouldRevert: Powinno być odwrócone
 Label-ShouldRevert.@meta.@description: >-
-  Etykieta jednego z 3 głównych rodzajów osądów, która mówi, że edycja Wikipedii
-  jest recenzowana, ponieważ szkodzi Wikipedii, a nie jest dobra i
+  Etykieta jednego z 3 głównych rodzajów osądów, która mówi że zmiana na Wikipedii
+  jest recenzowana ponieważ szkodzi Wikipedii a nie dobra i
   konstruktywna.
-Label-Snooze: Drzemka
+Label-Snooze: Później
 Label-Snooze.@meta.@description: >-
-  Etykieta przycisku, aby odłożyć przypomnienie lub powiadomienie, lub innymi
-  słowy, oznacza „przypomnij mi później”. W rzeczywistości przycisk drzemki
+  Etykieta przycisku, aby odłożyć przypomnienie lub powiadomienie, czyli
+  „przypomnij mi później”. W rzeczywistości przycisk Później
   będzie używany, gdy przypomnienie lub komunikat powiadomienia pojawią się
-  ponownie. Oznacza to również „nie zwolniony na stałe, ale tylko tymczasowo
-  zwolniony”.
+  ponownie. Oznacza to również „nie odwołane na stałe, tylko tymczasowo
+  odwołane”.
 Label-Someone: Ktoś
-Label-Someone.@meta.@description: Etykieta identyfikująca użytkownika innego niż bieżący.
+Label-Someone.@meta.@description: Etykieta identyfikująca innego użytkownika niż bieżący.
 Label-Time: Czas
 Label-Time.@meta.@description: Etykieta znacznika czasu danej oceny lub działania podanego przez użytkownika.
 Label-TopNumberAnonymousUsers: 'Najlepsi anonimowi użytkownicy {0}'
 Label-TopNumberAnonymousUsers.@meta.@description: >-
-  Etykieta dla sekcji 20 najpopularniejszych anonimowych użytkowników itp.,
-  Natomiast w parametrze można zastąpić liczbę „20”.
+  Etykieta dla listy 20 najpopularniejszych anonimowych użytkowników itp.,
+  gdzie parametr można zastąpić liczbą „20”.
 Label-TopUsers: Najlepsi użytkownicy
 Label-TopUsers.@meta.@description: >-
   Etykieta dla sekcji najlepszych (zalogowanych) użytkowników itp., Podczas gdy
@@ -198,28 +198,28 @@ Label-TopUsers.@meta.@description: >-
 Label-TopWikis: Najlepsze strony wiki
 Label-TopWikis.@meta.@description: >-
   Etykieta dla sekcji najlepszych Wikipedii lub jej siostrzanych projektów
-  (Wikidata.org itp.), Według liczby orzeczeń wydanych na Wikipedii.
-Label-TotalNumber: Całkowity
+  (Wikidata.org itp.), według liczby ocen na Wikipedii.
+Label-TotalNumber: Całość
 Label-TotalNumber.@meta.@description: >-
-  Etykieta kolumny zawierającej całkowitą liczbę orzeczeń wydanych przez
+  Etykieta kolumny zawierającej całkowitą liczbę ocen dodanych przez
   użytkownika.
 Label-User: Użytkownik
-Label-User.@meta.@description: Etykieta dla użytkownika oceniającego edycję Wikipedii.
+Label-User.@meta.@description: Etykieta dla użytkownika oceniającego zmianę na Wikipedii.
 Label-Week: Tydzień
 Label-Week.@meta.@description: Etykieta dla szczegółowości statystyk podziału z podziałem na tygodnie.
-Label-YourJudgement: Twój osąd
-Label-YourJudgement.@meta.@description: Etykieta oceny wydanej przez bieżącego użytkownika.
+Label-YourJudgement: Twoja ocena
+Label-YourJudgement.@meta.@description: Etykieta oceny dodanej przez bieżącego użytkownika.
 MenuItem-Code: Kod
 MenuItem-Code.@meta.@description: >-
   Etykieta pozycji menu przekierowująca użytkownika do bazy kodu tego
   oprogramowania.
-MenuItem-Contributions: Moje składki
+MenuItem-Contributions: Moje edycje
 MenuItem-Contributions.@meta.@description: >-
-  Etykieta pozycji menu kierująca użytkownika do listy wpisów lub ocen podanych
+  Etykieta pozycji menu kierująca użytkownika do listy wpisów lub ocen dodanych
   przez bieżącego użytkownika.
-MenuItem-ContributionsBeforeLogin: Mój wkład przed zalogowaniem
+MenuItem-ContributionsBeforeLogin: Mój edycje przed zalogowaniem
 MenuItem-ContributionsBeforeLogin.@meta.@description: 'ABY BYĆ USUNIĘTY, NIE ZMIENIAJ ANI TŁUMACZENIA.'
-MenuItem-Issues: Zagadnienia
+MenuItem-Issues: Problemy
 MenuItem-Issues.@meta.@description: >-
   Etykieta pozycji menu przekierowująca użytkownika do problemów Github naszego
   oprogramowania.
@@ -230,35 +230,35 @@ MenuItem-Stats.@meta.@description: >-
 Message-AJudgementLogged: 'Wyrok dla {0} dla wersji {1} został zarejestrowany.'
 Message-AJudgementLogged.@meta.@description: >-
   Komunikat, że rejestrowana jest ocena dla danej wersji. Parametr {0} to nazwa
-  artykułu z Wikipedii. Parametr {0} to identyfikator zmiany wersji (edycja w
+  artykułu z Wikipedii. Parametr {1} to identyfikator zmiany wersji (edycja w
   Wikipedii).
 Message-CongratsSuccessfullyReverted: 'Gratulacje! przywróciłeś bezpośrednio {0}.'
 Message-DiffNotAvailable: >-
-  Artykuł w wikipedii diff jest chwilowo niedostępny. Możesz spróbować go
-  przeładować. Czasami wandalizowana rewizja może zostać usunięta. Możesz
+  Lista zmiana dla artykułu na Wikipedii jest chwilowo niedostępna. Możesz spróbować ją
+  odświeżyć. Czasami wandalizowane rewizje zostają usunięte. Możesz
   sprawdzić historię strony.
 Message-FeedHasNoNewRevisionsClickNextBelow: 'W kanale {0} nie ma nowych wersji, kliknij przycisk Dalej poniżej.'
 Message-FeedHasNoNewRevisionsClickNextBelow.@meta.@description: >-
-  Wiadomość informująca użytkownika o danym kanale lub strumieniu edycji
+  Wiadomość informująca użytkownika, że dany kanał lub strumień edycji
   Wikipedii do przejrzenia nie zawiera żadnych nowych wersji / edycji. Parametr
-  {0} odnosi się do nazwy podanego kanału.
+  {0} odnosi się do nazwy kanału.
 Message-Login: >-
-  Czy wiesz, że możesz się zalogować i zachować swoje etykiety pod swoim
-  imieniem? Obsługujemy logowanie za pomocą konta Wikipedia za pośrednictwem
+  Czy wiesz, że możesz się zalogować i zachować swoje etykiety?
+  Obsługujemy logowanie za pomocą konta Wikipedia za pośrednictwem
   Oauth.
 Message-NameVoteAnnouncement: >-
   Drogi współpracowniku, głosujemy na nową nazwę, która zastąpi „WikiLoop
   Battlefield”, która zakończy się 13 lipca 2020 r. 00:00 UTC.
 
-  Proszę Głosuj.
+  Proszę zagłosuj.
 Message-NoActiveUsersPleaseStartReview: >-
   Brak aktywnych użytkowników w ciągu ostatnich 15 minut. Rozpocznij {0}
   przeglądając wersje {1} i zostań pierwszym.
 Message-NoActiveUsersPleaseStartReview.@meta.@description: >-
-  Komunikat zachęcający użytkownika do przywracania. {0} i {1} to pary tagów
-  kotwicy HTML <a> i </a> z parametrami URL.
+  Komunikat zachęcający użytkownika do przywracania. {0} i {1} to para tagów
+  HTML <a> i </a> z parametrami URL.
 Message-PromptLogin: >-
-  Czy wiesz, że możesz się zalogować i zachować swoje wpisy pod swoim imieniem?
+  Czy wiesz, że możesz się zalogować i zachować swoje wpisy?
   Obsługujemy logowanie za pomocą konta Wikipedia za pośrednictwem Oauth.
 Message-RevertEditSummary: >-
   Zidentyfikowany jako test / wandalizm przy użyciu {0} wersji {1}. Zobacz to
