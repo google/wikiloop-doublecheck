@@ -68,7 +68,7 @@ Label-EditSummary.@meta.@description: >-
   An edit summary is a brief explanation of an edit to a Wikipedia page, as
   shown in https://en.wikipedia.org/wiki/Help:Edit_summary
 Label-EditedAt: edited
-Label-EditedAt.@meta.@description: The label of the timestamp of edit on Wikipedia when the edit is created.
+Label-EditedAt.@meta.@description: The label of the creation timestamp of an edit made on Wikipedia.
 Label-Feed: Feed
 Label-Feed.@meta.@description: >-
   The label showing a feed, a flow or a stream of incoming new Wikipedia edits,
@@ -83,7 +83,7 @@ Label-HumanEditors: Human editors
 Label-HumanEditors.@meta.@description: The label for judgements provided by Human editors.
 Label-Judgement: Judgement
 Label-Judgement.@meta.@description: >-
-  The label for judgement given to Wikipedia edits by our users who review
+  The label for judgements given to Wikipedia edits by users who review
   incoming Wikipedia edits.
 Label-LastActiveTime: Last Active
 Label-LastActiveTime.@meta.@description: The label to show the last time that a user was active on our software.
