@@ -117,7 +117,7 @@ Label-MyHistory.@meta.@description: >-
   A label for the list of past activities, past judgements contributed etc, of
   the current user who is using our software.
 Label-NewJudgement: New Judgement
-Label-NewJudgement.@meta.@description: A label for a new judgment given to Wikipedia edit by our user.
+Label-NewJudgement.@meta.@description: A label for a new judgment given to a Wikipedia edit by our user.
 Label-None: None
 Label-None.@meta.@description: >-
   The label for empty table of rows and cells of content or empty lists. This is
