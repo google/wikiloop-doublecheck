@@ -18,22 +18,22 @@ Button-Undo: Undo
 Button-Undo.@meta.@description: A label for the button to undo an action on our software.
 Label-1Month: 1 month (30d)
 Label-1Month.@meta.@description: >-
-  A label for the time range of statistics to show, which is 1 month or 30 days
-  precisely.
+  A label for the time range of statistics to show, which is 1 month or precisely
+  30 days.
 Label-1Quarter: 1 quarter (90d)
 Label-1Quarter.@meta.@description: >-
-  A label for the time range of statistics to show, which is 1 quarter or 90
-  days precisely.
+  A label for the time range of statistics to show, which is 1 quarter or precisely
+  90 days.
 Label-1Year: 1 year (365d)
 Label-1Year.@meta.@description: >-
-  A label for the time range of statistics to show, which is 1 year or 365 days
-  precisely.
+  A label for the time range of statistics to show, which is 1 year or precisely
+  365 days.
 Label-1day: 1 day
-Label-1day.@meta.@description: 'A label for the time range of statistics to show, which is 1 day precisely.'
+Label-1day.@meta.@description: 'A label for the time range of statistics to show, which precisely 1 day.'
 Label-1week: 1 week (7d)
 Label-1week.@meta.@description: >-
-  A label for the time range of statistics to show, which is 1 week or 7 days
-  precisely.
+  A label for the time range of statistics to show, which is 1 week or precisely
+  7 days.
 Label-ActiveUsers: Active Users
 Label-ActiveUsers.@meta.@description: A label for the statistics based on the active users of this software.
 Label-AllTime: All time
@@ -68,7 +68,7 @@ Label-EditSummary.@meta.@description: >-
   An edit summary is a brief explanation of an edit to a Wikipedia page, as
   shown in https://en.wikipedia.org/wiki/Help:Edit_summary
 Label-EditedAt: edited
-Label-EditedAt.@meta.@description: The label of the timestamp of edit on Wikipedia when the edit is created.
+Label-EditedAt.@meta.@description: The label of the creation timestamp of an edit made on Wikipedia.
 Label-Feed: Feed
 Label-Feed.@meta.@description: >-
   The label showing a feed, a flow or a stream of incoming new Wikipedia edits,
@@ -83,7 +83,7 @@ Label-HumanEditors: Human editors
 Label-HumanEditors.@meta.@description: The label for judgements provided by Human editors.
 Label-Judgement: Judgement
 Label-Judgement.@meta.@description: >-
-  The label for judgement given to Wikipedia edits by our users who review
+  The label for judgements given to Wikipedia edits by users who review
   incoming Wikipedia edits.
 Label-LastActiveTime: Last Active
 Label-LastActiveTime.@meta.@description: The label to show the last time that a user was active on our software.
@@ -93,12 +93,12 @@ Label-Loading.@meta.@description: >-
   this label shows  as a fallback for a loading indicator.
 Label-Login: Login
 Label-Login.@meta.@description: >-
-  The label for a login button to allow user to login. Or it will also be used
-  in messages or prompt to invite user to login.
+  The label for a login button to allow the user to login. Also used
+  in messages and prompts that invite users to login.
 Label-Logout: Logout
 Label-Logout.@meta.@description: >-
-  The label for a login button to allow user to logout. Or it will also be used
-  in messages or prompt to invite user to logout.
+  The label for a logout button to allow the user to logout. Also used
+  in messages and prompts that invite users to logout.
 Label-LooksGood: Looks good
 Label-LooksGood.@meta.@description: >-
   The label of one of the 3 major types of judgments which is saying the
@@ -117,37 +117,37 @@ Label-MyHistory.@meta.@description: >-
   A label for the list of past activities, past judgements contributed etc, of
   the current user who is using our software.
 Label-NewJudgement: New Judgement
-Label-NewJudgement.@meta.@description: A label for a new judgment given to Wikipedia edit by our user.
+Label-NewJudgement.@meta.@description: A label for a new judgment given to a Wikipedia edit by our user.
 Label-None: None
 Label-None.@meta.@description: >-
-  The label for empty table of rows and cells of content or empty lists. This is
+  The label for an empty table of rows and cells of content or empty lists. This is
   usually used in the user interface when there is no content to show.
 Label-NotSure: Not sure
 Label-NotSure.@meta.@description: >-
-  The label of one of the 3 major types of judgments which is saying the
-  Wikipedia edit being reviewed is unsure and could be either good and
+  The label for one of the 3 major types of judgments which is saying the
+  Wikipedia edit being reviewed is uncertain and could be either good and
   constructive or damaging to Wikipedia.
 Label-OresBadfaith: ORES Bad faith
 Label-OresBadfaith.@meta.@description: >-
-  The label identifying the score and judgement given by WMF Artificial
-  Intelligence scoring system ORES. This label specific refer to the opposite of
-  goodfaith model of ORES. See
+  The label identifying the score and judgement given by the WMF Artificial
+  Intelligence scoring system ORES. This label specifically refers to the opposite
+  of the goodfaith model of ORES. See
   https://www.mediawiki.org/wiki/ORES#Advanced_support
 Label-OresDamaging: ORES Damaging
 Label-OresDamaging.@meta.@description: >-
-  The label identifying the score and judgement given by WMF Artificial
-  Intelligence scoring system ORES. This label specific refer to the damaging
+  The label identifying the score and judgement given by the WMF Artificial
+  Intelligence scoring system ORES. This label specifically refers to the damaging
   model of ORES. See https://www.mediawiki.org/wiki/ORES#Advanced_support
 Label-Overridden: Overridden
 Label-Overridden.@meta.@description: >-
-  The label to say that a given edit on Wikipedia article is being overridden by
-  another newer edit on the same Wikipedia article. This label imply such edit
-  is either already reverted by our current user, or it's reverted or updated by
+  The label to say that a given edit on a Wikipedia article is being overridden by
+  another newer edit on the same Wikipedia article. This label implies that the edit
+  is either already reverted by the current user, or is being reverted or updated by
   another Wikipedia editor on Wikipedia.
 Label-PromptLogin: Login
 Label-PromptLogin.@meta.@description: >-
   The label to prompt a user to login on our software. It's more like "please
-  login" tone in languages those formality and honorific speech exist.
+  login" tone in languages where formality and honorific speech exist.
 Label-Rank: Rank
 Label-Rank.@meta.@description: >-
   The label for rankings of of statistics by a given sorting number, for
