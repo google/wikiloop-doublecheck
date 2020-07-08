@@ -93,12 +93,12 @@ Label-Loading.@meta.@description: >-
   this label shows  as a fallback for a loading indicator.
 Label-Login: Login
 Label-Login.@meta.@description: >-
-  The label for a login button to allow user to login. Or it will also be used
-  in messages or prompt to invite user to login.
+  The label for a login button to allow the user to login. Also used
+  in messages and prompts that invite users to login.
 Label-Logout: Logout
 Label-Logout.@meta.@description: >-
-  The label for a login button to allow user to logout. Or it will also be used
-  in messages or prompt to invite user to logout.
+  The label for a logout button to allow the user to logout. Also used
+  in messages and prompts that invite users to logout.
 Label-LooksGood: Looks good
 Label-LooksGood.@meta.@description: >-
   The label of one of the 3 major types of judgments which is saying the
