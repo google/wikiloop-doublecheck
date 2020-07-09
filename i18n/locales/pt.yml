@@ -10,7 +10,7 @@ Button-Next: Próximo
 Button-Next.@meta.@description: >-
   Rótulo para um botão ao clicar em ir para a próxima página ou exibir a próxima
   informação.
-Button-OpenedUrlToRevert: Aberto URL para desfazer
+Button-OpenedUrlToRevert: URL aberto para desfazer
 Button-OpenedUrlToRevert.@meta.@description: >-
   O rótulo do botão "Reverter agora" será alterado para "URL aberto para
   reverter" para mostrar o status da ação após o clique e a ação.
@@ -126,13 +126,10 @@ Label-Month: Mês
 Label-Month.@meta.@description: >-
   Um rótulo para a granularidade das estatísticas do tempo de detalhamento,
   dividido por mês.
-Label-MyHistory: Minha história
+Label-MyHistory: Meu histórico
 Label-MyHistory.@meta.@description: >-
   Um rótulo para a lista de atividades passadas, julgamentos passados
   contribuídos, etc., do usuário atual que está usando nosso software.
-Label-MyHistory.@meta.@isMachineTranslated: true
-Label-MyHistory.@meta.@translatedAt: '2020-07-07T19:26:51.445Z'
-Label-MyHistory.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-NewJudgement: Novo julgamento
 Label-NewJudgement.@meta.@description: >-
   Um rótulo para um novo julgamento dado à edição da Wikipedia por nosso
@@ -222,7 +219,7 @@ Label-Time: Tempo
 Label-Time.@meta.@description: >-
   O rótulo do registro de data e hora de um determinado julgamento ou ação dado
   por um usuário.
-Label-TopNumberAnonymousUsers: 'Principais {0} usuários anônimos'
+Label-TopNumberAnonymousUsers: '{0} principais usuários anônimos'
 Label-TopNumberAnonymousUsers.@meta.@description: >-
   O rótulo da seção dos 20 principais usuários anônimos, etc., enquanto o número
   "20" pode ser substituído no parâmetro
@@ -265,7 +262,7 @@ MenuItem-Stats.@meta.@description: >-
 Message-AJudgementLogged: 'Um julgamento para {0} para a revisão {1} foi registrado.'
 Message-AJudgementLogged.@meta.@description: >-
   A mensagem de que um julgamento para uma determinada revisão está sendo
-  registrado. O parâmetro {0} é o nome do artigo da Wikipedia. O parâmetro {0} é
+  registrado. O parâmetro {0} é o nome do artigo da Wikipedia. O parâmetro {1} é
   o identificador de revisão da revisão (edição da Wikipedia).
 Message-CongratsSuccessfullyReverted: 'Parabéns! você reverteu diretamente {0}.'
 Message-DiffNotAvailable: >-
@@ -279,22 +276,21 @@ Message-FeedHasNoNewRevisionsClickNextBelow.@meta.@description: >-
   {0} refere-se ao nome do feed fornecido.
 Message-Login: >-
   Você sabia que pode fazer login e preservar seus rótulos em seu nome? O login
-  com a conta da Wikipedia pode ser feito através de Oauth.
+  com a conta da Wikipedia pode ser feito através de OAuth.
 Message-NameVoteAnnouncement: >-
   Caro colaborador, estamos mantendo uma votação para um novo nome, substituindo
-  o "Campo de Batalha WikiLoop", que termina em 13 de julho de 2020 às 00:00
-  UTC.
+  o "WikiLoop Battlefield", que termina em 13 de julho de 2020 às 00:00 UTC.
 
-  Por favor vote.
+  Por favor, vote.
 Message-NoActiveUsersPleaseStartReview: >-
-  Nenhum usuário ativo nos últimos 15 minutos. Comece {0} revisando as revisões
+  Nenhum usuário ativo nos últimos 15 minutos. Comece {0} verificando as revisões
   {1} e seja o primeiro.
 Message-NoActiveUsersPleaseStartReview.@meta.@description: >-
   A mensagem que convida o usuário a começar a reverter. O {0} e o {1} são os
   pares de tags âncora HTML <a> e </a> com os parâmetros de URL.
 Message-PromptLogin: >-
   Você sabia que pode fazer login e preservar seus rótulos em seu nome? O login
-  com a conta da Wikipedia pode ser feito através de Oauth.
+  com a conta da Wikipedia pode ser feito através de OAuth.
 Message-RevertEditSummary: >-
   Identificado como um teste/vandalismo utilizando {0} versão {1}. Ver ou deixar
   sua opinião em {2}
