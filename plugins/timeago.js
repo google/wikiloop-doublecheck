@@ -21,17 +21,42 @@ Vue.use(VueTimeago, {
   // We use `date-fns` under the hood
   // So you can use all locales from it
   locales: {
-    // af: require('date-fns/locale/af'), Afrikaan is not supported by date-fns
+    ar: require('date-fns/locale/ar'),
+    be: require('date-fns/locale/be'),
+    bg: require('date-fns/locale/bg'),
+    ca: require('date-fns/locale/ca'),
+    cs: require('date-fns/locale/cs'),
+    da: require('date-fns/locale/da'),
     de: require('date-fns/locale/de'),
+    el: require('date-fns/locale/el'),
     en: require('date-fns/locale/en'),
+    eo: require('date-fns/locale/eo'),
     es: require('date-fns/locale/es'),
+    fi: require('date-fns/locale/fi'),
+    fil: require('date-fns/locale/fil'),
     fr: require('date-fns/locale/fr'),
+    hr: require('date-fns/locale/hr'),
+    hu: require('date-fns/locale/hu'),
     id: require('date-fns/locale/id'),
+    is: require('date-fns/locale/is'),
+    it: require('date-fns/locale/it'),
+    ja: require('date-fns/locale/ja'),
+    ko: require('date-fns/locale/ko'),
+    mk: require('date-fns/locale/mk'),
+    nb: require('date-fns/locale/nb'),
+    nl: require('date-fns/locale/nl'),
     pl: require('date-fns/locale/pl'),
-    pl: require('date-fns/locale/pt'),
+    pt: require('date-fns/locale/pt'),
+    ro: require('date-fns/locale/ro'),
     ru: require('date-fns/locale/ru'),
+    sk: require('date-fns/locale/sk'),
+    sl: require('date-fns/locale/sl'),
+    sr: require('date-fns/locale/sr'),
+    sv: require('date-fns/locale/sv'),
+    th: require('date-fns/locale/th'),
     tr: require('date-fns/locale/tr'),
     zh: require('date-fns/locale/zh_cn'),
-    // lv: require('date-fns/locale/lv'), NOT SUPPORTED by DEP yet
   }
 })
+
+

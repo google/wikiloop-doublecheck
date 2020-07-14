@@ -79,7 +79,7 @@ feedRouter.get("/:feed", async (req, res) => {
   else res.status(404).send(`Feed ${feed} doesn't exist`);
 });
 
-// curl -H "Content-Type: application/json" -H "WikiLoopToken:$FEED_WIKITRUST_TOKEN" -X POST -d @./test/testdata/wikitrust_feed.json http://dev.battlefield.wikiloop.org:3000/api/feed/wikitrust
+// curl -H "Content-Type: application/json" -H "WikiLoopToken:$FEED_WIKITRUST_TOKEN" -X POST -d @./test/testdata/wikitrust_feed.json http://dev.doublecheck.wikiloop.org:3000/api/feed/wikitrust
 feedRouter.post("/:feed", async (req, res) => {
   // Validation
   // TODO(xinbenlv): consider use `express-validator`

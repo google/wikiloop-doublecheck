@@ -1,109 +1,325 @@
-Button-Go: Vamos
+Button-Go: Ir
 Button-Go.@meta.@description: >-
-  Etiqueta de botones para redirigir al usuario a una URL o ubicación
+  Etiqueta de botones para redirigir al usuario a un enlace o ubicación
   determinada.
 Button-HelpTranslate: Ayuda a traducir
-Button-HelpTranslate.@meta.@description: >-
+Button-HelpTranslate.@meta.@description: |-
   Etiqueta para botón que permite a los u
-  
-  arios ayudar a traducir mensajes
-  internacionalizados para este software.
-Button-Next: próximo
+  arios ayudar a traducir mensajes internacionalizados para este software.
+Button-Next: Siguiente
 Button-Next.@meta.@description: >-
   Etiqueta para un botón al hacer clic en ir a la página siguiente o mostrar la
   siguiente información.
-Button-OpenedUrlToRevert: URL abierta para revertir
+Button-OpenedUrlToRevert: Enlace abierto para revertir
+Button-OpenedUrlToRevert.@meta.@description: >-
+  La etiqueta del botón "Revertir ahora" cambiará a "URL abierta para revertir"
+  para mostrar el estado de la acción después de hacer clic en el botón y
+  realizar la acción.
 Button-RevertNow: Revertir ahora
+Button-RevertNow.@meta.@description: >-
+  La etiqueta del botón para revertir una revisión dada en Wikipedia de
+  inmediato.
 Button-ShowJudgements: Mostrar juicios
+Button-ShowJudgements.@meta.@description: >-
+  La etiqueta del botón para mostrar los juicios dados en una edición de
+  Wikipedia
 Button-Undo: Deshacer
+Button-Undo.@meta.@description: Una etiqueta para el botón para deshacer una acción en nuestro software.
 Label-1Month: 1 mes (30 días)
+Label-1Month.@meta.@description: >-
+  Una etiqueta para mostrar el rango de tiempo de las estadísticas, que es de 1
+  mes o 30 días con precisión.
 Label-1Quarter: 1 trimestre (90d)
+Label-1Quarter.@meta.@description: >-
+  Una etiqueta para mostrar el rango de tiempo de las estadísticas, que es
+  exactamente 1 trimestre o 90 días.
 Label-1Year: 1 año (365d)
+Label-1Year.@meta.@description: >-
+  Una etiqueta para mostrar el rango de tiempo de las estadísticas, que es de 1
+  año o 365 días con precisión.
 Label-1day: 1 día
+Label-1day.@meta.@description: >-
+  Una etiqueta para mostrar el rango de tiempo de las estadísticas, que es
+  exactamente 1 día.
 Label-1week: 1 semana (7d)
+Label-1week.@meta.@description: >-
+  Una etiqueta para mostrar el rango de tiempo de las estadísticas, que es 1
+  semana o 7 días con precisión.
 Label-ActiveUsers: Usuarios activos
+Label-ActiveUsers.@meta.@description: >-
+  Una etiqueta para las estadísticas basadas en los usuarios activos de este
+  software.
 Label-AllTime: Todo el tiempo
+Label-AllTime.@meta.@description: >-
+  Una etiqueta para el rango de tiempo para mostrar estadísticas que es todo el
+  tiempo que nuestro software está en vivo.
 Label-Anonymous: Anónimo
 Label-ArtificialIntelligence: Inteligencia artificial
 Label-Author: Autor
 Label-CountOfJudgements: Total
+Label-CountOfJudgements.@meta.@description: Una etiqueta para el número total de juicios para las ediciones de Wikipedia.
 Label-Day: Día
+Label-Day.@meta.@description: >-
+  Una etiqueta para la granularidad del tiempo de desglose de las estadísticas
+  que se desglosa por día.
 Label-DiffView: Vista diferida
+Label-DiffView.@meta.@description: >-
+  Una etiqueta para una vista que muestra la diferencia entre las instantáneas,
+  como dos instantáneas de artículos de Wikipedia.
 Label-DirectRevertFailed: La reversión directa falló
+Label-DirectRevertFailed.@meta.@description: >-
+  Una etiqueta para mostrar el nuevo estado del botón "Revertir ahora". El
+  propósito es mostrar el estado de la acción realizada por el usuario, que en
+  este caso es que la acción de reversión falló.
 Label-DirectReverted: Directo revertido
+Label-DirectReverted.@meta.@description: >-
+  Una etiqueta para mostrar el nuevo estado del botón "Revertir ahora". El
+  propósito es mostrar el estado de la acción realizada por el usuario, que en
+  este caso es que la acción de reversión tuvo éxito.
 Label-EditSummary: Editar resumen
+Label-EditSummary.@meta.@description: >-
+  Un resumen de edición es una breve explicación de una edición en una página de
+  Wikipedia, como se muestra en https://en.wikipedia.org/wiki/Help:Edit_summary
 Label-EditedAt: editado
-Label-Feed: Actualizaciónes
+Label-EditedAt.@meta.@description: >-
+  La etiqueta de la marca de tiempo de edición en Wikipedia cuando se crea la
+  edición.
+Label-Feed: Actualizaciones
+Label-Feed.@meta.@description: >-
+  La etiqueta que muestra un feed, un flujo o una secuencia de nuevas ediciones
+  de Wikipedia entrantes, siguiendo el nombre de ese feed específico. Por
+  ejemplo, tenemos varios feeds de diferentes tipos de ediciones de Wikipedia,
+  como feed del tema del artículo, feed de ediciones detectadas por sistemas de
+  puntuación de detección de vandalismo, etc.
 Label-History: Historial
+Label-History.@meta.@description: >-
+  Una etiqueta para la lista de actividades pasadas, juicios pasados
+  contribuidos, etc., de todos los usuarios o de un usuario determinado.
 Label-HumanEditors: Editores humanos
+Label-HumanEditors.@meta.@description: La etiqueta para los juicios proporcionada por los editores humanos.
 Label-Judgement: Juicio
+Label-Judgement.@meta.@description: >-
+  La etiqueta de juicio dada a las ediciones de Wikipedia por nuestros usuarios
+  que revisan las ediciones de Wikipedia entrantes.
 Label-LastActiveTime: Última Actividad
+Label-LastActiveTime.@meta.@description: >-
+  La etiqueta para mostrar la última vez que un usuario estuvo activo en nuestro
+  software.
 Label-Loading: Cargando
+Label-Loading.@meta.@description: >-
+  Se está cargando la etiqueta para mostrar algunas partes o datos en una página
+  web. Por lo general, esta etiqueta se muestra como una alternativa para un
+  indicador de carga.
 Label-Login: Iniciar sesión
+Label-Login.@meta.@description: >-
+  La etiqueta de un botón de inicio de sesión para permitir que el usuario
+  inicie sesión. O también se usará en mensajes o avisará para invitar al
+  usuario a iniciar sesión.
 Label-Logout: Cerrar sesión
-Label-Looks-Good: Se ve bien
+Label-Logout.@meta.@description: >-
+  La etiqueta de un botón de inicio de sesión para permitir que el usuario
+  cierre sesión. O también se usará en mensajes o avisará para invitar al
+  usuario a cerrar sesión.
 Label-LooksGood: Se ve bien
+Label-LooksGood.@meta.@description: >-
+  La etiqueta de uno de los 3 tipos principales de juicios que dice que la
+  edición de Wikipedia que se está revisando es buena y constructiva para
+  Wikipedia, en lugar de perjudicial.
 Label-Me: Yo
+Label-Me.@meta.@description: >-
+  La etiqueta para identificar al propio usuario. Asegúrese de que la etiqueta
+  traducida aquí sea de género neutral.
 Label-Month: Mes
-Label-My-History: Mi historia
+Label-Month.@meta.@description: >-
+  Una etiqueta para la granularidad del tiempo de desglose de las estadísticas
+  que se desglosa por mes.
+Label-MyHistory: Mi historia
+Label-MyHistory.@meta.@description: >-
+  Una etiqueta para la lista de actividades pasadas, juicios pasados
+  contribuidos, etc., del usuario actual que está utilizando nuestro software.
+Label-MyHistory.@meta.@isMachineTranslated: true
+Label-MyHistory.@meta.@translatedAt: '2020-07-07T19:26:51.441Z'
+Label-MyHistory.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-NewJudgement: Nuevo juicio
+Label-NewJudgement.@meta.@description: Una etiqueta para un nuevo juicio dado a Wikipedia por nuestro usuario.
 Label-None: Ninguna
-Label-Not-Sure: No estoy seguro
+Label-None.@meta.@description: >-
+  La etiqueta para la tabla vacía de filas y celdas de contenido o listas
+  vacías. Esto generalmente se usa en la interfaz de usuario cuando no hay
+  contenido para mostrar.
 Label-NotSure: No estoy seguro
+Label-NotSure.@meta.@description: >-
+  La etiqueta de uno de los 3 tipos principales de juicios que dice que la
+  edición de Wikipedia que se está revisando no es segura y podría ser buena y
+  constructiva o perjudicial para Wikipedia.
 Label-OresBadfaith: ORES mala fe
+Label-OresBadfaith.@meta.@description: >-
+  La etiqueta que identifica la puntuación y el juicio dados por el sistema de
+  puntuación de Inteligencia Artificial WMF ORES. Esta etiqueta específica se
+  refiere al modelo opuesto de goodfaith de ORES. Ver
+  https://www.mediawiki.org/wiki/ORES#Advanced_support
 Label-OresBadfaith.@meta.@isMachineTranslated: true
-Label-OresBadfaith.@meta.@translatedAt: 2020-07-07T01:09:19.142Z
+Label-OresBadfaith.@meta.@translatedAt: '2020-07-07T01:09:19.142Z'
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: ORES Dañoso
-Label-Overriden: Anulado
-Label-Prompt-Login: Iniciar sesión
+Label-OresDamaging.@meta.@description: >-
+  La etiqueta que identifica la puntuación y el juicio dados por el sistema de
+  puntuación de Inteligencia Artificial WMF ORES. Esta etiqueta específica se
+  refiere al modelo dañino de ORES. Ver
+  https://www.mediawiki.org/wiki/ORES#Advanced_support
+Label-Overridden: Anulado
+Label-Overridden.@meta.@description: >-
+  La etiqueta para decir que una edición dada en el artículo de Wikipedia está
+  siendo anulada por otra edición más nueva en el mismo artículo de Wikipedia.
+  Esta etiqueta implica que dicha edición ya ha sido revertida por nuestro
+  usuario actual o revertida o actualizada por otro editor de Wikipedia en
+  Wikipedia.
+Label-Overridden.@meta.@isMachineTranslated: true
+Label-Overridden.@meta.@translatedAt: '2020-07-07T19:26:51.441Z'
+Label-Overridden.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-PromptLogin: Iniciar sesión
+Label-PromptLogin.@meta.@description: >-
+  La etiqueta para solicitar a un usuario que inicie sesión en nuestro software.
+  Es más como el tono de "iniciar sesión" en los idiomas en que existen
+  formalidad y discurso honorífico.
+Label-PromptLogin.@meta.@isMachineTranslated: true
+Label-PromptLogin.@meta.@translatedAt: '2020-07-07T19:26:51.441Z'
+Label-PromptLogin.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-Rank: Rango
+Label-Rank.@meta.@description: >-
+  La etiqueta para la clasificación de estadísticas por un número de
+  clasificación dado, por ejemplo, usuarios ordenados por su número de
+  contribuciones
 Label-Reason: Razón
+Label-Reason.@meta.@description: >-
+  La etiqueta por el resultado de una acción realizada, como cuando un usuario
+  está revocando una edición de Wikipedia.
 Label-Result: Resultado
-Label-RevertSucceeded: Reversión tuvo éxito!
+Label-Result.@meta.@description: >-
+  La etiqueta para el resultado de una acción realizada, como cuando un usuario
+  revirtió una edición de Wikipedia.
+Label-RevertSucceeded: ¡Reversión exitosa!
+Label-RevertSucceeded.@meta.@description: >-
+  La etiqueta del resultado de una acción realizada cuando un usuario revierte
+  una edición de Wikipedia, la acción es exitosa.
 Label-ReviewFeed: Revisar feed
+Label-ReviewFeed.@meta.@description: >-
+  La etiqueta para el feed, flujo o flujo de las ediciones entrantes de
+  Wikipedia que se revisarán.
 Label-ReviewedAndSays: 'revisado {0} y dice'
-Label-Should-Revert: Debería revertir
+Label-ReviewedAndSays.@meta.@description: >-
+  La etiqueta para comenzar la sentencia de juicio y las razones dadas para una
+  revisión.
 Label-ShouldRevert: Debería revertir
-Label-Snooze: dormitar
+Label-ShouldRevert.@meta.@description: >-
+  La etiqueta de uno de los 3 tipos principales de juicios que dice que la
+  edición de Wikipedia que se está revisando es perjudicial para Wikipedia en
+  lugar de ser buena y constructiva.
+Label-Snooze: Dormitar
+Label-Snooze.@meta.@description: >-
+  La etiqueta de un botón para posponer un recordatorio o una notificación, o en
+  otras palabras, significa "recordarme más tarde". En realidad, el botón de
+  repetición se usará cuando el recordatorio o mensaje de notificación vuelva a
+  aparecer. Por lo tanto, también significa "no despedido permanentemente, sino
+  solo despedido temporalmente".
 Label-Someone: Alguien
+Label-Someone.@meta.@description: La etiqueta para identificar a un usuario que no sea el usuario actual.
 Label-Time: Hora
-Label-TopNumberAnonymousUsers: 'Top {0} Usuarios anónimos'
-Label-TopUsers: Principales Usuarios
+Label-Time.@meta.@description: La etiqueta de la marca de tiempo de un juicio o acción dada por un usuario.
+Label-TopNumberAnonymousUsers: 'Mejores {0} usuarios anónimos'
+Label-TopNumberAnonymousUsers.@meta.@description: >-
+  La etiqueta para la sección de los 20 principales usuarios anónimos, etc.,
+  mientras que el número "20" se puede reemplazar en el parámetro.
+Label-TopUsers: Mejores usuarios
+Label-TopUsers.@meta.@description: >-
+  La etiqueta de la sección de los principales usuarios (conectados), etc.,
+  mientras que el número.
 Label-TopWikis: Los mejores wikis
+Label-TopWikis.@meta.@description: >-
+  La etiqueta para la sección de las mejores Wikipedias o sus proyectos hermanos
+  (Wikidata.org, etc.), por la cantidad de juicios dados en Wikipedia.
 Label-TotalNumber: Total
+Label-TotalNumber.@meta.@description: La etiqueta para la columna del número total de juicios dados por un usuario.
 Label-User: Usuario
+Label-User.@meta.@description: La etiqueta para el usuario que da el juicio de Wikipedia edit.
 Label-Week: Semana
+Label-Week.@meta.@description: >-
+  Una etiqueta para la granularidad del tiempo de desglose de las estadísticas
+  que se desglosa por semana.
 Label-YourJudgement: Tu juicio
+Label-YourJudgement.@meta.@description: La etiqueta para el juicio dado por el usuario actual.
 MenuItem-Code: Código
+MenuItem-Code.@meta.@description: >-
+  La etiqueta del elemento del menú para redirigir al usuario a la base de
+  código de este software.
 MenuItem-Contributions: Mis contribuciones
+MenuItem-Contributions.@meta.@description: >-
+  La etiqueta del elemento del menú que dirige al usuario a la lista de
+  contribuciones o juicios dados por el usuario actual.
 MenuItem-ContributionsBeforeLogin: Mis contribuciones antes de iniciar sesión
+MenuItem-ContributionsBeforeLogin.@meta.@description: 'PARA SER ELIMINADO, NO CAMBIAR NI TRADUCIR.'
 MenuItem-Issues: Cuestiones
+MenuItem-Issues.@meta.@description: >-
+  La etiqueta del elemento del menú redirige al usuario a los problemas de
+  Github de nuestro software.
 MenuItem-Stats: Estadísticas
+MenuItem-Stats.@meta.@description: >-
+  La etiqueta del elemento del menú que redirige al usuario a la página de
+  estadísticas de nuestro software.
 Message-AJudgementLogged: 'Se ha registrado una sentencia para {0} para revisión {1}.'
+Message-AJudgementLogged.@meta.@description: >-
+  El mensaje de que se está registrando un fallo para una revisión dada. El
+  parámetro {0} es el nombre del artículo de Wikipedia. El parámetro {0} es el
+  identificador de revisión de la revisión (edición de Wikipedia).
 Message-CongratsSuccessfullyReverted: '¡Felicidades! has revertido con éxito directamente {0}.'
 Message-DiffNotAvailable: >-
   El diff del artículo de wikipedia no está disponible temporalmente. Puedes
   intentar recargarlo. A veces, una revisión destrozada podría ser eliminada.
   Puedes consultar el historial de la página.
 Message-FeedHasNoNewRevisionsClickNextBelow: 'El feed {0} no tiene nuevas revisiones, haz clic a continuación.'
+Message-FeedHasNoNewRevisionsClickNextBelow.@meta.@description: >-
+  El mensaje que le dice al usuario que un feed o flujo dado de ediciones de
+  Wikipedia para ser revisado no tiene nuevas revisiones / ediciones. El
+  parámetro {0} se refiere al nombre de la fuente dada.
 Message-Login: >-
   ¿Sabes que puedes iniciar sesión y conservar tus etiquetas con tu nombre?
-  Es posible iniciar sesión con la cuenta de Wikipedia a través de Oauth.
+  Soportamos iniciar sesión con la cuenta de Wikipedia a través de Oauth.
 Message-NameVoteAnnouncement: >-
   Estimado colaborador, estamos celebrando una votación para el nuevo nombre que
-  reemplaza el "WikiLoop Battlefield" que finaliza el 13 de julio de 2020 a las
+  reemplaza el "WikiLoop DoubleCheck" que finaliza el 13 de julio de 2020 a las
   00:00 UTC. Por favor vota.
 Message-NoActiveUsersPleaseStartReview: >-
   No hay usuarios activos en los últimos 15 minutos. Comienza {0} revisando
   revisiones {1} y conviértete en el primero.
-Message-Prompt-Login: >-
-  ¿Sabes que puedes iniciar sesión y conservar tus etiquetas con tu nombre?
-  Es posible iniciar sesión con la cuenta de Wikipedia a través de Oauth.
+Message-NoActiveUsersPleaseStartReview.@meta.@description: >-
+  El mensaje que invita al usuario a comenzar a revertir. {0} y {1} son los
+  pares de etiquetas de anclaje HTML <a> y </a> con parámetros de URL.
+Message-PromptLogin: >-
+  ¿Sabes que puedes iniciar sesión y conservar tus etiquetas con tu nombre? Es
+  posible iniciar sesión con la cuenta de Wikipedia a través de Oauth.
 Message-RevertEditSummary: >-
   Identificado como prueba/vandalismo usando {0} versión {1}. Velo o da tu
   opinión en {2}
+Message-RevertEditSummary.@meta.@description: >-
+  El mensaje de resumen de edición cuando nuestro software está generando una
+  nueva edición de Wikipedia para ser confirmada en el sitio web de Wikipedia.
+  El parámetro {0} es el nombre de nuestro software, actualmente "WikiLoop
+  doublecheck". El parámetro {1} es el número de versión de nuestro software,
+  actualmente 4.0.1. El {2} es la URL del sitio web de nuestra herramienta,
+  actualmente "doublecheck.wikiloop.org".
 Message-SorryWeFailedToRevert: 'Lo sentimos, no pudimos revertir la revisión {0}.'
-Message-TheRevisionIsSuccessfullyRevertedAs: 'La revisión {0} se revierte con éxito como {1}.'
+Message-SorryWeFailedToRevert.@meta.@description: >-
+  El mensaje para decirle al usuario que la reversión de una edición dada falló.
+  El parámetro {0} es el identificador de revisión.
+Message-TheRevisionIsSuccessfullyRevertedAs: 'La revisión {0} se revirtió con éxito como {1}.'
+Message-TheRevisionIsSuccessfullyRevertedAs.@meta.@description: >-
+  El mensaje que indica que una edición (revisión) de Wikipedia dada se revierte
+  con éxito. El parámetro {0} es el identificador de revisión de la edición de
+  Wikipedia que se revierte. El parámetro {1} es el segundo identificador de
+  revisión que la nueva edición de Wikipedia que se encuentra encima de la
+  edición anterior de Wikipedia, que es el resultado de la reversión.
 Message-ThereIsNoEditSummary: No hay resumen de edición.
+Message-ThereIsNoEditSummary.@meta.@description: >-
+  El mensaje muestra que una edición de Wikipedia dada no tiene una explicación,
+  consulte https://en.wikipedia.org/wiki/Help:Edit_summary.
 Message-YourJudgementLogged: 'Tu juicio para {0} para revisión {1} ha sido registrado.'

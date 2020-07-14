@@ -11,96 +11,296 @@ Button-Next.@meta.@description: >-
   Etikett för en knapp när du klickar på den till nästa sida eller visa nästa
   information.
 Button-OpenedUrlToRevert: Öppnad URL för att återgå
+Button-OpenedUrlToRevert.@meta.@description: >-
+  Etiketten på knappen "Återställ nu" kommer att ändras till "Öppnad URL för att
+  återställa" för att visa åtgärdsstatus efter att knappen har klickats och
+  åtgärden utförts.
 Button-RevertNow: Gå tillbaka nu
+Button-RevertNow.@meta.@description: >-
+  Etiketten för knappen för att omedelbart återställa en viss version på
+  Wikipedia.
 Button-ShowJudgements: Visa domar
+Button-ShowJudgements.@meta.@description: Etiketten för knappen för att visa domar som ges i en Wikipedia-redigering
 Button-Undo: Ångra
+Button-Undo.@meta.@description: En etikett för knappen för att ångra en åtgärd på vår programvara.
 Label-1Month: 1 månad (30d)
+Label-1Month.@meta.@description: >-
+  En etikett för statistikens tidsintervall, som är 1 månad eller 30 dagar
+  exakt.
 Label-1Quarter: 1 kvartal (90d)
+Label-1Quarter.@meta.@description: >-
+  En etikett för statistikens tidsintervall, som är 1 kvartal eller 90 dagar
+  exakt.
 Label-1Year: 1 år (365d)
+Label-1Year.@meta.@description: 'En etikett för statistikens tidsintervall, som är 1 år eller 365 dagar exakt.'
 Label-1day: 1 dag
+Label-1day.@meta.@description: 'En etikett för statistikens tidsintervall, som är en dag exakt.'
 Label-1week: 1 vecka (7d)
+Label-1week.@meta.@description: >-
+  En etikett för statistikens tidsintervall, som är en vecka eller sju dagar
+  exakt.
 Label-ActiveUsers: Aktiva användare
+Label-ActiveUsers.@meta.@description: >-
+  En etikett för statistiken baserad på de aktiva användarna av denna
+  programvara.
 Label-AllTime: Hela tiden
+Label-AllTime.@meta.@description: >-
+  En etikett för tidsintervallet för statistik som ska visas som är hela tiden
+  att vår programvara är live.
 Label-Anonymous: Anonym
 Label-ArtificialIntelligence: Artificiell intelligens
 Label-Author: Författare
 Label-CountOfJudgements: Räkna
+Label-CountOfJudgements.@meta.@description: En etikett för summan av domar för Wikipedia-redigeringar.
 Label-Day: Dag
+Label-Day.@meta.@description: En etikett för uppdelningstiden för statistik som uppdelas efter dag.
 Label-DiffView: Diff View
+Label-DiffView.@meta.@description: >-
+  En etikett för en vy som visar skillnaden mellan ögonblicksbilder, t.ex. två
+  Wikipedia-ögonblicksbilder.
 Label-DirectRevertFailed: Direkt återgång misslyckades
+Label-DirectRevertFailed.@meta.@description: >-
+  En etikett för att visa ny status för knappen "Återställ nu". Syftet är att
+  visa statusen för den åtgärd som utförs av användaren, vilket i detta fall är
+  att den återvändande åtgärden misslyckades.
 Label-DirectReverted: Direkt tillbaka
+Label-DirectReverted.@meta.@description: >-
+  En etikett för att visa ny status för knappen "Återställ nu". Syftet är att
+  visa statusen för den åtgärd som utförs av användaren, vilket i detta fall är
+  att den återstående åtgärden lyckades.
 Label-EditSummary: Redigera sammanfattningen
+Label-EditSummary.@meta.@description: >-
+  En redigeringsöversikt är en kort förklaring av en redigering på en
+  Wikipedia-sida, som visas på https://en.wikipedia.org/wiki/Help:Edit_summary
 Label-EditedAt: redigerad
+Label-EditedAt.@meta.@description: >-
+  Etiketten för tidsstämpeln för redigering på Wikipedia när redigeringen
+  skapas.
 Label-Feed: Utfodra
+Label-Feed.@meta.@description: >-
+  Etiketten som visar ett flöde, ett flöde eller en ström av inkommande nya
+  Wikipedia-ändringar, efter namnet på det specifika flödet. Vi har till exempel
+  olika flöden av olika typer av Wikipedia-redigeringar, till exempel flöde av
+  artikelämne, flöde av redigeringar som upptäckts av system för detektering av
+  vandalism, etc.
 Label-History: Historia
+Label-History.@meta.@description: >-
+  En etikett för listan över tidigare aktiviteter, tidigare bedömningar bidragit
+  etc, för alla användare eller en viss användare.
 Label-HumanEditors: Mänskliga redaktörer
+Label-HumanEditors.@meta.@description: Etiketten för bedömningar som tillhandahålls av mänskliga redaktörer.
 Label-Judgement: Dom
+Label-Judgement.@meta.@description: >-
+  Etiketten för bedömning som ges till Wikipedia-redigeringar av våra användare
+  som granskar inkommande Wikipedia-redigeringar.
 Label-LastActiveTime: Senast aktiv
+Label-LastActiveTime.@meta.@description: Etiketten för att visa förra gången en användare var aktiv på vår programvara.
 Label-Loading: Läser in
+Label-Loading.@meta.@description: >-
+  Etiketten för att visa vissa delar eller data på en webbsida laddas.
+  Vanligtvis visas denna etikett som ett fallback för en lastindikator.
 Label-Login: Logga in
+Label-Login.@meta.@description: >-
+  Etiketten för en inloggningsknapp så att användaren kan logga in. Eller så
+  kommer det också att användas i meddelanden eller om du vill bjuda in
+  användaren att logga in.
 Label-Logout: Logga ut
-Label-Looks-Good: Ser bra ut
+Label-Logout.@meta.@description: >-
+  Etiketten för en inloggningsknapp så att användaren kan logga ut. Eller så
+  kommer det också att användas i meddelanden eller om du vill bjuda in
+  användare till utloggning.
 Label-LooksGood: Ser bra ut
+Label-LooksGood.@meta.@description: >-
+  Etiketten för en av de tre huvudtyperna av domar som säger att
+  Wikipedia-redigeringen som granskas är bra och konstruktiv för Wikipedia, i
+  motsats till att skada.
 Label-Me: Mig
+Label-Me.@meta.@description: >-
+  Etiketten för att identifiera användaren själv. Se till att den översatta
+  etiketten här är könsneutral.
 Label-Month: Månad
-Label-My-History: Min historia
+Label-Month.@meta.@description: En etikett för uppdelningstiden för statistik som är uppdelad efter månad.
+Label-MyHistory: Min historia
+Label-MyHistory.@meta.@description: >-
+  En etikett för listan över tidigare aktiviteter, tidigare bedömda bidrag osv.
+  För den nuvarande användaren som använder vår programvara.
+Label-MyHistory.@meta.@isMachineTranslated: true
+Label-MyHistory.@meta.@translatedAt: '2020-07-07T19:26:51.446Z'
+Label-MyHistory.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-NewJudgement: Ny dom
+Label-NewJudgement.@meta.@description: En etikett för en ny bedömning som Wikipedia har redigerat av vår användare.
 Label-None: Ingen
-Label-Not-Sure: Vet inte
+Label-None.@meta.@description: >-
+  Etiketten för tom tabell med rader och celler med innehåll eller tomma listor.
+  Detta används vanligtvis i användargränssnittet när det inte finns något
+  innehåll att visa.
 Label-NotSure: Vet inte
+Label-NotSure.@meta.@description: >-
+  Etiketten för en av de tre huvudtyperna av domar som säger att
+  Wikipedia-redigeringen granskas är osäker och kan vara antingen bra och
+  konstruktiv eller skadlig för Wikipedia.
 Label-OresBadfaith: ORES Dålig tro
+Label-OresBadfaith.@meta.@description: >-
+  Etiketten som identifierar poängen och bedömningen som ges av WMF Artificial
+  Intelligence-poängsystem ORES. Denna etikettspecifika hänvisar till motsatsen
+  till god trofasmodell för ORES. Se
+  https://www.mediawiki.org/wiki/ORES#Advanced_support
 Label-OresBadfaith.@meta.@isMachineTranslated: true
-Label-OresBadfaith.@meta.@translatedAt: 2020-07-07T01:09:19.145Z
+Label-OresBadfaith.@meta.@translatedAt: '2020-07-07T01:09:19.145Z'
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: ORES skadar
-Label-Overriden: åsido
-Label-Prompt-Login: Logga in
+Label-OresDamaging.@meta.@description: >-
+  Etiketten som identifierar poängen och bedömningen som ges av WMF Artificial
+  Intelligence-poängsystem ORES. Denna etikettspecifika hänvisar till den
+  skadliga modellen för ORES. Se
+  https://www.mediawiki.org/wiki/ORES#Advanced_support
+Label-Overridden: åsido
+Label-Overridden.@meta.@description: >-
+  Etiketten för att säga att en given redigering i Wikipedia-artikel åsidosätts
+  av en annan nyare redigering på samma Wikipedia-artikel. Den här etiketten
+  innebär en sådan redigering har antingen redan återställts av vår nuvarande
+  användare, eller om den återställs eller uppdateras av en annan
+  Wikipedia-redaktör på Wikipedia.
+Label-Overridden.@meta.@isMachineTranslated: true
+Label-Overridden.@meta.@translatedAt: '2020-07-07T19:26:51.446Z'
+Label-Overridden.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-PromptLogin: Logga in
+Label-PromptLogin.@meta.@description: >-
+  Etiketten för att uppmana en användare att logga in på vår programvara. Det är
+  mer som "snälla inloggning" -ton på språk som dessa formaliteter och hederliga
+  tal finns.
+Label-PromptLogin.@meta.@isMachineTranslated: true
+Label-PromptLogin.@meta.@translatedAt: '2020-07-07T19:26:51.446Z'
+Label-PromptLogin.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-Rank: Rang
+Label-Rank.@meta.@description: >-
+  Etiketten för rangordning av statistik efter ett visst sorteringsnummer, till
+  exempel användare sorterade efter deras antal bidrag
 Label-Reason: Anledning
+Label-Reason.@meta.@description: >-
+  Etiketten på grund av resultatet av en utförd åtgärd, till exempel när en
+  användare återställer en Wikipedia-redigering.
 Label-Result: Resultat
+Label-Result.@meta.@description: >-
+  Etiketten för resultatet av en utförd åtgärd, till exempel när en användare
+  återställde en Wikipedia-redigering.
 Label-RevertSucceeded: Återvänd lyckades!
+Label-RevertSucceeded.@meta.@description: >-
+  Etiketten för resultatet av en utförd åtgärd när en användare återställde en
+  Wikipedia-redigering, åtgärden är framgångsrik.
 Label-ReviewFeed: Granska Feed
+Label-ReviewFeed.@meta.@description: >-
+  Etiketten för flödet, flödet eller strömmen för inkommande
+  Wikipedia-redigeringar som ska granskas.
 Label-ReviewedAndSays: 'granskade {0} och säger'
-Label-Should-Revert: Bör återgå
+Label-ReviewedAndSays.@meta.@description: Etiketten för att påbörja domen och skälen för en revidering.
 Label-ShouldRevert: Bör återgå
+Label-ShouldRevert.@meta.@description: >-
+  Etiketten för en av de tre huvudtyperna av domar som säger att
+  Wikipedia-redigeringen granskas skadar Wikipedia i motsats till att vara bra
+  och konstruktiv.
 Label-Snooze: Snooze
+Label-Snooze.@meta.@description: >-
+  Etiketten på en knapp för att snooze en påminnelse eller ett meddelande, eller
+  med andra ord betyder det "påminn mig senare". I verkligheten används
+  snooze-knappen när påminnelsen eller meddelandet visas igen. Så det betyder
+  också "inte avskedas permanent utan bara avvisas tillfälligt".
 Label-Someone: Någon
+Label-Someone.@meta.@description: Etiketten för att identifiera en annan användare än den nuvarande användaren.
 Label-Time: Tid
+Label-Time.@meta.@description: >-
+  Etiketten för tidsstämpeln för en given bedömning eller åtgärd som ges av en
+  användare.
 Label-TopNumberAnonymousUsers: 'Topp {0} Anonyma användare'
+Label-TopNumberAnonymousUsers.@meta.@description: >-
+  Etiketten för sektionen för de 20 anonyma användarna osv, medan siffran "20"
+  kan ersättas i parametern.
 Label-TopUsers: Toppanvändare
+Label-TopUsers.@meta.@description: >-
+  Etiketten för sektionen för de översta (inloggade) användare osv. Medan
+  antalet.
 Label-TopWikis: Topp Wikis
+Label-TopWikis.@meta.@description: >-
+  Etiketten för sektionen för de bästa Wikipedia-filmen eller dess systerprojekt
+  (Wikidata.org etc), efter det antal domar som har gjorts på Wikipedia.
 Label-TotalNumber: Total
+Label-TotalNumber.@meta.@description: Etiketten för kolumnen för det totala antalet domar som ges av en användare.
 Label-User: Användare
+Label-User.@meta.@description: Etiketten för användare som ger redogörelsen för Wikipedia.
 Label-Week: Vecka
+Label-Week.@meta.@description: 'En etikett för statistikens uppdelningstider, uppdelad efter vecka.'
 Label-YourJudgement: Din dom
+Label-YourJudgement.@meta.@description: Etiketten för den dom som ges av den aktuella användaren.
 MenuItem-Code: Koda
+MenuItem-Code.@meta.@description: >-
+  Menyalternativet för att omdirigera användaren till kodbasen för denna
+  programvara.
 MenuItem-Contributions: Mina bidrag
+MenuItem-Contributions.@meta.@description: >-
+  Menypostetiketten som leder användaren till listan över bidrag eller
+  bedömningar som gjorts av den aktuella användaren.
 MenuItem-ContributionsBeforeLogin: Mina bidrag innan inloggning
+MenuItem-ContributionsBeforeLogin.@meta.@description: 'FÖR ATT RADERAS, ÄNDRAS ELLER TRANSLATE.'
 MenuItem-Issues: frågor
+MenuItem-Issues.@meta.@description: >-
+  Menypostetiketten omdirigerar användaren till Github-frågorna i vår
+  programvara.
 MenuItem-Stats: stats
+MenuItem-Stats.@meta.@description: >-
+  Menyalternativet etikett omdirigerar användaren till statistik sidan för vår
+  programvara.
 Message-AJudgementLogged: 'En dom för {0} för revision {1} har loggats.'
+Message-AJudgementLogged.@meta.@description: >-
+  Meddelandet om att en dom för en viss revision spelas in. Parametern {0} är
+  namnet på Wikipedia-artikeln. Parametern {0} är revisionsidentifieraren för
+  revisionen (Wikipedia-redigering).
 Message-CongratsSuccessfullyReverted: 'grattis! har du lyckats återgå direkt {0}.'
 Message-DiffNotAvailable: >-
   Wikipedia-artikeln diff är tillfälligt inte tillgänglig. Du kan försöka ladda
   den igen. Ibland kan en vandaliserad revision tas bort. Du kan kontrollera
   sidhistoriken.
 Message-FeedHasNoNewRevisionsClickNextBelow: 'Feed {0} har inga nya versioner, klicka på nästa nedan.'
+Message-FeedHasNoNewRevisionsClickNextBelow.@meta.@description: >-
+  Meddelandet som berättar användaren om en viss flöde eller ström av
+  Wikipedia-redigeringar som ska granskas har inga nya revideringar /
+  redigeringar. Parametern {0} hänvisar till namnet på det givna flödet.
 Message-Login: >-
   Vet du att du kan logga in och bevara dina etiketter under ditt namn? Vi
   stöder inloggning med Wikipedia-konto via Oauth.
 Message-NameVoteAnnouncement: >-
   Kära bidragsgivare, vi röstar om ett nytt namn som ersätter "WikiLoop
-  Battlefield" som slutar den 13 juli 2020 00:00 UTC. Vänligen rösta.
+  doublecheck" som slutar den 13 juli 2020 00:00 UTC. Vänligen rösta.
 Message-NoActiveUsersPleaseStartReview: >-
   Inga aktiva användare under de senaste 15 min. Börja {0} granska revisioner
   {1} och bli den första.
-Message-Prompt-Login: >-
+Message-NoActiveUsersPleaseStartReview.@meta.@description: >-
+  Meddelandet som uppmanar användaren att börja återgå. {0} och {1} är
+  HTML-ankarparpar <a> och </a> med URL-parametrar.
+Message-PromptLogin: >-
   Vet du att du kan logga in och bevara dina bidrag under ditt namn? Vi stöder
   inloggning med Wikipedia-konto via Oauth.
 Message-RevertEditSummary: >-
   Identifieras som test / vandalism med {0} version {1}. Se det eller ge din
   åsikt på {2}
+Message-RevertEditSummary.@meta.@description: >-
+  Meddelandet om redigeringsöversikt när vår programvara genererar en ny
+  Wikipedia-redigering som kommer att begås på Wikipedia-webbplatsen. Parametern
+  {0} är namnet på vår programvara, för närvarande "WikiLoop DoubleCheck".
+  Parametern {1} är versionnumret för vår programvara, för närvarande 4.0.1. {2}
+  är webbadressen till vårt verktyg, för närvarande "doublecheck.wikiloop.org".
 Message-SorryWeFailedToRevert: 'Vi kunde tyvärr inte återställa revisionen {0}.'
+Message-SorryWeFailedToRevert.@meta.@description: >-
+  Meddelandet för att berätta för användaren att omvändningen av en given
+  redigering misslyckades. Parametern {0} är revisionsidentifieraren.
 Message-TheRevisionIsSuccessfullyRevertedAs: 'Revisionen {0} har återgått till {1}.'
+Message-TheRevisionIsSuccessfullyRevertedAs.@meta.@description: >-
+  Meddelandet som anger att en viss Wikipedia-redigering (revision) återställs
+  framgångsrikt. Parametern {0} är revisionsidentifieraren för
+  Wikipedia-redigeringen som återställs. Parametern {1} är den andra
+  revisionsidentifieraren som den nya Wikipedia-redigeringen som är ovanpå den
+  föregående Wikipedia-redigeringen som är ett resultat av omvändningen.
 Message-ThereIsNoEditSummary: Det finns ingen redigeringsöversikt.
+Message-ThereIsNoEditSummary.@meta.@description: >-
+  Meddelandet visar att en viss Wikipedia-redigering inte har någon förklaring,
+  se https://sv.wikipedia.org/wiki/Hjälp: Redigera_summary.
 Message-YourJudgementLogged: 'Din bedömning för {0} för revision {1} har loggats.'

@@ -9,80 +9,272 @@ Button-Next.@meta.@description: >-
   Etiquetar un botó quan es fa clic a l'opció anar a la pàgina següent o mostrar
   la informació següent.
 Button-OpenedUrlToRevert: URL obert per tornar
+Button-OpenedUrlToRevert.@meta.@description: >-
+  L'etiqueta del botó "Revertir ara" canviarà a "URL obert per revertir" per
+  mostrar l'estat de l'acció després de fer clic i es va fer l'acció.
 Button-RevertNow: Torna ara
+Button-RevertNow.@meta.@description: >-
+  L’etiqueta del botó per revertir una revisió determinada a Viquipèdia
+  immediatament.
 Button-ShowJudgements: Mostrar judicis
+Button-ShowJudgements.@meta.@description: L’etiqueta del botó per mostrar judicis dictats en una edició de Viquipèdia
 Button-Undo: Desfer
+Button-Undo.@meta.@description: Una etiqueta del botó per desfer una acció al nostre programari.
 Label-1Month: 1 mes (30 d)
+Label-1Month.@meta.@description: >-
+  Una etiqueta del rang de temps d’estadístiques que es mostra, que és
+  exactament d’un mes o 30 dies.
 Label-1Quarter: 1 quart (90d)
+Label-1Quarter.@meta.@description: >-
+  Una etiqueta del rang de temps d’estadístiques que es mostra, que és
+  exactament d’un quart o 90 dies.
 Label-1Year: 1 any (365d)
+Label-1Year.@meta.@description: >-
+  Una etiqueta del interval de temps d’estadístiques que es mostraran, que és
+  d’1 any o 365 dies de precisió.
 Label-1day: 1 dia
+Label-1day.@meta.@description: >-
+  Una etiqueta del rang de temps d’estadístiques que es mostra, que és
+  exactament d’un dia.
 Label-1week: 1 setmana (diades)
+Label-1week.@meta.@description: >-
+  Una etiqueta del rang de temps d’estadístiques que es mostra, que és
+  exactament d’una setmana o 7 dies.
 Label-ActiveUsers: Usuaris actius
+Label-ActiveUsers.@meta.@description: >-
+  Una etiqueta per a les estadístiques basades en els usuaris actius d’aquest
+  programari.
 Label-AllTime: Tot el temps
+Label-AllTime.@meta.@description: >-
+  Una etiqueta per a l'interval de temps que es mostraran les estadístiques, que
+  és tot el temps en què el nostre programari està en directe.
 Label-Anonymous: Anònim
 Label-ArtificialIntelligence: Intel · ligència artificial
 Label-Author: Autor
 Label-CountOfJudgements: Comptar
+Label-CountOfJudgements.@meta.@description: Una etiqueta per sumar judicis per a les edicions de Viquipèdia.
 Label-Day: Dia
+Label-Day.@meta.@description: >-
+  Una etiqueta per a la granularitat del temps de desglossament de les
+  estadístiques desglossades per dia.
 Label-DiffView: Vista Diff
+Label-DiffView.@meta.@description: >-
+  Una etiqueta per a una vista que mostra la diferència entre instantànies, com
+  ara dues instantànies d’articles de Viquipèdia.
 Label-DirectRevertFailed: Ha fallat el revertiment directe
+Label-DirectRevertFailed.@meta.@description: >-
+  Una etiqueta per mostrar el nou estat del botó "Torna ara". El propòsit és
+  mostrar l’estat de l’acció realitzada per l’usuari que en aquest cas és que
+  l’acció de revertiment ha fallat.
 Label-DirectReverted: Revertida directa
+Label-DirectReverted.@meta.@description: >-
+  Una etiqueta per mostrar el nou estat del botó "Torna ara". El propòsit és
+  mostrar l’estat de l’acció realitzada per l’usuari que en aquest cas és que
+  l’acció de revertiment ha tingut èxit.
 Label-EditSummary: Edita el resum
+Label-EditSummary.@meta.@description: >-
+  Un resum d’edició és una breu explicació d’una edició a una pàgina de
+  Viquipèdia, tal com es mostra a
+  https://en.wikipedia.org/wiki/Help:Edit_summary
 Label-EditedAt: editat
+Label-EditedAt.@meta.@description: L’etiqueta de la marca de temps d’edició a Viquipèdia quan es crea l’edició.
 Label-Feed: Feed
+Label-Feed.@meta.@description: >-
+  L’etiqueta que mostra un flux, un flux o un flux de noves edicions de
+  Wikipedia que s’accedeixen, seguint el nom d’aquest flux específic. Per
+  exemple, disposem de diversos feeds de diferents tipus d’edicions de
+  Viquipèdia, com ara el feed de tema d’articles, el feed d’edicions detectades
+  per sistemes de puntuació de detecció de vandalisme, etc.
 Label-History: Història
+Label-History.@meta.@description: >-
+  Una etiqueta per a la llista d’activitats passades, judicis anteriors
+  aportats, etc, de tots els usuaris o d’un determinat usuari.
 Label-HumanEditors: Editors humans
+Label-HumanEditors.@meta.@description: L’etiqueta dels judicis proporcionats pels editors humans.
 Label-Judgement: Judici
+Label-Judgement.@meta.@description: >-
+  Els nostres usuaris que revisen les edicions de Wikipedia que provenen de
+  l'etiqueta de judici que es dóna a les edicions de Viquipèdia.
 Label-LastActiveTime: Últim actiu
+Label-LastActiveTime.@meta.@description: >-
+  L’etiqueta per mostrar l’última vegada que un usuari va estar actiu al nostre
+  programari.
 Label-Loading: Carregant
+Label-Loading.@meta.@description: >-
+  S’està carregant l’etiqueta per mostrar algunes parts o dades d’una pàgina
+  web. Normalment aquesta etiqueta es mostra com un anticompte per a un
+  indicador de càrrega.
 Label-Login: iniciar Sessió
+Label-Login.@meta.@description: >-
+  L’etiqueta d’un botó d’inici de sessió per permetre a l’usuari iniciar sessió.
+  O també s’utilitzarà als missatges o al missatge d’invitació per convidar
+  l’usuari a iniciar la sessió.
 Label-Logout: Tancar sessió
-Label-Looks-Good: Té bona pinta
+Label-Logout.@meta.@description: >-
+  L’etiqueta d’un botó d’inici de sessió per permetre a l’usuari sortir de
+  sessió. O també s'utilitzarà en els missatges o al missatge d'invitació per
+  convidar l'usuari a tancar la sessió.
 Label-LooksGood: Té bona pinta
+Label-LooksGood.@meta.@description: >-
+  L'etiqueta d'un dels tres tipus principals de judicis que diu que l'edició de
+  Wikipedia es revisa és bona i constructiva per a la Viquipèdia, a diferència
+  de perjudicar.
 Label-Me: Jo
+Label-Me.@meta.@description: >-
+  L’etiqueta per identificar l’usuari mateix. Assegureu-vos que l’etiqueta
+  traduïda aquí és neutre.
 Label-Month: Mes
-Label-My-History: La meva història
+Label-Month.@meta.@description: >-
+  Una etiqueta de granularitat del temps de desglossament de les estadístiques
+  desglossades per mes.
+Label-MyHistory: La meva història
+Label-MyHistory.@meta.@description: >-
+  Una etiqueta per a la llista d'activitats anteriors, judicis anteriors
+  aportats, etc., de l'usuari actual que utilitza el nostre programari.
+Label-MyHistory.@meta.@isMachineTranslated: true
+Label-MyHistory.@meta.@translatedAt: '2020-07-07T19:26:51.440Z'
+Label-MyHistory.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-NewJudgement: Nou judici
+Label-NewJudgement.@meta.@description: Una etiqueta per a un nou judici dictat a Wikipedia editat pel nostre usuari.
 Label-None: Cap
-Label-Not-Sure: No n'estic segur
+Label-None.@meta.@description: >-
+  L’etiqueta de la taula buida de files i cel·les de contingut o de llistes
+  buides. Normalment s’utilitza a la interfície d’usuari quan no hi ha contingut
+  per mostrar.
 Label-NotSure: No n'estic segur
+Label-NotSure.@meta.@description: >-
+  L'etiqueta d'un dels tres principals tipus de judicis que diu que l'edició de
+  la Wikipedia que s'està revisant no és segura i pot ser bona i constructiva o
+  perjudicial per a la Viquipèdia.
 Label-OresBadfaith: ORES Mala fe
+Label-OresBadfaith.@meta.@description: >-
+  L’etiqueta que identifica la puntuació i el judici donat pel sistema de
+  puntuació d’intel·ligència artificial WMF ORES. Aquestes etiquetes
+  específiques es refereixen a l’oposat al model de fidelitat d’ORES. Consulteu
+  https://www.mediawiki.org/wiki/ORES#Advanced_support
 Label-OresBadfaith.@meta.@isMachineTranslated: true
-Label-OresBadfaith.@meta.@translatedAt: 2020-07-07T01:09:19.141Z
+Label-OresBadfaith.@meta.@translatedAt: '2020-07-07T01:09:19.141Z'
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: ORES Danyós
-Label-Overriden: Nul
-Label-Prompt-Login: iniciar Sessió
+Label-OresDamaging.@meta.@description: >-
+  L’etiqueta que identifica la puntuació i el judici donat pel sistema de
+  puntuació d’intel·ligència artificial WMF ORES. Aquestes etiquetes
+  específiques es refereixen al model perjudicial d’ORES. Consulteu
+  https://www.mediawiki.org/wiki/ORES#Advanced_support
+Label-Overridden: Nul
+Label-Overridden.@meta.@description: >-
+  L'etiqueta per a dir que una altra edició de l'article anterior de Wikipedia
+  està sent anul·lada per una altra edició més recent del mateix article de
+  Wikipedia. Aquesta etiqueta implica que aquesta edició ja és revertida pel
+  nostre usuari actual, o bé revertida o actualitzada per un altre editor de
+  Wikipedia a Wikipedia.
+Label-Overridden.@meta.@isMachineTranslated: true
+Label-Overridden.@meta.@translatedAt: '2020-07-07T19:26:51.440Z'
+Label-Overridden.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-PromptLogin: iniciar Sessió
+Label-PromptLogin.@meta.@description: >-
+  L’etiqueta per demanar a l’usuari que iniciï la sessió al nostre programari.
+  És més semblant al to "si us plau iniciar la sessió" en els idiomes que
+  existeixen la formalitat i el discurs honorífic.
+Label-PromptLogin.@meta.@isMachineTranslated: true
+Label-PromptLogin.@meta.@translatedAt: '2020-07-07T19:26:51.440Z'
+Label-PromptLogin.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-Rank: Rànquing
+Label-Rank.@meta.@description: >-
+  L’etiqueta de classificació d’estadístiques d’un número d’ordenació
+  determinat, per exemple, els usuaris ordenats pel seu nombre de contribucions
 Label-Reason: Raó
+Label-Reason.@meta.@description: >-
+  L’etiqueta de la raó del resultat d’una acció realitzada, com per exemple quan
+  un usuari torna a invertir una edició de Wikipedia.
 Label-Result: Resultat
+Label-Result.@meta.@description: >-
+  L’etiqueta del resultat d’una acció realitzada, com per exemple quan un usuari
+  va revertir una edició de Wikipedia.
 Label-RevertSucceeded: Tornar a reeixir
+Label-RevertSucceeded.@meta.@description: >-
+  L’etiqueta del resultat d’una acció realitzada quan un usuari va revertir una
+  edició de Wikipedia, l’acció té èxit.
 Label-ReviewFeed: Reviseu el feed
+Label-ReviewFeed.@meta.@description: >-
+  S'ha de revisar l'etiqueta de l'alimentació, el flux o el flux de les edicions
+  de Viquipèdia entrants.
 Label-ReviewedAndSays: 'ha revisat {0} i afirma'
-Label-Should-Revert: Hauria de tornar
+Label-ReviewedAndSays.@meta.@description: L'etiqueta per iniciar la sentència del judici i les raons per a una revisió.
 Label-ShouldRevert: Hauria de revertir
+Label-ShouldRevert.@meta.@description: >-
+  L’etiqueta d’un dels tres tipus principals de judicis que diu que l’edició de
+  la Viquipèdia s’està revisant fent malbé a la Viquipèdia en contraposició a
+  que sigui bona i constructiva.
 Label-Snooze: Dormitar
+Label-Snooze.@meta.@description: >-
+  L’etiqueta d’un botó per retardar un recordatori o una notificació, o dit
+  d’una altra manera, significa “recordar-me més endavant”. En realitat
+  s’utilitzarà el botó d’enfosquiment quan torni a aparèixer el missatge de
+  recordatori o notificació. Així doncs, també significa "no acomiadar-se
+  definitivament, sinó simplement acomiadat temporalment".
 Label-Someone: Algú
+Label-Someone.@meta.@description: L’etiqueta per identificar un usuari que no sigui l’usuari actual.
 Label-Time: Temps
+Label-Time.@meta.@description: L’etiqueta de la marca de temps d’un judici o acció determinada per un usuari.
 Label-TopNumberAnonymousUsers: Top 0 Usuaris anònims
+Label-TopNumberAnonymousUsers.@meta.@description: >-
+  L'etiqueta de la secció dels 20 usuaris anònims principals, etc., mentre que
+  el paràmetre "20" es pot substituir en el paràmetre.
 Label-TopUsers: Usuaris principals
+Label-TopUsers.@meta.@description: >-
+  L’etiqueta de la secció d’usuaris principals (connectats), etc, mentre que el
+  número.
 Label-TopWikis: Inici de Wikis
+Label-TopWikis.@meta.@description: >-
+  L'etiqueta per a la secció dels millors Wikipedia (Wikipedia) o els seus
+  projectes germans (Wikidata.org etc.), per la quantitat de judicis dictats a
+  la Viquipèdia.
 Label-TotalNumber: Total
+Label-TotalNumber.@meta.@description: >-
+  L’etiqueta de la columna del nombre total de sentències dictades per un
+  usuari.
 Label-User: Usuari
+Label-User.@meta.@description: L’etiqueta per a l’usuari que dóna el judici d’edició de Viquipèdia.
 Label-Week: Setmana
+Label-Week.@meta.@description: >-
+  Una etiqueta de granularitat del temps de desglossament de les estadístiques
+  desglossades per setmana.
 Label-YourJudgement: El teu judici
+Label-YourJudgement.@meta.@description: L’etiqueta del judici dictat per l’usuari actual.
 MenuItem-Code: Codi
+MenuItem-Code.@meta.@description: >-
+  L’etiqueta de l’element del menú per redirigir l’usuari a la base de codis
+  d’aquest programari.
 MenuItem-Contributions: Les meves aportacions
+MenuItem-Contributions.@meta.@description: >-
+  L’etiqueta de l’element de menú dirigint l’usuari a la llista de contribucions
+  o judicis dictats per l’usuari actual.
 MenuItem-ContributionsBeforeLogin: Les meves contribucions abans de l’inici de sessió
+MenuItem-ContributionsBeforeLogin.@meta.@description: 'PER ELIMINAR, NO CANVIAR O TRANSLAR.'
 MenuItem-Issues: Problemes
+MenuItem-Issues.@meta.@description: >-
+  L'etiqueta de l'element del menú redirigeix l'usuari als problemes Github del
+  nostre programari.
 MenuItem-Stats: Estadístiques
+MenuItem-Stats.@meta.@description: >-
+  L’etiqueta de l’element del menú redirecciona l’usuari a la pàgina
+  d’estadístiques del nostre programari.
 Message-AJudgementLogged: 'S''ha registrat un judici de {0} per a la revisió {1}.'
+Message-AJudgementLogged.@meta.@description: >-
+  S’està enregistrant el missatge que es diu un judici per a una revisió
+  determinada. El paràmetre {0} és el nom de l'article de Wikipedia. El
+  paràmetre {0} és l'identificador de revisió de la revisió (edit Wikipedia).
 Message-CongratsSuccessfullyReverted: 'Felicitats! heu revertit correctament directament {0}.'
 Message-DiffNotAvailable: >-
   L'article dif de Wikipedia no està disponible temporalment. Podeu provar de
   tornar-lo a carregar. De vegades es podia eliminar una revisió vandalitzada.
   Podeu consultar l’historial de pàgines.
 Message-FeedHasNoNewRevisionsClickNextBelow: 'El feed {0} no té cap revisió nova, feu clic a continuació a continuació.'
+Message-FeedHasNoNewRevisionsClickNextBelow.@meta.@description: >-
+  El missatge que indica a l’usuari un flux o un flux d’edicions de Wikipedia
+  que s’ha de revisar no té noves revisions / modificacions. El paràmetre {0} fa
+  referència al nom del feed indicat.
 Message-Login: >-
   Sabeu que podríeu iniciar la sessió i conservar les vostres etiquetes sota el
   vostre nom? Admetem la sessió amb compte de Wikipedia mitjançant Oauth.
@@ -93,13 +285,34 @@ Message-NameVoteAnnouncement: >-
 Message-NoActiveUsersPleaseStartReview: >-
   No hi ha usuaris actius durant els darrers 15 minuts. Comenceu {0} a revisar
   les revisions {1} i convertiu-vos en la primera.
-Message-Prompt-Login: >-
+Message-NoActiveUsersPleaseStartReview.@meta.@description: >-
+  El missatge que convida a l'usuari a començar a revertir. Els {0} i {1} són
+  els parells d’etiquetes d’ancoratge HTML <a> i </a> amb paràmetres d’URL.
+Message-PromptLogin: >-
   Sabeu que podríeu iniciar la sessió i preservar les vostres contribucions al
   vostre nom? Admetem l’accés amb el compte de Wikipedia mitjançant Oauth.
 Message-RevertEditSummary: >-
   Identificat com a prova / vandalisme mitjançant {0} versió {1}. Vegeu-la o
   proporcioneu la vostra opinió a {2}
+Message-RevertEditSummary.@meta.@description: >-
+  El missatge del resum de l’edició quan el nostre programari genera una nova
+  edició de Wikipedia es compromet al lloc web de Wikipedia. El paràmetre {0} és
+  el nom del nostre programari, actualment "WikiLoop DoubleCheck". El paràmetre
+  {1} és el número de versió del nostre programari, actualment 4.0.1. La {2} és
+  la URL del lloc web de la nostra eina, actualment "doublecheck.wikiloop.org".
 Message-SorryWeFailedToRevert: 'Ho sentim, no hem pogut revertir la revisió {0}.'
+Message-SorryWeFailedToRevert.@meta.@description: >-
+  El missatge per indicar a l'usuari que la reversió d'una determinada edició ha
+  fallat. El paràmetre {0} és l'identificador de revisió.
 Message-TheRevisionIsSuccessfullyRevertedAs: 'La revisió {0} es reverteix correctament com a {1}.'
+Message-TheRevisionIsSuccessfullyRevertedAs.@meta.@description: >-
+  El missatge que indica que una edició (revisió) de Wikipedia es reverteix
+  correctament. El paràmetre {0} és l'identificador de revisió de l'edició de
+  Wikipedia que es reverteix. El paràmetre {1} és el segon identificador de
+  revisió que la nova edició de Wikipedia que es troba a la part superior de
+  l’edició de Viquipèdia anterior, resultat de la reversió.
 Message-ThereIsNoEditSummary: No hi ha cap resum d’edició.
+Message-ThereIsNoEditSummary.@meta.@description: >-
+  El missatge mostra que una edició de Viquipèdia determinada no té cap
+  explicació, vegeu https://en.wikipedia.org/wiki/Help:Edit_summary.
 Message-YourJudgementLogged: 'S''ha registrat el vostre judici sobre {0} per a la revisió {1}.'

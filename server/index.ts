@@ -111,12 +111,12 @@ function setupCronJobs() {
 }
 
 function setupHooks() {
-  // See https://github.com/google/wikiloop-battlefield/issues/234
+  // See https://github.com/google/wikiloop-doublecheck/issues/234
   // TODO(xinbenlv): add authentication.
   installHook('postToJade', async function(i:InteractionProps) {
     let revId = i.wikiRevId.split(':')[1];
     let wiki = i.wikiRevId.split(':')[0];
-    if (wiki =='enwiki'  // we only handle enwiki for now. See https://github.com/google/wikiloop-battlefield/issues/234
+    if (wiki =='enwiki'  // we only handle enwiki for now. See https://github.com/google/wikiloop-doublecheck/issues/234
     && [
       BasicJudgement.ShouldRevert.toString(),
       BasicJudgement.LooksGood.toString(),
@@ -332,13 +332,13 @@ function setupAuthApi(db, app) {
           "action": "edit",
           "format": "json",
           "title": revInfo[0].title, // TODO(zzn): assuming only 1 revision is being reverted
-          "summary": `Identified as test/vandalism and undid revision ${revId} by [[User:${revInfo[0].user}]] with [[m:WikiLoop Battlefield]](v${require(
+          "summary": `Identified as test/vandalism and undid revision ${revId} by [[User:${revInfo[0].user}]] with [[m:WikiLoop DoubleCheck]](v${require(
             './../package.json').version}). See it or provide your opinion at http://${process.env.PUBLIC_HOST || "localhost:8000"}/revision/${wiki}/${revId}`,
           "undo": revId,
           "token": token
         };
-        if (wiki == 'enwiki') { // currently only enwiki has the manually created tag of WikiLoop Battlefield
-          payload['tags'] = "WikiLoop Battlefield";
+        if (wiki == 'enwiki') { // currently only enwiki has the manually created tag of WikiLoop DoubleCheck
+          payload['tags'] = "WikiLoop DoubleCheck";
         }
         let retData = await oauthFetch(apiUrl, payload, {method: 'POST'}, req.user.oauth );  // assuming request succeeded;
         res.setHeader('Content-Type', 'application/json');

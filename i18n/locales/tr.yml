@@ -11,98 +11,292 @@ Button-Next.@meta.@description: >-
   Tıklandığında bir düğmenin etiketi sonraki sayfaya gidin veya sonraki
   bilgileri görüntüleyin.
 Button-OpenedUrlToRevert: Geri dönmek için açılan URL
+Button-OpenedUrlToRevert.@meta.@description: >-
+  Düğmeyi tıklatıldıktan ve eylem gerçekleştirildikten sonra eylem durumunu
+  göstermek için "Şimdi geri döndür" düğmesinin etiketi "Geri döndürülmek üzere
+  Açılan URL" olarak değişecektir.
 Button-RevertNow: Şimdi geri dön
+Button-RevertNow.@meta.@description: >-
+  Wikipedia'da verilen bir düzeltmeyi hemen geri döndürmek için düğmenin
+  etiketi.
 Button-ShowJudgements: Kararları göster
+Button-ShowJudgements.@meta.@description: Wikipedia düzenlemesinde verilen kararları gösteren düğmenin etiketi
 Button-Undo: Geri alma
+Button-Undo.@meta.@description: Yazılımımızdaki bir eylemi geri almak için kullanılan düğmenin etiketi.
 Label-1Month: 1 ay (30 g)
+Label-1Month.@meta.@description: >-
+  Gösterilecek istatistiklerin zaman aralığı için, 1 ay veya 30 gün tam olarak
+  etiket.
 Label-1Quarter: 1 çeyrek (90 g)
+Label-1Quarter.@meta.@description: >-
+  Gösterilecek istatistiklerin zaman aralığı için, 1 çeyrek veya 90 gün tam
+  olarak etiket.
 Label-1Year: 1 yıl (365d)
+Label-1Year.@meta.@description: >-
+  Gösterilecek istatistiklerin zaman aralığı için, 1 yıl veya 365 gün tam olarak
+  etiket.
 Label-1day: 1 gün
+Label-1day.@meta.@description: 'Gösterilecek istatistiklerin zaman aralığı için, 1 gün tam olarak etiket.'
 Label-1week: 1 hafta (7 gün)
+Label-1week.@meta.@description: >-
+  Gösterilecek istatistiklerin zaman aralığı için, 1 hafta veya 7 gün tam olarak
+  etiket.
 Label-ActiveUsers: Aktif Kullanıcılar
+Label-ActiveUsers.@meta.@description: Bu yazılımın aktif kullanıcılarına dayanan istatistikler için bir etiket.
 Label-AllTime: Her zaman
+Label-AllTime.@meta.@description: >-
+  İstatistiklerin gösterileceği zaman aralığının, yazılımımızın yayınlandığı tüm
+  zamanların etiketi.
 Label-Anonymous: Anonim
 Label-ArtificialIntelligence: Yapay zeka
 Label-Author: Yazar
 Label-CountOfJudgements: Miktar
+Label-CountOfJudgements.@meta.@description: Wikipedia düzenlemeleri için toplam karar sayısına ilişkin bir etiket.
 Label-Day: Gün
+Label-Day.@meta.@description: Her gün ayrılan istatistiklerin döküm süresi ayrıntı düzeyi için bir etiket.
 Label-DiffView: Farklı Görünüm
+Label-DiffView.@meta.@description: >-
+  İki Wikipedia makalesi anlık görüntüsü gibi anlık görüntüler arasındaki farkı
+  gösteren bir görünüm etiketi.
 Label-DirectRevertFailed: Doğrudan geri alma başarısız
+Label-DirectRevertFailed.@meta.@description: >-
+  "Şimdi geri dön" düğmesinin yeni durumunu gösteren bir etiket. Amaç, kullanıcı
+  tarafından gerçekleştirilen eylemin durumunu göstermektir; bu durumda geri
+  döndürme eylemi başarısız olur.
 Label-DirectReverted: Doğrudan geri döndürüldü
+Label-DirectReverted.@meta.@description: >-
+  "Şimdi geri dön" düğmesinin yeni durumunu gösteren bir etiket. Amaç, kullanıcı
+  tarafından gerçekleştirilen eylemin durumunu göstermektir; bu durumda geri
+  döndürme eylemi başarılı olmuştur.
 Label-EditSummary: Özeti Düzenle
+Label-EditSummary.@meta.@description: >-
+  Düzenleme özeti, https://en.wikipedia.org/wiki/Help:Edit_summary adresinde
+  gösterildiği gibi bir Wikipedia sayfasındaki düzenlemenin kısa bir
+  açıklamasıdır
 Label-EditedAt: düzenlendi
+Label-EditedAt.@meta.@description: Düzenleme oluşturulduğunda Wikipedia'daki düzenleme zaman damgasının etiketi.
 Label-Feed: besleme
+Label-Feed.@meta.@description: >-
+  Belirli bir özet akışının adını izleyerek bir özet akışını, bir akışı veya
+  gelen yeni Wikipedia düzenlemelerinin akışını gösteren etiket. Örneğin, makale
+  konusunun beslemesi, vandalizm tespit puanı sistemleri tarafından algılanan
+  düzenlemelerin beslenmesi, vb. Gibi farklı Wikipedia düzenlemelerinin çeşitli
+  özet akışlarına sahibiz.
 Label-History: Tarih
+Label-History.@meta.@description: >-
+  Tüm kullanıcıların veya belirli bir kullanıcının geçmiş etkinlikleri, geçmiş
+  yargılar vb. Listesi için bir etiket.
 Label-HumanEditors: İnsan editörleri
+Label-HumanEditors.@meta.@description: İnsan editörler tarafından verilen kararların etiketi.
 Label-Judgement: yargı
+Label-Judgement.@meta.@description: >-
+  Gelen Wikipedia düzenlemelerini inceleyen kullanıcılarımız tarafından
+  Wikipedia düzenlemelerine verilen yargı etiketi.
 Label-LastActiveTime: Son Etkin
+Label-LastActiveTime.@meta.@description: Bir kullanıcının yazılımımızda en son ne zaman etkin olduğunu gösteren etiket.
 Label-Loading: Yükleniyor
+Label-Loading.@meta.@description: >-
+  Bir web sayfasındaki bazı bölümleri veya verileri gösteren etiket yükleniyor.
+  Genellikle bu etiket bir yükleme göstergesi için bir geri dönüş olarak
+  gösterilir.
 Label-Login: Giriş
+Label-Login.@meta.@description: >-
+  Kullanıcının oturum açmasına izin vermek için oturum açma düğmesinin etiketi.
+  Veya mesajlarda veya kullanıcıyı oturum açmaya davet etmek için istemde
+  kullanılacaktır.
 Label-Logout: Çıkış
-Label-Looks-Good: İyi görünüyor
+Label-Logout.@meta.@description: >-
+  Kullanıcının oturumunu kapatmasına izin vermek için bir oturum açma düğmesinin
+  etiketi. Veya mesajlarda veya kullanıcıyı oturumu kapatmaya davet etmek
+  isteminde de kullanılır.
 Label-LooksGood: İyi Görünüyor
+Label-LooksGood.@meta.@description: >-
+  Wikipedia düzenlemesinin incelenmekte olan 3 ana karar türünden birinin
+  etiketi, zarar vermek yerine Wikipedia için iyi ve yapıcıdır.
 Label-Me: Ben
+Label-Me.@meta.@description: >-
+  Kullanıcının kendisini tanımlayan etiket. Lütfen burada çevrilen etiketin
+  cinsiyet açısından tarafsız olduğundan emin olun.
 Label-Month: Ay
-Label-My-History: Benim tarihim
+Label-Month.@meta.@description: >-
+  Aylara göre ayrılmış istatistiklerin döküm süresi ayrıntı düzeyi için bir
+  etiket.
+Label-MyHistory: Benim tarihim
+Label-MyHistory.@meta.@description: >-
+  Yazılımımızı kullanan mevcut kullanıcının geçmiş etkinlikleri, geçmiş yargılar
+  vb. Listesi için bir etiket.
+Label-MyHistory.@meta.@isMachineTranslated: true
+Label-MyHistory.@meta.@translatedAt: '2020-07-07T19:26:51.446Z'
+Label-MyHistory.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-NewJudgement: Yeni Karar
+Label-NewJudgement.@meta.@description: >-
+  Vikipedi'ye verilen yeni bir karar için etiket kullanıcı tarafından
+  düzenlenir.
 Label-None: Yok
-Label-Not-Sure: Emin değil
+Label-None.@meta.@description: >-
+  Boş satır ve içerik hücreleri veya boş listeler etiketi. Bu genellikle
+  gösterilecek içerik olmadığında kullanıcı arayüzünde kullanılır.
 Label-NotSure: Emin Değilim
+Label-NotSure.@meta.@description: >-
+  Wikipedia düzenlemesinin incelenmekte olan 3 ana karar türünden birinin
+  etiketi emin değildir ve Wikipedia için iyi ve yapıcı veya zarar verici
+  olabilir.
 Label-OresBadfaith: ORES Kötü niyet
+Label-OresBadfaith.@meta.@description: >-
+  WMF Yapay Zeka puanlama sistemi ORES tarafından verilen puanı ve yargıyı
+  tanımlayan etiket. Bu etikete özel, ORES'in iyi niyetli modelinin tersini
+  ifade eder. Bkz. Https://www.mediawiki.org/wiki/ORES#Advanced_support
 Label-OresBadfaith.@meta.@isMachineTranslated: true
-Label-OresBadfaith.@meta.@translatedAt: 2020-07-07T01:09:19.145Z
+Label-OresBadfaith.@meta.@translatedAt: '2020-07-07T01:09:19.145Z'
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: ORES Hasar
-Label-Overriden: Geçersiz kılınan
-Label-Prompt-Login: Oturum aç
+Label-OresDamaging.@meta.@description: >-
+  WMF Yapay Zeka puanlama sistemi ORES tarafından verilen puanı ve yargıyı
+  tanımlayan etiket. Bu etikete özel, ORES'in zarar verici modelini ifade eder.
+  Bkz. Https://www.mediawiki.org/wiki/ORES#Advanced_support
+Label-Overridden: Geçersiz kılınan
+Label-Overridden.@meta.@description: >-
+  Wikipedia makalesinde verilen bir düzenlemenin, aynı Wikipedia makalesinde
+  başka bir yeni düzenleme tarafından geçersiz kılındığını belirten etiket. Bu
+  etiket, böyle bir düzenlemenin mevcut kullanıcımız tarafından zaten geri
+  çevrildiğini veya Wikipedia'daki başka bir Wikipedia düzenleyicisi tarafından
+  geri döndürüldüğünü veya güncellendiğini ima etmektedir.
+Label-Overridden.@meta.@isMachineTranslated: true
+Label-Overridden.@meta.@translatedAt: '2020-07-07T19:26:51.446Z'
+Label-Overridden.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-PromptLogin: Oturum aç
+Label-PromptLogin.@meta.@description: >-
+  Bir kullanıcıdan yazılımımızda oturum açmasını isteyen etiket. Daha çok bu
+  formalite ve onurlu konuşmaların var olduğu dillerde "lütfen giriş yap" sesi
+  gibi.
+Label-PromptLogin.@meta.@isMachineTranslated: true
+Label-PromptLogin.@meta.@translatedAt: '2020-07-07T19:26:51.446Z'
+Label-PromptLogin.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-Rank: rütbe
+Label-Rank.@meta.@description: >-
+  Belirli bir sıralama numarasına göre istatistik sıralaması etiketi, örneğin
+  kullanıcılar, katkı sayısına göre sıralanmış
 Label-Reason: neden
+Label-Reason.@meta.@description: >-
+  Bir kullanıcının bir Wikipedia düzenlemesini geri döndürmesi gibi
+  gerçekleştirilen bir işlemin sonucunun nedeni olan etiket.
 Label-Result: Sonuç
+Label-Result.@meta.@description: >-
+  Bir kullanıcının bir Wikipedia düzenlemesini geri döndürmesi gibi
+  gerçekleştirilen bir işlemin sonucunun etiketi.
 Label-RevertSucceeded: Geri alma başarılı oldu!
+Label-RevertSucceeded.@meta.@description: >-
+  Bir kullanıcı Wikipedia düzenlemesini geri döndürdüğünde gerçekleştirilen
+  işlemin sonucunun etiketi, işlem başarılı.
 Label-ReviewFeed: Özet Akışı
+Label-ReviewFeed.@meta.@description: >-
+  İncelenecek gelen Wikipedia düzenlemelerinin feed'i, akışı veya akışı için
+  etiket.
 Label-ReviewedAndSays: '{0} incelendi ve diyor'
-Label-Should-Revert: Geri Dönmeli
+Label-ReviewedAndSays.@meta.@description: Karar cümlesini başlatmak için etiket ve revizyon için nedenler.
 Label-ShouldRevert: Eski Haline Dönmeli
+Label-ShouldRevert.@meta.@description: >-
+  Wikipedia düzenlemesinin, iyi ve yapıcı olmanın aksine Wikipedia'ya zarar
+  verdiğini söyleyen 3 ana karar türünden birinin etiketi.
 Label-Snooze: Uyuklama
+Label-Snooze.@meta.@description: >-
+  Bir hatırlatıcıyı veya bildirimi ertelemek için bir düğmenin etiketi veya
+  başka bir deyişle, "daha sonra hatırlat" anlamına gelir. Gerçekte, erteleme
+  düğmesi hatırlatma veya bildirim mesajı tekrar göründüğünde kullanılacaktır.
+  Bu aynı zamanda "kalıcı olarak görevden alınmak yerine sadece geçici olarak
+  görevden alınmak" anlamına da gelir.
 Label-Someone: Birisi
+Label-Someone.@meta.@description: Geçerli kullanıcı dışında bir kullanıcıyı tanımlayan etiket.
 Label-Time: Zaman
+Label-Time.@meta.@description: >-
+  Bir kullanıcı tarafından verilen belirli bir kararın veya işlemin zaman
+  damgasının etiketi.
 Label-TopNumberAnonymousUsers: 'En İyi {0} Anonim Kullanıcılar'
+Label-TopNumberAnonymousUsers.@meta.@description: >-
+  En büyük 20 anonim kullanıcının, vs. bölümünün etiketi, "20" sayısı
+  parametrede değiştirilebilir.
 Label-TopUsers: En İyi Kullanıcılar
+Label-TopUsers.@meta.@description: 'En çok (oturum açmış) kullanıcıların vb. Bölümü için etiket, oysa sayı.'
 Label-TopWikis: En İyi Vikisözler
+Label-TopWikis.@meta.@description: >-
+  Vikipedi'nin veya kardeş projelerinin (Wikidata.org vb.) Wikipedia'da verilen
+  kararların miktarına ilişkin etiket.
 Label-TotalNumber: Toplam
+Label-TotalNumber.@meta.@description: Bir kullanıcı tarafından verilen toplam karar sayısı sütununun etiketi.
 Label-User: kullanıcı
+Label-User.@meta.@description: Wikipedia düzenlemesinin kararını veren kullanıcının etiketi.
 Label-Week: Hafta
+Label-Week.@meta.@description: >-
+  Haftaya göre ayrılmış istatistiklerin döküm süresi ayrıntı düzeyi için bir
+  etiket.
 Label-YourJudgement: Kararınız
+Label-YourJudgement.@meta.@description: Geçerli kullanıcı tarafından verilen kararın etiketi.
 MenuItem-Code: kod
+MenuItem-Code.@meta.@description: Kullanıcıyı bu yazılımın kod tabanına yönlendirmek için menü öğesi etiketi.
 MenuItem-Contributions: Katkılar
+MenuItem-Contributions.@meta.@description: >-
+  Kullanıcıyı geçerli kullanıcı tarafından verilen katkılar veya hükümler
+  listesine yönlendiren menü öğesi etiketi.
 MenuItem-ContributionsBeforeLogin: Giriş yapmadan önce yaptığım katkılar
+MenuItem-ContributionsBeforeLogin.@meta.@description: SİLMEK İÇİN DEĞİŞTİRMEYİN VEYA ÇEVİRMEYİN.
 MenuItem-Issues: Sorunlar
+MenuItem-Issues.@meta.@description: Kullanıcıyı yazılımımızın Github sorunlarına yönlendiren menü öğesi etiketi.
 MenuItem-Stats: İstatistikleri
+MenuItem-Stats.@meta.@description: Kullanıcıyı yazılımımızın istatistik sayfasına yönlendiren menü öğesi etiketi.
 Message-AJudgementLogged: '{1} düzeltmesi için {0} kararı günlüğe kaydedildi.'
+Message-AJudgementLogged.@meta.@description: >-
+  Belirli bir düzeltme için bir kararın kaydedildiği mesajı. {0} parametresi
+  Wikipedia makalesinin adıdır. {0} parametresi, revizyonun revizyon
+  tanımlayıcısıdır (Wikipedia düzenleme).
 Message-CongratsSuccessfullyReverted: 'Tebrikler! doğrudan {0} başarıyla geri döndünüz.'
 Message-DiffNotAvailable: >-
   The wikipedia article diff is temporarily not available. You can try to reload
   it. Sometimes a vandalized revision could be deleted. You can check the page
   history.
 Message-FeedHasNoNewRevisionsClickNextBelow: '{0} feed''inde yeni düzeltme yok, aşağıya tıklayın.'
+Message-FeedHasNoNewRevisionsClickNextBelow.@meta.@description: >-
+  Kullanıcıya, incelenecek Vikipedi düzenlemelerinin belirli bir özet akışını
+  veya akışını bildiren yeni bir düzeltme / düzenleme yok. {0} parametresi,
+  verilen yayının adını belirtir.
 Message-Login: >-
   Etiketlerinizi adınız altında girip koruyabileceğinizi biliyor musunuz? Oauth
   aracılığıyla Wikipedia hesabıyla giriş yapmayı destekliyoruz.
 Message-NameVoteAnnouncement: >-
-  Sayın katılımcı, 13 Temmuz 2020 00:00 UTC ile biten "WikiLoop Battlefield"
+  Sayın katılımcı, 13 Temmuz 2020 00:00 UTC ile biten "WikiLoop DoubleCheck"
   yerine yeni bir isim vermek için oy kullanıyoruz.
 
   Lütfen oy verin.
 Message-NoActiveUsersPleaseStartReview: >-
   Son 15 dakika içinde aktif kullanıcı yok. {0} Düzeltmeleri {1} gözden
   geçirmeye başlayın ve birincisi olun.
-Message-Prompt-Login: >-
+Message-NoActiveUsersPleaseStartReview.@meta.@description: >-
+  Kullanıcıyı geri dönmeye davet eden mesaj. {0} ve {1}, URL parametreleriyle
+  <a> ve </a> HTML bağlantı etiketi çiftleridir.
+Message-PromptLogin: >-
   Giriş yapabilir ve katkılarınızı adınız altında koruyabileceğinizi biliyor
   musunuz? Oauth aracılığıyla Wikipedia hesabıyla giriş yapmayı destekliyoruz.
 Message-RevertEditSummary: |-
   {0} {1} sürümü kullanılarak test / vandalizm olarak tanımlandı.
   {2} adresinde görün veya görüşünüzü belirtin
+Message-RevertEditSummary.@meta.@description: >-
+  Yazılımımız Wikipedia web sitesine yüklenmek üzere yeni bir Wikipedia
+  düzenlemesi oluştururken düzenleme özeti mesajı. {0} parametresi, şu anda
+  "WikiLoop DoubleCheck" olan yazılımımızın adıdır. {1} parametresi şu anda
+  4.0.1 olan yazılımımızın sürüm numarasıdır. {2}, şu anda
+  "doublecheck.wikiloop.org" olan aracımızın web sitesi URL'sidir.
 Message-SorryWeFailedToRevert: 'Maalesef, {0} düzeltmesini geri alamadık.'
+Message-SorryWeFailedToRevert.@meta.@description: >-
+  Kullanıcıya belirli bir düzenlemenin geri alınmasının başarısız olduğunu
+  bildiren mesaj. {0} parametresi revizyon tanımlayıcıdır.
 Message-TheRevisionIsSuccessfullyRevertedAs: '{0} düzeltmesi başarıyla {1} olarak geri döndürüldü.'
+Message-TheRevisionIsSuccessfullyRevertedAs.@meta.@description: >-
+  Belirli bir Wikipedia düzenlemesinin (revizyonunun) başarıyla geri alındığını
+  belirten mesaj. {0} parametresi, geri döndürülen Wikipedia düzenlemesinin
+  düzeltme tanımlayıcısıdır. {1} parametresi, geri dönmenin bir sonucu olan
+  önceki Wikipedia düzenlemesinin üstünde bulunan yeni Wikipedia düzenlemesinin
+  ikinci düzeltme tanımlayıcısıdır.
 Message-ThereIsNoEditSummary: Düzenleme özeti yok.
+Message-ThereIsNoEditSummary.@meta.@description: >-
+  İleti, belirli bir Wikipedia düzenlemesinin bir açıklaması olmadığını
+  gösterir, bkz. Https://en.wikipedia.org/wiki/Help:Edit_summary.
 Message-YourJudgementLogged: '{1} düzeltmesi için {0} kararınız günlüğe kaydedildi.'

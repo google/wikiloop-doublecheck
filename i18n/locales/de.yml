@@ -11,74 +11,277 @@ Button-Next.@meta.@description: >-
   Beschriften Sie eine Schaltfläche, wenn Sie darauf klicken, gehen Sie zur
   nächsten Seite oder zeigen Sie die nächsten Informationen an.
 Button-OpenedUrlToRevert: Geöffnete URL zum Zurücksetzen
+Button-OpenedUrlToRevert.@meta.@description: >-
+  Die Bezeichnung der Schaltfläche "Jetzt zurücksetzen" ändert sich in
+  "Geöffnete URL zum Zurücksetzen", um den Aktionsstatus anzuzeigen, nachdem auf
+  die Schaltfläche geklickt und die Aktion ausgeführt wurde.
 Button-RevertNow: Jetzt zurücksetzen
+Button-RevertNow.@meta.@description: >-
+  Die Bezeichnung für die Schaltfläche zum sofortigen Zurücksetzen einer
+  bestimmten Revision auf Wikipedia.
 Button-ShowJudgements: Urteile zeigen
+Button-ShowJudgements.@meta.@description: >-
+  Die Bezeichnung für die Schaltfläche zum Anzeigen von Beurteilungen, die bei
+  einer Wikipedia-Bearbeitung abgegeben wurden
 Button-Undo: Rückgängig machen
+Button-Undo.@meta.@description: >-
+  Eine Beschriftung für die Schaltfläche zum Rückgängigmachen einer Aktion in
+  unserer Software.
 Label-1Month: 1 Monat (30 Tage)
+Label-1Month.@meta.@description: >-
+  Eine Beschriftung für den Zeitbereich der anzuzeigenden Statistik, der genau 1
+  Monat oder 30 Tage beträgt.
 Label-1Quarter: 1 Viertel (90d)
+Label-1Quarter.@meta.@description: >-
+  Eine Beschriftung für den Zeitbereich der anzuzeigenden Statistik, der genau 1
+  Viertel oder 90 Tage beträgt.
 Label-1Year: 1 Jahr (365d)
+Label-1Year.@meta.@description: >-
+  Eine Beschriftung für den Zeitbereich der anzuzeigenden Statistik, der genau 1
+  Jahr oder 365 Tage beträgt.
 Label-1day: 1 Tag
+Label-1day.@meta.@description: >-
+  Eine Beschriftung für den Zeitbereich der anzuzeigenden Statistik, der genau 1
+  Tag beträgt.
 Label-1week: 1 Woche (7d)
+Label-1week.@meta.@description: >-
+  Eine Beschriftung für den Zeitbereich der anzuzeigenden Statistik, der genau 1
+  Woche oder 7 Tage beträgt.
 Label-ActiveUsers: Aktive Benutzer
+Label-ActiveUsers.@meta.@description: >-
+  Eine Beschriftung für die Statistik basierend auf den aktiven Benutzern dieser
+  Software.
 Label-AllTime: Alle Zeit
+Label-AllTime.@meta.@description: >-
+  Eine Beschriftung für den Zeitraum, in dem Statistiken angezeigt werden. Dies
+  ist die Zeit, in der unsere Software aktiv ist.
 Label-Anonymous: Anonym
 Label-ArtificialIntelligence: Künstliche Intelligenz
 Label-Author: Autor
 Label-CountOfJudgements: Anzahl
+Label-CountOfJudgements.@meta.@description: Ein Label für die Gesamtzahl der Urteile für die Wikipedia-Änderungen.
 Label-Day: Tag
+Label-Day.@meta.@description: >-
+  Eine Bezeichnung für die Granularität der Ausfallzeit von Statistiken, die
+  nach Tag aufgeschlüsselt ist.
 Label-DiffView: Diff View
+Label-DiffView.@meta.@description: >-
+  Eine Beschriftung für eine Ansicht, die den Unterschied zwischen
+  Schnappschüssen zeigt, z. B. zwei Schnappschüsse von Wikipedia-Artikeln.
 Label-DirectRevertFailed: Direktes Zurücksetzen fehlgeschlagen
+Label-DirectRevertFailed.@meta.@description: >-
+  Eine Beschriftung, um den neuen Status der Schaltfläche "Jetzt zurücksetzen"
+  anzuzeigen. Der Zweck besteht darin, den Status der vom Benutzer ausgeführten
+  Aktion anzuzeigen. In diesem Fall ist die Aktion zum Zurücksetzen
+  fehlgeschlagen.
 Label-DirectReverted: Direkt zurückgesetzt
+Label-DirectReverted.@meta.@description: >-
+  Eine Beschriftung, um den neuen Status der Schaltfläche "Jetzt zurücksetzen"
+  anzuzeigen. Der Zweck besteht darin, den Status der vom Benutzer ausgeführten
+  Aktion anzuzeigen. In diesem Fall ist die Aktion zum Zurücksetzen erfolgreich.
 Label-EditSummary: Zusammenfassung bearbeiten
+Label-EditSummary.@meta.@description: >-
+  Eine Bearbeitungszusammenfassung ist eine kurze Erläuterung einer Bearbeitung
+  einer Wikipedia-Seite, wie in https://en.wikipedia.org/wiki/Help:Edit_summary
+  gezeigt
 Label-EditedAt: Bearbeitet
+Label-EditedAt.@meta.@description: >-
+  Die Bezeichnung des Zeitstempels der Bearbeitung auf Wikipedia, wenn die
+  Bearbeitung erstellt wird.
 Label-Feed: Futter
+Label-Feed.@meta.@description: >-
+  Das Etikett mit einem Feed, einem Flow oder einem Stream eingehender neuer
+  Wikipedia-Änderungen folgt dem Namen dieses bestimmten Feeds. Zum Beispiel
+  haben wir verschiedene Feeds mit verschiedenen Arten von Wikipedia-Änderungen,
+  wie z. B. Feeds zum Artikelthema, Feeds zu Änderungen, die von
+  Bewertungssystemen zur Erkennung von Vandalismus erkannt wurden usw.
 Label-History: Geschichte
+Label-History.@meta.@description: >-
+  Ein Etikett für die Liste früherer Aktivitäten, früherer Urteile usw. aller
+  Benutzer oder eines bestimmten Benutzers.
 Label-HumanEditors: Menschliche Redakteure
+Label-HumanEditors.@meta.@description: Das Etikett für Urteile von menschlichen Redakteuren.
 Label-Judgement: Beurteilung
+Label-Judgement.@meta.@description: >-
+  Das Etikett für die Beurteilung von Wikipedia-Änderungen durch unsere
+  Benutzer, die eingehende Wikipedia-Änderungen überprüfen.
 Label-LastActiveTime: letzte Aktivität
+Label-LastActiveTime.@meta.@description: >-
+  Das Etikett, das anzeigt, wann ein Benutzer das letzte Mal in unserer Software
+  aktiv war.
 Label-Loading: Beladung
+Label-Loading.@meta.@description: >-
+  Das Etikett zum Anzeigen einiger Teile oder Daten auf einer Webseite wird
+  geladen. Normalerweise wird dieses Etikett als Fallback für eine Ladeanzeige
+  angezeigt.
 Label-Login: Anmelden
+Label-Login.@meta.@description: >-
+  Die Bezeichnung für eine Anmeldeschaltfläche, mit der sich der Benutzer
+  anmelden kann. Oder es wird auch in Nachrichten oder Aufforderungen verwendet,
+  um Benutzer zur Anmeldung einzuladen.
 Label-Logout: Abmelden
-Label-Looks-Good: Sieht gut aus
+Label-Logout.@meta.@description: >-
+  Die Bezeichnung für eine Anmeldeschaltfläche, mit der sich der Benutzer
+  abmelden kann. Oder es wird auch in Nachrichten oder Aufforderungen verwendet,
+  um Benutzer zum Abmelden einzuladen.
 Label-LooksGood: Sieht gut aus
+Label-LooksGood.@meta.@description: >-
+  Die Bezeichnung einer der drei Hauptarten von Urteilen, die besagt, dass die
+  überprüfte Wikipedia-Bearbeitung gut und konstruktiv für Wikipedia ist, im
+  Gegensatz zu schädlich.
 Label-Me: Ich
+Label-Me.@meta.@description: >-
+  Das Etikett zur Identifizierung des Benutzers. Bitte stellen Sie sicher, dass
+  das hier übersetzte Etikett geschlechtsneutral ist.
 Label-Month: Monat
-Label-My-History: Meine Geschichte
+Label-Month.@meta.@description: >-
+  Eine Bezeichnung für die Granularität der Ausfallzeit von Statistiken, die
+  nach Monaten aufgeschlüsselt ist.
+Label-MyHistory: Meine Geschichte
+Label-MyHistory.@meta.@description: >-
+  Ein Etikett für die Liste früherer Aktivitäten, früherer Urteile usw. des
+  aktuellen Benutzers, der unsere Software verwendet.
+Label-MyHistory.@meta.@isMachineTranslated: true
+Label-MyHistory.@meta.@translatedAt: '2020-07-07T19:26:51.441Z'
+Label-MyHistory.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-NewJudgement: Neues Urteil
+Label-NewJudgement.@meta.@description: >-
+  Ein Etikett für ein neues Urteil, das Wikipedia von unserem Benutzer
+  bearbeitet wurde.
 Label-None: Keiner
-Label-Not-Sure: Nicht sicher
+Label-None.@meta.@description: >-
+  Die Bezeichnung für eine leere Tabelle mit Zeilen und Zellen mit Inhalten oder
+  für leere Listen. Dies wird normalerweise in der Benutzeroberfläche verwendet,
+  wenn kein Inhalt angezeigt werden soll.
 Label-NotSure: Nicht sicher
+Label-NotSure.@meta.@description: >-
+  Die Bezeichnung einer der drei Hauptarten von Urteilen, die besagt, dass die
+  überprüfte Wikipedia-Bearbeitung unsicher ist und entweder gut und konstruktiv
+  sein oder Wikipedia Schaden zufügen kann.
 Label-OresBadfaith: ORES Böser Glaube
+Label-OresBadfaith.@meta.@description: >-
+  Das Etikett, das die Bewertung und das Urteil des WMF-Bewertungssystems für
+  künstliche Intelligenz ORES angibt. Dieses Etikett bezieht sich auf das
+  Gegenteil des Goodfaith-Modells von ORES. Siehe
+  https://www.mediawiki.org/wiki/ORES#Advanced_support
 Label-OresBadfaith.@meta.@isMachineTranslated: true
-Label-OresBadfaith.@meta.@translatedAt: 2020-07-07T01:09:19.142Z
+Label-OresBadfaith.@meta.@translatedAt: '2020-07-07T01:09:19.142Z'
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: Erze beschädigen
-Label-Overriden: Überschrieben
-Label-Prompt-Login: Anmeldung
+Label-OresDamaging.@meta.@description: >-
+  Das Etikett, das die Bewertung und das Urteil des WMF-Bewertungssystems für
+  künstliche Intelligenz ORES angibt. Dieses Etikett bezieht sich spezifisch auf
+  das schädliche Modell von ORES. Siehe
+  https://www.mediawiki.org/wiki/ORES#Advanced_support
+Label-Overridden: Überschrieben
+Label-Overridden.@meta.@description: >-
+  Das Label, das angibt, dass eine bestimmte Bearbeitung eines
+  Wikipedia-Artikels von einer anderen neueren Bearbeitung desselben
+  Wikipedia-Artikels überschrieben wird. Dieses Label impliziert, dass eine
+  solche Bearbeitung entweder bereits von unserem aktuellen Benutzer
+  zurückgesetzt oder von einem anderen Wikipedia-Editor auf Wikipedia
+  zurückgesetzt oder aktualisiert wurde.
+Label-Overridden.@meta.@isMachineTranslated: true
+Label-Overridden.@meta.@translatedAt: '2020-07-07T19:26:51.441Z'
+Label-Overridden.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-PromptLogin: Anmeldung
+Label-PromptLogin.@meta.@description: >-
+  Das Etikett, mit dem ein Benutzer aufgefordert wird, sich bei unserer Software
+  anzumelden. Es ist eher wie ein "Bitte anmelden" -Ton in Sprachen, in denen
+  Formalität und Ehrensprache existieren.
+Label-PromptLogin.@meta.@isMachineTranslated: true
+Label-PromptLogin.@meta.@translatedAt: '2020-07-07T19:26:51.441Z'
+Label-PromptLogin.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-Rank: Rang
+Label-Rank.@meta.@description: >-
+  Die Bezeichnung für die Rangfolge von Statistiken nach einer bestimmten
+  Sortiernummer, z. B. Benutzer, sortiert nach ihrer Anzahl von Beiträgen
 Label-Reason: Grund
+Label-Reason.@meta.@description: >-
+  Die Bezeichnung für den Grund des Ergebnisses einer ausgeführten Aktion, z. B.
+  wenn ein Benutzer eine Wikipedia-Bearbeitung zurücksetzt.
 Label-Result: Ergebnis
+Label-Result.@meta.@description: >-
+  Die Bezeichnung für das Ergebnis einer ausgeführten Aktion, z. B. wenn ein
+  Benutzer eine Wikipedia-Bearbeitung zurückgesetzt hat.
 Label-RevertSucceeded: Zurücksetzen gelungen!
+Label-RevertSucceeded.@meta.@description: >-
+  Die Bezeichnung für das Ergebnis einer ausgeführten Aktion, wenn ein Benutzer
+  eine Wikipedia-Bearbeitung zurückgesetzt hat, ist die Aktion erfolgreich.
 Label-ReviewFeed: Feed überprüfen
+Label-ReviewFeed.@meta.@description: >-
+  Die Bezeichnung für den Feed, den Flow oder den Stream eingehender
+  Wikipedia-Änderungen, die überprüft werden sollen.
 Label-ReviewedAndSays: 'überprüft {0} und sagt'
-Label-Should-Revert: Sollte zurückkehren
+Label-ReviewedAndSays.@meta.@description: Das Etikett zur Einleitung des Urteils und die Gründe für eine Überarbeitung.
 Label-ShouldRevert: Sollte zurücksetzen
+Label-ShouldRevert.@meta.@description: >-
+  Die Bezeichnung eines der drei Haupttypen von Urteilen besagt, dass die
+  überprüfte Wikipedia-Bearbeitung Wikipedia schadet und nicht gut und
+  konstruktiv ist.
 Label-Snooze: Schlummer
+Label-Snooze.@meta.@description: >-
+  Die Bezeichnung einer Schaltfläche zum Schlummern einer Erinnerung oder
+  Benachrichtigung, oder mit anderen Worten, bedeutet "Erinnere mich später". In
+  der Realität wird die Schlummertaste verwendet, wenn die Erinnerungs- oder
+  Benachrichtigungsnachricht erneut angezeigt wird. Es bedeutet also auch "nicht
+  dauerhaft entlassen, sondern nur vorübergehend entlassen".
 Label-Someone: Jemand
+Label-Someone.@meta.@description: >-
+  Die Bezeichnung zur Identifizierung eines anderen Benutzers als des aktuellen
+  Benutzers.
 Label-Time: Zeit
+Label-Time.@meta.@description: >-
+  Die Bezeichnung des Zeitstempels eines bestimmten Urteils oder einer
+  bestimmten Aktion eines Benutzers.
 Label-TopNumberAnonymousUsers: 'Top {0} anonyme Benutzer'
+Label-TopNumberAnonymousUsers.@meta.@description: >-
+  Die Bezeichnung für den Abschnitt der Top 20 anonymen Benutzer usw., während
+  die Nummer "20" im Parameter ersetzt werden kann.
 Label-TopUsers: Top-Benutzer
+Label-TopUsers.@meta.@description: >-
+  Die Bezeichnung für den Abschnitt der besten (angemeldeten) Benutzer usw.,
+  während die Nummer.
 Label-TopWikis: Top Wikis
+Label-TopWikis.@meta.@description: >-
+  Die Bezeichnung für den Abschnitt der Top-Wikipedias oder seiner
+  Schwesterprojekte (Wikidata.org usw.) nach der Anzahl der auf Wikipedia
+  abgegebenen Urteile.
 Label-TotalNumber: Gesamt
+Label-TotalNumber.@meta.@description: >-
+  Die Bezeichnung für die Spalte mit der Gesamtzahl der von einem Benutzer
+  abgegebenen Beurteilungen.
 Label-User: Benutzer
+Label-User.@meta.@description: 'Das Label für Benutzer, die das Urteil von Wikipedia bearbeiten geben.'
 Label-Week: Woche
+Label-Week.@meta.@description: >-
+  Eine Bezeichnung für die Granularität der Ausfallzeit von Statistiken, die
+  nach Wochen aufgeschlüsselt ist.
 Label-YourJudgement: Dein Urteil
+Label-YourJudgement.@meta.@description: Das Etikett für das Urteil des aktuellen Benutzers.
 MenuItem-Code: Code
+MenuItem-Code.@meta.@description: >-
+  Die Menüelementbezeichnung, um den Benutzer zur Codebasis dieser Software
+  umzuleiten.
 MenuItem-Contributions: Beiträge
+MenuItem-Contributions.@meta.@description: >-
+  Die Menüelementbezeichnung, die den Benutzer zur Liste der Beiträge oder
+  Beurteilungen des aktuellen Benutzers führt.
 MenuItem-ContributionsBeforeLogin: Meine Beiträge vor dem Login
+MenuItem-ContributionsBeforeLogin.@meta.@description: 'ZU LÖSCHEN, NICHT ÄNDERN ODER ÜBERSETZEN.'
 MenuItem-Issues: Probleme
+MenuItem-Issues.@meta.@description: >-
+  Die Menüpunktbezeichnung leitet den Benutzer zu den Github-Problemen unserer
+  Software weiter.
 MenuItem-Stats: Statistiken
+MenuItem-Stats.@meta.@description: >-
+  Die Menüpunktbezeichnung leitet den Benutzer zur Statistikseite unserer
+  Software weiter.
 Message-AJudgementLogged: 'Ein Urteil für {0} für Revision {1} wurde protokolliert.'
+Message-AJudgementLogged.@meta.@description: >-
+  Die Nachricht, dass ein Urteil für eine bestimmte Revision aufgezeichnet wird.
+  Der Parameter {0} ist der Name des Wikipedia-Artikels. Der Parameter {0} ist
+  die Revisionskennung der Revision (Wikipedia-Bearbeitung).
 Message-CongratsSuccessfullyReverted: 'Glückwunsch! Sie haben erfolgreich direkt {0} zurückgesetzt.'
 Message-DiffNotAvailable: |-
   Der Wikipedia-Artikel diff ist vorübergehend nicht verfügbar.
@@ -86,6 +289,11 @@ Message-DiffNotAvailable: |-
   Manchmal konnte eine zerstörte Revision gelöscht werden.
   Sie können den Seitenverlauf überprüfen.
 Message-FeedHasNoNewRevisionsClickNextBelow: 'Feed {0} hat keine neuen Revisionen. Klicken Sie unten auf Weiter.'
+Message-FeedHasNoNewRevisionsClickNextBelow.@meta.@description: >-
+  Die Nachricht, die dem Benutzer mitteilt, dass ein bestimmter Feed oder Stream
+  von Wikipedia-Änderungen überprüft werden soll, enthält keine neuen
+  Überarbeitungen / Änderungen. Der Parameter {0} bezieht sich auf den Namen des
+  angegebenen Feeds.
 Message-Login: >-
   Wissen Sie, dass Sie sich anmelden und Ihre Etiketten unter Ihrem Namen
   aufbewahren können? Wir unterstützen die Anmeldung mit Wikipedia-Konto über
@@ -99,14 +307,37 @@ Message-NameVoteAnnouncement: >-
 Message-NoActiveUsersPleaseStartReview: >-
   Keine aktiven Benutzer in den letzten 15 Minuten. Beginnen Sie mit der
   Überprüfung von {0} Revisionen {1} und werden Sie die erste.
-Message-Prompt-Login: >-
+Message-NoActiveUsersPleaseStartReview.@meta.@description: >-
+  Die Nachricht, die den Benutzer zum Zurücksetzen einlädt. {0} und {1} sind die
+  HTML-Ankertag-Paare <a> und </a> mit URL-Parametern.
+Message-PromptLogin: >-
   Wissen Sie, dass Sie sich anmelden und Ihre Beiträge unter Ihrem Namen
   aufbewahren können? Wir unterstützen die Anmeldung mit einem Wikipedia-Konto
   über Oauth.
 Message-RevertEditSummary: |-
   Mit {0} Version {1} als Test / Vandalismus identifiziert.
   Sehen Sie es sich an oder geben Sie Ihre Meinung unter {2} ab
+Message-RevertEditSummary.@meta.@description: >-
+  Die Meldung "Zusammenfassung der Bearbeitung", wenn unsere Software eine neue
+  Wikipedia-Bearbeitung generiert, die auf der Wikipedia-Website festgeschrieben
+  werden soll. Der Parameter {0} ist der Name unserer Software, derzeit
+  "WikiLoop Battlefield". Der Parameter {1} ist die Versionsnummer unserer
+  Software, derzeit 4.0.1. Die {2} ist die Website-URL unseres Tools, derzeit
+  "Battlefield.wikiloop.org".
 Message-SorryWeFailedToRevert: 'Leider konnten wir die Revision {0} nicht zurücksetzen.'
+Message-SorryWeFailedToRevert.@meta.@description: >-
+  Die Meldung, die den Benutzer darüber informiert, dass die Umkehrung einer
+  bestimmten Bearbeitung fehlgeschlagen ist. Der Parameter {0} ist die
+  Revisionskennung.
 Message-TheRevisionIsSuccessfullyRevertedAs: 'Die Revision {0} wird erfolgreich als {1} zurückgesetzt.'
+Message-TheRevisionIsSuccessfullyRevertedAs.@meta.@description: >-
+  Die Meldung, dass eine bestimmte Wikipedia-Bearbeitung (Revision) erfolgreich
+  zurückgesetzt wurde. Der Parameter {0} ist die Revisionskennung der
+  Wikipedia-Bearbeitung, die zurückgesetzt wird. Der Parameter {1} ist die
+  zweite Revisionskennung, die die neue Wikipedia-Bearbeitung über der
+  vorherigen Wikipedia-Bearbeitung hat, die ein Ergebnis des Zurücksetzens ist.
 Message-ThereIsNoEditSummary: Es gibt keine Bearbeitungszusammenfassung.
+Message-ThereIsNoEditSummary.@meta.@description: >-
+  Die Nachricht zeigt, dass eine bestimmte Wikipedia-Bearbeitung keine Erklärung
+  hat, siehe https://en.wikipedia.org/wiki/Help:Edit_summary.
 Message-YourJudgementLogged: 'Ihr Urteil für {0} für Revision {1} wurde protokolliert.'

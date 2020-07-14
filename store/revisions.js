@@ -15,7 +15,7 @@ import axios from 'axios';
 const Heap = require('heap');
 const _populatePriority = function(meta, bumpPriority) {
   // TODO(zzn): implement this function according to
-  // the design discussion of https://github.com/google/wikiloop-battlefield/issues/112
+  // the design discussion of https://github.com/google/wikiloop-doublecheck/issues/112
 
   // Approach: using RevId as the quantifying measure.
   let priority = parseInt(meta.wikiRevId.split(':')[1]);

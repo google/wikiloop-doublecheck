@@ -14,7 +14,8 @@
 
 
 import { logger, asyncHandler } from '@/server/common';
-import {useOauth, isEmpty} from '@/server/common';
+import {useOauth} from '@/server/common';
+import { useStiki } from '~/server/common';
 const Avatars = require('@dicebear/avatars').default;
 const sprites = require('@dicebear/avatars-identicon-sprites').default;
 const avatars = new Avatars(sprites, {});
@@ -33,8 +34,6 @@ const avatar = async (req, res) => {
 };
 // TODO build batch api for avatar until performance is an issue. We have cache anyway should be fine.
 utilsRouter.get("/avatar/:seed", asyncHandler(avatar));
-
-const useStiki = !isEmpty(process.env.STIKI_MYSQL);
 
 const flags = async (req, res) => {
     res.send({

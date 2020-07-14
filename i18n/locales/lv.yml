@@ -9,98 +9,282 @@ Button-Next.@meta.@description: >-
   Pogas etiķete, kad tā noklikšķina, dodieties uz nākamo lapu vai parādiet
   nākamo informāciju.
 Button-OpenedUrlToRevert: 'Atjaunots URL, lai to atjaunotu'
+Button-OpenedUrlToRevert.@meta.@description: >-
+  Pogas “Atjaunot tūlīt” etiķete tiks mainīta uz “Atvērts URL, lai atjaunotu”,
+  lai parādītu darbības statusu pēc pogas noklikšķināšanas un darbības
+  veikšanas.
 Button-RevertNow: Atcelt tagad
+Button-RevertNow.@meta.@description: 'Pogas etiķete, lai nekavējoties atjaunotu doto labojumu Vikipēdijā.'
 Button-ShowJudgements: Parādiet spriedumus
+Button-ShowJudgements.@meta.@description: 'Pogas etiķete, lai parādītu spriedumus, kas pieņemti Wikipedia rediģēšanā'
 Button-Undo: Atsaukt
+Button-Undo.@meta.@description: 'Pogas etiķete, lai atsauktu darbību ar mūsu programmatūru.'
 Label-1Month: 1 mēnesis (30.d)
+Label-1Month.@meta.@description: >-
+  Etiķete statistikas rādāmā laika diapazonam, kas precīzi ir 1 mēnesis vai 30
+  dienas.
 Label-1Quarter: 1 ceturksnis (90d)
+Label-1Quarter.@meta.@description: >-
+  Etiķete statistikas rādāmā laika diapazonam, kas precīzi ir 1 ceturtdaļa vai
+  90 dienas.
 Label-1Year: 1 gads (365d)
+Label-1Year.@meta.@description: >-
+  Etiķete statistikas rādāmā laika diapazonam, kas precīzi ir 1 gads vai 365
+  dienas.
 Label-1day: 1 diena
+Label-1day.@meta.@description: 'Apzīmējums statistikas laika diapazonam, kas precīzi ir 1 diena.'
 Label-1week: 1 nedēļa (7d)
+Label-1week.@meta.@description: >-
+  Etiķete statistikas rādāmā laika diapazonam, kas precīzi ir 1 nedēļa vai 7
+  dienas.
 Label-ActiveUsers: Aktīvie lietotāji
+Label-ActiveUsers.@meta.@description: 'Etiķete statistikai, kuras pamatā ir šīs programmatūras aktīvi lietotāji.'
 Label-AllTime: Visu laiku
+Label-AllTime.@meta.@description: >-
+  Laika diapazona etiķete statistikas parādīšanai, kas visu laiku darbojas mūsu
+  programmatūrā.
 Label-Anonymous: Anonīms
 Label-ArtificialIntelligence: Mākslīgais intelekts
 Label-Author: Autors
 Label-CountOfJudgements: Grāfs
+Label-CountOfJudgements.@meta.@description: Apzīmējums spriedumu kopsummai par Wikipedia labojumiem.
 Label-Day: Diena
+Label-Day.@meta.@description: 'Etiķete statistikas iedalījuma laika granularitātei, kas sadalīta pa dienām.'
 Label-DiffView: Diff View
+Label-DiffView.@meta.@description: >-
+  Apzīmējums skatam, kas parāda atšķirību starp momentuzņēmumiem, piemēram,
+  diviem Wikipedia rakstu momentuzņēmumiem.
 Label-DirectRevertFailed: Tieša atgriešana neizdevās
+Label-DirectRevertFailed.@meta.@description: >-
+  Etiķete, kas parāda jauno pogas “Atjaunot tūlīt” statusu. Mērķis ir parādīt
+  lietotāja veiktās darbības statusu, kas šajā gadījumā ir tāds, ka atgriešanās
+  darbība neizdevās.
 Label-DirectReverted: Tieši atgriezts
+Label-DirectReverted.@meta.@description: >-
+  Etiķete, kas parāda jauno pogas “Atjaunot tūlīt” statusu. Mērķis ir parādīt
+  lietotāja veiktās darbības statusu, kas šajā gadījumā ir tāds, ka atgriešanās
+  darbība bija veiksmīga.
 Label-EditSummary: Labojuma kopsavilkums
+Label-EditSummary.@meta.@description: >-
+  Rediģēšanas kopsavilkums ir īss Wikipedia lapas labojuma skaidrojums, kā
+  parādīts https://en.wikipedia.org/wiki/Help:Edit_summary.
 Label-EditedAt: labots
+Label-EditedAt.@meta.@description: 'Rediģēšanas laika zīmoga etiķete Wikipedia, kad rediģēšana ir izveidota.'
 Label-Feed: Barība
+Label-Feed.@meta.@description: >-
+  Etiķete, kurā parādīta plūsma, plūsma vai ienākošo jauno Wikipedia labojumu
+  straume, sekojot šīs konkrētās plūsmas nosaukumam. Piemēram, mums ir dažādas
+  dažāda veida Wikipedia rediģēšanas plūsmas, piemēram, raksta tēmas padeve,
+  vandālisma atklāšanas punktu sistēmu atklāto labojumu plūsma utt.
 Label-History: Vēsture
+Label-History.@meta.@description: >-
+  Etiķete visu lietotāju vai attiecīgā lietotāja iepriekšējo darbību sarakstam,
+  iepriekšējiem spriedumiem utt.
 Label-HumanEditors: Cilvēku redaktori
+Label-HumanEditors.@meta.@description: Cilvēku redaktoru sniegtā spriedumu etiķete.
 Label-Judgement: Spriedums
+Label-Judgement.@meta.@description: >-
+  Sprieduma etiķete, kuru Wikipedia labojumiem piešķīruši mūsu lietotāji, kuri
+  pārskata ienākošos Wikipedia labojumus.
 Label-LastActiveTime: Pēdējais aktīvais
+Label-LastActiveTime.@meta.@description: >-
+  Etiķete, lai parādītu pēdējo reizi, kad lietotājs aktīvi izmantoja mūsu
+  programmatūru.
 Label-Loading: Ielādē
+Label-Loading.@meta.@description: >-
+  Tiek ielādēta etiķete, kas parāda dažas tīmekļa vietnes daļas vai datus.
+  Parasti šī etiķete tiek parādīta kā iekraušanas indikatora alternatīva.
 Label-Login: Pieslēgties
+Label-Login.@meta.@description: >-
+  Pieteikšanās pogas etiķete, lai lietotājs varētu pieteikties. Vai arī tas tiks
+  izmantots arī ziņojumos vai aicinājumā uzaicināt lietotāju pieteikties.
 Label-Logout: Iziet
-Label-Looks-Good: Izskatās labi
+Label-Logout.@meta.@description: >-
+  Pieteikšanās pogas etiķete, kas ļauj lietotājam atteikties. Vai arī tas tiks
+  izmantots arī ziņojumos vai aicinājumā uzaicināt lietotāju atteikties.
 Label-LooksGood: Izskatās labi
+Label-LooksGood.@meta.@description: >-
+  Viena no 3 galveno spriedumu veidu etiķete, kurā teikts, ka pārskatītā
+  Wikipedia rediģēšana ir laba un konstruktīva Wikipedia, nevis kaitējoša.
 Label-Me: Es
+Label-Me.@meta.@description: >-
+  Etiķete, lai identificētu pašu lietotāju. Lūdzu, pārliecinieties, vai šeit
+  tulkotajā etiķetē nav dzimumu neitrāla.
 Label-Month: Mēnesis
-Label-My-History: Mana vēsture
+Label-Month.@meta.@description: >-
+  Apzīmējums statistikas iedalījuma laika detalizētībai, kas sadalīta pa
+  mēnešiem.
+Label-MyHistory: Mana vēsture
+Label-MyHistory.@meta.@description: >-
+  Etiķete pašreizējā lietotāja, kurš izmanto mūsu programmatūru, iepriekšējo
+  darbību sarakstam, iepriekšējiem spriedumiem utt.
+Label-MyHistory.@meta.@isMachineTranslated: true
+Label-MyHistory.@meta.@translatedAt: '2020-07-07T19:26:51.444Z'
+Label-MyHistory.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-NewJudgement: Jauns spriedums
+Label-NewJudgement.@meta.@description: 'Jauna sprieduma etiķete, kuru mūsu lietotājs piešķīris Wikipedia edit.'
 Label-None: Nav
-Label-Not-Sure: Neesmu pārliecināts
+Label-None.@meta.@description: >-
+  Tukša satura rindu un šūnu tabulas vai tukšu sarakstu etiķete. Parasti tas
+  tiek izmantots lietotāja saskarnē, kad nav rādāmā satura.
 Label-NotSure: Nav pārliecības
+Label-NotSure.@meta.@description: >-
+  Viena no 3 galveno spriedumu veidu etiķete, kurā teikts, ka pārskatītā
+  Wikipedia rediģēšana nav pārliecināta, un tā varētu būt laba un konstruktīva
+  vai sabojāt Wikipedia.
 Label-OresBadfaith: ORES Ļaunprātība
+Label-OresBadfaith.@meta.@description: >-
+  Etiķete, kas identificē WMF Mākslīgā intelekta vērtēšanas sistēmas ORES
+  vērtējumu un vērtējumu. Šis marķējums īpaši norāda uz pretstatu ORES
+  labticīgajam modelim. Skatiet vietni
+  https://www.mediawiki.org/wiki/ORES#Advanced_support
 Label-OresBadfaith.@meta.@isMachineTranslated: true
-Label-OresBadfaith.@meta.@translatedAt: 2020-07-07T01:09:19.144Z
+Label-OresBadfaith.@meta.@translatedAt: '2020-07-07T01:09:19.144Z'
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: ORES bojājums
-Label-Overriden: Pārvērtēts
-Label-Prompt-Login: Pieslēgties
+Label-OresDamaging.@meta.@description: >-
+  Etiķete, kas identificē WMF Mākslīgā intelekta vērtēšanas sistēmas ORES
+  vērtējumu un vērtējumu. Šis marķējums īpaši attiecas uz ORES kaitīgo modeli.
+  Skatiet vietni https://www.mediawiki.org/wiki/ORES#Advanced_support
+Label-Overridden: Pārvērtēts
+Label-Overridden.@meta.@description: >-
+  Apzīmējums, kas norāda, ka doto Wikipedia raksta labojumu apgāž cita jaunāka
+  rediģēšana tajā pašā Wikipedia rakstā. Šī etiķete norāda, ka šādu labojumu
+  mūsu pašreizējais lietotājs jau ir atsaucis, vai arī to ir atjaunojis vai
+  atjauninājis cits Wikipedia redaktors Wikipedia.
+Label-Overridden.@meta.@isMachineTranslated: true
+Label-Overridden.@meta.@translatedAt: '2020-07-07T19:26:51.444Z'
+Label-Overridden.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-PromptLogin: Pieslēgties
+Label-PromptLogin.@meta.@description: >-
+  Etiķete, kas pamudina lietotāju pieteikties uz mūsu programmatūru. Tas ir
+  vairāk kā tonis "lūdzu, piesakieties" valodās, kurās pastāv formalitāte un
+  godpilna runa.
+Label-PromptLogin.@meta.@isMachineTranslated: true
+Label-PromptLogin.@meta.@translatedAt: '2020-07-07T19:26:51.444Z'
+Label-PromptLogin.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-Rank: Rank
+Label-Rank.@meta.@description: >-
+  Apzīmējums statistikas ranžēšanai pēc dotā šķirošanas numura, piemēram,
+  lietotāji sakārtoti pēc viņu ierakstu skaita
 Label-Reason: Iemesls
+Label-Reason.@meta.@description: >-
+  Apzīmējums veiktās darbības rezultāta dēļ, piemēram, kad lietotājs atgriež
+  Wikipedia labojumu.
 Label-Result: Rezultāts
+Label-Result.@meta.@description: >-
+  Veiktas darbības rezultāta etiķete, piemēram, kad lietotājs atgriezās
+  Wikipedia labojumā.
 Label-RevertSucceeded: Atgriezties izdevās!
+Label-RevertSucceeded.@meta.@description: >-
+  Veicamās darbības rezultāta etiķete, kad lietotājs atsaucis Wikipedia
+  labojumu, darbība ir veiksmīga.
 Label-ReviewFeed: Atsauksmju plūsma
+Label-ReviewFeed.@meta.@description: 'Pārskatāmo Wikipedia labojumu plūsmas, plūsmas vai straumes etiķete.'
 Label-ReviewedAndSays: 'pārskatīja {0} un saka'
-Label-Should-Revert: Vajadzētu atgriezties
+Label-ReviewedAndSays.@meta.@description: Etiķete sprieduma teikuma sākšanai un pārskatīšanas iemesli.
 Label-ShouldRevert: Būtu jāatceļ
+Label-ShouldRevert.@meta.@description: >-
+  Viena no 3 galveno spriedumu veidu etiķete, kurā teikts, ka pārskata Wikipedia
+  labojums kaitē Wikipedia pretstatā tam, ka tas ir labs un konstruktīvs.
 Label-Snooze: Atlikt
+Label-Snooze.@meta.@description: >-
+  Pogas etiķete, lai atliktu atgādinājumu vai paziņojumu, vai, citiem vārdiem
+  sakot, tas nozīmē “atgādināt vēlāk”. Patiesībā atlikšanas poga tiks izmantota,
+  kad atkal parādīsies atgādinājums vai paziņojuma ziņojums. Tātad tas nozīmē
+  arī "nevis atlaist uz visiem laikiem, bet vienkārši atlaist uz laiku".
 Label-Someone: Kāds
+Label-Someone.@meta.@description: 'Etiķete, lai identificētu lietotāju, kas nav pašreizējais lietotājs.'
 Label-Time: Laiks
+Label-Time.@meta.@description: Lietotāja noteiktā sprieduma vai darbības laika zīmoga etiķete.
 Label-TopNumberAnonymousUsers: 'Populārākie {0} anonīmi lietotāji'
+Label-TopNumberAnonymousUsers.@meta.@description: >-
+  20 anonīmo lietotāju sadaļas etiķete utt., Savukārt parametrā skaitli "20" var
+  aizstāt.
 Label-TopUsers: Labākie lietotāji
+Label-TopUsers.@meta.@description: 'Labāko (pieteicies) lietotāju sadaļas etiķete utt., Bet numurs.'
 Label-TopWikis: Top Wikis
+Label-TopWikis.@meta.@description: >-
+  Augšējās Wikipedias sadaļas vai tās māsas projektu etiķete (Wikidata.org utt.)
+  Atbilstoši Wikipedia pasludināto spriedumu skaitam.
 Label-TotalNumber: Kopā
+Label-TotalNumber.@meta.@description: Kolonnas etiķete ar kopējo lietotāju pieņemto spriedumu skaitu.
 Label-User: Lietotājs
+Label-User.@meta.@description: 'Apzīmējums lietotājam, kurš spriež par Wikipedia rediģēšanu.'
 Label-Week: Nedēļa
+Label-Week.@meta.@description: 'Etiķete statistikas iedalījuma laika sīkumam, kas sadalīta pa nedēļām.'
 Label-YourJudgement: Jūsu spriedums
+Label-YourJudgement.@meta.@description: Pašreizējā lietotāja sprieduma etiķete.
 MenuItem-Code: Kods
+MenuItem-Code.@meta.@description: 'Izvēlnes vienuma etiķete, lai novirzītu lietotāju uz šīs programmatūras kodu.'
 MenuItem-Contributions: Mans devums
+MenuItem-Contributions.@meta.@description: >-
+  Izvēlnes elementa etiķete, novirzot lietotāju uz pašreizējā lietotāja sniegto
+  ieguldījumu vai spriedumu sarakstu.
 MenuItem-ContributionsBeforeLogin: Mani ieguldījumi pirms pieteikšanās
+MenuItem-ContributionsBeforeLogin.@meta.@description: 'JĀIZVĒRST, NEIZMAINIET VAI TULKOJIET.'
 MenuItem-Issues: Jautājumi
+MenuItem-Issues.@meta.@description: >-
+  Izvēlnes elementa etiķete, novirzot lietotāju uz mūsu programmatūras Github
+  jautājumiem.
 MenuItem-Stats: Statistika
+MenuItem-Stats.@meta.@description: >-
+  Izvēlnes elementa etiķete, novirzot lietotāju uz mūsu programmatūras
+  statistikas lapu.
 Message-AJudgementLogged: '{0} spriedums par pārskatīšanu {1} ir reģistrēts.'
+Message-AJudgementLogged.@meta.@description: >-
+  Ziņojums, ka tiek reģistrēts spriedums par noteiktu pārskatīšanu. Parametrs
+  {0} ir Vikipēdijas raksta nosaukums. Parametrs {0} ir versijas versijas
+  identifikators (Wikipedia edit).
 Message-CongratsSuccessfullyReverted: 'Apsveicu! jūs esat veiksmīgi atgriezis tieši vietni {0}.'
 Message-DiffNotAvailable: >-
   Vikipēdijas raksta izmaiņas attēlošana īslaicīgi nav pieejama. Tu vari mēģināt
   ielādēt to vēlreiz. Dažkārt vandalizētā versija var būt jau dzēsta. Tu vari
   pārbaudīt lapas vēsturi.
 Message-FeedHasNoNewRevisionsClickNextBelow: 'Plūsmā {0} nav jaunu versiju, noklikšķiniet uz nākamās zemāk.'
+Message-FeedHasNoNewRevisionsClickNextBelow.@meta.@description: >-
+  Ziņojumā, kurā lietotājam tiek norādīta attiecīgā pārskata Wikipedia labojumu
+  plūsma vai straume, nav jaunu labojumu / labojumu. Parametrs {0} attiecas uz
+  dotās plūsmas nosaukumu.
 Message-Login: >-
   Vai jūs zināt, ka varētu pieteikties un saglabāt etiķetes ar savu vārdu? Mēs
   atbalstām pieteikšanos ar Wikipedia kontu caur Oauth.
 Message-NameVoteAnnouncement: >-
   Cienījamais līdzstrādnieks, mēs balsojam par jaunu vārdu, kas aizstāj
-  “WikiLoop Battlefield” un beidzas 2020. gada 13. jūlijā plkst. 00:00 pēc UTC.
+  “WikiLoop DoubleCheck” un beidzas 2020. gada 13. jūlijā plkst. 00:00 pēc UTC.
 
   Lūdzu balsošanu.
 Message-NoActiveUsersPleaseStartReview: >-
   Pēdējo 15 minūšu laikā nav aktīvu lietotāju. Sāciet {0} pārskatīt {1}
   pārskatus un kļūsiet par pirmo.
-Message-Prompt-Login: >-
+Message-NoActiveUsersPleaseStartReview.@meta.@description: >-
+  Ziņojums, kas uzaicina lietotāju sākt atgriešanos. {0} un {1} ir HTML enkura
+  tagu pāri <a> un </a> ar URL parametriem.
+Message-PromptLogin: >-
   Vai jūs zināt, ka varētu pieteikties un saglabāt savu ieguldījumu ar savu
   vārdu? Mēs atbalstām pieteikšanos ar Wikipedia kontu caur Oauth.
 Message-RevertEditSummary: >-
   Identificēts kā izmēģinājums/vandalisms izmantojot {0} versiju {1}. Apskatīt
   to vai piedāvāt savu viedokli {2}
+Message-RevertEditSummary.@meta.@description: >-
+  Rediģēšanas kopsavilkuma ziņojums, kad mūsu programmatūra ģenerē jaunu
+  Wikipedia labojumu, kas jāievieto Wikipedia vietnē. Parametrs {0} ir mūsu
+  programmatūras nosaukums, šobrīd "WikiLoop DoubleCheck". Parametrs {1} ir mūsu
+  programmatūras versijas numurs, šobrīd 4.0.1. {2} ir mūsu rīka vietnes URL,
+  šobrīd “doublecheck.wikiloop.org”.
 Message-SorryWeFailedToRevert: 'Diemžēl mums neizdevās atsaukt versiju {0}.'
+Message-SorryWeFailedToRevert.@meta.@description: >-
+  Ziņojums, kas informē lietotāju, ka dotā labojuma apgriešana nav izdevusies.
+  Parametrs {0} ir versijas identifikators.
 Message-TheRevisionIsSuccessfullyRevertedAs: 'Versija {0} tiek veiksmīgi atjaunota kā {1}.'
+Message-TheRevisionIsSuccessfullyRevertedAs.@meta.@description: >-
+  Ziņojums, kurā norādīts, ka dotā Wikipedia rediģēšana (pārskatīšana) ir
+  veiksmīgi atgriezta. Parametrs {0} ir atgriezeniskās Wikipedia rediģēšanas
+  versijas identifikators. Parametrs {1} ir otrais rediģēšanas identifikators,
+  ko jaunā Wikipedia rediģēšana, kas atrodas virs iepriekšējās Wikipedia
+  rediģēšanas, kas ir atjaunošanas rezultāts.
 Message-ThereIsNoEditSummary: Nav rediģēšanas kopsavilkuma.
+Message-ThereIsNoEditSummary.@meta.@description: >-
+  Ziņojums parāda, ka dotajam Wikipedia labojumam nav skaidrojuma, skatiet
+  https://en.wikipedia.org/wiki/Help:Edit_summary.
 Message-YourJudgementLogged: 'Jūsu spriedums par {0} pārskatīšanai {1} ir reģistrēts.'

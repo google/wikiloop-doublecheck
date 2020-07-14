@@ -1,107 +1,310 @@
 Button-Go: Перейти
 Button-Go.@meta.@description: >-
   Мітка для кнопок для перенаправлення користувача на певну URL-адресу або
-  місцеположення.
+  місце.
 Button-HelpTranslate: Допомогти перекласти
 Button-HelpTranslate.@meta.@description: >-
   Мітка для кнопки, яка дозволяє користувачам допомагати перекладати
   інтернаціоналізовані повідомлення для цього програмного забезпечення.
 Button-Next: Далі
 Button-Next.@meta.@description: >-
-  Мітка для кнопки, яка при натисканні переходить на наступну сторінку або відображає
-  наступну інформацію.
-Button-OpenedUrlToRevert: Відкрито URL-адресу для відновлення
-Button-RevertNow: Відновити зараз
+  Мітка для кнопки, яка переходить до наступної сторінки або відображає наступну
+  інформацію.
+Button-OpenedUrlToRevert: Відкрита URL-адреса для відміни
+Button-OpenedUrlToRevert.@meta.@description: >-
+  Мітка кнопки "Повернути зараз" зміниться на "Відкрита URL-адреса для
+  повернення", щоб відобразити стан дії після натискання кнопки та виконання
+  дії.
+Button-RevertNow: Відмінити зараз
+Button-RevertNow.@meta.@description: Мітка кнопки для негайного відновлення заданої редакції у Вікіпедії.
 Button-ShowJudgements: Показати судження
+Button-ShowJudgements.@meta.@description: 'Мітка кнопки для відображення суджень, винесених у редакції Вікіпедії'
 Button-Undo: Скасувати
-Label-1Month: 1 місяць (30d)
-Label-1Quarter: 1 квартал (90d)
-Label-1Year: 1 рік (365d)
+Button-Undo.@meta.@description: Мітка для кнопки для скасування дії на нашому програмному забезпеченні.
+Label-1Month: 1 місяць (30д)
+Label-1Month.@meta.@description: >-
+  Мітка для часового діапазону статистики, який відображається, а саме 1 місяць
+  або 30 днів.
+Label-1Quarter: 1 квартал (90д)
+Label-1Quarter.@meta.@description: >-
+  Мітка для часового діапазону статистики, який потрібно відобразити, а це точно
+  1 квартал або 90 днів.
+Label-1Year: 1 рік (365д)
+Label-1Year.@meta.@description: >-
+  Мітка для часового діапазону статистики для показу, який становить 1 рік або
+  365 днів.
 Label-1day: 1 день
-Label-1week: 1 тиждень (7d)
+Label-1day.@meta.@description: 'Мітка для часового діапазону статистики для показу, який становить 1 день.'
+Label-1week: 1 тиждень (7д)
+Label-1week.@meta.@description: >-
+  Мітка для часового діапазону статистики, який потрібно відобразити, а саме 1
+  тиждень або 7 днів.
 Label-ActiveUsers: Активні користувачі
+Label-ActiveUsers.@meta.@description: >-
+  Мітка для статистики на основі активних користувачів цього програмного
+  забезпечення.
 Label-AllTime: Весь час
+Label-AllTime.@meta.@description: >-
+  Мітка для часового діапазону для відображення статистичних даних, який весь
+  час працює в нашому програмному забезпеченні.
 Label-Anonymous: Анонімний
 Label-ArtificialIntelligence: Штучний інтелект
 Label-Author: Автор
 Label-CountOfJudgements: Кількість
+Label-CountOfJudgements.@meta.@description: Мітка для суми кількості судових рішень для правок Вікіпедії.
 Label-Day: День
+Label-Day.@meta.@description: >-
+  Мітка для деталізації деталізації статистики за часом розбиття, яка
+  розбивається на день.
 Label-DiffView: Перегляд відмінностей
-Label-DirectRevertFailed: Не вдалось відновити напряму
-Label-DirectReverted: Прямий відмінений
+Label-DiffView.@meta.@description: >-
+  Мітка для подання, що показує різницю між знімками, такими як два знімки
+  статті у Вікіпедії.
+Label-DirectRevertFailed: Не вдалося відмінити напряму
+Label-DirectRevertFailed.@meta.@description: >-
+  Мітка для показу нового статусу кнопки "Повернути зараз". Мета полягає в тому,
+  щоб показати статус дії, виконаної користувачем, що в цьому випадку полягає в
+  тому, що дія, що повертається, не вдалася.
+Label-DirectReverted: Відмінено напряму
+Label-DirectReverted.@meta.@description: >-
+  Мітка для показу нового статусу кнопки "Повернути зараз". Мета полягає в тому,
+  щоб показати статус дії, виконаної користувачем, що в цьому випадку полягає в
+  тому, що дія, що повертається, вдалася.
 Label-EditSummary: Редагувати резюме
+Label-EditSummary.@meta.@description: >-
+  Резюме редагування - це коротке пояснення редагування сторінки у Вікіпедії, як
+  показано на https://en.wikipedia.org/wiki/Help:Edit_summary
 Label-EditedAt: відредаговано
+Label-EditedAt.@meta.@description: Мітка часової позначки редагування у Вікіпедії при створенні редагування.
 Label-Feed: Стрічка
+Label-Feed.@meta.@description: >-
+  Мітка, що показує канал, потік або потік нових редакцій у Вікіпедії, слід за
+  назвою цього конкретного каналу. Наприклад, у нас є різні канали різного роду
+  редагувань Вікіпедії, такі як подання теми статті, подання змін, виявлених
+  системами оцінки вандалізму тощо.
 Label-History: Історія
-Label-HumanEditors: Редактори 
+Label-History.@meta.@description: >-
+  Мітка для списку минулих дій, внесених раніше суджень тощо, усіх користувачів
+  або певного користувача.
+Label-HumanEditors: Редактори
+Label-HumanEditors.@meta.@description: 'Етикетка для судових рішень, наданих редакторами Human.'
 Label-Judgement: Судження
-Label-LastActiveTime: Останній активний
+Label-Judgement.@meta.@description: >-
+  Мітка для судження, надана правками Вікіпедії нашими користувачами, які
+  переглядають вхідні редакції Вікіпедії.
+Label-LastActiveTime: Останній активний час
+Label-LastActiveTime.@meta.@description: >-
+  Мітка, яка показує останній раз, коли користувач працював над нашим програмним
+  забезпеченням.
 Label-Loading: Завантаження
-Label-Login: Вхід
+Label-Loading.@meta.@description: >-
+  Завантажується мітка для відображення деяких частин або даних на веб-сторінці.
+  Зазвичай ця мітка відображається як резервна копія для індикатора
+  завантаження.
+Label-Login: Увійти
+Label-Login.@meta.@description: >-
+  Мітка для кнопки входу, що дозволяє користувачеві входити. Або він також буде
+  використовуватися в повідомленнях або підказках для запрошення користувача до
+  входу.
 Label-Logout: Вийти
-Label-Looks-Good: Виглядає добре
+Label-Logout.@meta.@description: >-
+  Мітка для кнопки входу, щоб користувач міг виходити з системи. Або він також
+  буде використовуватися в повідомленнях або підказках для запрошення
+  користувача на вихід.
 Label-LooksGood: Виглядає добре
+Label-LooksGood.@meta.@description: >-
+  Етикетка одного з 3 основних типів судових рішень, яка говорить про те, що
+  редакція Wikipedia переглядається, є доброю та конструктивною для Вікіпедії,
+  на відміну від шкоди.
 Label-Me: Я
+Label-Me.@meta.@description: >-
+  Мітка для ідентифікації самого користувача. Переконайтесь, що перекладена
+  етикетка тут є гендерно нейтральною.
 Label-Month: Місяць
-Label-My-History: Моя історія
+Label-Month.@meta.@description: >-
+  Мітка для деталізації статистичних даних про час розбиття, яка розбивається на
+  місяць.
+Label-MyHistory: Моя історія
+Label-MyHistory.@meta.@description: >-
+  Мітка для списку минулих дій, внесених раніше суджень тощо, поточного
+  користувача, який використовує наше програмне забезпечення.
+Label-MyHistory.@meta.@isMachineTranslated: true
+Label-MyHistory.@meta.@translatedAt: '2020-07-07T19:26:51.447Z'
+Label-MyHistory.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-NewJudgement: Нове судження
+Label-NewJudgement.@meta.@description: 'Етикетка для нового рішення, виданого користувачем Wikipedia для редагування.'
 Label-None: Жоден
-Label-Not-Sure: Не впевнений
+Label-None.@meta.@description: >-
+  Мітка для порожньої таблиці рядків і комірок вмісту або порожніх списків.
+  Зазвичай це використовується в інтерфейсі користувача, коли немає вмісту для
+  показу.
 Label-NotSure: Не впевнений
+Label-NotSure.@meta.@description: >-
+  Етикетка одного з 3 основних типів судових рішень, яка говорить про те, що
+  редакція Вікіпедії переглядається, не є впевненою, і може бути або хорошою, і
+  конструктивною, або шкодою для Вікіпедії.
 Label-OresBadfaith: ORES Недобросовісність
+Label-OresBadfaith.@meta.@description: >-
+  Етикетка, що ідентифікує оцінку та судження, надана системою озвучення
+  штучного інтелекту WMF ORES. Ця специфіка етикетки стосується протилежної
+  моделі добросовісного споживання ORES. Дивіться
+  https://www.mediawiki.org/wiki/ORES#Advanced_support
 Label-OresBadfaith.@meta.@isMachineTranslated: true
-Label-OresBadfaith.@meta.@translatedAt: 2020-07-07T01:09:19.145Z
+Label-OresBadfaith.@meta.@translatedAt: '2020-07-07T01:09:19.145Z'
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: Пошкодження ORES
-Label-Overriden: Переглянуто
-Label-Prompt-Login: Вхід
+Label-OresDamaging.@meta.@description: >-
+  Етикетка, що ідентифікує оцінку та судження, надана системою озвучення
+  штучного інтелекту WMF ORES. Ця марка стосується пошкоджуючої моделі ORES.
+  Дивіться https://www.mediawiki.org/wiki/ORES#Advanced_support
+Label-Overridden: Переоцінений
+Label-Overridden.@meta.@description: >-
+  Етикетка говорить про те, що певну редакцію статті у Вікіпедії замінено іншою
+  новою редакцією тієї самої статті Вікіпедії. Ця мітка означає, що таке
+  редагування або вже скасовано нашим поточним користувачем, або його відновлено
+  або оновлено іншим редактором Wikipedia у Вікіпедії.
+Label-Overridden.@meta.@isMachineTranslated: true
+Label-Overridden.@meta.@translatedAt: '2020-07-07T19:26:51.447Z'
+Label-Overridden.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-PromptLogin: Вхід
+Label-PromptLogin.@meta.@description: >-
+  Мітка, щоб спонукати користувача ввійти в наше програмне забезпечення. Це
+  більше схоже на тон "будь-ласка, увійдіть" у мовах, коли існують формальність
+  та почесна мова.
+Label-PromptLogin.@meta.@isMachineTranslated: true
+Label-PromptLogin.@meta.@translatedAt: '2020-07-07T19:26:51.447Z'
+Label-PromptLogin.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-Rank: Ранг
+Label-Rank.@meta.@description: >-
+  Мітка для ранжування статистики за заданим сортувальним номером, наприклад,
+  користувачі відсортовані за кількістю внесків
 Label-Reason: Причина
+Label-Reason.@meta.@description: >-
+  Мітка з причини результату виконаної дії, наприклад, коли користувач повертає
+  зміни в Вікіпедії.
 Label-Result: Результат
-Label-RevertSucceeded: Відновлення успішне!
+Label-Result.@meta.@description: >-
+  Мітка для результату виконаної дії, наприклад, коли користувач повернув зміну
+  Вікіпедії.
+Label-RevertSucceeded: Віміна успішна!
+Label-RevertSucceeded.@meta.@description: >-
+  Мітка для результату виконаної дії, коли користувач повернув редагування
+  Вікіпедії, дія успішна.
 Label-ReviewFeed: Огляд стрічки
+Label-ReviewFeed.@meta.@description: >-
+  Мітка для каналу, потоку або потоку вхідних редакцій Вікіпедії, які слід
+  переглянути.
 Label-ReviewedAndSays: 'переглянув(-ла) {0} і каже'
-Label-Should-Revert: Потрібно відновити
-Label-ShouldRevert: Потрібно відновити
+Label-ReviewedAndSays.@meta.@description: Етикетка для початку вироку та причин для перегляду.
+Label-ShouldRevert: Потрібно відмінити
+Label-ShouldRevert.@meta.@description: >-
+  Етикетка одного з 3 основних типів судових рішень, яка говорить про те, що
+  редакція Вікіпедії переглядається, є шкодою для Вікіпедії, на відміну від
+  хорошого та конструктивного.
 Label-Snooze: Відкласти
+Label-Snooze.@meta.@description: >-
+  Мітка кнопки для відкладення нагадування чи сповіщення, або іншими словами,
+  означає "нагадати мені пізніше". Насправді кнопка відкладення буде
+  використана, коли нагадування або повідомлення з повідомленням з’являться
+  знову. Тож це також означає "не звільнений назавжди, а просто звільнений
+  тимчасово".
 Label-Someone: Хтось
+Label-Someone.@meta.@description: 'Мітка для ідентифікації користувача, який не є поточним користувачем.'
 Label-Time: Час
+Label-Time.@meta.@description: 'Мітка часової позначки певного рішення чи дії, наданих користувачем.'
 Label-TopNumberAnonymousUsers: 'Топ {0} анонімних користувачів'
+Label-TopNumberAnonymousUsers.@meta.@description: >-
+  Мітка для розділу з топ-20 анонімних користувачів тощо, тоді як число "20"
+  можна замінити в параметрі.
 Label-TopUsers: Топ користувачів
+Label-TopUsers.@meta.@description: >-
+  Мітка для розділу провідних користувачів (увійшли в систему) тощо, тоді як
+  номер.
 Label-TopWikis: Топ Вікі
+Label-TopWikis.@meta.@description: >-
+  Мітка для розділу провідної Wikipedias або її сестринських проектів
+  (Wikidata.org тощо) за кількістю суджень, винесених у Вікіпедії.
 Label-TotalNumber: Всього
+Label-TotalNumber.@meta.@description: 'Мітка для стовпця із загальної кількості суджень, винесених користувачем.'
 Label-User: Користувач
+Label-User.@meta.@description: 'Мітка для користувача, який дає оцінку щодо редагування Wikipedia.'
 Label-Week: Тиждень
+Label-Week.@meta.@description: >-
+  Мітка для деталізації статистичних даних про час розбиття, яка розбивається на
+  тиждень.
 Label-YourJudgement: Ваше судження
+Label-YourJudgement.@meta.@description: 'Мітка для судження, винесеного поточним користувачем.'
 MenuItem-Code: Код
+MenuItem-Code.@meta.@description: >-
+  Мітка пункту меню для перенаправлення користувача на базу коду цього
+  програмного забезпечення.
 MenuItem-Contributions: Мої внески
-MenuItem-ContributionsBeforeLogin: Мої внески перед входом у систему
+MenuItem-Contributions.@meta.@description: >-
+  Етикетка пункту меню спрямовує користувача до списку внесків чи суджень,
+  виданих поточним користувачем.
+MenuItem-ContributionsBeforeLogin: Мої внески до входу в систему
+MenuItem-ContributionsBeforeLogin.@meta.@description: 'Щоб бути вилученими, НЕ ЗМІНУЙТЕ І НЕ ПОВЕРНУЙТЕ.'
 MenuItem-Issues: Питання
+MenuItem-Issues.@meta.@description: >-
+  Етикетка пункту меню перенаправляє користувача до проблем Github нашого
+  програмного забезпечення.
 MenuItem-Stats: Статистика
-Message-AJudgementLogged: 'Рішення для {0} про версію {1} було записано.'
-Message-CongratsSuccessfullyReverted: 'Вітаємо! Ви успішно відновили {0}.'
+MenuItem-Stats.@meta.@description: >-
+  Мітка пункту меню перенаправляє користувача на сторінку статистики нашого
+  програмного забезпечення.
+Message-AJudgementLogged: 'Рішення для {0} про версію {1} записано.'
+Message-AJudgementLogged.@meta.@description: >-
+  Повідомлення про те, що судження щодо даної редакції записується. Параметр {0}
+  - назва статті у Вікіпедії. Параметр {0} - це ідентифікатор версії редакції
+  (редакція Вікіпедії).
+Message-CongratsSuccessfullyReverted: 'Вітаємо! Ви успішно відмінили {0}.'
 Message-DiffNotAvailable: >-
-  Перегляд відмінностей статті Вікіпедії тимчасово недоступний. Ви можете спробувати його
-  перезавантажити. Подекуди трапляється, що вандалізована версія статті може бути видалена. Ви можете
-  перевірити історію сторінки.
+  Перегляд відмінностей статті Вікіпедії тимчасово недоступний. Ви можете
+  спробувати його перезавантажити. Іноді трапляється що вандалізована версія
+  статті може бути видалена. Ви можете перевірити історію сторінки.
 Message-FeedHasNoNewRevisionsClickNextBelow: 'У стрічці {0} немає нових версій, натисніть наступну нижче.'
+Message-FeedHasNoNewRevisionsClickNextBelow.@meta.@description: >-
+  Повідомлення, що повідомляє користувачеві поданий канал або потік змін у
+  Вікіпедії, які слід переглянути, не має нових змін / редагувань. Параметр {0}
+  посилається на назву даного каналу.
 Message-Login: >-
-  Чи знаєте ви, що можете ввійти та зберегти свої мітки під своїм ім’ям? Ми
-  підтримуємо Вхід з обліковим записом Вікіпедії через Oauth.
+  Знаєте що можна ввійти та зберегти свої мітки під своїм ім’ям? Ми підтримуємо
+  вхід з обліковим записом Вікіпедії через Oauth.
 Message-NameVoteAnnouncement: >-
   Шановний дописувач, ми проводимо голосування за нове ім'я, яке замінить
-  "WikiLoop Battlefield", що закінчується 13 липня 2020 р. 00:00 UTC. Будь
-  ласка, голосуйте.
+  "WikiLoop DoubleCheck", що закінчується 13 липня 2020 р. 00:00 UTC. Будь
+  ласка, проголосуйте.
 Message-NoActiveUsersPleaseStartReview: >-
   Немає активних користувачів за останні 15 хв. Почніть {0} з перегляду версій
   {1} і станьте першим/першою.
-Message-Prompt-Login: >-
-  Чи знаєте Ви, що можете ввійти та зберегти внески під своїм ім’ям? Ми
-  підтримуємо вхід в обліковий запис Вікіпедії через Oauth.
+Message-NoActiveUsersPleaseStartReview.@meta.@description: >-
+  Повідомлення, яке пропонує користувачеві розпочати ревертування. {0} і {1} -
+  пара тегів HTML якоря <a> і </a> з параметрами URL.
+Message-PromptLogin: >-
+  Знаєте що можна ввійти та зберегти внески під своїм ім’ям? Ми підтримуємо вхід
+  в обліковий запис Вікіпедії через Oauth.
 Message-RevertEditSummary: >-
   Ідентифіковано як тест / вандалізм з використанням {0} версії {1}. Перегляньте
   це або висловіть свою думку у {2}
-Message-SorryWeFailedToRevert: 'На жаль, нам не вдалося відновити версію {0}.'
-Message-TheRevisionIsSuccessfullyRevertedAs: 'Версію {0} успішно відновлено як {1}.'
+Message-RevertEditSummary.@meta.@description: >-
+  Повідомлення про підсумок редагування, коли наше програмне забезпечення
+  генерує нову редакцію Вікіпедії, яку слід здійснити на веб-сайті Вікіпедії.
+  Параметр {0} - назва нашого програмного забезпечення, на даний момент
+  "WikiLoop DoubleCheck". Параметр {1} - номер версії нашого програмного
+  забезпечення, наразі 4.0.1. {2} - URL-адреса веб-сайту нашого інструменту, на
+  даний момент "doublecheck.wikiloop.org".
+Message-SorryWeFailedToRevert: 'На жаль, нам не вдалося відмінити версію {0}.'
+Message-SorryWeFailedToRevert.@meta.@description: >-
+  Повідомлення, яке повідомляє користувачеві, що повернення заданої редакції не
+  вдалося. Параметр {0} - це ідентифікатор редакції.
+Message-TheRevisionIsSuccessfullyRevertedAs: 'Версію {0} успішно відмінено як {1}.'
+Message-TheRevisionIsSuccessfullyRevertedAs.@meta.@description: >-
+  Повідомлення про те, що певна редакція (перегляд) Вікіпедії успішно повернена.
+  Параметр {0} - це ідентифікатор редакції редакції Вікіпедії, що повертається.
+  Параметр {1} є другим ідентифікатором редакції, який новою редакцією Wikipedia
+  є поверх попередньої редакції Wikipedia, яка є результатом ревертування.
 Message-ThereIsNoEditSummary: Резюме правки відсутнє.
+Message-ThereIsNoEditSummary.@meta.@description: >-
+  У повідомленні видно, що певна редакція Вікіпедії не має пояснення, див.
+  Https://en.wikipedia.org/wiki/Help:Edit_summary.
 Message-YourJudgementLogged: 'Ваше рішення щодо {0} для перегляду {1} було записано.'

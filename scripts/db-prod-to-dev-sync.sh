@@ -7,7 +7,7 @@ export MONGODB_URI_TO=
 
 
 export OUT_DIR=tmp/$(date +'%Y-%m-%d-%H-%M')
-export GZ_NAME=wikiloop-battlefield-prod.gz
+export GZ_NAME=wikiloop-doublecheck-prod.gz
 
 echo "Start backing up to $OUT_DIR/$GZ_NAME"
 mkdir -p $OUT_DIR/

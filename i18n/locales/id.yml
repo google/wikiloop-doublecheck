@@ -1,4 +1,4 @@
-Button-Go: Pergilah
+Button-Go: Ayo
 Button-Go.@meta.@description: >-
   Beri label untuk tombol untuk mengalihkan pengguna ke url atau lokasi yang
   diberikan.
@@ -10,100 +10,300 @@ Button-Next: Selanjutnya
 Button-Next.@meta.@description: >-
   Beri label untuk tombol ketika diklik pergi ke halaman berikutnya atau
   tampilkan informasi berikutnya.
-Button-OpenedUrlToRevert: URL yang dibuka untuk kembali
+Button-OpenedUrlToRevert: URL untuk membatalkan telah dibuka
+Button-OpenedUrlToRevert.@meta.@description: >-
+  Label tombol "Kembalikan sekarang" akan berubah menjadi "URL yang Dibuka untuk
+  kembali" untuk menampilkan status tindakan setelah tombol diklik dan tindakan
+  dilakukan.
 Button-RevertNow: Batalkan sekarang
+Button-RevertNow.@meta.@description: >-
+  Label untuk tombol untuk segera mengembalikan revisi yang diberikan di
+  Wikipedia.
 Button-ShowJudgements: Perlihatkan penilaian
-Button-Undo: Membuka
-Label-1Month: 1 bulan (30d)
-Label-1Quarter: 1 perempat (90d)
-Label-1Year: 1 tahun (365d)
+Button-ShowJudgements.@meta.@description: >-
+  Label untuk tombol untuk menunjukkan penilaian yang diberikan pada suntingan
+  Wikipedia
+Button-Undo: Batalkan tindakan
+Button-Undo.@meta.@description: Label untuk tombol untuk membatalkan tindakan pada perangkat lunak kami.
+Label-1Month: 1 bulan (30hr)
+Label-1Month.@meta.@description: >-
+  Label untuk rentang waktu statistik untuk ditampilkan, yaitu 1 bulan atau 30
+  hari tepatnya.
+Label-1Quarter: 1 triwulan (90hr)
+Label-1Quarter.@meta.@description: >-
+  Label untuk rentang waktu statistik yang akan ditampilkan, yaitu 1 kuartal
+  atau 90 hari tepatnya.
+Label-1Year: 1 tahun (365hr)
+Label-1Year.@meta.@description: >-
+  Label untuk rentang waktu statistik untuk ditampilkan, yaitu 1 tahun atau 365
+  hari tepatnya.
 Label-1day: 1 hari
-Label-1week: 1 minggu (7d)
-Label-ActiveUsers: Pengguna Aktif
-Label-AllTime: Sepanjang waktu
+Label-1day.@meta.@description: 'Label untuk rentang waktu statistik untuk ditampilkan, yaitu 1 hari tepatnya.'
+Label-1week: 1 minggu (7hr)
+Label-1week.@meta.@description: >-
+  Label untuk rentang waktu statistik untuk ditampilkan, yaitu 1 minggu atau 7
+  hari tepatnya.
+Label-ActiveUsers: Pengguna aktif
+Label-ActiveUsers.@meta.@description: Label untuk statistik berdasarkan pengguna aktif perangkat lunak ini.
+Label-AllTime: Selamanya
+Label-AllTime.@meta.@description: >-
+  Label untuk rentang waktu untuk statistik untuk ditampilkan yang mana setiap
+  saat perangkat lunak kami tayang.
 Label-Anonymous: Anonim
 Label-ArtificialIntelligence: Kecerdasan buatan
 Label-Author: Penulis
-Label-CountOfJudgements: Menghitung
+Label-CountOfJudgements: Jumlah
+Label-CountOfJudgements.@meta.@description: Label untuk jumlah penjumlahan untuk suntingan Wikipedia.
 Label-Day: Hari
-Label-DiffView: Tampilan Diff
-Label-DirectRevertFailed: Pengembalian langsung gagal
-Label-DirectReverted: Langsung dikembalikan
+Label-Day.@meta.@description: Label untuk rincian waktu rincian statistik yang dibagi berdasarkan hari.
+Label-DiffView: Perbedaan
+Label-DiffView.@meta.@description: >-
+  Label untuk tampilan yang menunjukkan perbedaan antara snapshot seperti dua
+  snapshot artikel Wikipedia.
+Label-DirectRevertFailed: Pembatalan langsung gagal
+Label-DirectRevertFailed.@meta.@description: >-
+  Label untuk menunjukkan status baru tombol "Batalkan sekarang". Tujuannya
+  adalah untuk menunjukkan status tindakan yang dilakukan oleh pengguna yang
+  dalam hal ini adalah bahwa tindakan pembalikan gagal.
+Label-DirectReverted: Telah langsung dibatalkan
+Label-DirectReverted.@meta.@description: >-
+  Label untuk menunjukkan status baru tombol "Batalkan sekarang". Tujuannya
+  adalah untuk menunjukkan status tindakan yang dilakukan oleh pengguna yang
+  dalam hal ini adalah bahwa tindakan reverting berhasil.
 Label-EditSummary: Ringkasan suntingan
-Label-EditedAt: disunting
-Label-Feed: Makan
-Label-History: Sejarah
-Label-HumanEditors: Editor manusia
-Label-Judgement: Pertimbangan
-Label-LastActiveTime: Aktif Terakhir
+Label-EditSummary.@meta.@description: >-
+  Ringkasan pengeditan adalah penjelasan singkat dari pengeditan ke halaman
+  Wikipedia, seperti yang ditunjukkan di
+  https://en.wikipedia.org/wiki/Help:Edit_summary
+Label-EditedAt: disunting pada
+Label-EditedAt.@meta.@description: Label cap waktu pengeditan di Wikipedia saat pengeditan dibuat.
+Label-Feed: Lini masa
+Label-Feed.@meta.@description: >-
+  Label yang menunjukkan umpan, aliran atau aliran suntingan Wikipedia baru yang
+  masuk, mengikuti nama umpan tertentu. Misalnya, kami memiliki berbagai umpan
+  dari berbagai jenis suntingan Wikipedia, seperti umpan topik artikel, umpan
+  suntingan yang terdeteksi oleh sistem skor deteksi vandalisme, dll.
+Label-History: Riwayat
+Label-History.@meta.@description: >-
+  Label untuk daftar kegiatan masa lalu, penilaian masa lalu berkontribusi, dll,
+  dari semua pengguna atau pengguna tertentu.
+Label-HumanEditors: Penyunting manusia
+Label-HumanEditors.@meta.@description: Label penilaian yang disediakan oleh editor Manusia.
+Label-Judgement: Penilaian
+Label-Judgement.@meta.@description: >-
+  Label penilaian yang diberikan untuk suntingan Wikipedia oleh pengguna kami
+  yang meninjau suntingan Wikipedia yang masuk.
+Label-LastActiveTime: Aktif terakhir
+Label-LastActiveTime.@meta.@description: >-
+  Label yang menunjukkan kapan terakhir kali seorang pengguna aktif di perangkat
+  lunak kami.
 Label-Loading: Sedang memuat
+Label-Loading.@meta.@description: >-
+  Label untuk menunjukkan beberapa bagian atau data pada halaman web sedang
+  dimuat. Biasanya label ini ditampilkan sebagai cadangan untuk indikator
+  memuat.
 Label-Login: Masuk log
+Label-Login.@meta.@description: >-
+  Label untuk tombol masuk untuk memungkinkan pengguna masuk. Atau juga akan
+  digunakan dalam pesan atau konfirmasi untuk mengundang pengguna untuk masuk.
 Label-Logout: Keluar log
-Label-Looks-Good: Kelihatan bagus
+Label-Logout.@meta.@description: >-
+  Label untuk tombol masuk untuk memungkinkan pengguna keluar. Atau juga akan
+  digunakan dalam pesan atau konfirmasi untuk mengundang pengguna untuk keluar.
 Label-LooksGood: Kelihatan bagus
+Label-LooksGood.@meta.@description: >-
+  Label salah satu dari 3 jenis penilaian utama yang mengatakan bahwa pengeditan
+  Wikipedia sedang ditinjau adalah baik dan konstruktif untuk Wikipedia, bukan
+  merusak.
 Label-Me: Aku
+Label-Me.@meta.@description: >-
+  Label untuk mengidentifikasi pengguna itu sendiri. Pastikan label yang
+  diterjemahkan di sini netral gender.
 Label-Month: Bulan
-Label-My-History: Sejarahku
-Label-NewJudgement: Penghakiman Baru
+Label-Month.@meta.@description: >-
+  Label untuk rincian waktu rincian statistik yang dikelompokkan berdasarkan
+  bulan.
+Label-MyHistory: Riwayatku
+Label-MyHistory.@meta.@description: >-
+  Label untuk daftar kegiatan masa lalu, penilaian masa lalu berkontribusi, dll,
+  dari pengguna saat ini yang menggunakan perangkat lunak kami.
+Label-MyHistory.@meta.@isMachineTranslated: true
+Label-MyHistory.@meta.@translatedAt: '2020-07-07T19:26:51.443Z'
+Label-MyHistory.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-NewJudgement: Penilaian baru
+Label-NewJudgement.@meta.@description: >-
+  Label untuk penilaian baru yang diberikan untuk Wikipedia diedit oleh pengguna
+  kami.
 Label-None: Tidak ada
-Label-Not-Sure: Tidak yakin
+Label-None.@meta.@description: >-
+  Label untuk daftar baris kosong dan sel konten atau daftar kosong. Ini
+  biasanya digunakan di antarmuka pengguna ketika tidak ada konten untuk
+  ditampilkan.
 Label-NotSure: Tidak yakin
-Label-OresBadfaith: ORES Iman yang buruk
+Label-NotSure.@meta.@description: >-
+  Label salah satu dari 3 jenis penilaian utama yang mengatakan bahwa pengeditan
+  Wikipedia sedang ditinjau tidak pasti dan dapat menjadi baik dan konstruktif
+  atau merusak Wikipedia.
+Label-OresBadfaith: Prediksi niat buruk (ORES)
+Label-OresBadfaith.@meta.@description: >-
+  Label yang mengidentifikasi skor dan penilaian yang diberikan oleh sistem
+  penilaian ORF buatan WMF. Label ini merujuk pada kebalikan dari model ORES
+  yang baik hati. Lihat https://www.mediawiki.org/wiki/ORES#Advanced_support
 Label-OresBadfaith.@meta.@isMachineTranslated: true
-Label-OresBadfaith.@meta.@translatedAt: 2020-07-07T01:09:19.143Z
+Label-OresBadfaith.@meta.@translatedAt: '2020-07-07T01:09:19.143Z'
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
-Label-OresDamaging: ORES Merusak
-Label-Overriden: Ditimpa
-Label-Prompt-Login: Gabung
-Label-Rank: Pangkat
+Label-OresDamaging: Prediksi merusak (ORES)
+Label-OresDamaging.@meta.@description: >-
+  Label yang mengidentifikasi skor dan penilaian yang diberikan oleh sistem
+  penilaian ORF buatan WMF. Label ini khusus merujuk pada model ORES yang
+  merusak. Lihat https://www.mediawiki.org/wiki/ORES#Advanced_support
+Label-Overridden: Ditimpa
+Label-Overridden.@meta.@description: >-
+  Label yang menyatakan bahwa suntingan yang diberikan pada artikel Wikipedia
+  sedang ditimpa oleh suntingan yang lebih baru pada artikel Wikipedia yang
+  sama. Label ini menyiratkan bahwa pengeditan tersebut sudah dikembalikan oleh
+  pengguna kami saat ini, atau dikembalikan atau diperbarui oleh editor
+  Wikipedia lain di Wikipedia.
+Label-Overridden.@meta.@isMachineTranslated: true
+Label-Overridden.@meta.@translatedAt: '2020-07-07T19:26:51.443Z'
+Label-Overridden.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-PromptLogin: Gabung
+Label-PromptLogin.@meta.@description: >-
+  Label untuk meminta pengguna untuk masuk pada perangkat lunak kami. Ini lebih
+  seperti nada "tolong masuk" dalam bahasa yang formalitas dan ucapan kehormatan
+  itu ada.
+Label-PromptLogin.@meta.@isMachineTranslated: true
+Label-PromptLogin.@meta.@translatedAt: '2020-07-07T19:26:51.443Z'
+Label-PromptLogin.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-Rank: Peringkat
+Label-Rank.@meta.@description: >-
+  Label untuk peringkat statistik berdasarkan nomor penyortiran yang diberikan,
+  misalnya, pengguna diurutkan berdasarkan jumlah kontribusi mereka
 Label-Reason: Alasan
+Label-Reason.@meta.@description: >-
+  Label untuk alasan hasil tindakan yang dilakukan, seperti ketika pengguna
+  mengembalikan suntingan Wikipedia.
 Label-Result: Hasil
-Label-RevertSucceeded: Kembalikan berhasil!
-Label-ReviewFeed: Tinjau Umpan
-Label-ReviewedAndSays: 'Ulasan {0} dan berkata'
-Label-Should-Revert: Harus Kembalikan
+Label-Result.@meta.@description: >-
+  Label untuk hasil tindakan yang dilakukan, seperti ketika pengguna
+  mengembalikan suntingan Wikipedia.
+Label-RevertSucceeded: Pembatalan berhasil!
+Label-RevertSucceeded.@meta.@description: >-
+  Label untuk hasil tindakan yang dilakukan ketika pengguna mengembalikan
+  suntingan Wikipedia, tindakan berhasil.
+Label-ReviewFeed: Tinjau Lini masa
+Label-ReviewFeed.@meta.@description: >-
+  Label untuk umpan, aliran, atau aliran edit Wikipedia yang masuk akan
+  ditinjau.
+Label-ReviewedAndSays: 'Meninjau {0} dan berkata'
+Label-ReviewedAndSays.@meta.@description: Label untuk memulai hukuman dan alasan yang diberikan untuk revisi.
 Label-ShouldRevert: Patut dibatalkan
-Label-Snooze: Tidur sebentar
+Label-ShouldRevert.@meta.@description: >-
+  Label salah satu dari 3 jenis penilaian utama yang mengatakan bahwa pengeditan
+  Wikipedia yang sedang ditinjau merusak untuk Wikipedia dan tidak baik dan
+  konstruktif.
+Label-Snooze: Tunda
+Label-Snooze.@meta.@description: >-
+  Label tombol untuk menunda pengingat atau pemberitahuan, atau dengan kata
+  lain, itu berarti "ingatkan saya nanti". Pada kenyataannya tombol tunda akan
+  digunakan ketika pengingat atau pesan pemberitahuan akan muncul lagi. Jadi itu
+  juga berarti "tidak diberhentikan secara permanen tetapi hanya diberhentikan
+  sementara".
 Label-Someone: Seseorang
+Label-Someone.@meta.@description: Label untuk mengidentifikasi pengguna selain pengguna saat ini.
 Label-Time: Waktu
-Label-TopNumberAnonymousUsers: '{0} Pengguna Anonim teratas'
-Label-TopUsers: Pengguna Teratas
-Label-TopWikis: Wiki top
+Label-Time.@meta.@description: Label cap waktu penilaian atau tindakan yang diberikan oleh pengguna.
+Label-TopNumberAnonymousUsers: '{0} pengguna anonim teratas'
+Label-TopNumberAnonymousUsers.@meta.@description: >-
+  Label untuk bagian 20 pengguna anonim teratas, dll, sedangkan angka "20" dapat
+  diganti dalam parameter.
+Label-TopUsers: Pengguna teratas
+Label-TopUsers.@meta.@description: 'Label untuk bagian pengguna (masuk) teratas, dll, sedangkan nomornya.'
+Label-TopWikis: Wiki teratas
+Label-TopWikis.@meta.@description: >-
+  Label untuk bagian Wikipedias teratas atau proyek sejenisnya (Wikidata.org
+  dll), berdasarkan jumlah penilaian yang diberikan di Wikipedia.
 Label-TotalNumber: Total
+Label-TotalNumber.@meta.@description: Label untuk kolom jumlah total penilaian yang diberikan oleh pengguna.
 Label-User: Pengguna
+Label-User.@meta.@description: Label untuk pengguna yang memberikan penilaian atas edit Wikipedia.
 Label-Week: Minggu
-Label-YourJudgement: Penghakiman Anda
+Label-Week.@meta.@description: >-
+  Label untuk rincian waktu rincian statistik yang dikelompokkan berdasarkan
+  minggu.
+Label-YourJudgement: Penilaian Anda
+Label-YourJudgement.@meta.@description: Label untuk penilaian yang diberikan oleh pengguna saat ini.
 MenuItem-Code: Kode
+MenuItem-Code.@meta.@description: Label item menu untuk mengarahkan pengguna ke basis kode perangkat lunak ini.
 MenuItem-Contributions: Kontribusi
-MenuItem-ContributionsBeforeLogin: Kontribusi saya sebelum login
+MenuItem-Contributions.@meta.@description: >-
+  Label item menu mengarahkan pengguna ke daftar kontribusi atau penilaian yang
+  diberikan oleh pengguna saat ini.
+MenuItem-ContributionsBeforeLogin: Kontribusiku sebelum login
+MenuItem-ContributionsBeforeLogin.@meta.@description: 'UNTUK DIHAPUS, JANGAN MENGUBAH ATAU TERJEMAHAN.'
 MenuItem-Issues: Masalah
+MenuItem-Issues.@meta.@description: >-
+  Label item menu mengarahkan pengguna ke masalah Github pada perangkat lunak
+  kami.
 MenuItem-Stats: Statistik
+MenuItem-Stats.@meta.@description: >-
+  Label item menu mengarahkan pengguna ke halaman statistik perangkat lunak
+  kami.
 Message-AJudgementLogged: 'Penilaian untuk {0} untuk revisi {1} telah dicatat.'
-Message-CongratsSuccessfullyReverted: 'Selamat! Anda telah berhasil dikembalikan secara langsung {0}.'
+Message-AJudgementLogged.@meta.@description: >-
+  Pesan bahwa penilaian untuk revisi yang diberikan sedang direkam. Parameter
+  {0} adalah nama artikel Wikipedia. Parameter {0} adalah pengenal revisi dari
+  revisi tersebut (edit Wikipedia).
+Message-CongratsSuccessfullyReverted: 'Selamat! Anda telah berhasil membatalkan {0} secara langsung.'
 Message-DiffNotAvailable: >-
-  Perbedaan revisi tidak tersedia untuk saat ini. Silakan diulang membukanya.
-  Kadang revisi yang terkena vandalisme sudah dihapus. Silakan periksa riwayat
+  Perbedaan revisi tidak tersedia untuk saat ini. Silakan ulangi membukanya.
+  Kadang revisi vandalisme sudah dihapus. Silakan periksa riwayat
   revisi artikel.
-Message-FeedHasNoNewRevisionsClickNextBelow: 'Umpan {0} tidak memiliki revisi baru, klik berikutnya di bawah ini.'
+Message-FeedHasNoNewRevisionsClickNextBelow: 'Lini {0} tidak memiliki revisi baru, klik berikutnya di bawah ini.'
+Message-FeedHasNoNewRevisionsClickNextBelow.@meta.@description: >-
+  Pesan yang memberi tahu pengguna umpan atau aliran suntingan Wikipedia yang
+  akan ditinjau tidak memiliki revisi / suntingan baru. Parameter {0} mengacu
+  pada nama umpan yang diberikan.
 Message-Login: >-
-  Tahukah Anda bahwa Anda dapat Masuk dan melindungi label Anda dengan nama
+  Tahukah Anda bahwa Anda dapat Masuk dan menyimpan label Anda dengan nama
   Anda? Kami mendukung Login dengan akun Wikipedia melalui Oauth.
 Message-NameVoteAnnouncement: >-
-  Kontributor yang terhormat, kami mengadakan pemungutan suara untuk nama baru
-  menggantikan "Medan Perang WikiLoop" yang berakhir pada 13 Juli, 2020 00:00
+  Pengguna yang terhormat, kami mengadakan pemungutan suara untuk nama baru
+  menggantikan "WikiLoop DoubleCheck" yang berakhir pada 13 Juli, 2020 00:00
   UTC.
 
-  Tolong pilih.
+  Silakan berpartisipasi.
 Message-NoActiveUsersPleaseStartReview: >-
   Tidak ada pengguna aktif dalam 15 menit terakhir. Mulai {0} meninjau revisi
   {1} dan menjadi yang pertama.
-Message-Prompt-Login: >-
-  Apakah Anda tahu Anda bisa masuk dan menyimpan kontribusi Anda dengan nama
+Message-NoActiveUsersPleaseStartReview.@meta.@description: >-
+  Pesan yang mengundang pengguna untuk mulai kembali. {0} dan {1} adalah
+  pasangan tag anchor HTML <a> dan </a> dengan parameter URL.
+Message-PromptLogin: >-
+  Tahukah Anda, bahwa Anda bisa masuk dan menyimpan kontribusi Anda dengan nama
   Anda? Kami mendukung login dengan akun Wikipedia melalui Oauth.
 Message-RevertEditSummary: >-
   Batalkan percobaan/vandalisme menggunakan {0} versi {1}. Lihat atau beri
   pendapat di {2}
-Message-SorryWeFailedToRevert: 'Maaf, kami gagal mengembalikan revisi {0}.'
-Message-TheRevisionIsSuccessfullyRevertedAs: 'Revisi {0} berhasil dikembalikan menjadi {1}.'
+Message-RevertEditSummary.@meta.@description: >-
+  Pesan ringkasan edit ketika perangkat lunak kami menghasilkan suntingan
+  Wikipedia baru untuk dikomit ke situs web Wikipedia. Parameter {0} adalah nama
+  perangkat lunak kami, saat ini "WikiLoop DoubleCheck". Parameter {1} adalah
+  nomor versi perangkat lunak kami, saat ini 4.0.1. {2} adalah url situs web
+  alat kami, saat ini "doublecheck.wikiloop.org".
+Message-SorryWeFailedToRevert: 'Maaf, kami gagal membatalkan revisi {0}.'
+Message-SorryWeFailedToRevert.@meta.@description: >-
+  Pesan untuk memberi tahu pengguna bahwa pengembalian edit yang diberikan
+  gagal. Parameter {0} adalah pengidentifikasi revisi.
+Message-TheRevisionIsSuccessfullyRevertedAs: 'Revisi {0} berhasil dibatalkan menjadi {1}.'
+Message-TheRevisionIsSuccessfullyRevertedAs.@meta.@description: >-
+  Pesan yang menyatakan bahwa edit Wikipedia yang diberikan (revisi) berhasil
+  dikembalikan. Parameter {0} adalah pengidentifikasi revisi dari pengeditan
+  Wikipedia yang dikembalikan. Parameter {1} adalah pengidentifikasi revisi
+  kedua yang diedit Wikipedia baru yang ada di atas edit Wikipedia sebelumnya
+  yang merupakan hasil dari reverting.
 Message-ThereIsNoEditSummary: Tidak ada ringkasan edit.
+Message-ThereIsNoEditSummary.@meta.@description: >-
+  Pesan menunjukkan bahwa edit Wikipedia yang diberikan tidak memiliki
+  penjelasan, lihat https://en.wikipedia.org/wiki/Help:Edit_summary.
 Message-YourJudgementLogged: 'Penilaian Anda untuk {0} untuk revisi {1} telah dicatat.'
