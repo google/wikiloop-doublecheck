@@ -169,8 +169,7 @@ Label-ReviewFeed.@meta.@description: >-
   Etykieta kanału, przepływu lub strumienia nadchodzących zmian na Wikipedii do
   sprawdzenia.
 Label-ReviewedAndSays: 'sprawdził {0} i mówi'
-Label-ReviewedAndSays.@meta.@description: Etykieta rozpoczynająca ocenę
-i uzasadnienie zmiany.
+Label-ReviewedAndSays.@meta.@description: Etykieta rozpoczynająca ocenę i uzasadnienie zmiany.
 Label-ShouldRevert: Powinno być odwrócone
 Label-ShouldRevert.@meta.@description: >-
   Etykieta jednego z 3 głównych rodzajów osądów, która mówi że zmiana na Wikipedii

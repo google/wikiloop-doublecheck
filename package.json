@@ -129,7 +129,7 @@
     "jest-junit": "^6.4.0",
     "nodemon": "^1.19.4",
     "prettier": "^1.19.1",
-    "standard-version": "8.0.0",
+    "standard-version": "8.0.1",
     "tsconfig-paths": "^3.9.0",
     "vue-jest": "^3.0.5",
     "webpack-hot-middleware": "^2.25.0"
