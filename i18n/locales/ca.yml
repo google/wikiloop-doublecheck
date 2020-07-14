@@ -297,9 +297,9 @@ Message-RevertEditSummary: >-
 Message-RevertEditSummary.@meta.@description: >-
   El missatge del resum de l’edició quan el nostre programari genera una nova
   edició de Wikipedia es compromet al lloc web de Wikipedia. El paràmetre {0} és
-  el nom del nostre programari, actualment "WikiLoop Battlefield". El paràmetre
+  el nom del nostre programari, actualment "WikiLoop DoubleCheck". El paràmetre
   {1} és el número de versió del nostre programari, actualment 4.0.1. La {2} és
-  la URL del lloc web de la nostra eina, actualment "battlefield.wikiloop.org".
+  la URL del lloc web de la nostra eina, actualment "doublecheck.wikiloop.org".
 Message-SorryWeFailedToRevert: 'Ho sentim, no hem pogut revertir la revisió {0}.'
 Message-SorryWeFailedToRevert.@meta.@description: >-
   El missatge per indicar a l'usuari que la reversió d'una determinada edició ha

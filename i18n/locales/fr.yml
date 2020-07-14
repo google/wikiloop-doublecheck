@@ -297,7 +297,7 @@ Message-Login: >-
   OAuth.
 Message-NameVoteAnnouncement: >-
   Cher contributeur, nous organisons un vote pour un nouveau nom remplaçant
-  "WikiLoop Battlefield" se terminant le 13 juillet 2020 à 00h00 UTC.
+  "WikiLoop DoubleCheck" se terminant le 13 juillet 2020 à 00h00 UTC.
 
   S'il vous plait, votez.
 Message-NoActiveUsersPleaseStartReview: >-
@@ -318,9 +318,9 @@ Message-RevertEditSummary.@meta.@description: >-
   Le message de résumé de modification lorsque notre logiciel génère une
   nouvelle modification de Wikipédia à valider sur le site Web de Wikipédia. Le
   paramètre {0} est le nom de notre logiciel, actuellement "WikiLoop
-  Battlefield". Le paramètre {1} est le numéro de version de notre logiciel,
+  doublecheck". Le paramètre {1} est le numéro de version de notre logiciel,
   actuellement 4.0.1. Le {2} est l'URL du site Web de notre outil, actuellement
-  "battlefield.wikiloop.org".
+  "doublecheck.wikiloop.org".
 Message-SorryWeFailedToRevert: 'Désolé, nous n''avons pas réussi à rétablir la révision {0}.'
 Message-SorryWeFailedToRevert.@meta.@description: >-
   Message indiquant à l'utilisateur que la réversion d'une modification donnée a

@@ -17,7 +17,7 @@
   <div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow border-1">
       <div class="container-xl">
-        <a class="navbar-brand" href="/">WikiLoop Battlefield</a>
+        <a class="navbar-brand" href="/">WikiLoop DoubleCheck</a>
         <b-navbar-toggle  target="nav-collapse">
         </b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>
@@ -54,14 +54,14 @@
               <template v-slot:button-content>
                 <i class="fas fa-info"></i>
               </template>
-              <b-dropdown-item href="https://github.com/google/wikiloop-battlefield/issues" target="_blank">{{$t('MenuItem-Issues')}}</b-dropdown-item>
-              <b-dropdown-item href="https://github.com/google/wikiloop-battlefield" target="_blank">{{$t('MenuItem-Code')}} </b-dropdown-item>
+              <b-dropdown-item href="https://github.com/google/wikiloop-doublecheck/issues" target="_blank">{{$t('MenuItem-Issues')}}</b-dropdown-item>
+              <b-dropdown-item href="https://github.com/google/wikiloop-doublecheck" target="_blank">{{$t('MenuItem-Code')}} </b-dropdown-item>
               <b-dropdown-item href="https://meta.wikimedia.org/wiki/WikiProject_WikiLoop" target="_blank">WikiProject</b-dropdown-item>
               <b-dropdown-item href="/api/stats" target="_blank">{{$t('MenuItem-Stats')}}</b-dropdown-item>
             </b-nav-item-dropdown>
             <b-nav-item
               target="_blank"
-              :href="`https://github.com/google/wikiloop-battlefield/edit/master/i18n/locales/${$i18n.locale}.yml`"
+              :href="`https://github.com/google/wikiloop-doublecheck/edit/master/i18n/locales/${$i18n.locale}.yml`"
               v-b-tooltip.hover :title="$t('Button-HelpTranslate')"
             >
               <i class="fas fa-language"></i>

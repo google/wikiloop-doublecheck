@@ -269,7 +269,7 @@ Message-Login: >-
   Anda? Kami mendukung Login dengan akun Wikipedia melalui Oauth.
 Message-NameVoteAnnouncement: >-
   Pengguna yang terhormat, kami mengadakan pemungutan suara untuk nama baru
-  menggantikan "WikiLoop Battlefield" yang berakhir pada 13 Juli, 2020 00:00
+  menggantikan "WikiLoop DoubleCheck" yang berakhir pada 13 Juli, 2020 00:00
   UTC.
 
   Silakan berpartisipasi.
@@ -288,9 +288,9 @@ Message-RevertEditSummary: >-
 Message-RevertEditSummary.@meta.@description: >-
   Pesan ringkasan edit ketika perangkat lunak kami menghasilkan suntingan
   Wikipedia baru untuk dikomit ke situs web Wikipedia. Parameter {0} adalah nama
-  perangkat lunak kami, saat ini "WikiLoop Battlefield". Parameter {1} adalah
+  perangkat lunak kami, saat ini "WikiLoop DoubleCheck". Parameter {1} adalah
   nomor versi perangkat lunak kami, saat ini 4.0.1. {2} adalah url situs web
-  alat kami, saat ini "battlefield.wikiloop.org".
+  alat kami, saat ini "doublecheck.wikiloop.org".
 Message-SorryWeFailedToRevert: 'Maaf, kami gagal membatalkan revisi {0}.'
 Message-SorryWeFailedToRevert.@meta.@description: >-
   Pesan untuk memberi tahu pengguna bahwa pengembalian edit yang diberikan

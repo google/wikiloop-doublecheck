@@ -306,9 +306,9 @@ Message-RevertEditSummary.@meta.@description: >-
   Il messaggio di riepilogo della modifica quando il nostro software sta
   generando una nuova modifica di Wikipedia da impegnare sul sito Web di
   Wikipedia. Il parametro {0} è il nome del nostro software, attualmente
-  "WikiLoop Battlefield". Il parametro {1} è il numero di versione del nostro
+  "WikiLoop DoubleCheck". Il parametro {1} è il numero di versione del nostro
   software, attualmente 4.0.1. {2} è l'URL del sito web del nostro strumento,
-  attualmente "battlefield.wikiloop.org".
+  attualmente "doublecheck.wikiloop.org".
 Message-SorryWeFailedToRevert: 'Spiacenti, non è stato possibile ripristinare la revisione {0}.'
 Message-SorryWeFailedToRevert.@meta.@description: >-
   Il messaggio per dire all'utente che l'inversione di una data modifica non è

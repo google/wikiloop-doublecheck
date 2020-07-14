@@ -231,7 +231,7 @@ Message-Login: >-
   support logging in with your Wikipedia account through OAuth.
 Message-NameVoteAnnouncement: >-
   Dear contributor, we are holding a voting for a new name replacing "WikiLoop
-  Battlefield" ending on July 13, 2020 00:00 UTC. Please vote.
+  DoubleCheck" ending on July 13, 2020 00:00 UTC. Please vote.
 Message-NoActiveUsersPleaseStartReview: >-
   No active users in last 15min. Start {0} reviewing revisions {1} and become
   the first one.
@@ -242,7 +242,7 @@ Message-PromptLogin: >-
 Message-RevertEditSummary: >-
   Identified as test/vandalism using {0} version {1}. See it or provide your
   opinion at {2}
-Message-RevertEditSummary.@meta.@description: The message of edit summary when our software is generating a new Wikipedia edit to be committed onto the Wikipedia website. The parameter {0} is the name of our software, currently "WikiLoop Battlefield". The parameter {1} is the version number of our software, currently 4.0.1. The {2} is the website url of our tool, currently "battlefield.wikiloop.org".
+Message-RevertEditSummary.@meta.@description: The message of edit summary when our software is generating a new Wikipedia edit to be committed onto the Wikipedia website. The parameter {0} is the name of our software, currently "WikiLoop DoubleCheck". The parameter {1} is the version number of our software, currently 4.0.1. The {2} is the website url of our tool, currently "doublecheck.wikiloop.org".
 Message-SorryWeFailedToRevert: 'Sorry, we failed to revert the revision {0}.'
 Message-SorryWeFailedToRevert.@meta.@description: The message to tell user that the reversion of a given edit failed. The parameter {0} is the revision identifier.
 Message-TheRevisionIsSuccessfullyRevertedAs: 'The revision {0} is successfully reverted as {1}.'

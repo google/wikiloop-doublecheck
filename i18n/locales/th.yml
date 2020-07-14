@@ -225,7 +225,7 @@ Message-Login: >-
   เราสนับสนุนการเข้าสู่ระบบด้วยบัญชี Wikipedia ผ่าน Oauth
 Message-NameVoteAnnouncement: >-
   เรียนผู้ให้การสนับสนุนเรากำลังลงคะแนนเสียงให้กับชื่อใหม่แทนที่ "WikiLoop
-  Battlefield" ซึ่งสิ้นสุดในวันที่ 13 กรกฎาคม 2020 00:00 UTC กรุณาลงคะแนน
+  doublecheck" ซึ่งสิ้นสุดในวันที่ 13 กรกฎาคม 2020 00:00 UTC กรุณาลงคะแนน
 Message-NoActiveUsersPleaseStartReview: >-
   ไม่มีผู้ใช้ที่ใช้งานใน 15 นาทีสุดท้าย เริ่ม {0} การตรวจทานการแก้ไข {1}
   และกลายเป็นอันแรก
@@ -241,9 +241,9 @@ Message-RevertEditSummary: >-
 Message-RevertEditSummary.@meta.@description: >-
   ข้อความสรุปการแก้ไขเมื่อซอฟต์แวร์ของเรากำลังสร้างการแก้ไข Wikipedia
   ใหม่เพื่อมุ่งสู่เว็บไซต์ Wikipedia พารามิเตอร์ {0}
-  เป็นชื่อซอฟต์แวร์ของเราซึ่งปัจจุบันคือ "WikiLoop Battlefield" พารามิเตอร์ {1}
+  เป็นชื่อซอฟต์แวร์ของเราซึ่งปัจจุบันคือ "WikiLoop DoubleCheck" พารามิเตอร์ {1}
   คือหมายเลขเวอร์ชันของซอฟต์แวร์ของเราในปัจจุบัน 4.0.1 {2} เป็น URL
-  เว็บไซต์ของเครื่องมือของเราซึ่งปัจจุบันคือ "battlefield.wikiloop.org"
+  เว็บไซต์ของเครื่องมือของเราซึ่งปัจจุบันคือ "doublecheck.wikiloop.org"
 Message-SorryWeFailedToRevert: 'ขออภัยเราไม่สามารถคืนค่าการแก้ไข {0}'
 Message-SorryWeFailedToRevert.@meta.@description: >-
   ข้อความที่จะบอกผู้ใช้ว่าการพลิกกลับของการแก้ไขที่กำหนดล้มเหลว พารามิเตอร์ {0}

@@ -1,9 +1,9 @@
 {
-  "name": "wikiloop-battlefield",
+  "name": "wikiloop-doublecheck",
   "version": "4.1.0",
   "description": "A web app for Wikipedians to fight vandalism together.",
   "author": "Zainan Victor Zhou <zzn@google.com>",
-  "repository": "git@github.com:google/wikiloop-battlefield.git",
+  "repository": "git@github.com:google/wikiloop-doublecheck.git",
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon",
     "prod": "npm run build && npm run start",

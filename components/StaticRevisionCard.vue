@@ -290,9 +290,9 @@ between Client-Side-Rendering and Server-Side-Rendering -->
           let revertEditSummary = this.$t(
               `Message-RevertEditSummary`,
               [
-                `[[:m:WikiLoop Battlefield]]`,
+                `[[:m:WikiLoop DoubleCheck]]`,
                 `${version}`,
-                `http://battlefield.wikiloop.org/marked?wikiRevIds=${this.wikiRevId}`
+                `http://doublecheck.wikiloop.org/marked?wikiRevIds=${this.wikiRevId}`
               ]);
           let revertUrl = `${this.getUrlBaseByWiki(this.revision.wiki)}/w/index.php?title=${this.revision.title}&action=edit&undoafter=${this.revision.revision.old}&undo=${this.revision.revision.new}&summary=${revertEditSummary}`;
           let historyUrl = `${this.getUrlBaseByWiki(this.revision.wiki)}/w/index.php?title=${this.revision.title}&action=history`;

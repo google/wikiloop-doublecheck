@@ -248,7 +248,7 @@ Message-Login: >-
   Oauth.
 Message-NameVoteAnnouncement: >-
   Drogi współpracowniku, głosujemy na nową nazwę, która zastąpi „WikiLoop
-  Battlefield”, która zakończy się 13 lipca 2020 r. 00:00 UTC.
+  doublecheck”, która zakończy się 13 lipca 2020 r. 00:00 UTC.
 
   Proszę zagłosuj.
 Message-NoActiveUsersPleaseStartReview: >-
@@ -266,9 +266,9 @@ Message-RevertEditSummary: >-
 Message-RevertEditSummary.@meta.@description: >-
   Komunikat podsumowania edycji, gdy nasze oprogramowanie generuje nową edycję
   Wikipedii, która zostanie zatwierdzona na stronie Wikipedii. Parametr {0} to
-  nazwa naszego oprogramowania, obecnie „WikiLoop Battlefield”. Parametr {1} to
+  nazwa naszego oprogramowania, obecnie „WikiLoop DoubleCheck”. Parametr {1} to
   numer wersji naszego oprogramowania, obecnie 4.0.1. {2} to adres URL naszego
-  narzędzia, obecnie „battlefield.wikiloop.org”.
+  narzędzia, obecnie „doublecheck.wikiloop.org”.
 Message-SorryWeFailedToRevert: 'Niestety nie udało się przywrócić wersji {0}.'
 Message-SorryWeFailedToRevert.@meta.@description: >-
   Komunikat informujący użytkownika, że przywrócenie danej edycji nie powiodło

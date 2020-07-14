@@ -392,9 +392,9 @@
           let revertEditSummary = this.$t(
               `Message-RevertEditSummary`,
               [
-                `[[:m:WikiLoop Battlefield]]`,
+                `[[:m:WikiLoop DoubleCheck]]`,
                 `${version}`,
-                `http://${process.env.PUBLIC_HOST || "battlefield.wikiloop.org"}/revision/${this.wikiRevId.split(':')[0]}/${this.wikiRevId.split(':')[1]}`
+                `http://${process.env.PUBLIC_HOST || "doublecheck.wikiloop.org"}/revision/${this.wikiRevId.split(':')[0]}/${this.wikiRevId.split(':')[1]}`
               ]);
           let revertUrl = `${this.getUrlBaseByWiki(this.revision.wiki)}/w/index.php?title=${this.revision.title}&action=edit&undoafter=${this.revision.revision?.old || 'prev'}&undo=${/*TODO(xinbenlv): this is a hack, until we standardize the revision interface */this.revision.revision?.new || this.wikiRevId.split(':')[1]}&summary=${revertEditSummary}`;
           let historyUrl = `${this.getUrlBaseByWiki(this.revision.wiki)}/w/index.php?title=${this.revision.title}&action=history`;

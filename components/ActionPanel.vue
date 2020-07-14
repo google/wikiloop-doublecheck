@@ -176,9 +176,9 @@
                 let revertEditSummary = this.$t(
                     `Message-RevertEditSummary`,
                     [
-                        `[[:m:WikiLoop Battlefield]]`,
+                        `[[:m:WikiLoop DoubleCheck]]`,
                         `${version}`,
-                        `http://${this.$env.PUBLIC_HOST || "battlefield.wikiloop.org"}/revision/${this.wiki}/${this.revId}`
+                        `http://${this.$env.PUBLIC_HOST || "doublecheck.wikiloop.org"}/revision/${this.wiki}/${this.revId}`
                     ]);
                 this.wikiActionProps = <WikiActionProps> {
                     fromUserGaId: this.$cookiez.get('_ga'),

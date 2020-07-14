@@ -251,7 +251,7 @@ Message-Login: >-
   atbalstām pieteikšanos ar Wikipedia kontu caur Oauth.
 Message-NameVoteAnnouncement: >-
   Cienījamais līdzstrādnieks, mēs balsojam par jaunu vārdu, kas aizstāj
-  “WikiLoop Battlefield” un beidzas 2020. gada 13. jūlijā plkst. 00:00 pēc UTC.
+  “WikiLoop DoubleCheck” un beidzas 2020. gada 13. jūlijā plkst. 00:00 pēc UTC.
 
   Lūdzu balsošanu.
 Message-NoActiveUsersPleaseStartReview: >-
@@ -269,9 +269,9 @@ Message-RevertEditSummary: >-
 Message-RevertEditSummary.@meta.@description: >-
   Rediģēšanas kopsavilkuma ziņojums, kad mūsu programmatūra ģenerē jaunu
   Wikipedia labojumu, kas jāievieto Wikipedia vietnē. Parametrs {0} ir mūsu
-  programmatūras nosaukums, šobrīd "WikiLoop Battlefield". Parametrs {1} ir mūsu
+  programmatūras nosaukums, šobrīd "WikiLoop DoubleCheck". Parametrs {1} ir mūsu
   programmatūras versijas numurs, šobrīd 4.0.1. {2} ir mūsu rīka vietnes URL,
-  šobrīd “battlefield.wikiloop.org”.
+  šobrīd “doublecheck.wikiloop.org”.
 Message-SorryWeFailedToRevert: 'Diemžēl mums neizdevās atsaukt versiju {0}.'
 Message-SorryWeFailedToRevert.@meta.@description: >-
   Ziņojums, kas informē lietotāju, ka dotā labojuma apgriešana nav izdevusies.

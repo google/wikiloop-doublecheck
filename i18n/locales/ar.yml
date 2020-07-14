@@ -229,7 +229,7 @@ Message-Login: >-
   هل تعلم أنه يمكنك تسجيل الدخول والحفاظ على التسميات الخاصة بك تحت اسمك؟ نحن
   ندعم تسجيل الدخول باستخدام حساب Wikipedia من خلال Oauth.
 Message-NameVoteAnnouncement: >-
-  عزيزي المساهم ، سنجري تصويتًا على اسم جديد يحل محل "WikiLoop Battlefield"
+  عزيزي المساهم ، سنجري تصويتًا على اسم جديد يحل محل "WikiLoop DoubleCheck"
   ينتهي في 13 يوليو 2020 الساعة 00:00 بالتوقيت العالمي المنسق. الرجاء التصويت.
 Message-NoActiveUsersPleaseStartReview: >-
   لا يوجد مستخدمون نشطون في آخر 15 دقيقة. ابدأ {0} مراجعة المراجعات {1} وكن
@@ -246,8 +246,8 @@ Message-RevertEditSummary: >-
 Message-RevertEditSummary.@meta.@description: >-
   رسالة ملخص التحرير عندما يقوم برنامجنا بإنشاء تحرير Wikipedia جديد يتم
   الالتزام به على موقع Wikipedia على الويب. المعلمة {0} هي اسم برنامجنا ، حاليًا
-  "WikiLoop Battlefield". المعلمة {1} هي رقم إصدار برنامجنا ، حاليًا 4.0.1. {2}
-  هو عنوان URL لموقع الويب الخاص بأداتنا ، حاليًا "battlefield.wikiloop.org".
+  "WikiLoop DoubleCheck". المعلمة {1} هي رقم إصدار برنامجنا ، حاليًا 4.0.1. {2}
+  هو عنوان URL لموقع الويب الخاص بأداتنا ، حاليًا "doublecheck.wikiloop.org".
 Message-SorryWeFailedToRevert: 'عذرًا ، فشلنا في التراجع عن المراجعة {0}.'
 Message-SorryWeFailedToRevert.@meta.@description: >-
   رسالة لإخبار المستخدم أن التراجع عن تعديل معين فشل. المعلمة {0} هي معرف

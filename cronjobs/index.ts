@@ -66,14 +66,14 @@ export class UsageReportCronJob {
                         "<>":"tr","html":[
                             // TODO(xinbenlv): currently only supports English but will expand.
                             {"<>": "td", html: "<a href='http://en.wikipedia.org/wiki/User:${_id.wikiUserName}'>User:${_id.wikiUserName}</a>"},
-                            {"<>": "td", html: "<a href='http://battlefield.wikiloop.org/marked/?wikiUserName=${_id.wikiUserName}'>${count}</a>"}
+                            {"<>": "td", html: "<a href='http://doublecheck.wikiloop.org/marked/?wikiUserName=${_id.wikiUserName}'>${count}</a>"}
                         ]
                     });
                 let info = await transporter.sendMail({
-                    from: `WikiLoop Battlefield Mailer <zzn+wikiloop@zzn.im>`, // sender address
+                    from: `WikiLoop DoubleCheck Mailer <zzn+wikiloop@zzn.im>`, // sender address
                     replyTo: 'zzn+wikiloop@zzn.im',
                     to: process.env.REPORT_RECEIVER, // list of receivers
-                    subject: `Usage Report (${frequency}) for WikiLoop Battlefield at ${formatedDate}`, // Subject line
+                    subject: `Usage Report (${frequency}) for WikiLoop DoubleCheck at ${formatedDate}`, // Subject line
                     text: JSON.stringify(report, null, 2), // plain text body
                     html: html // html body
                 });
@@ -111,9 +111,9 @@ export class AwardBarnStarCronJob {
     private static awardBarnstarMsg = async (mwMailer, user, frequency, endDate, isReal) => {
         await mwMailer.mail(
             isReal ? `User_talk:${user}` : `User:Xinbenlv/Sandbox/User_talk:${user}`,
-            `== The WikiLoop Battlefield ${frequency} barnstar ==\n` +
-            `{{subst:Xinbenlv/WikiLoop Battlefield Champion|user=${user}|enddate=${endDate}|timerange=${frequency}}}`,
-            `Awarding The WikiLoop Battlefield ${frequency} barnstar to ${user} ending on ${endDate}`);
+            `== The WikiLoop DoubleCheck ${frequency} barnstar ==\n` +
+            `{{subst:Xinbenlv/WikiLoop DoubleCheck Champion|user=${user}|enddate=${endDate}|timerange=${frequency}}}`,
+            `Awarding The WikiLoop DoubleCheck ${frequency} barnstar to ${user} ending on ${endDate}`);
     };
 
     public static awardBarnstar = async function (frequency:string) {

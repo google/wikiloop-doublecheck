@@ -262,7 +262,7 @@ Message-Login: >-
   Etiketlerinizi adınız altında girip koruyabileceğinizi biliyor musunuz? Oauth
   aracılığıyla Wikipedia hesabıyla giriş yapmayı destekliyoruz.
 Message-NameVoteAnnouncement: >-
-  Sayın katılımcı, 13 Temmuz 2020 00:00 UTC ile biten "WikiLoop Battlefield"
+  Sayın katılımcı, 13 Temmuz 2020 00:00 UTC ile biten "WikiLoop DoubleCheck"
   yerine yeni bir isim vermek için oy kullanıyoruz.
 
   Lütfen oy verin.
@@ -281,9 +281,9 @@ Message-RevertEditSummary: |-
 Message-RevertEditSummary.@meta.@description: >-
   Yazılımımız Wikipedia web sitesine yüklenmek üzere yeni bir Wikipedia
   düzenlemesi oluştururken düzenleme özeti mesajı. {0} parametresi, şu anda
-  "WikiLoop Battlefield" olan yazılımımızın adıdır. {1} parametresi şu anda
+  "WikiLoop DoubleCheck" olan yazılımımızın adıdır. {1} parametresi şu anda
   4.0.1 olan yazılımımızın sürüm numarasıdır. {2}, şu anda
-  "battlefield.wikiloop.org" olan aracımızın web sitesi URL'sidir.
+  "doublecheck.wikiloop.org" olan aracımızın web sitesi URL'sidir.
 Message-SorryWeFailedToRevert: 'Maalesef, {0} düzeltmesini geri alamadık.'
 Message-SorryWeFailedToRevert.@meta.@description: >-
   Kullanıcıya belirli bir düzenlemenin geri alınmasının başarısız olduğunu

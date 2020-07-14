@@ -33,11 +33,11 @@ if (useStiki) {
    * There are two main reasons ORES scores are unavailable:
    *  1. [Fixed] Rate throttled - when we send too many requests within a limited time window.
    *    **solution**: we need to add paging and throttling to maximize the number of ORES score.
-   *    Bug: https://github.com/google/wikiloop-battlefield/issues/97
+   *    Bug: https://github.com/google/wikiloop-doublecheck/issues/97
    *  2. Revision ORES unavailable, normally because a revision is unavailable, or other error.
-   *    Bug: https://github.com/google/wikiloop-battlefield/issues/110
+   *    Bug: https://github.com/google/wikiloop-doublecheck/issues/110
    *  3. ORES service (temporarily)unavailable.
-   *    Bug: https://github.com/google/wikiloop-battlefield/issues/37
+   *    Bug: https://github.com/google/wikiloop-doublecheck/issues/37
    *  TODO(xinbenlv, P2): consider add test for handling these 3 cases
    *
    * @param wikiRevIds: a list of wikiRevId

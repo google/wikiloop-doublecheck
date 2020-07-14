@@ -269,7 +269,7 @@ Message-Login: >-
   stöder inloggning med Wikipedia-konto via Oauth.
 Message-NameVoteAnnouncement: >-
   Kära bidragsgivare, vi röstar om ett nytt namn som ersätter "WikiLoop
-  Battlefield" som slutar den 13 juli 2020 00:00 UTC. Vänligen rösta.
+  doublecheck" som slutar den 13 juli 2020 00:00 UTC. Vänligen rösta.
 Message-NoActiveUsersPleaseStartReview: >-
   Inga aktiva användare under de senaste 15 min. Börja {0} granska revisioner
   {1} och bli den första.
@@ -285,9 +285,9 @@ Message-RevertEditSummary: >-
 Message-RevertEditSummary.@meta.@description: >-
   Meddelandet om redigeringsöversikt när vår programvara genererar en ny
   Wikipedia-redigering som kommer att begås på Wikipedia-webbplatsen. Parametern
-  {0} är namnet på vår programvara, för närvarande "WikiLoop Battlefield".
+  {0} är namnet på vår programvara, för närvarande "WikiLoop DoubleCheck".
   Parametern {1} är versionnumret för vår programvara, för närvarande 4.0.1. {2}
-  är webbadressen till vårt verktyg, för närvarande "battlefield.wikiloop.org".
+  är webbadressen till vårt verktyg, för närvarande "doublecheck.wikiloop.org".
 Message-SorryWeFailedToRevert: 'Vi kunde tyvärr inte återställa revisionen {0}.'
 Message-SorryWeFailedToRevert.@meta.@description: >-
   Meddelandet för att berätta för användaren att omvändningen av en given

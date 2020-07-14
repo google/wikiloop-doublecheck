@@ -291,7 +291,7 @@ Message-Login: >-
   ondersteunen Login met Wikipedia-account via Oauth.
 Message-NameVoteAnnouncement: >-
   Beste medewerker, we stemmen voor een nieuwe naam ter vervanging van het
-  "WikiLoop Battlefield" dat eindigt op 13 juli 2020 00:00 UTC. Alsjeblieft,
+  "WikiLoop DoubleCheck" dat eindigt op 13 juli 2020 00:00 UTC. Alsjeblieft,
   stem.
 Message-NoActiveUsersPleaseStartReview: >-
   Geen actieve gebruikers in de afgelopen 15 minuten. Begin met het {0}
@@ -309,9 +309,9 @@ Message-RevertEditSummary.@meta.@description: >-
   Het bericht met de samenvatting van de bewerking wanneer onze software een
   nieuwe Wikipedia-bewerking genereert die op de Wikipedia-website moet worden
   vastgelegd. De parameter {0} is de naam van onze software, momenteel "WikiLoop
-  Battlefield". De parameter {1} is het versienummer van onze software,
+  doublecheck". De parameter {1} is het versienummer van onze software,
   momenteel 4.0.1. De {2} is de website-url van onze tool, momenteel
-  "battlefield.wikiloop.org".
+  "doublecheck.wikiloop.org".
 Message-SorryWeFailedToRevert: 'Sorry, we hebben de revisie {0} niet ongedaan gemaakt.'
 Message-SorryWeFailedToRevert.@meta.@description: >-
   Het bericht om de gebruiker te vertellen dat het ongedaan maken van een

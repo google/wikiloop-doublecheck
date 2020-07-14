@@ -97,9 +97,9 @@
      */
     head ({ params }) {
       let title = `${this.revision.title} (rev:${this.$route.params.revid})`;
-      let desc = `Is this Wikipedia edit good or bad? Come share your opinion at WikiLoop Battlefield. (${this.wikiRevId})`;
-      let host = `battlefield.wikiloop.org`;
-      let img = `http://${host}/wikiloop-battlefield-logo.png`; // TODO(xinbenlv) use relative URL
+      let desc = `Is this Wikipedia edit good or bad? Come share your opinion at WikiLoop DoubleCheck. (${this.wikiRevId})`;
+      let host = `doublecheck.wikiloop.org`;
+      let img = `http://${host}/wikiloop-doublecheck-logo.png`; // TODO(xinbenlv) use relative URL
       let url = `http://${host}${this.$route.path}`;
       return {
         title: title,

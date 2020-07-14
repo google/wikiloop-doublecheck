@@ -231,7 +231,7 @@ Message-RevertEditSummary.@meta.@description: >-
   הודעת סיכום העריכה כאשר התוכנה שלנו מייצרת עריכה חדשה בוויקיפדיה שתחויב באתר
   ויקיפדיה. הפרמטר {0} הוא שם התוכנה שלנו, כרגע "שדה הקרב WikiLoop". הפרמטר {1}
   הוא מספר הגרסאות של התוכנה שלנו, כרגע 4.0.1. {2} היא כתובת האתר של הכלי שלנו,
-  כרגע "battlefield.wikiloop.org".
+  כרגע "doublecheck.wikiloop.org".
 Message-SorryWeFailedToRevert: 'מצטערים, לא הצלחנו להחזיר את המהדורה {0}.'
 Message-SorryWeFailedToRevert.@meta.@description: 'ההודעה לספר למשתמש שההיפוך של עריכה נתונה נכשל. הפרמטר {0} הוא מזהה הגרסאות.'
 Message-TheRevisionIsSuccessfullyRevertedAs: 'המהפכה {0} מבוטלת בהצלחה בתור {1}.'

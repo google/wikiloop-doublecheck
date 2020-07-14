@@ -150,7 +150,7 @@ Message-FeedHasNoNewRevisionsClickNextBelow: '{0}编辑流没有新编辑，请�
 Message-FeedHasNoNewRevisionsClickNextBelow.@meta.@description: '该消息告诉用户给定的要查看的Wikipedia提要或流没有新的修订/编辑。参数{0}指给定提要的名称。'
 Message-Login: 您知道您可以登录并使用您的名字保存您的判断吗？我们支持通过Oauth使用Wikipedia帐户登录。
 Message-NameVoteAnnouncement: |-
-  尊敬的贡献者，我们正在为新名称进行投票，以替换将于2020年7月13日UTC结束的“ WikiLoop Battlefield”。
+  尊敬的贡献者，我们正在为新名称进行投票，以替换将于2020年7月13日UTC结束的“ WikiLoop DoubleCheck”。
   请投票。
 Message-NoActiveUsersPleaseStartReview: '最近15分钟内没有活跃用户，立即开始{0}审阅编辑{1}吧！'
 Message-NoActiveUsersPleaseStartReview.@meta.@description: '邀请用户开始还原的消息。 {0}和{1}是带有URL参数的HTML锚标记对<a>和</a>。'
@@ -158,8 +158,8 @@ Message-PromptLogin: 您知道吗，您可以登录并保存您的审阅记录�
 Message-RevertEditSummary: '使用{0}工具（v{1}）对该编辑版本进行判断，判定为“测试/故意破坏”。请在{2}上查看或发表您的意见。'
 Message-RevertEditSummary.@meta.@description: >-
   当我们的软件生成新的Wikipedia编辑以提交到Wikipedia网站时，编辑摘要的消息。参数{0}是我们的软件的名称，当前为“ WikiLoop
-  Battlefield”。参数{1}是我们软件的版本号，当前为4.0.1。 {2}是我们工具的网站网址，当前为“
-  battlefield.wikiloop.org”。
+  doublecheck”。参数{1}是我们软件的版本号，当前为4.0.1。 {2}是我们工具的网站网址，当前为“
+  doublecheck.wikiloop.org”。
 Message-SorryWeFailedToRevert: '抱歉，我们无法还原修订版本{0}。'
 Message-SorryWeFailedToRevert.@meta.@description: '告诉用户给定编辑的还原失败的消息。参数{0}是修订版标识符。'
 Message-TheRevisionIsSuccessfullyRevertedAs: '编辑编号{0}已成功还原为编辑编号{1}。'

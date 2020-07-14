@@ -279,7 +279,7 @@ Message-Login: >-
   com a conta da Wikipedia pode ser feito através de OAuth.
 Message-NameVoteAnnouncement: >-
   Caro colaborador, estamos mantendo uma votação para um novo nome, substituindo
-  o "WikiLoop Battlefield", que termina em 13 de julho de 2020 às 00:00 UTC.
+  o "WikiLoop DoubleCheck", que termina em 13 de julho de 2020 às 00:00 UTC.
 
   Por favor, vote.
 Message-NoActiveUsersPleaseStartReview: >-
@@ -297,9 +297,9 @@ Message-RevertEditSummary: >-
 Message-RevertEditSummary.@meta.@description: >-
   A mensagem do resumo da edição quando o nosso software está gerando uma nova
   edição da Wikipedia a ser confirmada no site da Wikipedia. O parâmetro {0} é o
-  nome do nosso software, atualmente "WikiLoop Battlefield". O parâmetro {1} é o
+  nome do nosso software, atualmente "WikiLoop DoubleCheck". O parâmetro {1} é o
   número da versão do nosso software, atualmente 4.0.1. O {2} é o URL do site da
-  nossa ferramenta, atualmente "battlefield.wikiloop.org".
+  nossa ferramenta, atualmente "doublecheck.wikiloop.org".
 Message-SorryWeFailedToRevert: 'Desculpe, não foi possível reverter a revisão {0}.'
 Message-SorryWeFailedToRevert.@meta.@description: >-
   A mensagem para informar ao usuário que a reversão de uma determinada edição

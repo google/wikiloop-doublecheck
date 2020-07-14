@@ -173,7 +173,7 @@ Message-Login: >-
   당신은 당신의 이름으로 레이블을 로그인하고 보존 할 수 있다는 것을 알고 있습니까? Oauth를 통해 Wikipedia 계정으로 로그인을
   지원합니다.
 Message-NameVoteAnnouncement: >-
-  기여자님께, 2020 년 7 월 13 일 00:00 UTC로 끝나는 "WikiLoop Battlefield"를 대체하는 새로운 이름에 대한
+  기여자님께, 2020 년 7 월 13 일 00:00 UTC로 끝나는 "WikiLoop DoubleCheck"를 대체하는 새로운 이름에 대한
   투표를 진행하고 있습니다. 투표 해주세요.
 Message-NoActiveUsersPleaseStartReview: '지난 15 분 동안 활성 사용자가 없습니다. 개정판 {1}을 (를) 검토하여 {0}을 (를) 시작하고 첫 번째 개정판이 되십시오.'
 Message-NoActiveUsersPleaseStartReview.@meta.@description: >-
@@ -185,8 +185,8 @@ Message-PromptLogin: >-
 Message-RevertEditSummary: '{0} 버전 {1}을 (를) 사용하여 테스트 / 파손 행위로 식별되었습니다. {2}에서 보거나 의견을 보내주십시오'
 Message-RevertEditSummary.@meta.@description: >-
   소프트웨어가 Wikipedia 웹 사이트에 적용 할 새로운 Wikipedia 편집을 생성 할 때 편집 요약 메시지. {0} 매개 변수는 현재
-  "WikiLoop Battlefield"소프트웨어 이름입니다. {1} 매개 변수는 현재 소프트웨어의 버전 번호이며 현재 4.0.1입니다.
-  {2}는 현재 "battlefield.wikiloop.org"도구의 웹 사이트 URL입니다.
+  "WikiLoop DoubleCheck"소프트웨어 이름입니다. {1} 매개 변수는 현재 소프트웨어의 버전 번호이며 현재 4.0.1입니다.
+  {2}는 현재 "doublecheck.wikiloop.org"도구의 웹 사이트 URL입니다.
 Message-SorryWeFailedToRevert: '죄송합니다. 개정판 {0}을 (를) 되 돌리지 못했습니다.'
 Message-SorryWeFailedToRevert.@meta.@description: '지정된 수정 사항을 되 돌리지 못했음을 사용자에게 알리는 메시지입니다. 매개 변수 {0}은 개정 식별자입니다.'
 Message-TheRevisionIsSuccessfullyRevertedAs: '개정판 {0}이 (가) {1} (으)로 되돌아갔습니다.'

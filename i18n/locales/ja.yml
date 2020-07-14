@@ -166,7 +166,7 @@ Message-FeedHasNoNewRevisionsClickNextBelow.@meta.@description: >-
   レビュー対象のウィキペディア編集の特定のフィードまたはストリームをユーザーに通知するメッセージには、新しいリビジョン/編集はありません。パラメータ{0}は、指定されたフィードの名前を指します。
 Message-Login: ログインして自分の名前でラベルを保存できることをご存知ですか？ OauthによるWikipediaアカウントでのログインをサポートしています。
 Message-NameVoteAnnouncement: |-
-  投稿者の皆様、2020年7月13日00:00 UTCに終了する「WikiLoop Battlefield」に代わる新しい名前の投票を開催しています。
+  投稿者の皆様、2020年7月13日00:00 UTCに終了する「WikiLoop DoubleCheck」に代わる新しい名前の投票を開催しています。
   投票してください。
 Message-NoActiveUsersPleaseStartReview: '過去15分間にアクティブなユーザーはいません。 {0}改訂のレビュー{1}を開始し、最初の改訂になります。'
 Message-NoActiveUsersPleaseStartReview.@meta.@description: '元に戻すことをユーザーに促すメッセージ。 {0}と{1}は、URLパラメータを持つHTMLアンカータグのペア<a>と</a>です。'
@@ -176,8 +176,8 @@ Message-RevertEditSummary: |-
   {2}でご覧になるか、意見をお寄せください
 Message-RevertEditSummary.@meta.@description: >-
   私たちのソフトウェアがウィキペディアのウェブサイトにコミットする新しいウィキペディアの編集を生成しているときの編集の要約のメッセージ。パラメータ{0}はソフトウェアの名前で、現在は「WikiLoop
-  Battlefield」です。パラメータ{1}は、ソフトウェアのバージョン番号で、現在は4.0.1です。
-  {2}はツールのウェブサイトのURLで、現在は「battlefield.wikiloop.org」です。
+  doublecheck」です。パラメータ{1}は、ソフトウェアのバージョン番号で、現在は4.0.1です。
+  {2}はツールのウェブサイトのURLで、現在は「doublecheck.wikiloop.org」です。
 Message-SorryWeFailedToRevert: 'リビジョン{0}を元に戻すことができませんでした。'
 Message-SorryWeFailedToRevert.@meta.@description: '特定の編集の復元が失敗したことをユーザーに通知するメッセージ。パラメータ{0}はリビジョン識別子です。'
 Message-TheRevisionIsSuccessfullyRevertedAs: 'リビジョン{0}は正常に{1}に戻されました。'
