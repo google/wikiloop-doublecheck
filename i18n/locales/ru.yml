@@ -192,7 +192,7 @@ Label-ReviewFeed: Обзор ленты
 Label-ReviewFeed.@meta.@description: >-
   Метка для подачи, потока или потока входящих изменений в Википедии, подлежащих
   рассмотрению.
-Label-ReviewedAndSays: 'просмотрел {0} и решил'
+Label-ReviewedAndSays: 'просмотрел <a href="{href}">{wikiRevId}</a> и решил'
 Label-ReviewedAndSays.@meta.@description: 'Метка для начала приговора и причины, приведенные для пересмотра.'
 Label-ShouldRevert: Нужно отменить
 Label-ShouldRevert.@meta.@description: >-

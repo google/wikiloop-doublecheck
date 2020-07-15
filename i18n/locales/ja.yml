@@ -117,7 +117,7 @@ Label-RevertSucceeded: 元に戻しました。
 Label-RevertSucceeded.@meta.@description: ユーザーがウィキペディアの編集を元に戻したときに実行されたアクションの結果のラベル。アクションは成功します。
 Label-ReviewFeed: フィードの確認
 Label-ReviewFeed.@meta.@description: レビュー対象のウィキペディア編集のフィード、フロー、またはストリームのラベル。
-Label-ReviewedAndSays: '{0}を確認して言った'
+Label-ReviewedAndSays: '<a href="{href}">{wikiRevId}</a>を確認して言った'
 Label-ReviewedAndSays.@meta.@description: 判決文の開始ラベルと改訂理由。
 Label-ShouldRevert: 元に戻す必要がある
 Label-ShouldRevert.@meta.@description: 審査中のウィキペディアの編集が、ウィキペディアに悪影響を与えており、建設的であるとは言い難いという、3つの主要な判決の1つのラベル。

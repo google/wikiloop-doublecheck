@@ -212,7 +212,7 @@ Label-ReviewFeed: Feed überprüfen
 Label-ReviewFeed.@meta.@description: >-
   Die Bezeichnung für den Feed, den Flow oder den Stream eingehender
   Wikipedia-Änderungen, die überprüft werden sollen.
-Label-ReviewedAndSays: 'überprüft {0} und sagt'
+Label-ReviewedAndSays: 'überprüft <a href="{href}">{wikiRevId}</a> und sagt'
 Label-ReviewedAndSays.@meta.@description: Das Etikett zur Einleitung des Urteils und die Gründe für eine Überarbeitung.
 Label-ShouldRevert: Sollte zurücksetzen
 Label-ShouldRevert.@meta.@description: >-

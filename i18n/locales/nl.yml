@@ -209,7 +209,7 @@ Label-ReviewFeed: Feed beoordelen
 Label-ReviewFeed.@meta.@description: >-
   Het label voor de feed, stroom of stroom van inkomende Wikipedia-bewerkingen
   die moeten worden beoordeeld.
-Label-ReviewedAndSays: 'heeft {0} beoordeeld en zegt'
+Label-ReviewedAndSays: 'heeft <a href="{href}">{wikiRevId}</a> beoordeeld en zegt'
 Label-ReviewedAndSays.@meta.@description: Het label om de uitspraak te beginnen en de redenen voor een herziening.
 Label-ShouldRevert: Moet terugkeren
 Label-ShouldRevert.@meta.@description: >-

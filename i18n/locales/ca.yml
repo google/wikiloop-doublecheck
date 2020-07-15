@@ -199,7 +199,7 @@ Label-ReviewFeed: Reviseu el feed
 Label-ReviewFeed.@meta.@description: >-
   S'ha de revisar l'etiqueta de l'alimentació, el flux o el flux de les edicions
   de Viquipèdia entrants.
-Label-ReviewedAndSays: 'ha revisat {0} i afirma'
+Label-ReviewedAndSays: 'ha revisat <a href="{href}">{wikiRevId}</a> i afirma'
 Label-ReviewedAndSays.@meta.@description: L'etiqueta per iniciar la sentència del judici i les raons per a una revisió.
 Label-ShouldRevert: Hauria de revertir
 Label-ShouldRevert.@meta.@description: >-
