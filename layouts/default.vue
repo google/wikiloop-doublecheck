@@ -100,10 +100,6 @@
       </div>
     </nav>
     <div style="margin-top:70px" class="container small-screen-padding">
-      <div class="pt-2">
-        <NoticeBanner
-        ></NoticeBanner>
-      </div>
       <nuxt class="pt-lg-4 pt-md-2 pt-sm-1"/>
     </div>
     <b-modal id="modal-keymap" title="Keymap">
