@@ -338,8 +338,7 @@ function setupAuthApi(db, app) {
           "token": token
         };
         if (wiki == 'enwiki') { // currently only enwiki has the manually created tag of WikiLoop DoubleCheck
-          payload['tags'] = "WikiLoop DoubleCheck";
-        }
+          payload['tags'] = "WikiLoop Battlefield"; // TODO(xinbenlv@, #307) Update the name to "WikiLoop DoubleCheck", and also request to support it on other languagf
         let retData = await oauthFetch(apiUrl, payload, {method: 'POST'}, req.user.oauth );  // assuming request succeeded;
         res.setHeader('Content-Type', 'application/json');
         res.status(200);
