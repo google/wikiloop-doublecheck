@@ -183,6 +183,8 @@
   import {  fetchDiffWithWikiRevId, supportedWikis, getUrlBaseByWiki } from '@/shared/utility-shared';
   import DiffBox from '@/components/DiffBox.vue';
   import socket from '@/plugins/socket.io.js';
+  import {CESP_Test_Info} from "@/cross-edits-detection/interface";
+  import {CESP_Test} from "@/cross-edits-detection/CESP_Test";
   export default {
     components: {
       DiffBox
@@ -517,6 +519,19 @@
           wikiRevId: this.wikiRevId
         }
       });
+      console.log("Executing function mounted for wikiRevID: " + this.wikiRevID);
+      var cur_revision_info: CESP_Test_Info = {
+        url: "https://en.wikipedia.org/w/api.php?origin=*",
+        window_size: 10,
+        baseline: 0.0,
+        percentage: 0.0,
+        margin: 0.1,
+        warning_timeframe: 3,
+        warning_threshold: 3,
+        revID_list: [this.wikiRevId],
+      }
+      var cur_revision_case: CESP_Test = new CESP_Test(cur_revision_info);
+      await cur_revision_case.run_all();
 
     },
     beforeCreate() {
