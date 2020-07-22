@@ -130,7 +130,7 @@
             </div>
             <div class="card mt-4">
                 <div class="card-header">
-                    <h2>{{$t('Label-TopNumberAnonymousUsers', 20)}}</h2>
+                    <h2><span v-html="$t('Label-TopNumberAnonymousUsers', [20])"></span></h2>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -159,7 +159,7 @@
                                         </router-link>
                                     </td>
                                     <td scope="col">
-                                        <template v-for="wiki of leader.wikis">{{getWiki(wiki)}}</template>
+                                        <span class="mr-1" v-for="wiki of leader.wikis" :key="wiki">{{wiki}}</span>
                                     </td>
                                     <td scope="col">{{leader.count}}</td>
                                     <td scope="col">

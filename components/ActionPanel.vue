@@ -68,15 +68,16 @@
         <h5>{{$t('Label-Result')}}</h5>
         <template v-if="wikiActionProps.resultRevId">
           <i class="text-success fas fa-check-circle mr-1"></i><span>
-            {{$t('Message-TheRevisionIsSuccessfullyRevertedAs',
+            <span v-html="$t('Message-TheRevisionIsSuccessfullyRevertedAs',
             [
-              `<a :href="'${getDiffLinkByRevId(revId)}'">${revId}</a>`,
-              `<a :href="'${getDiffLinkByRevId(wikiActionProps.resultRevId)}'">${wikiActionProps.resultRevId}</a>`
-            ])}}
+              `<a href='${getDiffLinkByRevId(revId)}'>${revId}</a>`,
+              `<a href='${getDiffLinkByRevId(wikiActionProps.resultRevId)}'>${wikiActionProps.resultRevId}</a>`
+            ])"></span>
           </span>
         </template>
         <template v-else-if="wikiActionProps && wikiActionProps._meta && wikiActionProps._meta.hasError">
-          <i class="text-danger fas fa-times-circle mr-1"></i>{{$t('Message-SorryWeFailedToRevert', [`<a :href="'${getDiffLinkByRevId(revId)}'">${revId}</a>`])}}
+          <i class="text-danger fas fa-times-circle mr-1"></i>
+          <span v-html="$t(`Message-SorryWeFailedToRevert`,[`<a href='${getDiffLinkByRevId(revId)}'>${revId}</a>`])"></span>
           <span v-if="wikiActionProps._meta.rawResult && wikiActionProps._meta.rawResult.error">
             {{$t('Label-Reason')}}(<b>{{wikiActionProps._meta.rawResult.error.code}}</b>) {{wikiActionProps._meta.rawResult.error.info}}
           </span>
