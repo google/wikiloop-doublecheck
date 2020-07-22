@@ -44,8 +44,9 @@
         </tr>
       </tbody>
     </table>
-    <h2 v-else><br/>:(<br/></h2>
-    <p v-html="$t('Message-NoActiveUsersPleaseStartReview', [`<a class='btn btn-outline-primary' href='/'>`, `</a>`])"></p>
+    <h2 v-else><br/>:(<br/>
+      <p v-html="$t('Message-NoActiveUsersPleaseStartReview', [`<a class='btn btn-outline-primary' href='/'>`, `</a>`])"></p>
+    </h2>
   </section>
 </template>
 <script lang="ts">
