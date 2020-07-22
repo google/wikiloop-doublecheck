@@ -44,7 +44,7 @@
                             </thead>
                             <tbody>
                             <template v-for="(leadWiki, index) in wikis">
-                                <tr>
+                                <tr :key="index">
                                     <td scope="col">
                                         {{index + 1}}
                                     </td>
@@ -99,7 +99,7 @@
                             </thead>
                             <tbody>
                             <template v-for="(leader, index) in loggedIn">
-                                <tr v-bind:class="{ 'table-success': isMe(leader) }">
+                                <tr v-bind:class="{ 'table-success': isMe(leader) }" :key="leader">
                                     <td scope="col">
                                         {{index + 1}}
                                     </td>
@@ -113,7 +113,7 @@
                                     </td>
                                     <td scope="col">
                                         <template v-for="wiki of leader.wikis">
-                                            <a class="mr-1"
+                                            <a :key="wiki" class="mr-1"
                                                :href="`${getUrlBaseByWiki(wiki)}/wiki/Special:Contributions/${leader.wikiUserName}`">{{getWiki(wiki)}}</a>
                                         </template>
                                     </td>
@@ -146,7 +146,7 @@
                             </thead>
                             <tbody>
                             <template v-for="(leader, index) in anonymous">
-                                <tr v-bind:class="{ 'table-success': isMe(leader) }">
+                                <tr v-bind:class="{ 'table-success': isMe(leader) }" :key="leader">
                                     <td scope="col">
                                         {{index + 1}}
                                     </td>
@@ -178,13 +178,11 @@
 </template>
 <script lang="ts">
   import {getUrlBaseByWiki, fetchDiffWithWikiRevId, wikiToLangMap} from '@/shared/utility-shared';
-  import BootstrapVue from 'bootstrap-vue';
   import VueTimeago from 'vue-timeago';
   import ISO6391 from 'iso-639-1';
 
   export default {
     components: {
-      BootstrapVue,
       VueTimeago,
     }, data() {
       return {

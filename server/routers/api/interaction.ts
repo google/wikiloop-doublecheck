@@ -69,7 +69,7 @@ const getInteractionsByWikiRevId = async (req, res) => {
       .send();
 };
 
-// TODO(xinbenlv): temprorarily use
+// TODO(xinbenlv): temporarily use
 interactionRouter.get(`/beta/:wikiRevId`, asyncHandler(getInteractionsByWikiRevId));
 
 const listInteractions = async (req, res) => {

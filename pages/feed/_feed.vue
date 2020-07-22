@@ -21,7 +21,7 @@
               <button class="btn btn-outline-primary"
                 v-if="!showJudgementPanel"
                 @click="showJudgementPanel = !showJudgementPanel">{{$t('Button-ShowJudgements')}}</button>
-              <JudgementPanel v-else="showJudgementPanel" ref="judgementPanel" class="card-body" :wikiRevId="currentWikiRevId" />
+              <JudgementPanel v-else ref="judgementPanel" class="card-body" :wikiRevId="currentWikiRevId" />
             </template>
           </div>
           <div v-else>
@@ -50,7 +50,7 @@
 
         <b-modal id="modal-promote-login" title="Tip: Login">
             {{$t('Message-Login')}}<br/>
-            <template v-slot:modal-footer="{ ok, hide }">
+            <template v-slot:modal-footer>
                 <a class="btn-sm btn btn-primary" href="/auth/mediawiki/login">{{$t("Label-Login")}}</a>
                 <b-button size="sm" variant="secondary" @click="snoozeTipLogin()">
                     {{$t("Label-Snooze")}}

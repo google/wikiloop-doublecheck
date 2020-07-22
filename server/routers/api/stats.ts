@@ -30,7 +30,7 @@ const championQuery = function(timeRange, endDate, wiki) {
   if (/20\d\d-\d\d-\d\d/.test(endDate)) {
     utcEndTime = new Date(endDate).getTime()/1000;
   } else if (/\d+/.test(endDate) &&
-      parseInt(endDate) <= new Date('2099-01-01').getTime()/1000 && // WE WILL EXLODE in 2099!
+      parseInt(endDate) <= new Date('2099-01-01').getTime()/1000 && // WE WILL EXPLODE in 2099!
       parseInt(endDate) >= new Date('2015-01-01').getTime()/1000
   ) {
     utcEndTime = parseInt(endDate);
