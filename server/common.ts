@@ -13,21 +13,61 @@
 // limitations under the License.
 
 import { wikiToDomain } from "@/shared/utility-shared";
-
 const rp = require('request-promise');
+
+const chalk = require('chalk');
+
 const Logger = require('heroku-logger').Logger;
+const pad = require('pad');
+
 export const logger = require('heroku-logger');
 
+export const latencyColor = function (latencyMs) {
+  if (latencyMs >= 500) return 'yellow';
+  else if (latencyMs >= 5000) return 'orange';
+  else if (latencyMs >= 20000) return 'red';
+  else return 'lightgreen';
+}
+
+export const statusColor = function(statusCode) {
+  let codeNum = parseInt(statusCode);
+  if (codeNum >= 200 && codeNum < 300) {
+    return 'lightgreen';
+  } else if (codeNum >= 300 && codeNum < 400) {
+    return 'yellow';
+  } else if (codeNum >= 400 && codeNum < 500) {
+    return 'orange';
+  } else if (codeNum >= 500 && codeNum < 600) {
+    return 'red';
+  }
+  return 'purple';
+
+}
+
+export const axiosLogger = new Logger({
+  prefix: pad('AXIOS', 8),
+  LOG_LEVEL: 'debug'
+});
+
 export const apiLogger = new Logger({
-  prefix: 'API:',    // Defaults to `''`.
+  prefix: pad('API', 8),    // Defaults to `''`.
 });
 
 export const perfLogger = new Logger({
-  prefix: 'PERF:',    // Defaults to `''`.
+  prefix: pad('PERF', 8),    // Defaults to `''`.
 });
 export const mailCronLogger = new Logger({
-  prefix: 'MAILCRON:',    // Defaults to `''`.
+  prefix: pad('MAILCRON', 8),    // Defaults to `''`.
 });
+
+
+export const colorizeMaybe = function (logger, color, message) {
+  if (logger.config.color) {
+    return chalk.keyword(color)(message);
+  } else {
+    return message;
+  }
+}
 
 export async function isWhitelistedFor(featureName, wikiUserName) {
   const mongoose = require('mongoose');

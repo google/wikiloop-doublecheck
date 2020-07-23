@@ -18,9 +18,10 @@
 import {wikiToDomain} from "@/shared/utility-shared";
 import {logger} from "@/server/common";
 import * as _ from 'underscore';
-const rp = require('request-promise');
+const axios = require('axios');
 import update from 'immutability-helper';
-const MAX_MWAPI_LIMIT:number = 5000;
+const MAX_MWAPI_LIMIT:number = 50;
+
 /**
  * MediaWiki Action API Client Utility
  *
@@ -49,7 +50,7 @@ export class MwActionApiClient {
     let url = new URL(`http://${wikiToDomain[wiki]}/w/api.php?${searchParams.toString()}`);
     console.log(`Url = `, url);
     try {
-      let revisionsJson = await rp.get(url.toString(), {json: true});
+      let revisionsJson = (await axios.get(url.toString())).data;
       let pageId = Object.keys(revisionsJson.query.pages)[0];
       if (revisionsJson.query.pages[pageId].revisions)
         return revisionsJson.query.pages[pageId].revisions.map(item => item.revid);
@@ -102,7 +103,7 @@ export class MwActionApiClient {
    * @param
    * @returns raw object of recentChanges.
    */
-  public static getRawRecentChanges = async function ({wiki = 'enwiki', direction, timestamp, limit = 500, bad=false}) {
+  public static getRawRecentChanges = async function ({wiki = 'enwiki', direction, timestamp, limit = 500, bad=false, isLast=false}) {
     let searchParams = new URLSearchParams(
       {
         "action": "query",
@@ -117,6 +118,7 @@ export class MwActionApiClient {
         "rctoponly": "1",
       });
     if (bad) searchParams.set('rcshow', '!bot|oresreview');
+    if (isLast) searchParams.set('rctoponly', '1');
     if (direction) searchParams.set(`rcdir`, direction || `older`);
     if (timestamp) searchParams.set(`rcstart`, timestamp || (new Date().getTime()/1000));
     searchParams.set(`rclimit`, limit.toString());
@@ -125,8 +127,8 @@ export class MwActionApiClient {
     logger.info(`Requesting for Media Action API: ${url.toString()}`);
     logger.info(`Try sandbox request here: ${new URL(`http://${wikiToDomain[wiki]}/wiki/Special:ApiSandbox#${searchParams.toString()}`)}`);
 
-    let recentChangesJson = await rp.get(url.toString(), {json: true});
-
+    let response = await axios.get(url.toString());
+    let recentChangesJson = response.data;
     /** Sample response
      {
      "batchcomplete":"",

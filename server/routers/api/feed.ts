@@ -3,6 +3,7 @@ import {asyncHandler} from "~/server/common";
 const express = require('express');
 import {FeedEnum, WatchCollectionFeed} from "@/server/feed/watch-collection-feed";
 import {MwActionApiClient} from "@/shared/mwapi";
+import { wikiToDomain } from '@/shared/utility-shared';
 
 export const feedRouter = express.Router();
 
@@ -49,15 +50,19 @@ feedRouter.get('/mix', async (req, res) => {
 });
 
 feedRouter.get(/(recent|lastbad)/, async (req, res) => {
-  if (req.query.wiki && ['enwiki', 'testwiki'].indexOf(req.query.wiki) < 0) {
+  if (req.query.wiki && Object.keys(wikiToDomain).indexOf(req.query.wiki) < 0) {
     res.status(400).send(`The wiki ${req.query.wiki} is not supported`);
     return;
   } else {
     let ctx:any = {
-      wiki: req.query.wiki, limit: 50
+      wiki: req.query.wiki || 'enwiki',
+      limit: 50
     };
     let feed = req.path.split('/')[1];
-    if (feed === 'lastbad') ctx.bad = true;
+    if (feed === 'lastbad') {
+      ctx.bad = true;
+      ctx.isLast = true;
+    }
     let wiki = req.query.wiki;
     let wikiRevIds = (await MwActionApiClient.getLatestRevisionIds(ctx)).map(revId => `${wiki}:${revId}`);
     res.send({

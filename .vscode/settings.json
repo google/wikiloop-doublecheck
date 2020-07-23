@@ -78,6 +78,7 @@
     "lastbad",
     "lastrevid",
     "leaderboard",
+    "lightgreen",
     "markdownlint",
     "mediawiki",
     "mwapi",
@@ -664,5 +665,14 @@
     "zh tzuhsiao uk mt wizard adehtiarov it alex martelli es apatronl fmobus pt he d r ted hardie ja luisfors g renamoo ru andrei goriachev",
     "zhyrek",
     "zoozaz"
-  ]
+  ],
+  "search.exclude": {
+    "**/node_modules": false,
+    "**/node_modules/**": true,
+    "node_modules": true
+  },
+  "files.exclude": {
+    "**/node_modules/**": true,
+    "node_modules/**": true
+  }
 }

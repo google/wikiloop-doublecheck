@@ -95,6 +95,7 @@
     },
     methods: {
       getNewFeedItemAndInfo: async function() {
+          let now = new Date();
           let newFeedItem = await this.$axios.$get(`/api/feed/${this.feedName}?limit=1&wiki=${this.$store.state.wiki}`);
           if (newFeedItem.wikiRevIds.length > 0) {
               let newWikiRevId = `${newFeedItem.wikiRevIds[0]}`;
@@ -142,7 +143,6 @@
     validate ({ params }) {
       return (['us2020', 'covid19', 'recent', 'ores', 'mix', 'wikitrust', 'lastbad'].indexOf(params.feed) >= 0);
     },
-
     async asyncData ({ params, $axios }) {
       return { feedName: params.feed };
     },

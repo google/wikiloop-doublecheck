@@ -15,12 +15,69 @@
 const express = require("express");
 import { asyncHandler, logger, useStiki } from '~/server/common';
 import {Score, ScoreType} from "~/shared/interfaces";
+import axios from 'axios';
 
 export const scoreRouter = express.Router();
 
-if (useStiki) {
-  const rp = require('request-promise');
+/** Function to fetch ORES, if unavailable, cover the error and replace score with null
+ * There are two main reasons ORES scores are unavailable:
+ *  1. [Fixed] Rate throttled - when we send too many requests within a limited time window.
+ *    **solution**: we need to add paging and throttling to maximize the number of ORES score.
+ *    Bug: https://github.com/google/wikiloop-doublecheck/issues/97
+ *  2. Revision ORES unavailable, normally because a revision is unavailable, or other error.
+ *    Bug: https://github.com/google/wikiloop-doublecheck/issues/110
+ *  3. ORES service (temporarily)unavailable.
+ *    Bug: https://github.com/google/wikiloop-doublecheck/issues/37
+ *  TODO(xinbenlv, P2): consider add test for handling these 3 cases
+ *
+ * @param wikiRevIds: a list of wikiRevId
+ * @returns {Promise<Object> a map of {wiki: [oresScore]}} where oresScore
+ */
+async function fetchOresScore(wikiRevId, type:ScoreType):Promise<Score> {
+  let oresResultJson;
+    let wiki = wikiRevId.split(':')[0];
+    let revId = wikiRevId.split(':')[1];
+    let oresUrl = `https://ores.wikimedia.org/v3/scores/${wiki}/?models=damaging|goodfaith&revids=${revId}`;
+    try {
+      oresResultJson = (await axios.get(oresUrl)).data;
+      switch (type) {
+        case ScoreType.ORES_DAMAGING:
+          return <Score> {
+            type: ScoreType.ORES_DAMAGING,
+            score: oresResultJson[wiki].scores[revId]?.damaging?.score?.probability.true,
+            isBad: oresResultJson[wiki].scores[revId]?.damaging?.score?.prediction === true
+          };
+        case ScoreType.ORES_BADFAITH:
+          return <Score> {
+            type: ScoreType.ORES_BADFAITH,
+            score: oresResultJson[wiki].scores[revId]?.goodfaith?.score?.probability.false,
+            isBad: oresResultJson[wiki].scores[revId]?.goodfaith?.score?.prediction === false
+          };
+      }
+    } catch (err) {
+      logger.warn(err);
+      return null;
+    }
+}
 
+
+scoreRouter.get('/ores/damaging/:wikiRevId', asyncHandler(async (req, res) => {
+  let wikiRevId = req.params.wikiRevId;
+  let score:Score = await fetchOresScore(wikiRevId, ScoreType.ORES_DAMAGING);
+  res.send(score);
+}));
+
+scoreRouter.get('/ores/badfaith/:wikiRevId', asyncHandler(async (req, res) => {
+  let wikiRevId = req.params.wikiRevId;
+  let score:Score = await fetchOresScore(wikiRevId, ScoreType.ORES_BADFAITH);
+  res.send(score);
+}));
+
+let fetchStikiAndCbng = async function(wikiRevId, type:ScoreType) {
+  return null;
+}
+
+if (useStiki) {
   const mysql = require('mysql2');
 
   // create the pool
@@ -28,49 +85,7 @@ if (useStiki) {
   // now get a Promise wrapped instance of that pool
   const promisePool = pool.promise();
 
-
-  /** Function to fetch ORES, if unavailable, cover the error and replace score with null
-   * There are two main reasons ORES scores are unavailable:
-   *  1. [Fixed] Rate throttled - when we send too many requests within a limited time window.
-   *    **solution**: we need to add paging and throttling to maximize the number of ORES score.
-   *    Bug: https://github.com/google/wikiloop-doublecheck/issues/97
-   *  2. Revision ORES unavailable, normally because a revision is unavailable, or other error.
-   *    Bug: https://github.com/google/wikiloop-doublecheck/issues/110
-   *  3. ORES service (temporarily)unavailable.
-   *    Bug: https://github.com/google/wikiloop-doublecheck/issues/37
-   *  TODO(xinbenlv, P2): consider add test for handling these 3 cases
-   *
-   * @param wikiRevIds: a list of wikiRevId
-   * @returns {Promise<Object> a map of {wiki: [oresScore]}} where oresScore
-   */
-  async function fetchOresScore(wikiRevId, type:ScoreType):Promise<Score> {
-    let oresResultJson;
-      let wiki = wikiRevId.split(':')[0];
-      let revId = wikiRevId.split(':')[1];
-      let oresUrl = `https://ores.wikimedia.org/v3/scores/${wiki}/?models=damaging|goodfaith&revids=${revId}`;
-      try {
-        oresResultJson = await rp.get(oresUrl, { json: true });
-        switch (type) {
-          case ScoreType.ORES_DAMAGING:
-            return <Score> {
-              type: ScoreType.ORES_DAMAGING,
-              score: oresResultJson[wiki].scores[revId]?.damaging?.score?.probability.true,
-              isBad: oresResultJson[wiki].scores[revId]?.damaging?.score?.prediction === true
-            };
-          case ScoreType.ORES_BADFAITH:
-            return <Score> {
-              type: ScoreType.ORES_BADFAITH,
-              score: oresResultJson[wiki].scores[revId]?.goodfaith?.score?.probability.false,
-              isBad: oresResultJson[wiki].scores[revId]?.goodfaith?.score?.prediction === false
-            };
-        }
-      } catch (err) {
-        logger.warn(err);
-        return null;
-      }
-  }
-
-  async function fetchStikiAndCbng(wikiRevId, type:ScoreType):Promise<Score> {
+  fetchStikiAndCbng = async function(wikiRevId, type:ScoreType):Promise<Score> {
     let wiki = wikiRevId.split(':')[0];
     let revId = wikiRevId.split(':')[1];
     let dbName = null;
@@ -99,18 +114,6 @@ if (useStiki) {
     }
   }
 
-  scoreRouter.get('/ores/damaging/:wikiRevId', asyncHandler(async (req, res) => {
-    let wikiRevId = req.params.wikiRevId;
-    let score:Score = await fetchOresScore(wikiRevId, ScoreType.ORES_DAMAGING);
-    res.send(score);
-  }));
-
-  scoreRouter.get('/ores/badfaith/:wikiRevId', asyncHandler(async (req, res) => {
-    let wikiRevId = req.params.wikiRevId;
-    let score:Score = await fetchOresScore(wikiRevId, ScoreType.ORES_BADFAITH);
-    res.send(score);
-  }));
-
   scoreRouter.get('/stiki/:wikiRevId', asyncHandler(async (req, res) => {
     let wikiRevId = req.params.wikiRevId;
     res.send(fetchOresScore(wikiRevId, ScoreType.STIKI));
@@ -120,23 +123,23 @@ if (useStiki) {
     let wikiRevId = req.params.wikiRevId;
     res.send(fetchOresScore(wikiRevId, ScoreType.CLUEBOTNG));
   }));
-
-  scoreRouter.get(`/:wikiRevId`, asyncHandler(async (req, res) => {
-    let wikiRevId = req.params.wikiRevId;
-    let [
-        oresDamaging,
-        oresBadfaith,
-        stiki,
-        cbng
-    ] = await Promise.all([
-      await fetchOresScore(wikiRevId, ScoreType.ORES_DAMAGING),
-      await fetchOresScore(wikiRevId, ScoreType.ORES_BADFAITH),
-      await fetchStikiAndCbng(wikiRevId, ScoreType.STIKI),
-      await fetchStikiAndCbng(wikiRevId, ScoreType.CLUEBOTNG)
-    ]);
-    res.send([oresDamaging, oresBadfaith, stiki, cbng].filter(s => s != null));
-  }));
 }
+
+scoreRouter.get(`/:wikiRevId`, asyncHandler(async (req, res) => {
+  let wikiRevId = req.params.wikiRevId;
+  let [
+      oresDamaging,
+      oresBadfaith,
+      stiki,
+      cbng
+  ] = await Promise.all([
+    await fetchOresScore(wikiRevId, ScoreType.ORES_DAMAGING),
+    await fetchOresScore(wikiRevId, ScoreType.ORES_BADFAITH),
+    await fetchStikiAndCbng(wikiRevId, ScoreType.STIKI),
+    await fetchStikiAndCbng(wikiRevId, ScoreType.CLUEBOTNG)
+  ]);
+  res.send([oresDamaging, oresBadfaith, stiki, cbng].filter(s => s != null));
+}));
 
 export default scoreRouter;
 

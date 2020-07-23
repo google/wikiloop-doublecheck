@@ -18,7 +18,7 @@ export interface Score {
   type: ScoreType,
   score: number,
   isBad: boolean,
-  version: string,
+  version?: string,
 }
 
 export interface RevisionPanelItem {
