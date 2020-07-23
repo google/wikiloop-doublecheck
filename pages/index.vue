@@ -69,7 +69,7 @@
             showNext: async function() {
                 this.currentWikiRevId = this.$store.state.revisions.nextWikiRevIdsHeap.peek();
                 this.$store.commit(`revisions/pop`);
-                await this.$store.dispatch(`revisions/loadMoreWikiRevs`);
+                // await this.$store.dispatch(`revisions/loadMoreWikiRevs`).then();
                 /*unawait*/ this.$store.dispatch(`revisions/preloadAsyncMeta`).then();
             },
             snoozeTipLogin: function() {

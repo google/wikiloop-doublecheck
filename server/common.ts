@@ -23,25 +23,21 @@ const pad = require('pad');
 export const logger = require('heroku-logger');
 
 export const latencyColor = function (latencyMs) {
-  if (latencyMs >= 500) return 'yellow';
+  if (latencyMs >= 50000) return 'red';
   else if (latencyMs >= 5000) return 'orange';
-  else if (latencyMs >= 20000) return 'red';
+  else if (latencyMs >= 500) return 'yellow';
   else return 'lightgreen';
 }
 
 export const statusColor = function(statusCode) {
   let codeNum = parseInt(statusCode);
-  if (codeNum >= 200 && codeNum < 300) {
-    return 'lightgreen';
-  } else if (codeNum >= 300 && codeNum < 400) {
-    return 'yellow';
-  } else if (codeNum >= 400 && codeNum < 500) {
-    return 'orange';
-  } else if (codeNum >= 500 && codeNum < 600) {
-    return 'red';
-  }
-  return 'purple';
-
+  if (codeNum >= 600) return 'purple';
+  else if (codeNum >= 500) return 'red';
+  else if (codeNum >= 400) return 'orange';
+  else if (codeNum >= 300) return 'yellow';
+  else if (codeNum >= 200) return 'lightgreen';
+  else if (codeNum >= 100) return 'lightblue';
+  else return 'lightpink';
 }
 
 export const axiosLogger = new Logger({

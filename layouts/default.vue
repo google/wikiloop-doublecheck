@@ -156,9 +156,6 @@
             // Probably Wiki language doesn't have to be tied to UI language.
             // For example, people can edit wikidata in any language. Or,
             // they might prefer editing the Indonesian wiki using English interface
-
-            if (wikiToLangMap[wiki] != 'en') this.$router.push(`/${wikiToLangMap[wiki]}`);
-            else this.$router.push(`/`);
             this.$store.commit('user/setPreferences', {wiki:wiki});
             this.$store.dispatch('changeWiki', wiki);
             this.$i18n.locale = wikiToLangMap[wiki];

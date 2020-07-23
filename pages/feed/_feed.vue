@@ -103,6 +103,10 @@
               return [newFeedItem, newWikiRevId, newRevisionCardItem];
           } else return [newFeedItem, null, null];
       },
+      clearNext: async function() {
+        this.loading = true;
+        this.nextWikiRevId = null;
+      },
       showNext: async function() {
         this.loading = true;
         if (this.nextWikiRevId) {
@@ -150,6 +154,13 @@
       await this.showNext();
     },
     async mounted() {
+      document.addEventListener(`wiki-change-started`, async() => {
+        await this.clearNext();
+      });
+      document.addEventListener(`wiki-change-completed`, async () => {
+        await this.showNext();
+      });
+
       document.addEventListener('judgement-event', async () => {
         if (!(this.$store.state.user &&this.$store.state.user.profile)) {
           if (this.tipLoginCountDown === 0) {
