@@ -14,12 +14,12 @@
   limitations under the License.
 **/
 
-export interface Revision_Test {
-	run_all();
-	run_test(id:number);
+export interface Revision {
+  analyze();
+  execute_decision();
 }
 
-export interface CESP_Test_Info {
+export interface CESP_Info {
 	url:string;
   window_size:number;
 	baseline:number;
@@ -27,5 +27,5 @@ export interface CESP_Test_Info {
 	margin:number;
 	warning_timeframe:number; //Timeframe to get previous warnings to determine blocks, in days
 	warning_threshold:number;
-	revID_list:Array<number>;
+	revID:string;
 }

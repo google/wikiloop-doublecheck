@@ -175,6 +175,28 @@
           <span class="sr-only">{{$t(`Label-Loading`)}}...</span>
         </div>
       </div>
+      <div v-if="display_choice && (choice_info.type == 'warning')" v-bind:style="{color: 'red'}">
+        WikiLoop-DoubleCheck has detected suspicious behavior by the author of this revision. Recent revisions by this author has an average ORES damaging score of {{choice_info.percentage}}%. Should a warning be sent on your behalf to the author? 
+      </div>
+      <div v-if="display_choice && (choice_info.type == 'block')" v-bind:style="{color: 'red'}">
+        WikiLoop-DoubleCheck has detected suspicious behavior by the author of this revision. Recent revisions by this author has an average ORES damaging score of {{choice_info.percentage}}%. This author has been warned {{warning_threshold}} times in the past {{warning_timeframe}} days. Should a block request be sent on your behalf to the community administrators? 
+      </div>
+      <div class="mt-4 d-flex justify-content-center">
+        <div v-if="display_choice" class="btn-group mx-1">
+          <button
+            v-on:click="execute()"
+            class="btn btn-sm"
+            v-bind:class="{ 'btn-success': true, 'btn-outline-success': true}"
+          >Yes, I agree to sent the {{choice_info.type}} message.
+          </button>
+          <button
+            v-on:click="turn_off_choice()"
+            class="btn btn-sm"
+            v-bind:class="{ 'btn-danger': true, 'btn-outline-danger': true}"
+          >No, I disagree. 
+          </button>
+        </div>
+      </div> 
     </div>
   </section>
 
@@ -183,8 +205,8 @@
   import {  fetchDiffWithWikiRevId, supportedWikis, getUrlBaseByWiki } from '@/shared/utility-shared';
   import DiffBox from '@/components/DiffBox.vue';
   import socket from '@/plugins/socket.io.js';
-  import {CESP_Test_Info} from "@/cross-edits-detection/interface";
-  import {CESP_Test} from "@/cross-edits-detection/CESP_Test";
+  import {CESP_Info} from "@/cross-edits-detection/interface";
+  import {CESP} from "@/cross-edits-detection/CESP";
   export default {
     components: {
       DiffBox
@@ -235,6 +257,11 @@
         stiki: null,
         cbng: null,
         action: null,
+        warning_timeframe: 3,
+        warning_threshold: 3,
+        CESP_instance: null,
+        display_choice: false,
+        choice_info: null,
       }
     },
     methods: {
@@ -484,7 +511,14 @@
       },
       cbngPercent: function() {
         return `${this.cbng !== null ? Math.floor(parseFloat(this.cbng) * 100) : "??"}%`;
-      }
+      },
+      turn_off_choice: function() {
+        this.display_choice = false;
+      },
+      execute: function() {
+        this.CESP_instance.execute_decision();
+        this.turn_off_choice();
+      },
     },
     async created() {
     },
@@ -520,19 +554,22 @@
         }
       });
       console.log("Executing function mounted for wikiRevID: " + this.wikiRevID);
-      var cur_revision_info: CESP_Test_Info = {
+      var cur_revision_info: CESP_Info = {
         url: "https://en.wikipedia.org/w/api.php?origin=*",
         window_size: 10,
         baseline: 0.0,
         percentage: 0.0,
         margin: 0.1,
-        warning_timeframe: 3,
-        warning_threshold: 3,
-        revID_list: [this.wikiRevId],
+        warning_timeframe: this.warning_timeframe,
+        warning_threshold: this.warning_threshold,
+        revID: this.wikiRevId,
       }
-      var cur_revision_case: CESP_Test = new CESP_Test(cur_revision_info);
-      await cur_revision_case.run_all();
-
+      this.CESP_instance = new CESP(cur_revision_info);
+      var decision_info = await this.CESP_instance.analyze();
+      if (decision_info.type != "") {
+          this.display_choice = true;
+          this.choice_info = decision_info;
+      }
     },
     beforeCreate() {
       this.getUrlBaseByWiki = getUrlBaseByWiki.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
