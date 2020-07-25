@@ -175,15 +175,14 @@
           <span class="sr-only">{{$t(`Label-Loading`)}}...</span>
         </div>
       </div>
-      <div v-if="display_choice && (choice_info.type == 'warning')" v-bind:style="{color: 'red'}">
+      <div v-if="display_choice && (choice_info.type == 'warning')" v-bind:style="{color: 'red', 'margin-left': '50px', 'margin-right': '50px'}">
         WikiLoop-DoubleCheck has detected suspicious behavior by the author of this revision. Recent revisions by this author has an average ORES damaging score of {{choice_info.percentage}}%. Should a warning be sent on your behalf to the author? 
       </div>
-      <div v-if="display_choice && (choice_info.type == 'block')" v-bind:style="{color: 'red'}">
+      <div v-if="display_choice && (choice_info.type == 'block')" v-bind:style="{color: 'red', 'margin-left': '50px', 'margin-right': '50px'}">
         WikiLoop-DoubleCheck has detected suspicious behavior by the author of this revision. Recent revisions by this author has an average ORES damaging score of {{choice_info.percentage}}%. This author has been warned {{warning_threshold}} times in the past {{warning_timeframe}} days. Should a block request be sent on your behalf to the community administrators? 
       </div>
       <div class="mt-4 d-flex justify-content-center">
         <div v-if="display_choice" class="btn-group mx-1">
-
           <button
             v-on:click="execute()"
             class="btn btn-sm"
