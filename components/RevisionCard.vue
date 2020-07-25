@@ -183,16 +183,17 @@
       </div>
       <div class="mt-4 d-flex justify-content-center">
         <div v-if="display_choice" class="btn-group mx-1">
+
           <button
             v-on:click="execute()"
             class="btn btn-sm"
-            v-bind:class="{ 'btn-success': true, 'btn-outline-success': true}"
+            v-bind:class="{ 'btn-success': false, 'btn-outline-success': true}"
           >Yes, I agree to sent the {{choice_info.type}} message.
           </button>
           <button
             v-on:click="turn_off_choice()"
             class="btn btn-sm"
-            v-bind:class="{ 'btn-danger': true, 'btn-outline-danger': true}"
+            v-bind:class="{ 'btn-danger': false, 'btn-outline-danger': true}"
           >No, I disagree. 
           </button>
         </div>
