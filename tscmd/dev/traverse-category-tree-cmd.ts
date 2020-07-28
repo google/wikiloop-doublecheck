@@ -6,7 +6,7 @@ let neck = new Bottleneck({
   minTime: 500
 });
 let numReq = 0;
-
+const userAgent = process.env.USER_AGENT;
 const getChildren = async function (entryArticle) {
   if (!/^Category\:.+/.test(entryArticle)) return [];
   let endpoint = `https://en.wikipedia.org/w/api.php`;
@@ -24,7 +24,7 @@ const getChildren = async function (entryArticle) {
 
   do {
     ret = await neck.schedule(async () =>
-    await axios.get(endpoint, {params: params, headers: { 'User-Agent': 'WikiLoop-DoubleCheck/4.1.0-dev (https://meta.wikimedia.org/wiki/WikiProject_WikiLoop; project-wikiloop+traverse-user-agent@zzn.im) traverse-category-tree-cmd.ts/0.0' }}));
+    await axios.get(endpoint, {params: params, headers: { 'User-Agent': userAgent }}));
     numReq++;
     if (ret.data?.query?.categorymembers) {
       ret.data.query.categorymembers.forEach(item => console.log(`  ${JSON.stringify(item.title, null, 2)}`));
@@ -63,7 +63,7 @@ const traverse = async function (entry) {
     console.log(`\n\n\n=== Total toVisit ${toVisit.length}, visited = ${Object.keys(visited).length}, numReq=${numReq}`)
 
   }
-
+  writer.close();
   console.log(`\n\n\nTotal:${Object.keys(visited).length}`);
   console.log(`\n\n\nFor full list, see `, filename);
 }
