@@ -40,6 +40,7 @@ export class CESP implements Revision {
 	edits_list;
 	type: string;
 	recipient: string;
+	previous_revision_infos;
 
 
 	constructor (info: CESP_Info) {
@@ -54,6 +55,7 @@ export class CESP implements Revision {
 		this.db = {};
 		this.type = "";
 		this.recipient = "";
+		this.previous_revision_infos = [];
 	}
 
 	async sleep(milliseconds) {
@@ -109,6 +111,7 @@ export class CESP implements Revision {
 	        list: "allrevisions",
 	        arvuser: author,
 	        arvstart: timestamp,
+	        arvdir: "older",
 	        arvlimit: this.window_size,
 	        arvprop: "oresscores|timestamp",
 	    }
@@ -123,6 +126,7 @@ export class CESP implements Revision {
 	    var edits_list = [];
 	    for (var page in edits_by_article) {
 	        edits_list.push(edits_by_article[page].revisions[0]);
+	        edits_list[edits_list.length - 1].title = edits_by_article[page].title;
 	    }
 	    this.edits_list = edits_list;
 	    console.log("Retrieved past " + edits_list.length + " edits for author " + author);
@@ -201,6 +205,7 @@ export class CESP implements Revision {
 	    var edits_list = this.edits_list;
 
 	    var scores = new Array(Math.min(this.window_size, edits_list.length));
+	    var previous_revision_infos = new Array(Math.min(this.window_size, edits_list.length));
 	    for (var i = 0; i < scores.length; i++) {
 	        //Only take ORES_DAMAGING score 
 	        //If ORES Scores are missing, skip this edit entirely. 
@@ -213,6 +218,13 @@ export class CESP implements Revision {
 	        	return;
 	        }
 	        scores[i] = edits_list[i].oresscores.damaging.true;
+	        var edit_info = {
+	        	title: edits_list[i].title,
+	        	score: (scores[i] * 100).toFixed(0),
+	        	timestamp: edits_list[i].timestamp,
+	        };
+	        previous_revision_infos[i] = edit_info;
+
 	    }
 
 	    var window_start = edits_list[edits_list.length-1].timestamp;
@@ -223,6 +235,7 @@ export class CESP implements Revision {
 	   	this.window_end = window_end;
 	   	this.avg = avg;
 	   	this.diff = diff;
+	   	this.previous_revision_infos = previous_revision_infos;
 	    
 	    if(diff > this.margin) {
 	        var warnings = this.getPreviousWarnings(author, window_end);
@@ -249,8 +262,9 @@ export class CESP implements Revision {
 	    var decision_info = {
 	    	type: this.type,
 	    	author: this.author,
-	    	recipient: this.recipient,
+	    	recipient: this.recipient, 
 	    	percentage: (this.avg * 100).toFixed(0), 
+	    	previous_revision_infos: this.previous_revision_infos,
 	    }
 	    return decision_info;
 	}

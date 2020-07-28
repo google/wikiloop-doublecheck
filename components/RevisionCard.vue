@@ -176,12 +176,17 @@
         </div>
       </div>
       <div v-if="display_choice && (choice_info.type == 'warning')" v-bind:style="{color: 'red', 'margin-left': '50px', 'margin-right': '50px'}">
-        WikiLoop-DoubleCheck has detected suspicious behavior by the author of this revision. Recent revisions by this author has an average ORES damaging score of {{choice_info.percentage}}%. Should a warning be sent on your behalf to the author? 
+        WikiLoop-DoubleCheck has detected suspicious behavior by the author of this revision. Recent revisions by this author has an average ORES damaging score of {{choice_info.percentage}}%. Should a warning be sent on your behalf to the author? <br>
+        Previous revisions by this author:
       </div>
       <div v-if="display_choice && (choice_info.type == 'block')" v-bind:style="{color: 'red', 'margin-left': '50px', 'margin-right': '50px'}">
-        WikiLoop-DoubleCheck has detected suspicious behavior by the author of this revision. Recent revisions by this author has an average ORES damaging score of {{choice_info.percentage}}%. This author has been warned {{warning_threshold}} times in the past {{warning_timeframe}} days. Should a block request be sent on your behalf to the community administrators? 
+        WikiLoop-DoubleCheck has detected suspicious behavior by the author of this revision. Recent revisions by this author has an average ORES damaging score of {{choice_info.percentage}}%. This author has been warned {{warning_threshold}} times in the past {{warning_timeframe}} days. Should a block request be sent on your behalf to the community administrators? <br> 
+        Previous revisions by this author: 
       </div>
-      <div class="mt-4 d-flex justify-content-center">
+      <li v-if= "display_history" v-for="item in previous_revision_infos":key="item.timestamp" v-bind:style="{'margin-left': '65px', 'margin-right': '50px'}">
+        Revision on article {{item.title}}, at {{item.timestamp}}, ORES damaging score: {{item.score}}% 
+      </li>
+      <div class="mt-4 d-flex justify-content-center" v-bind:style = "{'margin-bottom': '30px'}">
         <div v-if="display_choice" class="btn-group mx-1">
           <button
             v-on:click="execute()"
@@ -193,7 +198,7 @@
             v-on:click="turn_off_choice()"
             class="btn btn-sm"
             v-bind:class="{ 'btn-danger': false, 'btn-outline-danger': true}"
-          >No, I disagree. 
+          >Skip it for now. 
           </button>
         </div>
       </div> 
@@ -261,7 +266,9 @@
         warning_threshold: 3,
         CESP_instance: null,
         display_choice: false,
+        display_history: false,
         choice_info: null,
+        previous_revision_infos: null,
       }
     },
     methods: {
@@ -514,6 +521,7 @@
       },
       turn_off_choice: function() {
         this.display_choice = false;
+        this.display_history = false;
       },
       execute: function() {
         this.CESP_instance.execute_decision();
@@ -568,8 +576,11 @@
       var decision_info = await this.CESP_instance.analyze();
       if (decision_info.type != "") {
           this.display_choice = true;
+          this.display_history = true;
           this.choice_info = decision_info;
+          this.previous_revision_infos = decision_info.previous_revision_infos;
       }
+      console.log(this.previous_revision_infos);
     },
     beforeCreate() {
       this.getUrlBaseByWiki = getUrlBaseByWiki.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
