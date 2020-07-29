@@ -37,6 +37,10 @@
     "INGESTION_ENABLED": {
       "required": true,
       "value": "1"
+    },
+    "MONGODB_URI": {
+      "required": true,
+      "value": "mongodb+srv://wikiloop-doublecheck-dev-user:X5x2JqmJtvxlXqvB@wikiloop-doublecheck-de.sua5l.mongodb.net/heroku_2dmqvqnm?retryWrites=true&w=majority"
     }
   },
   "formation": {
