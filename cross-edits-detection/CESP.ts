@@ -373,7 +373,11 @@ export class CESP implements Revision {
 		        this.writeNewDecisionArticle(author, title, this.type, window_end, this.recipient, window_start, avg);
 		    }
 	    }else{
-	        console.log("Author " + author + "is not engaged in suspicious behavior.");
+	    	if (this.mode == "author") {
+	    		console.log("Author " + author + "is not engaged in suspicious behavior.");
+	    	} else if (this.mode == "article") {
+	    		console.log("Article " + title + "is not affected by suspicious activity.");
+	    	}
 	    }
 
 	    //Display on prototype.html

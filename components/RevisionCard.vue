@@ -175,27 +175,27 @@
           <span class="sr-only">{{$t(`Label-Loading`)}}...</span>
         </div>
       </div>
-      <div v-if="display_choice && (choice_info.type == 'warning')" v-bind:style="{color: 'red', 'margin-left': '50px', 'margin-right': '50px'}">
-        WikiLoop-DoubleCheck has detected suspicious behavior by the author of this revision. Recent revisions by this author has an average ORES damaging score of {{choice_info.percentage}}%. Should a warning be sent on your behalf to the author? <br>
+      <div v-if="display_choice_author && (choice_info_author.type == 'warning')" v-bind:style="{color: 'red', 'margin-left': '50px', 'margin-right': '50px'}">
+        WikiLoop-DoubleCheck has detected suspicious behavior by the author of this revision. Recent revisions by this author have an average ORES damaging score of {{choice_info_author.percentage}}%. Should a warning be sent on your behalf to the author? <br>
         Previous revisions by this author:
       </div>
-      <div v-if="display_choice && (choice_info.type == 'block')" v-bind:style="{color: 'red', 'margin-left': '50px', 'margin-right': '50px'}">
-        WikiLoop-DoubleCheck has detected suspicious behavior by the author of this revision. Recent revisions by this author has an average ORES damaging score of {{choice_info.percentage}}%. This author has been warned {{warning_threshold}} times in the past {{warning_timeframe}} days. Should a block request be sent on your behalf to the community administrators? <br> 
+      <div v-if="display_choice_author && (choice_info_author.type == 'block')" v-bind:style="{color: 'red', 'margin-left': '50px', 'margin-right': '50px'}">
+        WikiLoop-DoubleCheck has detected suspicious behavior by the author of this revision. Recent revisions by this author have an average ORES damaging score of {{choice_info_author.percentage}}%. This author has been warned {{warning_threshold_author}} times in the past {{warning_timeframe_author}} days. Should a block request be sent on your behalf to the community administrators? <br> 
         Previous revisions by this author: 
       </div>
-      <li v-if= "display_history" v-for="item in previous_revision_infos":key="item.timestamp" v-bind:style="{'margin-left': '65px', 'margin-right': '50px'}">
+      <li v-if= "display_history_author" v-for="item in previous_revision_infos_author":key="item.timestamp" v-bind:style="{'margin-left': '65px', 'margin-right': '50px'}">
         Revision on article {{item.title}}, at {{item.timestamp}}, ORES damaging score: {{item.score}}% 
       </li>
       <div class="mt-4 d-flex justify-content-center" v-bind:style = "{'margin-bottom': '30px'}">
-        <div v-if="display_choice" class="btn-group mx-1">
+        <div v-if="display_choice_author" class="btn-group mx-1">
           <button
-            v-on:click="execute()"
+            v-on:click="execute_author()"
             class="btn btn-sm"
             v-bind:class="{ 'btn-success': false, 'btn-outline-success': true}"
-          >Yes, I agree to sent the {{choice_info.type}} message.
+          >Yes, I agree to sent the {{choice_info_author.type}} message.
           </button>
           <button
-            v-on:click="turn_off_choice()"
+            v-on:click="turn_off_choice_author()"
             class="btn btn-sm"
             v-bind:class="{ 'btn-danger': false, 'btn-outline-danger': true}"
           >Skip it for now. 
@@ -262,13 +262,13 @@
         stiki: null,
         cbng: null,
         action: null,
-        warning_timeframe: 3,
-        warning_threshold: 3,
-        CESP_instance: null,
-        display_choice: false,
-        display_history: false,
-        choice_info: null,
-        previous_revision_infos: null,
+        warning_timeframe_author: 3,
+        warning_threshold_author: 3,
+        CESP_instance_author: null,
+        display_choice_author: false,
+        display_history_author: false,
+        choice_info_author: null,
+        previous_revision_infos_author: null,
       }
     },
     methods: {
@@ -519,13 +519,13 @@
       cbngPercent: function() {
         return `${this.cbng !== null ? Math.floor(parseFloat(this.cbng) * 100) : "??"}%`;
       },
-      turn_off_choice: function() {
-        this.display_choice = false;
-        this.display_history = false;
+      turn_off_choice_author: function() {
+        this.display_choice_author = false;
+        this.display_history_author = false;
       },
-      execute: function() {
-        this.CESP_instance.execute_decision();
-        this.turn_off_choice();
+      execute_author: function() {
+        this.CESP_instance_author.execute_decision();
+        this.turn_off_choice_author();
       },
     },
     async created() {
@@ -562,25 +562,26 @@
         }
       });
       console.log("Executing function mounted for wikiRevID: " + this.wikiRevID);
-      var cur_revision_info: CESP_Info = {
+      var cur_revision_info_author: CESP_Info = {
+        mode: "author",
         url: "https://en.wikipedia.org/w/api.php?origin=*",
         window_size: 10,
         baseline: 0.0,
         percentage: 0.0,
         margin: 0.1,
-        warning_timeframe: this.warning_timeframe,
-        warning_threshold: this.warning_threshold,
+        warning_timeframe: this.warning_timeframe_author,
+        warning_threshold: this.warning_threshold_author,
         revID: this.wikiRevId,
       }
-      this.CESP_instance = new CESP(cur_revision_info);
-      var decision_info = await this.CESP_instance.analyze();
-      if (decision_info.type != "") {
-          this.display_choice = true;
-          this.display_history = true;
-          this.choice_info = decision_info;
-          this.previous_revision_infos = decision_info.previous_revision_infos;
+      this.CESP_instance_author = new CESP(cur_revision_info_author);
+      var decision_info_author = await this.CESP_instance_author.analyze();
+      if (decision_info_author.type != "") {
+          this.display_choice_author = true;
+          this.display_history_author = true;
+          this.choice_info_author = decision_info_author;
+          this.previous_revision_infos_author = decision_info_author.previous_revision_infos;
       }
-      console.log(this.previous_revision_infos);
+      console.log(this.previous_revision_infos_author);
     },
     beforeCreate() {
       this.getUrlBaseByWiki = getUrlBaseByWiki.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
