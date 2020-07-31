@@ -20,6 +20,7 @@ export interface Revision {
 }
 
 export interface CESP_Info {
+  mode:string;
 	url:string;
   window_size:number;
 	baseline:number;
