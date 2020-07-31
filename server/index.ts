@@ -24,9 +24,12 @@ import { installHook } from "~/server/routers/api/interaction";
 import { BasicJudgement } from "~/shared/interfaces";
 import { InteractionProps } from "~/shared/models/interaction-item.model";
 import { AwardBarnStarCronJob, UsageReportCronJob } from "../cronjobs";
-import { apiLogger, asyncHandler, computeOresField, ensureAuthenticated, fetchRevisions, isWhitelistedFor, logger, perfLogger, useOauth } from './common';
+import { apiLogger, asyncHandler, ensureAuthenticated, fetchRevisions, isWhitelistedFor, logger, perfLogger, useOauth, colorizeMaybe, latencyColor, statusColor } from './common';
 import { getMetrics } from "./routers/api/metrics";
 import { apiRouter as newApiRouter } from "./routers/api";
+import { axiosLogger } from '@/server/common';
+import axios from 'axios';
+import { debugRouter } from "@/server/routers/debug";
 
 const http = require('http');
 const express = require('express');
@@ -36,10 +39,12 @@ const {Nuxt, Builder} = require('nuxt');
 const universalAnalytics = require('universal-analytics');
 const rp = require('request-promise');
 const mongoose = require('mongoose');
+const pad = require('pad');
+const {performance} = require('perf_hooks');
 
 const logReqPerf = function (req, res, next) {
   // Credit for inspiration: http://www.sheshbabu.com/posts/measuring-response-times-of-express-route-handlers/
-  perfLogger.info(` log request starts for ${req.method} ${req.originalUrl}:`, {
+  perfLogger.debug(` log request starts for ${req.method} ${colorizeMaybe(perfLogger, 'lightblue', req.originalUrl)}:`, {
     method: req.method,
     original_url: req.originalUrl,
     ga_id: req.cookies._ga,
@@ -47,22 +52,45 @@ const logReqPerf = function (req, res, next) {
   const startNs = process.hrtime.bigint();
   res.on(`finish`, () => {
     const endNs = process.hrtime.bigint();
-    perfLogger.info(` log response ends for ${req.method} ${req.originalUrl}:`, {
-      method: req.method,
-      original_url: req.originalUrl,
-      ga_id: req.cookies._ga,
-      time_lapse_ns: endNs - startNs,
-      start_ns: startNs,
-      end_ns: endNs,
-    });
-    if (req.session) {
-      perfLogger.debug(` log request session info for ${req.method} ${req.originalUrl}:`, {
+    let latencyMs = Number(endNs - startNs) / 1e6;
+    let level = 'info';
+
+    perfLogger.info(
+      `${colorizeMaybe(perfLogger, latencyColor(latencyMs), pad(6, (latencyMs).toFixed(0)))}ms ` +
+      `${colorizeMaybe(perfLogger, statusColor(res.statusCode), pad(4, res.statusCode))} ` +
+      `${req.method} ${colorizeMaybe(perfLogger, 'lightblue', req.originalUrl)}`,
+      {
+        ga_id: req.cookies._ga,
         session_id: req.session.id
       });
-    }
   });
   next();
 };
+
+if (process.env.NODE_ENV === 'development') {
+  axiosLogger.info(`Axios: setup timing monitoring`)
+  let axiosTiming = (instance, callback) => {
+    instance.interceptors.request.use((request) => {
+        request.ts = performance.now()
+        return request
+    })
+
+    instance.interceptors.response.use((response) => {
+        callback(response, Number(performance.now() - response.config.ts))
+        return response
+    })
+  }
+
+  axiosTiming(axios, function(response, latencyMs) {
+    let level = 'info';
+
+    axiosLogger.info(
+      `${colorizeMaybe(axiosLogger, latencyColor(latencyMs), pad(6, (latencyMs).toFixed(0)))}ms ` +
+      `${colorizeMaybe(axiosLogger, statusColor(response.status), pad(4, response.status))} ` +
+      `${response.config.method} ${colorizeMaybe(axiosLogger, 'lightblue', response.config.url)}`);
+  });
+}
+
 
 let docCounter = 0;
 let allDocCounter = 0;
@@ -338,7 +366,7 @@ function setupAuthApi(db, app) {
           "token": token
         };
         if (wiki == 'enwiki') { // currently only enwiki has the manually created tag of WikiLoop DoubleCheck
-          payload['tags'] = "WikiLoop DoubleCheck";
+          payload['tags'] = "WikiLoop Battlefield"; // TODO(xinbenlv@, #307) Update the name to "WikiLoop DoubleCheck", and also request to support it on other language
         }
         let retData = await oauthFetch(apiUrl, payload, {method: 'POST'}, req.user.oauth );  // assuming request succeeded;
         res.setHeader('Content-Type', 'application/json');
@@ -430,6 +458,7 @@ async function start() {
   if (useOauth) setupAuthApi(mongoose.connection.db, app);
   setupIoSocketListener(mongoose.connection.db, io);
   setupApiRequestListener(mongoose.connection.db, io, app);
+  if (process.env.NODE_ENV !== 'production') app.use(`/debug`, debugRouter);
 
   if (!flag['server-only']) {
     await nuxt.ready();

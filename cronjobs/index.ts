@@ -98,12 +98,12 @@ export class UsageReportCronJob {
 export class AwardBarnStarCronJob {
     public cronJob:CronJob;
     constructor(cronTime:string, frequency:string) {
-        mailCronLogger.info(`Setting up AwardBarnStarCronJob for cronTime=${cronTime}, frequency=${frequency}`);
+        mailCronLogger.debug(`Setting up AwardBarnStarCronJob for cronTime=${cronTime}, frequency=${frequency}`);
         this.cronJob = new CronJob(
             // "* * * * * Mon"/* 6am everyday */,
             cronTime,
             async () => {
-                mailCronLogger.info(`Running weeklyBarnstarJob at ${new Date()}`);
+                mailCronLogger.debug(`Running weeklyBarnstarJob at ${new Date()}`);
                 await AwardBarnStarCronJob.awardBarnstar(frequency);
             }, null, false, process.env.CRON_TIMEZONE || "America/Los_Angeles");
     }

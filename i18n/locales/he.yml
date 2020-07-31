@@ -148,7 +148,7 @@ Label-RevertSucceeded.@meta.@description: >-
   מוצלחת.
 Label-ReviewFeed: סקור עדכון
 Label-ReviewFeed.@meta.@description: 'התווית עבור העדכון, הזרימה או הזרם של עריכות ויקיפדיה נכנסות שייבדקו.'
-Label-ReviewedAndSays: 'בדק את {0} ואומר'
+Label-ReviewedAndSays: 'בדק את <a href="{href}">{wikiRevId}</a> ואומר'
 Label-ReviewedAndSays.@meta.@description: התווית שתתחיל את משפט פסק הדין והנימוקים שניתנו לתיקון.
 Label-ShouldRevert: צריך לחזור
 Label-ShouldRevert.@meta.@description: >-

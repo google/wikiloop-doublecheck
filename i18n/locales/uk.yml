@@ -194,7 +194,7 @@ Label-ReviewFeed: Огляд стрічки
 Label-ReviewFeed.@meta.@description: >-
   Мітка для каналу, потоку або потоку вхідних редакцій Вікіпедії, які слід
   переглянути.
-Label-ReviewedAndSays: 'переглянув(-ла) {0} і каже'
+Label-ReviewedAndSays: 'переглянув(-ла) <a href="{href}">{wikiRevId}</a> і каже'
 Label-ReviewedAndSays.@meta.@description: Етикетка для початку вироку та причин для перегляду.
 Label-ShouldRevert: Потрібно відмінити
 Label-ShouldRevert.@meta.@description: >-

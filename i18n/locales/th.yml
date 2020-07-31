@@ -161,7 +161,7 @@ Label-RevertSucceeded.@meta.@description: >-
   การกระทำนั้นสำเร็จ
 Label-ReviewFeed: ฟีดรีวิว
 Label-ReviewFeed.@meta.@description: เลเบลสำหรับฟีดโฟลว์หรือสตรีมของการแก้ไข Wikipedia ที่เข้ามาเพื่อตรวจสอบ
-Label-ReviewedAndSays: 'ตรวจทานแล้ว {0} และพูดว่า'
+Label-ReviewedAndSays: 'ตรวจทานแล้ว <a href="{href}">{wikiRevId}</a> และพูดว่า'
 Label-ReviewedAndSays.@meta.@description: ฉลากเพื่อเริ่มประโยคการตัดสินและเหตุผลที่กำหนดสำหรับการแก้ไข
 Label-ShouldRevert: ควรเปลี่ยนกลับ
 Label-ShouldRevert.@meta.@description: >-

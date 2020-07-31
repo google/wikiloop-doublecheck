@@ -195,7 +195,7 @@ Label-ReviewFeed: Преглед на емисията
 Label-ReviewFeed.@meta.@description: >-
   Етикетът за емисията, потока или потока на входящите редакции в Уикипедия,
   които ще бъдат прегледани.
-Label-ReviewedAndSays: 'прегледа {0} и казва'
+Label-ReviewedAndSays: 'прегледа <a href="{href}">{wikiRevId}</a> и казва'
 Label-ReviewedAndSays.@meta.@description: Етикетът за започване на присъдата и мотивите за ревизия.
 Label-ShouldRevert: Трябва да се върне
 Label-ShouldRevert.@meta.@description: >-

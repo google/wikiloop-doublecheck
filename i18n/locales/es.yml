@@ -206,7 +206,7 @@ Label-ReviewFeed: Revisar feed
 Label-ReviewFeed.@meta.@description: >-
   La etiqueta para el feed, flujo o flujo de las ediciones entrantes de
   Wikipedia que se revisarán.
-Label-ReviewedAndSays: 'revisado {0} y dice'
+Label-ReviewedAndSays: 'revisado <a href="{href}">{wikiRevId}</a> y dice'
 Label-ReviewedAndSays.@meta.@description: >-
   La etiqueta para comenzar la sentencia de juicio y las razones dadas para una
   revisión.

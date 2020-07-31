@@ -181,7 +181,7 @@ Label-RevertSucceeded.@meta.@description: >-
   labojumu, darbība ir veiksmīga.
 Label-ReviewFeed: Atsauksmju plūsma
 Label-ReviewFeed.@meta.@description: 'Pārskatāmo Wikipedia labojumu plūsmas, plūsmas vai straumes etiķete.'
-Label-ReviewedAndSays: 'pārskatīja {0} un saka'
+Label-ReviewedAndSays: 'pārskatīja <a href="{href}">{wikiRevId}</a> un saka'
 Label-ReviewedAndSays.@meta.@description: Etiķete sprieduma teikuma sākšanai un pārskatīšanas iemesli.
 Label-ShouldRevert: Būtu jāatceļ
 Label-ShouldRevert.@meta.@description: >-

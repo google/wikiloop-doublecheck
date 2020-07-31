@@ -4,15 +4,15 @@
       <template v-if="!loadingInteractions">
         <span>{{$t('Label-HumanEditors')}}: </span>
         <template v-if="interactionPropsList">
-          <span class="mr-2" v-for="judgement in ['NotSure', 'LooksGood', 'ShouldRevert']">
+          <span class="mr-2" v-for="judgement in ['NotSure', 'LooksGood', 'ShouldRevert']" :key="judgement">
             <template v-if="interactionPropsList.filter(i=>i.judgement == judgement).length > 0">
               <span>{{judgement}}</span>
-              <span v-for="interactionProps in interactionPropsList.filter(i=>i.judgement == judgement)">
+              <span v-for="interactionProps in interactionPropsList.filter(i=>i.judgement == judgement)" :key="interactionProps">
                 <img v-if="interactionProps.wikiUserName"
                      class="avatar-judgement"
                      :src="`https://avatars.dicebear.com/api/initials/${interactionProps.wikiUserName}.svg`"
                      :alt="`User:${interactionProps.wikiUserName}`"/>
-                <img v-else="interactionProps.userGaId"
+                <img v-else-if="interactionProps.userGaId"
                     class="avatar-judgement"
                     :src="`https://avatars.dicebear.com/api/identicon/${interactionProps.userGaId}.svg`"
                     :alt="`User:${interactionProps.userGaId}`"/>
@@ -35,7 +35,9 @@
         <template v-if="scores">
         <span v-b-tooltip.hover
           :title="`${percent(score.score)}`"
-          v-for="score in scores" class="badge mr-1" :class="{
+          v-for="score in scores" class="badge mr-1"
+          :key="score"
+          :class="{
             'badge-danger': score.isBad,
             'badge-success': !score.isBad }" >
           {{badgeText(score.type)}}

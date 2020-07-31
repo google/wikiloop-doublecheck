@@ -168,7 +168,7 @@ Label-ReviewFeed: Review Feed
 Label-ReviewFeed.@meta.@description: >-
   The label for the feed, flow or stream of incoming Wikipedia edits to be
   reviewed.
-Label-ReviewedAndSays: 'reviewed {0} and says'
+Label-ReviewedAndSays: 'reviewed <a href="{href}">{wikiRevId}</a> and says'
 Label-ReviewedAndSays.@meta.@description: The label to start the sentence of judgement and reasons given for a revision.
 Label-ShouldRevert: Should revert
 Label-ShouldRevert.@meta.@description: >-

@@ -197,7 +197,7 @@ Label-ReviewFeed: Revisar Feed
 Label-ReviewFeed.@meta.@description: >-
   O rótulo do feed, fluxo ou fluxo das edições recebidas da Wikipedia a serem
   revisadas.
-Label-ReviewedAndSays: 'revisou {0} e diz'
+Label-ReviewedAndSays: 'revisou <a href="{href}">{wikiRevId}</a> e diz'
 Label-ReviewedAndSays.@meta.@description: >-
   O rótulo para iniciar a sentença de julgamento e os motivos apresentados para
   uma revisão.

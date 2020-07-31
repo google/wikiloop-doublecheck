@@ -201,7 +201,7 @@ Label-ReviewFeed: Hersien voer
 Label-ReviewFeed.@meta.@description: >-
   Die etiket vir die invoer, stroom of stroom van inkomende Wikipedia-wysigings
   wat hersien moet word.
-Label-ReviewedAndSays: '{0} nagegaan en gesê'
+Label-ReviewedAndSays: '<a href="{href}">{wikiRevId}</a> nagegaan en gesê'
 Label-ReviewedAndSays.@meta.@description: Die etiket om die vonnisoplegging te begin en redes vir 'n hersiening.
 Label-ShouldRevert: Moet terugkeer
 Label-ShouldRevert.@meta.@description: >-

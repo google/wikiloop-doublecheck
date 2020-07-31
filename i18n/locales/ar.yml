@@ -163,7 +163,7 @@ Label-RevertSucceeded.@meta.@description: >-
   الإجراء ناجحًا.
 Label-ReviewFeed: مراجعة الخلاصة
 Label-ReviewFeed.@meta.@description: ملصق لتغذية أو تدفق أو تدفق تعديلات ويكيبيديا الواردة للمراجعة.
-Label-ReviewedAndSays: 'راجعت {0} وتقول'
+Label-ReviewedAndSays: 'راجعت <a href="{href}">{wikiRevId}</a> وتقول'
 Label-ReviewedAndSays.@meta.@description: تسمية لبدء حكم الحكم والأسباب المعطاة للمراجعة.
 Label-ShouldRevert: يجب العودة
 Label-ShouldRevert.@meta.@description: >-

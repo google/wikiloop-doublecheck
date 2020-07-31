@@ -32,8 +32,6 @@
 
 <style>
   @media screen and (min-width: 601px) {
-    .diff-content {
-    }
     .diff-card {
       font-size: 12px;
       max-height: 400px;
@@ -43,8 +41,6 @@
 
   /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
   @media screen and (max-width: 600px) {
-    .diff-content {
-    }
     .diff-card {
       font-size: 8px;
       max-height: 300px;
