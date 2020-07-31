@@ -211,7 +211,7 @@
         Previous revisions on this article: 
       </div>
       <li v-if= "display_history_article" v-for="item in previous_revision_infos_article":key="item.timestamp" v-bind:style="{'margin-left': '65px', 'margin-right': '50px'}">
-        Revision on article {{item.author}}, at {{item.timestamp}}, ORES damaging score: {{item.score}}% 
+        Revision by {{item.author}}, at {{item.timestamp}}, ORES damaging score: {{item.score}}% 
       </li>
       <div class="mt-4 d-flex justify-content-center" v-bind:style = "{'margin-bottom': '30px'}">
         <div v-if="display_choice_article && (choice_info_article.type == 'protect')" class="btn-group mx-1">

@@ -165,9 +165,11 @@ export class CESP implements Revision {
 	    var response_json = await response.json();
 	    console.log(response_json);
 
-	    var edits_by_article = response_json.query.revisions;
-
-	    var edits_list = edits_by_article;
+	    var edits_by_article = response_json.query.pages["0"].revisions;
+	    var edits_list = [];
+	    for (var key in edits_by_article) {
+	    	edits_list.push(edits_by_article[key]);
+	    }
 	    this.edits_list = edits_list;
 	    console.log("Retrieved past " + edits_list.length + " edits for author " + author);
 	    return;
@@ -364,11 +366,11 @@ export class CESP implements Revision {
 		    } else if (this.mode == "article") {
 		    	var warnings = this.getPreviousWarningsArticle(title, window_end);
 		    	if (warnings.length > this.warning_threshold) {
-		            this.type = "articleLogEvent";
-		            this.recipient = "";
-		        }else{
 		            this.type = "protect";
 		            this.recipient = await this.getRecipientForProtect();
+		        }else{
+		            this.type = "articleLogEvent";
+		            this.recipient = "";
 		        }
 		        this.writeNewDecisionArticle(author, title, this.type, window_end, this.recipient, window_start, avg);
 		    }
@@ -424,7 +426,7 @@ export class CESP implements Revision {
 			await this.findEditHistoryArticle();
 		}
 		var decision_info = await this.getScoreAndProcess();
-		console.log("Executed test for revision ID: " + this.revID);
+		console.log("Executed test for revision ID: " + this.revID + decision_info);
 		return decision_info;
 	}
 }
