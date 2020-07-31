@@ -192,7 +192,7 @@
             v-on:click="execute_author()"
             class="btn btn-sm"
             v-bind:class="{ 'btn-success': false, 'btn-outline-success': true}"
-          >Yes, I agree to sent the {{choice_info_author.type}} message.
+          >Yes, I agree to send the {{choice_info_author.type}} message.
           </button>
           <button
             v-on:click="turn_off_choice_author()"
@@ -201,7 +201,34 @@
           >Skip it for now. 
           </button>
         </div>
-      </div> 
+      </div>
+      <div v-if="display_choice_article && (choice_info_article.type == 'articleLogEvent')" v-bind:style="{color: 'red', 'margin-left': '50px', 'margin-right': '50px'}">
+        WikiLoop-DoubleCheck has detected suspicious behavior on this article. Recent revisions on this article have an average ORES damaging score of {{choice_info_article.percentage}}%. <br>
+        Previous revisions on this article:
+      </div>
+      <div v-if="display_choice_article && (choice_info_article.type == 'protect')" v-bind:style="{color: 'red', 'margin-left': '50px', 'margin-right': '50px'}">
+        WikiLoop-DoubleCheck has detected suspicious behavior on this article. Recent revisions on this article have an average ORES damaging score of {{choice_info_article.percentage}}%. Suspicious behavior has occured {{warning_threshold_article}} times in the past {{warning_timeframe_article}} days. Should a page-protect request be sent on your behalf to the community administrators? <br> 
+        Previous revisions on this article: 
+      </div>
+      <li v-if= "display_history_article" v-for="item in previous_revision_infos_article":key="item.timestamp" v-bind:style="{'margin-left': '65px', 'margin-right': '50px'}">
+        Revision on article {{item.author}}, at {{item.timestamp}}, ORES damaging score: {{item.score}}% 
+      </li>
+      <div class="mt-4 d-flex justify-content-center" v-bind:style = "{'margin-bottom': '30px'}">
+        <div v-if="display_choice_article && (choice_info_article.type == 'protect')" class="btn-group mx-1">
+          <button
+            v-on:click="execute_article()"
+            class="btn btn-sm"
+            v-bind:class="{ 'btn-success': false, 'btn-outline-success': true}"
+          >Yes, I agree to send the page-protect request.
+          </button>
+          <button
+            v-on:click="turn_off_choice_article()"
+            class="btn btn-sm"
+            v-bind:class="{ 'btn-danger': false, 'btn-outline-danger': true}"
+          >Skip it for now. 
+          </button>
+        </div>
+      </div>  
     </div>
   </section>
 
@@ -262,6 +289,7 @@
         stiki: null,
         cbng: null,
         action: null,
+        // author-based CESP analysis
         warning_timeframe_author: 3,
         warning_threshold_author: 3,
         CESP_instance_author: null,
@@ -269,6 +297,14 @@
         display_history_author: false,
         choice_info_author: null,
         previous_revision_infos_author: null,
+        // article-based CESP analysis
+        warning_timeframe_article: 3,
+        warning_threshold_article: 3,
+        CESP_instance_article: null,
+        display_choice_article: false,
+        display_history_article: false,
+        choice_info_article: null,
+        previous_revision_infos_article: null,
       }
     },
     methods: {
@@ -527,6 +563,14 @@
         this.CESP_instance_author.execute_decision();
         this.turn_off_choice_author();
       },
+      turn_off_choice_article: function() {
+        this.display_choice_article = false;
+        this.display_history_article = false;
+      },
+      execute_article: function() {
+        this.CESP_instance_author.execute_decision();
+        this.turn_off_choice_article();
+      },
     },
     async created() {
     },
@@ -561,7 +605,8 @@
           wikiRevId: this.wikiRevId
         }
       });
-      console.log("Executing function mounted for wikiRevID: " + this.wikiRevID);
+
+      // Author-based analysis
       var cur_revision_info_author: CESP_Info = {
         mode: "author",
         url: "https://en.wikipedia.org/w/api.php?origin=*",
@@ -582,6 +627,29 @@
           this.previous_revision_infos_author = decision_info_author.previous_revision_infos;
       }
       console.log(this.previous_revision_infos_author);
+
+      // Article-based analysis
+      var cur_revision_info_article: CESP_Info = {
+        mode: "article",
+        url: "https://en.wikipedia.org/w/api.php?origin=*",
+        window_size: 10,
+        baseline: 0.0,
+        percentage: 0.0,
+        margin: 0.1,
+        warning_timeframe: this.warning_timeframe_article,
+        warning_threshold: this.warning_threshold_article,
+        revID: this.wikiRevId,
+      }
+      this.CESP_instance_article = new CESP(cur_revision_info_article);
+      var decision_info_article = await this.CESP_instance_article.analyze();
+      if (decision_info_article.type != "") {
+          this.display_choice_article = true;
+          this.display_history_article = true;
+          this.choice_info_article = decision_info_article;
+          this.previous_revision_infos_article = decision_info_article.previous_revision_infos;
+      }
+      console.log(this.previous_revision_infos_article);
+
     },
     beforeCreate() {
       this.getUrlBaseByWiki = getUrlBaseByWiki.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
