@@ -17,6 +17,8 @@ import {Interaction, InteractionDoc, InteractionProps} from "~/shared/models/int
 const apicache = require('apicache');
 const mongoose = require('mongoose');
 import { logger, getNewJudgementCounts, asyncHandler } from '../../common';
+import { FeedRevisionEngine } from "~/server/feed/feed-revision-engine";
+import { isAuthenticatedWithWikiUserName } from '~/server/common';
 
 export const interactionRouter = require('express').Router();
 
@@ -101,10 +103,23 @@ const updateInteraction = async (req, res) => {
     let matcher:any ={
       wikiRevId: interactionProps.wikiRevId
     };
+
+    if (interactionProps.wikiUserName &&
+      !isAuthenticatedWithWikiUserName(req, interactionProps.wikiUserName)) {
+      res.status( 403 );
+      res.send( 'Login required to fetch and claim revisions' );
+      return;
+    }
+
     if (interactionProps.wikiUserName) matcher.wikiUserName = interactionProps.wikiUserName;
     else matcher.userGaId = interactionProps.userGaId;
     await Interaction.findOneAndUpdate(matcher, interactionProps, {upsert:true});
-
+    await FeedRevisionEngine.checkOff(
+      [interactionProps.wikiRevId],
+      interactionProps.userGaId,
+      interactionProps.wikiUserName || null,
+      interactionProps.feed || 'us2020'
+    );
     try { // old way
       let storedInteractions = await getNewJudgementCounts(
         mongoose.connection.db, {wikiRevId: {$in: [interactionProps.wikiRevId]}}
@@ -112,6 +127,7 @@ const updateInteraction = async (req, res) => {
       let storedInteraction = storedInteractions[0];
       storedInteraction.newJudgement = {
         userGaId: interactionProps.userGaId,
+        wikiUserName: interactionProps.wikiUserName,
         judgement: interactionProps.judgement,
         timestamp: interactionProps.timestamp
       };

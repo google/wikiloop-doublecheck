@@ -46,7 +46,7 @@ length=${revisions.length}`);
   // }
 
   let feedRevision = <FeedRevisionProps>{
-    feed: 'US2020',
+    feed: 'us2020',
     wikiRevId: wikiRevId,
     wiki: wiki,
     feedRankScore: 0,

@@ -96,7 +96,15 @@
     methods: {
       getNewFeedItemAndInfo: async function() {
           let now = new Date();
-          let newFeedItem = await this.$axios.$get(`/api/feed/${this.feedName}?limit=1&wiki=${this.$store.state.wiki}`);
+
+          let queryObj:any = {
+              limit:2,
+              wiki:this.$store.state.wiki,
+              userGaId:this.$cookiez.get('_ga'),
+          };
+          if (this.$store.state.user?.profile?.displayName) queryObj.wikiUserName = this.$store.state.user?.profile?.displayName;
+          let params = new URLSearchParams(queryObj);
+          let newFeedItem = await this.$axios.$get(`/api/feed/${this.feedName}?${params.toString()}`);
           if (newFeedItem.wikiRevIds.length > 0) {
               let newWikiRevId = `${newFeedItem.wikiRevIds[0]}`;
               let newRevisionCardItem = await this.fetchRevisionPanelItem(newWikiRevId);

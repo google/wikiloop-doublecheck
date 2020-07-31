@@ -29,6 +29,7 @@ import { getMetrics } from "./routers/api/metrics";
 import { apiRouter as newApiRouter } from "./routers/api";
 import { axiosLogger } from '@/server/common';
 import axios from 'axios';
+import { debugRouter } from "@/server/routers/debug";
 
 const http = require('http');
 const express = require('express');
@@ -457,6 +458,7 @@ async function start() {
   if (useOauth) setupAuthApi(mongoose.connection.db, app);
   setupIoSocketListener(mongoose.connection.db, io);
   setupApiRequestListener(mongoose.connection.db, io, app);
+  if (process.env.NODE_ENV !== 'production') app.use(`/debug`, debugRouter);
 
   if (!flag['server-only']) {
     await nuxt.ready();
