@@ -98,6 +98,11 @@ Label-History: Geschiedenis
 Label-History.@meta.@description: >-
   Een label voor de lijst met activiteiten uit het verleden, bijgedragen
   oordelen uit het verleden enz. Van alle gebruikers of een bepaalde gebruiker.
+Label-Home: Huis
+Label-Home.@meta.@description: een label om de startpagina van WikiLoop DoubleCheck te identificeren.
+Label-Home.@meta.@isMachineTranslated: true
+Label-Home.@meta.@translatedAt: 2020-08-01T01:50:54.835Z
+Label-Home.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-HumanEditors: Menselijke redacteuren
 Label-HumanEditors.@meta.@description: Het label voor uitspraken van Human Editors.
 Label-Judgement: Oordeel

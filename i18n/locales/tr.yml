@@ -86,6 +86,11 @@ Label-History: Tarih
 Label-History.@meta.@description: >-
   Tüm kullanıcıların veya belirli bir kullanıcının geçmiş etkinlikleri, geçmiş
   yargılar vb. Listesi için bir etiket.
+Label-Home: Ev
+Label-Home.@meta.@description: WikiLoop DoubleCheck'in ana sayfasını tanımlamak için bir etiket.
+Label-Home.@meta.@isMachineTranslated: true
+Label-Home.@meta.@translatedAt: 2020-08-01T01:50:54.836Z
+Label-Home.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-HumanEditors: İnsan editörleri
 Label-HumanEditors.@meta.@description: İnsan editörler tarafından verilen kararların etiketi.
 Label-Judgement: yargı

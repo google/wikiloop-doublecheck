@@ -43,14 +43,14 @@
 
             </b-nav-item-dropdown>
 
-            <b-nav-item href="/active" v-b-tooltip.hover title="Active Users">
+            <b-nav-item href="/active" v-b-tooltip.hover :title="$t('Label-ActiveUsers')">
               <i class="fas fa-users"></i>
               <span class="pl-0 ml-0" v-if="$store.state.metrics">({{ $store.state.metrics.activeLoggedInUser.length + $store.state.metrics.activeAnonymousUser.length }})</span>
             </b-nav-item>
             <b-nav-item href="/api/markedRevs.csv" v-b-tooltip.hover title="Download">
               <i class="fas fa-cloud-download-alt"></i>
             </b-nav-item>
-            <b-nav-item-dropdown right>
+            <b-nav-item-dropdown right v-b-tooltip.hover :title="$t('Label-ProjectInfo')">
               <template v-slot:button-content>
                 <i class="fas fa-info"></i>
               </template>

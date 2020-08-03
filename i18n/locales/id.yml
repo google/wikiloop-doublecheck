@@ -87,6 +87,11 @@ Label-History: Riwayat
 Label-History.@meta.@description: >-
   Label untuk daftar kegiatan masa lalu, penilaian masa lalu berkontribusi, dll,
   dari semua pengguna atau pengguna tertentu.
+Label-Home: Rumah
+Label-Home.@meta.@description: label untuk mengidentifikasi halaman beranda WikiLoop DoubleCheck.
+Label-Home.@meta.@isMachineTranslated: true
+Label-Home.@meta.@translatedAt: 2020-08-01T01:50:54.834Z
+Label-Home.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-HumanEditors: Penyunting manusia
 Label-HumanEditors.@meta.@description: Label penilaian yang disediakan oleh editor Manusia.
 Label-Judgement: Penilaian
@@ -257,16 +262,16 @@ Message-AJudgementLogged.@meta.@description: >-
 Message-CongratsSuccessfullyReverted: 'Selamat! Anda telah berhasil membatalkan {0} secara langsung.'
 Message-DiffNotAvailable: >-
   Perbedaan revisi tidak tersedia untuk saat ini. Silakan ulangi membukanya.
-  Kadang revisi vandalisme sudah dihapus. Silakan periksa riwayat
-  revisi artikel.
+  Kadang revisi vandalisme sudah dihapus. Silakan periksa riwayat revisi
+  artikel.
 Message-FeedHasNoNewRevisionsClickNextBelow: 'Lini {0} tidak memiliki revisi baru, klik berikutnya di bawah ini.'
 Message-FeedHasNoNewRevisionsClickNextBelow.@meta.@description: >-
   Pesan yang memberi tahu pengguna umpan atau aliran suntingan Wikipedia yang
   akan ditinjau tidak memiliki revisi / suntingan baru. Parameter {0} mengacu
   pada nama umpan yang diberikan.
 Message-Login: >-
-  Tahukah Anda bahwa Anda dapat Masuk dan menyimpan label Anda dengan nama
-  Anda? Kami mendukung Login dengan akun Wikipedia melalui Oauth.
+  Tahukah Anda bahwa Anda dapat Masuk dan menyimpan label Anda dengan nama Anda?
+  Kami mendukung Login dengan akun Wikipedia melalui Oauth.
 Message-NameVoteAnnouncement: >-
   Pengguna yang terhormat, kami mengadakan pemungutan suara untuk nama baru
   menggantikan "WikiLoop DoubleCheck" yang berakhir pada 13 Juli, 2020 00:00

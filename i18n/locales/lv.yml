@@ -80,6 +80,11 @@ Label-History: Vēsture
 Label-History.@meta.@description: >-
   Etiķete visu lietotāju vai attiecīgā lietotāja iepriekšējo darbību sarakstam,
   iepriekšējiem spriedumiem utt.
+Label-Home: Mājas
+Label-Home.@meta.@description: etiķete WikiLoop DoubleCheck mājas lapas identificēšanai.
+Label-Home.@meta.@isMachineTranslated: true
+Label-Home.@meta.@translatedAt: 2020-08-01T01:50:54.835Z
+Label-Home.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-HumanEditors: Cilvēku redaktori
 Label-HumanEditors.@meta.@description: Cilvēku redaktoru sniegtā spriedumu etiķete.
 Label-Judgement: Spriedums

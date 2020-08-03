@@ -89,6 +89,11 @@ Label-History: Història
 Label-History.@meta.@description: >-
   Una etiqueta per a la llista d’activitats passades, judicis anteriors
   aportats, etc, de tots els usuaris o d’un determinat usuari.
+Label-Home: Inici
+Label-Home.@meta.@description: una etiqueta per identificar la pàgina principal de WikiLoop DoubleCheck.
+Label-Home.@meta.@isMachineTranslated: true
+Label-Home.@meta.@translatedAt: 2020-08-01T01:50:54.832Z
+Label-Home.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-HumanEditors: Editors humans
 Label-HumanEditors.@meta.@description: L’etiqueta dels judicis proporcionats pels editors humans.
 Label-Judgement: Judici
