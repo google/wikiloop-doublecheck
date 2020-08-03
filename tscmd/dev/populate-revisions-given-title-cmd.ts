@@ -38,16 +38,11 @@ length=${revisions.length}`);
   if (revision.oresscores.damaging) revisionInfo.ores_damaging = revision.oresscores.damaging.true;
   if (revision.oresscores.badfaith) revisionInfo.ores_badfaith = revision.oresscores.goodfaith.false;
 
-  // let diffRet =  await neck.schedule(async () => await MwActionApiClient.getDiffByWikiRevId(wiki, revision.revid));
-  // if (diffRet.compare) {
-  //   revisionInfo.diffHtml = diffRet.compare["*"];
-  // } else {
-  //   logger.warn(`The diff doesn't exist for  ${revisionInfo.wikiRevId} diffRet = ${JSON.stringify(diffRet, null, 2)}`);
-  // }
-
   let feedRevision = <FeedRevisionProps>{
     feed: 'us2020',
     wikiRevId: wikiRevId,
+    title: result.query.pages[pageId].title,
+    createdAt: new Date(),
     wiki: wiki,
     feedRankScore: 0,
   };
@@ -108,7 +103,24 @@ const populateRevisionsGivenTitleMain = async function () {
         FeedRevision.bulkWrite(feedRevisions.map((fr: FeedRevisionProps)=>{
           return {
             updateOne: {
-              filter: { wikiRevId: fr.wikiRevId },
+              filter: {
+                title: fr.title,
+                "$or" : [
+                    {
+                        "claimerInfo" : {
+                            "$exists" : false
+                        }
+                    },
+                    {
+                        "claimerInfo.checkedOfAt" : {
+                            "$exists" : false
+                        },
+                        "claimExpiresAt" : {
+                            "$lte" : new Date()
+                        }
+                    }
+                ]
+            },
               update: { $set: fr },
               upsert: true
             }
