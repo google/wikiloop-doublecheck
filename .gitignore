@@ -86,6 +86,7 @@ sw.*
 tmp/
 
 dev.env
+.env.*
 
 # Credentials
 .creds/

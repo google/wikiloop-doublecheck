@@ -23,7 +23,7 @@ export class FeedRevisionEngine {
   public static async fetchAndClaim(
     userGaId,
     wikiUserName = '',
-    feed = 'US2020',
+    feed = 'us2020',
     wiki = 'enwiki',
     limit = 2
   ): Promise<FeedRevisionProps[]> {

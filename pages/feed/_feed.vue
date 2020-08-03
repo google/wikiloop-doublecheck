@@ -107,7 +107,6 @@
           };
           if (this.$store.state.user?.profile?.displayName) queryObj.wikiUserName = this.$store.state.user?.profile?.displayName;
           let params = new URLSearchParams(queryObj);
-          console.log(`XXXX params = ${params}`);
           let newFeedItem = await this.$axios.$get(`/api/feed/${this.feedName}?${params.toString()}`);
           if (newFeedItem.wikiRevIds.length > 0) {
               let newWikiRevId = `${newFeedItem.wikiRevIds[0]}`;
