@@ -28,11 +28,14 @@
             <div class="card">
             <div class="card-body">
               <div class="card-body w-100 text-center">
-                <h5 m-5>{{$t('Message-FeedHasNoNewRevisionsClickNextBelow', [
-                  `<div class="badge badge-success">${currentFeedItem.feed}</div>`])}}</h5>
-                <button @click="showNext()" class="m-5 btn btn-outline-success">
+                <h5 m-5> <span v-html="$t('Message-FeedHasNoNewRevisionsClickNextBelow', [
+                  `<div class='badge badge-success'>${currentFeedItem.feed}</div>`])"></span> </h5>
+                <button v-if="feedName==='mix'" @click="showNext()" class="m-5 btn btn-outline-success">
                   {{$t(`Button-Next`)}}(→)
                 </button>
+                <a v-else class="btn btn-primary" href="/">
+                  {{$t('Label-Home')}}
+                </a>
               </div>
             </div>
             </div>
@@ -104,6 +107,7 @@
           };
           if (this.$store.state.user?.profile?.displayName) queryObj.wikiUserName = this.$store.state.user?.profile?.displayName;
           let params = new URLSearchParams(queryObj);
+          console.log(`XXXX params = ${params}`);
           let newFeedItem = await this.$axios.$get(`/api/feed/${this.feedName}?${params.toString()}`);
           if (newFeedItem.wikiRevIds.length > 0) {
               let newWikiRevId = `${newFeedItem.wikiRevIds[0]}`;

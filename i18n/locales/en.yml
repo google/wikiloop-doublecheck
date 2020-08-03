@@ -18,12 +18,12 @@ Button-Undo: Undo
 Button-Undo.@meta.@description: A label for the button to undo an action on our software.
 Label-1Month: 1 month (30d)
 Label-1Month.@meta.@description: >-
-  A label for the time range of statistics to show, which is 1 month or precisely
-  30 days.
+  A label for the time range of statistics to show, which is 1 month or
+  precisely 30 days.
 Label-1Quarter: 1 quarter (90d)
 Label-1Quarter.@meta.@description: >-
-  A label for the time range of statistics to show, which is 1 quarter or precisely
-  90 days.
+  A label for the time range of statistics to show, which is 1 quarter or
+  precisely 90 days.
 Label-1Year: 1 year (365d)
 Label-1Year.@meta.@description: >-
   A label for the time range of statistics to show, which is 1 year or precisely
@@ -79,12 +79,14 @@ Label-History: History
 Label-History.@meta.@description: >-
   A label for the list of past activities, past judgements contributed etc, of
   all users or a given user.
+Label-Home: Home
+Label-Home.@meta.@description: a label to identify home page of WikiLoop DoubleCheck.
 Label-HumanEditors: Human editors
 Label-HumanEditors.@meta.@description: The label for judgements provided by Human editors.
 Label-Judgement: Judgement
 Label-Judgement.@meta.@description: >-
-  The label for judgements given to Wikipedia edits by users who review
-  incoming Wikipedia edits.
+  The label for judgements given to Wikipedia edits by users who review incoming
+  Wikipedia edits.
 Label-LastActiveTime: Last Active
 Label-LastActiveTime.@meta.@description: The label to show the last time that a user was active on our software.
 Label-Loading: Loading
@@ -93,12 +95,12 @@ Label-Loading.@meta.@description: >-
   this label shows  as a fallback for a loading indicator.
 Label-Login: Login
 Label-Login.@meta.@description: >-
-  The label for a login button to allow the user to login. Also used
-  in messages and prompts that invite users to login.
+  The label for a login button to allow the user to login. Also used in messages
+  and prompts that invite users to login.
 Label-Logout: Logout
 Label-Logout.@meta.@description: >-
-  The label for a logout button to allow the user to logout. Also used
-  in messages and prompts that invite users to logout.
+  The label for a logout button to allow the user to logout. Also used in
+  messages and prompts that invite users to logout.
 Label-LooksGood: Looks good
 Label-LooksGood.@meta.@description: >-
   The label of one of the 3 major types of judgments which is saying the
@@ -116,12 +118,15 @@ Label-MyHistory: My History
 Label-MyHistory.@meta.@description: >-
   A label for the list of past activities, past judgements contributed etc, of
   the current user who is using our software.
+Label-MyHistory.@meta.@isMachineTranslated: ''
+Label-MyHistory.@meta.@translatedAt: ''
+Label-MyHistory.@meta.@translator: ''
 Label-NewJudgement: New Judgement
 Label-NewJudgement.@meta.@description: A label for a new judgment given to a Wikipedia edit by our user.
 Label-None: None
 Label-None.@meta.@description: >-
-  The label for an empty table of rows and cells of content or empty lists. This is
-  usually used in the user interface when there is no content to show.
+  The label for an empty table of rows and cells of content or empty lists. This
+  is usually used in the user interface when there is no content to show.
 Label-NotSure: Not sure
 Label-NotSure.@meta.@description: >-
   The label for one of the 3 major types of judgments which is saying the
@@ -130,28 +135,38 @@ Label-NotSure.@meta.@description: >-
 Label-OresBadfaith: ORES Bad faith
 Label-OresBadfaith.@meta.@description: >-
   The label identifying the score and judgement given by the WMF Artificial
-  Intelligence scoring system ORES. This label specifically refers to the opposite
-  of the goodfaith model of ORES. See
+  Intelligence scoring system ORES. This label specifically refers to the
+  opposite of the goodfaith model of ORES. See
   https://www.mediawiki.org/wiki/ORES#Advanced_support
+Label-OresBadfaith.@meta.@isMachineTranslated: ''
+Label-OresBadfaith.@meta.@translatedAt: ''
+Label-OresBadfaith.@meta.@translator: ''
 Label-OresDamaging: ORES Damaging
 Label-OresDamaging.@meta.@description: >-
   The label identifying the score and judgement given by the WMF Artificial
-  Intelligence scoring system ORES. This label specifically refers to the damaging
-  model of ORES. See https://www.mediawiki.org/wiki/ORES#Advanced_support
+  Intelligence scoring system ORES. This label specifically refers to the
+  damaging model of ORES. See
+  https://www.mediawiki.org/wiki/ORES#Advanced_support
 Label-Overridden: Overridden
 Label-Overridden.@meta.@description: >-
-  The label to say that a given edit on a Wikipedia article is being overridden by
-  another newer edit on the same Wikipedia article. This label implies that the edit
-  is either already reverted by the current user, or is being reverted or updated by
-  another Wikipedia editor on Wikipedia.
+  The label to say that a given edit on a Wikipedia article is being overridden
+  by another newer edit on the same Wikipedia article. This label implies that
+  the edit is either already reverted by the current user, or is being reverted
+  or updated by another Wikipedia editor on Wikipedia.
+Label-Overridden.@meta.@isMachineTranslated: ''
+Label-Overridden.@meta.@translatedAt: ''
+Label-Overridden.@meta.@translator: ''
 Label-PromptLogin: Login
 Label-PromptLogin.@meta.@description: >-
   The label to prompt a user to login on our software. It's more like "please
   login" tone in languages where formality and honorific speech exist.
+Label-PromptLogin.@meta.@isMachineTranslated: ''
+Label-PromptLogin.@meta.@translatedAt: ''
+Label-PromptLogin.@meta.@translator: ''
 Label-Rank: Rank
 Label-Rank.@meta.@description: >-
-  The label for rankings of of statistics by a given sorting number, for
-  example users sorted by the number of their contributions.
+  The label for rankings of of statistics by a given sorting number, for example
+  users sorted by the number of their contributions.
 Label-Reason: Reason
 Label-Reason.@meta.@description: >-
   The label for the reason of the result of a performed action, such as when a
@@ -218,14 +233,20 @@ MenuItem-Issues.@meta.@description: The menu item label redirecting user to the 
 MenuItem-Stats: Stats
 MenuItem-Stats.@meta.@description: The menu item label redirecting user to the statistics page of our software.
 Message-AJudgementLogged: 'A judgement for {0} for revision {1} has been logged.'
-Message-AJudgementLogged.@meta.@description: The message that a judgement for a given revision is being recorded. The parameter {0} is the name of Wikipedia article. The parameter {1} is the revision identifier of the revision (Wikipedia edit).
+Message-AJudgementLogged.@meta.@description: >-
+  The message that a judgement for a given revision is being recorded. The
+  parameter {0} is the name of Wikipedia article. The parameter {1} is the
+  revision identifier of the revision (Wikipedia edit).
 Message-CongratsSuccessfullyReverted: 'Congrats! you''''ve successfully directly reverted {0}.'
 Message-DiffNotAvailable: >-
   The Wikipedia article diff is temporarily not available. You can try to reload
   it. Sometimes a vandalized revision could be deleted. You can check the page
   history.
 Message-FeedHasNoNewRevisionsClickNextBelow: 'Feed {0} has no new revisions, click next below.'
-Message-FeedHasNoNewRevisionsClickNextBelow.@meta.@description: The message telling user a given feed or stream of Wikipedia edits to be reviewed has no new revisions/edits. The parameter {0} refers to the name of the given feed.
+Message-FeedHasNoNewRevisionsClickNextBelow.@meta.@description: >-
+  The message telling user a given feed or stream of Wikipedia edits to be
+  reviewed has no new revisions/edits. The parameter {0} refers to the name of
+  the given feed.
 Message-Login: >-
   Do you know you could login and preserve your labels under your name? We
   support logging in with your Wikipedia account through OAuth.
@@ -235,18 +256,32 @@ Message-NameVoteAnnouncement: >-
 Message-NoActiveUsersPleaseStartReview: >-
   No active users in last 15min. Start {0} reviewing revisions {1} and become
   the first one.
-Message-NoActiveUsersPleaseStartReview.@meta.@description: The message that invites the user to start reverting. The {0} and {1} are the HTML anchor tag pairs <a> and </a> with URL parameters.
+Message-NoActiveUsersPleaseStartReview.@meta.@description: >-
+  The message that invites the user to start reverting. The {0} and {1} are the
+  HTML anchor tag pairs <a> and </a> with URL parameters.
 Message-PromptLogin: >-
   Do you know you could login and preserve your contributions under your name?
   We support logging in with your Wikipedia account through OAuth.
 Message-RevertEditSummary: >-
   Identified as test/vandalism using {0} version {1}. See it or provide your
   opinion at {2}
-Message-RevertEditSummary.@meta.@description: The message of edit summary when our software is generating a new Wikipedia edit to be committed onto the Wikipedia website. The parameter {0} is the name of our software, currently "WikiLoop DoubleCheck". The parameter {1} is the version number of our software, currently 4.0.1. The {2} is the website url of our tool, currently "doublecheck.wikiloop.org".
+Message-RevertEditSummary.@meta.@description: >-
+  The message of edit summary when our software is generating a new Wikipedia
+  edit to be committed onto the Wikipedia website. The parameter {0} is the name
+  of our software, currently "WikiLoop DoubleCheck". The parameter {1} is the
+  version number of our software, currently 4.0.1. The {2} is the website url of
+  our tool, currently "doublecheck.wikiloop.org".
 Message-SorryWeFailedToRevert: 'Sorry, we failed to revert the revision {0}.'
-Message-SorryWeFailedToRevert.@meta.@description: The message to tell user that the reversion of a given edit failed. The parameter {0} is the revision identifier.
+Message-SorryWeFailedToRevert.@meta.@description: >-
+  The message to tell user that the reversion of a given edit failed. The
+  parameter {0} is the revision identifier.
 Message-TheRevisionIsSuccessfullyRevertedAs: 'The revision {0} is successfully reverted as {1}.'
-Message-TheRevisionIsSuccessfullyRevertedAs.@meta.@description: The message stating that a given Wikipedia edit (revision) is reverted successfully. The parameter {0} is the revision identifier of the Wikipedia edit being reverted. The parameter {1} is the second revision identifier that the new Wikipedia edit that is on top of the previous Wikipedia edit which is a result of the reverting.
+Message-TheRevisionIsSuccessfullyRevertedAs.@meta.@description: >-
+  The message stating that a given Wikipedia edit (revision) is reverted
+  successfully. The parameter {0} is the revision identifier of the Wikipedia
+  edit being reverted. The parameter {1} is the second revision identifier that
+  the new Wikipedia edit that is on top of the previous Wikipedia edit which is
+  a result of the reverting.
 Message-ThereIsNoEditSummary: There is no edit summary.
 Message-ThereIsNoEditSummary.@meta.@description: >-
   The message shows that a given Wikipedia edit doesn't have an explanation, see

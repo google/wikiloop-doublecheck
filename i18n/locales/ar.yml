@@ -69,6 +69,11 @@ Label-History: التاريخ
 Label-History.@meta.@description: >-
   تصنيف لقائمة الأنشطة السابقة والأحكام السابقة التي ساهم بها وما إلى ذلك ،
   لجميع المستخدمين أو مستخدم معين.
+Label-Home: الصفحة الرئيسية
+Label-Home.@meta.@description: تسمية لتحديد الصفحة الرئيسية لـ WikiLoop DoubleCheck.
+Label-Home.@meta.@isMachineTranslated: true
+Label-Home.@meta.@translatedAt: 2020-08-01T01:50:54.831Z
+Label-Home.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-HumanEditors: المحررين البشريين
 Label-HumanEditors.@meta.@description: تسمية الأحكام المقدمة من المحررين البشريين.
 Label-Judgement: حكم

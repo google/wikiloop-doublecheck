@@ -90,6 +90,11 @@ Label-History: история
 Label-History.@meta.@description: >-
   Етикет за списъка на минали дейности, досегашни преценки и т.н. на всички
   потребители или даден потребител.
+Label-Home: У дома
+Label-Home.@meta.@description: етикет за идентифициране на началната страница на WikiLoop DoubleCheck.
+Label-Home.@meta.@isMachineTranslated: true
+Label-Home.@meta.@translatedAt: 2020-08-01T01:50:54.832Z
+Label-Home.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-HumanEditors: Човешки редактори
 Label-HumanEditors.@meta.@description: 'Етикетът за решения, предоставени от редакторите на Human.'
 Label-Judgement: преценка

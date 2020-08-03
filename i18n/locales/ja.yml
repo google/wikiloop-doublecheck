@@ -52,6 +52,11 @@ Label-Feed.@meta.@description: >-
   特定のフィードの名前に続いて、フィード、フロー、または新しいウィキペディア編集のストリームを示すラベル。たとえば、記事のトピックのフィード、荒らし検出スコアシステムによって検出された編集のフィードなど、さまざまな種類のWikipedia編集のさまざまなフィードがあります。
 Label-History: 履歴
 Label-History.@meta.@description: すべてのユーザーまたは特定のユーザーの過去の活動、過去の貢献した判断などのリストのラベル。
+Label-Home: ホーム
+Label-Home.@meta.@description: WikiLoop DoubleCheckのホームページを識別するラベル。
+Label-Home.@meta.@isMachineTranslated: true
+Label-Home.@meta.@translatedAt: 2020-08-01T01:50:54.834Z
+Label-Home.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-HumanEditors: 人間の編集者
 Label-HumanEditors.@meta.@description: 人間の編集者によって提供された判決のラベル。
 Label-Judgement: 判定
