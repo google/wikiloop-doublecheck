@@ -195,7 +195,7 @@ Label-ReviewFeed: Tinjau Lini masa
 Label-ReviewFeed.@meta.@description: >-
   Label untuk umpan, aliran, atau aliran edit Wikipedia yang masuk akan
   ditinjau.
-Label-ReviewedAndSays: 'Meninjau {0} dan berkata'
+Label-ReviewedAndSays: 'Meninjau <a href="{href}">{wikiRevId}</a> dan berkata'
 Label-ReviewedAndSays.@meta.@description: Label untuk memulai hukuman dan alasan yang diberikan untuk revisi.
 Label-ShouldRevert: Patut dibatalkan
 Label-ShouldRevert.@meta.@description: >-

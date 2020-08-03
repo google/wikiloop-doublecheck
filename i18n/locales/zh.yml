@@ -107,7 +107,7 @@ Label-RevertSucceeded: 还原成功！
 Label-RevertSucceeded.@meta.@description: 当用户还原了Wikipedia编辑时，所执行操作的结果标签，表明操作成功。
 Label-ReviewFeed: 查看编辑流
 Label-ReviewFeed.@meta.@description: 供查阅的Wikipedia的提要，流或流的标签。
-Label-ReviewedAndSays: '审阅了{0}并说'
+Label-ReviewedAndSays: '审阅了<a href="{href}">{wikiRevId}</a>并说'
 Label-ReviewedAndSays.@meta.@description: 开始判决的标签和给出修改的理由。
 Label-ShouldRevert: 应该还原
 Label-ShouldRevert.@meta.@description: 三种主要判断类型之一的标签是说，正在审查的Wikipedia编辑对Wikipedia有破坏性而非建设性。

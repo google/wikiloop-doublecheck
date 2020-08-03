@@ -2,14 +2,14 @@
   <div class="d-flex">
     <user-avatar class="avatar-container mr-2" :wikiUserName="wikiUserName" :userGaId="userGaId"></user-avatar>
     <div>
-      <span class="avatar-txt p-0">{{wikiUserName || "Anonymous" }}
+      <a href="/#" class="avatar-txt p-0">{{wikiUserName || "Anonymous" }}
       <i :class="['fas p-0',
         {
           'fa-shield-alt text-primary': userTier === 4,
           'fa-check-double text-success': userTier === 3,
           'fa-check text-success': userTier === 2,
         }
-       ]" /></span>
+       ]" /></a>
     </div>
   </div>
 </template>

@@ -178,7 +178,7 @@ Label-ReviewFeed: Zkontrolujte zdroj
 Label-ReviewFeed.@meta.@description: >-
   Štítek zdroje, toku nebo proudu příchozích úprav Wikipedie, které mají být
   zkontrolovány.
-Label-ReviewedAndSays: 'zkontrolováno {0} a říká'
+Label-ReviewedAndSays: 'zkontrolováno <a href="{href}">{wikiRevId}</a> a říká'
 Label-ReviewedAndSays.@meta.@description: Štítek pro zahájení rozsudku a důvody revize.
 Label-ShouldRevert: Měl by se vrátit
 Label-ShouldRevert.@meta.@description: >-

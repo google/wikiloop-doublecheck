@@ -22,7 +22,7 @@
         <th>{{$t('Label-LastActiveTime')}}</th>
       </thead>
       <tbody>
-        <tr v-for="(client, index) of $store.state.metrics.activeLoggedInUser">
+        <tr v-for="(client, index) of $store.state.metrics.activeLoggedInUser" :key="index">
           <td scope="col">
             <router-link :to="`/marked/?wikiUserName=${client.wikiUserName}`" replace>
               <object class="avatar-object" v-bind:data="`/api/avatar/${client.wikiUserName}`" >
@@ -32,7 +32,7 @@
           </td>
           <td scope="col"><timeago :datetime="new Date(client.lastActive*1000)"></timeago></td>
         </tr>
-        <tr v-for="(client, index) of $store.state.metrics.activeAnonymousUser">
+        <tr v-for="(client, index) of $store.state.metrics.activeAnonymousUser" :key="index">
           <td scope="col">
             <router-link :to="`/marked/?userGaId=${client.userGaId}`" replace>
               <object class="avatar-object" v-bind:data="`/api/avatar/${client.userGaId}`" >
@@ -44,8 +44,9 @@
         </tr>
       </tbody>
     </table>
-    <h2 v-else><br/>:(<br/></h2>
-    <p>{{$t('Message-NoActiveUsersPleaseStartReview', [`<a class="btn btn-outline-primary" href="/">`, `</a>`])}}</p>
+    <h2 v-else><br/>:(<br/>
+      <p v-html="$t('Message-NoActiveUsersPleaseStartReview', [`<a class='btn btn-outline-primary' href='/'>`, `</a>`])"></p>
+    </h2>
   </section>
 </template>
 <script lang="ts">

@@ -192,7 +192,7 @@ Label-ReviewFeed: Özet Akışı
 Label-ReviewFeed.@meta.@description: >-
   İncelenecek gelen Wikipedia düzenlemelerinin feed'i, akışı veya akışı için
   etiket.
-Label-ReviewedAndSays: '{0} incelendi ve diyor'
+Label-ReviewedAndSays: '<a href="{href}">{wikiRevId}</a> incelendi ve diyor'
 Label-ReviewedAndSays.@meta.@description: Karar cümlesini başlatmak için etiket ve revizyon için nedenler.
 Label-ShouldRevert: Eski Haline Dönmeli
 Label-ShouldRevert.@meta.@description: >-

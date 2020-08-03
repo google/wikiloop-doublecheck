@@ -121,7 +121,7 @@ Label-RevertSucceeded: 복귀 성공!
 Label-RevertSucceeded.@meta.@description: 사용자가 위키 백과 편집을 되돌릴 때 수행 된 조치의 결과에 대한 레이블이며 조치가 완료되었습니다.
 Label-ReviewFeed: 피드 검토
 Label-ReviewFeed.@meta.@description: '들어오는 Wikipedia 편집의 피드, 흐름 또는 스트림 레이블을 검토합니다.'
-Label-ReviewedAndSays: '{0}을 (를) 검토하고 말합니다.'
+Label-ReviewedAndSays: '<a href="{href}">{wikiRevId}</a>을 (를) 검토하고 말합니다.'
 Label-ReviewedAndSays.@meta.@description: 판결문 및 개정 사유를 시작하기위한 레이블.
 Label-ShouldRevert: 되돌려 야한다
 Label-ShouldRevert.@meta.@description: 위키피디아 편집이 양호하고 건설적인 것이 아니라 위키피디아에 피해를 입히고 있음을 검토하는 3 가지 주요 판단 유형 중 하나의 레이블.

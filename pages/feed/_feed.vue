@@ -21,7 +21,7 @@
               <button class="btn btn-outline-primary"
                 v-if="!showJudgementPanel"
                 @click="showJudgementPanel = !showJudgementPanel">{{$t('Button-ShowJudgements')}}</button>
-              <JudgementPanel v-else="showJudgementPanel" ref="judgementPanel" class="card-body" :wikiRevId="currentWikiRevId" />
+              <JudgementPanel v-else ref="judgementPanel" class="card-body" :wikiRevId="currentWikiRevId" />
             </template>
           </div>
           <div v-else>
@@ -50,7 +50,7 @@
 
         <b-modal id="modal-promote-login" title="Tip: Login">
             {{$t('Message-Login')}}<br/>
-            <template v-slot:modal-footer="{ ok, hide }">
+            <template v-slot:modal-footer>
                 <a class="btn-sm btn btn-primary" href="/auth/mediawiki/login">{{$t("Label-Login")}}</a>
                 <b-button size="sm" variant="secondary" @click="snoozeTipLogin()">
                     {{$t("Label-Snooze")}}
@@ -95,12 +95,25 @@
     },
     methods: {
       getNewFeedItemAndInfo: async function() {
-          let newFeedItem = await this.$axios.$get(`/api/feed/${this.feedName}?limit=1&wiki=${this.$store.state.wiki}`);
+          let now = new Date();
+
+          let queryObj:any = {
+              limit:2,
+              wiki:this.$store.state.wiki,
+              userGaId:this.$cookiez.get('_ga'),
+          };
+          if (this.$store.state.user?.profile?.displayName) queryObj.wikiUserName = this.$store.state.user?.profile?.displayName;
+          let params = new URLSearchParams(queryObj);
+          let newFeedItem = await this.$axios.$get(`/api/feed/${this.feedName}?${params.toString()}`);
           if (newFeedItem.wikiRevIds.length > 0) {
               let newWikiRevId = `${newFeedItem.wikiRevIds[0]}`;
               let newRevisionCardItem = await this.fetchRevisionPanelItem(newWikiRevId);
               return [newFeedItem, newWikiRevId, newRevisionCardItem];
           } else return [newFeedItem, null, null];
+      },
+      clearNext: async function() {
+        this.loading = true;
+        this.nextWikiRevId = null;
       },
       showNext: async function() {
         this.loading = true;
@@ -142,7 +155,6 @@
     validate ({ params }) {
       return (['us2020', 'covid19', 'recent', 'ores', 'mix', 'wikitrust', 'lastbad'].indexOf(params.feed) >= 0);
     },
-
     async asyncData ({ params, $axios }) {
       return { feedName: params.feed };
     },
@@ -150,6 +162,13 @@
       await this.showNext();
     },
     async mounted() {
+      document.addEventListener(`wiki-change-started`, async() => {
+        await this.clearNext();
+      });
+      document.addEventListener(`wiki-change-completed`, async () => {
+        await this.showNext();
+      });
+
       document.addEventListener('judgement-event', async () => {
         if (!(this.$store.state.user &&this.$store.state.user.profile)) {
           if (this.tipLoginCountDown === 0) {

@@ -62,7 +62,7 @@ export DOTENV_PATH="dev.env"
 
 Prerequisite: [NuxtJS](https://nuxtjs.org) with [VueJS](https://vuejs.org) and [ExpressJS](https://expressjs.com).
 
-To run a local dev instance, which gives you hot reload and a devtool ([Vue DevTool](https://github.com/vuejs/vue-devtools)) friendly instance:
+To run a local dev instance, which gives you hot reload and a dev tool ([Vue DevTool](https://github.com/vuejs/vue-devtools)) friendly instance:
 
 ```bash
 npm run dev

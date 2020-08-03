@@ -100,10 +100,6 @@
       </div>
     </nav>
     <div style="margin-top:70px" class="container small-screen-padding">
-      <div class="pt-2">
-        <NoticeBanner
-        ></NoticeBanner>
-      </div>
       <nuxt class="pt-lg-4 pt-md-2 pt-sm-1"/>
     </div>
     <b-modal id="modal-keymap" title="Keymap">
@@ -160,9 +156,6 @@
             // Probably Wiki language doesn't have to be tied to UI language.
             // For example, people can edit wikidata in any language. Or,
             // they might prefer editing the Indonesian wiki using English interface
-
-            if (wikiToLangMap[wiki] != 'en') this.$router.push(`/${wikiToLangMap[wiki]}`);
-            else this.$router.push(`/`);
             this.$store.commit('user/setPreferences', {wiki:wiki});
             this.$store.dispatch('changeWiki', wiki);
             this.$i18n.locale = wikiToLangMap[wiki];

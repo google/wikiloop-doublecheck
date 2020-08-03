@@ -210,7 +210,7 @@ Label-ReviewFeed: Vérifier le flux
 Label-ReviewFeed.@meta.@description: >-
   Libellé du flux, du flux ou du flux des modifications Wikipédia entrantes à
   examiner.
-Label-ReviewedAndSays: 'a examiné {0} et dit'
+Label-ReviewedAndSays: 'a examiné <a href="{href}">{wikiRevId}</a> et dit'
 Label-ReviewedAndSays.@meta.@description: L'étiquette pour commencer la sentence et les motifs donnés pour une révision.
 Label-ShouldRevert: Devrait restaurer
 Label-ShouldRevert.@meta.@description: >-

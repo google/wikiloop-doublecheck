@@ -45,10 +45,9 @@ apiRouter.use(`/feed`, feedRouter);
 apiRouter.use(`/metrics`, metricsRouter);
 apiRouter.get('/test', (req, res) => { res.send('test ok') });
 
-if (useStiki) {
-  apiRouter.use(`/score`, scoreRouter);
-  apiRouter.use(`/extra`, scoreRouter);
-}
+apiRouter.use(`/score`, scoreRouter);
+apiRouter.use(`/extra`, scoreRouter);
+
 
 // Needs to stay at the end of ApiRouter
 apiRouter.use(`/`, utilsRouter);

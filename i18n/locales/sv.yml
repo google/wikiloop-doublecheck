@@ -192,7 +192,7 @@ Label-ReviewFeed: Granska Feed
 Label-ReviewFeed.@meta.@description: >-
   Etiketten för flödet, flödet eller strömmen för inkommande
   Wikipedia-redigeringar som ska granskas.
-Label-ReviewedAndSays: 'granskade {0} och säger'
+Label-ReviewedAndSays: 'granskade <a href="{href}">{wikiRevId}</a> och säger'
 Label-ReviewedAndSays.@meta.@description: Etiketten för att påbörja domen och skälen för en revidering.
 Label-ShouldRevert: Bör återgå
 Label-ShouldRevert.@meta.@description: >-

@@ -207,7 +207,7 @@ Label-ReviewFeed: Recensisci feed
 Label-ReviewFeed.@meta.@description: >-
   L'etichetta per il feed, il flusso o il flusso di modifiche Wikipedia in
   arrivo da rivedere.
-Label-ReviewedAndSays: 'recensito {0} e dice'
+Label-ReviewedAndSays: 'recensito <a href="{href}">{wikiRevId}</a> e dice'
 Label-ReviewedAndSays.@meta.@description: L'etichetta per iniziare la sentenza e le ragioni fornite per una revisione.
 Label-ShouldRevert: Dovrebbe ripristinare
 Label-ShouldRevert.@meta.@description: >-
