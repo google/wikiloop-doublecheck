@@ -61,6 +61,11 @@ Label-History: הִיסטוֹרִיָה
 Label-History.@meta.@description: >-
   תווית לרשימת פעילויות העבר, פסקי דין שתרמו וכו ', של כל המשתמשים או משתמש
   נתון.
+Label-Home: בית
+Label-Home.@meta.@description: תווית לזיהוי דף הבית של WikiLoop DoubleCheck.
+Label-Home.@meta.@isMachineTranslated: true
+Label-Home.@meta.@translatedAt: 2020-08-01T01:50:54.834Z
+Label-Home.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-HumanEditors: עורכים אנושיים
 Label-HumanEditors.@meta.@description: התווית לפסקי הדין שניתנו על ידי עורכי אנוש.
 Label-Judgement: פְּסַק דִין

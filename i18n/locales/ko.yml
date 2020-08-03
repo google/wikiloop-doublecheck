@@ -55,6 +55,11 @@ Label-Feed.@meta.@description: >-
   기물 파손 감지 점수 시스템에 의해 감지 된 편집 피드 등과 같은 다양한 종류의 위키 백과 편집 피드가 있습니다.
 Label-History: 역사
 Label-History.@meta.@description: '모든 사용자 또는 지정된 사용자의 과거 활동 목록, 과거에 기여한 판단 등의 레이블입니다.'
+Label-Home: 집
+Label-Home.@meta.@description: WikiLoop DoubleCheck의 홈 페이지를 식별하는 레이블입니다.
+Label-Home.@meta.@isMachineTranslated: true
+Label-Home.@meta.@translatedAt: 2020-08-01T01:50:54.835Z
+Label-Home.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-HumanEditors: 인간 편집자
 Label-HumanEditors.@meta.@description: Human 편집자가 제공 한 판단에 대한 레이블입니다.
 Label-Judgement: 심판

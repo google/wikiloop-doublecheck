@@ -85,6 +85,11 @@ Label-History: История
 Label-History.@meta.@description: >-
   Метка для списка прошлых действий, прошлых решений и т. Д. Всех пользователей
   или данного пользователя.
+Label-Home: Домой
+Label-Home.@meta.@description: метка для идентификации домашней страницы WikiLoop DoubleCheck.
+Label-Home.@meta.@isMachineTranslated: true
+Label-Home.@meta.@translatedAt: 2020-08-01T01:50:54.836Z
+Label-Home.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-HumanEditors: Редакторы
 Label-HumanEditors.@meta.@description: Этикетка для суждений предоставлена редакторами Human.
 Label-Judgement: решение
@@ -268,8 +273,8 @@ Message-NameVoteAnnouncement: >-
 
   Пожалуйста, проголосуйте.
 Message-NoActiveUsersPleaseStartReview: >-
-  Нет активных пользователей за последние 15 минут. Начните {0} оценивать
-  правки {1} и станьте первым.
+  Нет активных пользователей за последние 15 минут. Начните {0} оценивать правки
+  {1} и станьте первым.
 Message-NoActiveUsersPleaseStartReview.@meta.@description: >-
   Сообщение, которое предлагает пользователю начать возвращаться. {0} и {1}
   являются парами тегов привязки HTML <a> и </a> с параметрами URL.
@@ -277,8 +282,8 @@ Message-PromptLogin: >-
   Знаете ли вы, что вы можете войти и сохранить свой вклад под своим именем? Мы
   поддерживаем вход с помощью аккаунта в Википедии через Oauth.
 Message-RevertEditSummary: >-
-  Идентифицировано как тест/вандализм с использованием {0} версии {1}. Узнать больше
-  или дать обратную связь можно по ссылке {2}
+  Идентифицировано как тест/вандализм с использованием {0} версии {1}. Узнать
+  больше или дать обратную связь можно по ссылке {2}
 Message-RevertEditSummary.@meta.@description: >-
   Сообщение о сводке по редактированию, когда наше программное обеспечение
   генерирует новое редактирование Википедии, которое будет зафиксировано на

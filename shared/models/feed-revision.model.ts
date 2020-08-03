@@ -6,6 +6,8 @@ const FeedRevisionSchema = createSchema(
     wikiRevId: Type.string({ required: true, index: true }),
     wiki: Type.string({ required: true, index: true }),
     feedRankScore: Type.number(),
+    title: Type.string({ required: false, index: true }),
+    createdAt: Type.date({index: true}),
     claimerInfo: Type.object().of({
       userGaId: Type.string({ required: true }),
       wikiUserName: Type.string({ required:false}),

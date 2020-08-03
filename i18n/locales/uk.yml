@@ -86,6 +86,11 @@ Label-History: Історія
 Label-History.@meta.@description: >-
   Мітка для списку минулих дій, внесених раніше суджень тощо, усіх користувачів
   або певного користувача.
+Label-Home: Головна
+Label-Home.@meta.@description: мітка для визначення домашньої сторінки WikiLoop DoubleCheck.
+Label-Home.@meta.@isMachineTranslated: true
+Label-Home.@meta.@translatedAt: 2020-08-01T01:50:54.837Z
+Label-Home.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-HumanEditors: Редактори
 Label-HumanEditors.@meta.@description: 'Етикетка для судових рішень, наданих редакторами Human.'
 Label-Judgement: Судження

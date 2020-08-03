@@ -70,6 +70,11 @@ Label-History: ประวัติศาสตร์
 Label-History.@meta.@description: >-
   ป้ายกำกับสำหรับรายการกิจกรรมที่ผ่านมาการตัดสินที่ผ่านมามีส่วนช่วย ฯลฯ
   ของผู้ใช้ทั้งหมดหรือผู้ใช้ที่กำหนด
+Label-Home: บ้าน
+Label-Home.@meta.@description: ป้ายกำกับเพื่อระบุหน้าแรกของ WikiLoop DoubleCheck
+Label-Home.@meta.@isMachineTranslated: true
+Label-Home.@meta.@translatedAt: 2020-08-01T01:50:54.836Z
+Label-Home.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-HumanEditors: บรรณาธิการของมนุษย์
 Label-HumanEditors.@meta.@description: ฉลากสำหรับการตัดสินที่จัดทำโดยบรรณาธิการของมนุษย์
 Label-Judgement: การตัดสิน

@@ -75,6 +75,11 @@ Label-History: تاریخ
 Label-History.@meta.@description: >-
   برچسب لیستی از فعالیتهای گذشته ، داوریهای گذشته و غیره ، کلیه کاربران یا یک
   کاربر معین.
+Label-Home: خانه
+Label-Home.@meta.@description: یک برچسب برای شناسایی صفحه اصلی WikiLoop DoubleCheck.
+Label-Home.@meta.@isMachineTranslated: true
+Label-Home.@meta.@translatedAt: 2020-08-01T01:50:54.833Z
+Label-Home.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-HumanEditors: ویرایشگران انسانی
 Label-HumanEditors.@meta.@description: برچسب داوری های ارائه شده توسط ویراستاران Human.
 Label-Judgement: داوری

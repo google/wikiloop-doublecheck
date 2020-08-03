@@ -87,6 +87,11 @@ Label-History: Historia
 Label-History.@meta.@description: >-
   En etikett för listan över tidigare aktiviteter, tidigare bedömningar bidragit
   etc, för alla användare eller en viss användare.
+Label-Home: Hem
+Label-Home.@meta.@description: en etikett för att identifiera hemsidan för WikiLoop DoubleCheck.
+Label-Home.@meta.@isMachineTranslated: true
+Label-Home.@meta.@translatedAt: 2020-08-01T01:50:54.836Z
+Label-Home.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-HumanEditors: Mänskliga redaktörer
 Label-HumanEditors.@meta.@description: Etiketten för bedömningar som tillhandahålls av mänskliga redaktörer.
 Label-Judgement: Dom

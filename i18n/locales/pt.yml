@@ -89,6 +89,11 @@ Label-History: Histórico
 Label-History.@meta.@description: >-
   Um rótulo para a lista de atividades passadas, julgamentos passados
   contribuídos, etc., de todos os usuários ou de um determinado usuário.
+Label-Home: Casa
+Label-Home.@meta.@description: um rótulo para identificar a página inicial do WikiLoop DoubleCheck.
+Label-Home.@meta.@isMachineTranslated: true
+Label-Home.@meta.@translatedAt: 2020-08-01T01:50:54.836Z
+Label-Home.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-HumanEditors: Editores humanos
 Label-HumanEditors.@meta.@description: O rótulo para julgamentos fornecidos pelos editores da Human.
 Label-Judgement: Julgamento
@@ -130,6 +135,9 @@ Label-MyHistory: Meu histórico
 Label-MyHistory.@meta.@description: >-
   Um rótulo para a lista de atividades passadas, julgamentos passados
   contribuídos, etc., do usuário atual que está usando nosso software.
+Label-MyHistory.@meta.@isMachineTranslated: ''
+Label-MyHistory.@meta.@translatedAt: ''
+Label-MyHistory.@meta.@translator: ''
 Label-NewJudgement: Novo julgamento
 Label-NewJudgement.@meta.@description: >-
   Um rótulo para um novo julgamento dado à edição da Wikipedia por nosso
@@ -283,8 +291,8 @@ Message-NameVoteAnnouncement: >-
 
   Por favor, vote.
 Message-NoActiveUsersPleaseStartReview: >-
-  Nenhum usuário ativo nos últimos 15 minutos. Comece {0} verificando as revisões
-  {1} e seja o primeiro.
+  Nenhum usuário ativo nos últimos 15 minutos. Comece {0} verificando as
+  revisões {1} e seja o primeiro.
 Message-NoActiveUsersPleaseStartReview.@meta.@description: >-
   A mensagem que convida o usuário a começar a reverter. O {0} e o {1} são os
   pares de tags âncora HTML <a> e </a> com os parâmetros de URL.

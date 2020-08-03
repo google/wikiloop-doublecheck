@@ -48,6 +48,11 @@ Label-Feed.@meta.@description: >-
   该标签显示了特定提要名称之后的提要，传入的新Wikipedia编辑流或流。例如，我们具有各种不同的Wikipedia编辑的供稿，例如文章主题的供稿，被故意破坏检测评分系统检测到的编辑的供稿等。
 Label-History: 历史
 Label-History.@meta.@description: 所有用户或给定用户的过去活动，做出的过去判断等的列表的标签。
+Label-Home: 家
+Label-Home.@meta.@description: 标识WikiLoop DoubleCheck主页的标签。
+Label-Home.@meta.@isMachineTranslated: true
+Label-Home.@meta.@translatedAt: 2020-08-01T01:50:54.837Z
+Label-Home.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-HumanEditors: 人类编辑
 Label-HumanEditors.@meta.@description: 人工编辑提供的判断标签。
 Label-Judgement: 判断
