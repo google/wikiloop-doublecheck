@@ -30,7 +30,7 @@
               <span v-if="isMe(client)">({{$t('Label-Me')}})</span>
             </router-link>
           </td>
-          <td scope="col"><timeago :datetime="new Date(client.lastActive*1000)"></timeago></td>
+          <td scope="col"><timeago :datetime="new Date(client.lastActive*1000)" :locale="$i18n.locale"></timeago></td>
         </tr>
         <tr v-for="(client, index) of $store.state.metrics.activeAnonymousUser" :key="index">
           <td scope="col">
@@ -40,7 +40,7 @@
               <span v-if="isMe(client)">({{$t('Label-Me')}})</span>
             </router-link>
           </td>
-          <td scope="col"><timeago :datetime="new Date(client.lastActive*1000)"></timeago></td>
+          <td scope="col"><timeago :datetime="new Date(client.lastActive*1000)" :locale="$i18n.locale"></timeago></td>
         </tr>
       </tbody>
     </table>

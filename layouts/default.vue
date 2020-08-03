@@ -22,7 +22,7 @@
         </b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
-            <b-nav-item href="/marked" v-b-tooltip.hover title="History">
+            <b-nav-item href="/history" v-b-tooltip.hover title="History">
               <i class="fas fa-history"></i>
               <span class="pl-0 ml-0" v-if="$store.state.metrics">({{$store.state.metrics.totalJudgement}})</span>
             </b-nav-item>

@@ -20,15 +20,15 @@
                 'badge-success': item.judgement === 'LooksGood',
                 'badge-secondary': item.judgement === 'NotSure',
                 'badge-danger': item.judgement === 'ShouldRevert'
-              }]">{{item.judgement}}</span>
-              <timeago :datetime="item.timestamp * 1000"></timeago>.
+              }]">{{$t(`Label-${item.judgement}`)}}</span>
+              <timeago :datetime="item.timestamp * 1000" :locale="$i18n.locale"></timeago>.
             </div>
           </div>
         </div>
       </div>
       </div>
     </template>
-
+    <button class="btn btn-block btn-outline-primary my-3" @click="loadMore()">Load more</button>
   </section>
 </template>
 <script lang="ts">
@@ -52,6 +52,7 @@
   export default class HistoryPage extends Vue {
     loading:boolean = false;
     interactions: InteractionProps[];
+    offset:number = 0;
     public parseWikiRevId = parseWikiRevId;
     mounted() {
       socket.on('interaction-props', async (interaction: InteractionProps) => {
@@ -59,6 +60,9 @@
         this.interactions = [interaction].concat(this.interactions); // push at the head.
         this.loading = false;
       });
+    }
+    async loadMore() {
+      this.interactions.push(...(await this.$axios.$get(`/api/label?limit=10&offset=${this.interactions.length}`)));
     }
   }
 </script>

@@ -56,7 +56,7 @@
                                     <td scope="col">{{leadWiki.count}}</td>
                                     <td scope="col">
                                         <timeago
-                                                :datetime="new Date(leadWiki.lastTimestamp * 1000).toString()"></timeago>
+                                                :datetime="new Date(leadWiki.lastTimestamp * 1000).toString()" :locale="$i18n.locale"></timeago>
                                     </td>
                                 </tr>
                             </template>
@@ -70,7 +70,7 @@
                                     <timeago
                                             :datetime="new Date(
                                             wikis.map(wiki=>wiki.lastTimestamp)
-                                                .reduce((a, b) => Math.max(a,b), 0) * 1000).toString()">
+                                                .reduce((a, b) => Math.max(a,b), 0) * 1000).toString()" :locale="$i18n.locale">
 
                                     </timeago>
                                 </th>
@@ -119,7 +119,7 @@
                                     </td>
                                     <td scope="col">{{leader.count}}</td>
                                     <td scope="col">
-                                        <timeago :datetime="new Date(leader.lastTimestamp * 1000).toString()"></timeago>
+                                        <timeago :datetime="new Date(leader.lastTimestamp * 1000).toString()" :locale="$i18n.locale"></timeago>
                                     </td>
                                 </tr>
                             </template>
@@ -163,7 +163,7 @@
                                     </td>
                                     <td scope="col">{{leader.count}}</td>
                                     <td scope="col">
-                                        <timeago :datetime="new Date(leader.lastTimestamp * 1000).toString()"></timeago>
+                                        <timeago :datetime="new Date(leader.lastTimestamp * 1000).toString()" :locale="$i18n.locale"></timeago>
                                     </td>
                                 </tr>
                             </template>
