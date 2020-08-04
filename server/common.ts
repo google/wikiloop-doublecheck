@@ -42,7 +42,7 @@ export const statusColor = function(statusCode) {
 
 export const axiosLogger = new Logger({
   prefix: pad('AXIOS', 8),
-  LOG_LEVEL: 'debug'
+  level: 'debug'
 });
 
 export const apiLogger = new Logger({
@@ -55,6 +55,17 @@ export const perfLogger = new Logger({
 export const mailCronLogger = new Logger({
   prefix: pad('MAILCRON', 8),    // Defaults to `''`.
 });
+
+export const feedRevisionEngineLogger = new Logger({
+  prefix: pad('FEED', 8),    // Defaults to `''`.
+  level: 'debug'
+});
+
+export const mwApiClientLogger = new Logger({
+  prefix: pad('MWAPI', 8),    // Defaults to `''`.
+  level: 'debug'
+});
+
 
 
 export const colorizeMaybe = function (logger, color, message) {

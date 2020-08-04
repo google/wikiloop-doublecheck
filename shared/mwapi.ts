@@ -22,6 +22,7 @@ const axios = require('axios');
 import update from 'immutability-helper';
 const MAX_MWAPI_LIMIT:number = 50;
 const userAgent = process.env.USER_AGENT || 'WikiLoop DoubleCheck Dev';
+const Bottleneck = require("bottleneck");
 
 /**
   "pageid": 48410011,
@@ -43,32 +44,11 @@ export interface MwPageInfo {
  * @doc https://www.mediawiki.org/wiki/API:Main_page
  */
 export class MwActionApiClient {
+  private static bottleneck = new Bottleneck({
+    minTime: 500
+  });
   public static async getMwPageInfosByTitles(wiki:string, titles:string[]):Promise<MwPageInfo[]> {
     console.assert(titles && titles.length > 0 && titles.length <= MAX_MWAPI_LIMIT, `Parameter titles needs to has a length between 1 to ${MAX_MWAPI_LIMIT}}, but was ${titles.length}.`);
-    /**
-     {
-      "batchcomplete": "",
-      "query": {
-          "normalized": [
-              {
-                  "from": "Category:2020_United_States_presidential_election",
-                  "to": "Category:2020 United States presidential election"
-              }
-          ],
-          "pages": {
-              "51288258": {
-                  "pageid": 51288258,
-                  "ns": 14,
-                  "title": "Category:2020 United States presidential election",
-                  "pageprops": {
-                      "wikibase_item": "Q27136412"
-                  }
-              }
-          }
-      }
-    }
-    */
-
 
     let params = {
     "action": "query",
@@ -78,7 +58,8 @@ export class MwActionApiClient {
     };
     let endpoint =`http://${wikiToDomain[wiki]}/w/api.php`;
 
-    let result = await axios.get(endpoint, {params:params, headers: { 'User-Agent': userAgent }});
+    let result = await MwActionApiClient.bottleneck.schedule(
+      async ()=> await axios.get(endpoint, {params:params, headers: { 'User-Agent': userAgent }}));
     if (Object.keys(result.data.query?.pages).length) {
       return Object.keys(result.data.query.pages).map(pageId=> {
         return result.data.query.pages[pageId]
@@ -109,9 +90,9 @@ export class MwActionApiClient {
     let url = new URL(`http://${wikiToDomain[wiki]}/w/api.php?${searchParams.toString()}`);
     console.log(`Url = `, url);
     try {
-      let revisionsJson = (await axios.get(url.toString(), {
+      let revisionsJson = (await MwActionApiClient.bottleneck.schedule(async()=> await axios.get(url.toString(), {
         headers: { 'User-Agent': userAgent }
-      })).data;
+      }))).data;
       let pageId = Object.keys(revisionsJson.query.pages)[0];
       if (revisionsJson.query.pages[pageId].revisions)
         return revisionsJson.query.pages[pageId].revisions.map(item => item.revid);
@@ -188,9 +169,9 @@ export class MwActionApiClient {
     logger.info(`Requesting for Media Action API: ${url.toString()}`);
     logger.info(`Try sandbox request here: ${new URL(`http://${wikiToDomain[wiki]}/wiki/Special:ApiSandbox#${searchParams.toString()}`)}`);
 
-    let response = await axios.get(url.toString(), {
+    let response = await MwActionApiClient.bottleneck.schedule(async () => await axios.get(url.toString(), {
       headers: { 'User-Agent': userAgent }
-    });
+    }));
     let recentChangesJson = response.data;
     /** Sample response
      {
@@ -234,9 +215,9 @@ export class MwActionApiClient {
     }
     let searchParams = new URLSearchParams(query);
     let url = new URL(`http://${wikiToDomain[wiki]}/w/api.php?${searchParams.toString()}`);
-    return (await axios.get(url.toString(), {
+    return (await MwActionApiClient.bottleneck.schedule(async () => await axios.get(url.toString(), {
       headers: { 'User-Agent': userAgent }
-    })).data;
+    }))).data;
   }
 
   public static getDiffByWikiRevId = async function (wiki:string, revId:number) {
@@ -248,9 +229,65 @@ export class MwActionApiClient {
     };
     let searchParams = new URLSearchParams(query);
     let url = new URL(`http://${wikiToDomain[wiki]}/w/api.php?${searchParams.toString()}`);
-    let result = (await axios.get(url.toString(), {
+    let result = (await MwActionApiClient.bottleneck.schedule(async () =>await axios.get(url.toString(), {
       headers: { 'User-Agent': userAgent }
-    })).data;
+    }))).data;
+    return result;
+  }
+
+  /**
+   * Given a feed, and wiki, using a title to get all it's category children
+   * please note this function handles the "continue" call to MediaWiki Action API
+   * it is in charge of making all follow up queries.
+   *
+   * @param feed
+   * @param wiki
+   * @param entryArticle
+   */
+  public static getCategoryChildren = async function (wiki, entryArticle):Promise<MwPageInfo[]> {
+    let endpoint =`http://${wikiToDomain[wiki]}/w/api.php`;
+    let result = [];
+    let params = {
+      "action": "query",
+      "format": "json",
+      "list": "categorymembers",
+      "formatversion": "2",
+      "cmtitle": entryArticle,
+      "cmprop": "ids|timestamp|title",
+      "cmlimit": "500",
+    };
+    let ret = null;
+
+    do {
+      ret = await axios.get(endpoint, {params: params, headers: { 'User-Agent': userAgent }});
+
+        /**json
+        {
+          "batchcomplete": true,
+          "continue": {
+          "cmcontinue": "page|0f53aa04354b3131430443294f394543293f042d45435331434f394543011f01c4dcc1dcbedc0d|61561742",
+          "continue": "-||"
+          },
+          "query": {
+            "categorymembers": [
+              {
+                "pageid": 48410011,
+                "ns": 0,
+                "title": "2020 United States presidential election",
+                "timestamp": "2020-03-28T19:51:23Z"
+              }
+            ],
+          }
+        }
+        */
+      if (ret.data?.query?.categorymembers?.length > 0) {
+        ret.data.query.categorymembers.forEach(item => console.log(`${JSON.stringify(item.title, null, 2)}`));
+        result.push(...ret.data.query.categorymembers);
+        if (ret.data?.continue?.cmcontinue) params['cmcontinue'] = ret.data.continue.cmcontinue;
+      } else {
+        return result;
+      }
+     } while (ret.data?.continue?.cmcontinue);
     return result;
   }
 }
