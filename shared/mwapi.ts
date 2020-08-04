@@ -22,12 +22,71 @@ const axios = require('axios');
 import update from 'immutability-helper';
 const MAX_MWAPI_LIMIT:number = 50;
 const userAgent = process.env.USER_AGENT || 'WikiLoop DoubleCheck Dev';
+
+/**
+  "pageid": 48410011,
+  "ns": 0,
+  "title": "2020 United States presidential election",
+  "type": "page",
+  "timestamp": "2020-03-28T19:51:23Z"
+ */
+export interface MwPageInfo {
+  pageid?:string,
+  ns?:string,
+  title?:string,
+  timestamp?:string,
+}
+
 /**
  * MediaWiki Action API Client Utility
  *
  * @doc https://www.mediawiki.org/wiki/API:Main_page
  */
 export class MwActionApiClient {
+  public static async getMwPageInfosByTitles(wiki:string, titles:string[]):Promise<MwPageInfo[]> {
+    console.assert(titles && titles.length > 0 && titles.length <= MAX_MWAPI_LIMIT, `Parameter titles needs to has a length between 1 to ${MAX_MWAPI_LIMIT}}, but was ${titles.length}.`);
+    /**
+     {
+      "batchcomplete": "",
+      "query": {
+          "normalized": [
+              {
+                  "from": "Category:2020_United_States_presidential_election",
+                  "to": "Category:2020 United States presidential election"
+              }
+          ],
+          "pages": {
+              "51288258": {
+                  "pageid": 51288258,
+                  "ns": 14,
+                  "title": "Category:2020 United States presidential election",
+                  "pageprops": {
+                      "wikibase_item": "Q27136412"
+                  }
+              }
+          }
+      }
+    }
+    */
+
+
+    let params = {
+    "action": "query",
+    "format": "json",
+    "prop": "pageprops",
+    "titles": titles.join('|')
+    };
+    let endpoint =`http://${wikiToDomain[wiki]}/w/api.php`;
+
+    let result = await axios.get(endpoint, {params:params, headers: { 'User-Agent': userAgent }});
+    if (Object.keys(result.data.query?.pages).length) {
+      return Object.keys(result.data.query.pages).map(pageId=> {
+        return result.data.query.pages[pageId]
+      });
+    }
+    return [];
+  }
+
   public static async getRevisionIdsByTitle(
     wiki:string, pageTitle: string,
     startRevId: number = null, limit:number = MAX_MWAPI_LIMIT):Promise<object> {

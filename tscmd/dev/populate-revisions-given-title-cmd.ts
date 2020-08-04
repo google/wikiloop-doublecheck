@@ -5,7 +5,7 @@ import { MwActionApiClient } from '@/shared/mwapi';
 import { logger } from '@/server/common';
 import { RevisionInfo, RevisionInfoProps } from '@/shared/models/revision-info.model';
 import { FeedRevision, FeedRevisionProps } from '~/shared/models/feed-revision.model';
-import { articleLists } from './data/us-2020';
+import { FeedPage } from '@/shared/models/feed-page.model';
 
 const Bottleneck = require("bottleneck");
 const getPair = function (wiki, result, pageId) {
@@ -63,15 +63,22 @@ const populateRevisionsGivenTitleMain = async function () {
   console.log(`Connecting mongodb ...`);
   await mongoose.connect(process.env.MONGODB_URI, { useUnifiedTopology: true, useNewUrlParser: true });
   console.log(`Connected mongodb!`);
-  // mongoose.set('debug', true);
-  RevisionInfo.on('index', function (err) {
-    if (err) {
-      logger.error('RevisionInfo index error: %s', err);
-    } else {
-      logger.info('RevisionInfo indexing complete');
-    }
+
+  let wiki = 'enwiki';
+  let feed = 'us2020';
+  await populateRevisionsGivenTitle(wiki, feed, neck);
+  console.log(`done`);
+}
+
+populateRevisionsGivenTitleMain()
+  .then(() => {
+    console.log(`CMD Done!`);
+    process.exit(0);
   });
 
+async function populateRevisionsGivenTitle(wiki: string, feed: string, neck: any) {
+  let articleLists = (await FeedPage.find({ wiki: wiki, feed: feed })).map(fp => fp.title);
+  console.log(`XXX articleLists`, articleLists.join('    '));
   for (let articleIndex = 0; articleIndex < articleLists.length; articleIndex += 50) {
     let titles = articleLists.slice(articleIndex, Math.min(articleIndex + 50, articleLists.length));
     logger.warn(`Reading the articles ${articleIndex}， ${titles.join('|')}`);
@@ -98,44 +105,37 @@ const populateRevisionsGivenTitleMain = async function () {
               update: { $set: ri },
               upsert: true
             }
-          }
+          };
         })),
-        FeedRevision.bulkWrite(feedRevisions.map((fr: FeedRevisionProps)=>{
+        FeedRevision.bulkWrite(feedRevisions.map((fr: FeedRevisionProps) => {
           return {
             updateOne: {
               filter: {
                 title: fr.title,
-                "$or" : [
-                    {
-                        "claimerInfo" : {
-                            "$exists" : false
-                        }
-                    },
-                    {
-                        "claimerInfo.checkedOfAt" : {
-                            "$exists" : false
-                        },
-                        "claimExpiresAt" : {
-                            "$lte" : new Date()
-                        }
+                "$or": [
+                  {
+                    "claimerInfo": {
+                      "$exists": false
                     }
+                  },
+                  {
+                    "claimerInfo.checkedOfAt": {
+                      "$exists": false
+                    },
+                    "claimExpiresAt": {
+                      "$lte": new Date()
+                    }
+                  }
                 ]
-            },
+              },
               update: { $set: fr },
               upsert: true
             }
-          }
+          };
         }))
       ]);
       console.log(`Current articleIndex=${articleIndex} Ret = `, JSON.stringify(ret, null, 2));
     }
   }
-  console.log(`done`);
 }
 
-
-populateRevisionsGivenTitleMain()
-  .then(() => {
-    console.log(`CMD Done!`);
-    process.exit(0);
-  });

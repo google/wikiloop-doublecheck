@@ -52,6 +52,7 @@
     "batchcomplete",
     "buildpacks",
     "categorymembers",
+    "circleci",
     "cmcontinue",
     "cmlimit",
     "cmprop",
@@ -98,6 +99,7 @@
     "pagelanguage",
     "pagelanguagedir",
     "pagelanguagehtmlcode",
+    "pageprops",
     "parentid",
     "postbuild",
     "precommit",
@@ -134,6 +136,7 @@
     "uptimerobot",
     "userid",
     "userinfo",
+    "vuex",
     "wikidatawiki",
     "wikitext",
     "wikitrust"

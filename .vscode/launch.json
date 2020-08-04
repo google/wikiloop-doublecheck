@@ -2,26 +2,17 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "traverse",
+      "name": "Current TS file",
       "type": "node",
       "request": "launch",
-      "runtimeExecutable": "node",
-      "runtimeArgs": ["--nolazy", "-r", "ts-node/register/transpile-only"],
-      "args": ["tscmd/dev/traverse-category-tree-cmd.ts"],
-
+      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/ts-node",
+      "runtimeArgs": ["-r", "tsconfig-paths/register", "--project", "tsconfig.json"],
+      "args": ["${relativeFile}"],
       "cwd": "${workspaceRoot}",
       "internalConsoleOptions": "openOnSessionStart",
-      "skipFiles": ["<node_internals>/**", "node_modules/**"]
-    },
-    {
-      "name": "Current TS File",
-      "type": "node",
-      "request": "launch",
-      "args": ["${relativeFile}"],
-      "runtimeArgs": ["--nolazy", "-r", "ts-node/register/transpile-only"],
-      "sourceMaps": true,
-      "cwd": "${workspaceRoot}",
-      "protocol": "inspector",
+      "skipFiles": ["<node_internals>/**", "node_modules/**"],
+      // "protocol": "inspector",
+      // "sourceMaps": true
     }
-  ],
+  ]
 }
