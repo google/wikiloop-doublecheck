@@ -221,48 +221,25 @@ export class CrossEditSuspiciousPatterns implements Revision {
 	}
 
 	async getRecipientForBlock(){
-    	return "Block_Recipient_Placeholder";
+    	return "BlockRecipientPlaceholder";
 	}
 
 	async getRecipientForProtect(){
-		return "Protect_Recipient_Placeholder";
+		return "ProtectRecipientPlaceholder";
 	}
 
 	async getPreviousWarningsAuthor(
-		user_id: string,
+		userId: string,
 		endTimestamp: Date
 	) {
-		/*
-		// Simulated Database
-	    if(!(user_id in this.db)) {
-	    	console.log("User id: " + user_id + " not found in database.");
-	    	return [];
-	    }else{
-	    	var events_by_user = this.db[user_id];
-    		// Within body of anonymous function, the keyword "this" cannot reference the outside
-    		// class. Hence using this.warningTimeframe directly inside anonymous function 
-    		// will be undefined. 
-    		var warningTimeframe = this.warningTimeframe;
-	    	var eventsBeforeEnd = events_by_user.filter(function(edit){
-	    		var warning_period_start = new Date(endTimestamp);
-	    		warning_period_start.setDate(warning_period_start.getDate() - warningTimeframe);
-	    		var warning_period_end = new Date(endTimestamp);
-	    		var this_edit_time = new Date(edit.timestamp);
-	    		// Reason to use <= and >=: enable easier testing of Decision Log and Messaging service
-	    		return (this_edit_time >= warning_period_start && this_edit_time <= warning_period_end); 
-	    	});
-	    	console.log("Get " + eventsBeforeEnd.length + " past events for " + user_id);
-	    	return eventsBeforeEnd;
-	    }
-	    */
 	    let startTimestamp = new Date();
 	    startTimestamp.setDate(endTimestamp.getDate() - this.warningTimeframe);
 	    let eventsBeforeEnd: DecisionLogProps[] = await DecisionLog.find({
-	    	user_id: user_id,
+	    	userId: userId,
 	    	type: {$in: ["warning", "block"]},
 	    	timestamp: {$gte: startTimestamp, $lte: endTimestamp}
 	    }).sort([['timestamp', 1]]).limit(this.warningThreshold * 10); //Avoid too many events 
-	    console.log("Get " + eventsBeforeEnd.length + " past events for " + user_id);
+	    console.log("Get " + eventsBeforeEnd.length + " past events for " + userId);
 	    return eventsBeforeEnd;
 	}
 
@@ -270,29 +247,6 @@ export class CrossEditSuspiciousPatterns implements Revision {
 		title: string, 
 		endTimestamp: Date
 	) {
-		/*
-		// Simulated Database
-	    if(!(title in this.db)) {
-	    	console.log("User id: " + title + " not found in database.");
-	    	return [];
-	    }else{
-	    	var events_on_article = this.db[title];
-    		// Within body of anonymous function, the keyword "this" cannot reference the outside
-    		// class. Hence using this.warningTimeframe directly inside anonymous function 
-    		// will be undefined. 
-    		var warningTimeframe = this.warningTimeframe;
-	    	var eventsBeforeEnd = events_on_article.filter(function(edit){
-	    		var warning_period_start = new Date(endTimestamp);
-	    		warning_period_start.setDate(warning_period_start.getDate() - warningTimeframe);
-	    		var warning_period_end = new Date(endTimestamp);
-	    		var this_edit_time = new Date(edit.timestamp);
-	    		// Reason to use <= and >=: enable easier testing of Decision Log and Messaging service
-	    		return (this_edit_time >= warning_period_start && this_edit_time <= warning_period_end); 
-	    	});
-	    	console.log("Get " + eventsBeforeEnd.length + " past events for " + title);
-	    	return eventsBeforeEnd;
-	    }
-	    */
 	    let startTimestamp = new Date();
 	    startTimestamp.setDate(endTimestamp.getDate() - this.warningTimeframe);
 	    let eventsBeforeEnd: DecisionLogProps[] = await DecisionLog.find({
@@ -305,7 +259,7 @@ export class CrossEditSuspiciousPatterns implements Revision {
 	}
 
 	async writeNewDecisionAuthor(
-		user_id: string, 
+		userId: string, 
 		title: string, 
 		type: string, 
 		timestamp: Date, 
@@ -314,7 +268,7 @@ export class CrossEditSuspiciousPatterns implements Revision {
 		avgScore: number
 	) {
 		var decisionObject = {
-			user_id: user_id,
+			userId: userId,
 			title: title,
 			type: type,
 			timestamp: timestamp,
@@ -324,18 +278,18 @@ export class CrossEditSuspiciousPatterns implements Revision {
 		}
 		/*
 		// Simulated Database
-	    if(!(user_id in this.db)) {
-	    	this.db[user_id] = [decisionObject];
+	    if(!(userId in this.db)) {
+	    	this.db[userId] = [decisionObject];
 	    }else {
-	    	this.db[user_id].push(decisionObject);
+	    	this.db[userId].push(decisionObject);
 	    }
 	    */
 	    await DecisionLog.create(decisionObject);
-	    console.log("Suspicious event of type " + type + " logged for author " + user_id + " at " + timestamp);
+	    console.log("Suspicious event of type " + type + " logged for author " + userId + " at " + timestamp);
 	}
 
 	async writeNewDecisionArticle(
-		user_id: string, 
+		userId: string, 
 		title: string, 
 		type: string, 
 		timestamp: Date, 
@@ -344,7 +298,7 @@ export class CrossEditSuspiciousPatterns implements Revision {
 		avgScore: number
 	) {
 		var decisionObject = {
-			user_id: user_id,
+			userId: userId,
 			title: title,
 			type: type,
 			timestamp: timestamp,
@@ -376,23 +330,23 @@ export class CrossEditSuspiciousPatterns implements Revision {
 	        //Only take ORES_DAMAGING score 
 	        //If ORES Scores are missing, skip this edit entirely. 
 	        if(editsList[i].oresscores.damaging == undefined) {
-	        	var missing_score_string = "";
-	        	missing_score_string += "Title: " + title + " Author: " + author + "\n";
-	        	missing_score_string += "ORES Scores are missing. Hence no detection is performed. \n";
-	        	missing_score_string += "Timestamp: " + editsList[0].timestamp + "\n";
-	        	console.log(missing_score_string);
+	        	var missingScoreString = "";
+	        	missingScoreString += "Title: " + title + " Author: " + author + "\n";
+	        	missingScoreString += "ORES Scores are missing. Hence no detection is performed. \n";
+	        	missingScoreString += "Timestamp: " + editsList[0].timestamp + "\n";
+	        	console.log(missingScoreString);
 	        	return;
 	        }
 	        scores[i] = editsList[i].oresscores.damaging.true;
 	        if (this.mode == "author") {
-		        var edit_info = {
+		        var editInfo = {
 		        	author: this.author,
 		        	title: String(editsList[i].title),
 		        	score: (scores[i] * 100).toFixed(0),
 		        	timestamp: editsList[i].timestamp,
 		        };
 		    } else if (this.mode == "article") {
-		    	var edit_info = {
+		    	var editInfo = {
 		        	author: String(editsList[i].user),
 		        	title: this.title,
 		        	score: (scores[i] * 100).toFixed(0),
@@ -400,7 +354,7 @@ export class CrossEditSuspiciousPatterns implements Revision {
 		        };
 
 		    }
-	        previousRevisionInfos[i] = edit_info;
+	        previousRevisionInfos[i] = editInfo;
 	    }
 
 	    var windowStart: number = editsList[editsList.length-1].timestamp;
@@ -446,15 +400,15 @@ export class CrossEditSuspiciousPatterns implements Revision {
 	    }
 
 	    //Display on prototype.html
-	    var result_string = "";
-	    result_string += "Title: " + title + " Author: " + author + "\n";
-	    result_string += "Detection Type: " + this.mode + "\n";
-	    result_string += "Avg ORES Damaging score is: " + avg.toFixed(2) + "\n";
-	    result_string += "Difference from baseline score is: " + diff.toFixed(2) + "\n";
-	    result_string += "Starting time of window is: " + windowStart +"\n"; 
-	    result_string += "Ending time of window is: " + windowEnd + "\n";
-	    console.log(result_string);
-	    var decision_info = {
+	    var resultString = "";
+	    resultString += "Title: " + title + " Author: " + author + "\n";
+	    resultString += "Detection Type: " + this.mode + "\n";
+	    resultString += "Avg ORES Damaging score is: " + avg.toFixed(2) + "\n";
+	    resultString += "Difference from baseline score is: " + diff.toFixed(2) + "\n";
+	    resultString += "Starting time of window is: " + windowStart +"\n"; 
+	    resultString += "Ending time of window is: " + windowEnd + "\n";
+	    console.log(resultString);
+	    var decisionInfo = {
 	    	mode: this.mode,
 	    	type: this.type,
 	    	author: this.author,
@@ -462,7 +416,7 @@ export class CrossEditSuspiciousPatterns implements Revision {
 	    	percentage: (this.avg * 100).toFixed(0), 
 	    	previousRevisionInfos: this.previousRevisionInfos,
 	    }
-	    return decision_info;
+	    return decisionInfo;
 	}
 
 	public async executeDecision() {
@@ -488,8 +442,8 @@ export class CrossEditSuspiciousPatterns implements Revision {
 		}else if (this.mode == "article") {
 			await this.findEditHistoryArticle();
 		}
-		var decision_info = await this.getScoreAndProcess();
-		console.log("Executed test for revision ID: " + this.revID + decision_info);
-		return decision_info;
+		var decisionInfo = await this.getScoreAndProcess();
+		console.log("Executed test for revision ID: " + this.revID + decisionInfo);
+		return decisionInfo;
 	}
 }
