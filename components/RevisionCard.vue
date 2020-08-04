@@ -238,7 +238,7 @@
   import DiffBox from '@/components/DiffBox.vue';
   import socket from '@/plugins/socket.io.js';
   import {CrossEditSuspiciousPatternsInfo} from "@/cross-edits-detection/interface";
-  import {CrossEditSuspiciousPatterns} from "@/cross-edits-detection/CrossEditSuspiciousPatterns";
+  import {CrossEditSuspiciousPatterns} from "@/cross-edits-detection/cross-edit-suspicious-patterns";
   export default {
     components: {
       DiffBox
@@ -568,7 +568,7 @@
         this.displayHistoryArticle = false;
       },
       executeArticle: function() {
-        this.CrossEditSuspiciousPatternsInstanceAuthor.executeDecision();
+        this.CrossEditSuspiciousPatternsInstanceArticle.executeDecision();
         this.turnOffChoiceArticle();
       },
     },
@@ -617,6 +617,7 @@
         warningTimeframe: this.warningTimeframeAuthor,
         warningThreshold: this.warningThresholdAuthor,
         revID: this.wikiRevId,
+        axiosClient: this.$axios,
       }
       this.CrossEditSuspiciousPatternsInstanceAuthor = new CrossEditSuspiciousPatterns(curRevisionInfoAuthor);
       var decisionInfoAuthor = await this.CrossEditSuspiciousPatternsInstanceAuthor.analyze();
@@ -639,6 +640,7 @@
         warningTimeframe: this.warningTimeframeArticle,
         warningThreshold: this.warningThresholdArticle,
         revID: this.wikiRevId,
+        axiosClient: this.$axios,
       }
       this.CrossEditSuspiciousPatternsInstanceArticle = new CrossEditSuspiciousPatterns(curRevisionInfoArticle);
       var decisionInfoArticle = await this.CrossEditSuspiciousPatternsInstanceArticle.analyze();

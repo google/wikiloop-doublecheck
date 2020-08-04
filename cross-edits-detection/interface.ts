@@ -29,4 +29,5 @@ export interface CrossEditSuspiciousPatternsInfo {
 	warningTimeframe:number; //Timeframe to get previous warnings to determine blocks, in days
 	warningThreshold:number;
 	revID:string;
+  axiosClient:any;
 }

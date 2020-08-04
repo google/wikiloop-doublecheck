@@ -2,13 +2,13 @@ import { createSchema, ExtractDoc, ExtractProps, Type, typedModel } from 'ts-mon
 
 const DecisionLogSchema = createSchema(
   {
-    user_id: Type.string({required: true, index: true}),
+    userId: Type.string({required: true, index: true}),
     title: Type.string({required:true, index: true}),
     type: Type.string({required:true}),
     timestamp: Type.date({required: true, index: true}),
-    recipient_id: Type.string({required: true, index: true}),
-    start_window: Type.date({required: true, index: true}),
-    avg_score: Type.number({required: true})
+    recipientId: Type.string(),
+    startWindow: Type.date({required: true, index: true}),
+    avgScore: Type.number({required: true})
   }
 );
 DecisionLogSchema.index({ user_id: 1, title: 1, timestamp: -1, type: 1}, { unique: true })

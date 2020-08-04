@@ -28,6 +28,7 @@ import { latestRouter } from "./latest";
 import { mediawikiRouter } from "./mediawiki";
 import { statsRouter } from "./stats";
 import { leaderboardRouter } from "./leaderboard";
+import { decisionLogRouter } from "./decisionlog";
 import { markedRevsCsv, markedRevs } from "./marked";
 import { asyncHandler } from "~/server/common";
 import { useStiki } from '~/server/common';
@@ -87,4 +88,6 @@ apiRouter.use('/stats', statsRouter);
 apiRouter.use('/latestRevs', latestRouter);
 
 apiRouter.use('/mediawiki', mediawikiRouter);
+
+apiRouter.use('/decisionLog', decisionLogRouter);
 
