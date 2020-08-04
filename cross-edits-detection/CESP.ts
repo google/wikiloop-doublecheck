@@ -14,7 +14,7 @@
   limitations under the License.
 **/
 
-import {CESP_Info, Revision} from "./interface";
+import {CESPInfo, Revision} from "./interface";
 import {
   DecisionLog,
   DecisionLogProps,
@@ -30,12 +30,12 @@ export class CESP implements Revision {
 	// Configurable Parameters 
 	// These are set upon creation and are fixed during analysis process
 	url:string;
-    window_size:number;
+    windowSize:number;
 	baseline:number;
 	percentage:number;
 	margin:number;
-	warning_timeframe:number; //Timeframe to get previous warnings to determine blocks, in days
-	warning_threshold:number;
+	warningTimeframe:number; //Timeframe to get previous warnings to determine blocks, in days
+	warningThreshold:number;
 	revID:string;
 	db;
 
@@ -43,31 +43,31 @@ export class CESP implements Revision {
 	// Hence the instance has to be able to store intermediate results.
 	title: string;
 	author: string;
-	window_start: number;
-	window_end: number;
+	windowStart: number;
+	windowEnd: number;
 	avg: number;
 	diff: number;
 	timestamp: string;
-	edits_list;
+	editsList;
 	type: string;
 	recipient: string;
-	previous_revision_infos;
+	previousRevisionInfos;
 
 
-	constructor (info: CESP_Info) {
+	constructor (info: CESPInfo) {
 		this.mode = info.mode;
 		this.url = info.url;
-    	this.window_size = info.window_size;
+    	this.windowSize = info.windowSize;
 		this.baseline = info.baseline;
 		this.percentage = info.percentage;
 		this.margin = info.margin;
-		this.warning_timeframe = info.warning_timeframe; //Timeframe to get previous warnings to determine blocks, in days
-		this.warning_threshold = info.warning_threshold;
+		this.warningTimeframe = info.warningTimeframe; //Timeframe to get previous warnings to determine blocks, in days
+		this.warningThreshold = info.warningThreshold;
 		this.revID = info.revID.replace(/[^0-9]/g,'');;	
 		this.db = {};
 		this.type = "";
 		this.recipient = "";
-		this.previous_revision_infos = [];
+		this.previousRevisionInfos = [];
 	}
 
 	async sleep(milliseconds: number) {
@@ -83,26 +83,26 @@ export class CESP implements Revision {
 	  Queries the MediaWiki API to get the article title and author ID from revision ID.
 	*/
 	async getUserAndTitle(){
-	    var this_url = this.url;
+	    var thisUrl = this.url;
 	    var params = {
 	        action: "query",
 	        format: "json",
 	        prop: "info|revisions",
 	 		revids: this.revID,
 	    }
-	    Object.keys(params).forEach(function(key){this_url += "&" + key + "=" + params[key];});
-	    var response = await fetch(this_url, {headers: {"User-Agent": "WikiLoop DoubleCheck Team"}});
-	    var response_json = await response.json();
+	    Object.keys(params).forEach(function(key){thisUrl += "&" + key + "=" + params[key];});
+	    var response = await fetch(thisUrl, {headers: {"User-Agent": "WikiLoop DoubleCheck Team"}});
+	    var responseJson = await response.json();
 	    
-	    var pages_object = response_json.query.pages;
+	    var pagesObject = responseJson.query.pages;
 
-	    for (var v in pages_object) {
-	    	var page_object = pages_object[v];
+	    for (var v in pagesObject) {
+	    	var pageObject = pagesObject[v];
 	    }
 
-	    var title = page_object.title;
-	    var author = page_object.revisions[0].user;
-	    var timestamp = page_object.revisions[0].timestamp;
+	    var title = pageObject.title;
+	    var author = pageObject.revisions[0].user;
+	    var timestamp = pageObject.revisions[0].timestamp;
 	    this.title = title;
 	    this.author = author;
 	    this.timestamp = timestamp;
@@ -116,7 +116,7 @@ export class CESP implements Revision {
 	    var timestamp = this.timestamp;
 	    console.log("Timestamp in findEditHistoryAuthor is: " + timestamp);
 
-	    var this_url = this.url;
+	    var thisUrl = this.url;
 	    var params = {
 	        action: "query",
 	        format: "json",
@@ -124,24 +124,24 @@ export class CESP implements Revision {
 	        arvuser: author,
 	        arvstart: timestamp,
 	        arvdir: "older",
-	        arvlimit: this.window_size,
+	        arvlimit: this.windowSize,
 	        arvprop: "oresscores|timestamp",
 	    }
-	    Object.keys(params).forEach(function(key){this_url += "&" + key + "=" + params[key];});
-	    var response = await fetch(this_url, {headers: {"User-Agent": "WikiLoop DoubleCheck Team"}});
+	    Object.keys(params).forEach(function(key){thisUrl += "&" + key + "=" + params[key];});
+	    var response = await fetch(thisUrl, {headers: {"User-Agent": "WikiLoop DoubleCheck Team"}});
 	    console.log(response);
-	    var response_json = await response.json();
-	    console.log(response_json);
+	    var responseJson = await response.json();
+	    console.log(responseJson);
 
-	    var edits_by_article = response_json.query.allrevisions;
+	    var editsByArticle = responseJson.query.allrevisions;
 
-	    var edits_list = [];
-	    for (var page in edits_by_article) {
-	        edits_list.push(edits_by_article[page].revisions[0]);
-	        edits_list[edits_list.length - 1].title = edits_by_article[page].title;
+	    var editsList = [];
+	    for (var page in editsByArticle) {
+	        editsList.push(editsByArticle[page].revisions[0]);
+	        editsList[editsList.length - 1].title = editsByArticle[page].title;
 	    }
-	    this.edits_list = edits_list;
-	    console.log("Retrieved past " + edits_list.length + " edits for author " + author);
+	    this.editsList = editsList;
+	    console.log("Retrieved past " + editsList.length + " edits for author " + author);
 	    return;
 	}
 
@@ -151,12 +151,12 @@ export class CESP implements Revision {
 	    var timestamp = this.timestamp;
 	    console.log("Timestamp in findEditHistoryArticle is: " + timestamp);
 
-	    var this_url = this.url;
+	    var thisUrl = this.url;
 	    var params = {
 	        action: "query",
 	        rvdir: "older",
 	        rvstart: timestamp,
-	        rvlimit: this.window_size,
+	        rvlimit: this.windowSize,
     		prop: "revisions",
     		titles: title,
     		rvprop: "timestamp|user|oresscores",
@@ -164,19 +164,19 @@ export class CESP implements Revision {
     		formatversion: "2",
     		format: "json",
 	    }
-	    Object.keys(params).forEach(function(key){this_url += "&" + key + "=" + params[key];});
-	    var response = await fetch(this_url, {headers: {"User-Agent": "WikiLoop DoubleCheck Team"}});
+	    Object.keys(params).forEach(function(key){thisUrl += "&" + key + "=" + params[key];});
+	    var response = await fetch(thisUrl, {headers: {"User-Agent": "WikiLoop DoubleCheck Team"}});
 	    console.log(response);
-	    var response_json = await response.json();
-	    console.log(response_json);
+	    var responseJson = await response.json();
+	    console.log(responseJson);
 
-	    var edits_by_article = response_json.query.pages["0"].revisions;
-	    var edits_list = [];
-	    for (var key in edits_by_article) {
-	    	edits_list.push(edits_by_article[key]);
+	    var editsByArticle = responseJson.query.pages["0"].revisions;
+	    var editsList = [];
+	    for (var key in editsByArticle) {
+	    	editsList.push(editsByArticle[key]);
 	    }
-	    this.edits_list = edits_list;
-	    console.log("Retrieved past " + edits_list.length + " edits for author " + author);
+	    this.editsList = editsList;
+	    console.log("Retrieved past " + editsList.length + " edits for author " + author);
 	    return;
 	}
 
@@ -230,7 +230,7 @@ export class CESP implements Revision {
 
 	async getPreviousWarningsAuthor(
 		user_id: string,
-		end_timestamp: Date
+		endTimestamp: Date
 	) {
 		/*
 		// Simulated Database
@@ -240,35 +240,35 @@ export class CESP implements Revision {
 	    }else{
 	    	var events_by_user = this.db[user_id];
     		// Within body of anonymous function, the keyword "this" cannot reference the outside
-    		// class. Hence using this.warning_timeframe directly inside anonymous function 
+    		// class. Hence using this.warningTimeframe directly inside anonymous function 
     		// will be undefined. 
-    		var warning_timeframe = this.warning_timeframe;
-	    	var events_before_end = events_by_user.filter(function(edit){
-	    		var warning_period_start = new Date(end_timestamp);
-	    		warning_period_start.setDate(warning_period_start.getDate() - warning_timeframe);
-	    		var warning_period_end = new Date(end_timestamp);
+    		var warningTimeframe = this.warningTimeframe;
+	    	var eventsBeforeEnd = events_by_user.filter(function(edit){
+	    		var warning_period_start = new Date(endTimestamp);
+	    		warning_period_start.setDate(warning_period_start.getDate() - warningTimeframe);
+	    		var warning_period_end = new Date(endTimestamp);
 	    		var this_edit_time = new Date(edit.timestamp);
 	    		// Reason to use <= and >=: enable easier testing of Decision Log and Messaging service
 	    		return (this_edit_time >= warning_period_start && this_edit_time <= warning_period_end); 
 	    	});
-	    	console.log("Get " + events_before_end.length + " past events for " + user_id);
-	    	return events_before_end;
+	    	console.log("Get " + eventsBeforeEnd.length + " past events for " + user_id);
+	    	return eventsBeforeEnd;
 	    }
 	    */
-	    let start_timestamp = new Date();
-	    start_timestamp.setDate(end_timestamp.getDate() - this.warning_timeframe);
-	    let events_before_end: DecisionLogProps[] = await DecisionLog.find({
+	    let startTimestamp = new Date();
+	    startTimestamp.setDate(endTimestamp.getDate() - this.warningTimeframe);
+	    let eventsBeforeEnd: DecisionLogProps[] = await DecisionLog.find({
 	    	user_id: user_id,
 	    	type: {$in: ["warning", "block"]},
-	    	timestamp: {$gte: start_timestamp, $lte: end_timestamp}
-	    }).sort([['timestamp', 1]]).limit(this.warning_threshold * 10); //Avoid too many events 
-	    console.log("Get " + events_before_end.length + " past events for " + user_id);
-	    return events_before_end;
+	    	timestamp: {$gte: startTimestamp, $lte: endTimestamp}
+	    }).sort([['timestamp', 1]]).limit(this.warningThreshold * 10); //Avoid too many events 
+	    console.log("Get " + eventsBeforeEnd.length + " past events for " + user_id);
+	    return eventsBeforeEnd;
 	}
 
 	async getPreviousWarningsArticle(
 		title: string, 
-		end_timestamp: Date
+		endTimestamp: Date
 	) {
 		/*
 		// Simulated Database
@@ -278,30 +278,30 @@ export class CESP implements Revision {
 	    }else{
 	    	var events_on_article = this.db[title];
     		// Within body of anonymous function, the keyword "this" cannot reference the outside
-    		// class. Hence using this.warning_timeframe directly inside anonymous function 
+    		// class. Hence using this.warningTimeframe directly inside anonymous function 
     		// will be undefined. 
-    		var warning_timeframe = this.warning_timeframe;
-	    	var events_before_end = events_on_article.filter(function(edit){
-	    		var warning_period_start = new Date(end_timestamp);
-	    		warning_period_start.setDate(warning_period_start.getDate() - warning_timeframe);
-	    		var warning_period_end = new Date(end_timestamp);
+    		var warningTimeframe = this.warningTimeframe;
+	    	var eventsBeforeEnd = events_on_article.filter(function(edit){
+	    		var warning_period_start = new Date(endTimestamp);
+	    		warning_period_start.setDate(warning_period_start.getDate() - warningTimeframe);
+	    		var warning_period_end = new Date(endTimestamp);
 	    		var this_edit_time = new Date(edit.timestamp);
 	    		// Reason to use <= and >=: enable easier testing of Decision Log and Messaging service
 	    		return (this_edit_time >= warning_period_start && this_edit_time <= warning_period_end); 
 	    	});
-	    	console.log("Get " + events_before_end.length + " past events for " + title);
-	    	return events_before_end;
+	    	console.log("Get " + eventsBeforeEnd.length + " past events for " + title);
+	    	return eventsBeforeEnd;
 	    }
 	    */
-	    let start_timestamp = new Date();
-	    start_timestamp.setDate(end_timestamp.getDate() - this.warning_timeframe);
-	    let events_before_end: DecisionLogProps[] = await DecisionLog.find({
+	    let startTimestamp = new Date();
+	    startTimestamp.setDate(endTimestamp.getDate() - this.warningTimeframe);
+	    let eventsBeforeEnd: DecisionLogProps[] = await DecisionLog.find({
 	    	title: title,
 	    	type: {$in: ["protect", "articleLogEvent"]},
-	    	timestamp: {$gte: start_timestamp, $lte: end_timestamp}
-	    }).sort([['timestamp', 1]]).limit(this.warning_threshold * 10); //Avoid too many events 
-	    console.log("Get " + events_before_end.length + " past events for " + title);
-	    return events_before_end;
+	    	timestamp: {$gte: startTimestamp, $lte: endTimestamp}
+	    }).sort([['timestamp', 1]]).limit(this.warningThreshold * 10); //Avoid too many events 
+	    console.log("Get " + eventsBeforeEnd.length + " past events for " + title);
+	    return eventsBeforeEnd;
 	}
 
 	async writeNewDecisionAuthor(
@@ -309,28 +309,28 @@ export class CESP implements Revision {
 		title: string, 
 		type: string, 
 		timestamp: Date, 
-		recipient_id: string, 
-		start_window: Date, 
-		avg_score: number
+		recipientId: string, 
+		startWindow: Date, 
+		avgScore: number
 	) {
-		var decision_object = {
+		var decisionObject = {
 			user_id: user_id,
 			title: title,
 			type: type,
 			timestamp: timestamp,
-			recipient_id: recipient_id,
-			start_window: start_window,
-			avg_score: avg_score,
+			recipientId: recipientId,
+			startWindow: startWindow,
+			avgScore: avgScore,
 		}
 		/*
 		// Simulated Database
 	    if(!(user_id in this.db)) {
-	    	this.db[user_id] = [decision_object];
+	    	this.db[user_id] = [decisionObject];
 	    }else {
-	    	this.db[user_id].push(decision_object);
+	    	this.db[user_id].push(decisionObject);
 	    }
 	    */
-	    await DecisionLog.create(decision_object);
+	    await DecisionLog.create(decisionObject);
 	    console.log("Suspicious event of type " + type + " logged for author " + user_id + " at " + timestamp);
 	}
 
@@ -339,28 +339,28 @@ export class CESP implements Revision {
 		title: string, 
 		type: string, 
 		timestamp: Date, 
-		recipient_id: string, 
-		start_window: Date, 
-		avg_score: number
+		recipientId: string, 
+		startWindow: Date, 
+		avgScore: number
 	) {
-		var decision_object = {
+		var decisionObject = {
 			user_id: user_id,
 			title: title,
 			type: type,
 			timestamp: timestamp,
-			recipient_id: recipient_id,
-			start_window: start_window,
-			avg_score: avg_score,
+			recipientId: recipientId,
+			startWindow: startWindow,
+			avgScore: avgScore,
 		}
 		/*
 		// Simulated Database
 	    if(!(title in this.db)) {
-	    	this.db[title] = [decision_object];
+	    	this.db[title] = [decisionObject];
 	    }else {
-	    	this.db[title].push(decision_object);
+	    	this.db[title].push(decisionObject);
 	    }
 	    */
-	    await DecisionLog.create(decision_object);
+	    await DecisionLog.create(decisionObject);
 	    console.log("Suspicious event of type " + type + " logged for article " + title + " at " + timestamp);
 	}
 
@@ -368,74 +368,74 @@ export class CESP implements Revision {
 	async getScoreAndProcess(){
 	    var title = this.title;
 	    var author = this.author;
-	    var edits_list = this.edits_list;
+	    var editsList = this.editsList;
 
-	    var scores = new Array(Math.min(this.window_size, edits_list.length));
-	    var previous_revision_infos = new Array(Math.min(this.window_size, edits_list.length));
+	    var scores = new Array(Math.min(this.windowSize, editsList.length));
+	    var previousRevisionInfos = new Array(Math.min(this.windowSize, editsList.length));
 	    for (var i = 0; i < scores.length; i++) {
 	        //Only take ORES_DAMAGING score 
 	        //If ORES Scores are missing, skip this edit entirely. 
-	        if(edits_list[i].oresscores.damaging == undefined) {
+	        if(editsList[i].oresscores.damaging == undefined) {
 	        	var missing_score_string = "";
 	        	missing_score_string += "Title: " + title + " Author: " + author + "\n";
 	        	missing_score_string += "ORES Scores are missing. Hence no detection is performed. \n";
-	        	missing_score_string += "Timestamp: " + edits_list[0].timestamp + "\n";
+	        	missing_score_string += "Timestamp: " + editsList[0].timestamp + "\n";
 	        	console.log(missing_score_string);
 	        	return;
 	        }
-	        scores[i] = edits_list[i].oresscores.damaging.true;
+	        scores[i] = editsList[i].oresscores.damaging.true;
 	        if (this.mode == "author") {
 		        var edit_info = {
 		        	author: this.author,
-		        	title: String(edits_list[i].title),
+		        	title: String(editsList[i].title),
 		        	score: (scores[i] * 100).toFixed(0),
-		        	timestamp: edits_list[i].timestamp,
+		        	timestamp: editsList[i].timestamp,
 		        };
 		    } else if (this.mode == "article") {
 		    	var edit_info = {
-		        	author: String(edits_list[i].user),
+		        	author: String(editsList[i].user),
 		        	title: this.title,
 		        	score: (scores[i] * 100).toFixed(0),
-		        	timestamp: edits_list[i].timestamp,
+		        	timestamp: editsList[i].timestamp,
 		        };
 
 		    }
-	        previous_revision_infos[i] = edit_info;
+	        previousRevisionInfos[i] = edit_info;
 	    }
 
-	    var window_start: number = edits_list[edits_list.length-1].timestamp;
-	    var window_end: number = edits_list[0].timestamp;
-	    var window_start_Date: Date = new Date(window_start);
-	    var window_end_Date: Date = new Date(window_end);
+	    var windowStart: number = editsList[editsList.length-1].timestamp;
+	    var windowEnd: number = editsList[0].timestamp;
+	    var windowStartDate: Date = new Date(windowStart);
+	    var windowEndDate: Date = new Date(windowEnd);
 	    var avg: number = scores.reduce((acc, e) => acc + e, 0) / scores.length;
 	    var diff: number = avg - this.baseline;
-	   	this.window_start = window_start;
-	   	this.window_end = window_end;
+	   	this.windowStart = windowStart;
+	   	this.windowEnd = windowEnd;
 	   	this.avg = avg;
 	   	this.diff = diff;
-	   	this.previous_revision_infos = previous_revision_infos;
+	   	this.previousRevisionInfos = previousRevisionInfos;
 	    
 	    if(diff > this.margin) {
 	    	if (this.mode == "author") {
-		        var warnings = await this.getPreviousWarningsAuthor(author, window_end_Date);
-		        if (warnings.length > this.warning_threshold) {
+		        var warnings = await this.getPreviousWarningsAuthor(author, windowEndDate);
+		        if (warnings.length > this.warningThreshold) {
 		            this.type = "block";
 		            this.recipient = await this.getRecipientForBlock();
 		        }else{
 		            this.type = "warning";
 		            this.recipient = author;
 		        }
-		        this.writeNewDecisionAuthor(author, title, this.type, window_end_Date, this.recipient, window_start_Date, avg);
+		        this.writeNewDecisionAuthor(author, title, this.type, windowEndDate, this.recipient, windowStartDate, avg);
 		    } else if (this.mode == "article") {
-		    	var warnings = await this.getPreviousWarningsArticle(title, window_end_Date);
-		    	if (warnings.length > this.warning_threshold) {
+		    	var warnings = await this.getPreviousWarningsArticle(title, windowEndDate);
+		    	if (warnings.length > this.warningThreshold) {
 		            this.type = "protect";
 		            this.recipient = await this.getRecipientForProtect();
 		        }else{
 		            this.type = "articleLogEvent";
 		            this.recipient = "";
 		        }
-		        this.writeNewDecisionArticle(author, title, this.type, window_end_Date, this.recipient, window_start_Date, avg);
+		        this.writeNewDecisionArticle(author, title, this.type, windowEndDate, this.recipient, windowStartDate, avg);
 		    }
 	    }else{
 	    	if (this.mode == "author") {
@@ -451,8 +451,8 @@ export class CESP implements Revision {
 	    result_string += "Detection Type: " + this.mode + "\n";
 	    result_string += "Avg ORES Damaging score is: " + avg.toFixed(2) + "\n";
 	    result_string += "Difference from baseline score is: " + diff.toFixed(2) + "\n";
-	    result_string += "Starting time of window is: " + window_start +"\n"; 
-	    result_string += "Ending time of window is: " + window_end + "\n";
+	    result_string += "Starting time of window is: " + windowStart +"\n"; 
+	    result_string += "Ending time of window is: " + windowEnd + "\n";
 	    console.log(result_string);
 	    var decision_info = {
 	    	mode: this.mode,
@@ -460,12 +460,12 @@ export class CESP implements Revision {
 	    	author: this.author,
 	    	recipient: this.recipient, 
 	    	percentage: (this.avg * 100).toFixed(0), 
-	    	previous_revision_infos: this.previous_revision_infos,
+	    	previousRevisionInfos: this.previousRevisionInfos,
 	    }
 	    return decision_info;
 	}
 
-	public async execute_decision() {
+	public async executeDecision() {
 		if(this.mode == "author") {
 			if(this.type == "block") {
 				this.sendBlockMessage(this.recipient);

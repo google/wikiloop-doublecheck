@@ -189,13 +189,13 @@
       <div class="mt-4 d-flex justify-content-center" v-bind:style = "{'margin-bottom': '30px'}">
         <div v-if="display_choice_author" class="btn-group mx-1">
           <button
-            v-on:click="execute_author()"
+            v-on:click="executeAuthor()"
             class="btn btn-sm"
             v-bind:class="{ 'btn-success': false, 'btn-outline-success': true}"
           >Yes, I agree to send the {{choice_info_author.type}} message.
           </button>
           <button
-            v-on:click="turn_off_choice_author()"
+            v-on:click="turnOffChoiceAuthor()"
             class="btn btn-sm"
             v-bind:class="{ 'btn-danger': false, 'btn-outline-danger': true}"
           >Skip it for now. 
@@ -216,13 +216,13 @@
       <div class="mt-4 d-flex justify-content-center" v-bind:style = "{'margin-bottom': '30px'}">
         <div v-if="display_choice_article && (choice_info_article.type == 'protect')" class="btn-group mx-1">
           <button
-            v-on:click="execute_article()"
+            v-on:click="executeArticle()"
             class="btn btn-sm"
             v-bind:class="{ 'btn-success': false, 'btn-outline-success': true}"
           >Yes, I agree to send the page-protect request.
           </button>
           <button
-            v-on:click="turn_off_choice_article()"
+            v-on:click="turnOffChoiceArticle()"
             class="btn btn-sm"
             v-bind:class="{ 'btn-danger': false, 'btn-outline-danger': true}"
           >Skip it for now. 
@@ -555,21 +555,21 @@
       cbngPercent: function() {
         return `${this.cbng !== null ? Math.floor(parseFloat(this.cbng) * 100) : "??"}%`;
       },
-      turn_off_choice_author: function() {
+      turnOffChoiceAuthor: function() {
         this.display_choice_author = false;
         this.display_history_author = false;
       },
-      execute_author: function() {
+      executeAuthor: function() {
         this.CESP_instance_author.execute_decision();
-        this.turn_off_choice_author();
+        this.turnOffChoiceAuthor();
       },
-      turn_off_choice_article: function() {
+      turnOffChoiceArticle: function() {
         this.display_choice_article = false;
         this.display_history_article = false;
       },
-      execute_article: function() {
+      executeArticle: function() {
         this.CESP_instance_author.execute_decision();
-        this.turn_off_choice_article();
+        this.turnOffChoiceArticle();
       },
     },
     async created() {

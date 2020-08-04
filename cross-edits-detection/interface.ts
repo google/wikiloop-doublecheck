@@ -16,17 +16,17 @@
 
 export interface Revision {
   analyze();
-  execute_decision();
+  executeDecision();
 }
 
-export interface CESP_Info {
+export interface CESPInfo {
   mode:string;
 	url:string;
-  window_size:number;
+  windowSize:number;
 	baseline:number;
 	percentage:number;
 	margin:number;
-	warning_timeframe:number; //Timeframe to get previous warnings to determine blocks, in days
-	warning_threshold:number;
+	warningTimeframe:number; //Timeframe to get previous warnings to determine blocks, in days
+	warningThreshold:number;
 	revID:string;
 }
