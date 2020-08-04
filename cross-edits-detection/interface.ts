@@ -19,7 +19,7 @@ export interface Revision {
   executeDecision();
 }
 
-export interface CESPInfo {
+export interface CrossEditSuspiciousPatternsInfo {
   mode:string;
 	url:string;
   windowSize:number;

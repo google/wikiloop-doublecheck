@@ -175,24 +175,24 @@
           <span class="sr-only">{{$t(`Label-Loading`)}}...</span>
         </div>
       </div>
-      <div v-if="display_choice_author && (choice_info_author.type == 'warning')" v-bind:style="{color: 'red', 'margin-left': '50px', 'margin-right': '50px'}">
-        WikiLoop-DoubleCheck has detected suspicious behavior by the author of this revision. Recent revisions by this author have an average ORES damaging score of {{choice_info_author.percentage}}%. Should a warning be sent on your behalf to the author? <br>
+      <div v-if="displayChoiceAuthor && (choiceInfoAuthor.type == 'warning')" v-bind:style="{color: 'red', 'margin-left': '50px', 'margin-right': '50px'}">
+        WikiLoop-DoubleCheck has detected suspicious behavior by the author of this revision. Recent revisions by this author have an average ORES damaging score of {{choiceInfoAuthor.percentage}}%. Should a warning be sent on your behalf to the author? <br>
         Previous revisions by this author:
       </div>
-      <div v-if="display_choice_author && (choice_info_author.type == 'block')" v-bind:style="{color: 'red', 'margin-left': '50px', 'margin-right': '50px'}">
-        WikiLoop-DoubleCheck has detected suspicious behavior by the author of this revision. Recent revisions by this author have an average ORES damaging score of {{choice_info_author.percentage}}%. This author has been warned {{warning_threshold_author}} times in the past {{warning_timeframe_author}} days. Should a block request be sent on your behalf to the community administrators? <br> 
+      <div v-if="displayChoiceAuthor && (choiceInfoAuthor.type == 'block')" v-bind:style="{color: 'red', 'margin-left': '50px', 'margin-right': '50px'}">
+        WikiLoop-DoubleCheck has detected suspicious behavior by the author of this revision. Recent revisions by this author have an average ORES damaging score of {{choiceInfoAuthor.percentage}}%. This author has been warned {{warningThresholdAuthor}} times in the past {{warningTimeframeAuthor}} days. Should a block request be sent on your behalf to the community administrators? <br> 
         Previous revisions by this author: 
       </div>
-      <li v-if= "display_history_author" v-for="item in previous_revision_infos_author":key="item.timestamp" v-bind:style="{'margin-left': '65px', 'margin-right': '50px'}">
+      <li v-if= "displayHistoryAuthor" v-for="item in previousRevisionInfosAuthor":key="item.timestamp" v-bind:style="{'margin-left': '65px', 'margin-right': '50px'}">
         Revision on article {{item.title}}, at {{item.timestamp}}, ORES damaging score: {{item.score}}% 
       </li>
       <div class="mt-4 d-flex justify-content-center" v-bind:style = "{'margin-bottom': '30px'}">
-        <div v-if="display_choice_author" class="btn-group mx-1">
+        <div v-if="displayChoiceAuthor" class="btn-group mx-1">
           <button
             v-on:click="executeAuthor()"
             class="btn btn-sm"
             v-bind:class="{ 'btn-success': false, 'btn-outline-success': true}"
-          >Yes, I agree to send the {{choice_info_author.type}} message.
+          >Yes, I agree to send the {{choiceInfoAuthor.type}} message.
           </button>
           <button
             v-on:click="turnOffChoiceAuthor()"
@@ -202,19 +202,19 @@
           </button>
         </div>
       </div>
-      <div v-if="display_choice_article && (choice_info_article.type == 'articleLogEvent')" v-bind:style="{color: 'red', 'margin-left': '50px', 'margin-right': '50px'}">
-        WikiLoop-DoubleCheck has detected suspicious behavior on this article. Recent revisions on this article have an average ORES damaging score of {{choice_info_article.percentage}}%. <br>
+      <div v-if="displayChoiceArticle && (choiceInfoArticle.type == 'articleLogEvent')" v-bind:style="{color: 'red', 'margin-left': '50px', 'margin-right': '50px'}">
+        WikiLoop-DoubleCheck has detected suspicious behavior on this article. Recent revisions on this article have an average ORES damaging score of {{choiceInfoArticle.percentage}}%. <br>
         Previous revisions on this article:
       </div>
-      <div v-if="display_choice_article && (choice_info_article.type == 'protect')" v-bind:style="{color: 'red', 'margin-left': '50px', 'margin-right': '50px'}">
-        WikiLoop-DoubleCheck has detected suspicious behavior on this article. Recent revisions on this article have an average ORES damaging score of {{choice_info_article.percentage}}%. Suspicious behavior has occured {{warning_threshold_article}} times in the past {{warning_timeframe_article}} days. Should a page-protect request be sent on your behalf to the community administrators? <br> 
+      <div v-if="displayChoiceArticle && (choiceInfoArticle.type == 'protect')" v-bind:style="{color: 'red', 'margin-left': '50px', 'margin-right': '50px'}">
+        WikiLoop-DoubleCheck has detected suspicious behavior on this article. Recent revisions on this article have an average ORES damaging score of {{choiceInfoArticle.percentage}}%. Suspicious behavior has occured {{warningThresholdArticle}} times in the past {{warningTimeframeArticle}} days. Should a page-protect request be sent on your behalf to the community administrators? <br> 
         Previous revisions on this article: 
       </div>
-      <li v-if= "display_history_article" v-for="item in previous_revision_infos_article":key="item.timestamp" v-bind:style="{'margin-left': '65px', 'margin-right': '50px'}">
+      <li v-if= "displayHistoryArticle" v-for="item in previousRevisionInfosArticle":key="item.timestamp" v-bind:style="{'margin-left': '65px', 'margin-right': '50px'}">
         Revision by {{item.author}}, at {{item.timestamp}}, ORES damaging score: {{item.score}}% 
       </li>
       <div class="mt-4 d-flex justify-content-center" v-bind:style = "{'margin-bottom': '30px'}">
-        <div v-if="display_choice_article && (choice_info_article.type == 'protect')" class="btn-group mx-1">
+        <div v-if="displayChoiceArticle && (choiceInfoArticle.type == 'protect')" class="btn-group mx-1">
           <button
             v-on:click="executeArticle()"
             class="btn btn-sm"
@@ -237,8 +237,8 @@
   import {  fetchDiffWithWikiRevId, supportedWikis, getUrlBaseByWiki } from '@/shared/utility-shared';
   import DiffBox from '@/components/DiffBox.vue';
   import socket from '@/plugins/socket.io.js';
-  import {CESP_Info} from "@/cross-edits-detection/interface";
-  import {CESP} from "@/cross-edits-detection/CESP";
+  import {CrossEditSuspiciousPatternsInfo} from "@/cross-edits-detection/interface";
+  import {CrossEditSuspiciousPatterns} from "@/cross-edits-detection/CrossEditSuspiciousPatterns";
   export default {
     components: {
       DiffBox
@@ -289,22 +289,22 @@
         stiki: null,
         cbng: null,
         action: null,
-        // author-based CESP analysis
-        warning_timeframe_author: 3,
-        warning_threshold_author: 3,
-        CESP_instance_author: null,
-        display_choice_author: false,
-        display_history_author: false,
-        choice_info_author: null,
-        previous_revision_infos_author: null,
-        // article-based CESP analysis
-        warning_timeframe_article: 3,
-        warning_threshold_article: 3,
-        CESP_instance_article: null,
-        display_choice_article: false,
-        display_history_article: false,
-        choice_info_article: null,
-        previous_revision_infos_article: null,
+        // author-based CrossEditSuspiciousPatterns analysis
+        warningTimeframeAuthor: 3,
+        warningThresholdAuthor: 3,
+        CrossEditSuspiciousPatternsInstanceAuthor: null,
+        displayChoiceAuthor: false,
+        displayHistoryAuthor: false,
+        choiceInfoAuthor: null,
+        previousRevisionInfosAuthor: null,
+        // article-based CrossEditSuspiciousPatterns analysis
+        warningTimeframeArticle: 3,
+        warningThresholdArticle: 3,
+        CrossEditSuspiciousPatternsInstanceArticle: null,
+        displayChoiceArticle: false,
+        displayHistoryArticle: false,
+        choiceInfoArticle: null,
+        previousRevisionInfosArticle: null,
       }
     },
     methods: {
@@ -556,19 +556,19 @@
         return `${this.cbng !== null ? Math.floor(parseFloat(this.cbng) * 100) : "??"}%`;
       },
       turnOffChoiceAuthor: function() {
-        this.display_choice_author = false;
-        this.display_history_author = false;
+        this.displayChoiceAuthor = false;
+        this.displayHistoryAuthor = false;
       },
       executeAuthor: function() {
-        this.CESP_instance_author.execute_decision();
+        this.CrossEditSuspiciousPatternsInstanceAuthor.executeDecision();
         this.turnOffChoiceAuthor();
       },
       turnOffChoiceArticle: function() {
-        this.display_choice_article = false;
-        this.display_history_article = false;
+        this.displayChoiceArticle = false;
+        this.displayHistoryArticle = false;
       },
       executeArticle: function() {
-        this.CESP_instance_author.execute_decision();
+        this.CrossEditSuspiciousPatternsInstanceAuthor.executeDecision();
         this.turnOffChoiceArticle();
       },
     },
@@ -607,48 +607,48 @@
       });
 
       // Author-based analysis
-      var cur_revision_info_author: CESP_Info = {
+      var curRevisionInfoAuthor: CrossEditSuspiciousPatternsInfo = {
         mode: "author",
         url: "https://en.wikipedia.org/w/api.php?origin=*",
-        window_size: 10,
+        windowSize: 10,
         baseline: 0.0,
         percentage: 0.0,
         margin: 0.1,
-        warning_timeframe: this.warning_timeframe_author,
-        warning_threshold: this.warning_threshold_author,
+        warningTimeframe: this.warningTimeframeAuthor,
+        warningThreshold: this.warningThresholdAuthor,
         revID: this.wikiRevId,
       }
-      this.CESP_instance_author = new CESP(cur_revision_info_author);
-      var decision_info_author = await this.CESP_instance_author.analyze();
-      if (decision_info_author.type != "") {
-          this.display_choice_author = true;
-          this.display_history_author = true;
-          this.choice_info_author = decision_info_author;
-          this.previous_revision_infos_author = decision_info_author.previous_revision_infos;
+      this.CrossEditSuspiciousPatternsInstanceAuthor = new CrossEditSuspiciousPatterns(curRevisionInfoAuthor);
+      var decisionInfoAuthor = await this.CrossEditSuspiciousPatternsInstanceAuthor.analyze();
+      if (decisionInfoAuthor.type != "") {
+          this.displayChoiceAuthor = true;
+          this.displayHistoryAuthor = true;
+          this.choiceInfoAuthor = decisionInfoAuthor;
+          this.previousRevisionInfosAuthor = decisionInfoAuthor.previousRevisionInfos;
       }
-      console.log(this.previous_revision_infos_author);
+      console.log(this.previousRevisionInfosAuthor);
 
       // Article-based analysis
-      var cur_revision_info_article: CESP_Info = {
+      var curRevisionInfoArticle: CrossEditSuspiciousPatternsInfo = {
         mode: "article",
         url: "https://en.wikipedia.org/w/api.php?origin=*",
-        window_size: 10,
+        windowSize: 10,
         baseline: 0.0,
         percentage: 0.0,
         margin: 0.1,
-        warning_timeframe: this.warning_timeframe_article,
-        warning_threshold: this.warning_threshold_article,
+        warningTimeframe: this.warningTimeframeArticle,
+        warningThreshold: this.warningThresholdArticle,
         revID: this.wikiRevId,
       }
-      this.CESP_instance_article = new CESP(cur_revision_info_article);
-      var decision_info_article = await this.CESP_instance_article.analyze();
-      if (decision_info_article.type != "") {
-          this.display_choice_article = true;
-          this.display_history_article = true;
-          this.choice_info_article = decision_info_article;
-          this.previous_revision_infos_article = decision_info_article.previous_revision_infos;
+      this.CrossEditSuspiciousPatternsInstanceArticle = new CrossEditSuspiciousPatterns(curRevisionInfoArticle);
+      var decisionInfoArticle = await this.CrossEditSuspiciousPatternsInstanceArticle.analyze();
+      if (decisionInfoArticle.type != "") {
+          this.displayChoiceArticle = true;
+          this.displayHistoryArticle = true;
+          this.choiceInfoArticle = decisionInfoArticle;
+          this.previousRevisionInfosArticle = decisionInfoArticle.previousRevisionInfos;
       }
-      console.log(this.previous_revision_infos_article);
+      console.log(this.previousRevisionInfosArticle);
 
     },
     beforeCreate() {

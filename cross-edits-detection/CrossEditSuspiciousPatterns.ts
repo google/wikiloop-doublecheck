@@ -14,16 +14,16 @@
   limitations under the License.
 **/
 
-import {CESPInfo, Revision} from "./interface";
+import {CrossEditSuspiciousPatternsInfo, Revision} from "./interface";
 import {
   DecisionLog,
   DecisionLogProps,
   DecisionLogDoc
 } from '~/shared/models/decision-log.model';
 
-export class CESP implements Revision {
+export class CrossEditSuspiciousPatterns implements Revision {
 
-	// Enum of Operating Mode of the CESP Detection Mechanism. 
+	// Enum of Operating Mode of the CrossEditSuspiciousPatterns Detection Mechanism. 
 	// Two Possibilities: "author" for author-based detection and "article" for article-based detection. 
 	mode:string;
 
@@ -54,7 +54,7 @@ export class CESP implements Revision {
 	previousRevisionInfos;
 
 
-	constructor (info: CESPInfo) {
+	constructor (info: CrossEditSuspiciousPatternsInfo) {
 		this.mode = info.mode;
 		this.url = info.url;
     	this.windowSize = info.windowSize;
