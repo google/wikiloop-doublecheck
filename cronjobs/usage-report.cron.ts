@@ -13,38 +13,24 @@
 // limitations under the License.
 import { MwMailer }  from '../mailer/mw-mailer';
 import {CronJob} from "cron";
-import {mailCronLogger} from "@/server/common";
+import {cronLogger} from "@/server/common";
+import { envAssert, frequencyToNumDaysMap } from './util';
 
-const ANONYMOUS_PLACEHOLDER:string = `(anonymous)`;
-
-const frequencyToNumDaysMap = {
-    'daily': 1,
-    'weekly': 7,
-    'monthly': 30,
-    'quarterly': 90,
-    'annually': 365,
-};
-
-const envAssert = (varName) => {
-    console.assert(process.env[varName],`Warning Environment Varaible ${varName} doesn't exist.`);
-    if (process.env[varName]) return true;
-    else return false;
-};
 
 export class UsageReportCronJob {
     public cronJob:CronJob;
     private frequency:string;
     constructor(cronTime:string, frequency:string) {
-        mailCronLogger.info(`Setting up UsageReportCronJob for cronTime=${cronTime}, frequency=${frequency}`);
+        cronLogger.info(`Setting up UsageReportCronJob for cronTime=${cronTime}, frequency=${frequency}`);
         this.frequency = frequency;
         this.cronJob = new CronJob(cronTime/* 6am everyday */, async () => {
-            mailCronLogger.info(`Running UsageReportCronJob at ${new Date()}`);
+            cronLogger.info(`Running UsageReportCronJob at ${new Date()}`);
             await UsageReportCronJob.usageReport(this.frequency);
         }, null, false, process.env.CRON_TIMEZONE || "America/Los_Angeles");
     }
 
     public static usageReport = async function (frequency) {
-        mailCronLogger.info(`Executing UsageReport at `, new Date());
+        cronLogger.info(`Executing UsageReport at `, new Date());
         if (envAssert('REPORT_RECEIVER') && process.env['REPORT_RECEIVER'].length > 0) {
             if (envAssert('MAIL_SENDER_USERNAME') && envAssert('MAIL_SENDER_PASSWORD')) {
                 const nodemailer = require("nodemailer");
@@ -78,10 +64,10 @@ export class UsageReportCronJob {
                     html: html // html body
                 });
 
-                mailCronLogger.info(`Message sent: ${info.messageId}`);
+                cronLogger.info(`Message sent: ${info.messageId}`);
 
             } else {
-                mailCronLogger.info(`No ${[
+                cronLogger.info(`No ${[
                     'REPORT_RECEIVER', 'MAIL_SENDER_USERNAME', 'MAIL_SENDER_PASSWORD'
                 ].join(' or ')}, not sending msg.`);
             }
@@ -90,54 +76,7 @@ export class UsageReportCronJob {
 
 
     public startCronJob() {
-        mailCronLogger.info(`Starting UsageReportCronJob cronjob.`);
-        this.cronJob.start();
-    }
-}
-
-export class AwardBarnStarCronJob {
-    public cronJob:CronJob;
-    constructor(cronTime:string, frequency:string) {
-        mailCronLogger.debug(`Setting up AwardBarnStarCronJob for cronTime=${cronTime}, frequency=${frequency}`);
-        this.cronJob = new CronJob(
-            // "* * * * * Mon"/* 6am everyday */,
-            cronTime,
-            async () => {
-                mailCronLogger.debug(`Running weeklyBarnstarJob at ${new Date()}`);
-                await AwardBarnStarCronJob.awardBarnstar(frequency);
-            }, null, false, process.env.CRON_TIMEZONE || "America/Los_Angeles");
-    }
-
-    private static awardBarnstarMsg = async (mwMailer, user, frequency, endDate, isReal) => {
-        await mwMailer.mail(
-            isReal ? `User_talk:${user}` : `User:Xinbenlv/Sandbox/User_talk:${user}`,
-            `== The WikiLoop DoubleCheck ${frequency} barnstar ==\n` +
-            `{{subst:Xinbenlv/WikiLoop DoubleCheck Champion|user=${user}|enddate=${endDate}|timerange=${frequency}}}`,
-            `Awarding The WikiLoop DoubleCheck ${frequency} barnstar to ${user} ending on ${endDate}`);
-    };
-
-    public static awardBarnstar = async function (frequency:string) {
-        mailCronLogger.info(`Executing AwardBarnstar CronJob at `, new Date());
-        if (envAssert('WP_USER') && envAssert('WP_PASSWORD')) {
-            let mwMailer = new MwMailer();
-            await mwMailer.init();
-            let formattedDate/**format: YYYY-MM-DD */ = new Date().toISOString().split('T')[0];
-            let report = await require('@/server/routes/stats')
-                .getChampion(frequencyToNumDaysMap[frequency], formattedDate, 'enwiki');
-            let users = report.slice(0, 10/*top 10*/)
-                .filter(n => n !== ANONYMOUS_PLACEHOLDER)
-                .map(item => item._id.wikiUserName)
-            await Promise.all(users.map(async user => {
-                await AwardBarnStarCronJob.awardBarnstarMsg(
-                mwMailer, user, frequency, formattedDate, process.env.WP_LEVEL === 'real')
-            }));
-        } else {
-            mailCronLogger.error(`NOT Running awardBarnstar because of lack sufficient vars`);
-        }
-    };
-
-    public startCronJob() {
-        mailCronLogger.info(`Starting award barnstar cronjob`);
+        cronLogger.info(`Starting UsageReportCronJob cronjob.`);
         this.cronJob.start();
     }
 }

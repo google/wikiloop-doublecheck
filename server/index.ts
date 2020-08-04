@@ -23,13 +23,17 @@ import { getUrlBaseByWiki, wikiToDomain } from "@/shared/utility-shared";
 import { installHook } from "~/server/routers/api/interaction";
 import { BasicJudgement } from "~/shared/interfaces";
 import { InteractionProps } from "~/shared/models/interaction-item.model";
-import { AwardBarnStarCronJob, UsageReportCronJob } from "../cronjobs";
+import { UsageReportCronJob } from "../cronjobs/usage-report.cron";
+import { AwardBarnStarCronJob } from "../cronjobs/award-barnstar.cron";
+
 import { apiLogger, asyncHandler, ensureAuthenticated, fetchRevisions, isWhitelistedFor, logger, perfLogger, useOauth, colorizeMaybe, latencyColor, statusColor } from './common';
 import { getMetrics } from "./routers/api/metrics";
 import { apiRouter as newApiRouter } from "./routers/api";
-import { axiosLogger } from '@/server/common';
+import { axiosLogger, cronLogger } from '@/server/common';
 import axios from 'axios';
 import { debugRouter } from "@/server/routers/debug";
+import {CronJob} from 'cron';
+import { FeedRevisionEngine } from '@/server/feed/feed-revision-engine';
 
 const http = require('http');
 const express = require('express');
@@ -136,6 +140,26 @@ function setupCronJobs() {
     logger.warn(`Skipping UsageReportCronJob because of lack of CRON_BARNSTAR_TIMES which is: `, process.env.CRON_BARNSTAR_TIMES);
   }
 
+  if (process.env.CRON_CATEGORY_TRAVERSE_TIME) {
+    logger.info(`Setting up CronJob for traversing category tree to run at ${process.env.CRON_CATEGORY_TRAVERSE_TIME}`);
+    let traverseCategoryTreeCronJob = new CronJob(process.env.CRON_CATEGORY_TRAVERSE_TIME, async () => {
+      cronLogger.info(`Start running traverseCategoryTree...`);
+      await FeedRevisionEngine.traverseCategoryTree('us2020', 'enwiki', 'Category:2020_United_States_presidential_election');
+      await FeedRevisionEngine.traverseCategoryTree('covid19', 'enwiki', 'Category:COVID-19');
+      cronLogger.info(`Done running traverseCategoryTree!`);
+    }, null, false, process.env.CRON_TIMEZONE || "America/Los_Angeles");
+    traverseCategoryTreeCronJob.start();
+  }
+  if (process.env.CRON_FEED_REVISION_TIME) {
+    logger.info(`Setting up CronJob for populating feed revisions to run at ${process.env.CRON_FEED_REVISION_TIME}`);
+    let feedRevisionCronJob = new CronJob(process.env.CRON_FEED_REVISION_TIME, async () => {
+      cronLogger.info(`Start running populateFeedRevisions...`);
+      await FeedRevisionEngine.populateFeedRevisions('us2020', 'enwiki');
+      await FeedRevisionEngine.populateFeedRevisions('covid19', 'enwiki');
+      cronLogger.info(`Done running populateFeedRevisions!`);
+    }, null, false, process.env.CRON_TIMEZONE || "America/Los_Angeles");
+    feedRevisionCronJob.start();
+  }
 }
 
 function setupHooks() {

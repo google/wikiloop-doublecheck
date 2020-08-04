@@ -14,7 +14,7 @@ import { MwActionApiClient, MwPageInfo } from '@/shared/mwapi'
 import { feedRevisionEngineLogger } from '../common';
 
 export class FeedRevisionEngine {
-  public static async populateRevisionsGivenTitle(wiki: string, feed: string) {
+  public static async populateFeedRevisions(feed: string, wiki: string) {
     let articleLists = (await FeedPage.find({ wiki: wiki, feed: feed })).map(
       fp => fp.title
     )
@@ -284,7 +284,7 @@ export class FeedRevisionEngine {
     feedRevisionEngineLogger.debug(`Done bulkUpdateResult = `, bulkUpdateResult);
   }
 
-  public static traverseCategoryTree = async function(wiki: string, entryTitle: string, feed: string) {
+  public static traverseCategoryTree = async function(feed: string, wiki: string, entryTitle: string) {
     let mwPageInfos = await MwActionApiClient.getMwPageInfosByTitles(wiki, [entryTitle]);
     let mwPageInfo: MwPageInfo = mwPageInfos[0];
 

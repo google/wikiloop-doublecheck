@@ -1,4 +1,4 @@
-import {AwardBarnStarCronJob} from "@/cronjobs";
+import {AwardBarnStarCronJob} from "~/cronjobs/award-barnstar.cron";
 const mongoose = require('mongoose');
 
 async function main() {

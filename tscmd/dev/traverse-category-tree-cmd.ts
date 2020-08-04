@@ -7,11 +7,8 @@ const mainTraverseCategoryTree = async function ()
 {
   initDotEnv();
   await initMongoDb();
-
-  let feed = 'us2020';
-  let wiki = 'enwiki';
-  let entryTitle = "Category:2020_United_States_presidential_election";
-  await FeedRevisionEngine.traverseCategoryTree(wiki, entryTitle, feed);
+  // await FeedRevisionEngine.traverseCategoryTree('us2020', 'enwiki', 'Category:2020_United_States_presidential_election');
+  await FeedRevisionEngine.traverseCategoryTree('covid19', 'enwiki', 'Category:COVID-19');
 }
 
 mainTraverseCategoryTree().then(() => {

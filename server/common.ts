@@ -52,8 +52,8 @@ export const apiLogger = new Logger({
 export const perfLogger = new Logger({
   prefix: pad('PERF', 8),    // Defaults to `''`.
 });
-export const mailCronLogger = new Logger({
-  prefix: pad('MAILCRON', 8),    // Defaults to `''`.
+export const cronLogger = new Logger({
+  prefix: pad('CRON', 8),    // Defaults to `''`.
 });
 
 export const feedRevisionEngineLogger = new Logger({
