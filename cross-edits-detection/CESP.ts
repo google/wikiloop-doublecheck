@@ -15,6 +15,11 @@
 **/
 
 import {CESP_Info, Revision} from "./interface";
+import {
+  DecisionLog,
+  DecisionLogProps,
+  DecisionLogDoc
+} from '~/shared/models/decision-log.model';
 
 export class CESP implements Revision {
 
@@ -65,7 +70,7 @@ export class CESP implements Revision {
 		this.previous_revision_infos = [];
 	}
 
-	async sleep(milliseconds) {
+	async sleep(milliseconds: number) {
   		return new Promise(resolve => setTimeout(resolve, milliseconds));
 	}
 
@@ -193,24 +198,24 @@ export class CESP implements Revision {
     	return true;
 	}
 
-	displayProtectChoice(userID) {
+	displayProtectChoice(userID: string) {
 		//Returns whether the reviewer agrees on issuing a block
     	console.log("Choice displayed to reviewer on whether to protect " + this.title);
     	return true;
 
 	}
 
-	async sendWarningMessage(recipient){
+	async sendWarningMessage(recipient: string){
 		console.log("Warning message sent to " + recipient);
     	return;
 	}
 
-	async sendBlockMessage(recipient){
+	async sendBlockMessage(recipient: string){
 		console.log("Block message sent to " + recipient);
     	return;
 	}
 
-	async sendProtectMessage(recipient){
+	async sendProtectMessage(recipient: string){
 		console.log("Protect message sent to " + recipient);
     	return;
 	}
@@ -223,7 +228,12 @@ export class CESP implements Revision {
 		return "Protect_Recipient_Placeholder";
 	}
 
-	getPreviousWarningsAuthor(user_id, end_timestamp) {
+	async getPreviousWarningsAuthor(
+		user_id: string,
+		end_timestamp: Date
+	) {
+		/*
+		// Simulated Database
 	    if(!(user_id in this.db)) {
 	    	console.log("User id: " + user_id + " not found in database.");
 	    	return [];
@@ -244,9 +254,24 @@ export class CESP implements Revision {
 	    	console.log("Get " + events_before_end.length + " past events for " + user_id);
 	    	return events_before_end;
 	    }
+	    */
+	    let start_timestamp = new Date();
+	    start_timestamp.setDate(end_timestamp.getDate() - this.warning_timeframe);
+	    let events_before_end: DecisionLogProps[] = await DecisionLog.find({
+	    	user_id: user_id,
+	    	type: {$in: ["warning", "block"]},
+	    	timestamp: {$gte: start_timestamp, $lte: end_timestamp}
+	    }).sort([['timestamp', 1]]).limit(this.warning_threshold * 10); //Avoid too many events 
+	    console.log("Get " + events_before_end.length + " past events for " + user_id);
+	    return events_before_end;
 	}
 
-	getPreviousWarningsArticle(title, end_timestamp) {
+	async getPreviousWarningsArticle(
+		title: string, 
+		end_timestamp: Date
+	) {
+		/*
+		// Simulated Database
 	    if(!(title in this.db)) {
 	    	console.log("User id: " + title + " not found in database.");
 	    	return [];
@@ -267,39 +292,75 @@ export class CESP implements Revision {
 	    	console.log("Get " + events_before_end.length + " past events for " + title);
 	    	return events_before_end;
 	    }
+	    */
+	    let start_timestamp = new Date();
+	    start_timestamp.setDate(end_timestamp.getDate() - this.warning_timeframe);
+	    let events_before_end: DecisionLogProps[] = await DecisionLog.find({
+	    	title: title,
+	    	type: {$in: ["protect", "articleLogEvent"]},
+	    	timestamp: {$gte: start_timestamp, $lte: end_timestamp}
+	    }).sort([['timestamp', 1]]).limit(this.warning_threshold * 10); //Avoid too many events 
+	    console.log("Get " + events_before_end.length + " past events for " + title);
+	    return events_before_end;
 	}
 
-	writeNewDecisionAuthor(user_id, title, type, timestamp, recipient_id, start_window, avg_score) {
+	async writeNewDecisionAuthor(
+		user_id: string, 
+		title: string, 
+		type: string, 
+		timestamp: Date, 
+		recipient_id: string, 
+		start_window: Date, 
+		avg_score: number
+	) {
 		var decision_object = {
 			user_id: user_id,
 			title: title,
+			type: type,
 			timestamp: timestamp,
 			recipient_id: recipient_id,
 			start_window: start_window,
 			avg_score: avg_score,
 		}
+		/*
+		// Simulated Database
 	    if(!(user_id in this.db)) {
 	    	this.db[user_id] = [decision_object];
 	    }else {
 	    	this.db[user_id].push(decision_object);
 	    }
+	    */
+	    await DecisionLog.create(decision_object);
 	    console.log("Suspicious event of type " + type + " logged for author " + user_id + " at " + timestamp);
 	}
 
-	writeNewDecisionArticle(user_id, title, type, timestamp, recipient_id, start_window, avg_score) {
+	async writeNewDecisionArticle(
+		user_id: string, 
+		title: string, 
+		type: string, 
+		timestamp: Date, 
+		recipient_id: string, 
+		start_window: Date, 
+		avg_score: number
+	) {
 		var decision_object = {
 			user_id: user_id,
 			title: title,
+			type: type,
 			timestamp: timestamp,
 			recipient_id: recipient_id,
 			start_window: start_window,
 			avg_score: avg_score,
 		}
+		/*
+		// Simulated Database
 	    if(!(title in this.db)) {
 	    	this.db[title] = [decision_object];
 	    }else {
 	    	this.db[title].push(decision_object);
 	    }
+	    */
+	    await DecisionLog.create(decision_object);
 	    console.log("Suspicious event of type " + type + " logged for article " + title + " at " + timestamp);
 	}
 
@@ -342,10 +403,12 @@ export class CESP implements Revision {
 	        previous_revision_infos[i] = edit_info;
 	    }
 
-	    var window_start = edits_list[edits_list.length-1].timestamp;
-	    var window_end = edits_list[0].timestamp;
-	    var avg = scores.reduce((acc, e) => acc + e, 0) / scores.length;
-	    var diff = avg - this.baseline;
+	    var window_start: number = edits_list[edits_list.length-1].timestamp;
+	    var window_end: number = edits_list[0].timestamp;
+	    var window_start_Date: Date = new Date(window_start);
+	    var window_end_Date: Date = new Date(window_end);
+	    var avg: number = scores.reduce((acc, e) => acc + e, 0) / scores.length;
+	    var diff: number = avg - this.baseline;
 	   	this.window_start = window_start;
 	   	this.window_end = window_end;
 	   	this.avg = avg;
@@ -354,7 +417,7 @@ export class CESP implements Revision {
 	    
 	    if(diff > this.margin) {
 	    	if (this.mode == "author") {
-		        var warnings = this.getPreviousWarningsAuthor(author, window_end);
+		        var warnings = await this.getPreviousWarningsAuthor(author, window_end_Date);
 		        if (warnings.length > this.warning_threshold) {
 		            this.type = "block";
 		            this.recipient = await this.getRecipientForBlock();
@@ -362,9 +425,9 @@ export class CESP implements Revision {
 		            this.type = "warning";
 		            this.recipient = author;
 		        }
-		        this.writeNewDecisionAuthor(author, title, this.type, window_end, this.recipient, window_start, avg);
+		        this.writeNewDecisionAuthor(author, title, this.type, window_end_Date, this.recipient, window_start_Date, avg);
 		    } else if (this.mode == "article") {
-		    	var warnings = this.getPreviousWarningsArticle(title, window_end);
+		    	var warnings = await this.getPreviousWarningsArticle(title, window_end_Date);
 		    	if (warnings.length > this.warning_threshold) {
 		            this.type = "protect";
 		            this.recipient = await this.getRecipientForProtect();
@@ -372,7 +435,7 @@ export class CESP implements Revision {
 		            this.type = "articleLogEvent";
 		            this.recipient = "";
 		        }
-		        this.writeNewDecisionArticle(author, title, this.type, window_end, this.recipient, window_start, avg);
+		        this.writeNewDecisionArticle(author, title, this.type, window_end_Date, this.recipient, window_start_Date, avg);
 		    }
 	    }else{
 	    	if (this.mode == "author") {
