@@ -29,10 +29,10 @@ export const installHook = function(hookName, hookFunc:DecisionLogHookFunc) {
 }
 
 async function getPreviousWarningsAuthor(
-    userId: string,
-    endTimestamp: number,
-    warningTimeframe: number,
-    warningThreshold: number,
+  userId: string,
+  endTimestamp: number,
+  warningTimeframe: number,
+  warningThreshold: number,
 ) {
   var endDate = new Date(endTimestamp);
   let startTimestamp = new Date();
@@ -72,8 +72,8 @@ const getAuthorLog = async (req, res) => {
   var events = await getPreviousWarningsAuthor(userId, endTimestamp, warningTimeframe, warningThreshold);
   res.send(events);
   req.visitor
-    .event({ ec: "api", ea: "/decisionLog/author/:userId" })
-    .send();
+      .event({ ec: "api", ea: "/decisionLog/author/:userId" })
+      .send();
 };
 decisionLogRouter.get(`/author/:userId/:endTimestamp/:warningTimeframe/:warningThreshold`, asyncHandler(getAuthorLog));
 
@@ -85,43 +85,43 @@ const getArticleLog = async (req, res) => {
   var events = await getPreviousWarningsArticle(title, endTimestamp, warningTimeframe, warningThreshold);
   res.send(events);
   req.visitor
-    .event({ ec: "api", ea: "/decisionLog/article/:title" })
-    .send();
+      .event({ ec: "api", ea: "/decisionLog/article/:title" })
+      .send();
 };
 decisionLogRouter.get(`/article/:title/:endTimestamp/:warningTimeframe/:warningThreshold`, asyncHandler(getArticleLog));
 
 async function writeNewDecisionAuthor(
   decisionObject: any
 ) {
-    await DecisionLog.create(decisionObject);
-    console.log("Suspicious event of type " + decisionObject.type + " logged for author " + decisionObject.userId + " at " + decisionObject.timestamp);
+  await DecisionLog.create(decisionObject);
+  console.log("Suspicious event of type " + decisionObject.type + " logged for author " + decisionObject.userId + " at " + decisionObject.timestamp);
 }
 
 async function writeNewDecisionArticle(
   decisionObject: any
 ) {
-    await DecisionLog.create(decisionObject);
-    console.log("Suspicious event of type " + decisionObject.type + " logged for article " + decisionObject.title + " at " + decisionObject.timestamp);
+  await DecisionLog.create(decisionObject);
+  console.log("Suspicious event of type " + decisionObject.type + " logged for article " + decisionObject.title + " at " + decisionObject.timestamp);
 }
 
 const updateAuthorLog= async (req, res) => {
-    let decisionLogProps:DecisionLogProps = req.body as DecisionLogProps;
-    await writeNewDecisionAuthor(decisionLogProps);
-    res.send(`ok`);
-    req.visitor
-        .event({ ec: "api", ea: "/decisionLog" })
-        .send();
+  let decisionLogProps:DecisionLogProps = req.body as DecisionLogProps;
+  await writeNewDecisionAuthor(decisionLogProps);
+  res.send(`ok`);
+  req.visitor
+      .event({ ec: "api", ea: "/decisionLog" })
+      .send();
 };
 
 decisionLogRouter.post(`/author`, asyncHandler(updateAuthorLog));
 
 const updateArticleLog= async (req, res) => {
-    let decisionLogProps:DecisionLogProps = req.body as DecisionLogProps;
-    await writeNewDecisionArticle(decisionLogProps);
-    res.send(`ok`);
-    req.visitor
-        .event({ ec: "api", ea: "/decisionLog" })
-        .send();
+  let decisionLogProps:DecisionLogProps = req.body as DecisionLogProps;
+  await writeNewDecisionArticle(decisionLogProps);
+  res.send(`ok`);
+  req.visitor
+      .event({ ec: "api", ea: "/decisionLog" })
+      .send();
 };
 
 decisionLogRouter.post(`/article`, asyncHandler(updateArticleLog));
