@@ -152,12 +152,12 @@
             </tr>
             <tr class="row" v-for="judgement of interaction.judgements">
               <td class="col-4">
-                <router-link v-if="judgement.wikiUserName" :to="`/marked/?wikiUserName=${judgement.wikiUserName}`" replace>
+                <router-link v-if="judgement.wikiUserName" :to="`/history?wikiUserName=${judgement.wikiUserName}`" replace>
                   <object class="avatar-object" v-bind:data="`/api/avatar/${judgement.wikiUserName}`" ></object>
                   <span v-if="isMine(judgement)">{{$t("Label-Me")}} ({{judgement.wikiUserName}})</span>
                   <span v-else>{{judgement.wikiUserName || $t("Label-Anonymous")}}</span>
                 </router-link>
-                <router-link v-else :to="`/marked/?userGaId=${judgement.userGaId}`" replace>
+                <router-link v-else :to="`/history?userGaId=${judgement.userGaId}`" replace>
                   <object class="avatar-object" v-bind:data="`/api/avatar/${judgement.userGaId}`" ></object>
                   <span v-if="$cookiez.get('_ga') === judgement.userGaId ">{{$t("Label-Me")}}</span>
                   <span v-else>{{$t("Label-Someone")}}</span>

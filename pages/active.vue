@@ -24,7 +24,7 @@
       <tbody>
         <tr v-for="(client, index) of $store.state.metrics.activeLoggedInUser" :key="index">
           <td scope="col">
-            <router-link :to="`/marked/?wikiUserName=${client.wikiUserName}`" replace>
+            <router-link :to="`/history?wikiUserName=${client.wikiUserName}`" replace>
               <object class="avatar-object" v-bind:data="`/api/avatar/${client.wikiUserName}`" >
               </object><span>{{client.wikiUserName}} </span>
               <span v-if="isMe(client)">({{$t('Label-Me')}})</span>
@@ -34,7 +34,7 @@
         </tr>
         <tr v-for="(client, index) of $store.state.metrics.activeAnonymousUser" :key="index">
           <td scope="col">
-            <router-link :to="`/marked/?userGaId=${client.userGaId}`" replace>
+            <router-link :to="`/history?userGaId=${client.userGaId}`" replace>
               <object class="avatar-object" v-bind:data="`/api/avatar/${client.userGaId}`" >
               </object><span>{{$t('Label-Anonymous')}} </span>
               <span v-if="isMe(client)">({{$t('Label-Me')}})</span>

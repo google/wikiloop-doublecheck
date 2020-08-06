@@ -7,9 +7,13 @@ const listLabels = async function (req, res) {
         const limit = parseInt(req.query.limit) || 1000;
         const offset = parseInt(req.query.offset) || 0;
 
-        let mongoMatcher = {
+        let mongoMatcher:any = {
             timestamp: {$exists: true}
         };
+
+        if (req.query.wikiUserName) mongoMatcher.wikiUserName = req.query.wikiUserName;
+        if (req.query.userGaId) mongoMatcher.userGaId = req.query.userGaId;
+        if (req.query.title) mongoMatcher.title = req.query.title;
 
         // CONSIDER add query validation logic, if needed.
         // We might adopt API standard such as gRPC or OpenAPI
@@ -30,6 +34,7 @@ const listLabels = async function (req, res) {
                 userGaId: true,
                 wikiUserName: true,
                 judgement: true,
+                title: true,
                 wikiRevId: true,
                 timestamp: true,
                 feed: true
@@ -49,6 +54,7 @@ const listLabels = async function (req, res) {
                 `userGaId`,
                 `wikiUserName`,
                 `judgement`,
+                `title`,
                 `feed`,
             ]]
                 .concat(labels.map((label) => {
@@ -58,6 +64,7 @@ const listLabels = async function (req, res) {
                     label.userGaId,
                     label.wikiUserName,
                     label.judgement,
+                    label.title,
                     label.feed,
                   ]
                 }));

@@ -49,7 +49,7 @@
                                         {{index + 1}}
                                     </td>
                                     <td scope="col">
-                                        <router-link :to="`/marked/?wiki=${leadWiki.wiki}`" replace>
+                                        <router-link :to="`/history?wiki=${leadWiki.wiki}`" replace>
                                             <span>{{getWiki(leadWiki.wiki)}}</span>
                                         </router-link>
                                     </td>
@@ -104,7 +104,7 @@
                                         {{index + 1}}
                                     </td>
                                     <td scope="col">
-                                        <router-link :to="`/marked/?wikiUserName=${leader.wikiUserName}`" replace>
+                                        <router-link :to="`/history?wikiUserName=${leader.wikiUserName}`" replace>
                                             <object class="avatar-object"
                                                     v-bind:data="`/api/avatar/${leader.wikiUserName}`"></object>
                                             <span v-if="isMe(leader)">{{$t('Label-Me')}} ({{$t('Label-User')}}:{{leader.wikiUserName}})</span>
@@ -151,7 +151,7 @@
                                         {{index + 1}}
                                     </td>
                                     <td scope="col">
-                                        <router-link :to="`/marked/?userGaId=${leader.userGaId}`" replace>
+                                        <router-link :to="`/history?userGaId=${leader.userGaId}`" replace>
                                             <object class="avatar-object"
                                                     v-bind:data="`/api/avatar/${leader.userGaId}`"></object>
                                             <span v-if="isMe(leader) ">{{$t('Label-Me')}}</span>

@@ -134,12 +134,12 @@ between Client-Side-Rendering and Server-Side-Rendering -->
             </tr>
             <tr class="row" v-for="judgement of interaction.judgements">
               <td class="col-4">
-                <router-link v-if="judgement.wikiUserName" :to="`/marked/?wikiUserName=${judgement.wikiUserName}`" replace>
+                <router-link v-if="judgement.wikiUserName" :to="`/history?wikiUserName=${judgement.wikiUserName}`" replace>
                   <object class="avatar-object" v-bind:data="`/api/avatar/${judgement.wikiUserName}`" ></object>
                   <span v-if="isMine(judgement)">{{$t("Label-Me")}} ({{judgement.wikiUserName}})</span>
                   <span v-else>{{judgement.wikiUserName || $t("Label-Anonymous")}}</span>
                 </router-link>
-                <router-link v-else :to="`/marked/?userGaId=${judgement.userGaId}`" replace>
+                <router-link v-else :to="`/history?userGaId=${judgement.userGaId}`" replace>
                   <object class="avatar-object" v-bind:data="`/api/avatar/${judgement.userGaId}`" ></object>
                   <span v-if="$cookiez.get('_ga') === judgement.userGaId ">{{$t("Label-Me")}}</span>
                   <span v-else>{{$t("Label-Someone")}}</span>
@@ -292,7 +292,7 @@ between Client-Side-Rendering and Server-Side-Rendering -->
               [
                 `[[:m:WikiLoop DoubleCheck]]`,
                 `${version}`,
-                `http://doublecheck.wikiloop.org/marked?wikiRevIds=${this.wikiRevId}`
+                `http://doublecheck.wikiloop.org/revision/${this.wikiRevId.split(':')[0]}/${this.wikiRevId.split(':')[1]}`
               ]);
           let revertUrl = `${this.getUrlBaseByWiki(this.revision.wiki)}/w/index.php?title=${this.revision.title}&action=edit&undoafter=${this.revision.revision.old}&undo=${this.revision.revision.new}&summary=${revertEditSummary}`;
           let historyUrl = `${this.getUrlBaseByWiki(this.revision.wiki)}/w/index.php?title=${this.revision.title}&action=history`;

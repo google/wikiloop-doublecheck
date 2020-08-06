@@ -52,7 +52,7 @@ export class UsageReportCronJob {
                         "<>":"tr","html":[
                             // TODO(xinbenlv): currently only supports English but will expand.
                             {"<>": "td", html: "<a href='http://en.wikipedia.org/wiki/User:${_id.wikiUserName}'>User:${_id.wikiUserName}</a>"},
-                            {"<>": "td", html: "<a href='http://doublecheck.wikiloop.org/marked/?wikiUserName=${_id.wikiUserName}'>${count}</a>"}
+                            {"<>": "td", html: "<a href='http://doublecheck.wikiloop.org/history/?wikiUserName=${_id.wikiUserName}'>${count}</a>"}
                         ]
                     });
                 let info = await transporter.sendMail({

@@ -6,7 +6,7 @@
       </div>
     </div>
     <template v-else>
-      <div class="card my-1" v-for="(item, i) in interactions">
+      <div class="card my-1" v-for="(item) in interactions" :key="item.wikiRevId">
       <div class="card-body">
         <div class="d-flex justify-content-between">
           <div class="d-flex justify-content--start">
@@ -42,9 +42,11 @@
     components: {
       UserAvatarWithName
     },
-    async asyncData ({$axios}) {
+    async asyncData ({$axios, query}) {
+      let filter:any = query;
       return {
-        interactions: await $axios.$get(`/api/label?limit=10`)
+        filter: query,
+        interactions: await $axios.$get(`/api/label?limit=10&${new URLSearchParams(filter).toString()}`)
       };
     },
 
@@ -54,6 +56,7 @@
     interactions: InteractionProps[];
     offset:number = 0;
     public parseWikiRevId = parseWikiRevId;
+    filter:any = {};
     mounted() {
       socket.on('interaction-props', async (interaction: InteractionProps) => {
         this.loading = true;
@@ -62,7 +65,7 @@
       });
     }
     async loadMore() {
-      this.interactions.push(...(await this.$axios.$get(`/api/label?limit=10&offset=${this.interactions.length}`)));
+      this.interactions.push(...(await this.$axios.$get(`/api/label?limit=10&offset=${this.interactions.length}&${new URLSearchParams(this.filter).toString()}`)));
     }
   }
 </script>
