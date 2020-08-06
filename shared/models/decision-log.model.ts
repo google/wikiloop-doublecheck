@@ -11,7 +11,7 @@ const DecisionLogSchema = createSchema(
     avgScore: Type.number({required: true})
   }
 );
-DecisionLogSchema.index({ user_id: 1, title: 1, timestamp: -1, type: 1}, { unique: true })
+DecisionLogSchema.index({ user_id: 1, title: 1, timestamp: -1, type: 1})
 
 export const DecisionLog = typedModel('DecisionLog', DecisionLogSchema, 'DecisionLog');
 export type DecisionLogDoc = ExtractDoc<typeof DecisionLogSchema>;

@@ -126,7 +126,7 @@ export class CrossEditSuspiciousPatterns implements Revision {
       arvstart: timestamp,
       arvdir: "older",
       arvlimit: this.windowSize,
-      arvprop: "oresscores|timestamp",
+      arvprop: "oresscores|timestamp|ids",
     }
     Object.keys(params).forEach(function(key){thisUrl += "&" + key + "=" + params[key];});
     var response = await fetch(thisUrl, {headers: {"User-Agent": "WikiLoop DoubleCheck Team"}});
@@ -160,7 +160,7 @@ export class CrossEditSuspiciousPatterns implements Revision {
       rvlimit: this.windowSize,
       prop: "revisions",
       titles: title,
-      rvprop: "timestamp|user|oresscores",
+      rvprop: "timestamp|user|oresscores|ids",
       rvslots: "main",
       formatversion: "2",
       format: "json",
@@ -332,6 +332,7 @@ export class CrossEditSuspiciousPatterns implements Revision {
           title: String(editsList[i].title),
           score: (scores[i] * 100).toFixed(0),
           timestamp: editsList[i].timestamp,
+          parentid: editsList[i].parentid,
         };
       } else if (this.mode == "article") {
         var editInfo = {
@@ -339,6 +340,7 @@ export class CrossEditSuspiciousPatterns implements Revision {
           title: this.title,
           score: (scores[i] * 100).toFixed(0),
           timestamp: editsList[i].timestamp,
+          parentid: editsList[i].parentid,
         };
       }
       previousRevisionInfos[i] = editInfo;
