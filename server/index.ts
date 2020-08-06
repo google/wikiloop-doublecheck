@@ -34,6 +34,7 @@ import axios from 'axios';
 import { debugRouter } from "@/server/routers/debug";
 import {CronJob} from 'cron';
 import { FeedRevisionEngine } from '@/server/feed/feed-revision-engine';
+import { initDotEnv, initMongoDb, initUnhandledRejectionCatcher } from './init-util';
 
 const http = require('http');
 const express = require('express');
@@ -449,6 +450,10 @@ function setupFlag() {
 }
 
 async function start() {
+
+  initDotEnv();
+  await initMongoDb();
+  initUnhandledRejectionCatcher();
   const flag = setupFlag();
   // Init Nuxt.js
   const nuxt = new Nuxt(config)
@@ -469,9 +474,6 @@ async function start() {
   const server = http.Server(app);
   const io = require('socket.io')(server, { cookie: false });
   app.set('socketio', io);
-  await mongoose.connect(process.env.MONGODB_URI,
-    { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false }
-    );
 
   app.use(function (req, res, next) {
     apiLogger.debug('req.originalUrl:', req.originalUrl);

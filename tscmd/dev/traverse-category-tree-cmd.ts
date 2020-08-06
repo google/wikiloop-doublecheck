@@ -1,7 +1,7 @@
 // npx ts-node -r tsconfig-paths/register --project tsconfig.json tscmd/dev/traverse-category-tree-cmd.ts
 
 import { FeedRevisionEngine } from '@/server/feed/feed-revision-engine';
-import { initDotEnv, initMongoDb } from '@/server/db-util';
+import { initDotEnv, initMongoDb } from '~/server/init-util';
 
 const mainTraverseCategoryTree = async function ()
 {

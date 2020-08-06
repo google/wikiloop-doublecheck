@@ -31,11 +31,11 @@ feedRouter.get('/mix', async (req, res) => {
 
   switch (feed) {
     case 'us2020':
+    case 'covid19':  // fall through
       feedRevisionHandler(true)(res, req);
       return; // we don't go to res.send clause below.
     case 'ores':  // fall through
     case 'wikitrust':  // fall through
-    case 'covid19':  // fall through
       wikiRevIds = await WatchCollectionFeed.sampleRevisions(
         FeedEnum[feed], parseInt(req.query.size) || 50);
         break;
@@ -100,7 +100,7 @@ let feedRevisionHandler = function (useMixer) {
 }
 
 feedRouter.get('/us2020', asyncHandler(feedRevisionHandler(false)));
-
+feedRouter.get('/covid19', asyncHandler(feedRevisionHandler(false)));
 
 feedRouter.get("/:feed", async (req, res) => {
   let feed = req.params.feed;

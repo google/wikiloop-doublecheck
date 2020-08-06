@@ -1,7 +1,11 @@
 export const initMongoDb = async () => {
   const mongoose = require('mongoose');
   console.log(`Connecting mongodb ...`);
-  await mongoose.connect(process.env.MONGODB_URI, { useUnifiedTopology: true, useNewUrlParser: true });
+  await mongoose.connect(process.env.MONGODB_URI, { useUnifiedTopology: true, useNewUrlParser: true })
+  .catch(error => {
+    console.error(error);
+    process.exit(1);  
+  });
   console.log(`Connected mongodb!`);
 }
 
@@ -11,6 +15,13 @@ export const initDotEnv = () => {
 
   require('dotenv').config({
     path: envPath
+  });
+}
+
+export const initUnhandledRejectionCatcher = () => {
+  process.on('unhandledRejection', function(err, details) {
+    console.error(err);
+    console.error(details);
   });
 }
 

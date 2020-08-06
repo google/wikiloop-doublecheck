@@ -1,7 +1,7 @@
 // npx ts-node -r tsconfig-paths/register tscmd/dev/populate-feed-revisions-cmd.ts
 
 import { FeedRevisionEngine } from '~/server/feed/feed-revision-engine';
-import { initDotEnv, initMongoDb } from '@/server/db-util';
+import { initDotEnv, initMongoDb } from '~/server/init-util';
 
 const populateFeedRevisionsMain = async function () {
   await initDotEnv();
