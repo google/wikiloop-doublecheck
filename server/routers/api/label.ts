@@ -14,6 +14,7 @@ const listLabels = async function (req, res) {
         if (req.query.wikiUserName) mongoMatcher.wikiUserName = req.query.wikiUserName;
         if (req.query.userGaId) mongoMatcher.userGaId = req.query.userGaId;
         if (req.query.title) mongoMatcher.title = req.query.title;
+        if (req.query.wiki) mongoMatcher.wiki = req.query.wiki;
 
         // CONSIDER add query validation logic, if needed.
         // We might adopt API standard such as gRPC or OpenAPI
