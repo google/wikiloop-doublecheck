@@ -54,7 +54,7 @@
                 class="btn btn-danger">{{$t(`Label-DirectRevertFailed`)}}
               </button>
             </template>
-            <button
+            <button v-if="feed!=`direct-revision`"
               @click="$emit(`next-card`)"
               class="btn btn-success"
             >{{$t(`Button-Next`)}}(→)

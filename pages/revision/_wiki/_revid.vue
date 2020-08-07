@@ -18,14 +18,27 @@
   <section>
     <div class="container small-screen-padding">
       <div class="col-12 p-2">
-        <StaticRevisionCard
-          :wikiRevId="wikiRevId"
-          :interaction="interaction"
-          :ores="ores"
-          :diff="diff"
-          :revision="revision"
-          :feedName="`direct`"
-        ></StaticRevisionCard>
+        <div v-if="currentRevisionPanelItem" class="card shadow h-100">
+          <RevisionPanel
+            :key="currentWikiRevId"
+            :item="currentRevisionPanelItem"
+            :feed-name="feed"
+          >
+          </RevisionPanel>
+          <ActionPanel ref="actionPanel"
+              :key="`action-panel-${currentWikiRevId}`"
+              :wikiRevId="currentWikiRevId"
+              :title="currentRevisionPanelItem.title"
+              :feed="feed"
+              @judgement-event="$refs.judgementPanel && $refs.judgementPanel.refresh()"
+              @next-card="showNext()"/>
+            <template v-if="currentWikiRevId">
+              <button class="btn btn-outline-primary"
+                v-if="!showJudgementPanel"
+                @click="showJudgementPanel = !showJudgementPanel">{{$t('Button-ShowJudgements')}}</button>
+              <JudgementPanel v-else ref="judgementPanel" class="card-body" :wikiRevId="currentWikiRevId" />
+            </template>
+        </div>
       </div>
     </div>
   </section>
@@ -33,10 +46,15 @@
 <script>
 
   import StaticRevisionCard from '@/components/StaticRevisionCard.vue';
-  import {  fetchDiffWithWikiRevId, supportedWikis } from '@/shared/utility-shared';
+  import {  fetchDiffWithWikiRevId, supportedWikis, fetchRevisionPanelItem } from '@/shared/utility-shared';
+  import RevisionPanel from "~/components/RevisionPanel.vue";
+  import ActionPanel from "~/components/ActionPanel.vue";
+  import JudgementPanel from "~/components/JudgementPanel.vue";
   export default {
     components: {
-      StaticRevisionCard
+      RevisionPanel,
+      ActionPanel,
+      JudgementPanel
     },
     methods: {
     },
@@ -46,38 +64,19 @@
       }
     },
     async asyncData ({ params, $axios }) {
-      const wikiRevId = `${params.wiki}:${params.revid}`;
-      const revision = (await $axios.$get(
-          `/api/revisions`, {
-            params: {
-              wikiRevIds: [wikiRevId]
-            }
-          }))[params.wiki][0];
-      const ores = (await $axios.$get(
-          `/api/ores`, { params: { wikiRevIds: [wikiRevId] }}))[params.wiki][0];
+      const currentWikiRevId = `${params.wiki}:${params.revid}`;
+      let revPanelItem = await fetchRevisionPanelItem(currentWikiRevId , $axios);
 
-      let interaction;
-      const interactions = await $axios.$get(`/api/interactions`,
-          { params: { wikiRevIds: [wikiRevId] }});
-      if (interactions.length > 0) {
-        interaction = interactions[0];
-      } else {
-        // TODO(xinbenlv): create an empty default to improve robustness.
-        interaction = {
-          "wikiRevId": wikiRevId,
-          "judgements": [], // empty
-          "recentChange": 0,
-          "lastTimestamp": 0,
-          "counts": {
-            Total: 0,
-            NotSure: 0,
-            ShouldRevert: 0,
-          },
-        };
-      }
-      const diff = await fetchDiffWithWikiRevId(wikiRevId, $axios);
-      return { ores, revision, interaction, diff };
+      return {
+        currentWikiRevId,
+        currentRevisionPanelItem: revPanelItem,
+        feed: "direct-revision",
+      };
     },
+    data() {
+      return {showJudgementPanel: true};
+    },
+
     /** Validate the parameters.
      *
      * @param params
@@ -96,7 +95,7 @@
      * @return {{meta: *[], title: *}}
      */
     head ({ params }) {
-      let title = `${this.revision.title} (rev:${this.$route.params.revid})`;
+      let title = `${this.currentRevisionPanelItem.title} (rev:${this.$route.params.revid})`;
       let desc = `Is this Wikipedia edit good or bad? Come share your opinion at WikiLoop DoubleCheck. (${this.wikiRevId})`;
       let host = `doublecheck.wikiloop.org`;
       let img = `http://${host}/wikiloop-doublecheck-logo.png`; // TODO(xinbenlv) use relative URL

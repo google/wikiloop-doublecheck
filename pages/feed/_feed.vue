@@ -68,6 +68,7 @@
     import RevisionPanel from "~/components/RevisionPanel.vue";
     import ActionPanel from "~/components/ActionPanel.vue";
     import JudgementPanel from "~/components/JudgementPanel.vue";
+    import { fetchRevisionPanelItem } from '~/shared/utility-shared';
 
     export default {
     components: {
@@ -103,6 +104,7 @@
           let queryObj:any = {
               limit:2,
               wiki:this.$store.state.wiki,
+              feed: this.feedName,
               userGaId:this.$cookiez.get('_ga'),
           };
           if (this.$store.state.user?.profile?.displayName) queryObj.wikiUserName = this.$store.state.user?.profile?.displayName;
@@ -110,7 +112,7 @@
           let newFeedItem = await this.$axios.$get(`/api/feed/${this.feedName}?${params.toString()}`);
           if (newFeedItem.wikiRevIds.length > 0) {
               let newWikiRevId = `${newFeedItem.wikiRevIds[0]}`;
-              let newRevisionCardItem = await this.fetchRevisionPanelItem(newWikiRevId);
+              let newRevisionCardItem = await fetchRevisionPanelItem(newWikiRevId, this.$axios);
               return [newFeedItem, newWikiRevId, newRevisionCardItem];
           } else return [newFeedItem, null, null];
       },
@@ -131,23 +133,6 @@
         this.loading = false;
         [this.nextFeedItem, this.nextWikiRevId, this.nextRevisionPanelItem] = await this.getNewFeedItemAndInfo();
 
-      },
-      fetchRevisionPanelItem: async function(wikiRevId):Promise<RevisionPanelItem> {
-        let [revision, diff] = await Promise.all([
-          await this.$axios.$get(`/api/revision/${wikiRevId}`),
-          await this.$axios.$get(`/api/diff/${wikiRevId}`)
-        ]);
-        let diffHtml = diff?.compare['*'] || '';
-        return <RevisionPanelItem> {
-          wiki: revision.wiki,
-          revId: revision.revid,
-          title: revision.title,
-          pageId: revision.wki,
-          summary: revision.comment,
-          author: revision.user,
-          timestamp: new Date(revision.timestamp).getTime()/1000,
-          diffHtml: diffHtml,
-        };
       },
       snoozeTipLogin: function() {
         this.tipLoginCountDown = 15;

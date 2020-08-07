@@ -1,3 +1,4 @@
+import { RevisionPanelItem } from '@/shared/interfaces';
 
 // Copyright 2019 Google LLC
 //
@@ -104,4 +105,22 @@ export const parseWikiRevId = (wikiRevId: string): [string,number] => {
 
 export const percent = (num:number) => {
   return `${Math.round(num * 100)}%`;
+}
+
+export const fetchRevisionPanelItem = async function(wikiRevId, $axios):Promise<RevisionPanelItem> {
+  let [revision, diff] = await Promise.all([
+    await $axios.$get(`/api/revision/${wikiRevId}`),
+    await $axios.$get(`/api/diff/${wikiRevId}`)
+  ]);
+  let diffHtml = diff?.compare['*'] || '';
+  return <RevisionPanelItem> {
+    wiki: revision.wiki,
+    revId: revision.revid,
+    title: revision.title,
+    pageId: revision.pageId,
+    summary: revision.comment,
+    author: revision.user,
+    timestamp: new Date(revision.timestamp).getTime()/1000,
+    diffHtml: diffHtml,
+  };
 }

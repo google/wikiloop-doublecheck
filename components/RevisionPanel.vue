@@ -78,7 +78,7 @@
     })
     export default class RevisionPanel extends Vue {
         @Prop({type: Object, required: true}) readonly item!: RevisionPanelItem;
-        @Prop({type: String, required: true}) readonly feedName!: string;
+        @Prop({type: String, required: false}) readonly feedName?: string;
 
         get wikiPageUrl() {
             return `${getUrlBaseByWiki(this.item.wiki)}/wiki/${this.item.title}`;
