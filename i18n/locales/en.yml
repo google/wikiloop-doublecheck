@@ -223,6 +223,10 @@ Label-Week.@meta.@description: >-
   by week.
 Label-YourJudgement: Your Judgement
 Label-YourJudgement.@meta.@description: The label for the judgement given by the current user.
+Label-OriginalWikitext: 'Original wikitext'
+Label-OriginalWikitext.@meta.@description: Message denoting the original wikitext in a diff view.
+Label-ChangedWikitext: 'Changed wikitext'
+Label-ChangedWikitext.@meta.@description: Message denoting the changed wikitext in a diff view.
 MenuItem-Code: Code
 MenuItem-Code.@meta.@description: The menu item label to redirect user to the codebase of this software.
 MenuItem-Contributions: My contributions
