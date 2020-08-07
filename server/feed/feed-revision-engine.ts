@@ -45,7 +45,7 @@ export class FeedRevisionEngine {
             let [
               revisionInfo,
               feedRevision
-            ] = FeedRevisionEngine.getFeedRevisionPair(wiki, result, pageId)
+            ] = FeedRevisionEngine.getFeedRevisionPair(feed, wiki, result, pageId)
             revisionInfos.push(revisionInfo)
             feedRevisions.push(feedRevision)
           }
@@ -99,7 +99,7 @@ export class FeedRevisionEngine {
     }
   }
 
-  private static getFeedRevisionPair = function(wiki, result, pageId) {
+  private static getFeedRevisionPair = function(feed, wiki, result, pageId) {
     let revisions = result.query.pages[pageId].revisions
     if (revisions.length > 1) {
       feedRevisionEngineLogger.info(`revisions.length > 1
@@ -132,7 +132,7 @@ export class FeedRevisionEngine {
       revisionInfo.ores_badfaith = revision.oresscores.goodfaith.false
 
     let feedRevision = <FeedRevisionProps>{
-      feed: 'us2020',
+      feed: feed,
       wikiRevId: wikiRevId,
       title: result.query.pages[pageId].title,
       createdAt: new Date(),
