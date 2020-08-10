@@ -122,7 +122,7 @@ function setupCronJobs() {
         awardBarnStarCronJob.startCronJob();
       });
   } else {
-    logger.warn(`Skipping Barnstar cronjobs because of lack of CRON_BARNSTAR_TIMES which is: `, process.env.CRON_BARNSTAR_TIMES);
+    logger.info(`Skipping Barnstar cronjobs because of lack of CRON_BARNSTAR_TIMES which is: `, process.env.CRON_BARNSTAR_TIMES);
   }
 
   if (process.env.CRON_USAGE_REPORT_TIMES) {
@@ -138,7 +138,7 @@ function setupCronJobs() {
         usageReportCronJob.startCronJob();
       });
   } else {
-    logger.warn(`Skipping UsageReportCronJob because of lack of CRON_BARNSTAR_TIMES which is: `, process.env.CRON_BARNSTAR_TIMES);
+    logger.info(`Skipping UsageReportCronJob because of lack of CRON_BARNSTAR_TIMES which is: `, process.env.CRON_BARNSTAR_TIMES);
   }
 
   if (process.env.CRON_CATEGORY_TRAVERSE_TIME) {
