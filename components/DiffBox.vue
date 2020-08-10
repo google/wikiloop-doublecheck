@@ -16,6 +16,12 @@
 <template>
   <div class="diff-card">
     <table class="pl-sm-0 w-100 diff-content" >
+      <thead class="diff-header">
+        <tr>
+          <th colspan="2"><h5>{{ $t('Label-OriginalWikitext') }}</h5></th>
+          <th colspan="2"><h5>{{ $t('Label-ChangedWikitext') }}</h5></th>
+        </tr>
+      </thead>
       <tbody v-html="diffContent" >
       </tbody>
     </table>
@@ -46,5 +52,11 @@
       max-height: 300px;
       overflow-x: hidden;
     }
+  }
+
+  .diff-header {
+    position: sticky;
+    top: 0;
+    background: #ffffff;
   }
 </style>
