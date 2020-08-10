@@ -98,7 +98,7 @@ export class FeedRevisionEngine {
         )
         } catch(e) {
           if (e.code == 11000 && /^E11000 duplicate key error collection.*/.test(e.errmsg)) {
-            feedRevisionEngineLogger.debug(`Error bulkWrite: ${JSON.stringify(e, null, 2)}\n\npotentially caused by\n\nhttps://jira.mongodb.org/browse/SERVER-14322.\n\nWe are skipping the suggested retry documented by https://jira.mongodb.org/browse/DOCS-12234 `);
+            feedRevisionEngineLogger.debug(`BulkWrite E11000 issue potentially caused by\n\nhttps://jira.mongodb.org/browse/SERVER-14322.\n\nWe are skipping the suggested retry documented by https://jira.mongodb.org/browse/DOCS-12234 `);
           } else { // otherwise rethrow
             throw e;
           }
@@ -292,7 +292,7 @@ export class FeedRevisionEngine {
     feedRevisionEngineLogger.debug(`Done bulkUpdateResult = `, bulkUpdateResult);
     } catch(e) {
       if (e.code == 11000 && /^E11000 duplicate key error collection.*/.test(e.errmsg)) {
-        feedRevisionEngineLogger.debug(`Error bulkWrite: ${JSON.stringify(e, null, 2)}\n\npotentially caused by\n\nhttps://jira.mongodb.org/browse/SERVER-14322.\n\nWe are skipping the suggested retry documented by https://jira.mongodb.org/browse/DOCS-12234 `);
+        feedRevisionEngineLogger.debug(`BulkWrite E11000 issue potentially caused by\n\nhttps://jira.mongodb.org/browse/SERVER-14322.\n\nWe are skipping the suggested retry documented by https://jira.mongodb.org/browse/DOCS-12234 `);
       } else { // otherwise rethrow
         throw e;
       }
