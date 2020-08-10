@@ -181,8 +181,8 @@
           Previous revisions by this author:
         </div>
         <div v-if="displayChoiceAuthor && (choiceInfoAuthor.type == 'block')" v-bind:style="{color: 'red', 'margin-left': '50px', 'margin-right': '50px'}">
-          WikiLoop-DoubleCheck has detected suspicious behavior by the author of this revision. Recent revisions by this author have an average ORES damaging score of {{choiceInfoAuthor.percentage}}%. This author has been warned {{warningThresholdAuthor}} times in the past {{warningTimeframeAuthor}} days. Should a block request be sent on your behalf to the community administrators? <br> 
-          Previous revisions by this author: 
+          WikiLoop-DoubleCheck has detected suspicious behavior by the author of this revision. Recent revisions by this author have an average ORES damaging score of {{choiceInfoAuthor.percentage}}%. This author has been warned {{warningThresholdAuthor}} times in the past {{warningTimeframeAuthor}} days. Should a block request be sent on your behalf to the community administrators? <br>
+          Previous revisions by this author:
         </div>
         <li v-if= "displayHistoryAuthor" v-for="item in previousRevisionInfosAuthor":key="item.timestamp" v-bind:style="{'margin-left': '65px', 'margin-right': '50px'}">
           <a v-bind:href= "'https://en.wikipedia.org/w/index.php?title='+ item.title + '&diff=prev&oldid=' + item.parentid"> Revision on article {{item.title}}, at {{item.timestamp}}, ORES damaging score: {{item.score}}% </a>
@@ -199,7 +199,7 @@
               v-on:click="turnOffChoiceAuthor()"
               class="btn btn-sm"
               v-bind:class="{ 'btn-danger': false, 'btn-outline-danger': true}"
-            >Skip it for now. 
+            >Skip it for now.
             </button>
           </div>
         </div>
@@ -208,8 +208,8 @@
           Previous revisions on this article:
         </div>
         <div v-if="displayChoiceArticle && (choiceInfoArticle.type == 'protect')" v-bind:style="{color: 'red', 'margin-left': '50px', 'margin-right': '50px'}">
-          WikiLoop-DoubleCheck has detected suspicious behavior on this article. Recent revisions on this article have an average ORES damaging score of {{choiceInfoArticle.percentage}}%. Suspicious behavior has occured {{warningThresholdArticle}} times in the past {{warningTimeframeArticle}} days. Should a page-protect request be sent on your behalf to the community administrators? <br> 
-          Previous revisions on this article: 
+          WikiLoop-DoubleCheck has detected suspicious behavior on this article. Recent revisions on this article have an average ORES damaging score of {{choiceInfoArticle.percentage}}%. Suspicious behavior has occured {{warningThresholdArticle}} times in the past {{warningTimeframeArticle}} days. Should a page-protect request be sent on your behalf to the community administrators? <br>
+          Previous revisions on this article:
         </div>
         <li v-if= "displayHistoryArticle" v-for="item in previousRevisionInfosArticle":key="item.timestamp" v-bind:style="{'margin-left': '65px', 'margin-right': '50px'}">
           <a v-bind:href= "'https://en.wikipedia.org/w/index.php?title='+ item.title + '&diff=prev&oldid=' + item.parentid"> Revision by {{item.author}}, at {{item.timestamp}}, ORES damaging score: {{item.score}}%</a>
@@ -226,11 +226,11 @@
               v-on:click="turnOffChoiceArticle()"
               class="btn btn-sm"
               v-bind:class="{ 'btn-danger': false, 'btn-outline-danger': true}"
-            >Skip it for now. 
+            >Skip it for now.
             </button>
           </div>
-        </div> 
-      </div>   
+        </div>
+      </div>
     </div>
   </section>
 
@@ -293,7 +293,7 @@
         action: null,
 
         // Flag to toggle the cesp features
-        enableCesp: true,
+        enableCesp: false,
 
         // author-based CrossEditSuspiciousPatterns analysis
         warningTimeframeAuthor: 3,
@@ -605,6 +605,13 @@
       });
     },
     async mounted() {
+      if (this.$env.CROSS_EDIT_CHECK === '1' || this.$route.query.cesp === '1') {
+        this.enableCesp = true;
+        console.log(`Cross-edit features is eanbled!`);
+      } else {
+        console.log(`Cross-edit features is not eanbled (default).`);
+      }
+
       this.$ga.event({
         eventCategory: 'display',
         eventAction: 'NewRevisionCard',

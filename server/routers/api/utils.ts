@@ -39,7 +39,8 @@ const flags = async (req, res) => {
     res.send({
         useStiki: useStiki,
         useOauth: useOauth,
-        useDirectRevert: process.env.DIRECT_REVERT === '1'
+        useDirectRevert: process.env.DIRECT_REVERT === '1',
+        useCrossEditCheck: process.env.CROSS_EDIT_CHECK === '1',
     });
     req.visitor
         .event({ec: "api", ea: "/"})

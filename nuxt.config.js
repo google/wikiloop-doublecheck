@@ -84,7 +84,8 @@ module.exports = {
         'HOST',
         'PORT',
         'GA_WLBF_ID_CLIENT',
-        'MIXER_RAMP_UP_PERCENT'
+        'MIXER_RAMP_UP_PERCENT',
+        'CROSS_EDIT_CHECK',
       ]
     }],
     [
