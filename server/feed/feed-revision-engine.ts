@@ -50,6 +50,7 @@ export class FeedRevisionEngine {
             feedRevisions.push(feedRevision)
           }
         }
+        try {
         let ret = await Promise.all([
           RevisionInfo.bulkWrite(
             revisionInfos.map((ri: RevisionInfoProps) => {
@@ -90,11 +91,18 @@ export class FeedRevisionEngine {
               }
             })
           )
-        ])
+        ]);
         feedRevisionEngineLogger.debug(
           `Current articleIndex=${articleIndex} Ret = `,
           JSON.stringify(ret, null, 2)
         )
+        } catch(e) {
+          if (e.code == 11000 && /^E11000 duplicate key error collection.*/.test(e.errmsg)) {
+            feedRevisionEngineLogger.debug(`Error bulkWrite: ${JSON.stringify(e, null, 2)}\n\npotentially caused by\n\nhttps://jira.mongodb.org/browse/SERVER-14322.\n\nWe are skipping the suggested retry documented by https://jira.mongodb.org/browse/DOCS-12234 `);
+          } else { // otherwise rethrow
+            throw e;
+          }
+        }
       }
     }
   }
@@ -265,8 +273,8 @@ export class FeedRevisionEngine {
       }
       feedRevisionEngineLogger.debug(`=== Total toVisit ${toVisitFeedPages.length}, visited = ${Object.keys(visitedFeedPages).length}, numReq=${numReq}`);
     }
-
-    let bulkUpdateResult = await FeedPage.bulkWrite(Object.values(visitedFeedPages).map((feedPage:FeedPageProps) => {
+    try {
+      let bulkUpdateResult = await FeedPage.bulkWrite(Object.values(visitedFeedPages).map((feedPage:FeedPageProps) => {
       return {
         updateOne: {
           filter: {
@@ -282,6 +290,13 @@ export class FeedRevisionEngine {
       };
     }));
     feedRevisionEngineLogger.debug(`Done bulkUpdateResult = `, bulkUpdateResult);
+    } catch(e) {
+      if (e.code == 11000 && /^E11000 duplicate key error collection.*/.test(e.errmsg)) {
+        feedRevisionEngineLogger.debug(`Error bulkWrite: ${JSON.stringify(e, null, 2)}\n\npotentially caused by\n\nhttps://jira.mongodb.org/browse/SERVER-14322.\n\nWe are skipping the suggested retry documented by https://jira.mongodb.org/browse/DOCS-12234 `);
+      } else { // otherwise rethrow
+        throw e;
+      }
+    }
   }
 
   public static traverseCategoryTree = async function(feed: string, wiki: string, entryTitle: string) {

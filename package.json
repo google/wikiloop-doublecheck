@@ -6,6 +6,7 @@
   "repository": "git@github.com:google/wikiloop-doublecheck.git",
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon",
+    "debug": "cross-env NODE_ENV=development nodemon --inspect",
     "prod": "npm run build && npm run start",
     "build": "nuxt build",
     "analyze": "nuxt build -a",

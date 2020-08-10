@@ -34,7 +34,7 @@ export class OresStream {
     };
 
     eventSource.onerror = (event) => {
-      logger.error(`Stream error: ${url}`, event);
+      logger.debug(`Ignoring Stream error: ${url}, ${JSON.stringify(event, null, 2)}`);
     };
 
     eventSource.onmessage = async (event) => {

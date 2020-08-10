@@ -1,5 +1,11 @@
 {
   "version": "0.2.0",
+  "compounds": [
+    {
+      "name": "server and client",
+      "configurations": ["server", "client: chrome"]
+    }
+  ],
   "configurations": [
     {
       "name": "Current TS file",
@@ -13,6 +19,26 @@
       "skipFiles": ["<node_internals>/**", "node_modules/**"],
       // "protocol": "inspector",
       // "sourceMaps": true
+    },
+    {
+      "name": "server",
+      "request": "launch",
+      "runtimeArgs": [
+        "run",
+        "debug"
+      ],
+      "runtimeExecutable": "npm",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "pwa-node"
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "client: chrome",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}"
     }
   ]
 }
