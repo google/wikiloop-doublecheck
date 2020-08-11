@@ -2,22 +2,22 @@
     <section>
         <h1 v-if="feedName"> {{$t('Label-ReviewFeed')}}<sup class="text-warning">β</sup> {{feedName}} </h1>
         <template v-if="!loading">
-          <div v-if="currentRevisionPanelItem" class="card shadow h-100">
+          <div v-if="currentWikiRevId && revisionPanelItems[currentWikiRevId]" class="card shadow h-100">
             <RevisionPanel
               :key="currentWikiRevId"
-              :item="currentRevisionPanelItem"
-              :feed-name="currentFeedItem.feed"
+              :item="revisionPanelItems[currentWikiRevId]"
+              :feed-name="wikiRevIdfromFeeds[currentWikiRevId]"
             >
             </RevisionPanel>
 
             <ActionPanel ref="actionPanel"
               :key="`action-panel-${currentWikiRevId}`"
               :wikiRevId="currentWikiRevId"
-              :title="currentRevisionPanelItem.title"
-              :feed="currentFeedItem.feed"
+              :title="revisionPanelItems[currentWikiRevId].title"
+              :feed="wikiRevIdfromFeeds[currentWikiRevId]"
               @judgement-event="$refs.judgementPanel && $refs.judgementPanel.refresh()"
               @next-card="showNext()"/>
-            <template v-if="currentWikiRevId">
+            <template v-if="currentWikiRevId && revisionPanelItems[currentWikiRevId]">
               <button class="btn btn-outline-primary"
                 v-if="!showJudgementPanel"
                 @click="showJudgementPanel = !showJudgementPanel">{{$t('Button-ShowJudgements')}}</button>
@@ -29,7 +29,7 @@
             <div class="card-body">
               <div class="card-body w-100 text-center">
                 <h5 m-5> <span v-html="$t('Message-FeedHasNoNewRevisionsClickNextBelow', [
-                  `<div class='badge badge-success'>${currentFeedItem.feed}</div>`])"></span> </h5>
+                  `<div class='badge badge-success'>${wikiRevIdfromFeeds[currentWikiRevId] || feedName}</div>`])"></span> </h5>
                 <button v-if="feedName==='mix'" @click="showNext()" class="m-5 btn btn-outline-success">
                   {{$t(`Button-Next`)}}(→)
                 </button>
@@ -69,7 +69,7 @@
     import ActionPanel from "~/components/ActionPanel.vue";
     import JudgementPanel from "~/components/JudgementPanel.vue";
     import { fetchRevisionPanelItem } from '~/shared/utility-shared';
-
+    const QUEUE_LIMIT = 3;
     export default {
     components: {
       RevisionPanel,
@@ -78,67 +78,59 @@
     },
     data() {
       return {
-          title: 'WikiLoop Battlefield',
+          title: 'WikiLoop DoubleCheck',
           currentWikiRevId: null,
-          currentFeedItem: null,
-          currentRevisionPanelItem: <RevisionPanelItem>null,
-          nextFeedItem: null,
-          nextWikiRevId: null,
-          nextRevisionPanelItem: null,
+          feedQueue: [],
+          revisionPanelItems: {},
+          wikiRevIdfromFeeds: {},
           tipLoginCountDown: 5,
           loading:true,
           showJudgementPanel: false,
       }
     },
     computed: {
-      currentRevision: {
-        get () {
-          return this.$store.state.revisions.wikiRevIdToMeta[this.currentWikiRevId];
-        }
-      },
     },
     methods: {
-      getNewFeedItemAndInfo: async function() {
-          let now = new Date();
-
-          let queryObj:any = {
-              limit:2,
-              wiki:this.$store.state.wiki,
-              feed: this.feedName,
-              userGaId:this.$cookiez.get('_ga'),
-          };
-          if (this.$store.state.user?.profile?.displayName) queryObj.wikiUserName = this.$store.state.user?.profile?.displayName;
-          let params = new URLSearchParams(queryObj);
-          let newFeedItem = await this.$axios.$get(`/api/feed/${this.feedName}?${params.toString()}`);
-          if (newFeedItem.wikiRevIds.length > 0) {
-              let newWikiRevId = `${newFeedItem.wikiRevIds[0]}`;
-              let newRevisionCardItem = await fetchRevisionPanelItem(newWikiRevId, this.$axios);
-              return [newFeedItem, newWikiRevId, newRevisionCardItem];
-          } else return [newFeedItem, null, null];
-      },
-      clearNext: async function() {
-        this.loading = true;
-        this.nextWikiRevId = null;
-      },
-      showNext: async function() {
-        this.loading = true;
-        if (this.nextWikiRevId) {
-          // swap current with next
-          [this.currentFeedItem, this.currentWikiRevId, this.currentRevisionPanelItem] =
-          [this.nextFeedItem, this.nextWikiRevId, this.nextRevisionPanelItem];
-        } else {
-          [this.currentFeedItem, this.currentWikiRevId, this.currentRevisionPanelItem] = await this.getNewFeedItemAndInfo();
+      async showNext() {
+        if (this.feedQueue.length <= 1) {
+          await this.refillQueue();
         }
-        this.showJudgementPanel = false; // always set the show judgement panel to false when fetching a new revision.
+        this.currentWikiRevId = this.feedQueue.shift();
         this.loading = false;
-        [this.nextFeedItem, this.nextWikiRevId, this.nextRevisionPanelItem] = await this.getNewFeedItemAndInfo();
-
+        this.refillQueue().then(()=>{console.log(`Quietly refilled the queue.`)});
+      },
+      clearQueue: async function() {
+        this.loading = true;
+        this.feedQueue = [];
+        this.revisionPanelItems = {};
+      },
+      fetchAndClaimRevisions: async function(numToFetch:number):Promise<string[]/*wikiRevIds*/> {
+        let queryObj:any = {
+            limit:numToFetch,
+            wiki:this.$store.state.wiki,
+            feed: this.feedName,
+            userGaId:this.$cookiez.get('_ga'),
+        };
+        if (this.$store.state.user?.profile?.displayName) queryObj.wikiUserName = this.$store.state.user?.profile?.displayName;
+        let params = new URLSearchParams(queryObj);
+        let result = await this.$axios.$get(`/api/feed/${this.feedName}?${params.toString()}`);
+        let feed = result.feed;
+        result.wikiRevIds.forEach(wikiRevId => this.wikiRevIdfromFeeds[wikiRevId] = feed);
+        return result.wikiRevIds;
+      },
+      refillQueue: async function() {
+        let numToFetch = QUEUE_LIMIT-this.feedQueue.length;
+        let wikiRevIds = await this.fetchAndClaimRevisions(numToFetch);
+        this.feedQueue.push(...wikiRevIds);
+        await Promise.all(wikiRevIds.map( async wikiRevId => {
+          let item = await fetchRevisionPanelItem(wikiRevId, this.$axios);
+          this.revisionPanelItems[wikiRevId] = item;
+        }));
       },
       snoozeTipLogin: function() {
         this.tipLoginCountDown = 15;
         this.$bvModal.hide(`modal-promote-login`);
       },
-
     },
     validate ({ params }) {
       return (['us2020', 'covid19', 'recent', 'ores', 'mix', 'wikitrust', 'lastbad'].indexOf(params.feed) >= 0);
@@ -147,14 +139,13 @@
       return { feedName: params.feed };
     },
     async beforeMount() {
-      await this.showNext();
     },
     async mounted() {
       document.addEventListener(`wiki-change-started`, async() => {
-        await this.clearNext();
+        await this.clearQueue();
       });
       document.addEventListener(`wiki-change-completed`, async () => {
-        await this.showNext();
+        await this.refillQueue();
       });
 
       document.addEventListener('judgement-event', async () => {
@@ -200,6 +191,8 @@
           this.$bvModal.show(`modal-keymap`);
         }
       });
+
+      await this.showNext();
     }
   }
 </script>
