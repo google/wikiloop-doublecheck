@@ -120,21 +120,6 @@ const updateInteraction = async (req, res) => {
       interactionProps.wikiUserName || null,
       interactionProps.feed || 'us2020'
     );
-    try { // old way
-      let storedInteractions = await getNewJudgementCounts(
-        mongoose.connection.db, {wikiRevId: {$in: [interactionProps.wikiRevId]}}
-      );
-      let storedInteraction = storedInteractions[0];
-      storedInteraction.newJudgement = {
-        userGaId: interactionProps.userGaId,
-        wikiUserName: interactionProps.wikiUserName,
-        judgement: interactionProps.judgement,
-        timestamp: interactionProps.timestamp
-      };
-      io.sockets.emit('interaction', storedInteraction);
-    } catch(err) {
-      logger.warn(err);
-    }
     // new way
     io.sockets.emit('interaction-item', interactionProps);
     io.sockets.emit('interaction-props', interactionProps);

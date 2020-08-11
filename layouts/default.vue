@@ -175,45 +175,23 @@
         this.$store.commit(`setMetrics`, metrics);
       });
 
-      // DEPRECATED, use interaction-item
-      socket.on('interaction', async (interaction) => {
-        try {
-            if (interaction.newJudgement.userGaId === this.$cookiez.get('_ga')) {
-                this.$bvToast.toast(
-                    this.$t('Message-YourJudgementLogged', [interaction.recentChange.title, interaction.wikiRevId]), {
-                        title: this.$t('Label-YourJudgement'),
-                        //autoHideDelay: 3000,
-                        appendToast: true
-                    });
-            } else {
-                this.$bvToast.toast(
-                    this.$t('Message-AJudgementLogged', [interaction.recentChange.title, interaction.wikiRevId]), {
-                        title: this.$t('Label-NewJudgement'),
-                        //autoHideDelay: 3000,
-                        appendToast: true
-                    });
-            }
-        } catch (e) {
-          console.warn('omitted', e);
-        }
+      socket.on('interaction-item', async (interaction: InteractionItem) => {
+          if (interaction.userGaId === this.$cookiez.get('_ga')) {
+              this.$bvToast.toast(
+                  this.$t('Message-YourJudgementLogged', [interaction.title, interaction.wikiRevId]), {
+                      title: this.$t('Label-YourJudgement'),
+                      //autoHideDelay: 3000,
+                      appendToast: true
+                  });
+          } else {
+              this.$bvToast.toast(
+                  this.$t('Message-AJudgementLogged', [interaction.title, interaction.wikiRevId]), {
+                      title: 'New Judgement',
+                      //autoHideDelay: 3000,
+                      appendToast: true
+                  });
+          }
       });
-        socket.on('interaction-item', async (interaction: InteractionItem) => {
-            if (interaction.userGaId === this.$cookiez.get('_ga')) {
-                this.$bvToast.toast(
-                    this.$t('Message-YourJudgementLogged', [interaction.title, interaction.wikiRevId]), {
-                        title: this.$t('Label-YourJudgement'),
-                        //autoHideDelay: 3000,
-                        appendToast: true
-                    });
-            } else {
-                this.$bvToast.toast(
-                    this.$t('Message-AJudgementLogged', [interaction.title, interaction.wikiRevId]), {
-                        title: 'New Judgement',
-                        //autoHideDelay: 3000,
-                        appendToast: true
-                    });
-            }
-        });
       let userIdInfo:any = {};
       userIdInfo.userGaId = this.$cookiez.get('_ga');
 
@@ -221,7 +199,6 @@
         userIdInfo.wikiUserName = this.$store.state.user.profile.displayName;
       }
       socket.emit('user-id-info', userIdInfo);
-
     }
 }
 
