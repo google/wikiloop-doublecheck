@@ -598,10 +598,8 @@
       } // TODO(xinbenlv) merge duplicated logic
 
       // TODO(xinbenlv): after marking "shouldRevert" query to see if this revesion is top and can be reverted.
-      socket.on('interaction', async (interaction) => {
-        if(interaction.wikiRevId === this.wikiRevId) {
-          this.interaction = interaction;
-        }
+      socket.on('interaction-item', async (interaction) => {
+        this.interaction = await this.$axios.$get(`/api/interaction/${this.wikiRevId}`);
       });
     },
     async mounted() {
@@ -619,53 +617,53 @@
           wikiRevId: this.wikiRevId
         }
       });
+      if (this.enableCesp) {
+        // Author-based analysis
+        var curRevisionInfoAuthor: CrossEditSuspiciousPatternsInfo = {
+          mode: "author",
+          url: "https://en.wikipedia.org/w/api.php?origin=*",
+          windowSize: 10,
+          baseline: 0.0,
+          percentage: 0.0,
+          margin: 0.1,
+          warningTimeframe: this.warningTimeframeAuthor,
+          warningThreshold: this.warningThresholdAuthor,
+          revID: this.wikiRevId,
+          axiosClient: this.$axios,
+        }
+        this.CrossEditSuspiciousPatternsInstanceAuthor = new CrossEditSuspiciousPatterns(curRevisionInfoAuthor);
+        var decisionInfoAuthor = await this.CrossEditSuspiciousPatternsInstanceAuthor.analyze();
+        if (decisionInfoAuthor.type != "") {
+          this.displayChoiceAuthor = true;
+          this.displayHistoryAuthor = true;
+          this.choiceInfoAuthor = decisionInfoAuthor;
+          this.previousRevisionInfosAuthor = decisionInfoAuthor.previousRevisionInfos;
+        }
+        console.log(this.previousRevisionInfosAuthor);
 
-      // Author-based analysis
-      var curRevisionInfoAuthor: CrossEditSuspiciousPatternsInfo = {
-        mode: "author",
-        url: "https://en.wikipedia.org/w/api.php?origin=*",
-        windowSize: 10,
-        baseline: 0.0,
-        percentage: 0.0,
-        margin: 0.1,
-        warningTimeframe: this.warningTimeframeAuthor,
-        warningThreshold: this.warningThresholdAuthor,
-        revID: this.wikiRevId,
-        axiosClient: this.$axios,
+        // Article-based analysis
+        var curRevisionInfoArticle: CrossEditSuspiciousPatternsInfo = {
+          mode: "article",
+          url: "https://en.wikipedia.org/w/api.php?origin=*",
+          windowSize: 10,
+          baseline: 0.0,
+          percentage: 0.0,
+          margin: 0.1,
+          warningTimeframe: this.warningTimeframeArticle,
+          warningThreshold: this.warningThresholdArticle,
+          revID: this.wikiRevId,
+          axiosClient: this.$axios,
+        }
+        this.CrossEditSuspiciousPatternsInstanceArticle = new CrossEditSuspiciousPatterns(curRevisionInfoArticle);
+        var decisionInfoArticle = await this.CrossEditSuspiciousPatternsInstanceArticle.analyze();
+        if (decisionInfoArticle.type != "") {
+          this.displayChoiceArticle = true;
+          this.displayHistoryArticle = true;
+          this.choiceInfoArticle = decisionInfoArticle;
+          this.previousRevisionInfosArticle = decisionInfoArticle.previousRevisionInfos;
+        }
+        console.log(this.previousRevisionInfosArticle);
       }
-      this.CrossEditSuspiciousPatternsInstanceAuthor = new CrossEditSuspiciousPatterns(curRevisionInfoAuthor);
-      var decisionInfoAuthor = await this.CrossEditSuspiciousPatternsInstanceAuthor.analyze();
-      if (decisionInfoAuthor.type != "") {
-        this.displayChoiceAuthor = true;
-        this.displayHistoryAuthor = true;
-        this.choiceInfoAuthor = decisionInfoAuthor;
-        this.previousRevisionInfosAuthor = decisionInfoAuthor.previousRevisionInfos;
-      }
-      console.log(this.previousRevisionInfosAuthor);
-
-      // Article-based analysis
-      var curRevisionInfoArticle: CrossEditSuspiciousPatternsInfo = {
-        mode: "article",
-        url: "https://en.wikipedia.org/w/api.php?origin=*",
-        windowSize: 10,
-        baseline: 0.0,
-        percentage: 0.0,
-        margin: 0.1,
-        warningTimeframe: this.warningTimeframeArticle,
-        warningThreshold: this.warningThresholdArticle,
-        revID: this.wikiRevId,
-        axiosClient: this.$axios,
-      }
-      this.CrossEditSuspiciousPatternsInstanceArticle = new CrossEditSuspiciousPatterns(curRevisionInfoArticle);
-      var decisionInfoArticle = await this.CrossEditSuspiciousPatternsInstanceArticle.analyze();
-      if (decisionInfoArticle.type != "") {
-        this.displayChoiceArticle = true;
-        this.displayHistoryArticle = true;
-        this.choiceInfoArticle = decisionInfoArticle;
-        this.previousRevisionInfosArticle = decisionInfoArticle.previousRevisionInfos;
-      }
-      console.log(this.previousRevisionInfosArticle);
-
     },
     beforeCreate() {
       this.getUrlBaseByWiki = getUrlBaseByWiki.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
