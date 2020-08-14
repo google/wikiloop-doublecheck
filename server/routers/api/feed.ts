@@ -165,10 +165,10 @@ const ingestRevisionHandler = asyncHandler(async (req, res) => {
       title: feedRevisionItem.title,
       createdAt: now,
     };
-
-    if (req.query.ts_crawled) feedRevision.additionalInfo.ts_cralwed = req.query.ts_crawled;
-    if (req.query.ts_sendout) feedRevision.additionalInfo.ts_sendout = req.query.ts_sendout;
-    if (req.query.ts_expire) feedRevision.additionalInfo.ts_expire = req.query.ts_expire;
+    feedRevision.additionalInfo = {};
+    if (req.query.ts_crawled) feedRevision.additionalInfo.ts_cralwed = parseInt(req.query.ts_crawled);
+    if (req.query.ts_sendout) feedRevision.additionalInfo.ts_sendout = parseInt(req.query.ts_sendout);
+    if (req.query.ts_expire) feedRevision.additionalInfo.ts_expire = parseInt(req.query.ts_expire);
 
     await FeedRevision.findOneAndUpdate({feed: feedRevision.feed, wiki: feedRevision.wiki, wikiRevId: feedRevision.wikiRevId}, feedRevision, {upsert:true});
 
@@ -178,7 +178,7 @@ const ingestRevisionHandler = asyncHandler(async (req, res) => {
       `The provided feed ${req.body.feed} or feedToken ${req.body.feedToken} combination is invalid.`);
   }
 });
-// curl -H "Content-Type: application/json" -H "WikiLoopToken:$FEED_WIKITRUST_TOKEN" -X GET "http://localhost:3000/api/feed/wikitrust/revision?feed=wikitrust&wiki=enwiki&revId=1234&title=Some_article&priority_score=5.0&pageId=2345"
+// curl -H "Content-Type: application/json" -H "WikiLoopToken:$FEED_WIKITRUST_TOKEN" -X GET "http://localhost:3000/api/feed/wikitrust/revision?feed=wikitrust&wiki=enwiki&title=Gald%C3%B3n&pageId=56289988&revId=972852246&ts_crawled=0&ts_sendout=1597376155&ts_expire=1597376146"
 feedRouter.get("/:feed/revision", ingestRevisionHandler);
 feedRouter.post("/:feed/revision", ingestRevisionHandler);
 
