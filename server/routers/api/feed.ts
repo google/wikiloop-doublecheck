@@ -6,7 +6,7 @@ import {MwActionApiClient} from "@/shared/mwapi";
 import { wikiToDomain } from '@/shared/utility-shared';
 import { FeedRevisionEngine } from "~/server/feed/feed-revision-engine";
 import { apiLogger } from '@/server/common';
-import { FeedRevisionProps } from '~/shared/models/feed-revision.model';
+import { FeedRevisionProps, FeedRevision } from '~/shared/models/feed-revision.model';
 
 export const feedRouter = express.Router();
 
@@ -123,6 +123,7 @@ feedRouter.post("/:feed", async (req, res) => {
     const mongoose = require('mongoose');
     await mongoose.connection.db.collection(`WatchCollection_WIKITRUST`)
       .insertMany(req.body.content);
+
       // TODO(xinbenlv) add logic to allow validating content format, or consider use gRPC
     res.send(`ok`);
   } else {
@@ -138,19 +139,38 @@ const ingestRevisionHandler = asyncHandler(async (req, res) => {
     revIds:number[],
     title?:string,
     pageId?:number,
-  }
+    feedRankScore?:number,
+  } // TODO deprecated, should migrate to FeedRevision instead
   let feedRevisionItem = <FeedRevisionItem>{};
   feedRevisionItem.feed = req.query.feed;
   feedRevisionItem.wiki = req.query.wiki;
   feedRevisionItem.revIds = [parseInt(req.query.revId)];
   feedRevisionItem.title = req.query.title;
+  feedRevisionItem.feedRankScore = req.query.priority_score;
   feedRevisionItem.pageId = parseInt(req.query.pageId);
+
+  let now = new Date();
   if (req.query.feed == 'wikitrust' &&
     (process.env.FEED_WIKITRUST_TOKEN && req.header('WikiLoopToken') == process.env.FEED_WIKITRUST_TOKEN)) {
+    /* TODO: deprecate the WatchCollection W*/
     const mongoose = require('mongoose');
     await mongoose.connection.db.collection(`WatchCollection_WIKITRUST`)
       .insertOne(feedRevisionItem);
-    // TODO(xinbenlv) add logic to allow validating content format, or consider use gRPC
+
+    let feedRevision:any = <FeedRevisionProps> {
+      feed: feedRevisionItem.feed,
+      wiki: feedRevisionItem.wiki,
+      wikiRevId: `${feedRevisionItem.wiki}:${req.query.revId}`,
+      feedRankScore: feedRevisionItem.feedRankScore,
+      title: feedRevisionItem.title,
+      createdAt: now,
+    };
+
+    if (req.query.ts_crawled) feedRevision.additionalInfo.ts_cralwed = req.query.ts_crawled;
+    if (req.query.ts_sendout) feedRevision.additionalInfo.ts_sendout = req.query.ts_sendout;
+    if (req.query.ts_expire) feedRevision.additionalInfo.ts_expire = req.query.ts_expire;
+
+    await FeedRevision.findOneAndUpdate({feed: feedRevision.feed, wiki: feedRevision.wiki, wikiRevId: feedRevision.wikiRevId}, feedRevision, {upsert:true});
 
     res.send(`ok`);
   } else {
@@ -158,7 +178,7 @@ const ingestRevisionHandler = asyncHandler(async (req, res) => {
       `The provided feed ${req.body.feed} or feedToken ${req.body.feedToken} combination is invalid.`);
   }
 });
-// http://localhost:3000/api/feed/wikitrust/revision?feed=wikitrust&wiki=enwiki&title=Washington_Heights,_Manhattan&pageId=182694&revId=950027405
+// curl -H "Content-Type: application/json" -H "WikiLoopToken:$FEED_WIKITRUST_TOKEN" -X GET "http://localhost:3000/api/feed/wikitrust/revision?feed=wikitrust&wiki=enwiki&revId=1234&title=Some_article&priority_score=5.0&pageId=2345"
 feedRouter.get("/:feed/revision", ingestRevisionHandler);
 feedRouter.post("/:feed/revision", ingestRevisionHandler);
 

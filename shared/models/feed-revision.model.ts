@@ -14,6 +14,7 @@ const FeedRevisionSchema = createSchema(
       claimedAt: Type.date({ required: true }),
       checkedOffAt: Type.date({ required: false }),
     }),
+    additionalInfo: Type.mixed(),
     claimExpiresAt: Type.date({ index: true })
   }
 );
