@@ -5,7 +5,6 @@ import {FeedEnum, WatchCollectionFeed} from "@/server/feed/watch-collection-feed
 import {MwActionApiClient} from "@/shared/mwapi";
 import { wikiToDomain } from '@/shared/utility-shared';
 import { FeedRevisionEngine } from "~/server/feed/feed-revision-engine";
-import { apiLogger } from '@/server/common';
 import { FeedRevisionProps, FeedRevision } from '~/shared/models/feed-revision.model';
 
 export const feedRouter = express.Router();
@@ -32,10 +31,10 @@ feedRouter.get('/mix', async (req, res) => {
   switch (feed) {
     case 'us2020':
     case 'covid19':  // fall through
+    case 'wikitrust':  // fall through
       feedRevisionHandler(true)(res, req);
       return; // we don't go to res.send clause below.
     case 'ores':  // fall through
-    case 'wikitrust':  // fall through
       wikiRevIds = await WatchCollectionFeed.sampleRevisions(
         FeedEnum[feed], parseInt(req.query.size) || 50);
         break;
@@ -101,6 +100,7 @@ let feedRevisionHandler = function (useMixer) {
 
 feedRouter.get('/us2020', asyncHandler(feedRevisionHandler(false)));
 feedRouter.get('/covid19', asyncHandler(feedRevisionHandler(false)));
+feedRouter.get('/wikitrust', asyncHandler(feedRevisionHandler(false)));
 
 feedRouter.get("/:feed", async (req, res) => {
   let feed = req.params.feed;
