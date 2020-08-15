@@ -92,6 +92,8 @@
     },
     methods: {
       async showNext() {
+        this.loading = true;
+        this.showJudgementPanel = false;
         if (this.feedQueue.length <= 1) {
           await this.refillQueue();
         }
@@ -101,6 +103,7 @@
       },
       clearQueue: async function() {
         this.loading = true;
+        this.showJudgementPanel = false;
         this.feedQueue = [];
         this.revisionPanelItems = {};
       },

@@ -1,4 +1,4 @@
-import { asyncHandler, isAuthenticatedWithWikiUserName } from '~/server/common';
+import { asyncHandler, isAuthenticatedWithWikiUserName, apiLogger } from '~/server/common';
 
 const express = require('express');
 import {FeedEnum, WatchCollectionFeed} from "@/server/feed/watch-collection-feed";
@@ -22,17 +22,18 @@ feedRouter.get('/mix', async (req, res) => {
     'lastbad': parseInt(process.env.MIXER_RATIO_LASTBAD )|| 0
   };
   const feed = weighted.select(options);
+  apiLogger.info(`Mixer options =${JSON.stringify(options, null, 2)}, picked = ${feed}`);
   let wikiRevIds;
   let ctx:any = {
     wiki: req.query.wiki || 'enwiki',
-    limit: req.query.limit || 50,
+    limit: parseInt(req.query.limit) || 50,
   };
 
   switch (feed) {
     case 'us2020':
     case 'covid19':  // fall through
     case 'wikitrust':  // fall through
-      feedRevisionHandler(true)(res, req);
+      feedRevisionHandler(true, feed)(req, res);
       return; // we don't go to res.send clause below.
     case 'ores':  // fall through
       wikiRevIds = await WatchCollectionFeed.sampleRevisions(
@@ -77,10 +78,11 @@ feedRouter.get(/(recent|lastbad)/, async (req, res) => {
   }
 });
 
-let feedRevisionHandler = function (useMixer) {
-  return async function(req, res) {
+let feedRevisionHandler = function (useMixer = false, chosenFeed = null) {
+  return async function(req, res, ) {
     let wiki = req.query.wiki || 'enwiki';
-    let feed = req.query.feed || 'us2020';
+    let feed = chosenFeed || req.query.feed || 'us2020';
+    let limit = parseInt(req.query.limit) || 2;
     let userGaId = req.query.userGaId;
     let wikiUserName = req.query.wikiUserName || null;
     if (wikiUserName && !isAuthenticatedWithWikiUserName(req, wikiUserName)) {
@@ -89,7 +91,7 @@ let feedRevisionHandler = function (useMixer) {
       return;
     }
 
-    let feedRevisions:FeedRevisionProps[] = await FeedRevisionEngine.fetchAndClaim(userGaId, wikiUserName, feed, wiki, 2);
+    let feedRevisions:FeedRevisionProps[] = await FeedRevisionEngine.fetchAndClaim(userGaId, wikiUserName, feed, wiki, limit);
     res.send({
       useMixer: useMixer,
       feed: feed,
@@ -98,9 +100,9 @@ let feedRevisionHandler = function (useMixer) {
   };
 }
 
-feedRouter.get('/us2020', asyncHandler(feedRevisionHandler(false)));
-feedRouter.get('/covid19', asyncHandler(feedRevisionHandler(false)));
-feedRouter.get('/wikitrust', asyncHandler(feedRevisionHandler(false)));
+feedRouter.get('/us2020', asyncHandler(feedRevisionHandler()));
+feedRouter.get('/covid19', asyncHandler(feedRevisionHandler()));
+feedRouter.get('/wikitrust', asyncHandler(feedRevisionHandler()));
 
 feedRouter.get("/:feed", async (req, res) => {
   let feed = req.params.feed;

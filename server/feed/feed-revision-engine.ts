@@ -14,8 +14,8 @@ import { MwActionApiClient, MwPageInfo } from '@/shared/mwapi'
 import { feedRevisionEngineLogger } from '../common';
 
 export class FeedRevisionEngine {
-  public static async populateFeedRevisions(feed: string, wiki: string) {
-    let articleLists = (await FeedPage.find({ wiki: wiki, feed: feed })).map(
+  public static async populateFeedRevisions(feed: string, _wiki: string) {
+    let articleLists = (await FeedPage.find({ wiki: _wiki, feed: feed })).map(
       fp => fp.title
     )
 
@@ -30,7 +30,7 @@ export class FeedRevisionEngine {
       )
       feedRevisionEngineLogger.debug(`Reading the articles ${articleIndex}`, titles);
 
-      let wiki = 'enwiki'
+      let wiki = _wiki || 'enwiki'
       let result = await MwActionApiClient.getLastRevisionsByTitles(
         titles,
         wiki
