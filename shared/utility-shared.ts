@@ -124,3 +124,8 @@ export const fetchRevisionPanelItem = async function(wikiRevId, $axios):Promise<
     diffHtml: diffHtml,
   };
 }
+
+export const getHash = (str, len = 5) => {
+  var hash = require('hash.js');
+  return hash.sha256().update(str).digest('hex').slice(0,len);
+}

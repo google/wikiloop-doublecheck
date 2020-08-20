@@ -104,12 +104,7 @@
                                         {{index + 1}}
                                     </td>
                                     <td scope="col">
-                                        <router-link :to="`/history?wikiUserName=${leader.wikiUserName}`" replace>
-                                            <object class="avatar-object"
-                                                    v-bind:data="`/api/avatar/${leader.wikiUserName}`"></object>
-                                            <span v-if="isMe(leader)">{{$t('Label-Me')}} ({{$t('Label-User')}}:{{leader.wikiUserName}})</span>
-                                            <span v-else>{{$t('Label-User')}}:{{leader.wikiUserName}}</span>
-                                        </router-link>
+                                      <UserAvatarWithName :wikiUserName="leader.wikiUserName" :userGaId="leader.userGaId"></UserAvatarWithName>
                                     </td>
                                     <td scope="col">
                                         <template v-for="wiki of leader.wikis">
@@ -151,12 +146,7 @@
                                         {{index + 1}}
                                     </td>
                                     <td scope="col">
-                                        <router-link :to="`/history?userGaId=${leader.userGaId}`" replace>
-                                            <object class="avatar-object"
-                                                    v-bind:data="`/api/avatar/${leader.userGaId}`"></object>
-                                            <span v-if="isMe(leader) ">{{$t('Label-Me')}}</span>
-                                            <span v-else>{{$t('Label-Someone')}}</span>
-                                        </router-link>
+                                      <UserAvatarWithName :userGaId="leader.userGaId"></UserAvatarWithName>
                                     </td>
                                     <td scope="col">
                                         <span class="mr-1" v-for="wiki of leader.wikis" :key="wiki">{{wiki}}</span>
@@ -180,16 +170,19 @@
   import {getUrlBaseByWiki, fetchDiffWithWikiRevId, wikiToLangMap} from '@/shared/utility-shared';
   import VueTimeago from 'vue-timeago';
   import ISO6391 from 'iso-639-1';
+  import UserAvatarWithName from '@/components/UserAvatarWithName.vue';
 
   export default {
     components: {
       VueTimeago,
+      UserAvatarWithName
     }, data() {
       return {
         timeRange: null
       }
-    }, async asyncData({$axios}) {
-      const {loggedIn, anonymous, wikis, totalLoggedIn} = await $axios.$get(`/api/leaderboard`);
+    }, async asyncData({$axios, query}) {
+      let url = `/api/leaderboard`;
+      const {loggedIn, anonymous, wikis, totalLoggedIn} = await $axios.$get(`/api/leaderboard?limit=${query?.limit || 20}`);
       return {loggedIn, anonymous, wikis, totalLoggedIn};
     }, methods: {
       isMe: function (leader) {
@@ -200,7 +193,7 @@
         if(nativeName) return nativeName;
         return wiki; // fall back
       }, load: async function () {
-        const {loggedIn, anonymous, wikis, totalLoggedIn} = await this.$axios.$get(`/api/leaderboard?days=${this.timeRange}`);
+        const {loggedIn, anonymous, wikis, totalLoggedIn} = await this.$axios.$get(`/api/leaderboard?days=${this.timeRange}&limit=${this.$route.query?.limit || 20}}`);
         this.loggedIn = loggedIn;
         this.anonymous = anonymous;
         this.wikis = wikis;
