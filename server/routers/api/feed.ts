@@ -168,7 +168,7 @@ const ingestRevisionHandler = asyncHandler(async (req, res) => {
       createdAt: now,
     };
     feedRevision.additionalInfo = {};
-    if (req.query.ts_crawled) feedRevision.additionalInfo.ts_cralwed = parseInt(req.query.ts_crawled);
+    if (req.query.ts_crawled) feedRevision.additionalInfo.ts_crawled = parseInt(req.query.ts_crawled);
     if (req.query.ts_sendout) feedRevision.additionalInfo.ts_sendout = parseInt(req.query.ts_sendout);
     if (req.query.ts_expire) feedRevision.additionalInfo.ts_expire = parseInt(req.query.ts_expire);
 
