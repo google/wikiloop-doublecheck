@@ -46,6 +46,8 @@ Label-AllTime.@meta.@description: >-
 Label-Anonymous: Anonīms
 Label-ArtificialIntelligence: Mākslīgais intelekts
 Label-Author: Autors
+Label-ChangedWikitext: ''
+Label-ChangedWikitext.@meta.@description: ''
 Label-CountOfJudgements: Grāfs
 Label-CountOfJudgements.@meta.@description: Apzīmējums spriedumu kopsummai par Wikipedia labojumiem.
 Label-Day: Diena
@@ -83,7 +85,7 @@ Label-History.@meta.@description: >-
 Label-Home: Mājas
 Label-Home.@meta.@description: etiķete WikiLoop DoubleCheck mājas lapas identificēšanai.
 Label-Home.@meta.@isMachineTranslated: true
-Label-Home.@meta.@translatedAt: 2020-08-01T01:50:54.835Z
+Label-Home.@meta.@translatedAt: '2020-08-01T01:50:54.835Z'
 Label-Home.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-HumanEditors: Cilvēku redaktori
 Label-HumanEditors.@meta.@description: Cilvēku redaktoru sniegtā spriedumu etiķete.
@@ -151,6 +153,8 @@ Label-OresDamaging.@meta.@description: >-
   Etiķete, kas identificē WMF Mākslīgā intelekta vērtēšanas sistēmas ORES
   vērtējumu un vērtējumu. Šis marķējums īpaši attiecas uz ORES kaitīgo modeli.
   Skatiet vietni https://www.mediawiki.org/wiki/ORES#Advanced_support
+Label-OriginalWikitext: ''
+Label-OriginalWikitext.@meta.@description: ''
 Label-Overridden: Pārvērtēts
 Label-Overridden.@meta.@description: >-
   Apzīmējums, kas norāda, ka doto Wikipedia raksta labojumu apgāž cita jaunāka
@@ -160,6 +164,7 @@ Label-Overridden.@meta.@description: >-
 Label-Overridden.@meta.@isMachineTranslated: true
 Label-Overridden.@meta.@translatedAt: '2020-07-07T19:26:51.444Z'
 Label-Overridden.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-ProjectInfo: ''
 Label-PromptLogin: Pieslēgties
 Label-PromptLogin.@meta.@description: >-
   Etiķete, kas pamudina lietotāju pieteikties uz mūsu programmatūru. Tas ir

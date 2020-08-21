@@ -41,6 +41,8 @@ Label-AllTime.@meta.@description: برچسب محدوده زمانی برای ن
 Label-Anonymous: ناشناس
 Label-ArtificialIntelligence: هوش مصنوعی
 Label-Author: نویسنده
+Label-ChangedWikitext: ''
+Label-ChangedWikitext.@meta.@description: ''
 Label-CountOfJudgements: شمردن
 Label-CountOfJudgements.@meta.@description: برچسب مبلغ داوری برای ویرایش های ویکی پدیا.
 Label-Day: روز
@@ -78,7 +80,7 @@ Label-History.@meta.@description: >-
 Label-Home: خانه
 Label-Home.@meta.@description: یک برچسب برای شناسایی صفحه اصلی WikiLoop DoubleCheck.
 Label-Home.@meta.@isMachineTranslated: true
-Label-Home.@meta.@translatedAt: 2020-08-01T01:50:54.833Z
+Label-Home.@meta.@translatedAt: '2020-08-01T01:50:54.833Z'
 Label-Home.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-HumanEditors: ویرایشگران انسانی
 Label-HumanEditors.@meta.@description: برچسب داوری های ارائه شده توسط ویراستاران Human.
@@ -140,6 +142,8 @@ Label-OresDamaging.@meta.@description: >-
   برچسب نمره و داوری داده شده توسط سیستم امتیاز دهی هوش مصنوعی WMF ORES. این
   برچسب خاص به مدل آسیب رسان ORES اشاره دارد. به
   https://www.mediawiki.org/wiki/ORES#Advanced_support مراجعه کنید
+Label-OriginalWikitext: ''
+Label-OriginalWikitext.@meta.@description: ''
 Label-Overridden: نادیده گرفته شده
 Label-Overridden.@meta.@description: >-
   این برچسب که می گوید ویرایش داده شده در مقاله ویکی پدیا توسط ویرایش جدید دیگری
@@ -149,6 +153,7 @@ Label-Overridden.@meta.@description: >-
 Label-Overridden.@meta.@isMachineTranslated: true
 Label-Overridden.@meta.@translatedAt: '2020-07-07T19:26:51.442Z'
 Label-Overridden.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-ProjectInfo: ''
 Label-PromptLogin: وارد شدن
 Label-PromptLogin.@meta.@description: >-
   برچسب اعلان یک کاربر برای ورود به نرم افزار ما. این بیشتر شبیه به لحن "لطفاً

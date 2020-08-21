@@ -19,6 +19,6 @@ const RevisionInfoSchema = createSchema(
     ores_badfaith: Type.number(),
   }
 );
-export const RevisionInfo = typedModel('RevisionInfo', RevisionInfoSchema, 'RevisionInfo', true);
+export const RevisionInfo = typedModel('RevisionInfo', RevisionInfoSchema, 'RevisionInfo');
 export type RevisionInfoDoc = ExtractDoc<typeof RevisionInfoSchema>;
 export type RevisionInfoProps = ExtractProps<typeof RevisionInfoSchema>;

@@ -48,6 +48,8 @@ Label-AllTime.@meta.@description: >-
 Label-Anonymous: Anonimowy
 Label-ArtificialIntelligence: Sztuczna inteligencja
 Label-Author: Autor
+Label-ChangedWikitext: ''
+Label-ChangedWikitext.@meta.@description: ''
 Label-CountOfJudgements: Liczba
 Label-CountOfJudgements.@meta.@description: Etykieta z liczba ocen dla tej zmiany na Wikipedii.
 Label-Day: Dzień
@@ -84,7 +86,7 @@ Label-History.@meta.@description: >-
 Label-Home: Dom
 Label-Home.@meta.@description: etykieta identyfikująca stronę główną WikiLoop DoubleCheck.
 Label-Home.@meta.@isMachineTranslated: true
-Label-Home.@meta.@translatedAt: 2020-08-01T01:50:54.835Z
+Label-Home.@meta.@translatedAt: '2020-08-01T01:50:54.835Z'
 Label-Home.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-HumanEditors: Redaktorzy ludzcy
 Label-HumanEditors.@meta.@description: Etykieta ocen wydanych przez redaktorów ludzkich.
@@ -154,6 +156,8 @@ Label-OresDamaging.@meta.@description: >-
   Etykieta identyfikująca punktację i ocene wydaną przez system punktowy WMF
   Artificial Intelligence ORES. Ta etykieta odnosi się do szkodliwego modelu
   ORES. Zobacz https://www.mediawiki.org/wiki/ORES#Advanced_support
+Label-OriginalWikitext: ''
+Label-OriginalWikitext.@meta.@description: ''
 Label-Overridden: Zastąpienie
 Label-Overridden.@meta.@description: >-
   Etykieta informująca, że dana zmiana artykułu na Wikipedii jest zastąpiona
@@ -163,6 +167,7 @@ Label-Overridden.@meta.@description: >-
 Label-Overridden.@meta.@isMachineTranslated: ''
 Label-Overridden.@meta.@translatedAt: ''
 Label-Overridden.@meta.@translator: ''
+Label-ProjectInfo: ''
 Label-PromptLogin: Zaloguj się
 Label-PromptLogin.@meta.@description: >-
   Etykieta zachęcająca użytkownika do zalogowania się w naszym oprogramowaniu.

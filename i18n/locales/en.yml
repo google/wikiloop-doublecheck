@@ -1,3 +1,4 @@
+Button-Dismiss: Dismiss
 Button-Go: Go
 Button-Go.@meta.@description: Label for buttons to redirect user to a given url or location.
 Button-HelpTranslate: Help translate
@@ -43,6 +44,8 @@ Label-AllTime.@meta.@description: >-
 Label-Anonymous: Anonymous
 Label-ArtificialIntelligence: Artificial Intelligence
 Label-Author: Author
+Label-ChangedWikitext: Changed wikitext
+Label-ChangedWikitext.@meta.@description: Message denoting the changed wikitext in a diff view.
 Label-CountOfJudgements: Count
 Label-CountOfJudgements.@meta.@description: A label for sum number of judgements for the Wikipedia edits.
 Label-Day: Day
@@ -149,6 +152,8 @@ Label-OresDamaging.@meta.@description: >-
   Intelligence scoring system ORES. This label specifically refers to the
   damaging model of ORES. See
   https://www.mediawiki.org/wiki/ORES#Advanced_support
+Label-OriginalWikitext: Original wikitext
+Label-OriginalWikitext.@meta.@description: Message denoting the original wikitext in a diff view.
 Label-Overridden: Overridden
 Label-Overridden.@meta.@description: >-
   The label to say that a given edit on a Wikipedia article is being overridden
@@ -223,10 +228,6 @@ Label-Week.@meta.@description: >-
   by week.
 Label-YourJudgement: Your Judgement
 Label-YourJudgement.@meta.@description: The label for the judgement given by the current user.
-Label-OriginalWikitext: 'Original wikitext'
-Label-OriginalWikitext.@meta.@description: Message denoting the original wikitext in a diff view.
-Label-ChangedWikitext: 'Changed wikitext'
-Label-ChangedWikitext.@meta.@description: Message denoting the changed wikitext in a diff view.
 MenuItem-Code: Code
 MenuItem-Code.@meta.@description: The menu item label to redirect user to the codebase of this software.
 MenuItem-Contributions: My contributions

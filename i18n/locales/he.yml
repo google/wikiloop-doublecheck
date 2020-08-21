@@ -31,6 +31,8 @@ Label-AllTime.@meta.@description: תווית לטווח הזמנים של נתו
 Label-Anonymous: בעילום שם
 Label-ArtificialIntelligence: בינה מלאכותית
 Label-Author: מְחַבֵּר
+Label-ChangedWikitext: ''
+Label-ChangedWikitext.@meta.@description: ''
 Label-CountOfJudgements: לספור
 Label-CountOfJudgements.@meta.@description: תווית למספר סכומים של פסקי דין לעריכות ויקיפדיה.
 Label-Day: יְוֹם
@@ -64,7 +66,7 @@ Label-History.@meta.@description: >-
 Label-Home: בית
 Label-Home.@meta.@description: תווית לזיהוי דף הבית של WikiLoop DoubleCheck.
 Label-Home.@meta.@isMachineTranslated: true
-Label-Home.@meta.@translatedAt: 2020-08-01T01:50:54.834Z
+Label-Home.@meta.@translatedAt: '2020-08-01T01:50:54.834Z'
 Label-Home.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-HumanEditors: עורכים אנושיים
 Label-HumanEditors.@meta.@description: התווית לפסקי הדין שניתנו על ידי עורכי אנוש.
@@ -124,6 +126,8 @@ Label-OresDamaging.@meta.@description: >-
   התווית המזהה את הניקוד והשיפוט שניתנו על ידי מערכת הניקוד הבינה המלאכותית WMF
   ORES. תווית ספציפית זו מתייחסת למודל המזיק של ORES. ראה
   https://www.mediawiki.org/wiki/ORES#Advanced_support
+Label-OriginalWikitext: ''
+Label-OriginalWikitext.@meta.@description: ''
 Label-Overridden: עקף
 Label-Overridden.@meta.@description: >-
   התווית לומר כי עריכה נתונה במאמר בוויקיפדיה עוברת על ידי עריכה חדשה יותר באותו
@@ -132,6 +136,7 @@ Label-Overridden.@meta.@description: >-
 Label-Overridden.@meta.@isMachineTranslated: true
 Label-Overridden.@meta.@translatedAt: '2020-07-07T19:26:51.442Z'
 Label-Overridden.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-ProjectInfo: ''
 Label-PromptLogin: התחברות
 Label-PromptLogin.@meta.@description: >-
   התווית שתבקש ממשתמש להתחבר בתוכנה שלנו. זה יותר כמו נימה "בבקשה להתחבר" בשפות

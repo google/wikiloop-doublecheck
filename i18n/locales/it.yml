@@ -54,6 +54,8 @@ Label-AllTime.@meta.@description: >-
 Label-Anonymous: Anonimo
 Label-ArtificialIntelligence: Intelligenza artificiale
 Label-Author: Autore
+Label-ChangedWikitext: ''
+Label-ChangedWikitext.@meta.@description: ''
 Label-CountOfJudgements: Conteggio giudizi
 Label-CountOfJudgements.@meta.@description: Un'etichetta per la somma del numero di giudizi per le modifiche di Wikipedia.
 Label-Day: Giorno
@@ -97,7 +99,7 @@ Label-History.@meta.@description: >-
 Label-Home: Casa
 Label-Home.@meta.@description: un'etichetta per identificare la home page di WikiLoop DoubleCheck.
 Label-Home.@meta.@isMachineTranslated: true
-Label-Home.@meta.@translatedAt: 2020-08-01T01:50:54.834Z
+Label-Home.@meta.@translatedAt: '2020-08-01T01:50:54.834Z'
 Label-Home.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-HumanEditors: Redattori umani
 Label-HumanEditors.@meta.@description: L'etichetta per le sentenze fornita dagli editori umani.
@@ -173,6 +175,8 @@ Label-OresDamaging.@meta.@description: >-
   punteggio di intelligenza artificiale WMF ORES. Questa specifica etichetta si
   riferisce al modello dannoso di ORES. Vedi
   https://www.mediawiki.org/wiki/ORES#Advanced_support
+Label-OriginalWikitext: ''
+Label-OriginalWikitext.@meta.@description: ''
 Label-Overridden: override
 Label-Overridden.@meta.@description: >-
   L'etichetta indica che una determinata modifica sull'articolo di Wikipedia
@@ -183,6 +187,7 @@ Label-Overridden.@meta.@description: >-
 Label-Overridden.@meta.@isMachineTranslated: true
 Label-Overridden.@meta.@translatedAt: '2020-07-07T19:26:51.443Z'
 Label-Overridden.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-ProjectInfo: ''
 Label-PromptLogin: Accesso
 Label-PromptLogin.@meta.@description: >-
   L'etichetta che richiede a un utente di accedere al nostro software. È più

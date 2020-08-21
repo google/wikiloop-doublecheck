@@ -56,6 +56,8 @@ Label-AllTime.@meta.@description: >-
 Label-Anonymous: Anónimo
 Label-ArtificialIntelligence: Inteligencia artificial
 Label-Author: Autor
+Label-ChangedWikitext: ''
+Label-ChangedWikitext.@meta.@description: ''
 Label-CountOfJudgements: Total
 Label-CountOfJudgements.@meta.@description: Una etiqueta para el número total de juicios para las ediciones de Wikipedia.
 Label-Day: Día
@@ -98,7 +100,7 @@ Label-History.@meta.@description: >-
 Label-Home: Hogar
 Label-Home.@meta.@description: una etiqueta para identificar la página de inicio de WikiLoop DoubleCheck.
 Label-Home.@meta.@isMachineTranslated: true
-Label-Home.@meta.@translatedAt: 2020-08-01T01:50:54.833Z
+Label-Home.@meta.@translatedAt: '2020-08-01T01:50:54.833Z'
 Label-Home.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-HumanEditors: Editores humanos
 Label-HumanEditors.@meta.@description: La etiqueta para los juicios proporcionada por los editores humanos.
@@ -172,6 +174,8 @@ Label-OresDamaging.@meta.@description: >-
   puntuación de Inteligencia Artificial WMF ORES. Esta etiqueta específica se
   refiere al modelo dañino de ORES. Ver
   https://www.mediawiki.org/wiki/ORES#Advanced_support
+Label-OriginalWikitext: ''
+Label-OriginalWikitext.@meta.@description: ''
 Label-Overridden: Anulado
 Label-Overridden.@meta.@description: >-
   La etiqueta para decir que una edición dada en el artículo de Wikipedia está
@@ -182,6 +186,7 @@ Label-Overridden.@meta.@description: >-
 Label-Overridden.@meta.@isMachineTranslated: true
 Label-Overridden.@meta.@translatedAt: '2020-07-07T19:26:51.441Z'
 Label-Overridden.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-ProjectInfo: ''
 Label-PromptLogin: Iniciar sesión
 Label-PromptLogin.@meta.@description: >-
   La etiqueta para solicitar a un usuario que inicie sesión en nuestro software.

@@ -56,6 +56,8 @@ Label-AllTime.@meta.@description: >-
 Label-Anonymous: Anoniem
 Label-ArtificialIntelligence: Kunstmatige intelligentie
 Label-Author: Auteur
+Label-ChangedWikitext: ''
+Label-ChangedWikitext.@meta.@description: ''
 Label-CountOfJudgements: Tel
 Label-CountOfJudgements.@meta.@description: >-
   Een label voor het totaal aantal beoordelingen voor de bewerkingen van
@@ -101,7 +103,7 @@ Label-History.@meta.@description: >-
 Label-Home: Huis
 Label-Home.@meta.@description: een label om de startpagina van WikiLoop DoubleCheck te identificeren.
 Label-Home.@meta.@isMachineTranslated: true
-Label-Home.@meta.@translatedAt: 2020-08-01T01:50:54.835Z
+Label-Home.@meta.@translatedAt: '2020-08-01T01:50:54.835Z'
 Label-Home.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-HumanEditors: Menselijke redacteuren
 Label-HumanEditors.@meta.@description: Het label voor uitspraken van Human Editors.
@@ -176,6 +178,8 @@ Label-OresDamaging.@meta.@description: >-
   Het label met de score en het oordeel van WMF Artificial Intelligence
   scoresysteem ORES. Dit specifieke label verwijst naar het schadelijke model
   van ORES. Zie https://www.mediawiki.org/wiki/ORES#Advanced_support
+Label-OriginalWikitext: ''
+Label-OriginalWikitext.@meta.@description: ''
 Label-Overridden: Overschreven
 Label-Overridden.@meta.@description: >-
   Het label om te zeggen dat een bepaalde bewerking in een Wikipedia-artikel
@@ -186,6 +190,7 @@ Label-Overridden.@meta.@description: >-
 Label-Overridden.@meta.@isMachineTranslated: true
 Label-Overridden.@meta.@translatedAt: '2020-07-07T19:26:51.444Z'
 Label-Overridden.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-ProjectInfo: ''
 Label-PromptLogin: Log in
 Label-PromptLogin.@meta.@description: >-
   Het label om een gebruiker te vragen zich aan te melden bij onze software. Het

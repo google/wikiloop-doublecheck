@@ -29,6 +29,8 @@ Label-AllTime.@meta.@description: '통계가 표시되는 시간 범위의 레�
 Label-Anonymous: 익명
 Label-ArtificialIntelligence: 인공 지능
 Label-Author: 저자
+Label-ChangedWikitext: ''
+Label-ChangedWikitext.@meta.@description: ''
 Label-CountOfJudgements: 카운트
 Label-CountOfJudgements.@meta.@description: 위키 백과 편집에 대한 총 판단 수 레이블입니다.
 Label-Day: 일
@@ -58,7 +60,7 @@ Label-History.@meta.@description: '모든 사용자 또는 지정된 사용자�
 Label-Home: 집
 Label-Home.@meta.@description: WikiLoop DoubleCheck의 홈 페이지를 식별하는 레이블입니다.
 Label-Home.@meta.@isMachineTranslated: true
-Label-Home.@meta.@translatedAt: 2020-08-01T01:50:54.835Z
+Label-Home.@meta.@translatedAt: '2020-08-01T01:50:54.835Z'
 Label-Home.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-HumanEditors: 인간 편집자
 Label-HumanEditors.@meta.@description: Human 편집자가 제공 한 판단에 대한 레이블입니다.
@@ -102,6 +104,8 @@ Label-OresDamaging: 광석 피해
 Label-OresDamaging.@meta.@description: >-
   WMF 인공 지능 점수 시스템 ORES에서 제공 한 점수와 판단을 식별하는 레이블. 이 레이블은 ORES의 손상 모델을 나타냅니다.
   https://www.mediawiki.org/wiki/ORES#Advanced_support를 참조하십시오.
+Label-OriginalWikitext: ''
+Label-OriginalWikitext.@meta.@description: ''
 Label-Overridden: 재정의
 Label-Overridden.@meta.@description: >-
   위키피디아 기사에 대한 특정 수정 사항이 동일한 위키피디아 기사에 대한 다른 최신 편집 사항으로 대체되고 있음을 나타내는 레이블입니다. 이
@@ -109,6 +113,7 @@ Label-Overridden.@meta.@description: >-
 Label-Overridden.@meta.@isMachineTranslated: true
 Label-Overridden.@meta.@translatedAt: '2020-07-07T19:26:51.444Z'
 Label-Overridden.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-ProjectInfo: ''
 Label-PromptLogin: 로그인
 Label-PromptLogin.@meta.@description: >-
   사용자가 소프트웨어에 로그인하라는 메시지를 표시하는 레이블입니다. 형식과 명예로운 연설이 존재하는 언어에서는 "로그인하십시오"라는 말과

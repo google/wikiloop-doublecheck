@@ -30,6 +30,8 @@ Label-AllTime.@meta.@description: 統計が表示される時間範囲のラベ�
 Label-Anonymous: 匿名
 Label-ArtificialIntelligence: 人工知能
 Label-Author: 著者
+Label-ChangedWikitext: ''
+Label-ChangedWikitext.@meta.@description: ''
 Label-CountOfJudgements: カウント
 Label-CountOfJudgements.@meta.@description: ウィキペディアの編集に対する判断の合計数のラベル。
 Label-Day: 日
@@ -55,7 +57,7 @@ Label-History.@meta.@description: すべてのユーザーまたは特定のユ�
 Label-Home: ホーム
 Label-Home.@meta.@description: WikiLoop DoubleCheckのホームページを識別するラベル。
 Label-Home.@meta.@isMachineTranslated: true
-Label-Home.@meta.@translatedAt: 2020-08-01T01:50:54.834Z
+Label-Home.@meta.@translatedAt: '2020-08-01T01:50:54.834Z'
 Label-Home.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-HumanEditors: 人間の編集者
 Label-HumanEditors.@meta.@description: 人間の編集者によって提供された判決のラベル。
@@ -101,12 +103,15 @@ Label-OresDamaging.@meta.@description: >-
   WMF Artificial
   IntelligenceスコアリングシステムORESによって与えられたスコアと判断を識別するラベル。このラベルは、損傷のあるORESモデルを示しています。
   https://www.mediawiki.org/wiki/ORES#Advanced_supportを参照してください
+Label-OriginalWikitext: ''
+Label-OriginalWikitext.@meta.@description: ''
 Label-Overridden: オーバーライドされた
 Label-Overridden.@meta.@description: >-
   ウィキペディアの記事に対する特定の編集が、同じウィキペディアの記事に対する別の新しい編集によって上書きされていることを示すラベル。このラベルは、そのような編集が現在のユーザーによって既に元に戻されているか、Wikipedia上の別のWikipediaエディターによって元に戻されているか更新されていることを意味します。
 Label-Overridden.@meta.@isMachineTranslated: true
 Label-Overridden.@meta.@translatedAt: '2020-07-07T19:26:51.443Z'
 Label-Overridden.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-ProjectInfo: ''
 Label-PromptLogin: ログインする
 Label-PromptLogin.@meta.@description: ソフトウェアへのログインをユーザーに促すラベル。正式な敬語が存在する言語では、「ログインしてください」という言葉に似ています。
 Label-PromptLogin.@meta.@isMachineTranslated: true

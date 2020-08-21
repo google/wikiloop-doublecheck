@@ -29,6 +29,8 @@ Label-AllTime.@meta.@description: 标签的时间范围，以便统计数据显�
 Label-Anonymous: 游客
 Label-ArtificialIntelligence: 人工智能
 Label-Author: 作者
+Label-ChangedWikitext: ''
+Label-ChangedWikitext.@meta.@description: ''
 Label-CountOfJudgements: 计数
 Label-CountOfJudgements.@meta.@description: Wikipedia编辑的判断总数标签。
 Label-Day: 天
@@ -51,7 +53,7 @@ Label-History.@meta.@description: 所有用户或给定用户的过去活动，�
 Label-Home: 家
 Label-Home.@meta.@description: 标识WikiLoop DoubleCheck主页的标签。
 Label-Home.@meta.@isMachineTranslated: true
-Label-Home.@meta.@translatedAt: 2020-08-01T01:50:54.837Z
+Label-Home.@meta.@translatedAt: '2020-08-01T01:50:54.837Z'
 Label-Home.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-HumanEditors: 人类编辑
 Label-HumanEditors.@meta.@description: 人工编辑提供的判断标签。
@@ -91,12 +93,15 @@ Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-OresDamaging: ORES破坏
 Label-OresDamaging.@meta.@description: >-
   由WMF人工智能评分系统ORES给出的得分和判断标签。该标签特定指的是ORES的破坏模型。请参阅https://www.mediawiki.org/wiki/ORES/zh#高级支持
+Label-OriginalWikitext: ''
+Label-OriginalWikitext.@meta.@description: ''
 Label-Overridden: 已覆盖
 Label-Overridden.@meta.@description: >-
   表示在Wikipedia文章上进行给定编辑的标签被同一Wikipedia文章上的另一个较新编辑所覆盖。此标签表示这样的编辑已由我们当前的用户还原，或者已由Wikipedia上的另一个Wikipedia编辑器还原或更新。
 Label-Overridden.@meta.@isMachineTranslated: true
 Label-Overridden.@meta.@translatedAt: '2020-07-07T19:26:51.447Z'
 Label-Overridden.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-ProjectInfo: ''
 Label-PromptLogin: 登录
 Label-PromptLogin.@meta.@description: 提示用户登录我们软件的标签。那些形式和尊敬的言语更像是语言中的“请登录”语调。
 Label-PromptLogin.@meta.@isMachineTranslated: true

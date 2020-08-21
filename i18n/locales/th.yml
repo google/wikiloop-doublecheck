@@ -38,6 +38,8 @@ Label-AllTime.@meta.@description: >-
 Label-Anonymous: ไม่ระบุชื่อ
 Label-ArtificialIntelligence: ปัญญาประดิษฐ์
 Label-Author: ผู้เขียน
+Label-ChangedWikitext: ''
+Label-ChangedWikitext.@meta.@description: ''
 Label-CountOfJudgements: นับ
 Label-CountOfJudgements.@meta.@description: ป้ายกำกับสำหรับจำนวนรวมของการตัดสินสำหรับการแก้ไขวิกิพีเดีย
 Label-Day: วัน
@@ -73,7 +75,7 @@ Label-History.@meta.@description: >-
 Label-Home: บ้าน
 Label-Home.@meta.@description: ป้ายกำกับเพื่อระบุหน้าแรกของ WikiLoop DoubleCheck
 Label-Home.@meta.@isMachineTranslated: true
-Label-Home.@meta.@translatedAt: 2020-08-01T01:50:54.836Z
+Label-Home.@meta.@translatedAt: '2020-08-01T01:50:54.836Z'
 Label-Home.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-HumanEditors: บรรณาธิการของมนุษย์
 Label-HumanEditors.@meta.@description: ฉลากสำหรับการตัดสินที่จัดทำโดยบรรณาธิการของมนุษย์
@@ -135,6 +137,8 @@ Label-OresDamaging.@meta.@description: >-
   ฉลากระบุคะแนนและการตัดสินที่กำหนดโดยระบบการให้คะแนนปัญญาประดิษฐ์ WMF ORES
   ฉลากเฉพาะนี้อ้างถึงรูปแบบการทำลายของ ORES ดู
   https://www.mediawiki.org/wiki/ORES#Advanced_support
+Label-OriginalWikitext: ''
+Label-OriginalWikitext.@meta.@description: ''
 Label-Overridden: แทนที่
 Label-Overridden.@meta.@description: >-
   ป้ายกำกับที่บอกว่าการแก้ไขที่ระบุในบทความ Wikipedia
@@ -144,6 +148,7 @@ Label-Overridden.@meta.@description: >-
 Label-Overridden.@meta.@isMachineTranslated: true
 Label-Overridden.@meta.@translatedAt: '2020-07-07T19:26:51.446Z'
 Label-Overridden.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-ProjectInfo: ''
 Label-PromptLogin: เข้าสู่ระบบ
 Label-PromptLogin.@meta.@description: >-
   ป้ายกำกับเพื่อแจ้งให้ผู้ใช้ลงชื่อเข้าใช้ซอฟต์แวร์ของเรา มันเหมือนเสียง

@@ -52,6 +52,8 @@ Label-AllTime.@meta.@description: >-
 Label-Anonymous: Anonim
 Label-ArtificialIntelligence: Kecerdasan buatan
 Label-Author: Penulis
+Label-ChangedWikitext: ''
+Label-ChangedWikitext.@meta.@description: ''
 Label-CountOfJudgements: Jumlah
 Label-CountOfJudgements.@meta.@description: Label untuk jumlah penjumlahan untuk suntingan Wikipedia.
 Label-Day: Hari
@@ -90,7 +92,7 @@ Label-History.@meta.@description: >-
 Label-Home: Rumah
 Label-Home.@meta.@description: label untuk mengidentifikasi halaman beranda WikiLoop DoubleCheck.
 Label-Home.@meta.@isMachineTranslated: true
-Label-Home.@meta.@translatedAt: 2020-08-01T01:50:54.834Z
+Label-Home.@meta.@translatedAt: '2020-08-01T01:50:54.834Z'
 Label-Home.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-HumanEditors: Penyunting manusia
 Label-HumanEditors.@meta.@description: Label penilaian yang disediakan oleh editor Manusia.
@@ -162,6 +164,8 @@ Label-OresDamaging.@meta.@description: >-
   Label yang mengidentifikasi skor dan penilaian yang diberikan oleh sistem
   penilaian ORF buatan WMF. Label ini khusus merujuk pada model ORES yang
   merusak. Lihat https://www.mediawiki.org/wiki/ORES#Advanced_support
+Label-OriginalWikitext: ''
+Label-OriginalWikitext.@meta.@description: ''
 Label-Overridden: Ditimpa
 Label-Overridden.@meta.@description: >-
   Label yang menyatakan bahwa suntingan yang diberikan pada artikel Wikipedia
@@ -172,6 +176,7 @@ Label-Overridden.@meta.@description: >-
 Label-Overridden.@meta.@isMachineTranslated: true
 Label-Overridden.@meta.@translatedAt: '2020-07-07T19:26:51.443Z'
 Label-Overridden.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-ProjectInfo: ''
 Label-PromptLogin: Gabung
 Label-PromptLogin.@meta.@description: >-
   Label untuk meminta pengguna untuk masuk pada perangkat lunak kami. Ini lebih

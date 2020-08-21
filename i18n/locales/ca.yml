@@ -51,6 +51,8 @@ Label-AllTime.@meta.@description: >-
 Label-Anonymous: Anònim
 Label-ArtificialIntelligence: Intel · ligència artificial
 Label-Author: Autor
+Label-ChangedWikitext: ''
+Label-ChangedWikitext.@meta.@description: ''
 Label-CountOfJudgements: Comptar
 Label-CountOfJudgements.@meta.@description: Una etiqueta per sumar judicis per a les edicions de Viquipèdia.
 Label-Day: Dia
@@ -92,7 +94,7 @@ Label-History.@meta.@description: >-
 Label-Home: Inici
 Label-Home.@meta.@description: una etiqueta per identificar la pàgina principal de WikiLoop DoubleCheck.
 Label-Home.@meta.@isMachineTranslated: true
-Label-Home.@meta.@translatedAt: 2020-08-01T01:50:54.832Z
+Label-Home.@meta.@translatedAt: '2020-08-01T01:50:54.832Z'
 Label-Home.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-HumanEditors: Editors humans
 Label-HumanEditors.@meta.@description: L’etiqueta dels judicis proporcionats pels editors humans.
@@ -166,6 +168,8 @@ Label-OresDamaging.@meta.@description: >-
   puntuació d’intel·ligència artificial WMF ORES. Aquestes etiquetes
   específiques es refereixen al model perjudicial d’ORES. Consulteu
   https://www.mediawiki.org/wiki/ORES#Advanced_support
+Label-OriginalWikitext: ''
+Label-OriginalWikitext.@meta.@description: ''
 Label-Overridden: Nul
 Label-Overridden.@meta.@description: >-
   L'etiqueta per a dir que una altra edició de l'article anterior de Wikipedia
@@ -176,6 +180,7 @@ Label-Overridden.@meta.@description: >-
 Label-Overridden.@meta.@isMachineTranslated: true
 Label-Overridden.@meta.@translatedAt: '2020-07-07T19:26:51.440Z'
 Label-Overridden.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-ProjectInfo: ''
 Label-PromptLogin: iniciar Sessió
 Label-PromptLogin.@meta.@description: >-
   L’etiqueta per demanar a l’usuari que iniciï la sessió al nostre programari.

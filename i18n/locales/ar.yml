@@ -39,6 +39,8 @@ Label-AllTime.@meta.@description: >-
 Label-Anonymous: مجهول
 Label-ArtificialIntelligence: الذكاء الاصطناعي
 Label-Author: مؤلف
+Label-ChangedWikitext: ''
+Label-ChangedWikitext.@meta.@description: ''
 Label-CountOfJudgements: العد
 Label-CountOfJudgements.@meta.@description: تصنيف لعدد الأحكام في تعديلات ويكيبيديا.
 Label-Day: يوم
@@ -72,7 +74,7 @@ Label-History.@meta.@description: >-
 Label-Home: الصفحة الرئيسية
 Label-Home.@meta.@description: تسمية لتحديد الصفحة الرئيسية لـ WikiLoop DoubleCheck.
 Label-Home.@meta.@isMachineTranslated: true
-Label-Home.@meta.@translatedAt: 2020-08-01T01:50:54.831Z
+Label-Home.@meta.@translatedAt: '2020-08-01T01:50:54.831Z'
 Label-Home.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
 Label-HumanEditors: المحررين البشريين
 Label-HumanEditors.@meta.@description: تسمية الأحكام المقدمة من المحررين البشريين.
@@ -134,6 +136,8 @@ Label-OresDamaging.@meta.@description: >-
   الملصق الذي يحدد الدرجة والحكم الصادر عن نظام تسجيل الذكاء الاصطناعي التابع لـ
   WMF ORES. يشير هذا الملصق المحدد إلى النموذج التالف لـ ORES. راجع
   https://www.mediawiki.org/wiki/ORES#Advanced_support
+Label-OriginalWikitext: ''
+Label-OriginalWikitext.@meta.@description: ''
 Label-Overridden: تم تجاوزه
 Label-Overridden.@meta.@description: >-
   الملصق الذي يشير إلى أن تعديلًا معينًا على مقالة ويكيبيديا يتم تجاوزه بواسطة
@@ -143,6 +147,7 @@ Label-Overridden.@meta.@description: >-
 Label-Overridden.@meta.@isMachineTranslated: true
 Label-Overridden.@meta.@translatedAt: '2020-07-07T19:26:51.439Z'
 Label-Overridden.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
+Label-ProjectInfo: ''
 Label-PromptLogin: تسجيل الدخول
 Label-PromptLogin.@meta.@description: >-
   تسمية مطالبة المستخدم بتسجيل الدخول إلى برنامجنا. إنه أشبه بنبرة "الرجاء تسجيل

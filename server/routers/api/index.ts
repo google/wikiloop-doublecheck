@@ -31,7 +31,7 @@ import { leaderboardRouter } from "./leaderboard";
 import { decisionLogRouter } from "./decisionlog";
 import { markedRevsCsv, markedRevs } from "./marked";
 import { asyncHandler } from "~/server/common";
-import { useStiki } from '~/server/common';
+import { noticeRouter } from "./notice";
 
 const express = require('express');
 export const apiRouter = express.Router();
@@ -91,3 +91,4 @@ apiRouter.use('/mediawiki', mediawikiRouter);
 
 apiRouter.use('/decisionLog', decisionLogRouter);
 
+apiRouter.use('/notice', noticeRouter);
