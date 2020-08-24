@@ -40,6 +40,7 @@
                                 <th>Wikis</th>
                                 <th>{{$t('Label-CountOfJudgements')}}</th>
                                 <th>{{$t('Label-LastActiveTime')}}</th>
+                                <th>{{$t('Label-FirstSeen')}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -55,8 +56,10 @@
                                     </td>
                                     <td scope="col">{{leadWiki.count}}</td>
                                     <td scope="col">
-                                        <timeago
-                                                :datetime="new Date(leadWiki.lastTimestamp * 1000).toString()" :locale="$i18n.locale"></timeago>
+                                        <timeago :datetime="new Date(leadWiki.lastTimestamp * 1000).toString()" :locale="$i18n.locale"></timeago>
+                                    </td>
+                                    <td scope="col">
+                                        <timeago :datetime="new Date(leadWiki.firstTimestamp * 1000).toString()" :locale="$i18n.locale"></timeago>
                                     </td>
                                 </tr>
                             </template>
@@ -73,6 +76,15 @@
                                                 .reduce((a, b) => Math.max(a,b), 0) * 1000).toString()" :locale="$i18n.locale">
 
                                     </timeago>
+                                </th>
+                               <th>
+                                    <timeago
+                                            :datetime="new Date(
+                                            wikis.map(wiki=>wiki.firstTimestamp)
+                                                .reduce((a, b) => Math.min(a,b), 999999999999999999) * 1000).toString()" :locale="$i18n.locale">
+
+                                    </timeago>
+
                                 </th>
                               </tr>
                             </tfoot>
@@ -95,6 +107,7 @@
                                 <th>Wikis</th>
                                 <th>{{$t('Label-CountOfJudgements')}}</th>
                                 <th>{{$t('Label-LastActiveTime')}}</th>
+                                <th>{{$t('Label-FirstJudgement')}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -114,7 +127,10 @@
                                     </td>
                                     <td scope="col">{{leader.count}}</td>
                                     <td scope="col">
-                                        <timeago :datetime="new Date(leader.lastTimestamp * 1000).toString()" :locale="$i18n.locale"></timeago>
+                                      <timeago :datetime="new Date(leader.lastTimestamp * 1000).toString()" :locale="$i18n.locale"></timeago>
+                                    </td>
+                                    <td scope="col">
+                                      <timeago :datetime="new Date(leader.firstTimestamp * 1000).toString()" :locale="$i18n.locale"></timeago>
                                     </td>
                                 </tr>
                             </template>
@@ -137,6 +153,7 @@
                                 <th>Wikis</th>
                                 <th>{{$t('Label-CountOfJudgements')}}</th>
                                 <th>{{$t('Label-LastActiveTime')}}</th>
+                                <th>{{$t('Label-FirstJudgement')}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -153,7 +170,10 @@
                                     </td>
                                     <td scope="col">{{leader.count}}</td>
                                     <td scope="col">
-                                        <timeago :datetime="new Date(leader.lastTimestamp * 1000).toString()" :locale="$i18n.locale"></timeago>
+                                      <timeago :datetime="new Date(leader.lastTimestamp * 1000).toString()" :locale="$i18n.locale"></timeago>
+                                    </td>
+                                    <td scope="col">
+                                      <timeago :datetime="new Date(leader.firstTimestamp * 1000).toString()" :locale="$i18n.locale"></timeago>
                                     </td>
                                 </tr>
                             </template>

@@ -1,3 +1,4 @@
+Button-Dismiss: ''
 Button-Go: 가다
 Button-Go.@meta.@description: 사용자를 지정된 URL 또는 위치로 리디렉션하는 버튼의 레이블입니다.
 Button-HelpTranslate: 번역 도움말

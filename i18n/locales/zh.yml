@@ -1,3 +1,4 @@
+Button-Dismiss: ''
 Button-Go: 立即前往
 Button-Go.@meta.@description: 按钮标签，用于将用户重定向到给定的URL或位置。
 Button-HelpTranslate: 帮助翻译

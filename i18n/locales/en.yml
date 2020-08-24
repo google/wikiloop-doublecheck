@@ -78,6 +78,7 @@ Label-Feed.@meta.@description: >-
   following the name of that specific feed. For example, we have various feeds
   of different kinds of Wikipedia edits, such as feed of article topic, feed of
   edits detected by vandalism detection score systems, etc.
+Label-FirstSeen: First seen
 Label-History: History
 Label-History.@meta.@description: >-
   A label for the list of past activities, past judgements contributed etc, of
@@ -85,6 +86,7 @@ Label-History.@meta.@description: >-
 Label-Home: Home
 Label-Home.@meta.@description: a label to identify home page of WikiLoop DoubleCheck.
 Label-Home.@meta.@isMachineTranslated: ''
+Label-Home.@meta.@translatedAt: ''
 Label-Home.@meta.@translator: ''
 Label-HumanEditors: Human editors
 Label-HumanEditors.@meta.@description: The label for judgements provided by Human editors.
