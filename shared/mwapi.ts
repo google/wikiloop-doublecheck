@@ -236,11 +236,10 @@ export class MwActionApiClient {
   }
 
   /**
-   * Given a feed, and wiki, using a title to get all it's category children
+   * Given a wiki, using a title to get all it's category children
    * please note this function handles the "continue" call to MediaWiki Action API
    * it is in charge of making all follow up queries.
    *
-   * @param feed
    * @param wiki
    * @param entryArticle
    */
@@ -290,4 +289,78 @@ export class MwActionApiClient {
      } while (ret.data?.continue?.cmcontinue);
     return result;
   }
+
+  /**
+   * Given a wiki, using a title to get all it's category children
+   * please note this function handles the "continue" call to MediaWiki Action API
+   * it is in charge of making all follow up queries.
+   *
+   * @param wiki
+   * @param entryArticle
+   */
+  public static getLinkChildren = async function (wiki, entryArticle):Promise<string[]> {
+    try {
+
+
+    let endpoint =`http://${wikiToDomain[wiki]}/w/api.php`;
+    let result:string[] = [];
+    let params = {
+      "action": "query",
+      "format": "json",
+      "prop": "links",
+      "formatversion": "2",
+      "plnamespace": "0",
+      "titles": entryArticle,
+      "pllimit": "500",
+    };
+    let ret = null;
+
+    do {
+      ret = await axios.get(endpoint, {params: params, headers: { 'User-Agent': userAgent }});
+
+        /**json
+        {
+            "continue": {
+                "plcontinue": "9228|0|2010_TK7",
+                "continue": "||"
+            },
+            "query": {
+                "pages": {
+                    "9228": {
+                        "pageid": 9228,
+                        "ns": 0,
+                        "title": "Earth",
+                        "links": [
+                            {
+                                "ns": 0,
+                                "title": "2002 AA29"
+                            },
+                            {
+                                "ns": 0,
+                                "title": "2006 RH120"
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+        */
+      if (ret.data?.query?.pages && Object.keys(ret.data?.query?.pages).length == 1) {
+        let pageId = Object.keys(ret.data?.query?.pages)[0];
+        let links = ret.data.query.pages[pageId].links;
+        result.push(...links.map(link => link.title));
+
+        if (ret.data?.continue?.plcontinue) params['plcontinue'] = ret.data.continue.plcontinue;
+        else break;
+      } else {
+        break;
+      }
+     } while (ret.data?.continue?.plcontinue);
+    return result;
+    } catch (e) {
+      console.warn(e);
+      return [];
+    }
+  }
+
 }
