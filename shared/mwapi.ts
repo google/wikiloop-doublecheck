@@ -45,7 +45,7 @@ export interface MwPageInfo {
  */
 export class MwActionApiClient {
   private static bottleneck = new Bottleneck({
-    minTime: 500
+    minTime: 100
   });
   public static async getMwPageInfosByTitles(wiki:string, titles:string[]):Promise<MwPageInfo[]> {
     console.assert(titles && titles.length > 0 && titles.length <= MAX_MWAPI_LIMIT, `Parameter titles needs to has a length between 1 to ${MAX_MWAPI_LIMIT}}, but was ${titles.length}.`);
@@ -66,6 +66,37 @@ export class MwActionApiClient {
       });
     }
     return [];
+  }
+
+  public static async getPageViewsByTitles(wiki:string, titles:string[], days:number = 60):Promise<object> {
+    console.assert(titles && titles.length > 0 && titles.length <= MAX_MWAPI_LIMIT, `Parameter titles needs to has a length between 1 to ${MAX_MWAPI_LIMIT}}, but was ${titles.length}.`);
+
+    let params =
+    {
+      "action": "query",
+      "format": "json",
+      "prop": "pageviews",
+      "titles": titles.join('|'),
+      "pvipdays": days
+    };
+    let endpoint =`http://${wikiToDomain[wiki]}/w/api.php`;
+    let ret = {};
+    let result = await MwActionApiClient.bottleneck.schedule(
+      async ()=> await axios.get(endpoint, {params:params, headers: { 'User-Agent': userAgent }}));
+    console.assert(Object.keys(result.data.query?.pages).length == titles.length);
+    for (let i = 0; i<Object.keys(result.data.query.pages).length; i++) {
+        let pageId = Object.keys(result.data.query.pages)[i];
+        let pageviewsOfPage = result.data.query.pages[pageId].pageviews;
+        let title = result.data.query.pages[pageId].title;
+        let pageviewCount = 0;
+        if (pageviewsOfPage) {
+          pageviewCount = Object.values(pageviewsOfPage).reduce((a: number, b:number) => a + b, 0) as number;
+        }
+        ret[title] = pageviewCount;
+        console.log(`XXX article: ${title}, pageviews: ${pageviewCount}, raw=${JSON.stringify(pageviewsOfPage, null, 2)}`);
+    }
+
+    return ret;
   }
 
   public static async getRevisionIdsByTitle(
@@ -348,7 +379,7 @@ export class MwActionApiClient {
       if (ret.data?.query?.pages && Object.keys(ret.data?.query?.pages).length == 1) {
         let pageId = Object.keys(ret.data?.query?.pages)[0];
         let links = ret.data.query.pages[pageId].links;
-        result.push(...links.map(link => link.title));
+        if (links) result.push(...links.map(link => link.title));
 
         if (ret.data?.continue?.plcontinue) params['plcontinue'] = ret.data.continue.plcontinue;
         else break;
