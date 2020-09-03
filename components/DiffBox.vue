@@ -49,7 +49,8 @@ export default {
       }
       let diffContent = this.diffContent;
       // https://regex101.com/r/QwzU8z/3
-      diffContent = diffContent.replaceAll( /\[\[([^\]|]*)(\|?.*)\]\]/gm, function( match, p1, p2 ) {
+      console.log( diffContent.match( /\[\[([^\]|]*)(\|?.*?)\]\]/gm ) );
+      diffContent = diffContent.replace( /\[\[([^\]|]*)(\|?.*?)\]\]/gm, function( match, p1, p2 ) {
         let parsedText = ( new DOMParser() ).parseFromString( p1, "text/html" );
         let cleanedUpP1 = parsedText.querySelector( 'body' ).innerText;
         parsedText = undefined;
