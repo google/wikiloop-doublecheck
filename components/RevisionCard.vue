@@ -85,7 +85,7 @@
           </div>
         </div>
         <div class="card-text w-100 pl-sm-0">
-          <diff-box v-if="diff && diff.compare && diff.compare['*']" v-bind:diffContent="diff.compare['*']"/>
+          <diff-box v-if="diff && diff.compare && diff.compare['*']" v-bind:diffContent="diff.compare['*']" :wikiRevId="wikiRevId"/>
           <!-- TODO(xinbenlv) update the following text for for i18n -->
           <h5 v-else>{{$t(`Message-DiffNotAvailable`)}}
             <div v-on:click="loadDiff()" class="btn btn-outline-primary btn-small"><i class="fas fa-redo"></i></div>

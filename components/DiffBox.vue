@@ -22,18 +22,59 @@
           <th colspan="2"><h5>{{ $t('Label-ChangedWikitext') }}</h5></th>
         </tr>
       </thead>
-      <tbody v-html="diffContent" >
+      <tbody v-html="processedDiffContent" >
       </tbody>
     </table>
   </div>
 </template>
 
 <script lang="ts">
-  import Vue from 'vue'
+import { wikiToDomain } from '@/shared/utility-shared';
+export default {
+  props: {
+    diffContent: {
+      type: String,
+      default: ''
+    },
+    wikiRevId: {
+      type: String,
+      default: ''
+    }
+  },
+  methods: {
+    processDiffContent() {
+      if ( !window.DOMParser ) {
+        this.processedDiffContent = diffContent;
+        return;
+      }
+      let diffContent = this.diffContent;
+      // https://regex101.com/r/QwzU8z/3
+      diffContent = diffContent.replaceAll( /\[\[([^\]|]*)(\|?.*)\]\]/gm, function( match, p1, p2 ) {
+        let parsedText = ( new DOMParser() ).parseFromString( p1, "text/html" );
+        let cleanedUpP1 = parsedText.querySelector( 'body' ).innerText;
+        parsedText = undefined;
+        let link = `http://${wikiToDomain[this.wikiRevId.split(':')[0]]}/wiki/${cleanedUpP1}`;
+        return `[[<a href="${link}" target="_blank">${p1}</a>${p2}]]`;
+      }.bind( this ) );
 
-  export default Vue.extend({
-    props: ["diffContent"]
-  });
+      this.processedDiffContent = diffContent;
+    }
+  },
+  data() {
+    return {
+      processedDiffContent: {
+        type: String,
+        default: ''
+      }
+    }
+  },
+  beforeMount() {
+    this.processDiffContent( this.diffContent );
+  },
+  beforeUpdate() {
+    this.processDiffContent( this.diffContent );
+  }
+}
 </script>
 
 <style>
