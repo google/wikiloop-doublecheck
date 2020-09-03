@@ -93,7 +93,6 @@ export class MwActionApiClient {
           pageviewCount = Object.values(pageviewsOfPage).reduce((a: number, b:number) => a + b, 0) as number;
         }
         ret[title] = pageviewCount;
-        console.log(`XXX article: ${title}, pageviews: ${pageviewCount}, raw=${JSON.stringify(pageviewsOfPage, null, 2)}`);
     }
 
     return ret;
@@ -284,6 +283,7 @@ export class MwActionApiClient {
       "formatversion": "2",
       "cmtitle": entryArticle,
       "cmprop": "ids|timestamp|title",
+      "cmnamespace": "0|14",
       "cmlimit": "500",
     };
     let ret = null;

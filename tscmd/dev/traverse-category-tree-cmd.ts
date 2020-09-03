@@ -19,7 +19,12 @@ const mainTraverseCategoryTree = async function ()
   let db = await initSqlite(`tmp/database-category-${new Date().toISOString()}.db`);
   let iterationTime = new Date();
   let wiki = 'enwiki';
-  let seed = ['Category:2020 United States presidential election'];
+  let seed = [
+    'Category:2020 in American politics',
+    'Category:2020 controversies in the United States'
+  ];
+
+
   let exclusions = [
     "Category:Albums produced by Kanye West",
     "Category:Kanye West audio samples",

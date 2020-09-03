@@ -12,12 +12,12 @@ const mainPageViewFetch = async function ()
 {
   initDotEnv();
   let db = await open({
-    filename: `tmp/database-category-2020-09-01T18:44:53.821Z.db`,
+    filename: `tmp/database-category-2020-09-01T23:53:34.832Z.db`,
     driver: sqlite3.cached.Database
   });
   // sawait db.exec(`ALTER TABLE link_graph_table ADD COLUMN pageview INTEGER default null`);
   for (let iter = 0; iter < 20; iter ++) {
-    const rows = await db.all('SELECT * FROM link_graph_table WHERE (pageviews IS NULL) OR (pageviews <= 100)');
+    const rows = await db.all('SELECT * FROM link_graph_table WHERE (pageviews IS NULL) OR (pageviews <= 10)');
     const PAGE_SIZE = 50;
     for (let i = 0; i < rows.length; i += PAGE_SIZE) {
       let end = Math.min(i + PAGE_SIZE, rows.length);
