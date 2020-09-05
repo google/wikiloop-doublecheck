@@ -39,23 +39,43 @@ export default {
     wikiRevId: {
       type: String,
       default: ''
+    },
+    diffMetadata: {
+      type: Object,
+      default: null
     }
   },
   methods: {
     processDiffContent() {
-      if ( !window.DOMParser ) {
-        this.processedDiffContent = diffContent;
+      if ( !window.DOMParser || !this.diffMetadata ) {
+        this.processedDiffContent = this.diffContent;
         return;
       }
+
       let diffContent = this.diffContent;
       // https://regex101.com/r/QwzU8z/3
-      console.log( diffContent.match( /\[\[([^\]|]*)(\|?.*?)\]\]/gm ) );
       diffContent = diffContent.replace( /\[\[([^\]|]*)(\|?.*?)\]\]/gm, function( match, p1, p2 ) {
         let parsedText = ( new DOMParser() ).parseFromString( p1, "text/html" );
         let cleanedUpP1 = parsedText.querySelector( 'body' ).innerText;
+        let articleName = cleanedUpP1.split( '#' )[0];
+        articleName = articleName.charAt(0).toUpperCase() + articleName.slice(1);
+        let className = 'new';
+
         parsedText = undefined;
+        if ( this.diffMetadata.links[ articleName ] ) {
+          className = 'exists';
+        } else if ( this.diffMetadata.iwlinks[ articleName ] ) {
+          className = 'exists';
+        }
+
+        this.diffMetadata.images.forEach( ( entry ) => {
+          if ( cleanedUpP1.indexOf( entry ) !== -1 ) {
+            className = '';
+          }
+        } );
+
         let link = `http://${wikiToDomain[this.wikiRevId.split(':')[0]]}/wiki/${cleanedUpP1}`;
-        return `[[<a href="${link}" target="_blank">${p1}</a>${p2}]]`;
+        return `[[<a href="${link}" target="_blank" class="${className}">${p1}</a>${p2}]]`;
       }.bind( this ) );
 
       this.processedDiffContent = diffContent;
@@ -101,4 +121,13 @@ export default {
     top: 0;
     background: #ffffff;
   }
+
+  .diff-card a.new {
+    color: #ba0000;
+  }
+
+  .diff-card a.exists {
+    color: #0645ad;
+  }
+
 </style>

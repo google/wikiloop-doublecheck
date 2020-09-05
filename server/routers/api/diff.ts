@@ -29,6 +29,31 @@ const diffWikiRevId = async (req, res) => {
     let revId = wikiRevId.split(':')[1];
     let diffApiUrl = `http://${wikiToDomain[wiki]}/w/api.php?action=compare&fromrev=${revId}&torelative=prev&format=json`;
     let diffJson = await rp.get(diffApiUrl, { json: true });
+    let fromRevId = diffJson.compare.fromrevid;
+    let toRevId = diffJson.compare.torevid;
+    let fromDiffApiUrl = `http://${wikiToDomain[wiki]}/w/api.php?action=parse&format=json&prop=links|images|iwlinks&oldid=${fromRevId}`;
+    let toDiffApiUrl = `http://${wikiToDomain[wiki]}/w/api.php?action=parse&format=json&prop=links|images|iwlinks&oldid=${toRevId}`;
+    let fromDiffJson = await rp.get(fromDiffApiUrl, { json: true });
+    let toDiffJson = await rp.get(toDiffApiUrl, { json: true });
+
+    let linkHashmap: any = {};
+
+    fromDiffJson.parse.links.concat( toDiffJson.parse.links ).forEach( function ( currentValue ) {
+      this[ currentValue['*'] ] = currentValue.exists === '' ? true : false;
+    }.bind( linkHashmap ) );
+
+    let iwlinksHashmap: any = {};
+
+    fromDiffJson.parse.iwlinks.concat( toDiffJson.parse.iwlinks ).forEach( function ( currentValue ) {
+      this[ currentValue['*'] ] = currentValue.url;
+    }.bind( iwlinksHashmap ) );
+
+    diffJson.compare.diffMetadata = {
+      links: linkHashmap,
+      images: [...new Set([...fromDiffJson.parse.images, ...toDiffJson.parse.images])],
+      iwlinks: iwlinksHashmap
+    };
+
     res.send(diffJson);
     req.visitor
         .event({ ec: "api", ea: "/diff/:wikiRevId" })
