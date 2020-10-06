@@ -85,7 +85,7 @@
           </div>
         </div>
         <div class="card-text w-100 pl-sm-0">
-          <diff-box v-if="diff && diff.compare && diff.compare['*']" v-bind:diffContent="diff.compare['*']"/>
+          <diff-box v-if="diff && diff.compare && diff.compare['*']" v-bind:diffContent="diff.compare['*']" :wikiRevId="wikiRevId" :diffMetadata="diff.compare.diffMetadata"/>
           <!-- TODO(xinbenlv) update the following text for for i18n -->
           <h5 v-else>{{$t(`Message-DiffNotAvailable`)}}
             <div v-on:click="loadDiff()" class="btn btn-outline-primary btn-small"><i class="fas fa-redo"></i></div>
@@ -585,6 +585,7 @@
       this.interaction = this.interactionProp || await this.$axios.$get(`/api/interaction/${this.wikiRevId}`);
       this.revision = this.revisionProp || await this.$axios.$get(`/api/revision/${this.wikiRevId}`);
       this.ores = this.oresProp ||  await this.$axios.$get(`/api/ores/${this.wikiRevId}`);
+      console.log( this.diffProp );
       this.diff = this.diffProp || await this.$axios.$get(`/api/diff/${this.wikiRevId}`);
       if (this.stikiProp) {
         this.stiki = this.stikiProp;

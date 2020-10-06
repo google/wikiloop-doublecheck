@@ -113,6 +113,7 @@ export const fetchRevisionPanelItem = async function(wikiRevId, $axios):Promise<
     await $axios.$get(`/api/diff/${wikiRevId}`)
   ]);
   let diffHtml = diff?.compare['*'] || '';
+  let diffMetadata = diff?.compare.diffMetadata || null;
   return <RevisionPanelItem> {
     wiki: revision.wiki,
     revId: revision.revid,
@@ -122,6 +123,7 @@ export const fetchRevisionPanelItem = async function(wikiRevId, $axios):Promise<
     author: revision.user,
     timestamp: new Date(revision.timestamp).getTime()/1000,
     diffHtml: diffHtml,
+    diffMetadata: diffMetadata
   };
 }
 
