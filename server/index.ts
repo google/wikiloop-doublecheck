@@ -66,7 +66,7 @@ const logReqPerf = function (req, res, next) {
       `${req.method} ${colorizeMaybe(perfLogger, 'lightblue', req.originalUrl)}`,
       {
         ga_id: req.cookies._ga,
-        session_id: req.session.id
+        session_id: req.session?.id
       });
   });
   next();
