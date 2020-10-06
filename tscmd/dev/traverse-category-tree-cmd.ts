@@ -21,7 +21,9 @@ const mainTraverseCategoryTree = async function ()
   let wiki = 'enwiki';
   let seed = [
     'Category:2020 in American politics',
-    'Category:2020 controversies in the United States'
+    'Category:2020 controversies in the United States',
+    'Category:Political office-holders in the United States',
+    'Category:United States government officials',
   ];
 
 
