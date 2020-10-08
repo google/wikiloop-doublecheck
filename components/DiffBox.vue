@@ -83,10 +83,7 @@ export default {
   },
   data() {
     return {
-      processedDiffContent: {
-        type: String,
-        default: ''
-      }
+      processedDiffContent: ''
     }
   },
   beforeMount() {
