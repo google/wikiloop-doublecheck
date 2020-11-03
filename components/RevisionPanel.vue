@@ -43,7 +43,7 @@
       <div class="card-text w-100 pl-sm-0 mb-3">
         <template  v-if="item.diffHtml">
           <h5 class="w-100">{{$t('Label-DiffView')}}</h5>
-          <diff-box v-bind:diffContent="item.diffHtml" :wikiRevId="wikiRevId" :diffMetadata="item.diffMetadata"/>
+          <diff-box v-bind:diffContent="item.diffHtml" :wikiRevId="`${item.wiki}:${item.revId}`" :diffMetadata="item.diffMetadata"/>
         </template>
         <template v-else>
         <h5>{{$t(`Message-DiffNotAvailable`)}}
