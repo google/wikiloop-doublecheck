@@ -7,6 +7,7 @@ apps:
     instances: 1
     exec_mode: cluster
     watch  : true
+    time: true
     env_production:
       NODE_ENV: production
       DOTENV_PATH: .env.prod
