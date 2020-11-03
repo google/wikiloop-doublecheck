@@ -1,0 +1,12 @@
+apps:
+  - script   : "./node_modules/.bin/ts-node"
+    args: "-r tsconfig-paths/register --project tsconfig.json server/index.ts"
+    exec_mode: 'cluster'
+    wait_ready: true
+    name     : 'app'
+    instances: 1
+    exec_mode: cluster
+    watch  : true
+    env_production:
+      NODE_ENV: production
+      DOTENV_PATH: .env.prod
