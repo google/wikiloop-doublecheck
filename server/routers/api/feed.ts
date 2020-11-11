@@ -61,7 +61,7 @@ feedRouter.get(/(recent|lastbad)/, async (req, res) => {
   } else {
     let ctx:any = {
       wiki: req.query.wiki || 'enwiki',
-      limit: 50
+      limit: (parseInt(req.query.limit)) || 50
     };
     let feed = req.path.split('/')[1];
     if (feed === 'lastbad') {
