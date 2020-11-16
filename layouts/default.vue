@@ -16,18 +16,15 @@
 <template>
   <div>
     <nav
-      class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow border-1"
+      class="wldc-navbar navbar navbar-expand-lg navbar-light bg-light fixed-top shadow border-1"
     >
-      <div class="container-xl">
+      <div class="container-xl d-flex align-items-center">
         <a class="navbar-brand" href="/">WikiLoop DoubleCheck</a>
         <b-navbar-toggle target="nav-collapse"> </b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>
-          <b-navbar-nav>
+          <b-navbar-nav class="flex-grow-1 d-flex flex-wrap">
             <b-nav-item href="/history" v-b-tooltip.hover title="History">
               <i class="fas fa-history"></i>
-              <span class="pl-0 ml-0" v-if="$store.state.metrics"
-                >({{ $store.state.metrics.totalJudgement }})</span
-              >
             </b-nav-item>
             <b-nav-item
               href="/leaderboard"
@@ -77,12 +74,6 @@
               :title="$t('Label-ActiveUsers')"
             >
               <i class="fas fa-users"></i>
-              <span class="pl-0 ml-0" v-if="$store.state.metrics"
-                >({{
-                  $store.state.metrics.activeLoggedInUser.length +
-                  $store.state.metrics.activeAnonymousUser.length
-                }})</span
-              >
             </b-nav-item>
             <b-nav-item
               href="/api/markedRevs.csv"
@@ -120,14 +111,20 @@
             </b-nav-item-dropdown>
             <b-nav-item
               target="_blank"
-              :href="`https://github.com/google/wikiloop-doublecheck/edit/master/i18n/locales/${$i18n.locale}.yml`"
+              :href="
+                `https://github.com/google/wikiloop-doublecheck/edit/master/i18n/locales/${$i18n.locale}.yml`
+              "
               v-b-tooltip.hover
               :title="$t('Button-HelpTranslate')"
             >
               <i class="fas fa-language"></i>
             </b-nav-item>
-            <b-nav-item>
-              <b-form-select @click.native.stop="" class="small" v-model="wiki">
+            <b-nav-item class="flex-grow-1 d-flex">
+              <b-form-select
+                @click.native.stop=""
+                class="small align-self-start"
+                v-model="wiki"
+              >
                 <option
                   v-for="language in languages"
                   :key="language.wiki"
@@ -137,14 +134,13 @@
                 </option>
               </b-form-select>
             </b-nav-item>
-          </b-navbar-nav>
-
-          <b-navbar-nav class="ml-auto">
-            <b-nav-item-dropdown right>
+            </b-navbar-nav>
+            <b-navbar-nav>
+            <b-nav-item-dropdown>
               <template v-slot:button-content>
                 <div class="d-flex">
                   <user-avatar-with-name
-                    class="avatar-img mr-1"
+                    class="avatar-img"
                     :wikiUserName="
                       $store.state.user.profile
                         ? $store.state.user.profile.displayName
@@ -158,16 +154,18 @@
               <b-dropdown-item
                 v-if="
                   $store.state.user.profile &&
-                  $store.state.user.profile.displayName
+                    $store.state.user.profile.displayName
                 "
-                :href="`/history?wikiUserName=${$store.state.user.profile.displayName}`"
+                :href="
+                  `/history?wikiUserName=${$store.state.user.profile.displayName}`
+                "
                 ><i class="fas fa-list"></i
                 >{{ $t(`MenuItem-Contributions`) }}</b-dropdown-item
               >
               <b-dropdown-item
                 :href="`/history?userGaId=${$cookiez.get('_ga')}`"
                 ><i class="fas fa-list"></i
-                >{{ $t(`MenuItem-ContributionsBeforeLogin`) }}</b-dropdown-item
+                >{{ $t(`MenuItem-Contributions`) }}</b-dropdown-item
               >
               <template v-if="!$store.state.user.profile">
                 <b-dropdown-item
@@ -213,22 +211,22 @@ import ISO6391 from 'iso-639-1'
 export default {
   components: {
     UserAvatarWithName,
-    NoticeBanner,
+    NoticeBanner
   },
   data() {
     return {
-      languages: Object.keys(wikiToLangMap).map((wiki) => {
+      languages: Object.keys(wikiToLangMap).map(wiki => {
         let lang = wikiToLangMap[wiki]
         return {
           wiki: wiki,
           lang: lang,
-          nativeText: ISO6391.getNativeName(lang) || wiki,
+          nativeText: ISO6391.getNativeName(lang) || wiki
         }
-      }),
+      })
     }
   },
   methods: {
-    commitFlagsFromUrlQuery: function (query) {
+    commitFlagsFromUrlQuery: function(query) {
       for (let k in query) {
         let v = query[k]
         if (v === '1' || v === 'true') v = true
@@ -236,7 +234,7 @@ export default {
         else if (v === '0' || v === 'false') v = false
         this.$store.commit(`setFlag`, { key: k, value: v })
       }
-    },
+    }
   },
   computed: {
     wiki: {
@@ -252,19 +250,19 @@ export default {
           this.$store.dispatch('changeWiki', wiki)
           this.$i18n.locale = wikiToLangMap[wiki]
         }
-      },
+      }
     },
     userId: {
       get() {
         if (this.$store.state.user.profile)
           return this.$store.state.user.profile.displayName
         else return this.$cookiez.get('_ga')
-      },
-    },
+      }
+    }
   },
   async mounted() {
     this.commitFlagsFromUrlQuery(this.$route.query)
-    socket.on('metrics-update', async (metrics) => {
+    socket.on('metrics-update', async metrics => {
       this.$store.commit(`setMetrics`, metrics)
     })
 
@@ -273,24 +271,24 @@ export default {
         this.$bvToast.toast(
           this.$t('Message-YourJudgementLogged', [
             interaction.title,
-            interaction.wikiRevId,
+            interaction.wikiRevId
           ]),
           {
             title: this.$t('Label-YourJudgement'),
             //autoHideDelay: 3000,
-            appendToast: true,
+            appendToast: true
           }
         )
       } else {
         this.$bvToast.toast(
           this.$t('Message-AJudgementLogged', [
             interaction.title,
-            interaction.wikiRevId,
+            interaction.wikiRevId
           ]),
           {
             title: 'New Judgement',
             //autoHideDelay: 3000,
-            appendToast: true,
+            appendToast: true
           }
         )
       }
@@ -302,14 +300,13 @@ export default {
       userIdInfo.wikiUserName = this.$store.state.user.profile.displayName
     }
     socket.emit('user-id-info', userIdInfo)
-  },
+  }
 }
 </script>
-<style>
+<style lang="scss">
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -325,20 +322,37 @@ html {
   margin: 0;
 }
 
-@media (max-width: 576px) {
-  .small-screen-padding {
-    padding-left: 6px;
-    padding-right: 6px;
-  }
-}
-.nav-item .fas,
-.nav-item span {
-  line-height: 24px;
-  padding: 7px;
+.nav-link.dropdown-toggle {
+  display: flex;
+  align-items: center;
 }
 
-.dropdown-toggle::after {
-  display: block;
-  border: none;
+a {
+  a:hover {
+    text-decoration: none;
+  }
 }
+
+.collapse,
+.collapsing,
+.collapse.show {
+  .navbar-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .nav-link {
+      padding: 0.5rem;
+    }
+  }
+}
+
+.dropdown-item {
+  i {
+    padding-right: 0.5rem;
+  }
+}
+
+// .wldc-navbar {
+//   min-height: 5rem;
+// }
 </style>
