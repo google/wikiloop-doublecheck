@@ -14,11 +14,11 @@
   limitations under the License.
 -->
 <template>
-  <div>
-    <nav
-      class="wldc-navbar navbar navbar-expand-lg navbar-light bg-light fixed-top shadow border-1"
+  <div class="wldc-app">
+    <header
+      class="wldc-header navbar navbar-expand-lg navbar-light bg-light fixed-top shadow border-1"
     >
-      <div class="container-xl d-flex align-items-center">
+      <nav class="container-xl d-flex align-items-center">
         <a class="navbar-brand" href="/">WikiLoop DoubleCheck</a>
         <b-navbar-toggle target="nav-collapse"> </b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>
@@ -119,23 +119,8 @@
             >
               <i class="fas fa-language"></i>
             </b-nav-item>
-            <b-nav-item class="flex-grow-1 d-flex">
-              <b-form-select
-                @click.native.stop=""
-                class="small align-self-start"
-                v-model="wiki"
-              >
-                <option
-                  v-for="language in languages"
-                  :key="language.wiki"
-                  :value="language.wiki"
-                >
-                  {{ language.wiki }} - {{ language.nativeText }}
-                </option>
-              </b-form-select>
-            </b-nav-item>
-            </b-navbar-nav>
-            <b-navbar-nav>
+          </b-navbar-nav>
+          <b-navbar-nav>
             <b-nav-item-dropdown>
               <template v-slot:button-content>
                 <div class="d-flex">
@@ -150,7 +135,6 @@
                   ></user-avatar-with-name>
                 </div>
               </template>
-
               <b-dropdown-item
                 v-if="
                   $store.state.user.profile &&
@@ -185,12 +169,27 @@
             </b-nav-item-dropdown>
           </b-navbar-nav>
         </b-collapse>
-      </div>
-    </nav>
-    <div style="margin-top: 80px" class="container small-screen-padding">
+      </nav>
+    </header>
+    <main class="wldc-body">
       <NoticeBanner></NoticeBanner>
-      <nuxt class="pt-lg-4 pt-md-2 pt-sm-1" />
-    </div>
+      <nuxt />
+    </main>
+    <footer class="wldc-footer navbar fixed-bottom navbar-light bg-light">
+      <b-form-select
+        @click.native.stop=""
+        class="small align-self-start"
+        v-model="wiki"
+      >
+        <option
+          v-for="language in languages"
+          :key="language.wiki"
+          :value="language.wiki"
+        >
+          {{ language.wiki }} - {{ language.nativeText }}
+        </option>
+      </b-form-select>
+    </footer>
     <b-modal id="modal-keymap" title="Keymap">
       V: {{ $t('Label-ShouldRevert') }}<br />
       G: {{ $t('Label-LooksGood') }}<br />
@@ -352,7 +351,9 @@ a {
   }
 }
 
-// .wldc-navbar {
-//   min-height: 5rem;
-// }
+.wldc-body {
+  margin-top: 3.5rem;
+  margin-bottom: 3.5rem;
+  height: calc(100vh - 7rem);
+}
 </style>
