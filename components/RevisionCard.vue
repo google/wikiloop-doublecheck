@@ -39,29 +39,29 @@
         </h5>
         <div class="card-subtitle mb-2 text-muted">
           <div class="row p-2">
-            <div class="col-lg-2">
-              <i class="fas fa-pen"></i><timeago :datetime="getTimeString()" :auto-update="60" :locale="$i18n.locale"></timeago>
+            <div class="col-lg-3">
+              <i class="fas fa-pen mr-2"></i><timeago :datetime="getTimeString()" :auto-update="60" :locale="$i18n.locale"></timeago>
             </div>
-            <div class="col-lg-2">
-              <small><span>by <a v-bind:href="`${getUrlBaseByWiki(revision.wiki)}/wiki/User:${revision.user}`" target="_blank">{{ revision.user }}</a></span>
-              </small>
+            <div class="col-lg-3">
+              <span><i class="fas fa-user mr-2"></i> <a v-bind:href="`${getUrlBaseByWiki(revision.wiki)}/wiki/User:${revision.user}`" target="_blank">{{ revision.user }}</a></span>
             </div>
-            <div v-if="ores" class="col-lg-2">
+            <div v-if="ores" class="col-lg-3">
               <span data-toggle="tooltip" data-placement="top" title="Damaging Score by WMF ORES">
                 <!-- TODO(xinbenlv) update the following text for for i18n -->
-                <i v-bind:class="{ 'text-danger': ores ? ores.damaging.true > 0.5 : false }" class="fas fa-cloud-rain"></i> {{$t('Label-OresDamaging')}}: <a
+                <i v-bind:class="{ 'text-danger': ores ? ores.damaging.true > 0.5 : false }" class="fas fa-cloud-rain mr-2"></i>{{$t('Label-OresDamaging')}}: <a
                   :href="`https://ores.wikimedia.org/v3/scores/enwiki/?revids=${revision.wikiRevId.split(`:`)[1]}`" target="_blank">{{ damagingPercent() }}</a>
               </span>
             </div>
-            <div v-if="ores" class="col-lg-2">
+            <div v-if="ores" class="col-lg-3">
               <span data-toggle="tooltip" data-placement="top"
                     title="Bad-faith Score by WMF ORES (here Bad-faith = 100% - Goodfaith)">
                 <!-- TODO(xinbenlv) update the following text for for i18n -->
-                <i v-bind:class="{ 'text-warning': ores ? ores.goodfaith.false > 0.5: false }" class="fas fa-theater-masks"></i> {{$t('Label-OresBadfaith')}}:  <a
+                <i v-bind:class="{ 'text-warning': ores ? ores.goodfaith.false > 0.5: false }" class="fas fa-theater-masks mr-2"></i>{{$t('Label-OresBadfaith')}}:  <a
                   :href="`https://ores.wikimedia.org/v3/scores/enwiki/?revids=${revision.wikiRevId.split(`:`)[1]}`" target="_blank">{{ badfaithPercent() }}</a>
               </span>
             </div>
-            <div v-if="stiki" class="col-lg-2">
+            <!-- Until STiki server resumes, we will not receive any STiki or CBNG scores -->
+            <!-- <div v-if="stiki" class="col-lg-2">
               <span data-toggle="tooltip" data-placement="top"
                     title="Vandalism Score by STiki">
                 <i v-bind:class="{ 'text-warning': stiki && stiki > 0.5 ? true : false }" class="fas fa-theater-masks"></i> STiki:  <a
@@ -74,7 +74,7 @@
                 <i v-bind:class="{ 'text-warning': cbng && cbng > 0.5 ? true : false }" class="fas fa-theater-masks"></i> ClueBotNG:  <a
                   :href="`/extra/cbng/${wikiRevId}`" target="_blank">{{ cbngPercent() }}</a>
               </span>
-            </div>
+            </div> -->
           </div>
         </div>
         <div v-if="revision" class="card-subtitle mb-2 text-muted">
@@ -84,7 +84,7 @@
             </div>
           </div>
         </div>
-        <div class="card-text w-100 pl-sm-0">
+        <div class="card-text w-100 pl-sm-0 flex-grow-1">
           <diff-box v-if="diff && diff.compare && diff.compare['*']" v-bind:diffContent="diff.compare['*']" :wikiRevId="wikiRevId" :diffMetadata="diff.compare.diffMetadata"/>
           <!-- TODO(xinbenlv) update the following text for for i18n -->
           <h5 v-else>{{$t(`Message-DiffNotAvailable`)}}

@@ -125,22 +125,20 @@ export default {
 .diff-card {
   font-size: 0.75rem;
   overflow-x: hidden;
-  max-height: 60vh;
-  @media screen and (min-width: 601px) {
-    max-height: 400px;
-  }
 
   @include media-breakpoint-down(lg) {
     font-size: 0.6rem;
+    max-height: 800px;
   }
   @include media-breakpoint-down(md) {
     font-size: 0.5rem;
+    max-height: 600px;
   }
-  // /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
-  // @media screen and (max-width: 600px) {
-  //   .diff-card {
-  //     max-height: 300px;
-  //   }
-  // }
+
+  /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+  @include media-breakpoint-down(sm) {
+    font-size: 0.4rem;
+    max-height: 300px;
+  }
 }
 </style>
