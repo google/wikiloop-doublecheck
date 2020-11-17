@@ -124,7 +124,7 @@ export async function fetchRevisions(wikiRevIds) {
     let wikiToRevisionList = {};
     for (let wiki in wikiToRevIdList) {
         let revIds= wikiToRevIdList[wiki];
-        const fetchUrl = new URL(`http://${wikiToDomain[wiki]}/w/api.php`);
+        const fetchUrl = new URL(`https://${wikiToDomain[wiki]}/w/api.php`);
         let params = {
             "action": "query",
             "format": "json",
@@ -137,11 +137,12 @@ export async function fetchRevisions(wikiRevIds) {
         Object.keys(params).forEach(key => {
             fetchUrl.searchParams.set(key, params[key]);
         });
-        let retJson = await rp.get(fetchUrl, { json: true });
-        if (retJson.query.badrevids) {
+        try {
+          let retJson = await rp.get(fetchUrl, { json: true });
+          if (retJson.query.badrevids) {
             wikiToRevisionList[wiki] = []; // does not find
-        }
-        else {
+          }
+          else {
             /** Example
             {
                 "batchcomplete": "",
@@ -201,19 +202,23 @@ export async function fetchRevisions(wikiRevIds) {
                     }
                 }
             }
-             */
+            */
             let revIdToRevision = {};
             for (let pageId of retJson.query.pageids) {
-                for (let revision of retJson.query.pages[pageId].revisions) {
-                    revIdToRevision[revision.revid] = revision;
-                    revIdToRevision[revision.revid].title = retJson.query.pages[pageId].title;
-                    revIdToRevision[revision.revid].wiki = wiki;
-                    revIdToRevision[revision.revid].wikiRevId = `${wiki}:${revision.revid}`;
-                    revIdToRevision[revision.revid].pageLatestRevId = retJson.query.pages[pageId].lastrevid;
-                    revIdToRevision[revision.revid].namespace = revision.ns;
-                }
+              for (let revision of retJson.query.pages[pageId].revisions) {
+                revIdToRevision[revision.revid] = revision;
+                revIdToRevision[revision.revid].title = retJson.query.pages[pageId].title;
+                revIdToRevision[revision.revid].wiki = wiki;
+                revIdToRevision[revision.revid].wikiRevId = `${wiki}:${revision.revid}`;
+                revIdToRevision[revision.revid].pageLatestRevId = retJson.query.pages[pageId].lastrevid;
+                revIdToRevision[revision.revid].namespace = revision.ns;
+              }
             }
-            wikiToRevisionList[wiki] =  revIds.map(revId => revIdToRevision[revId]);
+            wikiToRevisionList[wiki] = revIds.map(revId => revIdToRevision[revId]);
+          }
+        } catch(err) {
+          console.warn(err);
+          wikiToRevisionList[wiki] = []; // does not find
         }
     }
     return wikiToRevisionList;

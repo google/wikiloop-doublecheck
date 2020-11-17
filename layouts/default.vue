@@ -119,6 +119,21 @@
             >
               <i class="fas fa-language"></i>
             </b-nav-item>
+            <b-nav-item>
+              <b-form-select
+                @click.native.stop=""
+                class="small align-self-start"
+                v-model="wiki"
+              >
+                <option
+                  v-for="language in languages"
+                  :key="language.wiki"
+                  :value="language.wiki"
+                >
+                  {{ language.wiki }} {{ language.nativeText }}
+                </option>
+              </b-form-select>
+            </b-nav-item>
           </b-navbar-nav>
           <b-navbar-nav>
             <b-nav-item-dropdown>
@@ -175,21 +190,6 @@
       <NoticeBanner></NoticeBanner>
       <nuxt />
     </main>
-    <footer class="wldc-footer navbar fixed-bottom navbar-light bg-light">
-      <b-form-select
-        @click.native.stop=""
-        class="small align-self-start"
-        v-model="wiki"
-      >
-        <option
-          v-for="language in languages"
-          :key="language.wiki"
-          :value="language.wiki"
-        >
-          {{ language.wiki }} - {{ language.nativeText }}
-        </option>
-      </b-form-select>
-    </footer>
     <b-modal id="modal-keymap" title="Keymap">
       V: {{ $t('Label-ShouldRevert') }}<br />
       G: {{ $t('Label-LooksGood') }}<br />
@@ -303,6 +303,10 @@ export default {
 }
 </script>
 <style lang="scss">
+@import 'bootstrap/scss/_functions.scss';
+@import 'bootstrap/scss/_variables.scss';
+@import 'bootstrap/scss/_mixins.scss';
+
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -312,6 +316,13 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+
+  @include media-breakpoint-down(sm) {
+      font-size: 90%;
+  }
+  @include media-breakpoint-down(xs) {
+      font-size: 80%;
+  }
 }
 
 *,
@@ -351,9 +362,19 @@ a {
   }
 }
 
+$wldc-header-height: 4rem;
+
+.wldc-header {
+  min-height: $wldc-header-height;
+}
+.wldc-app {
+  padding-top: $wldc-header-height;
+}
 .wldc-body {
-  margin-top: 3.5rem;
-  margin-bottom: 3.5rem;
-  height: calc(100vh - 7rem);
+  height: max(calc(100vh - #{$wldc-header-height}), calc(612px - #{$wldc-header-height}));
+}
+
+.custom-select {
+  font-size: .7rem;
 }
 </style>

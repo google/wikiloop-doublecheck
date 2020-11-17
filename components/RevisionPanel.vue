@@ -15,35 +15,36 @@
 -->
 
 <template>
-  <section>
+  <section class="h-100">
     <div class="card-body d-flex flex-column small-screen-padding">
-      <h5 class="card-title ">
+      <h2 class="mb-4">
         <div class="d-flex">
           <div class="flex-grow-1">
-            [[<a :href="wikiPageUrl" target="_blank">{{ item.title }}</a>]]
-            <sup><a v-bind:href="diffUrl" target="_blank">
-              <small>rev.{{item.revId}} <!-- no translation, specific term --></small>
-            </a></sup>
+            <a :href="wikiPageUrl" target="_blank" class="wldc-page-title">{{ item.title }}</a>
           </div>
           <div class="ml-2"><a :href="permUrl"><i class="fas fa-link"></i></a></div>
         </div>
-        <div v-if="feedName"><small><span class="badge badge-success">{{feedName}} feed<!-- no translation, specific term --></span></small></div>
-      </h5>
-      <div class="card-subtitle mb-2 text-muted">
-        <div class="row">
-          <div class="col-sm">
-            <span class="nobreak"><b>{{$t('Label-EditedAt')}}:</b> <timeago :datetime="timeString" :auto-update="60" :locale="$i18n.locale"></timeago></span>
-          </div>
-          <div class="col-sm">
-            <span class="nobreak"><b>{{$t('Label-Author')}}:</b> <a v-bind:href="authorUrl" target="_blank">{{ item.author }}</a></span>
-          </div>
+      </h2>
+      <div class="wldc-revinfo-area text-muted mb-2 mb-sm-2 mb-xs-1">
+        <div class="wldc-revinfo wldc-revinfo-revid">
+          <i class="fas fa-external-link-alt mr-2"></i>{{item.revId}}
+        </div>
+        <div class="wldc-revinfo wldc-revinfo-timeago">
+          <i class="fas fa-pen mr-2"></i><timeago :datetime="timeString" :auto-update="60" :locale="$i18n.locale"></timeago>
+        </div>
+        <div class="wldc-revinfo wldc-revinfo-author">
+          <i class="fas fa-user mr-2"></i><a v-bind:href="authorUrl" target="_blank">{{ item.author }}</a>
+        </div>
+        <div class="wldc-revinfo wldc-revinfo-feed" v-if="feedName">
+          <i class="fas fa-faucet mr-2"></i>{{feedName}}
         </div>
       </div>
-
-      <div class="card-text w-100 pl-sm-0 mb-3">
-        <template  v-if="item.diffHtml">
-          <h5 class="w-100">{{$t('Label-DiffView')}}</h5>
-          <diff-box v-bind:diffContent="item.diffHtml" :wikiRevId="`${item.wiki}:${item.revId}`" :diffMetadata="item.diffMetadata"/>
+      <div class="w-100 pl-sm-0 mb-2 flex-grow-1 justify-content-start">
+        <template v-if="item.diffHtml">
+          <diff-box class="wldc-rev-panel-diff-container"
+            :diffContent="item.diffHtml"
+            :wikiRevId="`${item.wiki}:${item.revId}`"
+            :diffMetadata="item.diffMetadata"/>
         </template>
         <template v-else>
         <h5>{{$t(`Message-DiffNotAvailable`)}}
@@ -54,8 +55,8 @@
       </div>
       <div class="card-text w-100 pl-sm-0 mb-3">
         <template v-if="item.summary">
-          <h5 class="w-100">{{$t('Label-EditSummary')}}</h5>
-          <span>{{item.summary}}</span>
+          <h3 class="wldc-revinfo-h3">{{$t('Label-EditSummary')}}</h3>
+          <span class="wldc-summary-content">{{item.summary}}</span>
         </template>
         <template v-else>
           <h5 class="text-danger w-100">{{$t('Message-ThereIsNoEditSummary')}}</h5>
@@ -107,7 +108,8 @@
 
 </script>
 
-<style>
+<style lang="scss" scoped>
+  // --- Legacy CSS ---
   .diff-context {
     word-break: break-all;
     width: 50%;
@@ -141,5 +143,52 @@
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+
+  // --- New SCSS ---
+  @import 'bootstrap/scss/_functions.scss';
+  @import 'bootstrap/scss/_variables.scss';
+  @import 'bootstrap/scss/_mixins.scss';
+  .wldc-revinfo-area {
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    margin-bottom: 1rem;
+
+    .wldc-revinfo {
+      display: flex;
+      align-items: center;
+      padding-right: 1rem;
+      padding-bottom: 1rem;
+      &-author {
+        a {
+          text-overflow: ellipsis;
+          overflow: hidden;
+          overflow-wrap: normal;
+        }
+      }
+    }
+
+
+    @include media-breakpoint-down(md) {
+      grid-template-columns: repeat(2, 50%);
+    }
+
+    // @include media-breakpoint-down(xs) {
+    //   grid-template-columns: 1fr;
+    // }
+
+  }
+
+  .wldc-page-title {
+    font-size: 1.6rem;
+  }
+
+  .wldc-revinfo-h3 {
+    font-size: 1.2rem;
+  }
+
+  .wldc-rev-panel-diff-container .diff-card {
+    max-height: unset !important;
+  }
+
 </style>
 

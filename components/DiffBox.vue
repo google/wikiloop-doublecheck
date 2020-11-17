@@ -14,15 +14,17 @@
   limitations under the License.
 -->
 <template>
-  <div class="diff-card">
+  <div class="diff-card position-relative">
+    <div class="d-flex justify-content-around stiky-top">
+      <h5>{{ $t('Label-OriginalWikitext') }}</h5>
+      <h5>{{ $t('Label-ChangedWikitext') }}</h5>
+    </div>
     <table class="pl-sm-0 w-100 diff-content">
       <thead class="diff-header">
         <tr>
           <th colspan="2">
-            <h5>{{ $t('Label-OriginalWikitext') }}</h5>
           </th>
           <th colspan="2">
-            <h5>{{ $t('Label-ChangedWikitext') }}</h5>
           </th>
         </tr>
       </thead>
@@ -125,20 +127,16 @@ export default {
 .diff-card {
   font-size: 0.75rem;
   overflow-x: hidden;
-
+  max-height: max(18.75rem, 50vh);
   @include media-breakpoint-down(lg) {
     font-size: 0.6rem;
-    max-height: 800px;
   }
   @include media-breakpoint-down(md) {
     font-size: 0.5rem;
-    max-height: 600px;
   }
-
   /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
   @include media-breakpoint-down(sm) {
     font-size: 0.4rem;
-    max-height: 300px;
   }
 }
 </style>

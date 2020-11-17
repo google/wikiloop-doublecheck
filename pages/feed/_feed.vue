@@ -1,30 +1,42 @@
 <template>
-    <section>
-        <h1 v-if="feedName"> {{$t('Label-ReviewFeed')}}<sup class="text-warning">β</sup> {{feedName}} </h1>
+    <section class="
+      wldc-feed-page w-100 h-100
+      d-flex flex-column align-items-center
+      pt-lg-5 pt-md-4">
+        <!-- <h2 v-if="feedName">
+          {{$t('Label-ReviewFeed')}}<sup class="text-warning">β</sup> {{feedName}}
+        </h2> -->
         <template v-if="!loading">
-          <div v-if="currentWikiRevId && revisionPanelItems[currentWikiRevId]" class="card shadow h-100">
+          <div v-if="currentWikiRevId && revisionPanelItems[currentWikiRevId]"
+          class="
+            wldc-feed-card
+            card
+            h-xm-100
+            container-md container-lg container-fluid shadow
+            d-flex flex-column
+            "
+          >
             <RevisionPanel
               :key="currentWikiRevId"
               :item="revisionPanelItems[currentWikiRevId]"
               :feed-name="wikiRevIdfromFeeds[currentWikiRevId]"
-            >
-            </RevisionPanel>
-
-            <ActionPanel ref="actionPanel"
-              :key="`action-panel-${currentWikiRevId}`"
-              :wikiRevId="currentWikiRevId"
-              :title="revisionPanelItems[currentWikiRevId].title"
-              :feed="wikiRevIdfromFeeds[currentWikiRevId]"
-              @judgement-event="$refs.judgementPanel && $refs.judgementPanel.refresh()"
-              @next-card="showNext()"/>
+            />
             <template v-if="currentWikiRevId && revisionPanelItems[currentWikiRevId]">
               <button class="btn btn-outline-primary"
                 v-if="!showJudgementPanel"
                 @click="showJudgementPanel = !showJudgementPanel">{{$t('Button-ShowJudgements')}}</button>
               <JudgementPanel v-else ref="judgementPanel" class="card-body" :wikiRevId="currentWikiRevId" />
             </template>
+            <ActionPanel ref="actionPanel"
+              :key="`action-panel-${currentWikiRevId}`"
+              :wikiRevId="currentWikiRevId"
+              :title="revisionPanelItems[currentWikiRevId].title"
+              :feed="wikiRevIdfromFeeds[currentWikiRevId]"
+              @judgement-event="$refs.judgementPanel && $refs.judgementPanel.refresh()"
+              @next-card="showNext()"
+              class="wldc-action-panel-container"/>
           </div>
-          <div v-else>
+          <div v-else> <!-- has no new revision -->
             <div class="card">
             <div class="card-body">
               <div class="card-body w-100 text-center">
@@ -42,11 +54,30 @@
           </div>
         </template>
         <template v-else>
-          <div class="card">
-            <div class="card-body w-100 align-items-center d-flex" style="height: 500px;">
-              <div class="w-100 text-center">
-                <b-spinner label="Loading..."></b-spinner>
-              </div>
+          <div class="w-100 h-100 d-flex align-items-center justify-content-center">
+            <div class="spinner-grow text-primary" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-secondary" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-success" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-danger" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-warning" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-info" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-light" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-dark" role="status">
+              <span class="sr-only">Loading...</span>
             </div>
           </div>
         </template>
@@ -200,6 +231,23 @@
   }
 </script>
 
-<style>
+<style lang="scss" scoped>
 
+  @import 'bootstrap/scss/_functions.scss';
+  @import 'bootstrap/scss/_variables.scss';
+  @import 'bootstrap/scss/_mixins.scss';
+
+  .wldc-feed-card {
+    min-height: 0;
+    section {
+      min-height:0;
+    }
+    @include media-breakpoint-down(sm) {
+      flex-grow: 1;
+    }
+  }
+
+  .diffchange-inline {
+    box-shadow: 0 0 100px #d8ecff;
+  }
 </style>
