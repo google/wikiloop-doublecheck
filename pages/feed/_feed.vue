@@ -1,8 +1,7 @@
 <template>
     <section class="
       wldc-feed-page w-100 h-100
-      d-flex flex-column align-items-center
-      pt-lg-5 pt-md-4">
+      d-flex flex-column align-items-center justify-content-center">
         <!-- <h2 v-if="feedName">
           {{$t('Label-ReviewFeed')}}<sup class="text-warning">β</sup> {{feedName}}
         </h2> -->
@@ -54,32 +53,7 @@
           </div>
         </template>
         <template v-else>
-          <div class="w-100 h-100 d-flex align-items-center justify-content-center">
-            <div class="spinner-grow text-primary" role="status">
-              <span class="sr-only">Loading...</span>
-            </div>
-            <div class="spinner-grow text-secondary" role="status">
-              <span class="sr-only">Loading...</span>
-            </div>
-            <div class="spinner-grow text-success" role="status">
-              <span class="sr-only">Loading...</span>
-            </div>
-            <div class="spinner-grow text-danger" role="status">
-              <span class="sr-only">Loading...</span>
-            </div>
-            <div class="spinner-grow text-warning" role="status">
-              <span class="sr-only">Loading...</span>
-            </div>
-            <div class="spinner-grow text-info" role="status">
-              <span class="sr-only">Loading...</span>
-            </div>
-            <div class="spinner-grow text-light" role="status">
-              <span class="sr-only">Loading...</span>
-            </div>
-            <div class="spinner-grow text-dark" role="status">
-              <span class="sr-only">Loading...</span>
-            </div>
-          </div>
+          <loading-indicator/>
         </template>
 
         <b-modal id="modal-promote-login" title="Tip: Login">
@@ -99,13 +73,16 @@
     import RevisionPanel from "~/components/RevisionPanel.vue";
     import ActionPanel from "~/components/ActionPanel.vue";
     import JudgementPanel from "~/components/JudgementPanel.vue";
+    import LoadingIndicator from "~/components/LoadingIndicator.vue";
     import { fetchRevisionPanelItem } from '~/shared/utility-shared';
-    const QUEUE_LIMIT = 3;
+    const QUEUE_LIMIT = 2;
     export default {
     components: {
       RevisionPanel,
       ActionPanel,
-      JudgementPanel
+      JudgementPanel,
+      LoadingIndicator,
+
     },
     data() {
       return {
