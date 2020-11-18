@@ -47,10 +47,7 @@
             :diffMetadata="item.diffMetadata"/>
         </template>
         <template v-else>
-        <h5>{{$t(`Message-DiffNotAvailable`)}}
-          <div v-on:click="loadDiff()" class="btn btn-outline-primary btn-small"><i class="fas fa-redo"></i></div>
-          <a v-if="item" class="btn btn-outline-primary" :href="revertUrl" target="_blank"><i class="fas fa-external-link-alt"></i></a>
-        </h5>
+          <loading-indicator></loading-indicator>
         </template>
       </div>
       <div class="card-text w-100 pl-sm-0 mb-3">
@@ -69,12 +66,14 @@
     import {Component, Prop, Vue} from 'vue-property-decorator';
 
     import DiffBox from '@/components/DiffBox.vue';
+    import LoadingIndicator from '@/components/LoadingIndicator.vue';
     import {RevisionPanelItem} from "~/shared/interfaces";
     import {getUrlBaseByWiki} from "~/shared/utility-shared";
 
     @Component({
         components: {
-            DiffBox
+            DiffBox,
+            LoadingIndicator
         }
     })
     export default class RevisionPanel extends Vue {
