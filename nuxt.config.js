@@ -20,7 +20,7 @@ console.log(`=================================`);
 console.log(`nuxt.config.js is being executed!`);
 module.exports = {
   mode: 'spa', // TODO change back to spa once we fix the client-side-render and server-side-render inconsistency
-
+  telemetry: false,
   /*
    ** Headers of the page
    */

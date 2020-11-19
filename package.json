@@ -30,6 +30,7 @@
     }
   },
   "dependencies": {
+    "@babel/core": "^7.12.3",
     "@dicebear/avatars": "^4.0.2",
     "@dicebear/avatars-identicon-sprites": "^4.0.2",
     "@google-cloud/translate": "^6.0.1",
@@ -120,10 +121,10 @@
     "babel-jest": "^24.9.0",
     "commitizen": "4.1.2",
     "cz-conventional-changelog": "3.2.0",
-    "eslint": "^5.15.1",
+    "eslint": "^6.0.0",
     "eslint-config-prettier": "^4.3.0",
-    "eslint-config-standard": "^14.1.0",
-    "eslint-loader": "^2.2.1",
+    "eslint-config-standard": "14.1.1",
+    "eslint-loader": "^4.0.2",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jest": "^23.1.1",
     "eslint-plugin-node": "^10.0.0",
@@ -131,7 +132,7 @@
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "eslint-plugin-vue": "^5.2.3",
+    "eslint-plugin-vue": "^6.2.2",
     "fibers": "^5.0.0",
     "husky": "4.2.5",
     "jest": "^24.9.0",
@@ -145,8 +146,12 @@
     "ts-node": "^8.10.2",
     "tsconfig-paths": "^3.9.0",
     "typescript": "^3.9.7",
+    "vue": "^2.6.12",
     "vue-jest": "^3.0.5",
-    "webpack-hot-middleware": "^2.25.0"
+    "vue-template-compiler": "^2.6.12",
+    "webpack": "^4.0.0",
+    "webpack-hot-middleware": "^2.25.0",
+    "popper.js": "^1.16.1"
   },
   "engines": {
     "node": "12.19.1",
