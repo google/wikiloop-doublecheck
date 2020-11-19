@@ -134,9 +134,9 @@ export class FeedRevisionEngine {
     if (Object.keys(revision).indexOf('anon') /* anonymous */ >= 0) {
       revisionInfo.anonymousIp = revision.user
     } else revisionInfo.wikiUserName = revision.user
-    if (revision.oresscores.damaging)
+    if (revision.oresscores?.damaging)
       revisionInfo.ores_damaging = revision.oresscores.damaging.true
-    if (revision.oresscores.badfaith)
+    if (revision.oresscores?.badfaith)
       revisionInfo.ores_badfaith = revision.oresscores.goodfaith.false
 
     let feedRevision = <FeedRevisionProps>{
