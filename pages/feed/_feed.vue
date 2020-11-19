@@ -19,12 +19,16 @@
               :key="currentWikiRevId"
               :item="revisionPanelItems[currentWikiRevId]"
               :feed-name="wikiRevIdfromFeeds[currentWikiRevId]"
+              class="wldc-revision-panel-wrapper d-flex flex-column"
             />
             <template v-if="currentWikiRevId && revisionPanelItems[currentWikiRevId]">
               <button class="btn btn-outline-primary"
                 v-if="!showJudgementPanel"
                 @click="showJudgementPanel = !showJudgementPanel">{{$t('Button-ShowJudgements')}}</button>
-              <JudgementPanel v-else ref="judgementPanel" class="card-body" :wikiRevId="currentWikiRevId" />
+              <JudgementPanel v-else
+                ref="judgementPanel"
+                class="card-body"
+                :wikiRevId="currentWikiRevId" />
             </template>
             <ActionPanel ref="actionPanel"
               :key="`action-panel-${currentWikiRevId}`"
@@ -115,6 +119,7 @@
         this.feedQueue = [];
         this.revisionPanelItems = {};
       },
+
       fetchAndClaimRevisions: async function(numToFetch:number):Promise<string[]/*wikiRevIds*/> {
         let queryObj:any = {
             limit:numToFetch,
@@ -222,9 +227,5 @@
     @include media-breakpoint-down(sm) {
       flex-grow: 1;
     }
-  }
-
-  .diffchange-inline {
-    box-shadow: 0 0 100px #d8ecff;
   }
 </style>

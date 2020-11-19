@@ -4,10 +4,14 @@
       <template v-if="!loadingInteractions">
         <span>{{$t('Label-HumanEditors')}}: </span>
         <template v-if="interactionPropsList">
-          <span class="mr-2" v-for="judgement in ['NotSure', 'LooksGood', 'ShouldRevert']" :key="judgement">
+          <span class="mr-2"
+            v-for="judgement in ['NotSure', 'LooksGood', 'ShouldRevert']"
+            :key="judgement"
+          >
             <template v-if="interactionPropsList.filter(i=>i.judgement == judgement).length > 0">
               <span>{{judgement}}</span>
-              <span v-for="interactionProps in interactionPropsList.filter(i=>i.judgement == judgement)" :key="interactionProps">
+              <span v-for="interactionProps in interactionPropsList.filter(i=>i.judgement == judgement)"
+                :key="interactionProps.toString()">
                 <img v-if="interactionProps.wikiUserName"
                      class="avatar-judgement"
                      :src="`https://avatars.dicebear.com/api/initials/${interactionProps.wikiUserName}.svg`"

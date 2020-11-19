@@ -39,7 +39,7 @@
           <i class="fas fa-faucet mr-2"></i>{{feedName}}
         </div>
       </div>
-      <div class="w-100 pl-sm-0 mb-2 flex-grow-1 justify-content-start">
+      <div class="w-100 pl-sm-0 mb-2 flex-grow-1 flex-shrink-1 overflow-hidden justify-content-start">
         <template v-if="item.diffHtml">
           <diff-box class="wldc-rev-panel-diff-container"
             :diffContent="item.diffHtml"
@@ -188,6 +188,5 @@
   .wldc-rev-panel-diff-container .diff-card {
     max-height: unset !important;
   }
-
 </style>
 

@@ -96,7 +96,7 @@ export default {
       dice < threshold
     ) {
       this.$router.push('/feed/mix')
-      console.log(`Redirect to /feed/mix`)
+      console.log(`Redirect to /feed/mix dice=${dice}, threshold=${threshold}`)
       return
     }
   },
