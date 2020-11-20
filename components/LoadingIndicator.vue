@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex align-items-center justify-content-center">
+  <div class="loading-indicator">
     <div class="spinner-grow text-primary" role="status">
       <span class="sr-only">Loading...</span>
     </div>
@@ -22,6 +22,4 @@ import { Component, Vue} from 'vue-property-decorator'
 @Component
 export default class LoadingIndicator extends Vue {}
 </script>
-<style scoped>
-
-</style>
+<style scoped></style>
