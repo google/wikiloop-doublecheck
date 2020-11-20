@@ -90,3 +90,7 @@ dev.env
 
 # Credentials
 .creds/
+
+# Storybook // https://storybook.nuxtjs.org/setup
+.nuxt-storybook
+storybook-static

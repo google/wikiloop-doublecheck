@@ -21,6 +21,7 @@ console.log(`nuxt.config.js is being executed!`);
 module.exports = {
   mode: 'spa', // TODO change back to spa once we fix the client-side-render and server-side-render inconsistency
   telemetry: false,
+  components: true, // used in nuxt storybook
   /*
    ** Headers of the page
    */
@@ -75,7 +76,7 @@ module.exports = {
     '@nuxtjs/pwa',
     ['@nuxtjs/google-analytics', {
       asyncID: function (ctx) {
-        return ctx.app.$env.GA_WLBF_ID_CLIENT;
+        return ctx.app.$env?.GA_WLBF_ID_CLIENT;
       }
     }],
     ['cookie-universal-nuxt', { alias: 'cookiez' }],
@@ -122,16 +123,23 @@ module.exports = {
   build: {
     vendor: ['socket.io-client'],
     babel: {
-      presets({ isServer }) {
+      // envName: server, client, modern
+      presets({ envName }) {
         return [
           [
-            "@nuxt/babel-preset-app", { loose: true }
+            '@nuxt/babel-preset-app',
+            {
+              corejs: { version: 3 }
+            }
           ]
         ]
       }
     }
   },
   buildModules: ['@nuxt/typescript-build'],
+  storybook: {
+    // Options
+  }
 };
 
 console.log(`nuxt.config.js is done executed!`);
