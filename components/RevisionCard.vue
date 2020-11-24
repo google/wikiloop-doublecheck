@@ -155,7 +155,7 @@
               <td class="col-4">{{$t('Label-Judgement')}}</td>
               <td class="col-4">{{$t('Label-Time')}}</td>
             </tr>
-            <tr class="row" v-for="judgement of interaction.judgements">
+            <tr class="row" :key="judgement" v-for="judgement of interaction.judgements">
               <td class="col-4">
                 <router-link v-if="judgement.wikiUserName" :to="`/history?wikiUserName=${judgement.wikiUserName}`" replace>
                   <object class="avatar-object" v-bind:data="`/api/avatar/${judgement.wikiUserName}`" ></object>
@@ -189,9 +189,11 @@
           WikiLoop-DoubleCheck has detected suspicious behavior by the author of this revision. Recent revisions by this author have an average ORES damaging score of {{choiceInfoAuthor.percentage}}%. This author has been warned {{warningThresholdAuthor}} times in the past {{warningTimeframeAuthor}} days. Should a block request be sent on your behalf to the community administrators? <br>
           Previous revisions by this author:
         </div>
-        <li v-if= "displayHistoryAuthor" v-for="item in previousRevisionInfosAuthor":key="item.timestamp" v-bind:style="{'margin-left': '65px', 'margin-right': '50px'}">
+        <template v-if= "displayHistoryAuthor">
+        <li v-for="item in previousRevisionInfosAuthor" :key="item.timestamp" v-bind:style="{'margin-left': '65px', 'margin-right': '50px'}">
           <a v-bind:href= "'https://en.wikipedia.org/w/index.php?title='+ item.title + '&diff=prev&oldid=' + item.parentid"> Revision on article {{item.title}}, at {{item.timestamp}}, ORES damaging score: {{item.score}}% </a>
         </li>
+        </template>
         <div class="mt-4 d-flex justify-content-center" v-bind:style = "{'margin-bottom': '30px'}">
           <div v-if="displayChoiceAuthor" class="btn-group mx-1">
             <button
@@ -216,9 +218,11 @@
           WikiLoop-DoubleCheck has detected suspicious behavior on this article. Recent revisions on this article have an average ORES damaging score of {{choiceInfoArticle.percentage}}%. Suspicious behavior has occured {{warningThresholdArticle}} times in the past {{warningTimeframeArticle}} days. Should a page-protect request be sent on your behalf to the community administrators? <br>
           Previous revisions on this article:
         </div>
-        <li v-if= "displayHistoryArticle" v-for="item in previousRevisionInfosArticle":key="item.timestamp" v-bind:style="{'margin-left': '65px', 'margin-right': '50px'}">
+        <template v-if= "displayHistoryArticle">
+        <li v-for="item in previousRevisionInfosArticle" :key="item.timestamp" v-bind:style="{'margin-left': '65px', 'margin-right': '50px'}">
           <a v-bind:href= "'https://en.wikipedia.org/w/index.php?title='+ item.title + '&diff=prev&oldid=' + item.parentid"> Revision by {{item.author}}, at {{item.timestamp}}, ORES damaging score: {{item.score}}%</a>
         </li>
+        </template>
         <div class="mt-4 d-flex justify-content-center" v-bind:style = "{'margin-bottom': '30px'}">
           <div v-if="displayChoiceArticle && (choiceInfoArticle.type == 'protect')" class="btn-group mx-1">
             <button

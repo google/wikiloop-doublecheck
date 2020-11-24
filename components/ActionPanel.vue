@@ -148,7 +148,8 @@
         public async interactionBtn(judgement: string) {
             this.myJudgement = BasicJudgement[judgement];
             let userGaId = this.$cookiez.get("_ga");
-            let postBody = <InteractionProps> {
+
+            let postBody = {
                 userGaId: userGaId,
                 judgement: this.myJudgement,
                 timestamp: Math.floor(new Date().getTime() / 1000), // timestamp for interaction
@@ -156,7 +157,7 @@
                 feed: this.feed,
                 title: this.title,
                 wiki: this.wiki
-            };
+            } as InteractionProps;
 
             if (this.$store.state?.user?.profile) {
                 let wikiUserName = this.$store.state.user.profile.displayName;
@@ -181,14 +182,14 @@
                         `${version}`,
                         `http://${this.$env.PUBLIC_HOST || "doublecheck.wikiloop.org"}/revision/${this.wiki}/${this.revId}`
                     ]);
-                this.wikiActionProps = <WikiActionProps> {
+                this.wikiActionProps =  {
                     fromUserGaId: this.$cookiez.get('_ga'),
                     type: WikiActionType.RedirectToRevert,
                     wiki: this.wiki,
                     revId: this.revId,
                     title: this.title,
                     _meta: {},
-                };
+                } as WikiActionProps;
                 if (this.isConsecutive) {
                     let historyUrl = `${getUrlBaseByWiki(this.wiki)}/w/index.php?title=${this.title}&action=history`;
                     this.wikiActionProps.type = WikiActionType.RedirectToHistory;
