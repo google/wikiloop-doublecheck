@@ -4,7 +4,7 @@
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//      http://www.apache.org/licenses/LICENSE-2.0
+//      https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
@@ -16,13 +16,16 @@
 // MediaWiki Action API and REST API
 
 import {wikiToDomain} from "@/shared/utility-shared";
-import {logger} from "@/server/common";
 import * as _ from 'underscore';
 const axios = require('axios');
 import update from 'immutability-helper';
 const MAX_MWAPI_LIMIT:number = 50;
 const userAgent = process.env.USER_AGENT || 'WikiLoop DoubleCheck Dev';
 const Bottleneck = require("bottleneck");
+const moreHeaders = {
+  //"Origin": "http://localhost:3000",
+  "Content-Type": "application/json; charset=UTF-8"
+};
 
 /**
   "pageid": 48410011,
@@ -41,6 +44,8 @@ export interface MwPageInfo {
 /**
  * MediaWiki Action API Client Utility
  *
+ * TODO(xinbenlv): change to instance instead of static functions
+ *
  * @doc https://www.mediawiki.org/wiki/API:Main_page
  */
 export class MwActionApiClient {
@@ -56,10 +61,10 @@ export class MwActionApiClient {
     "prop": "pageprops",
     "titles": titles.join('|')
     };
-    let endpoint =`http://${wikiToDomain[wiki]}/w/api.php`;
+    let endpoint =`https://${wikiToDomain[wiki]}/w/api.php`;
 
     let result = await MwActionApiClient.bottleneck.schedule(
-      async ()=> await axios.get(endpoint, {params:params, headers: { 'User-Agent': userAgent }}));
+      async ()=> await axios.get(endpoint, {params:params, headers: { ...moreHeaders }}));
     if (Object.keys(result.data.query?.pages).length) {
       return Object.keys(result.data.query.pages).map(pageId=> {
         return result.data.query.pages[pageId]
@@ -79,7 +84,7 @@ export class MwActionApiClient {
       "titles": titles.join('|'),
       "pvipdays": days
     };
-    let endpoint =`http://${wikiToDomain[wiki]}/w/api.php`;
+    let endpoint =`https://${wikiToDomain[wiki]}/w/api.php`;
     let ret = {};
     let result = await MwActionApiClient.bottleneck.schedule(
       async ()=> await axios.get(endpoint, {params:params, headers: { 'User-Agent': userAgent }}));
@@ -117,18 +122,18 @@ export class MwActionApiClient {
 
     if (startRevId) query.rvstart = startRevId;
     let searchParams = new URLSearchParams(query);
-    let url = new URL(`http://${wikiToDomain[wiki]}/w/api.php?${searchParams.toString()}`);
+    let url = new URL(`https://${wikiToDomain[wiki]}/w/api.php?${searchParams.toString()}`);
     console.log(`Url = `, url);
     try {
       let revisionsJson = (await MwActionApiClient.bottleneck.schedule(async()=> await axios.get(url.toString(), {
-        headers: { 'User-Agent': userAgent }
+        headers: { ...moreHeaders }
       }))).data;
       let pageId = Object.keys(revisionsJson.query.pages)[0];
       if (revisionsJson.query.pages[pageId].revisions)
         return revisionsJson.query.pages[pageId].revisions.map(item => item.revid);
       else return [];
     } catch (e) {
-      logger.warn(e);
+      console.warn(e);
       return [];
     }
   }
@@ -195,12 +200,12 @@ export class MwActionApiClient {
     if (timestamp) searchParams.set(`rcstart`, timestamp || (new Date().getTime()/1000));
     searchParams.set(`rclimit`, limit.toString());
 
-    let url = new URL(`http://${wikiToDomain[wiki]}/w/api.php?${searchParams.toString()}`);
-    logger.info(`Requesting for Media Action API: ${url.toString()}`);
-    logger.info(`Try sandbox request here: ${new URL(`http://${wikiToDomain[wiki]}/wiki/Special:ApiSandbox#${searchParams.toString()}`)}`);
+    let url = new URL(`https://${wikiToDomain[wiki]}/w/api.php?${searchParams.toString()}`);
+    console.log(`Requesting ${wiki} for Media Action API: ${url.toString()}`);
+    console.log(`Try sandbox request here: ${new URL(`https://${wikiToDomain[wiki]}/wiki/Special:ApiSandbox#${searchParams.toString()}`)}`);
 
     let response = await MwActionApiClient.bottleneck.schedule(async () => await axios.get(url.toString(), {
-      headers: { 'User-Agent': userAgent }
+      headers: { ...moreHeaders }
     }));
     let recentChangesJson = response.data;
     /** Sample response
@@ -244,9 +249,9 @@ export class MwActionApiClient {
       query.rvcontinue = rvcontinue;
     }
     let searchParams = new URLSearchParams(query);
-    let url = new URL(`http://${wikiToDomain[wiki]}/w/api.php?${searchParams.toString()}`);
+    let url = new URL(`https://${wikiToDomain[wiki]}/w/api.php?${searchParams.toString()}`);
     return (await MwActionApiClient.bottleneck.schedule(async () => await axios.get(url.toString(), {
-      headers: { 'User-Agent': userAgent }
+      headers: { ...moreHeaders }
     }))).data;
   }
 
@@ -256,13 +261,14 @@ export class MwActionApiClient {
       "format": "json",
       "fromrev": `${revId}`,
       "torelative": `prev`,
+      "origin": `*` // https://www.mediawiki.org/wiki/API:Cross-site_requests
     };
     let searchParams = new URLSearchParams(query);
-    let url = new URL(`http://${wikiToDomain[wiki]}/w/api.php?${searchParams.toString()}`);
+    let url = new URL(`https://${wikiToDomain[wiki]}/w/api.php?${searchParams.toString()}`);
     let result = (await MwActionApiClient.bottleneck.schedule(async () =>await axios.get(url.toString(), {
-      headers: { 'User-Agent': userAgent }
+      headers: { ...moreHeaders }
     }))).data;
-    return result;
+    return result.compare["*"];
   }
 
   /**
@@ -274,7 +280,7 @@ export class MwActionApiClient {
    * @param entryArticle
    */
   public static getCategoryChildren = async function (wiki, entryArticle):Promise<MwPageInfo[]> {
-    let endpoint =`http://${wikiToDomain[wiki]}/w/api.php`;
+    let endpoint =`https://${wikiToDomain[wiki]}/w/api.php`;
     let result = [];
     let params = {
       "action": "query",
@@ -289,7 +295,7 @@ export class MwActionApiClient {
     let ret = null;
 
     do {
-      ret = await axios.get(endpoint, {params: params, headers: { 'User-Agent': userAgent }});
+      ret = await axios.get(endpoint, {params: params, headers: { ...moreHeaders }});
 
         /**json
         {
@@ -333,7 +339,7 @@ export class MwActionApiClient {
     try {
 
 
-    let endpoint =`http://${wikiToDomain[wiki]}/w/api.php`;
+    let endpoint =`https://${wikiToDomain[wiki]}/w/api.php`;
     let result:string[] = [];
     let params = {
       "action": "query",
@@ -347,7 +353,7 @@ export class MwActionApiClient {
     let ret = null;
 
     do {
-      ret = await axios.get(endpoint, {params: params, headers: { 'User-Agent': userAgent }});
+      ret = await axios.get(endpoint, {params: params, headers: { ...moreHeaders }});
 
         /**json
         {
