@@ -78,7 +78,7 @@
     "node-json2html": "^1.4.0",
     "nodemailer": "^6.4.5",
     "nuxt": "2.14.7",
-    "nuxt-env": "xinbenlv/nuxt-env",
+    "nuxt-env": "xinbenlv/nuxt-env#master",
     "nuxt-i18n": "^6.4.1",
     "nuxt-property-decorator": "^2.7.2",
     "oauth-fetch-json": "^0.3.3",

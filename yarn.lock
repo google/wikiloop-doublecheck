@@ -14053,9 +14053,9 @@ number-is-nan@^1.0.0:
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
 
-nuxt-env@xinbenlv/nuxt-env:
-  version "0.1.0"
-  resolved "https://codeload.github.com/xinbenlv/nuxt-env/tar.gz/9620e0532375bdea5c5ba054b5edb9f90ed4d7e2"
+nuxt-env@xinbenlv/nuxt-env#master:
+  version "0.1.1-0"
+  resolved "https://codeload.github.com/xinbenlv/nuxt-env/tar.gz/736539cb0a7858c882d475d51c15034fb39c8427"
 
 nuxt-i18n@^6.4.1:
   version "6.15.4"
