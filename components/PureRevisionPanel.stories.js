@@ -8,18 +8,19 @@ export default {
 const Template = (args, { argTypes }) => ({
   components: { PureRevisionPanel },
   props: Object.keys(argTypes),
-  template: '<PureRevisionPanel :loading="loading" :item="item" :loadingDiff="loadingDiff" />',
+  template: '<PureRevisionPanel :infoLoaded="infoLoaded" :item="item" :diffLoaded="diffLoaded" />',
 });
 
 export const empty = Template.bind({});
 
 empty.args = {
-  loading: true
+  infoLoaded: false
 };
 
 export const basic = Template.bind({});
 basic.args = {
-  loading: false,
+  infoLoaded: true,
+  diffLoaded: false,
   item: {
     wiki: "enwiki",
     revId: 989699374,
@@ -28,5 +29,4 @@ basic.args = {
     author: "2601:5C2:1:5720:A5F4:BA9B:79B8:598C",
     summary: `b hdhe ekjwjk eiqnq /* History */`
   },
-  loadingDiff: true
 };

@@ -9,18 +9,19 @@ const Template = (args, { argTypes }) => ({
   components: { PureDiffBox2 },
   props: Object.keys(argTypes),
   template: '<PureDiffBox2 :loading="loading" :diffSafeHtml="diffSafeHtml" />',
+  // TODO i18n wait for https://github.com/nuxt-community/storybook/commit/7588841242d9d17c89e7c5075f4a5ce8330fdcf5
 });
 
 
 export const empty = Template.bind({});
 empty.args = {
-  loading: false,
+  loaded: true,
   diffSafeHtml: ``,
 };
 
 export const basic = Template.bind({});
 basic.args = {
-  loading: false,
+  loaded: true,
   diffSafeHtml: `<tr>
   <td colspan="2" class="diff-lineno">Line 32:</td>
   <td colspan="2" class="diff-lineno">Line 32:</td>
@@ -61,7 +62,7 @@ basic.args = {
 
 export const loading = Template.bind({});
 loading.args = {
-  loading: true,
+  loaded: false,
   diffSafeHtml: `<tr>
   <td class="diff-marker">&#160;</td>
   <td class="diff-context"><div>}}</div></td>
@@ -72,6 +73,6 @@ loading.args = {
 
 export const beforeLoading = Template.bind({});
 beforeLoading.args = {
-  loading: true
+  loaded: false
 };
 

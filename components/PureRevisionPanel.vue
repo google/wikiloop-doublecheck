@@ -1,9 +1,6 @@
 <template>
   <section>
-    <template v-if="loading">
-      <loading-indicator/>
-    </template>
-    <template v-else>
+    <template v-if="infoLoaded">
       <h2 class="rev-title">{{item.title}}</h2>
       <div class="rev-info">
         <div class="rev-info__item"><i class="fas fa-faucet fa-fw"></i>{{item.feed || 'default'}}</div>
@@ -14,8 +11,8 @@
         </div>
       </div>
       <pure-diff-box2
-        :loading="loadingDiff"
-        :diff-safe-html="item.diffSafeHtml">
+        :loaded="diffLoaded"
+        :diff-safe-html="item.diffHtml">
       </pure-diff-box2>
       <div class="rev-summary">
         <div class="rev-summary__label">{{$t("Label-EditSummary")}}</div>
@@ -25,6 +22,9 @@
           {{item.summary || $t('Message-ThereIsNoEditSummary')}}
         </div>
       </div>
+    </template>
+    <template v-else>
+      <loading-indicator/>
     </template>
   </section>
 </template>
@@ -44,8 +44,8 @@ import { RevisionPanelItem } from '~/shared/interfaces';
   }
 })
 export default class PureRevisionPanel extends Vue {
-  @Prop({ type: Boolean}) readonly loading: boolean;
-  @Prop({ type: Boolean}) readonly loadingDiff: boolean;
+  @Prop({ type: Boolean}) readonly infoLoaded: boolean;
+  @Prop({ type: Boolean}) readonly diffLoaded: boolean;
   @Prop({ type: Object }) readonly item: RevisionPanelItem;
 }
 </script>

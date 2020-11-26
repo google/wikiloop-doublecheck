@@ -1,25 +1,26 @@
 <template>
   <div class="diff-box">
-    <template v-if="loading">
-        <loading-indicator></loading-indicator>
-    </template>
-    <template v-else-if="!diffSafeHtml">
-      <div class="diff-box__nodiff">
-        <!-- TODO change to includ i18n, add styling. -->
-        <i class="fas fa-check-circle mr-1"></i>There is no diff.
-      </div>
-
+    <template v-if="loaded">
+      <template v-if="diffSafeHtml">
+        <div class="diff-box__header">
+          <!-- <h5>{{ $t('Label-OriginalWikitext') }}</h5>
+          <h5>{{ $t('Label-ChangedWikitext') }}</h5> -->
+        </div>
+        <table class="diff-box__table">
+          <tbody v-html="diffSafeHtml"></tbody>
+        </table>
+      </template>
+      <template v-else>
+        <div class="diff-box__nodiff">
+          <!-- TODO change to includ i18n, add styling. -->
+          <i class="fas fa-check-circle mr-1"></i>There is no diff.
+        </div>
+      </template>
     </template>
     <template v-else>
-
-      <div class="diff-box__header">
-        <!-- <h5>{{ $t('Label-OriginalWikitext') }}</h5>
-        <h5>{{ $t('Label-ChangedWikitext') }}</h5> -->
-      </div>
-      <table class="diff-box__table">
-        <tbody v-html="diffSafeHtml"></tbody>
-      </table>
+        <loading-indicator/>
     </template>
+
   </div>
 </template>
 
@@ -34,7 +35,7 @@ import LoadingIndicator from '@/components/LoadingIndicator.vue';
 })
 export default class PureDiffBox2 extends Vue {
   @Prop({ type: String }) readonly diffSafeHtml: string;
-  @Prop({ type: Boolean}) readonly loading: boolean;
+  @Prop({ type: Boolean}) readonly loaded: boolean;
 }
 </script>
 <style lang="scss" scoped>
