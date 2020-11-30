@@ -1,7 +1,7 @@
 {
   "editor.renderWhitespace": "none",
   "editor.fontSize": 14,
-  "editor.fontFamily": "\"DejaVu Sans Mono for Powerline\", Menlo, Monaco, 'Courier New', monospace",
+  //"editor.fontFamily": "\"DejaVu Sans Mono for Powerline\", Menlo, Monaco, 'Courier New', monospace",
   "i18n-ally.enabledParsers": [
     "yaml"
   ],
@@ -10,7 +10,46 @@
   "i18n-ally.keepFulfilled": true,
   "i18n-ally.sortKeys": true,
   "i18n-ally.sourceLanguage": "en",
-
+  "workbench.colorTheme": "Cobalt2 Italic",
+  "editor.fontFamily": "Fira Code iScript",
+  "editor.fontLigatures": true,
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": [
+          //following will be in italic (=FlottFlott)
+          "entity.other.attribute-name.html",
+          "variable.language.this.ts",
+          "keyword",
+          "keyword.operator.expression.in.ts",
+          "meta.type.annotation.ts"
+        ],
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "scope": [
+          //following will be excluded from italics (VSCode has some defaults for italics)
+ 
+        ],
+        "settings": {
+          "fontStyle": ""
+        }
+      },
+      {
+        "scope": [
+          //following will be set to BOLD
+          "entity.name.type.class.ts",
+          "entity.name.type.interface.ts",
+        
+        ],
+        "settings": {
+          "fontStyle": "bold"
+        }
+      }
+    ]
+  },
   // Default values are listed with the config options
   // Amount of translation jobs run at the same time
   "i18n-ally.translate.parallels": 5,
@@ -682,7 +721,7 @@
     "zoozaz"
   ],
   "search.exclude": {
-    "**/node_modules": false,
+    "**/node_modules": true,
     "**/node_modules/**": true,
     "node_modules": true
   },
