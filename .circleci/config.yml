@@ -3,34 +3,38 @@ jobs:
   build:
     working_directory: ~/repo
     docker:
-      - image: circleci/node:10.16.0
+      - image: circleci/node:12.19.1
     steps:
       - checkout:
           path: "~/repo"
       # Download and cache dependencies
       - restore_cache:
+          name: Restore Yarn Package Cache
           keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
+            - yarn-packages-{{ checksum "yarn.lock" }}
       - run:
-          name: Install npm wee
-          command: npm install
-
+          name: Install Dependencies
+          command: yarn install --immutable
       - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
+            - ~/.cache/yarn
       - run:
           name: Run jest with output report
-          command: npm run test-report
+          command: yarn test:report
           environment:
             JEST_JUNIT_OUTPUT: "reports/jest/results.xml"
       - store_test_results:
           path: reports/jest
       - store_artifacts:
           path: reports/jest
+      - run:
+          name: Run integration test
+          command: yarn test:integration
+          environment:
+            JEST_JUNIT_OUTPUT: "reports/jest/integration/results.xml"
+
   deploy:
     docker:
       - image: buildpack-deps:trusty
@@ -45,4 +49,3 @@ workflows:
   build-deploy:
     jobs:
       - build
-
