@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="7" failures="0" time="2.232">
-  <testsuite name="MwActionApiClient2 endpoint" errors="0" failures="0" skipped="0" timestamp="2020-12-01T03:48:22" time="0.692" tests="3">
+<testsuites name="jest tests" tests="7" failures="0" time="5.159">
+  <testsuite name="Logo" errors="0" failures="0" skipped="0" timestamp="2020-12-01T03:58:24" time="1.43" tests="1">
+    <testcase classname="Logo is a Vue instance" name="Logo is a Vue instance" time="0.014">
+    </testcase>
+  </testsuite>
+  <testsuite name="MwActionApiClient2 endpoint" errors="0" failures="0" skipped="0" timestamp="2020-12-01T03:58:24" time="3.305" tests="3">
     <testcase classname="MwActionApiClient2 endpoint should generate a valid Wikipedia endpint URL when passed a good wiki." name="MwActionApiClient2 endpoint should generate a valid Wikipedia endpint URL when passed a good wiki." time="0.002">
     </testcase>
     <testcase classname="MwActionApiClient2 endpoint should throw an exception complaining about the bad" name="MwActionApiClient2 endpoint should throw an exception complaining about the bad" time="0.004">
     </testcase>
-    <testcase classname="MwActionApiClient2.fetchRevisionInfo with mocked axio should return revision full information when given a valid revId" name="MwActionApiClient2.fetchRevisionInfo with mocked axio should return revision full information when given a valid revId" time="0.009">
+    <testcase classname="MwActionApiClient2.fetchRevisionInfo with mocked axio should return revision full information when given a valid revId" name="MwActionApiClient2.fetchRevisionInfo with mocked axio should return revision full information when given a valid revId" time="0.011">
     </testcase>
   </testsuite>
-  <testsuite name="Logo" errors="0" failures="0" skipped="0" timestamp="2020-12-01T03:48:22" time="0.83" tests="1">
-    <testcase classname="Logo is a Vue instance" name="Logo is a Vue instance" time="0.012">
+  <testsuite name="MwActionApiClient2.fetchRevisionInfo with real axio" errors="0" failures="0" skipped="0" timestamp="2020-12-01T03:58:24" time="4.068" tests="3">
+    <testcase classname="MwActionApiClient2.fetchRevisionInfo with real axio should return revision full information when given a valid revId. REMOTE" name="MwActionApiClient2.fetchRevisionInfo with real axio should return revision full information when given a valid revId. REMOTE" time="0.439">
     </testcase>
-  </testsuite>
-  <testsuite name="MwActionApiClient2.fetchRevisionInfo with real axio" errors="0" failures="0" skipped="0" timestamp="2020-12-01T03:48:22" time="1.335" tests="3">
-    <testcase classname="MwActionApiClient2.fetchRevisionInfo with real axio should return revision full information when given a valid revId. REMOTE" name="MwActionApiClient2.fetchRevisionInfo with real axio should return revision full information when given a valid revId. REMOTE" time="0.343">
+    <testcase classname="MwActionApiClient2.fetchRevisionInfo with real axio should return null without error if given a revId never exists. REMOTE" name="MwActionApiClient2.fetchRevisionInfo with real axio should return null without error if given a revId never exists. REMOTE" time="0.178">
     </testcase>
-    <testcase classname="MwActionApiClient2.fetchRevisionInfo with real axio should return null without error if given a revId never exists. REMOTE" name="MwActionApiClient2.fetchRevisionInfo with real axio should return null without error if given a revId never exists. REMOTE" time="0.172">
-    </testcase>
-    <testcase classname="MwActionApiClient2.fetchRevisionInfo with real axio should return revision full information if given a revId which is DELETED. REMOTE" name="MwActionApiClient2.fetchRevisionInfo with real axio should return revision full information if given a revId which is DELETED. REMOTE" time="0.18">
+    <testcase classname="MwActionApiClient2.fetchRevisionInfo with real axio should return revision full information if given a revId which is DELETED. REMOTE" name="MwActionApiClient2.fetchRevisionInfo with real axio should return revision full information if given a revId which is DELETED. REMOTE" time="0.199">
     </testcase>
   </testsuite>
 </testsuites>
