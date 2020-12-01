@@ -14,7 +14,7 @@ describe('MwActionApiClient2.fetchRevisionInfo with real axio', () => {
     mwapi2 = new MwActionApiClient2(_axios);
   });
 
-  test('should return revision full information when given a valid revId', async () => {
+  test('should return revision full information when given a valid revId. REMOTE', async () => {
     let wiki="enwiki";
     let info = await mwapi2.fetchRevisionInfo(wiki, 904396518);
     expect(info.wiki).toBe(`enwiki`);
@@ -28,13 +28,13 @@ describe('MwActionApiClient2.fetchRevisionInfo with real axio', () => {
     expect(info.comment).toBe("/* Multiprocessor system featuring global data multiplication */ putting images at bottom, side by side, to prevent impinging on References section");
   });
 
-  test('should return null without error if given a revId never exists', async () => {
+  test('should return null without error if given a revId never exists. REMOTE', async () => {
     let wiki="enwiki";
     let info = await mwapi2.fetchRevisionInfo(wiki, 1234567890123456);
     expect(info).toBe(null);
   });
 
-  test('should return revision full information if given a revId which is DELETED.', async () => {
+  test('should return revision full information if given a revId which is DELETED. REMOTE', async () => {
     let wiki="enwiki";
     let info = await mwapi2.fetchRevisionInfo(wiki, 907978564);
     expect(info.wiki).toBe(`enwiki`);
