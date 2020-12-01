@@ -17,7 +17,7 @@ import Logo from '@/components/Logo.vue'
 
 describe('Logo', () => {
   test('is a Vue instance', () => {
-    const wrapper = mount(Logo)
-    expect(wrapper.isVueInstance()).toBeTruthy()
-  })
-})
+    const wrapper = mount(Logo);
+    expect(wrapper.isVisible()).toBe(true);
+  });
+});

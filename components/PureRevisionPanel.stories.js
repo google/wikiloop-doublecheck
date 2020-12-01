@@ -25,7 +25,7 @@ basic.args = {
     wiki: "enwiki",
     revId: 989699374,
     title: "Human tooth sharpening",
-    timestamp: 1284858, // TODO fix XXX
+    timestamp: "2019-07-01T21:49:32Z",
     author: "2601:5C2:1:5720:A5F4:BA9B:79B8:598C",
     summary: `b hdhe ekjwjk eiqnq /* History */`
   },

@@ -18,15 +18,18 @@ module.exports = {
     '^~/(.*)$': '<rootDir>/$1',
     '^vue$': 'vue/dist/vue.common.js'
   },
-  moduleFileExtensions: ['js', 'vue', 'json'],
+  moduleFileExtensions: ['js', 'ts', 'vue', 'json'],
   transform: {
     '^.+\\.js$': 'babel-jest',
+    '^.+\\.ts?$': 'ts-jest',
     '.*\\.(vue)$': 'vue-jest'
   },
-  collectCoverage: true,
+  collectCoverage: false, // default to not collecting covearge
   collectCoverageFrom: [
     '<rootDir>/components/**/*.vue',
-    '<rootDir>/pages/**/*.vue'
+    '<rootDir>/pages/**/*.vue',
+    '<rootDir>/server/**/*.ts',
+    '<rootDir>/shared/**/*.ts',
   ],
   reporters: ["default", "jest-junit"]
 };

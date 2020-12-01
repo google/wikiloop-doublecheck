@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="7" failures="0" time="7.967">
+  <testsuite name="Logo" errors="0" failures="0" skipped="0" timestamp="2020-11-30T16:09:54" time="0.806" tests="1">
+    <testcase classname="Logo is a Vue instance" name="Logo is a Vue instance" time="0.011">
+    </testcase>
+  </testsuite>
+  <testsuite name="MwActionApiClient2 endpoint" errors="0" failures="0" skipped="0" timestamp="2020-11-30T16:09:54" time="2.949" tests="3">
+    <testcase classname="MwActionApiClient2 endpoint should generate a valid Wikipedia endpint URL when passed a good wiki." name="MwActionApiClient2 endpoint should generate a valid Wikipedia endpint URL when passed a good wiki." time="0.002">
+    </testcase>
+    <testcase classname="MwActionApiClient2 endpoint should throw an exception complaining about the bad" name="MwActionApiClient2 endpoint should throw an exception complaining about the bad" time="0.005">
+    </testcase>
+    <testcase classname="MwActionApiClient2.fetchRevisionInfo with mocked axio should return revision full information when given a valid revId" name="MwActionApiClient2.fetchRevisionInfo with mocked axio should return revision full information when given a valid revId" time="0.008">
+    </testcase>
+  </testsuite>
+  <testsuite name="MwActionApiClient2.fetchRevisionInfo with real axio" errors="0" failures="0" skipped="0" timestamp="2020-11-30T16:09:54" time="3.42" tests="3">
+    <testcase classname="MwActionApiClient2.fetchRevisionInfo with real axio should return revision full information when given a valid revId" name="MwActionApiClient2.fetchRevisionInfo with real axio should return revision full information when given a valid revId" time="0.227">
+    </testcase>
+    <testcase classname="MwActionApiClient2.fetchRevisionInfo with real axio should return null without error if given a revId never exists" name="MwActionApiClient2.fetchRevisionInfo with real axio should return null without error if given a revId never exists" time="0.138">
+    </testcase>
+    <testcase classname="MwActionApiClient2.fetchRevisionInfo with real axio should return revision full information if given a revId which is DELETED." name="MwActionApiClient2.fetchRevisionInfo with real axio should return revision full information if given a revId which is DELETED." time="0.146">
+    </testcase>
+  </testsuite>
+</testsuites>

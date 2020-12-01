@@ -23,6 +23,7 @@
             ]
         },
         "types": [
+            "@types/jest",
             "@types/node",
             "@nuxt/types",
             "@nuxt/vue-app",
