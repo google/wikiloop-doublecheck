@@ -1,11 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="3" failures="0" time="1.82">
-  <testsuite name="MwActionApiClient2.fetchRevisionInfo with real axio" errors="0" failures="0" skipped="0" timestamp="2020-12-01T05:41:11" time="1.273" tests="3">
-    <testcase classname="MwActionApiClient2.fetchRevisionInfo with real axio should return revision full information when given a valid revId. REMOTE" name="MwActionApiClient2.fetchRevisionInfo with real axio should return revision full information when given a valid revId. REMOTE" time="0.392">
+<testsuites name="jest tests" tests="11" failures="0" time="6.381">
+  <testsuite name="REMOTE MwActionApiClient2.fetchRevisionInfo" errors="0" failures="0" skipped="0" timestamp="2020-12-02T02:49:58" time="5.576" tests="11">
+    <testcase classname="REMOTE MwActionApiClient2.fetchRevisionInfo should return revision full information when given a valid revId. REMOTE" name="REMOTE MwActionApiClient2.fetchRevisionInfo should return revision full information when given a valid revId. REMOTE" time="0.28">
     </testcase>
-    <testcase classname="MwActionApiClient2.fetchRevisionInfo with real axio should return null without error if given a revId never exists. REMOTE" name="MwActionApiClient2.fetchRevisionInfo with real axio should return null without error if given a revId never exists. REMOTE" time="0.132">
+    <testcase classname="REMOTE MwActionApiClient2.fetchRevisionInfo should return null without error if given a revId never exists. REMOTE" name="REMOTE MwActionApiClient2.fetchRevisionInfo should return null without error if given a revId never exists. REMOTE" time="0.134">
     </testcase>
-    <testcase classname="MwActionApiClient2.fetchRevisionInfo with real axio should return revision full information if given a revId which is DELETED. REMOTE" name="MwActionApiClient2.fetchRevisionInfo with real axio should return revision full information if given a revId which is DELETED. REMOTE" time="0.146">
+    <testcase classname="REMOTE MwActionApiClient2.fetchRevisionInfo should return revision full information if given a revId which is DELETED. REMOTE" name="REMOTE MwActionApiClient2.fetchRevisionInfo should return revision full information if given a revId which is DELETED. REMOTE" time="0.146">
+    </testcase>
+    <testcase classname="REMOTE MwActionApiClient2.fetchRevisionInfo should handle a page creation" name="REMOTE MwActionApiClient2.fetchRevisionInfo should handle a page creation" time="0.139">
+    </testcase>
+    <testcase classname="REMOTE MwActionApiClient2.fetchRevisionInfo should handle a page protection" name="REMOTE MwActionApiClient2.fetchRevisionInfo should handle a page protection" time="0.145">
+    </testcase>
+    <testcase classname="REMOTE MwActionApiClient2.fetchRevisionInfo should handle a revId which is a PageMoveTo" name="REMOTE MwActionApiClient2.fetchRevisionInfo should handle a revId which is a PageMoveTo" time="0.141">
+    </testcase>
+    <testcase classname="REMOTE MwActionApiClient2.fetchRevisionInfo should handle a revId which is a PageMoveFrom" name="REMOTE MwActionApiClient2.fetchRevisionInfo should handle a revId which is a PageMoveFrom" time="0.14">
+    </testcase>
+    <testcase classname="REMOTE MwActionApiClient2.fetchDiff should take a given revId without prevRevId and return diff content in HTML in the exact same output we got." name="REMOTE MwActionApiClient2.fetchDiff should take a given revId without prevRevId and return diff content in HTML in the exact same output we got." time="0.217">
+    </testcase>
+    <testcase classname="REMOTE MwActionApiClient2.fetchDiff should take a given revId with prevRevId and return diff content in HTML in the exact same output we got." name="REMOTE MwActionApiClient2.fetchDiff should take a given revId with prevRevId and return diff content in HTML in the exact same output we got." time="0.151">
+    </testcase>
+    <testcase classname="REMOTE MwActionApiClient2.fetchDiff should handle a page creation" name="REMOTE MwActionApiClient2.fetchDiff should handle a page creation" time="0.144">
+    </testcase>
+    <testcase classname="REMOTE MwActionApiClient2.fetchDiff should handle invalid revId" name="REMOTE MwActionApiClient2.fetchDiff should handle invalid revId" time="0.145">
     </testcase>
   </testsuite>
 </testsuites>

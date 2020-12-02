@@ -105,7 +105,6 @@ export class MwActionApiClient2 {
         };
 
         let result = await this.bottleneck.schedule(async ()=> await this.axios.get(this.endPoint(wiki), { params }));
-
         if (result.data?.query?.badrevids) {
             // TODO: conisider verifying the badrevids is the revision we sent them. 
             // This is ignored since we are assuming the {@link revId} is a single number.
