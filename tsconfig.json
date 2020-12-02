@@ -28,7 +28,7 @@
             "@nuxt/types",
             "@nuxt/vue-app",
             "@nuxtjs/axios",
-            "@dicebear/avatars/typings/svgson"
+            "@dicebear/avatars/typings/svgson",
         ],
         "experimentalDecorators": true /* Enables experimental support for ES7 decorators. */,
 
@@ -45,6 +45,7 @@
         "./**/*.vue"
     ],
     "files": [
-        "vue-shim.d.ts"
+        "vue-shim.d.ts",
+        "typings/index.d.ts"
     ]
 }
