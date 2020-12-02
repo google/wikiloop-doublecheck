@@ -7,17 +7,18 @@
 		"antfu.i18n-ally",
 		"christian-kohler.path-intellisense",
 		"esbenp.prettier-vscode",
+		"esbenp.prettier-vscode",
 		"github.vscode-pull-request-github",
 		"jtr.vscode-position",
+		"mhutchie.git-graph",
 		"mikestead.dotenv",
 		"ms-vscode.vscode-typescript-tslint-plugin",
 		"msjsdiag.debugger-for-chrome",
-		"esbenp.prettier-vscode",
 		"octref.vetur",
 		"pkief.material-icon-theme",
 		"rbbit.typescript-hero",
 		"shobhit01.cobalt2-italic",
-		"visualstudioexptteam.vscodeintellicode"
+		"visualstudioexptteam.vscodeintellicode",
 	],
 	// List of extensions recommended by VS Code that should not be recommended for users of this workspace.
 	"unwantedRecommendations": [

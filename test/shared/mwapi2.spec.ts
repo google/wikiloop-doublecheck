@@ -69,7 +69,7 @@ describe('MwActionApiClient2.fetchRevisionInfo with mocked axio', () => {
         mockedRes,
       ];
     });
-    mock.onAny(/.*/).reply(500);
+    mock.onAny(/.*/).reply(500); // Any other response are going to yield 500
     let info = await mwapi2.fetchRevisionInfo(wiki, 904396518);
     expect(info.wiki).toBe(`enwiki`);
     expect(info.title).toBe(`Multiprocessor system architecture`);
@@ -81,5 +81,38 @@ describe('MwActionApiClient2.fetchRevisionInfo with mocked axio', () => {
     expect(info.timestampStr).toBe("2019-07-01T21:49:32Z");
     expect(info.comment).toBe("/* Multiprocessor system featuring global data multiplication */ putting images at bottom, side by side, to prevent impinging on References section");
   });
+  
+  test('should return null when given an invalid revId.', async() => {
+    let wiki="enwiki"; 
 
+    let mockedRes = {
+      "batchcomplete": "",
+      "query": {
+        "badrevids": {
+          "1234567890123456": {
+            "revid": 1234567890123456
+          }
+        }
+      }
+    }
+    
+    mock.onGet("https://en.wikipedia.org/w/api.php", {params: {   
+      "action": "query",
+      "format": "json",
+      "prop": "revisions",
+      "revids": 1234567890123456,
+      "origin": "*"
+    }}).reply(function (config) {
+      // `config` is the axios config and contains things like the url
+     
+      // return an array in the form of [status, data, headers]
+      return [
+        200,
+        mockedRes,
+      ];
+    });
+    mock.onAny(/.*/).reply(500); // Any other response are going to yield 500
+    let info = await mwapi2.fetchRevisionInfo(wiki, 904396518);
+    expect(info).toBeNull;
+  });
 });

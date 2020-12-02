@@ -132,8 +132,23 @@ export class MwActionApiClient2 {
         return result;
     }
 
-    public async fetchDiff(wiki:string, revId:number) {
+    public async fetchDiff(wiki:string, revId:number, prevRevId:number = null) {
+        let params:any = {
+            action: "compare",
+            format: "json",
+            origin: "*"
+        };
 
+        if (prevRevId) {
+            params.torev= revId
+            params.fromrev = prevRevId;
+        } else {
+            params.fromrev= revId;  // When using torelative:prev, the compare API will swap fromrev with torev.
+            params.torelative = "prev";
+        }
+
+        let ret = await this.axios.get(this.endPoint(wiki), { params: params });
+        return ret.data.compare[`*`]; 
     }
     public async fetchDiffMeta(wiki:string, revId:number) {
 
