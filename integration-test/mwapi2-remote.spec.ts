@@ -114,6 +114,19 @@ describe('MwActionApiClient2.fetchDiff with real axio', () => {
     expect(fetchedHtml).toMatchHtml(expectedHtml);
   });
 
-  
+  test('should handle invalid revId', async () => {
+    let wiki="enwiki";
+
+    // {
+    //   "error": {
+    //     "code": "nosuchrevid",
+    //     "info": "There is no revision with ID 11904395753.",
+    //     "*": "See https://en.wikipedia.org/w/api.php for API usage. Subscribe to the mediawiki-api-announce mailing list at &lt;https://lists.wikimedia.org/mailman/listinfo/mediawiki-api-announce&gt; for notice of API deprecations and breaking changes."
+    //   },
+    //   "servedby": "mw1359"
+    // }
+    let invalidRevId = 123456789012345;
+    await expect(mwapi2.fetchDiff(wiki, invalidRevId)).rejects.toThrow(/nosuchrevid/);
+  });
 });
 

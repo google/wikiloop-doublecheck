@@ -148,6 +148,9 @@ export class MwActionApiClient2 {
         }
 
         let ret = await this.axios.get(this.endPoint(wiki), { params: params });
+        if (ret.data.error) {
+            throw new Error(`Error fetching Diff, error: ${JSON.stringify(ret.data, null, 2)}`);
+        }
         return ret.data.compare[`*`]; 
     }
     public async fetchDiffMeta(wiki:string, revId:number) {
