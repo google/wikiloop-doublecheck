@@ -1,5 +1,5 @@
 import { MwActionApiClient2 } from "~/shared/mwapi2";
-//import axios from 'axios';
+import { PARSE_API_DATA } from '../testdata/mwapi2.testdata';
 
 let axios = require("axios");
 let MockAdapter = require("axios-mock-adapter");
@@ -161,3 +161,39 @@ describe('MOCKED MwActionApiClient2.fetchDiff', () => {
     await expect(mwapi2.fetchDiff(wiki, invalidRevId)).rejects.toThrow(/nosuchrevid/);
   });
 });
+
+describe('MOCKED MwActionApiClient2.fetchParsedInfo', () => {
+  beforeEach(() => {
+    mwapi2 = new MwActionApiClient2(axios)
+    let mock = new MockAdapter(axios)
+    PARSE_API_DATA.forEach(data => {
+      mock
+        .onGet(data.req.url, { params: data.req.params })
+        .reply(function(_) {
+          return [
+            data.res.status, 
+            data.res.data
+          ]
+        })
+    })
+    mock.onAny().reply(503)
+  })
+
+  test('should fetch parsed info when given a valid revision', async () => {
+    let wiki = 'enwiki'
+    let revId = 920429244
+
+    let parsedInfo = await mwapi2.fetchParsedInfo(wiki, revId)
+    expect(parsedInfo.links[0]['*']).toBe('Buddhist temples in Japan')
+    expect(parsedInfo.images[0]).toBe('Osaka_Castle_02bs3200.jpg')
+    expect(parsedInfo.iwlinks[0]['*']).toBe(
+      'commons:Category:Ishiyama Hongan-ji'
+    )
+  })
+
+  test('should fetch parsed info when given a valid revision', async () => {
+    let wiki = 'enwiki'
+    let revId = 123456789012345
+    await expect(mwapi2.fetchParsedInfo(wiki, revId)).rejects.toThrow(/123456789012345/);
+  })
+})

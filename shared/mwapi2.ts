@@ -152,7 +152,18 @@ export class MwActionApiClient2 {
         }
         return ret.data.compare[`*`]; 
     }
-    public async fetchDiffMeta(wiki:string, revId:number) {
 
+    public async fetchParsedInfo(wiki: string, revId: number) {
+        let ret = await this.axios.get(this.endPoint(wiki), {
+        params: {
+            action: 'parse',
+            format: 'json',
+            prop: 'links|images|iwlinks',
+            oldid: revId
+        }
+        })
+        // throw new Error(ret); // XXX
+        if (ret.data.error) throw new Error(ret.data.error.info)
+        else return ret.data.parse
     }
 }
