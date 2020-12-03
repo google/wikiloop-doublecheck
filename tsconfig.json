@@ -46,6 +46,6 @@
     ],
     "files": [
         "vue-shim.d.ts",
-        "typings/index.d.ts"
+        "test/jest-extend.d.ts"
     ]
 }

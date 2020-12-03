@@ -83,7 +83,7 @@ describe('REMOTE MwActionApiClient2.fetchRevisionInfo', () => {
     let revId = 991839618; // a PageMoveTo revision
     let info = await mwapi2.fetchRevisionInfo(wiki, revId);
     expect(info.wiki).toBe(`enwiki`);
-    expect(info.title).toBe(`Rivolta Femminile (\"Women's Revolt\")`);
+    expect(info.title).toBe(`Rivolta Femminile`);
     expect(info.pageId).toBe(65643135);
     expect(info.namespace).toBe(0);
     expect(info.revId).toBe(991839618);
