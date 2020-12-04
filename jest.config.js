@@ -34,6 +34,10 @@ module.exports = {
   ],
   reporters: [
     "default",
+    ["jest-junit",{
+      "outputDirectory": "./reports/jest/",
+      "outputName": "junit.xml",
+    }],
     ["./node_modules/jest-html-reporter", {
         pageTitle: "Test Report",
         outputPath: "./reports/jest/test-report.html"
