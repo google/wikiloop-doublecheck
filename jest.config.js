@@ -32,5 +32,11 @@ module.exports = {
     '<rootDir>/server/**/*.ts',
     '<rootDir>/shared/**/*.ts',
   ],
-  reporters: ["default", "jest-junit"]
+  reporters: [
+    "default",
+    ["./node_modules/jest-html-reporter", {
+        pageTitle: "Test Report",
+        outputPath: "./reports/jest/test-report.html"
+    }]
+  ]
 };

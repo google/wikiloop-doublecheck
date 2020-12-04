@@ -22,7 +22,7 @@
     "start": "npm run dev",
     "test:integration": "jest --testPathIgnorePatterns=THIS_SHALL_NEVER_MATCH_ANYTHING --testPathPattern=integration --verbose",
     "test:full": "jest --testPathIgnorePatterns=THIS_SHALL_NEVER_MATCH_ANYTHING --verbose",
-    "test:report": "jest --ci --runInBand --reporters=default --reporters=jest-junit",
+    "test:report": "jest --ci",
     "test": "jest --verbose --bail"
   },
   "husky": {
@@ -144,6 +144,7 @@
     "html-differ": "^1.4.0",
     "husky": "4.2.5",
     "jest": "^26.6.3",
+    "jest-html-reporter": "^3.3.0",
     "jest-junit": "^6.4.0",
     "nodemon": "^1.19.4",
     "pm2": "^4.5.0",
