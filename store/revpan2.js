@@ -12,15 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { MwActionApiClient } from '~/shared/mwapi';
-import axios from 'axios';
+import { MwActionApiClient2 } from '~/shared/mwapi2';
 import { parseWikiRevId } from '~/shared/utility-shared';
 
 export const state = () => ({
   wikiRevId: null,
   item: {},
-  infoLoaded: true,
-  diffLoaded: true,
+  infoLoaded: false,
+  diffLoaded: false,
   errorMsg: null,
   errorRawObj: null,
 });
@@ -38,11 +37,11 @@ export const mutations = {
   clearItem(state) {
     state.item = {};
   },
-  mergeDiff(state, diffHtml) {
-    state.item = {...state.item, ...{ diffHtml: diffHtml }};
-  },
   mergeItem(state, itemObj) {
     state.item = {...state.item, ...itemObj};
+  },
+  mergeDiff(state, diffHtml) {
+    state.item = {...state.item, ...{ diffHtml: diffHtml }};
   },
   setErrorRawObj(state, errorRawObj) {
     state.errorRawObj = errorRawObj;
@@ -78,13 +77,15 @@ export const actions = {
       commit(`setInfoLoaded`, true);
     }
   },
-  async loadDiff({ commit, state }){
+  async loadDiff({ commit, state, axios }){
     let [wiki, revId] = parseWikiRevId(state.wikiRevId);
+    let mwapi2 = new MwActionApiClient2(this.$axios);
     commit(`setDiffLoaded`, false);
     try {
-      let diff = await MwActionApiClient.getDiffByWikiRevId(wiki, revId);
-      commit(`mergeDiff`, diff);
+      let diff = await mwapi2.fetchDiff(wiki, revId);
+      commit(`setDiff`, diff);
     } catch (err) {
+      commit(`setDiff`, null);
       commit(`setErrorMsg`, `Loading diff from Wikipedia API encountered error`);
       commit(`setErrorRawObj`, err);
     }

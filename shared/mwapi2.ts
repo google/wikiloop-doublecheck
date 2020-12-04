@@ -180,12 +180,7 @@ export class MwActionApiClient2 {
 
     public async fetchParsedInfo(wiki: string, revId: number) {
         let ret = await this.axios.get(MwActionApiClient2.endPoint(wiki), {
-        params: {
-            action: 'parse',
-            format: 'json',
-            prop: 'links|images|iwlinks',
-            oldid: revId
-        }
+            params: MwActionApiClient2.parsedParams(revId)
         })
         if (ret.data.error) throw new Error(ret.data.error.info)
         else return ret.data.parse
