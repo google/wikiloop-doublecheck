@@ -1,8 +1,6 @@
 <template>
     <div>
-      <div class="card-md shadow
-        container-md-fluid container-lg 
-        wrapper">
+      <div class="card-md shadow-md wrapper">
         <pure-revision-panel 
           class="item"
           :infoLoaded="infoLoaded"
@@ -10,7 +8,10 @@
           :item="item" />
         <pure-action-panel2
           class="item"
-          v-if="infoLoaded && diffLoaded"/>
+          v-if="infoLoaded && diffLoaded"
+          :selected="judgement"
+          :pending="judgementPending"
+          />
       </div>
     </div>
 </template>
@@ -31,18 +32,33 @@
     @Prop({ type: Boolean}) readonly infoLoaded: boolean;
     @Prop({ type: Boolean}) readonly diffLoaded: boolean;
     @Prop({ type: Object }) readonly item: RevisionPanelItem;
+
+    @Prop({ type: String, required: false}) readonly judgement?: string;
+    @Prop({ type: Boolean, required: false}) readonly judgementPending?: boolean;
   }
 </script>
 
 <style lang="scss" scoped>
+@import 'bootstrap/scss/_functions.scss';
+@import 'bootstrap/scss/_variables.scss';
+@import 'bootstrap/scss/_mixins.scss';
 
 .wrapper {
   display:flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+
+  @include media-breakpoint-up(lg) {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  
+  @include media-breakpoint-up(md) {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
 }
 
 .item {
