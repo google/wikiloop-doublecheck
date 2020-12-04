@@ -18,6 +18,77 @@ export const PARSE_API_DATA: MwApiPair[] = [
     "req": {
       "url": "https://en.wikipedia.org/w/api.php",
       "params": {
+        "action": "query",
+        "format": "json",
+        "prop": "revisions",
+        "revids": 123456789012345,
+        "origin": "*"
+      }
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "batchcomplete": "",
+        "query": {
+          "badrevids": {
+            "123456789012345": {
+              "revid": 123456789012345
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://en.wikipedia.org/w/api.php",
+      "params": {
+        "action": "compare",
+        "format": "json",
+        "origin": "*",
+        "fromrev": 123456789012345,
+        "torelative": "prev"
+      }
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "error": {
+          "code": "nosuchrevid",
+          "info": "There is no revision with ID 123456789012345.",
+          "*": "See https://en.wikipedia.org/w/api.php for API usage. Subscribe to the mediawiki-api-announce mailing list at &lt;https://lists.wikimedia.org/mailman/listinfo/mediawiki-api-announce&gt; for notice of API deprecations and breaking changes."
+        },
+        "servedby": "mw1412"
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://en.wikipedia.org/w/api.php",
+      "params": {
+        "action": "parse",
+        "format": "json",
+        "prop": "links|images|iwlinks",
+        "oldid": 123456789012345,
+        "origin": "*"
+      }
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "error": {
+          "code": "nosuchrevid",
+          "info": "There is no revision with ID 123456789012345.",
+          "*": "See https://en.wikipedia.org/w/api.php for API usage. Subscribe to the mediawiki-api-announce mailing list at &lt;https://lists.wikimedia.org/mailman/listinfo/mediawiki-api-announce&gt; for notice of API deprecations and breaking changes."
+        },
+        "servedby": "mw1359"
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://en.wikipedia.org/w/api.php",
+      "params": {
         "action": "parse",
         "format": "json",
         "prop": "links|images|iwlinks",
