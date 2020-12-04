@@ -2,14 +2,25 @@
   <section>
     <template v-if="infoLoaded">
       <h2 class="item rev-title">
-        <a :href="wikiPageLink(item.wiki, item.title)">{{item.title}}</a>
+        <a :href="wikiUrl(item.wiki, { title: item.title })">{{item.title}}</a>
       </h2>
       <div class="item rev-info">
-        <div class="rev-info__item"><i class="fas fa-faucet fa-fw"></i>{{item.feed || 'default'}}</div>
-        <div class="rev-info__item"><i class="fas fa-info-circle fa-fw"></i>{{item.wiki}}:{{item.revId}}</div>
-        <div class="rev-info__item"><i class="fas fa-clock fa-fw"></i>{{item.timestamp}}</div>
+        <div class="rev-info__item"><i class="fas fa-info-circle fa-fw"></i>
+          <a :href="wikiUrl(item.wiki, { revId: item.revId })">
+            {{item.wiki}}:{{item.revId}}
+          </a>
+        </div>
         <div class="rev-info__item rev-info__item-author">
-          <i class="fas fa-user fa-fw"></i>{{item.author}}
+          <i class="fas fa-user fa-fw"></i>
+          <a :href="wikiUrl(wiki, {user: item.author})">{{item.author}}</a>
+        </div>
+        <div class="rev-info__item">
+          <i class="fas fa-clock fa-fw"></i>
+          {{item.timestamp}}
+        </div>
+        <div class="rev-info__item">
+          <i class="fas fa-faucet fa-fw"></i>
+          {{item.feed || 'default'}}
         </div>
       </div>
       <pure-diff-box2
@@ -39,7 +50,7 @@ import { mapState } from 'vuex';
 
 import { Component, Prop, Vue} from 'nuxt-property-decorator';
 import { RevisionPanelItem } from '~/shared/interfaces';
-import { wikiPageLink } from '~/shared/mwapi2';
+import { wikiUrl } from '~/shared/mwapi2';
 
 @Component({
   components: {
@@ -52,7 +63,7 @@ export default class PureRevisionPanel extends Vue {
   @Prop({ type: Boolean}) readonly diffLoaded: boolean;
   @Prop({ type: Object }) readonly item: RevisionPanelItem;
 
-  public wikiPageLink = wikiPageLink;
+  public wikiUrl = wikiUrl;
 }
 </script>
 <style lang="scss" scoped>
@@ -60,12 +71,17 @@ export default class PureRevisionPanel extends Vue {
   @import 'bootstrap/scss/_variables.scss';
   @import 'bootstrap/scss/_mixins.scss';
 
+  a:hover {
+    text-decoration:none;
+  }
+
   .item:not(:last-child) {
     margin-bottom: 1.5rem;
   }
 
   .rev-title {
     font-size: 1.4rem;
+    font-weight: 700;
     & > a {
       text-decoration:none;
     }

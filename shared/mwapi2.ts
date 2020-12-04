@@ -52,9 +52,16 @@ export interface MwRevisionInfo extends MwPageInfo {
     timestampStr:string,
 }
 
-export function wikiPageLink(wiki, title) {
-    let encodedTitle = title.replace(' ', '_');
-    return `https://${wikiToDomain[wiki]}/wiki/${encodedTitle}`;
+export function wikiUrl(wiki, {title, revId, user}) {
+    if (title) {
+        let encodedTitle = title.replace(' ', '_');
+        return `https://${wikiToDomain[wiki]}/wiki/${encodedTitle}`;
+    } else if (revId) {
+        return `https://${wikiToDomain[wiki]}/wiki/Special:Diff/${revId}`;
+    } else if (user) {
+        let encodedUser = user.replace(' ', '_');
+        return `https://${wikiToDomain[wiki]}/wiki/User:${user}`;
+    }
 }
 
 /**
