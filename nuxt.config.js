@@ -36,7 +36,9 @@ module.exports = {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: 'https://www.mediawiki.org/w/load.php?modules=mediawiki.legacy.shared|mediawiki.diff.styles&only=styles' },
-      { rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v5.13.0/css/all.css', crossorigin: 'anonymous' }
+      { rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v5.13.0/css/all.css', crossorigin: 'anonymous' },
+      { rel: 'preconnect', href: 'http://https://fonts.gstatic.com'},
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Noto+Sans&family=Open+Sans&family=Roboto&display=swap'}
     ],
     script: [
       {

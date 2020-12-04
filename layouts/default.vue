@@ -308,8 +308,6 @@ export default {
 @import 'bootstrap/scss/_mixins.scss';
 
 html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -323,6 +321,10 @@ html {
   @include media-breakpoint-down(xs) {
       font-size: 80%;
   }
+}
+
+body {
+    font-family: 'Noto Sans', 'Open Sans', 'Roboto', sans-serif;
 }
 
 *,
