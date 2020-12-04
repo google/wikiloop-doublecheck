@@ -8,7 +8,7 @@ export default {
 const Template = (args, { argTypes }) => ({
   components: { PureDiffBox2 },
   props: Object.keys(argTypes),
-  template: '<PureDiffBox2 :loading="loading" :diffSafeHtml="diffSafeHtml" />',
+  template: '<PureDiffBox2 :loaded="loading" :diffSafeHtml="diffSafeHtml" />',
   // TODO i18n wait for https://github.com/nuxt-community/storybook/commit/7588841242d9d17c89e7c5075f4a5ce8330fdcf5
 });
 

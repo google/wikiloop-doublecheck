@@ -34,6 +34,27 @@ jobs:
           command: yarn test:integration
           environment:
             JEST_JUNIT_OUTPUT: "reports/jest/integration/results.xml"
+  chromatic-deployment: 
+    docker:
+      - image: circleci/node:12.19.1
+    working_directory: ~/repo
+    steps:
+      - checkout:
+          path: "~/repo"
+      # Download and cache dependencies
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn install --immutable
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+      - run: yarn chromatic --project-token=${CHROMATIC_PROJECT_TOKEN} --exit-zero-on-changes
 
   deploy:
     docker:
@@ -49,3 +70,6 @@ workflows:
   build-deploy:
     jobs:
       - build
+  chromatic-deploy:
+    jobs:
+      - chromatic-deployment # 👈 Runs the Chromatic job implemented above

@@ -8,6 +8,7 @@
     "build:analyze": "nuxt build -a",
     "build": "nuxt build",
     "ci": "circleci local execute build",
+    "ci:validate": "circleci config validate",
     "dev:debug": "cross-env NODE_ENV=development nodemon --inspect",
     "dev:exec": "ts-node -r tsconfig-paths/register --project tsconfig.json ./server/index.ts",
     "dev:lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
@@ -20,11 +21,13 @@
     "prod": "npm run build && npm run start",
     "release": "HUSKY_SKIP_HOOKS=1 standard-version",
     "sb": "nuxt storybook",
+    "build-storybook": "nuxt storybook build",
     "start": "npm run dev",
     "test:integration": "jest --testPathIgnorePatterns=THIS_SHALL_NEVER_MATCH_ANYTHING --testPathPattern=integration --verbose",
     "test:full": "jest --testPathIgnorePatterns=THIS_SHALL_NEVER_MATCH_ANYTHING --verbose",
     "test:report": "jest --ci",
-    "test": "jest --verbose --bail"
+    "test": "jest --verbose --bail",
+    "chromatic": "chromatic --project-token=${CHROMATIC_PROJECT_TOKEN}"
   },
   "husky": {
     "hooks": {
@@ -126,6 +129,7 @@
     "babel-eslint": "^10.0.3",
     "babel-jest": "^26.6.3",
     "babel-loader": "^8.2.2",
+    "chromatic": "^5.4.0",
     "commitizen": "4.1.2",
     "core-js": "3",
     "cz-conventional-changelog": "3.2.0",
