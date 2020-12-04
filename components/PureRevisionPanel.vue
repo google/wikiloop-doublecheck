@@ -1,8 +1,10 @@
 <template>
   <section>
     <template v-if="infoLoaded">
-      <h2 class="rev-title"><a :href="wikiPageLink(item.wiki, item.title)">{{item.title}}</a></h2>
-      <div class="rev-info">
+      <h2 class="item rev-title">
+        <a :href="wikiPageLink(item.wiki, item.title)">{{item.title}}</a>
+      </h2>
+      <div class="item rev-info">
         <div class="rev-info__item"><i class="fas fa-faucet fa-fw"></i>{{item.feed || 'default'}}</div>
         <div class="rev-info__item"><i class="fas fa-info-circle fa-fw"></i>{{item.wiki}}:{{item.revId}}</div>
         <div class="rev-info__item"><i class="fas fa-clock fa-fw"></i>{{item.timestamp}}</div>
@@ -11,10 +13,11 @@
         </div>
       </div>
       <pure-diff-box2
+        class="item rev-diff"
         :loaded="diffLoaded"
         :diff-safe-html="item.diffHtml">
       </pure-diff-box2>
-      <div class="rev-summary">
+      <div class="item rev-summary">
         <div class="rev-summary__label">{{$t("Label-EditSummary")}}</div>
         <div class="rev-summary__content" :class="{
           'rev-summary__content--empty': !item.summary }
@@ -57,8 +60,15 @@ export default class PureRevisionPanel extends Vue {
   @import 'bootstrap/scss/_variables.scss';
   @import 'bootstrap/scss/_mixins.scss';
 
+  .item:not(:last-child) {
+    margin-bottom: 1.5rem;
+  }
+
   .rev-title {
     font-size: 1.4rem;
+    & > a {
+      text-decoration:none;
+    }
   }
 
   .rev-info {
@@ -87,6 +97,8 @@ export default class PureRevisionPanel extends Vue {
 
   .rev-summary {
     &__label {
+      font-size: 1.2rem;
+      font-weight: 600;
     }
 
     &__content {
