@@ -12,12 +12,12 @@ describe('MwActionApiClient2.endPoint', () => {
   });
 
   test('should generate a valid Wikipedia endpint URL when passed a good wiki.', () => {
-    expect(mwapi2.endPoint(`enwiki`)).toBe(`https://en.wikipedia.org/w/api.php`);
-    expect(mwapi2.endPoint(`wikidatawiki`)).toBe(`https://wikidata.org/w/api.php`);
+    expect(MwActionApiClient2.endPoint(`enwiki`)).toBe(`https://en.wikipedia.org/w/api.php`);
+    expect(MwActionApiClient2.endPoint(`wikidatawiki`)).toBe(`https://wikidata.org/w/api.php`);
   });
 
   test('should throw an exception complaining about the bad', () => {
-    expect(() => mwapi2.endPoint(`badwiki`)).toThrowError(`badwiki`);
+    expect(() => MwActionApiClient2.endPoint(`badwiki`)).toThrowError(`badwiki`);
   });
 });
 

@@ -1,14 +1,14 @@
-interface MwApiResponse {
+export interface MwApiResponse {
   status: number
   data: any
 }
 
-interface MwApiRequest {
+export interface MwApiRequest {
   url: string
   params: any
 }
 
-interface MwApiPair {
+export interface MwApiPair {
   req: MwApiRequest
   res: MwApiResponse
 }

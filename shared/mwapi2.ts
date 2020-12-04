@@ -17,7 +17,6 @@
 
 import { wikiToDomain } from '@/shared/utility-shared';
 import Bottleneck from "bottleneck";
-
 /** 
  * An interface for the page info when fetching from MediaWiki Action API.
   
@@ -76,10 +75,21 @@ export class MwActionApiClient2 {
      * 
      * @param wiki 
      */
-    public endPoint(wiki:string) {
+    public static endPoint(wiki:string) {
         if (wiki in wikiToDomain)
             return `https://${wikiToDomain[wiki]}/w/api.php`;
         else throw new Error(`Error: wiki "${wiki}" was not available in wikiToDomain, which supports only ${Object.keys(wikiToDomain)}`);
+    }
+
+    public static infoParams(revId) {
+        let params = {
+            "action": "query",
+            "format": "json",
+            "prop": "revisions",
+            "revids": revId,
+            "origin": "*"
+        };
+        return params;
     }
 
     /**
@@ -96,15 +106,14 @@ export class MwActionApiClient2 {
      * @returns a composed {@link MwRevisionInfo} that contains page and revision info.
      */
     public async fetchRevisionInfo(wiki:string, revId:number):Promise<MwRevisionInfo> {
-        let params = {
-            "action": "query",
-            "format": "json",
-            "prop": "revisions",
-            "revids": revId,
-            "origin": "*"
-        };
 
-        let result = await this.bottleneck.schedule(async ()=> await this.axios.get(this.endPoint(wiki), { params }));
+        let result = await this.bottleneck.schedule(
+          async () =>
+            await this.axios.get(MwActionApiClient2.endPoint(wiki), {
+              params: MwActionApiClient2.infoParams(revId)
+            })
+        )
+
         if (result.data?.query?.badrevids) {
             // TODO: conisider verifying the badrevids is the revision we sent them. 
             // This is ignored since we are assuming the {@link revId} is a single number.
@@ -131,7 +140,7 @@ export class MwActionApiClient2 {
         return result;
     }
 
-    public async fetchDiff(wiki:string, revId:number, prevRevId:number = null) {
+    public static diffParams(revId:number, prevRevId:number = null) {
         let params:any = {
             action: "compare",
             format: "json",
@@ -145,16 +154,32 @@ export class MwActionApiClient2 {
             params.fromrev= revId;  // When using torelative:prev, the compare API will swap fromrev with torev.
             params.torelative = "prev";
         }
+        return params;
+    }
 
-        let ret = await this.axios.get(this.endPoint(wiki), { params: params });
+    public async fetchDiff(wiki:string, revId:number, prevRevId:number = null) {
+
+        let ret = await this.axios.get(MwActionApiClient2.endPoint(wiki), {
+          params: MwActionApiClient2.diffParams(revId, prevRevId)
+        })
         if (ret.data.error) {
             throw new Error(`Error fetching Diff, error: ${JSON.stringify(ret.data, null, 2)}`);
         }
         return ret.data.compare[`*`]; 
     }
 
+    public static parsedParams(revId) {
+        return {
+        action: 'parse',
+        format: 'json',
+        prop: 'links|images|iwlinks',
+        oldid: revId,
+        origin: '*'
+        }
+    };
+
     public async fetchParsedInfo(wiki: string, revId: number) {
-        let ret = await this.axios.get(this.endPoint(wiki), {
+        let ret = await this.axios.get(MwActionApiClient2.endPoint(wiki), {
         params: {
             action: 'parse',
             format: 'json',
@@ -162,7 +187,6 @@ export class MwActionApiClient2 {
             oldid: revId
         }
         })
-        // throw new Error(ret); // XXX
         if (ret.data.error) throw new Error(ret.data.error.info)
         else return ret.data.parse
     }
