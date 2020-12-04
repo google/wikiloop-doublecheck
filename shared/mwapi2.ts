@@ -52,6 +52,11 @@ export interface MwRevisionInfo extends MwPageInfo {
     timestampStr:string,
 }
 
+export function wikiPageLink(wiki, title) {
+    let encodedTitle = title.replace(' ', '_');
+    return `https://${wikiToDomain[wiki]}/wiki/${encodedTitle}`;
+}
+
 /**
  * An class for utility functions for MediaWiki Action Client.
  */

@@ -1,7 +1,7 @@
 <template>
   <section>
     <template v-if="infoLoaded">
-      <h2 class="rev-title">{{item.title}}</h2>
+      <h2 class="rev-title"><a :href="wikiPageLink(item.wiki, item.title)">{{item.title}}</a></h2>
       <div class="rev-info">
         <div class="rev-info__item"><i class="fas fa-faucet fa-fw"></i>{{item.feed || 'default'}}</div>
         <div class="rev-info__item"><i class="fas fa-info-circle fa-fw"></i>{{item.wiki}}:{{item.revId}}</div>
@@ -36,6 +36,7 @@ import { mapState } from 'vuex';
 
 import { Component, Prop, Vue} from 'nuxt-property-decorator';
 import { RevisionPanelItem } from '~/shared/interfaces';
+import { wikiPageLink } from '~/shared/mwapi2';
 
 @Component({
   components: {
@@ -47,6 +48,8 @@ export default class PureRevisionPanel extends Vue {
   @Prop({ type: Boolean}) readonly infoLoaded: boolean;
   @Prop({ type: Boolean}) readonly diffLoaded: boolean;
   @Prop({ type: Object }) readonly item: RevisionPanelItem;
+
+  public wikiPageLink = wikiPageLink;
 }
 </script>
 <style lang="scss" scoped>

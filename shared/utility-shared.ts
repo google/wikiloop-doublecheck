@@ -81,7 +81,6 @@ export const wikiToLangMap = (function() {
   return _wikiToLangMap;
 })();
 
-
 export let getUrlBaseByWiki = function(wiki) {
     return `http://${wikiToDomain[wiki]}`;
 };

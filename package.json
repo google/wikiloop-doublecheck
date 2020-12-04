@@ -19,6 +19,7 @@
     "prod:pm2": "npx pm2 start eco.yml --env=production",
     "prod": "npm run build && npm run start",
     "release": "HUSKY_SKIP_HOOKS=1 standard-version",
+    "sb": "nuxt storybook",
     "start": "npm run dev",
     "test:integration": "jest --testPathIgnorePatterns=THIS_SHALL_NEVER_MATCH_ANYTHING --testPathPattern=integration --verbose",
     "test:full": "jest --testPathIgnorePatterns=THIS_SHALL_NEVER_MATCH_ANYTHING --verbose",
