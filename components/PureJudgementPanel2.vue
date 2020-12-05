@@ -1,7 +1,7 @@
 <template>
     <div class="judgpan--wrapper">
         <div class="judgpan--item" 
-            v-for="judgeType in ['LooksGood', 'NotSure', 'ShouldRevert']"
+            v-for="judgeType in ['LooksGood', 'NotSure', 'ShouldRevert'].filter( j => filterUsers(j).length)"
             :key="judgeType">
             <template v-if="filterUsers(judgeType).length > 0">
                 <div class="judgpan--type">

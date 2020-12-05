@@ -6,19 +6,17 @@
           :infoLoaded="infoLoaded"
           :diffLoaded="diffLoaded"
           :item="item" />
-        
+        <div class="pure-feed2--item" v-if="showJudgementPanel">
+          <div class="pure-feed2--judgpan__label">{{$t('Label-Judgement')}}</div>
+          <pure-judgement-panel2
+            class="pure-feed2--item pure-feed2--judgpan"
+            :interactions="interactions" />
+        </div>
         <pure-action-panel2
-          class="pure-feed2--item"
+          class="pure-feed2--actpan"
           v-if="infoLoaded && diffLoaded"
           :selected="judgement"
-          :pending="judgementPending"
-          />
-        <pure-judgement-panel2
-          class="pure-feed2--item pure-feed2--judgpan"
-          v-if="showJudgementPanel"
-          :interactions="interactions"
-        >
-        </pure-judgement-panel2>
+          :pending="judgementPending" />
       </div>
     </div>
 </template>
@@ -73,13 +71,22 @@
 }
 
 .pure-feed2--item {
+  width:100%;
   &:not(:last-child) {
     margin-bottom: 2rem;
   }
 }
 
-.pure-feed2--judgpan {
-  
+.pure-feed2--actpan {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.pure-feed2--judgpan__label {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
 }
 
 </style>

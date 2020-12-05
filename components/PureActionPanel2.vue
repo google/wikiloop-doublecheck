@@ -51,9 +51,9 @@
 <style lang="scss" scoped>
     .btn {
         border-radius: 50%;
-        width: 3rem;
-        height: 3rem;
-        margin: 1rem;
+        width: 4rem;
+        height: 4rem;
+        margin: 1.5rem;
         line-height: 1;
         display: inline-grid;
         justify-content: center;
