@@ -1,26 +1,59 @@
 <template>
     <div class="wrapper">
-        <div class="type looks-good btn btn-outline-success">
-            <i class="fas fa-thumbs-up"></i>
-        </div>
-        <div class="type not-sure btn btn-outline-secondary">
-            <i class="fas fa-question"></i>
-        </div>
-        <div class="type should-revert btn btn-outline-danger">
-            <i class="fas fa-thumbs-down"></i>
+        <div class="item" 
+            v-for="judgeType in ['LooksGood', 'NotSure', 'ShouldRevert']" 
+            :key="judgeType">
+            <div class="type">
+                <div class="looks-good btn" :class="{[getBtnClass(judgeType)]: true}">
+                    <i class="fas" :class="{[getIcon(judgeType)]: true}"></i>
+                </div>
+            </div>
+            <div class="users">
+                <div class="user-outer"
+                    v-for="item in filterUsers(judgeType)" :key="item.wikiUserName || item.userGaId">
+                    <pure-user-avatar2
+                        class="user"
+                        :userName="item.wikiUserName"
+                        :userGaId="item.userGaId"
+                    ></pure-user-avatar2>
+                </div>
+            </div>
         </div>
     </div>
 </template>
 
 <script lang="ts">
     import { Component, Vue, Prop } from 'nuxt-property-decorator'
+    import { InteractionProps } from '~/shared/models/interaction-item.model';
+    import PureUserAvatar2 from '@/components/PureUserAvatar2.vue';   
 
     @Component({
       components: {
+          PureUserAvatar2
       }
     })
-    export default class PureJudgementPanel2 extends Vue { 
-        @Prop({ type: Object, required: true}) judgementCounts:Object = {};
+    export default class PureJudgementPanel2 extends Vue {
+        @Prop({ type: Array, required: true}) interactions:InteractionProps[];
+        
+        public filterUsers(judgeType) {
+            return this.interactions?.filter(i=> i.judgement ===judgeType) || [];
+        }
+
+        public getIcon (judgeType) {
+            return {
+                LooksGood: "fa-thumbs-up",
+                NotSure: "fa-question",
+                ShouldRevert: "fa-thumbs-down",
+            }[judgeType];
+        }
+
+        public getBtnClass (judgeType) {
+            return {
+                LooksGood: "btn-outline-success",
+                NotSure: "btn-outline-secondary",
+                ShouldRevert: "btn-outline-danger",
+            }[judgeType];
+        }
     }
 </script>
 
@@ -30,12 +63,64 @@
         gap: 12px;
         flex: 1rem;
     }
+    .item {
+        display: flex;
+        align-items: center;
+        position:relative;
+        flex: 0 0 20rem;
+    }
+
     .type {
-        width: 2rem;
-        height: 2rem;
+        & > div {
+            display:grid;
+            justify-content:center;
+            align-items:center;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            border: 0.2rem solid;
+        }
+        &::after {
+            content: "";
+            display: inline-block;
+            height: 100%;
+            width: 100%;
+            border-radius: 50%;
+            position: absolute;
+            background-color: white;
+            top: 0;
+            left: 0;
+            transform: scaleX(1.1) scaleY(1.1);
+            z-index: -1;
+            transition: all .4s;
+        }
+        width: 3rem;
+        height: 3rem;
+        left:0;
+        top:0;
         border-radius: 50%;
         display:inline-grid;
         justify-content:center;
         align-items:center;
+        z-index:1;
+        position:relative;
+    }
+
+    .users {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+    .user-outer {
+        width: 2.5rem;
+        height: 2.5rem;
+        margin-left: -0.4rem;
+        position:relative;
+        & > div {
+            height: 100%;
+            width: 100%;
+            border-radius: 50%;
+            border: 0.2rem solid white;
+        }
     }
 </style>

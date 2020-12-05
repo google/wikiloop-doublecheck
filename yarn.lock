@@ -1471,15 +1471,29 @@
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
-"@dicebear/avatars-identicon-sprites@^4.0.2":
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/@dicebear/avatars-identicon-sprites/-/avatars-identicon-sprites-4.4.0.tgz#ede279dcb7d49eb414aad59e43111170a9516874"
-  integrity sha512-/NKDRhuo7CVY/Z6zU9R4wOI1Wmgi+pxHb6c4ol/PqqJc3GmIq8DFZQOO7eKBBHUk9K1WteBuE/N3fG9xVfGRHA==
+"@dicebear/avatars-gridy-sprites@^4.4.1":
+  version "4.4.1"
+  resolved "https://registry.yarnpkg.com/@dicebear/avatars-gridy-sprites/-/avatars-gridy-sprites-4.4.1.tgz#23bbc6e6251f13bef97d9e33b1c9f19c287bdaf7"
+  integrity sha512-aO14pF1hiiOMcgOeJu5HXyOI7xbqHPvjIgDa3eeGzTDcXJ3WshwVb5uoZ07mPfEO/LY/d8eZcFnYxPq2ud5NKA==
+  dependencies:
+    gridy-avatars "^1.1.3"
 
-"@dicebear/avatars@^4.0.2":
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/@dicebear/avatars/-/avatars-4.4.0.tgz#48b68520a244593cb41db1c448a2a7afd11e3874"
-  integrity sha512-b32BzXV1LzobVHVEbem1kU5we/+CMMS11fbwwxgTZedoq5ibJB2+3KL9uTgW1TJ8UgwB0iFgtSVEOa3I68WMPA==
+"@dicebear/avatars-identicon-sprites@^4.4.1":
+  version "4.4.1"
+  resolved "https://registry.yarnpkg.com/@dicebear/avatars-identicon-sprites/-/avatars-identicon-sprites-4.4.1.tgz#cb0429cbf5852898ebff4498fc6f084ebc0b74d1"
+  integrity sha512-IRwcw1stnE63dILilkeSgKydABk8P5QJivX8gRgL+DBn9uIGfxQ7EPSBe+1lPEfTo95Poht87uZJWqmskiIxFg==
+
+"@dicebear/avatars-initials-sprites@^4.4.1":
+  version "4.4.1"
+  resolved "https://registry.yarnpkg.com/@dicebear/avatars-initials-sprites/-/avatars-initials-sprites-4.4.1.tgz#583b3102f6783adf3d61bddb50198a83346e34ba"
+  integrity sha512-8n3vHHMOKSCPrbR2GFOT+Zcl1LS1BYXK1++OVyNEyH4ngHsuhk2dsVoRb2ZkjbXy1TT3v4YsPv/m5oI7Vw/VJw==
+  dependencies:
+    initials "^3.0.1"
+
+"@dicebear/avatars@^4.4.1":
+  version "4.4.1"
+  resolved "https://registry.yarnpkg.com/@dicebear/avatars/-/avatars-4.4.1.tgz#5a32e97574eb4dea30bc3612a494ba7e65fd6f4b"
+  integrity sha512-yXmrZCTF6+IX3C0RH4yRKkmbm12RGG28AzvLZpCQtUy44Awl/hegbky2+3Eog8E8miaPJWhFa3AxjHi8TZ366w==
   dependencies:
     pure-color "^1.3.0"
     seedrandom "^3.0.5"
@@ -7980,7 +7994,7 @@ d3-collection@1.0.4:
   resolved "https://registry.yarnpkg.com/d3-collection/-/d3-collection-1.0.4.tgz#342dfd12837c90974f33f1cc0a785aea570dcdc2"
   integrity sha1-NC39EoN8kJdPM/HMCnha6lcNzcI=
 
-d3-color@1:
+d3-color@1, d3-color@^1.0.3:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/d3-color/-/d3-color-1.4.1.tgz#c52002bf8846ada4424d55d97982fef26eb3bc8a"
   integrity sha512-p2sTHSLCJI2QKunbGb7ocOh7DgTAn8IrLx21QRc/BSnodXM4sv6aLQlnfpvehFMLZEfBc6g9pH9SWQccFYfJ9Q==
@@ -10879,6 +10893,13 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.3
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.4.tgz#2256bde14d3632958c465ebc96dc467ca07a29fb"
   integrity sha512-WjKPNJF79dtJAVniUlGGWHYGz2jWxT6VhN/4m1NdkbZ2nOsEF+cI1Edgql5zCRhs/VsQYRvrXctxktVXZUkixw==
 
+gridy-avatars@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/gridy-avatars/-/gridy-avatars-1.1.3.tgz#34e5c2f3e651b35e5e975ec701a27f442372b8b2"
+  integrity sha512-TVDHcof5MSZqrVYL5q2K3PCYigE4mzKbtKYSKW9Wsyf5+vFbQlIWmCW+QrHTIgrSbBRbNXTO+8AV2uc0K35K/g==
+  dependencies:
+    d3-color "^1.0.3"
+
 growly@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/growly/-/growly-1.3.0.tgz#f10748cbe76af964b7c96c93c6bcc28af120c081"
@@ -11639,6 +11660,11 @@ ini@^1.3.2, ini@^1.3.4, ini@^1.3.5, ini@~1.3.0:
   version "1.3.5"
   resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.5.tgz#eee25f56db1c9ec6085e0c22778083f596abf927"
   integrity sha512-RZY5huIKCMRWDUqZlEi72f/lmXKMvuszcMBduliQ3nnWbx9X/ZBQO7DijMEYS9EhHBb2qacRUMtC7svLwe0lcw==
+
+initials@^3.0.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/initials/-/initials-3.1.1.tgz#a63395b2c46bc56207b4b964a6eb185dbd8458e6"
+  integrity sha512-imRkwIpCUer+w9NB41dTENhJrTQTGOJthRa3URF0O9+L7MOMBPmN8njwkiX4u8YnzxbjEp4Is0ohiW6NSA8ZCw==
 
 inline-style-parser@0.1.1:
   version "0.1.1"

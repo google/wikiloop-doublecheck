@@ -36,8 +36,10 @@
   },
   "dependencies": {
     "@babel/core": "^7.12.9",
-    "@dicebear/avatars": "^4.0.2",
-    "@dicebear/avatars-identicon-sprites": "^4.0.2",
+    "@dicebear/avatars": "^4.4.1",
+    "@dicebear/avatars-gridy-sprites": "^4.4.1",
+    "@dicebear/avatars-identicon-sprites": "^4.4.1",
+    "@dicebear/avatars-initials-sprites": "^4.4.1",
     "@google-cloud/translate": "^6.0.1",
     "@nuxt/typescript": "^2.8.1",
     "@nuxt/typescript-runtime": "^0.4.1",
