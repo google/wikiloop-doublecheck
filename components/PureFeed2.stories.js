@@ -15,6 +15,8 @@ const Template = (args, { argTypes }) => ({
     
     :judgement="judgement"
     :judgementPending="judgementPending"
+    :interactions="interactions"
+    :showJudgementPanel="showJudgementPanel"
     />`
 })
 
@@ -68,4 +70,13 @@ judgementDone.args = {
   },
   judgement: 'LooksGood',
   judgementPending: false,
+  showJudgementPanel: true,
+  interactions: [
+    { wikiUserName: "Xinbenlv", userGaId:"GA1.2.1021694750.1607134727", judgement: "LooksGood" },
+    { wikiUserName: "XinbenlvSandBox", userGaId:"GA1.2.1021694750.1607134727", judgement: "LooksGood" },
+    { wikiUserName: "Alpha", userGaId:"GA1.2.1021694750.1607134827", judgement: "NotSure" },
+    { wikiUserName: "Bella", userGaId:"GA1.2.1021694750.160718372", judgement: "ShouldRevert" },
+    { userGaId:"GA1.2.1021694750.160718144", judgement: "ShouldRevert" },
+    { userGaId:"GA1.2.1021694750.160718274", judgement: "ShouldRevert" },
+],
 }

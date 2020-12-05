@@ -1,23 +1,25 @@
 <template>
-    <div class="wrapper">
-        <div class="item" 
-            v-for="judgeType in ['LooksGood', 'NotSure', 'ShouldRevert']" 
+    <div class="judgpan--wrapper">
+        <div class="judgpan--item" 
+            v-for="judgeType in ['LooksGood', 'NotSure', 'ShouldRevert']"
             :key="judgeType">
-            <div class="type">
-                <div class="looks-good btn" :class="{[getBtnClass(judgeType)]: true}">
-                    <i class="fas" :class="{[getIcon(judgeType)]: true}"></i>
+            <template v-if="filterUsers(judgeType).length > 0">
+                <div class="judgpan--type">
+                    <div class="looks-good btn" :class="{[getBtnClass(judgeType)]: true}">
+                        <i class="fas" :class="{[getIcon(judgeType)]: true}"></i>
+                    </div>
                 </div>
-            </div>
-            <div class="users">
-                <div class="user-outer"
-                    v-for="item in filterUsers(judgeType)" :key="item.wikiUserName || item.userGaId">
-                    <pure-user-avatar2
-                        class="user"
-                        :userName="item.wikiUserName"
-                        :userGaId="item.userGaId"
-                    ></pure-user-avatar2>
+                <div class="judgpan--users">
+                    <div class="judgpan--user-outer"
+                        v-for="item in filterUsers(judgeType)" :key="item.wikiUserName || item.userGaId">
+                        <pure-user-avatar2
+                            class="judgpan--user"
+                            :userName="item.wikiUserName"
+                            :userGaId="item.userGaId"
+                        ></pure-user-avatar2>
+                    </div>
                 </div>
-            </div>
+            </template>
         </div>
     </div>
 </template>
@@ -58,19 +60,18 @@
 </script>
 
 <style lang="scss" scoped>
-    .wrapper {
+    .judgpan--wrapper {
         display: flex;
         gap: 12px;
         flex: 1rem;
     }
-    .item {
+    .judgpan--item {
         display: flex;
         align-items: center;
-        position:relative;
-        flex: 0 0 20rem;
+
     }
 
-    .type {
+    .judgpan--type {
         & > div {
             display:grid;
             justify-content:center;
@@ -106,12 +107,12 @@
         position:relative;
     }
 
-    .users {
+    .judgpan--users {
         display: flex;
         flex-direction: row-reverse;
     }
 
-    .user-outer {
+    .judgpan--user-outer {
         width: 2.5rem;
         height: 2.5rem;
         margin-left: -0.4rem;

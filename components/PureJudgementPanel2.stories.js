@@ -24,6 +24,15 @@ basic.args = {
     ],
 };
 
+export const basic2 = Template.bind({});
+basic2.args = {
+    interactions: [
+        { wikiUserName: "Xinbenlv", userGaId:"GA1.2.1021694750.1607134727", judgement: "ShouldRevert" },
+        { wikiUserName: "Alpha", userGaId:"GA1.2.1021694750.1607134727", judgement: "NotSure" },
+        { wikiUserName: "Bella", userGaId:"GA1.2.1021694750.1607134727", judgement: "ShouldRevert" },
+    ],
+};
+
 export const dense = Template.bind({});
 dense.args = {
     interactions: [

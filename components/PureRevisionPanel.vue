@@ -12,7 +12,7 @@
         </div>
         <div class="rev-info__item rev-info__item-author">
           <i class="fas fa-user fa-fw"></i>
-          <a :href="wikiUrl(wiki, {user: item.author})">{{item.author}}</a>
+          <a :href="wikiUrl(item.wiki, {user: item.author})">{{item.author}}</a>
         </div>
         <div class="rev-info__item">
           <i class="fas fa-clock fa-fw"></i>
