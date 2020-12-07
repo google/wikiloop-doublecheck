@@ -1,16 +1,17 @@
 import { MwMailer } from '~/mailer/mw-mailer';
 
-let main = async () => {
-  console.log(`Start...`);
+const main = async () => {
+  console.log('Start...');
   const envPath = process.env.DOTENV_PATH || 'template.env';
-  console.log(`DotEnv envPath = `, envPath, ' if you want to change it, restart and set DOTENV_PATH');
+  console.log('DotEnv envPath = ', envPath, ' if you want to change it, restart and set DOTENV_PATH');
 
   require('dotenv').config({
-    path: envPath
+    path: envPath,
   });
-  let mwMailer = new MwMailer();
+
+  const mwMailer = new MwMailer();
   await mwMailer.init();
-  let names = [
+  const names = [
     'Xinbenlv',
     'A-NEUN',
     'AC5230',
@@ -270,13 +271,12 @@ let main = async () => {
     'Zhyrek',
     'Zoozaz1',
   ];
-  names.map(async name => {
+  names.map(async (name) => {
     await mwMailer.mail(`User_talk:${name}`,
       `==WikiLoop Battlefield new name vote==\nDear ${name}, \n\nThank you for your interest and contributions to WikiLoop Battlefield.
 We are holding a voting for proposed new name. We would like to invite you to this voting. The voting
 is held at [[:m:WikiProject_WikiLoop/New_name_vote]] and ends on July 13th 00:00 UTC. \n\n~~~~`);
   });
+};
 
-}
-
-main().then(() => { console.log('complete!'); });
+main().then(() => {console.log('complete!');});

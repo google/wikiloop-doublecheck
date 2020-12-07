@@ -1,10 +1,10 @@
 // Usage: npx ts-node -r tsconfig-paths/register tscmd/mail-usage-report-cmd.ts
 
-import {UsageReportCronJob} from "~/cronjobs/usage-report.cron";
+import { UsageReportCronJob } from '~/cronjobs/usage-report.cron';
 const mongoose = require('mongoose');
 
 async function main() {
-  await mongoose.connect(process.env.MONGODB_URI, {useUnifiedTopology: true, useNewUrlParser: true});
+  await mongoose.connect(process.env.MONGODB_URI, { useUnifiedTopology: true, useNewUrlParser: true });
   const yargs = require('yargs');
   const argv = yargs
       .option('frequency', {
@@ -26,6 +26,6 @@ async function main() {
 }
 
 main().then(() => {
-  console.log(`CMD Done!`);
+  console.log('CMD Done!');
   process.exit(0);
 });

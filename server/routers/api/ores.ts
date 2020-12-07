@@ -15,8 +15,8 @@
 // DEPRECATED use score.ts if possible
 // TODO(xinbenlv): consider merge with `/score`
 
-const rp = require('request-promise');
 import { computeOresFieldNew, wikiRevIdsGroupByWiki, apiLogger, asyncHandler } from '../../common';
+const rp = require('request-promise');
 
 export const oresRouter = require('express').Router();
 
@@ -35,54 +35,54 @@ export const oresRouter = require('express').Router();
  * @returns {Promise<Object> a map of {wiki: [oresScore]}} where oresScore
  */
 async function fetchOres(wikiRevIds) {
-    let wikiToRevIdList = wikiRevIdsGroupByWiki(wikiRevIds);
-    let oresResults = {};
-    let oresResultJson;
-    for (let wiki in wikiToRevIdList) {
-        let revIds = wikiToRevIdList[wiki];
-        let oresUrl = `https://ores.wikimedia.org/v3/scores/${wiki}/?models=damaging|goodfaith&revids=${revIds.join('|')}`;
-        try {
-            oresResultJson = await rp.get(oresUrl, { json: true });
-            oresResults[wiki] = revIds.map(revId => computeOresFieldNew(oresResultJson, wiki, revId));
-        } catch (err) {
-            if (err.statusCode === 429) {
-                apiLogger.warn(`\n\n\nEncountered a 429 rate limit err for wikiRevIds=${wikiRevIds}, returning null for all\n\n\n`);
-            } else apiLogger.error(`fetchOres has an unknown error of `, err);
-            revIds.forEach(revId => {
-                oresResults[wiki] = Array(revIds.length).fill(null);
-            });
-        }
+  const wikiToRevIdList = wikiRevIdsGroupByWiki(wikiRevIds);
+  const oresResults = {};
+  let oresResultJson;
+  for (const wiki in wikiToRevIdList) {
+    const revIds = wikiToRevIdList[wiki];
+    const oresUrl = `https://ores.wikimedia.org/v3/scores/${wiki}/?models=damaging|goodfaith&revids=${revIds.join('|')}`;
+    try {
+      oresResultJson = await rp.get(oresUrl, { json: true });
+      oresResults[wiki] = revIds.map((revId) => computeOresFieldNew(oresResultJson, wiki, revId));
+    } catch (err) {
+      if (err.statusCode === 429) {
+        apiLogger.warn(`\n\n\nEncountered a 429 rate limit err for wikiRevIds=${wikiRevIds}, returning null for all\n\n\n`);
+      } else {apiLogger.error('fetchOres has an unknown error of ', err);}
+      revIds.forEach((revId) => {
+        oresResults[wiki] = Array(revIds.length).fill(null);
+      });
     }
-    return oresResults;
+  }
+  return oresResults;
 };
 
 const ores = async (req, res) => {
-    let wikiRevIds = req.query.wikiRevIds;
-    let ret = await fetchOres(wikiRevIds);
-    res.send(ret);
-    req.visitor
-        .event({ ec: "api", ea: "/ores" })
-        .send();
+  const wikiRevIds = req.query.wikiRevIds;
+  const ret = await fetchOres(wikiRevIds);
+  res.send(ret);
+  req.visitor
+      .event({ ec: 'api', ea: '/ores' })
+      .send();
 };
 
-oresRouter.get(`/`, asyncHandler(ores));
+oresRouter.get('/', asyncHandler(ores));
 
 const oresWikiRevId = async (req, res) => {
-    let wikiRevId = req.params.wikiRevId;
-    let wiki = req.params.wikiRevId.split(':')[0];
-    let ret = await fetchOres([wikiRevId]);
-    if (ret && ret[wiki] && ret[wiki].length === 1) {
-        res.send(ret[wiki][0]);
-    } else {
-        res.status(500);
-        let errMsg = `Something unknown happen to the function of oresWikiRevId, wikiRevId = ${wikiRevId}, ret = ${ret}`;
-        res.send(errMsg);
-        apiLogger.warn(errMsg);
-    }
-    // TODO(zzn): Google Analytics to log different cases with different value
-    req.visitor
-        .event({ ec: "api", ea: "/ores/:wikiRevId" })
-        .send();
+  const wikiRevId = req.params.wikiRevId;
+  const wiki = req.params.wikiRevId.split(':')[0];
+  const ret = await fetchOres([wikiRevId]);
+  if (ret && ret[wiki] && ret[wiki].length === 1) {
+    res.send(ret[wiki][0]);
+  } else {
+    res.status(500);
+    const errMsg = `Something unknown happen to the function of oresWikiRevId, wikiRevId = ${wikiRevId}, ret = ${ret}`;
+    res.send(errMsg);
+    apiLogger.warn(errMsg);
+  }
+  // TODO(zzn): Google Analytics to log different cases with different value
+  req.visitor
+      .event({ ec: 'api', ea: '/ores/:wikiRevId' })
+      .send();
 };
 
-oresRouter.get(`/:wikiRevId`, asyncHandler(oresWikiRevId));
+oresRouter.get('/:wikiRevId', asyncHandler(oresWikiRevId));

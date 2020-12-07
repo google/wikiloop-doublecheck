@@ -56,7 +56,5 @@ Vue.use(VueTimeago, {
     th: require('date-fns/locale/th'),
     tr: require('date-fns/locale/tr'),
     zh: require('date-fns/locale/zh_cn'),
-  }
-})
-
-
+  },
+});

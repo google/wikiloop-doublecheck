@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { wikiToDomain } from "@/shared/utility-shared";
+import { wikiToDomain } from '@/shared/utility-shared';
 const rp = require('request-promise');
 
 const chalk = require('chalk');
@@ -22,66 +22,55 @@ const pad = require('pad');
 
 export const logger = require('heroku-logger');
 
-export const latencyColor = function (latencyMs) {
-  if (latencyMs >= 50000) return 'red';
-  else if (latencyMs >= 5000) return 'orange';
-  else if (latencyMs >= 500) return 'yellow';
-  else return 'lightgreen';
-}
+export const latencyColor = function(latencyMs) {
+  if (latencyMs >= 50000) {return 'red';} else if (latencyMs >= 5000) {return 'orange';} else if (latencyMs >= 500) {return 'yellow';} else {return 'lightgreen';}
+};
 
 export const statusColor = function(statusCode) {
-  let codeNum = parseInt(statusCode);
-  if (codeNum >= 600) return 'purple';
-  else if (codeNum >= 500) return 'red';
-  else if (codeNum >= 400) return 'orange';
-  else if (codeNum >= 300) return 'yellow';
-  else if (codeNum >= 200) return 'lightgreen';
-  else if (codeNum >= 100) return 'lightblue';
-  else return 'lightpink';
-}
+  const codeNum = parseInt(statusCode);
+  if (codeNum >= 600) {return 'purple';} else if (codeNum >= 500) {return 'red';} else if (codeNum >= 400) {return 'orange';} else if (codeNum >= 300) {return 'yellow';} else if (codeNum >= 200) {return 'lightgreen';} else if (codeNum >= 100) {return 'lightblue';} else {return 'lightpink';}
+};
 
 export const axiosLogger = new Logger({
   prefix: pad('AXIOS', 8),
 });
 
 export const apiLogger = new Logger({
-  prefix: pad('API', 8),    // Defaults to `''`.
+  prefix: pad('API', 8), // Defaults to `''`.
 });
 
 export const perfLogger = new Logger({
-  prefix: pad('PERF', 8),    // Defaults to `''`.
+  prefix: pad('PERF', 8), // Defaults to `''`.
 });
 export const cronLogger = new Logger({
-  prefix: pad('CRON', 8),    // Defaults to `''`.
+  prefix: pad('CRON', 8), // Defaults to `''`.
 });
 
 export const feedRevisionEngineLogger = new Logger({
-  prefix: pad('FEED', 8),    // Defaults to `''`.
+  prefix: pad('FEED', 8), // Defaults to `''`.
 });
 
 export const mwApiClientLogger = new Logger({
-  prefix: pad('MWAPI', 8),    // Defaults to `''`.
+  prefix: pad('MWAPI', 8), // Defaults to `''`.
 });
 
-
-
-export const colorizeMaybe = function (logger, color, message) {
+export const colorizeMaybe = function(logger, color, message) {
   if (logger.config.color) {
     return chalk.keyword(color)(message);
   } else {
     return message;
   }
-}
+};
 
 export async function isWhitelistedFor(featureName, wikiUserName) {
   const mongoose = require('mongoose');
-  let db = mongoose.connection.db;
-  console.log(`featureName`, featureName, "wikiUserName", wikiUserName);
-  let ret = await db.collection(`FeatureList`).find({
-    featureName: featureName,
-    whitelistedWikiUserNames: {$elemMatch: {$eq: wikiUserName}}
+  const db = mongoose.connection.db;
+  console.log('featureName', featureName, 'wikiUserName', wikiUserName);
+  const ret = await db.collection('FeatureList').find({
+    featureName,
+    whitelistedWikiUserNames: { $elemMatch: { $eq: wikiUserName } },
   }).toArray();
-  return ret.length >= 1
+  return ret.length >= 1;
 }
 
 /**
@@ -92,58 +81,57 @@ export async function isWhitelistedFor(featureName, wikiUserName) {
  * @return {{badfaithScore: *, damagingScore: *, badfaith: *, damaging: *, wikiRevId: string}}
  */
 export function computeOresField(oresJson, wiki, revId) {
-    let damagingScore = oresJson.damagingScore || (oresJson[wiki].scores[revId].damaging.score && oresJson[wiki].scores[revId].damaging.score.probability.true);
-    let badfaithScore = oresJson.badfaithScore || (oresJson[wiki].scores[revId].goodfaith.score && oresJson[wiki].scores[revId].goodfaith.score.probability.false);
-    let damaging = oresJson.damaging || (oresJson[wiki].scores[revId].damaging.score && oresJson[wiki].scores[revId].damaging.score.prediction);
-    let badfaith = oresJson.badfaith || (oresJson[wiki].scores[revId].goodfaith.score && !oresJson[wiki].scores[revId].goodfaith.score.prediction);
-    return {
-        wikiRevId: `${wiki}:${revId}`,
-        damagingScore: damagingScore,
-        damaging: damaging,
-        badfaithScore: badfaithScore,
-        badfaith: badfaith
-    }
+  const damagingScore = oresJson.damagingScore || (oresJson[wiki].scores[revId].damaging.score && oresJson[wiki].scores[revId].damaging.score.probability.true);
+  const badfaithScore = oresJson.badfaithScore || (oresJson[wiki].scores[revId].goodfaith.score && oresJson[wiki].scores[revId].goodfaith.score.probability.false);
+  const damaging = oresJson.damaging || (oresJson[wiki].scores[revId].damaging.score && oresJson[wiki].scores[revId].damaging.score.prediction);
+  const badfaith = oresJson.badfaith || (oresJson[wiki].scores[revId].goodfaith.score && !oresJson[wiki].scores[revId].goodfaith.score.prediction);
+  return {
+    wikiRevId: `${wiki}:${revId}`,
+    damagingScore,
+    damaging,
+    badfaithScore,
+    badfaith,
+  };
 }
 export function computeOresFieldNew(oresJson, wiki, revId) {
-  let ret:any = {};
-  let damagingScore = oresJson.damagingScore || (oresJson[wiki].scores[revId].damaging.score && oresJson[wiki].scores[revId].damaging.score.probability.true);
-  let badfaithScore = oresJson.badfaithScore || (oresJson[wiki].scores[revId].goodfaith.score && oresJson[wiki].scores[revId].goodfaith.score.probability.false);
+  const ret:any = {};
+  const damagingScore = oresJson.damagingScore || (oresJson[wiki].scores[revId].damaging.score && oresJson[wiki].scores[revId].damaging.score.probability.true);
+  const badfaithScore = oresJson.badfaithScore || (oresJson[wiki].scores[revId].goodfaith.score && oresJson[wiki].scores[revId].goodfaith.score.probability.false);
   ret.wikiRevId = `${wiki}:${revId}`;
-  ret['damaging'] = {};
-  ret['goodfaith'] = {};
-  ret['damaging']['true'] = damagingScore;
-  ret['damaging']['false'] = 1 - damagingScore;
-  ret['goodfaith']['true'] = 1 - badfaithScore;
-  ret['goodfaith']['false'] = badfaithScore;
+  ret.damaging = {};
+  ret.goodfaith = {};
+  ret.damaging.true = damagingScore;
+  ret.damaging.false = 1 - damagingScore;
+  ret.goodfaith.true = 1 - badfaithScore;
+  ret.goodfaith.false = badfaithScore;
   return ret;
 }
 
 export async function fetchRevisions(wikiRevIds) {
-    let wikiToRevIdList = wikiRevIdsGroupByWiki(wikiRevIds);
+  const wikiToRevIdList = wikiRevIdsGroupByWiki(wikiRevIds);
 
-    let wikiToRevisionList = {};
-    for (let wiki in wikiToRevIdList) {
-        let revIds= wikiToRevIdList[wiki];
-        const fetchUrl = new URL(`https://${wikiToDomain[wiki]}/w/api.php`);
-        let params = {
-            "action": "query",
-            "format": "json",
-            "prop": "revisions|info",
-            "indexpageids": 1,
-            "revids": revIds.join('|'),
-            "rvprop": "ids|timestamp|flags|user|tags|size|comment",
-            "rvslots": "main"
-        };
-        Object.keys(params).forEach(key => {
-            fetchUrl.searchParams.set(key, params[key]);
-        });
-        try {
-          let retJson = await rp.get(fetchUrl, { json: true });
-          if (retJson.query.badrevids) {
-            wikiToRevisionList[wiki] = []; // does not find
-          }
-          else {
-            /** Example
+  const wikiToRevisionList = {};
+  for (const wiki in wikiToRevIdList) {
+    const revIds = wikiToRevIdList[wiki];
+    const fetchUrl = new URL(`https://${wikiToDomain[wiki]}/w/api.php`);
+    const params = {
+      action: 'query',
+      format: 'json',
+      prop: 'revisions|info',
+      indexpageids: 1,
+      revids: revIds.join('|'),
+      rvprop: 'ids|timestamp|flags|user|tags|size|comment',
+      rvslots: 'main',
+    };
+    Object.keys(params).forEach((key) => {
+      fetchUrl.searchParams.set(key, params[key]);
+    });
+    try {
+      const retJson = await rp.get(fetchUrl, { json: true });
+      if (retJson.query.badrevids) {
+        wikiToRevisionList[wiki] = []; // does not find
+      } else {
+        /** Example
             {
                 "batchcomplete": "",
                 "query": {
@@ -203,139 +191,139 @@ export async function fetchRevisions(wikiRevIds) {
                 }
             }
             */
-            let revIdToRevision = {};
-            for (let pageId of retJson.query.pageids) {
-              for (let revision of retJson.query.pages[pageId].revisions) {
-                revIdToRevision[revision.revid] = revision;
-                revIdToRevision[revision.revid].title = retJson.query.pages[pageId].title;
-                revIdToRevision[revision.revid].wiki = wiki;
-                revIdToRevision[revision.revid].wikiRevId = `${wiki}:${revision.revid}`;
-                revIdToRevision[revision.revid].pageLatestRevId = retJson.query.pages[pageId].lastrevid;
-                revIdToRevision[revision.revid].namespace = revision.ns;
-              }
-            }
-            wikiToRevisionList[wiki] = revIds.map(revId => revIdToRevision[revId]);
+        const revIdToRevision = {};
+        for (const pageId of retJson.query.pageids) {
+          for (const revision of retJson.query.pages[pageId].revisions) {
+            revIdToRevision[revision.revid] = revision;
+            revIdToRevision[revision.revid].title = retJson.query.pages[pageId].title;
+            revIdToRevision[revision.revid].wiki = wiki;
+            revIdToRevision[revision.revid].wikiRevId = `${wiki}:${revision.revid}`;
+            revIdToRevision[revision.revid].pageLatestRevId = retJson.query.pages[pageId].lastrevid;
+            revIdToRevision[revision.revid].namespace = revision.ns;
           }
-        } catch(err) {
-          console.warn(err);
-          wikiToRevisionList[wiki] = []; // does not find
         }
+        wikiToRevisionList[wiki] = revIds.map((revId) => revIdToRevision[revId]);
+      }
+    } catch (err) {
+      console.warn(err);
+      wikiToRevisionList[wiki] = []; // does not find
     }
-    return wikiToRevisionList;
+  }
+  return wikiToRevisionList;
 }
 
 export async function getNewJudgementCounts(db, matcher = {}, offset = 0, limit = 10) {
-    return await db.collection(`Interaction`).aggregate([
-        {
-            $match: matcher
+  return await db.collection('Interaction').aggregate([
+    {
+      $match: matcher,
+    },
+    {
+      $group: {
+        _id: {
+          wikiRevId: '$wikiRevId',
         },
-        {
-            "$group": {
-                "_id": {
-                    "wikiRevId": "$wikiRevId"
-                },
-                "wikiRevId": {
-                    "$first": "$wikiRevId"
-                },
-                "judgements": {
-                    "$push": {
-                        "judgement": "$judgement",
-                        "userGaId": "$userGaId",
-                        "wikiUserName": "$wikiUserName",
-                        "timestamp": "$timestamp"
-                    }
-                },
-                "totalCounts": {
-                    "$sum": 1
-                },
-                "shouldRevertCounts": {
-                    "$sum": {
-                        "$cond": [
-                            {
-                                "$eq": [
-                                    "$judgement",
-                                    "ShouldRevert"
-                                ]
-                            },
-                            1,
-                            0
-                        ]
-                    }
-                },
-                "notSureCounts": {
-                    "$sum": {
-                        "$cond": [
-                            {
-                                "$eq": [
-                                    "$judgement",
-                                    "NotSure"
-                                ]
-                            },
-                            1,
-                            0
-                        ]
-                    }
-                },
-                "looksGoodCounts": {
-                    "$sum": {
-                        "$cond": [
-                            {
-                                "$eq": [
-                                    "$judgement",
-                                    "LooksGood"
-                                ]
-                            },
-                            1,
-                            0
-                        ]
-                    }
-                },
-                "lastTimestamp": {
-                    "$max": "$timestamp"
-                },
-                "wiki": {
-                    "$first": "$wiki"
-                }
-            }
+        wikiRevId: {
+          $first: '$wikiRevId',
         },
-        {
-            "$project": {
-                "wikiRevId": "$_id.wikiRevId",
-                "judgements": "$judgements",
-                "wiki": 1,
-                "lastTimestamp": 1,
-                "counts.Total": "$totalCounts",
-                "counts.ShouldRevert": "$shouldRevertCounts",
-                "counts.NotSure": "$notSureCounts",
-                "counts.LooksGood": "$looksGoodCounts"
-            }
+        judgements: {
+          $push: {
+            judgement: '$judgement',
+            userGaId: '$userGaId',
+            wikiUserName: '$wikiUserName',
+            timestamp: '$timestamp',
+          },
         },
-        {
-            "$match": {
-                "wiki": {
-                    "$exists": true,
-                    "$ne": null
-                },
-                "lastTimestamp": {
-                    "$exists": true,
-                    "$ne": null
-                }
-            }
+        totalCounts: {
+          $sum: 1,
         },
-        {
-            "$sort": {
-                "lastTimestamp": -1
-            }
+        shouldRevertCounts: {
+          $sum: {
+            $cond: [
+              {
+                $eq: [
+                  '$judgement',
+                  'ShouldRevert',
+                ],
+              },
+              1,
+              0,
+            ],
+          },
         },
-    ],
-        {
-            "allowDiskUse": true
-        })
-        .skip(offset)
-        .limit(limit)
-        .toArray();
+        notSureCounts: {
+          $sum: {
+            $cond: [
+              {
+                $eq: [
+                  '$judgement',
+                  'NotSure',
+                ],
+              },
+              1,
+              0,
+            ],
+          },
+        },
+        looksGoodCounts: {
+          $sum: {
+            $cond: [
+              {
+                $eq: [
+                  '$judgement',
+                  'LooksGood',
+                ],
+              },
+              1,
+              0,
+            ],
+          },
+        },
+        lastTimestamp: {
+          $max: '$timestamp',
+        },
+        wiki: {
+          $first: '$wiki',
+        },
+      },
+    },
+    {
+      $project: {
+        'wikiRevId': '$_id.wikiRevId',
+        'judgements': '$judgements',
+        'wiki': 1,
+        'lastTimestamp': 1,
+        'counts.Total': '$totalCounts',
+        'counts.ShouldRevert': '$shouldRevertCounts',
+        'counts.NotSure': '$notSureCounts',
+        'counts.LooksGood': '$looksGoodCounts',
+      },
+    },
+    {
+      $match: {
+        wiki: {
+          $exists: true,
+          $ne: null,
+        },
+        lastTimestamp: {
+          $exists: true,
+          $ne: null,
+        },
+      },
+    },
+    {
+      $sort: {
+        lastTimestamp: -1,
+      },
+    },
+  ],
+  {
+    allowDiskUse: true,
+  })
+      .skip(offset)
+      .limit(limit)
+      .toArray();
 
-    /**
+  /**
      * Example of output schema:
      {
         "_id":{
@@ -381,31 +369,31 @@ export async function getNewJudgementCounts(db, matcher = {}, offset = 0, limit 
 }
 
 export function isEmpty(value) {
-    return typeof value == 'string' && !value.trim() || typeof value == 'undefined' || value === null;
+  return typeof value === 'string' && !value.trim() || typeof value === 'undefined' || value === null;
 }
 
 export const useOauth = !isEmpty(process.env.MEDIAWIKI_CONSUMER_SECRET) && !isEmpty(process.env.MEDIAWIKI_CONSUMER_KEY);
 
 export function wikiRevIdsGroupByWiki(wikiRevIds) {
-    let wikiToRevIdList = {};
-    wikiRevIds.forEach((wikiRevId) => {
-        let wiki = wikiRevId.split(':')[0];
-        let revId = wikiRevId.split(':')[1];
-        if (!(wiki in wikiToRevIdList)) {
-            wikiToRevIdList[wiki] = [];
-        }
-        wikiToRevIdList[wiki].push(revId);
-    });
-    return wikiToRevIdList;
+  const wikiToRevIdList = {};
+  wikiRevIds.forEach((wikiRevId) => {
+    const wiki = wikiRevId.split(':')[0];
+    const revId = wikiRevId.split(':')[1];
+    if (!(wiki in wikiToRevIdList)) {
+      wikiToRevIdList[wiki] = [];
+    }
+    wikiToRevIdList[wiki].push(revId);
+  });
+  return wikiToRevIdList;
 }
 
-export const asyncHandler = fn => (req, res, next) =>
+export const asyncHandler = (fn) => (req, res, next) =>
   Promise
-    .resolve(fn(req, res, next))
-    .catch(next);
+      .resolve(fn(req, res, next))
+      .catch(next);
 
 export function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 export function isAuthenticatedWithWikiUserName(req, wikiUserName:string):boolean {
@@ -416,8 +404,8 @@ export function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   } else {
-    res.status( 403 );
-    res.send( 'Login required for this endpoint' );
+    res.status(403);
+    res.send('Login required for this endpoint');
   }
 }
 

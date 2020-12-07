@@ -16,9 +16,9 @@
 
 import { logger, asyncHandler } from '../../common';
 
-import {wikiToDomain} from "../../../shared/utility-shared";
+import { wikiToDomain } from '../../../shared/utility-shared';
 
-const rp = require(`request-promise`);
+const rp = require('request-promise');
 
 const MW_LINK_PARSE_API_TIMEOUT_MS = 500; // TODO: Relax the timeout after this logic has been moved to client-side lazy loading.
 
@@ -27,27 +27,27 @@ const fetchDiffMeta = async (wiki, fromRevId, toRevId) => {
   // TODO: reduce duplicate code in two requests.
   try {
     logger.info(`Start requesting link parsing, with timeout = ${MW_LINK_PARSE_API_TIMEOUT_MS}`);
-    let fromDiffApiUrl = `https://${wikiToDomain[wiki]}/w/api.php?action=parse&format=json&prop=links|images|iwlinks&oldid=${fromRevId}`;
-    let toDiffApiUrl = `https://${wikiToDomain[wiki]}/w/api.php?action=parse&format=json&prop=links|images|iwlinks&oldid=${toRevId}`;
-    let fromDiffJson = await rp.get(fromDiffApiUrl, { json: true, timeout: MW_LINK_PARSE_API_TIMEOUT_MS });
-    let toDiffJson = await rp.get(toDiffApiUrl, { json: true, timeout: MW_LINK_PARSE_API_TIMEOUT_MS });
+    const fromDiffApiUrl = `https://${wikiToDomain[wiki]}/w/api.php?action=parse&format=json&prop=links|images|iwlinks&oldid=${fromRevId}`;
+    const toDiffApiUrl = `https://${wikiToDomain[wiki]}/w/api.php?action=parse&format=json&prop=links|images|iwlinks&oldid=${toRevId}`;
+    const fromDiffJson = await rp.get(fromDiffApiUrl, { json: true, timeout: MW_LINK_PARSE_API_TIMEOUT_MS });
+    const toDiffJson = await rp.get(toDiffApiUrl, { json: true, timeout: MW_LINK_PARSE_API_TIMEOUT_MS });
 
-    let linkHashmap: any = {};
+    const linkHashmap: any = {};
 
-    fromDiffJson.parse.links.concat(toDiffJson.parse.links).forEach(function (currentValue) {
-      this[currentValue['*']] = currentValue.exists === '' ? true : false;
+    fromDiffJson.parse.links.concat(toDiffJson.parse.links).forEach(function(currentValue) {
+      this[currentValue['*']] = currentValue.exists === '';
     }.bind(linkHashmap));
 
-    let iwlinksHashmap: any = {};
+    const iwlinksHashmap: any = {};
 
-    fromDiffJson.parse.iwlinks.concat(toDiffJson.parse.iwlinks).forEach(function (currentValue) {
+    fromDiffJson.parse.iwlinks.concat(toDiffJson.parse.iwlinks).forEach(function(currentValue) {
       this[currentValue['*']] = currentValue.url;
     }.bind(iwlinksHashmap));
 
     return {
       links: linkHashmap,
       images: [...new Set([...fromDiffJson.parse.images, ...toDiffJson.parse.images])],
-      iwlinks: iwlinksHashmap
+      iwlinks: iwlinksHashmap,
     };
   } catch (err) {
     logger.warn(err);
@@ -56,37 +56,37 @@ const fetchDiffMeta = async (wiki, fromRevId, toRevId) => {
 };
 
 const diffWikiRevId = async (req, res) => {
-    logger.debug(`req.query`, req.query);
-    let wikiRevId = req.params.wikiRevId;
-    let wiki = wikiRevId.split(':')[0];
-    let revId = wikiRevId.split(':')[1];
-    let diffApiUrl = `https://${wikiToDomain[wiki]}/w/api.php?action=compare&fromrev=${revId}&torelative=prev&format=json`;
-    let diffJson = await rp.get(diffApiUrl, { json: true });
-    let fromRevId = diffJson.compare.fromrevid;
-    let toRevId = diffJson.compare.torevid;
-    let diffMetadata = await fetchDiffMeta(wiki, fromRevId, toRevId);
-    if(diffMetadata) diffJson.compare.diffMetadata = diffMetadata
-    res.send(diffJson);
-    req.visitor
-        .event({ ec: "api", ea: "/diff/:wikiRevId" })
-        .send();
+  logger.debug('req.query', req.query);
+  const wikiRevId = req.params.wikiRevId;
+  const wiki = wikiRevId.split(':')[0];
+  const revId = wikiRevId.split(':')[1];
+  const diffApiUrl = `https://${wikiToDomain[wiki]}/w/api.php?action=compare&fromrev=${revId}&torelative=prev&format=json`;
+  const diffJson = await rp.get(diffApiUrl, { json: true });
+  const fromRevId = diffJson.compare.fromrevid;
+  const toRevId = diffJson.compare.torevid;
+  const diffMetadata = await fetchDiffMeta(wiki, fromRevId, toRevId);
+  if (diffMetadata) {diffJson.compare.diffMetadata = diffMetadata;}
+  res.send(diffJson);
+  req.visitor
+      .event({ ec: 'api', ea: '/diff/:wikiRevId' })
+      .send();
 };
-diffRouter.get(`/:wikiRevId`, asyncHandler(diffWikiRevId));
+diffRouter.get('/:wikiRevId', asyncHandler(diffWikiRevId));
 
 /**
  * @deprecated
  * @param req
  * @param res
- * @returns {Promise<void>}
+ * @return {Promise<void>}
  */
 const diff = async (req, res) => {
-    logger.debug(`req.query`, req.query);
-    let diffApiUrl = `https://${wikiToDomain[req.query.wiki]}/w/api.php?action=compare&fromrev=${req.query.revId}&torelative=prev&format=json`;
-    let diffJson = await rp.get(diffApiUrl, { json: true });
-    res.send(diffJson);
-    req.visitor
-        .event({ ec: "api", ea: "/diff" })
-        .send();
+  logger.debug('req.query', req.query);
+  const diffApiUrl = `https://${wikiToDomain[req.query.wiki]}/w/api.php?action=compare&fromrev=${req.query.revId}&torelative=prev&format=json`;
+  const diffJson = await rp.get(diffApiUrl, { json: true });
+  res.send(diffJson);
+  req.visitor
+      .event({ ec: 'api', ea: '/diff' })
+      .send();
 };
 
-diffRouter.get(`/`, asyncHandler(diff));
+diffRouter.get('/', asyncHandler(diff));

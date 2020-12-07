@@ -22,13 +22,13 @@ import { createSchema, ExtractDoc, ExtractProps, Type, typedModel } from 'ts-mon
  */
 const NoticeMessageSchema = createSchema(
   {
-    messageId: Type.string({ required: true, index: true, unique: true }),  // e.g.
-    defaultMessage: Type.string({required: true}), // The default message content, in case translations are not currently available yet.
-    url: Type.string({required: false}),
-    createdAt: Type.date({required: true, index:true}),
+    messageId: Type.string({ required: true, index: true, unique: true }), // e.g.
+    defaultMessage: Type.string({ required: true }), // The default message content, in case translations are not currently available yet.
+    url: Type.string({ required: false }),
+    createdAt: Type.date({ required: true, index: true }),
     acks: Type.array().of(Type.mixed()),
-    beginAt: Type.date({required: true, index:true}),
-    endAt: Type.date({required: true, index:true}),
+    beginAt: Type.date({ required: true, index: true }),
+    endAt: Type.date({ required: true, index: true }),
   },
 );
 

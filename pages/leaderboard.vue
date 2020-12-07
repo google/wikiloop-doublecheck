@@ -187,45 +187,52 @@
     </section>
 </template>
 <script lang="ts">
-  import {getUrlBaseByWiki, fetchDiffWithWikiRevId, wikiToLangMap} from '@/shared/utility-shared';
-  import VueTimeago from 'vue-timeago';
-  import ISO6391 from 'iso-639-1';
-  import UserAvatarWithName from '@/components/UserAvatarWithName.vue';
+import { getUrlBaseByWiki, fetchDiffWithWikiRevId, wikiToLangMap } from '@/shared/utility-shared';
+import VueTimeago from 'vue-timeago';
+import ISO6391 from 'iso-639-1';
+import UserAvatarWithName from '@/components/UserAvatarWithName.vue';
 
-  export default {
-    components: {
-      VueTimeago,
-      UserAvatarWithName
-    }, data() {
-      return {
-        timeRange: null
-      }
-    }, async asyncData({$axios, query}) {
-      let url = `/api/leaderboard`;
-      const {loggedIn, anonymous, wikis, totalLoggedIn} = await $axios.$get(`/api/leaderboard?limit=${query?.limit || 20}`);
-      return {loggedIn, anonymous, wikis, totalLoggedIn};
-    }, methods: {
-      isMe: function (leader) {
-        return (this.$store.state.user && this.$store.state.user.profile && this.$store.state.user.profile.displayName === leader.wikiUserName) || this.$cookiez.get('_ga') === leader.userGaId;
-      }, getWiki: function (wiki) {
-        let lang = wikiToLangMap[wiki];
-        let nativeName = ISO6391.getNativeName(lang)
-        if(nativeName) return nativeName;
-        return wiki; // fall back
-      }, load: async function () {
-        const {loggedIn, anonymous, wikis, totalLoggedIn} = await this.$axios.$get(`/api/leaderboard?days=${this.timeRange}&limit=${this.$route.query?.limit || 20}}`);
-        this.loggedIn = loggedIn;
-        this.anonymous = anonymous;
-        this.wikis = wikis;
-        this.totalLoggedIn = totalLoggedIn;
-      },
-    }, mounted() {
-      this.$ga.page('/leaderboard.vue');
-    }, beforeCreate() {
-      this.getUrlBaseByWiki = getUrlBaseByWiki.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
-      this.fetchDiffWithWikiRevId = fetchDiffWithWikiRevId.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
+export default {
+  components: {
+    VueTimeago,
+    UserAvatarWithName,
+  },
+  async asyncData({ $axios, query }) {
+    const url = '/api/leaderboard';
+    const { loggedIn, anonymous, wikis, totalLoggedIn } = await $axios.$get(`/api/leaderboard?limit=${query?.limit || 20}`);
+    return { loggedIn, anonymous, wikis, totalLoggedIn };
+  },
+  data() {
+    return {
+      timeRange: null,
+    };
+  },
+  mounted() {
+    this.$ga.page('/leaderboard.vue');
+  },
+  beforeCreate() {
+    this.getUrlBaseByWiki = getUrlBaseByWiki.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
+    this.fetchDiffWithWikiRevId = fetchDiffWithWikiRevId.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
+  },
+  methods: {
+    isMe(leader) {
+      return (this.$store.state.user && this.$store.state.user.profile && this.$store.state.user.profile.displayName === leader.wikiUserName) || this.$cookiez.get('_ga') === leader.userGaId;
     },
-  }
+    getWiki(wiki) {
+      const lang = wikiToLangMap[wiki];
+      const nativeName = ISO6391.getNativeName(lang);
+      if (nativeName) {return nativeName;}
+      return wiki; // fall back
+    },
+    async load() {
+      const { loggedIn, anonymous, wikis, totalLoggedIn } = await this.$axios.$get(`/api/leaderboard?days=${this.timeRange}&limit=${this.$route.query?.limit || 20}}`);
+      this.loggedIn = loggedIn;
+      this.anonymous = anonymous;
+      this.wikis = wikis;
+      this.totalLoggedIn = totalLoggedIn;
+    },
+  },
+};
 </script>
 
 <style>

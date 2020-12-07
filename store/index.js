@@ -13,66 +13,66 @@
 // limitations under the License.
 
 export const state = () => ({
-    flags: {},
-    version: null,
-    metrics: null,
-    sessionId: null,
-    wiki: "enwiki", // default to English
+  flags: {},
+  version: null,
+  metrics: null,
+  sessionId: null,
+  wiki: 'enwiki', // default to English
 });
 
 export const mutations = {
-    setFlags (state, flagObject) {
-        state.flags = flagObject;
-    },
-    clearFlags (state, ) {
-        state.flags = {}
-    },
-    setFlag (state, kv) {
-        state.flags[kv.key] = kv.value;
-    },
-    setVersion(state, version) {
-        state.version = version;
-    },
-    setMetrics(state, metrics) {
-      state.metrics = metrics;
-    },
-    setSessionId (state, sessionId) {
-        state.sessionId = sessionId;
-    },
-    setWiki(state, wiki) {
-        state.wiki = wiki
-    },
+  setFlags(state, flagObject) {
+    state.flags = flagObject;
+  },
+  clearFlags(state) {
+    state.flags = {};
+  },
+  setFlag(state, kv) {
+    state.flags[kv.key] = kv.value;
+  },
+  setVersion(state, version) {
+    state.version = version;
+  },
+  setMetrics(state, metrics) {
+    state.metrics = metrics;
+  },
+  setSessionId(state, sessionId) {
+    state.sessionId = sessionId;
+  },
+  setWiki(state, wiki) {
+    state.wiki = wiki;
+  },
 };
 
 export const actions = {
-    async nuxtServerInit({ commit, state, dispatch }, { req }) {
-        console.log(`nuxtServerInit start`);
-        const flags = await this.$axios.$get(`/api/flags`);
-        commit('setFlags', flags);
-        const version = await this.$axios.$get(`/api/version`);
-        commit('setVersion', version);
-        const metrics = await this.$axios.$get(`/api/metrics`);
-        commit('setMetrics', metrics);
+  async nuxtServerInit({ commit, state, dispatch }, { req }) {
+    console.log('nuxtServerInit start');
+    const flags = await this.$axios.$get('/api/flags');
+    commit('setFlags', flags);
+    const version = await this.$axios.$get('/api/version');
+    commit('setVersion', version);
+    const metrics = await this.$axios.$get('/api/metrics');
+    commit('setMetrics', metrics);
 
-        if (req.session && req.session.id) {
-            commit('setSessionId', req.session.id);
-            console.log(`nuxtServerInit req.session.id`, req.session.id);
-        }
-        if (req.user) {
-            commit('user/setProfile', req.user);
-            const userPreferences = await this.$axios.$get(`/api/auth/user/preferences`);
-            commit('user/setPreferences', userPreferences);
-            if (userPreferences.wiki) {
-              commit(`setWiki`, userPreferences.wiki);
-            }
-        } else {
-            console.log(`nuxtServerInit store state clearProfile because req.user is not defined`);
-            commit('user/clearProfile');
-        }
+    if (req.session && req.session.id) {
+      commit('setSessionId', req.session.id);
+      console.log('nuxtServerInit req.session.id', req.session.id);
+    }
+    if (req.user) {
+      commit('user/setProfile', req.user);
+      const userPreferences = await this.$axios.$get('/api/auth/user/preferences');
+      commit('user/setPreferences', userPreferences);
+      if (userPreferences.wiki) {
+        commit('setWiki', userPreferences.wiki);
+      }
+    } else {
+      console.log('nuxtServerInit store state clearProfile because req.user is not defined');
+      commit('user/clearProfile');
+    }
 
-        console.log(`nuxtServerInit done`);
-    },
-   /** An vuex action to change the current wiki, denoted by `wiki`.
+    console.log('nuxtServerInit done');
+  },
+  /** An vuex action to change the current wiki, denoted by `wiki`.
    *
    * When switching a language, we store the `wiki` into the Vuex store.
    * this action also dispatches the command to load the revisions of the new
@@ -83,12 +83,12 @@ export const actions = {
    * @param wiki
    * @return {Promise<void>}
    */
-    async changeWiki({ commit, state, dispatch}, wiki) {
-      document.dispatchEvent(new Event(`wiki-change-started`));
-      commit(`setWiki`, wiki);
-      commit(`revisions/initHeap`);
-      await this.$axios.$post(`/api/auth/user/preferences`, {wiki: wiki});
-      await dispatch(`revisions/loadMoreWikiRevs`);
-      document.dispatchEvent(new Event(`wiki-change-completed`));
-    }
+  async changeWiki({ commit, state, dispatch }, wiki) {
+    document.dispatchEvent(new Event('wiki-change-started'));
+    commit('setWiki', wiki);
+    commit('revisions/initHeap');
+    await this.$axios.$post('/api/auth/user/preferences', { wiki });
+    await dispatch('revisions/loadMoreWikiRevs');
+    document.dispatchEvent(new Event('wiki-change-completed'));
+  },
 };

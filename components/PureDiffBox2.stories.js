@@ -3,7 +3,7 @@ import PureDiffBox2 from '~/components/PureDiffBox2';
 export default {
   title: 'PureDiffBox2',
   component: PureDiffBox2,
-}
+};
 
 const Template = (args, { argTypes }) => ({
   components: { PureDiffBox2 },
@@ -12,11 +12,10 @@ const Template = (args, { argTypes }) => ({
   // TODO i18n wait for https://github.com/nuxt-community/storybook/commit/7588841242d9d17c89e7c5075f4a5ce8330fdcf5
 });
 
-
 export const empty = Template.bind({});
 empty.args = {
   loaded: true,
-  diffSafeHtml: ``,
+  diffSafeHtml: '',
 };
 
 export const basic = Template.bind({});
@@ -68,11 +67,10 @@ loading.args = {
   <td class="diff-context"><div>}}</div></td>
   <td class="diff-marker">&#160;</td>
   <td class="diff-context"><div>}}</div></td>
-</tr>`
+</tr>`,
 };
 
 export const beforeLoading = Template.bind({});
 beforeLoading.args = {
-  loaded: false
+  loaded: false,
 };
-

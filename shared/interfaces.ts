@@ -37,6 +37,3 @@ export enum WikiActionType {
   RedirectToHistory = 'RedirectToHistory',
   DirectRevert = 'DirectRevert',
 }
-
-
-

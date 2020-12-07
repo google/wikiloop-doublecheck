@@ -7,35 +7,34 @@
           <h5>{{ $t('Label-ChangedWikitext') }}</h5> -->
         </div>
         <table class="diff-box__table">
-          <tbody v-html="diffSafeHtml"></tbody>
+          <tbody v-html="diffSafeHtml" />
         </table>
       </template>
       <template v-else>
         <div class="diff-box__nodiff">
           <!-- TODO change to includ i18n, add styling. -->
-          <i class="fas fa-check-circle mr-1"></i>There is no diff.
+          <i class="fas fa-check-circle mr-1" />There is no diff.
         </div>
       </template>
     </template>
     <template v-else>
-        <loading-indicator/>
+      <loading-indicator />
     </template>
-
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue} from 'nuxt-property-decorator';
+import { Component, Prop, Vue } from 'nuxt-property-decorator';
 import LoadingIndicator from '@/components/LoadingIndicator.vue';
 
 @Component({
   components: {
-      LoadingIndicator
-  }
+    LoadingIndicator,
+  },
 })
 export default class PureDiffBox2 extends Vue {
   @Prop({ type: String }) readonly diffSafeHtml: string;
-  @Prop({ type: Boolean}) readonly loaded: boolean;
+  @Prop({ type: Boolean }) readonly loaded: boolean;
 }
 </script>
 <style lang="scss" scoped>

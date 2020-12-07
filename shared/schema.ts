@@ -1,4 +1,4 @@
-import {BasicJudgement} from "~/shared/interfaces";
+import { BasicJudgement } from '~/shared/interfaces';
 
 /**
  * Schema of Database

@@ -14,7 +14,7 @@
 
 // TODO(xinbenlv): consider merge with mediawiki
 
-import {wikiToDomain} from "@/shared/utility-shared";
+import { wikiToDomain } from '@/shared/utility-shared';
 
 import { perfLogger, apiLogger, asyncHandler } from '@/server/common';
 const rp = require('request-promise');
@@ -27,30 +27,30 @@ export const latestRouter = require('express').Router();
  *   req.query.wiki: the language of wikis being queried for.
  *   req.query.startTime: the timestamp starting in UNIX Epo
  * @param res
- * @returns {Promise<void>}
+ * @return {Promise<void>}
  */
 const latestRevs = async (req, res) => {
-  let startTime = new Date();
-  if (req.query.wiki && Object.keys(wikiToDomain).indexOf(req.query.wiki) < 0) {
+  const startTime = new Date();
+  if (req.query.wiki && !Object.keys(wikiToDomain).includes(req.query.wiki)) {
     res.status(400);
     res.send(`Bad serverUrl, we only support ${Object.keys(wikiToDomain)}`);
     return;
   }
-  let wiki = req.query.wiki || `frwiki`; // Default to french wiki
+  const wiki = req.query.wiki || 'frwiki'; // Default to french wiki
 
   // Getting a list of latest revisions related to the filter (Lang of Wiki), and their related diff
   // https://en.wikipedia.org/w/api.php?action=query&list=recentchanges&prop=info&format=json&rcnamespace=0&rclimit=50&rctype=edit&rctoponly=true&rcprop=user|userid|comment|flags|timestamp|ids|title&rcshow=!bot
   // API document: https://www.mediawiki.org/w/api.php?action=help&modules=query%2Brecentchanges
 
   // It seems according to url.searchParams is not available in Microsoft Internet Explorer, we need to test it
-  let url = new URL(`http://${wikiToDomain[wiki]}/w/api.php?action=query&list=recentchanges&prop=info&format=json&rcnamespace=0&rclimit=5&rctype=edit&rctoponly=true&rcprop=user|userid|comment|flags|timestamp|ids|title&rcshow=!bot`);
-  if (req.query.startTimestamp) url.searchParams.set(`rcstart`, new Date(parseInt(req.query.startTimestamp) * 1000).toISOString());
-  if (req.query.endTimestamp) url.searchParams.set(`rcend`, new Date(parseInt(req.query.endTimestamp) * 1000).toISOString());
+  const url = new URL(`http://${wikiToDomain[wiki]}/w/api.php?action=query&list=recentchanges&prop=info&format=json&rcnamespace=0&rclimit=5&rctype=edit&rctoponly=true&rcprop=user|userid|comment|flags|timestamp|ids|title&rcshow=!bot`);
+  if (req.query.startTimestamp) {url.searchParams.set('rcstart', new Date(parseInt(req.query.startTimestamp) * 1000).toISOString());}
+  if (req.query.endTimestamp) {url.searchParams.set('rcend', new Date(parseInt(req.query.endTimestamp) * 1000).toISOString());}
 
   apiLogger.info(`Request for Action API: ${url.toString()}`);
 
-  let recentChangesJson = await rp.get(url.toString(), { json: true });
-  let recentChangeResponseTime = new Date();
+  const recentChangesJson = await rp.get(url.toString(), { json: true });
+  const recentChangeResponseTime = new Date();
   /** Sample response
    {
      "batchcomplete":"",
@@ -93,35 +93,35 @@ const latestRevs = async (req, res) => {
     }
    */
 
-  let recentChanges = recentChangesJson.query.recentchanges  // from recentChangesJson result
-    .map(rawRecentChange => {
-      return {
-        _id: `${wiki}-${rawRecentChange.rcid}`,
-        id: rawRecentChange.rcid,
-        wikiRevId: `${wiki}:${rawRecentChange.revid}`,
-        revision: {
-          new: rawRecentChange.revid,
-          old: rawRecentChange.old_revid
-        },
-        title: rawRecentChange.title,
-        user: rawRecentChange.user,
-        wiki: `${wiki}`, // TODO verify
-        timestamp: Math.floor(new Date(rawRecentChange.timestamp).getTime() / 1000), // TODO check the exact format of timestamp. maybe use an interface?
-        namespace: 0, // we already query the server with "rcnamespace=0" filter
-        nonbot: true, // we already query the server with "rcprop=!bot" filter
-        comment: rawRecentChange.comment,
-      };
-    });
+  const recentChanges = recentChangesJson.query.recentchanges // from recentChangesJson result
+      .map((rawRecentChange) => {
+        return {
+          _id: `${wiki}-${rawRecentChange.rcid}`,
+          id: rawRecentChange.rcid,
+          wikiRevId: `${wiki}:${rawRecentChange.revid}`,
+          revision: {
+            new: rawRecentChange.revid,
+            old: rawRecentChange.old_revid,
+          },
+          title: rawRecentChange.title,
+          user: rawRecentChange.user,
+          wiki: `${wiki}`, // TODO verify
+          timestamp: Math.floor(new Date(rawRecentChange.timestamp).getTime() / 1000), // TODO check the exact format of timestamp. maybe use an interface?
+          namespace: 0, // we already query the server with "rcnamespace=0" filter
+          nonbot: true, // we already query the server with "rcprop=!bot" filter
+          comment: rawRecentChange.comment,
+        };
+      });
   res.send(recentChanges.reverse());
 
-  let endTime = new Date();
+  const endTime = new Date();
   req.visitor
-    .event({ ec: "api", ea: "/latestRevs" })
-    .timing(`/api/latestRevs`, 'Response delay for /api/latestRevs', endTime.getTime() - startTime.getTime())
-    .timing(`/api/latestRevs - recentChange`, 'Response delay for /api/latestRevs recentChange', recentChangeResponseTime.getTime() - startTime.getTime())
-    .send();
+      .event({ ec: 'api', ea: '/latestRevs' })
+      .timing('/api/latestRevs', 'Response delay for /api/latestRevs', endTime.getTime() - startTime.getTime())
+      .timing('/api/latestRevs - recentChange', 'Response delay for /api/latestRevs recentChange', recentChangeResponseTime.getTime() - startTime.getTime())
+      .send();
   perfLogger.info(`Response delay for /api/latestRevs = ${endTime.getTime() - startTime.getTime()}`);
   perfLogger.info(`Response delay for /api/latestRevs recentChange = ${recentChangeResponseTime.getTime() - startTime.getTime()}`);
 };
 
-latestRouter.get(`/`, asyncHandler(latestRevs));
+latestRouter.get('/', asyncHandler(latestRevs));

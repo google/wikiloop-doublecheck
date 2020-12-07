@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="8" failures="0" time="6.118">
-  <testsuite name="Logo" errors="0" failures="0" skipped="0" timestamp="2020-12-04T17:51:19" time="4.574" tests="1">
-    <testcase classname="Logo is a Vue instance" name="Logo is a Vue instance" time="0.014">
-    </testcase>
-  </testsuite>
-  <testsuite name="MwActionApiClient2.endPoint" errors="0" failures="0" skipped="0" timestamp="2020-12-04T17:51:19" time="4.79" tests="7">
+<testsuites name="jest tests" tests="8" failures="0" time="4.336">
+  <testsuite name="MwActionApiClient2.endPoint" errors="0" failures="0" skipped="0" timestamp="2020-12-07T16:34:27" time="0.863" tests="7">
     <testcase classname="MwActionApiClient2.endPoint should generate a valid Wikipedia endpint URL when passed a good wiki." name="MwActionApiClient2.endPoint should generate a valid Wikipedia endpint URL when passed a good wiki." time="0.003">
     </testcase>
     <testcase classname="MwActionApiClient2.endPoint should throw an exception complaining about the bad" name="MwActionApiClient2.endPoint should throw an exception complaining about the bad" time="0.006">
     </testcase>
-    <testcase classname="MOCKED MwActionApiClient2.fetchRevisionInfo should return revision full information when given a valid revId" name="MOCKED MwActionApiClient2.fetchRevisionInfo should return revision full information when given a valid revId" time="0.011">
+    <testcase classname="MOCKED MwActionApiClient2.fetchRevisionInfo should return revision full information when given a valid revId" name="MOCKED MwActionApiClient2.fetchRevisionInfo should return revision full information when given a valid revId" time="0.012">
     </testcase>
-    <testcase classname="MOCKED MwActionApiClient2.fetchRevisionInfo should return null when given an invalid revId." name="MOCKED MwActionApiClient2.fetchRevisionInfo should return null when given an invalid revId." time="0.006">
+    <testcase classname="MOCKED MwActionApiClient2.fetchRevisionInfo should return null when given an invalid revId." name="MOCKED MwActionApiClient2.fetchRevisionInfo should return null when given an invalid revId." time="0.008">
     </testcase>
-    <testcase classname="MOCKED MwActionApiClient2.fetchDiff should throw an exception with &quot;nosuchrevid&quot; when given an invalid revId." name="MOCKED MwActionApiClient2.fetchDiff should throw an exception with &quot;nosuchrevid&quot; when given an invalid revId." time="0.001">
+    <testcase classname="MOCKED MwActionApiClient2.fetchDiff should throw an exception with &quot;nosuchrevid&quot; when given an invalid revId." name="MOCKED MwActionApiClient2.fetchDiff should throw an exception with &quot;nosuchrevid&quot; when given an invalid revId." time="0.002">
     </testcase>
-    <testcase classname="MOCKED MwActionApiClient2.fetchParsedInfo should fetch parsed info when given a valid revision" name="MOCKED MwActionApiClient2.fetchParsedInfo should fetch parsed info when given a valid revision" time="0.004">
+    <testcase classname="MOCKED MwActionApiClient2.fetchParsedInfo should fetch parsed info when given a valid revision" name="MOCKED MwActionApiClient2.fetchParsedInfo should fetch parsed info when given a valid revision" time="0.003">
     </testcase>
-    <testcase classname="MOCKED MwActionApiClient2.fetchParsedInfo should fetch parsed info when given a valid revision" name="MOCKED MwActionApiClient2.fetchParsedInfo should fetch parsed info when given a valid revision" time="0.004">
+    <testcase classname="MOCKED MwActionApiClient2.fetchParsedInfo should fetch parsed info when given a valid revision" name="MOCKED MwActionApiClient2.fetchParsedInfo should fetch parsed info when given a valid revision" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="Logo" errors="0" failures="0" skipped="0" timestamp="2020-12-07T16:34:27" time="3.186" tests="1">
+    <testcase classname="Logo is a Vue instance" name="Logo is a Vue instance" time="0.012">
     </testcase>
   </testsuite>
 </testsuites>

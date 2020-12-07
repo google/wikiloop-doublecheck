@@ -2,14 +2,16 @@
   <div class="d-flex">
     <user-avatar
       class="avatar-container mr-2 d-flex align-items-center"
-      :wikiUserName="wikiUserName"
-      :userGaId="userGaId"
-    ></user-avatar>
+      :wiki-user-name="wikiUserName"
+      :user-ga-id="userGaId"
+    />
     <div class="d-flex align-items-center">
-      <a href="/#" class="avatar-txt p-0"
-        >{{
-          wikiUserName || `${$t('Label-Anonymous')} (${getHash(userGaId)})`
-        }}
+      <a
+        href="/#"
+        class="avatar-txt p-0"
+      >{{
+         wikiUserName || `${$t('Label-Anonymous')} (${getHash(userGaId)})`
+       }}
         <i
           :class="[
             'fas p-0',
@@ -19,20 +21,20 @@
               'fa-check text-success': userTier === 2
             }
           ]"
-      /></a>
+        /></a>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
-import UserAvatar from '~/components/UserAvatar.vue'
-import { UserTier, getHash } from '~/shared/utility-shared'
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import UserAvatar from '~/components/UserAvatar.vue';
+import { UserTier, getHash } from '~/shared/utility-shared';
 
 @Component({
   components: {
-    UserAvatar
-  }
+    UserAvatar,
+  },
 })
 export default class UserAvatarWithName extends Vue {
   @Prop({ type: String, required: false }) readonly wikiUserName!: string

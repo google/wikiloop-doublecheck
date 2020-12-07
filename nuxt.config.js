@@ -14,10 +14,10 @@
 
 const pkg = require('./package');
 const locales = require('./i18n/getlocales');
-require(`dotenv`).config();
+require('dotenv').config();
 
-console.log(`=================================`);
-console.log(`nuxt.config.js is being executed!`);
+console.log('=================================');
+console.log('nuxt.config.js is being executed!');
 module.exports = {
   mode: 'spa', // TODO change back to spa once we fix the client-side-render and server-side-render inconsistency
   telemetry: false,
@@ -31,21 +31,21 @@ module.exports = {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: pkg.description },
-      { uptimerobot_verify_uuid: '89d70f81-d069-43cf-ad7f-b932f7e3a24b'}, // a random uuid for verification purpose
+      { uptimerobot_verify_uuid: '89d70f81-d069-43cf-ad7f-b932f7e3a24b' }, // a random uuid for verification purpose
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: 'https://www.mediawiki.org/w/load.php?modules=mediawiki.legacy.shared|mediawiki.diff.styles&only=styles' },
       { rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v5.13.0/css/all.css', crossorigin: 'anonymous' },
-      { rel: 'preconnect', href: 'http://https://fonts.gstatic.com'},
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Noto+Sans&family=Open+Sans&family=Roboto&display=swap'}
+      { rel: 'preconnect', href: 'http://https://fonts.gstatic.com' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Noto+Sans&family=Open+Sans&family=Roboto&display=swap' },
     ],
     script: [
       {
-        src: "https://code.jquery.com/jquery-3.3.1.min.js",
-        type: "text/javascript"
-      }
-    ]
+        src: 'https://code.jquery.com/jquery-3.3.1.min.js',
+        type: 'text/javascript',
+      },
+    ],
   },
 
   /*
@@ -64,7 +64,7 @@ module.exports = {
   plugins: [
     '@/plugins/axios.js',
     '@/plugins/socket.io.js',
-    '@/plugins/timeago.js'
+    '@/plugins/timeago.js',
   ],
 
   /*
@@ -77,9 +77,9 @@ module.exports = {
     'bootstrap-vue/nuxt',
     '@nuxtjs/pwa',
     ['@nuxtjs/google-analytics', {
-      asyncID: function (ctx) {
+      asyncID(ctx) {
         return ctx.app.$env?.GA_WLBF_ID_CLIENT;
-      }
+      },
     }],
     ['cookie-universal-nuxt', { alias: 'cookiez' }],
     ['nuxt-env', {
@@ -89,7 +89,7 @@ module.exports = {
         'GA_WLBF_ID_CLIENT',
         'MIXER_RAMP_UP_PERCENT',
         'CROSS_EDIT_CHECK',
-      ]
+      ],
     }],
     [
       'nuxt-i18n',
@@ -99,11 +99,11 @@ module.exports = {
         vueI18n: {
           fallbackLocale: 'en',
           messages: {
-            ...locales
-          }
-        }
-      }
-    ]
+            ...locales,
+          },
+        },
+      },
+    ],
 
   ],
   /*
@@ -111,13 +111,13 @@ module.exports = {
    */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
-    credentials: true
+    credentials: true,
   },
 
   bootstrapVue: {
     config: {
       // Custom config options here
-    }
+    },
   },
   /*
    ** Build configuration
@@ -131,18 +131,18 @@ module.exports = {
           [
             '@nuxt/babel-preset-app',
             {
-              corejs: { version: 3 }
-            }
-          ]
-        ]
-      }
-    }
+              corejs: { version: 3 },
+            },
+          ],
+        ];
+      },
+    },
   },
   buildModules: ['@nuxt/typescript-build'],
   storybook: {
     // Options
-  }
+  },
 };
 
-console.log(`nuxt.config.js is done executed!`);
-console.log(`=================================`);
+console.log('nuxt.config.js is done executed!');
+console.log('=================================');

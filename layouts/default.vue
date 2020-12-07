@@ -20,110 +20,129 @@
     >
       <nav class="container-xl d-flex align-items-center">
         <a class="navbar-brand" href="/">WikiLoop DoubleCheck</a>
-        <b-navbar-toggle target="nav-collapse"> </b-navbar-toggle>
+        <b-navbar-toggle target="nav-collapse" />
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav class="flex-grow-1 d-flex flex-wrap">
-            <b-nav-item href="/history" v-b-tooltip.hover title="History">
-              <i class="fas fa-history"></i>
+            <b-nav-item v-b-tooltip.hover href="/history" title="History">
+              <i class="fas fa-history" />
             </b-nav-item>
             <b-nav-item
-              href="/leaderboard"
               v-b-tooltip.hover
+              href="/leaderboard"
               title="Leaderboard"
             >
-              <i class="fas fa-trophy"></i>
+              <i class="fas fa-trophy" />
             </b-nav-item>
-            <b-nav-item-dropdown right v-b-tooltip.hover title="Featured feeds">
-              <template v-slot:button-content>
-                <i class="fas fa-faucet pr-0"></i>
+            <b-nav-item-dropdown v-b-tooltip.hover right title="Featured feeds">
+              <template #button-content>
+                <i class="fas fa-faucet pr-0" />
               </template>
-              <b-dropdown-item href="/feed/mix"
-                >Mix Feeds<sup class="text-warning">β</sup></b-dropdown-item
+              <b-dropdown-item
+                href="/feed/mix"
               >
-              <b-dropdown-item href="/feed/lastbad"
-                >Last Bad Feed<sup class="text-warning">β</sup></b-dropdown-item
+                Mix Feeds<sup class="text-warning">β</sup>
+              </b-dropdown-item>
+              <b-dropdown-item
+                href="/feed/lastbad"
               >
-              <b-dropdown-item href="/feed/recent"
-                >Recent Feed<sup class="text-warning">β</sup></b-dropdown-item
+                Last Bad Feed<sup class="text-warning">β</sup>
+              </b-dropdown-item>
+              <b-dropdown-item
+                href="/feed/recent"
               >
-              <b-dropdown-item href="/feed/ores"
-                >ORES detected Feed<sup class="text-warning"
-                  >β</sup
-                ></b-dropdown-item
+                Recent Feed<sup class="text-warning">β</sup>
+              </b-dropdown-item>
+              <b-dropdown-item
+                href="/feed/ores"
               >
-              <b-dropdown-item href="/feed/wikitrust"
-                >WikiTrust detected Feed<sup class="text-warning"
-                  >β</sup
-                ></b-dropdown-item
+                ORES detected Feed<sup
+                  class="text-warning"
+                >β</sup>
+              </b-dropdown-item>
+              <b-dropdown-item
+                href="/feed/wikitrust"
               >
-              <b-dropdown-item href="/feed/us2020"
-                >US 2020 Election Topic Feed<sup class="text-warning"
-                  >β</sup
-                ></b-dropdown-item
+                WikiTrust detected Feed<sup
+                  class="text-warning"
+                >β</sup>
+              </b-dropdown-item>
+              <b-dropdown-item
+                href="/feed/us2020"
               >
-              <b-dropdown-item href="/feed/covid19"
-                >COVID-19 Topic Feed<sup class="text-warning"
-                  >β</sup
-                ></b-dropdown-item
+                US 2020 Election Topic Feed<sup
+                  class="text-warning"
+                >β</sup>
+              </b-dropdown-item>
+              <b-dropdown-item
+                href="/feed/covid19"
               >
+                COVID-19 Topic Feed<sup
+                  class="text-warning"
+                >β</sup>
+              </b-dropdown-item>
             </b-nav-item-dropdown>
 
             <b-nav-item
-              href="/active"
               v-b-tooltip.hover
+              href="/active"
               :title="$t('Label-ActiveUsers')"
             >
-              <i class="fas fa-users"></i>
+              <i class="fas fa-users" />
             </b-nav-item>
             <b-nav-item
-              href="/api/markedRevs.csv"
               v-b-tooltip.hover
+              href="/api/markedRevs.csv"
               title="Download"
             >
-              <i class="fas fa-cloud-download-alt"></i>
+              <i class="fas fa-cloud-download-alt" />
             </b-nav-item>
             <b-nav-item-dropdown
-              right
               v-b-tooltip.hover
+              right
               :title="$t('Label-ProjectInfo')"
             >
-              <template v-slot:button-content>
-                <i class="fas fa-info"></i>
+              <template #button-content>
+                <i class="fas fa-info" />
               </template>
               <b-dropdown-item
                 href="https://github.com/google/wikiloop-doublecheck/issues"
                 target="_blank"
-                >{{ $t('MenuItem-Issues') }}</b-dropdown-item
               >
+                {{ $t('MenuItem-Issues') }}
+              </b-dropdown-item>
               <b-dropdown-item
                 href="https://github.com/google/wikiloop-doublecheck"
                 target="_blank"
-                >{{ $t('MenuItem-Code') }}
+              >
+                {{ $t('MenuItem-Code') }}
               </b-dropdown-item>
               <b-dropdown-item
                 href="https://meta.wikimedia.org/wiki/WikiProject_WikiLoop"
                 target="_blank"
-                >WikiProject</b-dropdown-item
               >
-              <b-dropdown-item href="/api/stats" target="_blank">{{
-                $t('MenuItem-Stats')
-              }}</b-dropdown-item>
+                WikiProject
+              </b-dropdown-item>
+              <b-dropdown-item href="/api/stats" target="_blank">
+                {{
+                  $t('MenuItem-Stats')
+                }}
+              </b-dropdown-item>
             </b-nav-item-dropdown>
             <b-nav-item
+              v-b-tooltip.hover
               target="_blank"
               :href="
                 `https://github.com/google/wikiloop-doublecheck/edit/master/i18n/locales/${$i18n.locale}.yml`
               "
-              v-b-tooltip.hover
               :title="$t('Button-HelpTranslate')"
             >
-              <i class="fas fa-language"></i>
+              <i class="fas fa-language" />
             </b-nav-item>
             <b-nav-item>
               <b-form-select
-                @click.native.stop=""
-                class="small align-self-start"
                 v-model="wiki"
+                class="small align-self-start"
+                @click.native.stop=""
               >
                 <option
                   v-for="language in languages"
@@ -137,17 +156,17 @@
           </b-navbar-nav>
           <b-navbar-nav>
             <b-nav-item-dropdown>
-              <template v-slot:button-content>
+              <template #button-content>
                 <div class="d-flex">
                   <user-avatar-with-name
                     class="avatar-img"
-                    :wikiUserName="
+                    :wiki-user-name="
                       $store.state.user.profile
                         ? $store.state.user.profile.displayName
                         : null
                     "
-                    :userGaId="$cookiez.get('_ga')"
-                  ></user-avatar-with-name>
+                    :user-ga-id="$cookiez.get('_ga')"
+                  />
                 </div>
               </template>
               <b-dropdown-item
@@ -158,28 +177,29 @@
                 :href="
                   `/history?wikiUserName=${$store.state.user.profile.displayName}`
                 "
-                ><i class="fas fa-list"></i
-                >{{ $t(`MenuItem-Contributions`) }}</b-dropdown-item
               >
+                <i class="fas fa-list" />{{ $t(`MenuItem-Contributions`) }}
+              </b-dropdown-item>
               <b-dropdown-item
                 :href="`/history?userGaId=${$cookiez.get('_ga')}`"
-                ><i class="fas fa-list"></i
-                >{{ $t(`MenuItem-Contributions`) }}</b-dropdown-item
               >
+                <i class="fas fa-list" />{{ $t(`MenuItem-Contributions`) }}
+              </b-dropdown-item>
               <template v-if="!$store.state.user.profile">
                 <b-dropdown-item
                   v-if="!$store.state.user.profile"
                   href="/auth/mediawiki/login"
                   right
                 >
-                  <i class="fas fa-sign-in-alt"></i>{{ $t(`Label-Login`) }}
+                  <i class="fas fa-sign-in-alt" />{{ $t(`Label-Login`) }}
                 </b-dropdown-item>
               </template>
               <template v-if="$store.state.user.profile">
-                <b-dropdown-item href="/auth/mediawiki/logout"
-                  ><i class="fas fa-sign-out-alt"></i
-                  >{{ $t(`Label-Logout`) }}</b-dropdown-item
+                <b-dropdown-item
+                  href="/auth/mediawiki/logout"
                 >
+                  <i class="fas fa-sign-out-alt" />{{ $t(`Label-Logout`) }}
+                </b-dropdown-item>
               </template>
             </b-nav-item-dropdown>
           </b-navbar-nav>
@@ -187,120 +207,118 @@
       </nav>
     </header>
     <main class="wldc-body">
-      <NoticeBanner></NoticeBanner>
+      <NoticeBanner />
       <nuxt />
     </main>
     <b-modal id="modal-keymap" title="Keymap">
-      V: {{ $t('Label-ShouldRevert') }}<br />
-      G: {{ $t('Label-LooksGood') }}<br />
-      P: {{ $t('Label-NotSure') }}<br />
-      →: {{ $t('Button-Next') }}<br />
+      V: {{ $t('Label-ShouldRevert') }}<br>
+      G: {{ $t('Label-LooksGood') }}<br>
+      P: {{ $t('Label-NotSure') }}<br>
+      →: {{ $t('Button-Next') }}<br>
     </b-modal>
   </div>
 </template>
 
 <script lang="ts">
-import socket from '@/plugins/socket.io.js'
-import { InteractionItem } from '~/shared/schema'
-import UserAvatarWithName from '~/components/UserAvatarWithName.vue'
-import NoticeBanner from '~/components/NoticeBanner.vue'
-import { wikiToLangMap, wikiLangs } from '~/shared/utility-shared'
-import ISO6391 from 'iso-639-1'
+import socket from '@/plugins/socket.io.js';
+import ISO6391 from 'iso-639-1';
+import { InteractionItem } from '~/shared/schema';
+import UserAvatarWithName from '~/components/UserAvatarWithName.vue';
+import NoticeBanner from '~/components/NoticeBanner.vue';
+import { wikiToLangMap, wikiLangs } from '~/shared/utility-shared';
 
 export default {
   components: {
     UserAvatarWithName,
-    NoticeBanner
+    NoticeBanner,
   },
   data() {
     return {
-      languages: Object.keys(wikiToLangMap).map(wiki => {
-        let lang = wikiToLangMap[wiki]
+      languages: Object.keys(wikiToLangMap).map((wiki) => {
+        const lang = wikiToLangMap[wiki];
         return {
-          wiki: wiki,
-          lang: lang,
-          nativeText: ISO6391.getNativeName(lang) || wiki
-        }
-      })
-    }
-  },
-  methods: {
-    commitFlagsFromUrlQuery: function(query) {
-      for (let k in query) {
-        let v = query[k]
-        if (v === '1' || v === 'true') v = true
-        // convert to native boolean
-        else if (v === '0' || v === 'false') v = false
-        this.$store.commit(`setFlag`, { key: k, value: v })
-      }
-    }
+          wiki,
+          lang,
+          nativeText: ISO6391.getNativeName(lang) || wiki,
+        };
+      }),
+    };
   },
   computed: {
     wiki: {
       get() {
-        return this.$store.state.wiki
+        return this.$store.state.wiki;
       },
       set(wiki: string) {
         if (wiki != this.$store.state.wiki) {
           // Probably Wiki language doesn't have to be tied to UI language.
           // For example, people can edit wikidata in any language. Or,
           // they might prefer editing the Indonesian wiki using English interface
-          this.$store.commit('user/setPreferences', { wiki: wiki })
-          this.$store.dispatch('changeWiki', wiki)
-          this.$i18n.locale = wikiToLangMap[wiki]
+          this.$store.commit('user/setPreferences', { wiki });
+          this.$store.dispatch('changeWiki', wiki);
+          this.$i18n.locale = wikiToLangMap[wiki];
         }
-      }
+      },
     },
     userId: {
       get() {
-        if (this.$store.state.user.profile)
-          return this.$store.state.user.profile.displayName
-        else return this.$cookiez.get('_ga')
-      }
-    }
+        if (this.$store.state.user.profile) {return this.$store.state.user.profile.displayName;} else {return this.$cookiez.get('_ga');}
+      },
+    },
   },
   async mounted() {
-    this.commitFlagsFromUrlQuery(this.$route.query)
-    socket.on('metrics-update', async metrics => {
-      this.$store.commit(`setMetrics`, metrics)
-    })
+    this.commitFlagsFromUrlQuery(this.$route.query);
+    socket.on('metrics-update', async (metrics) => {
+      this.$store.commit('setMetrics', metrics);
+    });
 
     socket.on('interaction-item', async (interaction: InteractionItem) => {
       if (interaction.userGaId === this.$cookiez.get('_ga')) {
         this.$bvToast.toast(
           this.$t('Message-YourJudgementLogged', [
             interaction.title,
-            interaction.wikiRevId
+            interaction.wikiRevId,
           ]),
           {
             title: this.$t('Label-YourJudgement'),
-            //autoHideDelay: 3000,
-            appendToast: true
-          }
-        )
+            // autoHideDelay: 3000,
+            appendToast: true,
+          },
+        );
       } else {
         this.$bvToast.toast(
           this.$t('Message-AJudgementLogged', [
             interaction.title,
-            interaction.wikiRevId
+            interaction.wikiRevId,
           ]),
           {
             title: 'New Judgement',
-            //autoHideDelay: 3000,
-            appendToast: true
-          }
-        )
+            // autoHideDelay: 3000,
+            appendToast: true,
+          },
+        );
       }
-    })
-    let userIdInfo: any = {}
-    userIdInfo.userGaId = this.$cookiez.get('_ga')
+    });
+    const userIdInfo: any = {};
+    userIdInfo.userGaId = this.$cookiez.get('_ga');
 
     if (this.$store.state.user && this.$store.state.user.profile) {
-      userIdInfo.wikiUserName = this.$store.state.user.profile.displayName
+      userIdInfo.wikiUserName = this.$store.state.user.profile.displayName;
     }
-    socket.emit('user-id-info', userIdInfo)
-  }
-}
+    socket.emit('user-id-info', userIdInfo);
+  },
+  methods: {
+    commitFlagsFromUrlQuery(query) {
+      for (const k in query) {
+        let v = query[k];
+        if (v === '1' || v === 'true') {v = true;}
+        // convert to native boolean
+        else if (v === '0' || v === 'false') {v = false;}
+        this.$store.commit('setFlag', { key: k, value: v });
+      }
+    },
+  },
+};
 </script>
 <style lang="scss">
 @import 'bootstrap/scss/_functions.scss';

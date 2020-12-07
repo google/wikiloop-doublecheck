@@ -13,7 +13,7 @@
 // limitations under the License.
 
 import { apiLogger, asyncHandler } from '@/server/common';
-import {wikiToDomain} from "@/shared/utility-shared";
+import { wikiToDomain } from '@/shared/utility-shared';
 const rp = require('request-promise');
 
 export const mediawikiRouter = require('express').Router();
@@ -23,16 +23,16 @@ const mediawiki = async (req, res) => {
   apiLogger.debug('req.params:', req.params);
   apiLogger.debug('req.query:', req.query);
   const fetchUrl = new URL(`http://${wikiToDomain[req.query.wiki]}/w/api.php`);
-  let params = JSON.parse(req.query.apiQuery);
+  const params = JSON.parse(req.query.apiQuery);
 
-  Object.keys(params).forEach(key => {
+  Object.keys(params).forEach((key) => {
     fetchUrl.searchParams.set(key, params[key]);
   });
-  let retJson = await rp.get(fetchUrl, { json: true });
+  const retJson = await rp.get(fetchUrl, { json: true });
   res.send(retJson);
   req.visitor
-    .event({ ec: "mediawiki", ea: "/" })
-    .send();
+      .event({ ec: 'mediawiki', ea: '/' })
+      .send();
 };
 
-mediawikiRouter.get(`/`, asyncHandler(mediawiki));
+mediawikiRouter.get('/', asyncHandler(mediawiki));

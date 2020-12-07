@@ -38,10 +38,10 @@ export const mutations = {
     state.item = {};
   },
   mergeItem(state, itemObj) {
-    state.item = {...state.item, ...itemObj};
+    state.item = { ...state.item, ...itemObj };
   },
   mergeDiff(state, diffHtml) {
-    state.item = {...state.item, ...{ diffHtml: diffHtml }};
+    state.item = { ...state.item, ...{ diffHtml } };
   },
   setErrorRawObj(state, errorRawObj) {
     state.errorRawObj = errorRawObj;
@@ -52,15 +52,15 @@ export const mutations = {
   clearError(state) {
     state.errorMsg = null;
     state.errorRawObj = null;
-  }
-}
+  },
+};
 
 export const actions = {
-   async loadInfo({ commit, state },) {
-    commit(`setInfoLoaded`, false);
+  async loadInfo({ commit, state }) {
+    commit('setInfoLoaded', false);
     try {
-      let revision = (await axios.get(`/api/revision/${state.wikiRevId}`)).data;
-      let item = {
+      const revision = (await axios.get(`/api/revision/${state.wikiRevId}`)).data;
+      const item = {
         wiki: revision.wiki,
         revId: revision.revid,
         title: revision.title,
@@ -69,28 +69,27 @@ export const actions = {
         author: revision.user,
         timestamp: new Date(revision.timestamp).getTime() / 1000,
       };
-      commit(`mergeItem`, item);
+      commit('mergeItem', item);
     } catch (err) {
-      commit(`setErrorMsg`, `Loading revision from WikiLoop DoubleCheck API has encountered error.`);
-      commit(`setErrorRawObj`, err);
+      commit('setErrorMsg', 'Loading revision from WikiLoop DoubleCheck API has encountered error.');
+      commit('setErrorRawObj', err);
     } finally {
-      commit(`setInfoLoaded`, true);
+      commit('setInfoLoaded', true);
     }
   },
-  async loadDiff({ commit, state, axios }){
-    let [wiki, revId] = parseWikiRevId(state.wikiRevId);
-    let mwapi2 = new MwActionApiClient2(this.$axios);
-    commit(`setDiffLoaded`, false);
+  async loadDiff({ commit, state, axios }) {
+    const [wiki, revId] = parseWikiRevId(state.wikiRevId);
+    const mwapi2 = new MwActionApiClient2(this.$axios);
+    commit('setDiffLoaded', false);
     try {
-      let diff = await mwapi2.fetchDiff(wiki, revId);
-      commit(`setDiff`, diff);
+      const diff = await mwapi2.fetchDiff(wiki, revId);
+      commit('setDiff', diff);
     } catch (err) {
-      commit(`setDiff`, null);
-      commit(`setErrorMsg`, `Loading diff from Wikipedia API encountered error`);
-      commit(`setErrorRawObj`, err);
+      commit('setDiff', null);
+      commit('setErrorMsg', 'Loading diff from Wikipedia API encountered error');
+      commit('setErrorRawObj', err);
+    } finally {
+      commit('setDiffLoaded', true);
     }
-    finally {
-      commit(`setDiffLoaded`, true);
-    }
-  }
+  },
 };

@@ -17,7 +17,7 @@ const RevisionInfoSchema = createSchema(
     prevRevId: Type.number({ index: true }),
     ores_damaging: Type.number(),
     ores_badfaith: Type.number(),
-  }
+  },
 );
 export const RevisionInfo = typedModel('RevisionInfo', RevisionInfoSchema, 'RevisionInfo');
 export type RevisionInfoDoc = ExtractDoc<typeof RevisionInfoSchema>;

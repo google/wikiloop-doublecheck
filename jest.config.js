@@ -16,14 +16,14 @@ module.exports = {
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
     '^~/(.*)$': '<rootDir>/$1',
-    '^vue$': 'vue/dist/vue.common.js'
+    '^vue$': 'vue/dist/vue.common.js',
   },
-  testPathIgnorePatterns: ["integration"], // by default we ignore integration test
+  testPathIgnorePatterns: ['integration'], // by default we ignore integration test
   moduleFileExtensions: ['js', 'ts', 'vue', 'json'],
   transform: {
     '^.+\\.js$': 'babel-jest',
     '^.+\\.ts?$': 'ts-jest',
-    '.*\\.(vue)$': 'vue-jest'
+    '.*\\.(vue)$': 'vue-jest',
   },
   collectCoverage: false, // default to not collecting covearge
   collectCoverageFrom: [
@@ -33,14 +33,14 @@ module.exports = {
     '<rootDir>/shared/**/*.ts',
   ],
   reporters: [
-    "default",
-    ["jest-junit",{
-      "outputDirectory": "./reports/jest/",
-      "outputName": "junit.xml",
+    'default',
+    ['jest-junit', {
+      outputDirectory: './reports/jest/',
+      outputName: 'junit.xml',
     }],
-    ["./node_modules/jest-html-reporter", {
-        pageTitle: "Test Report",
-        outputPath: "./reports/jest/test-report.html"
-    }]
-  ]
+    ['./node_modules/jest-html-reporter', {
+      pageTitle: 'Test Report',
+      outputPath: './reports/jest/test-report.html',
+    }],
+  ],
 };

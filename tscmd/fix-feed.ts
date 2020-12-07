@@ -4,28 +4,28 @@
  ```
  */
 
-import {Interaction} from "@/shared/models/interaction-item.model";
-import mongoose, {Document, Schema}  from 'mongoose';
+import { Interaction } from '@/shared/models/interaction-item.model';
+import mongoose, { Document, Schema } from 'mongoose';
 
 async function main() {
-  console.log(`Start...`);
+  console.log('Start...');
   const envPath = process.env.DOTENV_PATH || 'template.env';
-  console.log(`DotEnv envPath = `, envPath, ' if you want to change it, restart and set DOTENV_PATH');
+  console.log('DotEnv envPath = ', envPath, ' if you want to change it, restart and set DOTENV_PATH');
 
   require('dotenv').config({
-    path: envPath
+    path: envPath,
   });
 
-  await mongoose.connect(process.env.MONGODB_URI, {useUnifiedTopology: true, useNewUrlParser: true});
-  let ret1 = await Interaction.updateMany({feed: {$exists:false}}, {feed: 'index'});
+  await mongoose.connect(process.env.MONGODB_URI, { useUnifiedTopology: true, useNewUrlParser: true });
+  const ret1 = await Interaction.updateMany({ feed: { $exists: false } }, { feed: 'index' });
   console.log(`After fixed feed, ret= ${JSON.stringify(ret1, null, 2)}`);
 
-  let ret2 = await Interaction.updateMany({wiki: {$exists:false}}, {wiki: 'enwiki'});
+  const ret2 = await Interaction.updateMany({ wiki: { $exists: false } }, { wiki: 'enwiki' });
   console.log(`After fixed feed, ret= ${JSON.stringify(ret2, null, 2)}`);
-  console.log(`Done`);
+  console.log('Done');
 }
 
 main().then(async () => {
-  console.log(`CMD Done!`);
+  console.log('CMD Done!');
   process.exit(0);
 });

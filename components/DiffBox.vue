@@ -22,88 +22,86 @@
     <table class="diff-content">
       <thead class="diff-header">
         <tr>
-          <th colspan="2">
-          </th>
-          <th colspan="2">
-          </th>
+          <th colspan="2" />
+          <th colspan="2" />
         </tr>
       </thead>
-      <tbody v-html="processedDiffContent"></tbody>
+      <tbody v-html="processedDiffContent" />
     </table>
   </div>
 </template>
 
 <script lang="ts">
-import { wikiToDomain } from '@/shared/utility-shared'
+import { wikiToDomain } from '@/shared/utility-shared';
 export default {
   props: {
     diffContent: {
       type: String,
-      default: ''
+      default: '',
     },
     wikiRevId: {
       type: String,
-      default: ''
+      default: '',
     },
     diffMetadata: {
       type: Object,
-      default: null
-    }
+      default: null,
+    },
+  },
+  data() {
+    return {
+      processedDiffContent: '',
+    };
+  },
+  beforeMount() {
+    this.processDiffContent(this.diffContent);
+  },
+  beforeUpdate() {
+    this.processDiffContent(this.diffContent);
   },
   methods: {
     processDiffContent() {
       if (!window.DOMParser || !this.diffMetadata) {
-        this.processedDiffContent = this.diffContent
-        return
+        this.processedDiffContent = this.diffContent;
+        return;
       }
 
-      let diffContent = this.diffContent
+      let diffContent = this.diffContent;
       // https://regex101.com/r/QwzU8z/3
       diffContent = diffContent.replace(
         /\[\[([^\]|]*)(\|?.*?)\]\]/gm,
         function(match, p1, p2) {
-          let parsedText = new DOMParser().parseFromString(p1, 'text/html')
-          let cleanedUpP1 = parsedText.querySelector('body').innerText
-          let articleName = cleanedUpP1.split('#')[0]
+          let parsedText = new DOMParser().parseFromString(p1, 'text/html');
+          const cleanedUpP1 = parsedText.querySelector('body').textContent;
+          let articleName = cleanedUpP1.split('#')[0];
           articleName =
-            articleName.charAt(0).toUpperCase() + articleName.slice(1)
-          let className = 'new'
+            articleName.charAt(0).toUpperCase() + articleName.slice(1);
+          let className = 'new';
 
-          parsedText = undefined
+          parsedText = undefined;
           if (this.diffMetadata.links[articleName]) {
-            className = 'exists'
+            className = 'exists';
           } else if (this.diffMetadata.iwlinks[articleName]) {
-            className = 'exists'
+            className = 'exists';
           }
 
-          this.diffMetadata.images.forEach(entry => {
-            if (cleanedUpP1.indexOf(entry) !== -1) {
-              className = ''
+          this.diffMetadata.images.forEach((entry) => {
+            if (cleanedUpP1.includes(entry)) {
+              className = '';
             }
-          })
+          });
 
-          let link = `http://${
+          const link = `http://${
             wikiToDomain[this.wikiRevId.split(':')[0]]
-          }/wiki/${cleanedUpP1}`
-          return `[[<a href="${link}" target="_blank" class="${className}">${p1}</a>${p2}]]`
-        }.bind(this)
-      )
+          }/wiki/${cleanedUpP1}`;
+          return `[[<a href="${link}" target="_blank" class="${className}">${p1}</a>${p2}]]`;
+        }.bind(this),
+      );
 
-      this.processedDiffContent = diffContent
-    }
+      this.processedDiffContent = diffContent;
+    },
   },
-  data() {
-    return {
-      processedDiffContent: ''
-    }
-  },
-  beforeMount() {
-    this.processDiffContent(this.diffContent)
-  },
-  beforeUpdate() {
-    this.processDiffContent(this.diffContent)
-  }
-}
+};
 </script>
 
 <style lang="scss" scoped>

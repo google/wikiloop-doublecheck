@@ -25,31 +25,31 @@ const mongoose = require('mongoose');
 * @public This endpoint has API clients, take extra caution when migrating
  */
 export const markedRevsCsv = async (req, res) => {
-    let newJudgementCounts = await getNewJudgementCounts(
-        mongoose.connection.db, {}, 0, 10000000/* as many as possible to download all */);
-    res.setHeader('Content-Type', 'text/csv');
-    res.setHeader('Content-Disposition', 'attachment; filename=\"' + 'download-' + Date.now() + '.csv\"');
-    const stringify = require('csv-stringify');
-    let ret = [[
-        `WikiRevId`,
-        `LastTimestamp`,
-        `ShouldRevert`,
-        `NotSure`,
-        `LooksGood`
-    ]]
-        .concat(newJudgementCounts.map((newJudgementCount) => {
-          return [
-            newJudgementCount.wikiRevId,
-            newJudgementCount.lastTimestamp,
-            newJudgementCount.counts.ShouldRevert,
-            newJudgementCount.counts.NotSure,
-            newJudgementCount.counts.LooksGood,
-          ]
-        }));
-    stringify(ret, { header: false })
-        .pipe(res);
+  const newJudgementCounts = await getNewJudgementCounts(
+    mongoose.connection.db, {}, 0, 10000000/* as many as possible to download all */);
+  res.setHeader('Content-Type', 'text/csv');
+  res.setHeader('Content-Disposition', 'attachment; filename=\"' + 'download-' + Date.now() + '.csv\"');
+  const stringify = require('csv-stringify');
+  const ret = [[
+    'WikiRevId',
+    'LastTimestamp',
+    'ShouldRevert',
+    'NotSure',
+    'LooksGood',
+  ]]
+      .concat(newJudgementCounts.map((newJudgementCount) => {
+        return [
+          newJudgementCount.wikiRevId,
+          newJudgementCount.lastTimestamp,
+          newJudgementCount.counts.ShouldRevert,
+          newJudgementCount.counts.NotSure,
+          newJudgementCount.counts.LooksGood,
+        ];
+      }));
+  stringify(ret, { header: false })
+      .pipe(res);
 };
 
 export const markedRevs = async (req, res) => {
-    res.send(await getNewJudgementCounts(mongoose.connection.db));
+  res.send(await getNewJudgementCounts(mongoose.connection.db));
 };

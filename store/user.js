@@ -13,26 +13,26 @@
 // limitations under the License.
 
 export const state = () => ({
-    profile: null,
-    preferences: null,
+  profile: null,
+  preferences: null,
 });
 
 export const mutations = {
-    setProfile (state, value) {
-        state.profile = value;
-    },
-    clearProfile (state) {
-        state.profile = null;
-    },
-    setPreferences (state, value) {
-      state.preferences = value;
-    },
+  setProfile(state, value) {
+    state.profile = value;
+  },
+  clearProfile(state) {
+    state.profile = null;
+  },
+  setPreferences(state, value) {
+    state.preferences = value;
+  },
 };
 
 export const actions = {
-    async updateWikiPreference ({commit}, wiki) {
-      let preferences = await this.$axios.$post(
-        `/api/auth/user/preferences`, {wiki: wiki});
-      commit(`setPreferences`, preferences);
-    },
+  async updateWikiPreference({ commit }, wiki) {
+    const preferences = await this.$axios.$post(
+      '/api/auth/user/preferences', { wiki });
+    commit('setPreferences', preferences);
+  },
 };

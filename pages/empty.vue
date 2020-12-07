@@ -23,8 +23,7 @@
     </section>
 </template>
 <script lang="ts">
-    export default {
-        layout: 'empty', // not using any layout
-    }
+export default {
+  layout: 'empty', // not using any layout
+};
 </script>
-

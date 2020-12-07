@@ -1,24 +1,28 @@
 <template>
   <div>
-    <img v-if="wikiUserName"
-         class="avatar-img"
-         :src="`https://avatars.dicebear.com/api/initials/${wikiUserName}.svg`"
-         :alt="`WikiUser:${wikiUserName}`"/>
-    <img v-else
-         class="avatar-img"
-         :src="`https://avatars.dicebear.com/api/identicon/${userGaId}.svg`"
-         :alt="`AnonUser:${userGaId}`"/>
+    <img
+      v-if="wikiUserName"
+      class="avatar-img"
+      :src="`https://avatars.dicebear.com/api/initials/${wikiUserName}.svg`"
+      :alt="`WikiUser:${wikiUserName}`"
+    >
+    <img
+      v-else
+      class="avatar-img"
+      :src="`https://avatars.dicebear.com/api/identicon/${userGaId}.svg`"
+      :alt="`AnonUser:${userGaId}`"
+    >
   </div>
 </template>
 
 <script lang="ts">
-  import { Component, Prop, Vue} from 'vue-property-decorator'
+import { Component, Prop, Vue } from 'vue-property-decorator';
 
   @Component
-  export default class UserAvatar extends Vue {
+export default class UserAvatar extends Vue {
     @Prop({ type: String, required: false }) readonly wikiUserName!: string;
     @Prop({ type: String, required: false }) readonly userGaId!: string;
-  }
+}
 </script>
 <style scoped>
   .avatar-img {

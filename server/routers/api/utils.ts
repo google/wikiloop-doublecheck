@@ -12,9 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import { logger, asyncHandler, useOauth } from '@/server/common';
 
-import { logger, asyncHandler } from '@/server/common';
-import {useOauth} from '@/server/common';
 import { useStiki } from '~/server/common';
 const Avatars = require('@dicebear/avatars').default;
 const sprites = require('@dicebear/avatars-identicon-sprites').default;
@@ -25,42 +24,42 @@ const express = require('express');
 export const utilsRouter = express.Router();
 
 const avatar = async (req, res) => {
-    logger.debug(`avatar requested with seed`, req.params.seed);
-    let svg = avatars.create(req.params.seed);
-    res.send(svg);
-    req.visitor
-        .event({ ec: "api", ea: "/avatar/:seed" })
-        .send();
+  logger.debug('avatar requested with seed', req.params.seed);
+  const svg = avatars.create(req.params.seed);
+  res.send(svg);
+  req.visitor
+      .event({ ec: 'api', ea: '/avatar/:seed' })
+      .send();
 };
 // TODO build batch api for avatar until performance is an issue. We have cache anyway should be fine.
-utilsRouter.get("/avatar/:seed", asyncHandler(avatar));
+utilsRouter.get('/avatar/:seed', asyncHandler(avatar));
 
 const flags = async (req, res) => {
-    res.send({
-        useStiki: useStiki,
-        useOauth: useOauth,
-        useDirectRevert: process.env.DIRECT_REVERT === '1',
-        useCrossEditCheck: process.env.CROSS_EDIT_CHECK === '1',
-    });
-    req.visitor
-        .event({ec: "api", ea: "/"})
-        .send();
+  res.send({
+    useStiki,
+    useOauth,
+    useDirectRevert: process.env.DIRECT_REVERT === '1',
+    useCrossEditCheck: process.env.CROSS_EDIT_CHECK === '1',
+  });
+  req.visitor
+      .event({ ec: 'api', ea: '/' })
+      .send();
 };
 utilsRouter.get('/flags', asyncHandler(flags));
 
 const root = async (req, res) => {
   res.send('API root > v4.0 with typescript');
   req.visitor
-      .event({ ec: "api", ea: "/" })
+      .event({ ec: 'api', ea: '/' })
       .send();
 };
 utilsRouter.get('/root', asyncHandler(root));
 
 export const version = async (req, res) => {
-  var packageson = require('@/package.json');
+  const packageson = require('@/package.json');
   res.send(packageson.version);
   req.visitor
-      .event({ ec: "api", ea: "/" })
+      .event({ ec: 'api', ea: '/' })
       .send();
 };
 utilsRouter.get('/version', asyncHandler(version));

@@ -2,25 +2,24 @@ import { createSchema, ExtractDoc, ExtractProps, Type, typedModel } from 'ts-mon
 
 const FeedRevisionSchema = createSchema(
   {
-    feed: Type.string({ required: true, index: true}),
+    feed: Type.string({ required: true, index: true }),
     wikiRevId: Type.string({ required: true, index: true }),
     wiki: Type.string({ required: true, index: true }),
     feedRankScore: Type.number(),
     title: Type.string({ required: false, index: true }),
-    createdAt: Type.date({index: true}),
+    createdAt: Type.date({ index: true }),
     claimerInfo: Type.object().of({
       userGaId: Type.string({ required: true }),
-      wikiUserName: Type.string({ required:false}),
+      wikiUserName: Type.string({ required: false }),
       claimedAt: Type.date({ required: true }),
       checkedOffAt: Type.date({ required: false }),
     }),
     additionalInfo: Type.mixed(),
-    claimExpiresAt: Type.date({ index: true })
-  }
+    claimExpiresAt: Type.date({ index: true }),
+  },
 );
-FeedRevisionSchema.index({ feed: 1, wikiRevId: 1 }, { unique: true })
+FeedRevisionSchema.index({ feed: 1, wikiRevId: 1 }, { unique: true });
 
 export const FeedRevision = typedModel('FeedRevision', FeedRevisionSchema, 'FeedRevision');
 export type FeedRevisionDoc = ExtractDoc<typeof FeedRevisionSchema>;
 export type FeedRevisionProps = ExtractProps<typeof FeedRevisionSchema>;
-

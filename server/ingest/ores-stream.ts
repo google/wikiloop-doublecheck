@@ -1,7 +1,7 @@
-import {logger} from "@/server/common";
-const EventSource = require('eventsource');
+import { logger } from '@/server/common';
 import mongoose, { Schema } from 'mongoose';
-import {CollectionInsertOneOptions, ObjectID} from "mongodb";
+import { CollectionInsertOneOptions, ObjectID } from 'mongodb';
+const EventSource = require('eventsource');
 
 export class OresStream {
   private eventSource:EventSource;
@@ -11,17 +11,16 @@ export class OresStream {
   }
 
   public filterBasic(data) {
-    let matchWiki = data.database === this.wiki;
-    let matchNamespace = data.page_namespace == 0;
+    const matchWiki = data.database === this.wiki;
+    const matchNamespace = data.page_namespace == 0;
     return matchWiki && matchNamespace;
   }
 
   public filterIsBad(data) {
-    let isDamaging = data.scores?.damaging?.prediction[0] === 'true';
-    let isBadfaith = data.scores?.goodfaith?.prediction[0] === 'false';
+    const isDamaging = data.scores?.damaging?.prediction[0] === 'true';
+    const isBadfaith = data.scores?.goodfaith?.prediction[0] === 'false';
     return isDamaging || isBadfaith;
   }
-
 
   public subscribe() {
     const url = 'https://stream.wikimedia.org/v2/stream/revision-score';
@@ -38,50 +37,50 @@ export class OresStream {
     };
 
     eventSource.onmessage = async (event) => {
-      let json = JSON.parse(event.data);
+      const json = JSON.parse(event.data);
       if (this.filterBasic(json)) {
         const wiki = json.database;
         const title = json.page_title;
         const pageId = json.page_id;
         const revId = json.rev_id;
         if (this.filterIsBad(json)) {
-          logger.debug(`rev-score`, {wiki, title, pageId, revId});
-          await mongoose.connection.db.collection(`WatchCollection_ORES`).insertOne({
+          logger.debug('rev-score', { wiki, title, pageId, revId });
+          await mongoose.connection.db.collection('WatchCollection_ORES').insertOne({
             _id: `${wiki}:${revId}`,
-            wiki: wiki,
+            wiki,
             revIds: [revId],
-            pageId: pageId,
-            title: title,
+            pageId,
+            title,
             timestamp: Math.floor(new Date().getTime() / 1000),
             _created: new Date(),
-          }, {upsert: true} as CollectionInsertOneOptions);
+          }, { upsert: true } as CollectionInsertOneOptions);
 
-          logger.debug(`Inserting LASTBAD: `, {wiki, title, pageId, revId});
-          await mongoose.connection.db.collection(`WatchCollection_LASTBAD`).findOneAndUpdate(
+          logger.debug('Inserting LASTBAD: ', { wiki, title, pageId, revId });
+          await mongoose.connection.db.collection('WatchCollection_LASTBAD').findOneAndUpdate(
             {
-              _id: `${wiki}:page-${pageId}`
+              _id: `${wiki}:page-${pageId}`,
             },
             {
               $set: {
-                revIds: [revId],
-                timestamp: Math.floor(new Date().getTime() / 1000),
-                _updated: new Date(),
+                'revIds': [revId],
+                'timestamp': Math.floor(new Date().getTime() / 1000),
+                '_updated': new Date(),
                 '_tmp.ores': json.scores,
                 '_tmp.damaging': json.scores?.damaging?.prediction[0],
                 '_tmp.goodfaith': json.scores?.goodfaith?.prediction[0],
               },
               $setOnInsert: {
                 _id: `${wiki}:page-${pageId}`,
-                wiki: wiki,
-                pageId: pageId,
-                title: title,
+                wiki,
+                pageId,
+                title,
                 _created: new Date(),
-              }
-            }, {upsert: true});
+              },
+            }, { upsert: true });
         } else {
-          logger.debug(`Removing from LASTBAD: `, {wiki, title, pageId, revId});
-          await mongoose.connection.db.collection(`WatchCollection_LASTBAD`).findOneAndDelete(
-            { _id: `${wiki}:page-${pageId}`});
+          logger.debug('Removing from LASTBAD: ', { wiki, title, pageId, revId });
+          await mongoose.connection.db.collection('WatchCollection_LASTBAD').findOneAndDelete(
+            { _id: `${wiki}:page-${pageId}` });
         }
       }
     };

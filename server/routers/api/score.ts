@@ -12,10 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-const express = require("express");
-import { asyncHandler, logger, useStiki } from '~/server/common';
-import {Score, ScoreType} from "~/shared/interfaces";
 import axios from 'axios';
+import { asyncHandler, logger, useStiki } from '~/server/common';
+import { Score, ScoreType } from '~/shared/interfaces';
+const express = require('express');
 
 export const scoreRouter = express.Router();
 
@@ -35,47 +35,46 @@ export const scoreRouter = express.Router();
  */
 async function fetchOresScore(wikiRevId, type:ScoreType):Promise<Score> {
   let oresResultJson;
-    let wiki = wikiRevId.split(':')[0];
-    let revId = wikiRevId.split(':')[1];
-    let oresUrl = `https://ores.wikimedia.org/v3/scores/${wiki}/?models=damaging|goodfaith&revids=${revId}`;
-    try {
-      oresResultJson = (await axios.get(oresUrl)).data;
-      switch (type) {
-        case ScoreType.ORES_DAMAGING:
-          return <Score> {
-            type: ScoreType.ORES_DAMAGING,
-            score: oresResultJson[wiki].scores[revId]?.damaging?.score?.probability.true,
-            isBad: oresResultJson[wiki].scores[revId]?.damaging?.score?.prediction === true
-          };
-        case ScoreType.ORES_BADFAITH:
-          return <Score> {
-            type: ScoreType.ORES_BADFAITH,
-            score: oresResultJson[wiki].scores[revId]?.goodfaith?.score?.probability.false,
-            isBad: oresResultJson[wiki].scores[revId]?.goodfaith?.score?.prediction === false
-          };
-      }
-    } catch (err) {
-      logger.warn(err);
-      return null;
+  const wiki = wikiRevId.split(':')[0];
+  const revId = wikiRevId.split(':')[1];
+  const oresUrl = `https://ores.wikimedia.org/v3/scores/${wiki}/?models=damaging|goodfaith&revids=${revId}`;
+  try {
+    oresResultJson = (await axios.get(oresUrl)).data;
+    switch (type) {
+    case ScoreType.ORES_DAMAGING:
+      return <Score> {
+        type: ScoreType.ORES_DAMAGING,
+        score: oresResultJson[wiki].scores[revId]?.damaging?.score?.probability.true,
+        isBad: oresResultJson[wiki].scores[revId]?.damaging?.score?.prediction === true,
+      };
+    case ScoreType.ORES_BADFAITH:
+      return <Score> {
+        type: ScoreType.ORES_BADFAITH,
+        score: oresResultJson[wiki].scores[revId]?.goodfaith?.score?.probability.false,
+        isBad: oresResultJson[wiki].scores[revId]?.goodfaith?.score?.prediction === false,
+      };
     }
+  } catch (err) {
+    logger.warn(err);
+    return null;
+  }
 }
 
-
 scoreRouter.get('/ores/damaging/:wikiRevId', asyncHandler(async (req, res) => {
-  let wikiRevId = req.params.wikiRevId;
-  let score:Score = await fetchOresScore(wikiRevId, ScoreType.ORES_DAMAGING);
+  const wikiRevId = req.params.wikiRevId;
+  const score:Score = await fetchOresScore(wikiRevId, ScoreType.ORES_DAMAGING);
   res.send(score);
 }));
 
 scoreRouter.get('/ores/badfaith/:wikiRevId', asyncHandler(async (req, res) => {
-  let wikiRevId = req.params.wikiRevId;
-  let score:Score = await fetchOresScore(wikiRevId, ScoreType.ORES_BADFAITH);
+  const wikiRevId = req.params.wikiRevId;
+  const score:Score = await fetchOresScore(wikiRevId, ScoreType.ORES_BADFAITH);
   res.send(score);
 }));
 
 let fetchStikiAndCbng = async function(wikiRevId, type:ScoreType) {
   return null;
-}
+};
 
 if (useStiki) {
   const mysql = require('mysql2');
@@ -86,61 +85,59 @@ if (useStiki) {
   const promisePool = pool.promise();
 
   fetchStikiAndCbng = async function(wikiRevId, type:ScoreType):Promise<Score> {
-    let wiki = wikiRevId.split(':')[0];
-    let revId = wikiRevId.split(':')[1];
+    const wiki = wikiRevId.split(':')[0];
+    const revId = wikiRevId.split(':')[1];
     let dbName = null;
-    if (wiki !== 'enwiki') return null;
+    if (wiki !== 'enwiki') {return null;}
     switch (type) {
-      case ScoreType.CLUEBOTNG:
-        dbName = `scores_cbng`;
-        break;
-      case ScoreType.STIKI:
-        dbName = `scores_stiki`;
-        break;
-      default:
-        return null;
+    case ScoreType.CLUEBOTNG:
+      dbName = 'scores_cbng';
+      break;
+    case ScoreType.STIKI:
+      dbName = 'scores_stiki';
+      break;
+    default:
+      return null;
     }
     const [rows, _fields] = await promisePool.query(`SELECT R_ID, SCORE FROM ${dbName} WHERE R_ID = ${revId}`);
 
     if (rows.length > 0) {
-      let score:Score = <Score> {
-        type: type,
-        score: rows[0]['SCORE'],
-        isBad: rows[0]['SCORE'] > 0.5
+      const score:Score = <Score> {
+        type,
+        score: rows[0].SCORE,
+        isBad: rows[0].SCORE > 0.5,
       };
       return score;
     } else {
       return null;
     }
-  }
+  };
 
   scoreRouter.get('/stiki/:wikiRevId', asyncHandler(async (req, res) => {
-    let wikiRevId = req.params.wikiRevId;
+    const wikiRevId = req.params.wikiRevId;
     res.send(fetchOresScore(wikiRevId, ScoreType.STIKI));
   }));
 
   scoreRouter.get('/cbng/:wikiRevId', asyncHandler(async (req, res) => {
-    let wikiRevId = req.params.wikiRevId;
+    const wikiRevId = req.params.wikiRevId;
     res.send(fetchOresScore(wikiRevId, ScoreType.CLUEBOTNG));
   }));
 }
 
-scoreRouter.get(`/:wikiRevId`, asyncHandler(async (req, res) => {
-  let wikiRevId = req.params.wikiRevId;
-  let [
-      oresDamaging,
-      oresBadfaith,
-      stiki,
-      cbng
+scoreRouter.get('/:wikiRevId', asyncHandler(async (req, res) => {
+  const wikiRevId = req.params.wikiRevId;
+  const [
+    oresDamaging,
+    oresBadfaith,
+    stiki,
+    cbng,
   ] = await Promise.all([
     await fetchOresScore(wikiRevId, ScoreType.ORES_DAMAGING),
     await fetchOresScore(wikiRevId, ScoreType.ORES_BADFAITH),
     await fetchStikiAndCbng(wikiRevId, ScoreType.STIKI),
-    await fetchStikiAndCbng(wikiRevId, ScoreType.CLUEBOTNG)
+    await fetchStikiAndCbng(wikiRevId, ScoreType.CLUEBOTNG),
   ]);
-  res.send([oresDamaging, oresBadfaith, stiki, cbng].filter(s => s != null));
+  res.send([oresDamaging, oresBadfaith, stiki, cbng].filter((s) => s != null));
 }));
 
 export default scoreRouter;
-
-

@@ -19,35 +19,35 @@ import { fetchRevisions, asyncHandler } from '../../common';
 export const revisionRouter = require('express').Router();
 
 const revision = async (req, res) => {
-    let wikiRevIds = req.query.wikiRevIds;
-    let wikiToRevisionList = await fetchRevisions(wikiRevIds);
-    res.send(wikiToRevisionList);
+  const wikiRevIds = req.query.wikiRevIds;
+  const wikiToRevisionList = await fetchRevisions(wikiRevIds);
+  res.send(wikiToRevisionList);
 
-    req.visitor
-        .event({ ec: "api", ea: "/revision/:wikiRevId" })
-        .send();
+  req.visitor
+      .event({ ec: 'api', ea: '/revision/:wikiRevId' })
+      .send();
 };
 
-revisionRouter.get(`/`, asyncHandler(revision));
+revisionRouter.get('/', asyncHandler(revision));
 
 const revisionWikiRevId = async (req, res) => {
-    let wikiRevId = req.params.wikiRevId;
-    let wiki = wikiRevId.split(':')[0];
-    let wikiToRevisionList = await fetchRevisions( [wikiRevId]);
-    let revisions = wikiToRevisionList[wiki];
-    if (revisions.length === 1) {
-        res.send(revisions[0]);
-    } else if (revisions.length === 0) {
-        res.status(404);
-        res.send(`Can't find revisions`); // TODO(xinbenlv) Handle this case
-    } else {
-        res.status(500);
-        res.send(`Something is wrong`);
-    }
+  const wikiRevId = req.params.wikiRevId;
+  const wiki = wikiRevId.split(':')[0];
+  const wikiToRevisionList = await fetchRevisions([wikiRevId]);
+  const revisions = wikiToRevisionList[wiki];
+  if (revisions.length === 1) {
+    res.send(revisions[0]);
+  } else if (revisions.length === 0) {
+    res.status(404);
+    res.send('Can\'t find revisions'); // TODO(xinbenlv) Handle this case
+  } else {
+    res.status(500);
+    res.send('Something is wrong');
+  }
 
-    req.visitor
-        .event({ ec: "api", ea: "/revision/:wikiRevId" })
-        .send();
+  req.visitor
+      .event({ ec: 'api', ea: '/revision/:wikiRevId' })
+      .send();
 };
 
-revisionRouter.get(`/:wikiRevId`, asyncHandler(revisionWikiRevId));
+revisionRouter.get('/:wikiRevId', asyncHandler(revisionWikiRevId));
