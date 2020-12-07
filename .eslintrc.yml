@@ -1,0 +1,56 @@
+env:
+  browser: true
+  es2021: true
+  node: true
+extends:
+  - 'plugin:vue/essential'
+  - '@nuxtjs/eslint-config-typescript'
+  - google
+  - prettier
+parserOptions:
+  ecmaVersion: 12
+  parser: '@typescript-eslint/parser'
+  sourceType: module
+plugins:
+  - vue
+  - '@typescript-eslint'
+rules:
+  indent: ["error", 2, { "ArrayExpression": 1, "MemberExpression": 2 }]
+  semi: ["error", "always"]
+
+  ## The following rules are temp disabled before we fully enforce.
+  '@typescript-eslint/no-unused-vars': off
+  array-callback-return: off
+  brace-style: off
+  eqeqeq: off
+  guard-for-in: off
+  import/named: off
+  max-len: off
+  no-console: off
+  no-empty: off
+  no-fallthrough: off
+  no-invalid-this: off
+  no-mixed-operator: off
+  no-mixed-operators: off
+  no-redeclare: off
+  no-return-assign: off
+  no-tabs: off
+  no-template-curly-in-string: off
+  no-throw-literal: off
+  no-undef: off
+  no-unreachable-loop: off
+  no-unused-expressions: off
+  no-unused-vars: off
+  no-useless-escape: off
+  no-var: off
+  node/handle-callback-err: off
+  node/no-new-require: off
+  node/no-path-concat: off
+  require-await: off
+  require-jsdoc: off
+  valid-jsdoc: off
+  vue/no-mutating-props: off
+  vue/no-unused-components: off
+  vue/no-unused-vars: off
+  vue/no-v-html: off
+  vue/require-v-for-key: off
