@@ -59,10 +59,10 @@ async function fixTimestamp() {
   })).map(
     // @ts-ignore
     async (interaction: Document) => {
-      if (interaction._doc.recentChange.timestamp) {
-        interaction.timestamp = parseInt(interaction._doc.recentChange.timestamp);
+      if ((interaction as any)._doc.recentChange.timestamp) {
+        (interaction as any).timestamp = parseInt((interaction as any)._doc.recentChange.timestamp);
       } else {
-        interaction.timestamp = Math.floor(new Date().getTime() / 1000);
+        (interaction as any).timestamp = Math.floor(new Date().getTime() / 1000);
       }
       await interaction.save({ validateBeforeSave: false });
     }));
@@ -229,7 +229,7 @@ async function main() {
         i.title = i.get('recentChange.title');
         if (!i.title) {
           const wikiToRevisionList = await fetchRevisions([i.wikiRevId]);
-          i.title = wikiToRevisionList.enwiki[0].title;
+          i.title = (wikiToRevisionList as any).enwiki[0].title;
         }
       }
       if (!i.timestamp) {
@@ -257,7 +257,7 @@ async function main() {
     } catch (e) {
       return i;
     }
-  }))).filter((ret) => ret !== null).map((i) => i._doc);
+  }))).filter((ret) => ret !== null).map((i) => (i as any)._doc);
   console.log('If we see errorInteractions', errorInteractions);
   await printStatus();
 }

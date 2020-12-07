@@ -27,7 +27,7 @@ export default class PureUserAvatar2 extends Vue {
         }
 
         mounted() {
-          const scopeId = this.$options._scopeId; // returns something like 'data-v-763db97b'
+          const scopeId = (this.$options as any)._scopeId; // returns something like 'data-v-763db97b'
           this.$el.querySelector('.avatar-img svg').setAttribute(scopeId, '');
         }
 }

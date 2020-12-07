@@ -318,7 +318,7 @@ export class MwActionApiClient {
       if (ret.data?.query?.categorymembers?.length > 0) {
         ret.data.query.categorymembers.forEach((item) => console.log(`${JSON.stringify(item.title, null, 2)}`));
         result.push(...ret.data.query.categorymembers);
-        if (ret.data?.continue?.cmcontinue) {params.cmcontinue = ret.data.continue.cmcontinue;}
+        if (ret.data?.continue?.cmcontinue) {(params as any).cmcontinue = ret.data.continue.cmcontinue;}
       } else {
         return result;
       }
@@ -384,7 +384,7 @@ export class MwActionApiClient {
           const links = ret.data.query.pages[pageId].links;
           if (links) {result.push(...links.map((link) => link.title));}
 
-          if (ret.data?.continue?.plcontinue) {params.plcontinue = ret.data.continue.plcontinue;} else {break;}
+          if (ret.data?.continue?.plcontinue) {(params as any).plcontinue = ret.data.continue.plcontinue;} else {break;}
         } else {
           break;
         }

@@ -162,7 +162,7 @@ between Client-Side-Rendering and Server-Side-Rendering -->
                   {{ $t('Label-Time') }}
                 </td>
               </tr>
-              <tr v-for="judgement of interaction.judgements" class="row">
+              <tr v-for="judgement of interaction.judgements" :key="judgement.wikiUserName || judgement.userGaId" class="row">
                 <td class="col-4">
                   <router-link v-if="judgement.wikiUserName" :to="`/history?wikiUserName=${judgement.wikiUserName}`" replace>
                     <object class="avatar-object" :data="`/api/avatar/${judgement.wikiUserName}`" />
@@ -240,8 +240,8 @@ export default {
     });
   },
   beforeCreate() {
-    this.getUrlBaseByWiki = getUrlBaseByWiki.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
-    this.fetchDiffWithWikiRevId = fetchDiffWithWikiRevId.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
+    this['getUrlBaseByWiki'] = getUrlBaseByWiki.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
+    this['fetchDiffWithWikiRevId'] = fetchDiffWithWikiRevId.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
   },
   methods: {
     isMine(judgement) {
@@ -351,7 +351,7 @@ export default {
             },
           },
         });
-        const revisions = Object.values(result.query.pages)[0].revisions;
+        const revisions = (Object.values(result.query.pages)[0] as any).revisions;
         if (revisions[1].user === revisions[0].user) {
           window.open(historyUrl, '_blank');
           this.$ga.event({

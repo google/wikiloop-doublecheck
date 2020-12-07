@@ -158,7 +158,7 @@ export default class ActionPanel extends Vue {
               },
             },
           });
-          const revisions = Object.values(result.query.pages)[0].revisions;
+          const revisions = (Object.values(result.query.pages)[0] as any).revisions;
           this.page1stLastRevision = revisions[0];
           this.page2ndLastRevision = revisions[1];
         }

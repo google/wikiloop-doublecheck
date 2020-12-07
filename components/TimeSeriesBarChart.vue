@@ -106,8 +106,8 @@ export default class TimeSeriesBarChart extends Vue {
               // noinspection JSUnusedAssignment
               breakdownDateCountMap[breakdownKey][date] = d.count;
             } else {
-              if (!breakdownDateCountMap.All) {breakdownDateCountMap.All = {};}
-              breakdownDateCountMap.All[date] = d.count;
+              if (!breakdownDateCountMap['All']) {breakdownDateCountMap['All'] = {};}
+              breakdownDateCountMap['All'][date] = d.count;
             }
           });
 

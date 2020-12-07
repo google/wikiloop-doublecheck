@@ -461,8 +461,8 @@ export default {
     }
   },
   beforeCreate() {
-    this.getUrlBaseByWiki = getUrlBaseByWiki.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
-    this.fetchDiffWithWikiRevId = fetchDiffWithWikiRevId.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
+    this['getUrlBaseByWiki'] = getUrlBaseByWiki.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
+    this['fetchDiffWithWikiRevId'] = fetchDiffWithWikiRevId.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
   },
   methods: {
     async loadDiff() {
@@ -633,7 +633,7 @@ export default {
             },
           },
         });
-        const revisions = Object.values(result.query.pages)[0].revisions;
+        const revisions = (Object.values(result.query.pages)[0] as any).revisions;
         if (revisions[1].user === revisions[0].user) {
           window.open(historyUrl, '_blank');
           this.$ga.event({
