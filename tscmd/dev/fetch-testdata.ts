@@ -1,8 +1,9 @@
 // npx ts-node -r tsconfig-paths/register --project tsconfig.json tscmd/dev/fetch-testdata.ts
 import axios from 'axios';
+import * as fse from 'fs-extra';
+import Bottleneck from 'bottleneck';
 import { initDotEnv } from '~/server/init-util';
 import { MwActionApiClient2 } from '~/shared/mwapi2';
-import * as fse from 'fs-extra';
 
 import {
   MwApiPair,
@@ -10,7 +11,6 @@ import {
   MwApiResponse,
 } from '~/test/testdata/mwapi2.testdata';
 import { parseWikiRevId } from '~/shared/utility-shared';
-import Bottleneck from 'bottleneck';
 
 const bottleneck = new Bottleneck({
   minTime: 200
@@ -79,7 +79,7 @@ const createNoticeMain = async function() {
   ];
 
   await Promise.all(wikiRevIds.map(async wikiRevId=> {
-    let [wiki, revId] = parseWikiRevId(wikiRevId);
+    const [wiki, revId] = parseWikiRevId(wikiRevId);
     const data = await getReqResPairs(wiki, revId);
     await writeFile(`${wiki}:${revId}.json`, data);
     console.log(`Done for ${wikiRevId}`);
