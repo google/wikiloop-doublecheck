@@ -197,7 +197,7 @@ describe('MOCKED MwActionApiClient2.fetchParsedInfo', () => {
     );
   });
 
-  test('should fetch parsed info when given a valid revision', async () => {
+  test('should fetch parsed info when given a invalid revision', async () => {
     const wiki = 'enwiki';
     const revId = 123456789012345;
     await expect(mwapi2.fetchParsedInfo(wiki, revId)).rejects.toThrow(/123456789012345/);

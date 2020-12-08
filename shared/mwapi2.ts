@@ -109,30 +109,7 @@ export class MwActionApiClient2 {
     return params;
   }
 
-  /**
-   * A fetch function given {@link wiki} and a SINGLE {@link revId} it returns information of a revision, given wiki and revid.
-   *
-   * There are a few types of errors:
-   *   1. revision doesn't exist ever. - it will return null
-   *   2. revision was deleted, e.g. due to violation of policy - it will return null
-   *   3. connection was broken - retry - it will through and error, and the upper layer consider retrial.
-   *
-   * @param wiki
-   * @param revId
-   *
-   * @return a composed {@link MwRevisionInfo} that contains page and revision info.
-   */
-  public async fetchRevisionInfo(
-    wiki: string,
-    revId: number
-  ): Promise<MwRevisionInfo> {
-    const result = await this.bottleneck.schedule(
-      async () =>
-        await this.axios.get(MwActionApiClient2.endPoint(wiki), {
-          params: MwActionApiClient2.infoParams(revId)
-        })
-    );
-
+  public static extractRevisionInfo(wiki, result) {
     if (result.data?.query?.badrevids) {
       // TODO: conisider verifying the badrevids is the revision we sent them.
       // This is ignored since we are assuming the {@link revId} is a single number.
@@ -156,7 +133,32 @@ export class MwActionApiClient2 {
         return mwRevisionInfo;
       }
     }
-    return result;
+  }
+
+  /**
+   * A fetch function given {@link wiki} and a SINGLE {@link revId} it returns information of a revision, given wiki and revid.
+   *
+   * There are a few types of errors:
+   *   1. revision doesn't exist ever. - it will return null
+   *   2. revision was deleted, e.g. due to violation of policy - it will return null
+   *   3. connection was broken - retry - it will through and error, and the upper layer consider retrial.
+   *
+   * @param wiki
+   * @param revId
+   *
+   * @return a composed {@link MwRevisionInfo} that contains page and revision info.
+   */
+  public async fetchRevisionInfo(
+    wiki: string,
+    revId: number
+  ): Promise<MwRevisionInfo> {
+    const result = await this.bottleneck.schedule(
+      async () =>
+        await this.axios.get(MwActionApiClient2.endPoint(wiki), {
+          params: MwActionApiClient2.infoParams(revId)
+        })
+    );
+    return MwActionApiClient2.extractRevisionInfo(wiki, result);
   }
 
   public static diffParams(revId: number, prevRevId: number = null) {
