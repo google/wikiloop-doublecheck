@@ -1,0 +1,3297 @@
+[
+  {
+    "req": {
+      "url": "https://wikidata.org/w/api.php",
+      "params": {
+        "action": "query",
+        "format": "json",
+        "prop": "revisions",
+        "revids": 1319338548,
+        "origin": "*"
+      }
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "batchcomplete": "",
+        "query": {
+          "pages": {
+            "130": {
+              "pageid": 130,
+              "ns": 0,
+              "title": "Q2",
+              "revisions": [
+                {
+                  "revid": 1319338548,
+                  "parentid": 1319336987,
+                  "user": "DSwissK",
+                  "timestamp": "2020-12-07T09:38:51Z",
+                  "comment": "/* wbsetclaim-update:2||1|1 */ [[Property:P398]]: [[Q48604]]"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://wikidata.org/w/api.php",
+      "params": {
+        "action": "compare",
+        "format": "json",
+        "origin": "*",
+        "fromrev": 1319338548,
+        "torelative": "prev"
+      }
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "compare": {
+          "fromid": 130,
+          "fromrevid": 1319336987,
+          "fromns": 0,
+          "fromtitle": "Q2",
+          "toid": 130,
+          "torevid": 1319338548,
+          "tons": 0,
+          "totitle": "Q2",
+          "*": "<tr><td colspan=\"2\" class=\"diff-lineno\"></td><td colspan=\"2\" class=\"diff-lineno\">Property / <a title=\"Property:P398\" href=\"/wiki/Property:P398\">child astronomical body</a>: <a title=\"Q48604\" href=\"/wiki/Q48604\">Mir</a> / reference</td></tr><tr><td colspan=\"2\">&nbsp;</td><td class=\"diff-marker\">+</td><td class=\"diff-addedline\"><div><ins class=\"diffchange diffchange-inline\"><span><a title=\"Property:P854\" href=\"/wiki/Property:P854\">reference URL</a>: <a rel=\"nofollow\" class=\"external free\" href=\"https://space.skyrocket.de/doc_sdat/intelsat-9.htm\">https://space.skyrocket.de/doc_sdat/intelsat-9.htm</a></span></ins></div></td></tr>\n<!-- diff cache key wikidatawiki:diff:wikidiff2:1.12:old-1319336987:rev-1319338548:1.10.0:lang-en -->\n"
+        }
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://wikidata.org/w/api.php",
+      "params": {
+        "action": "parse",
+        "format": "json",
+        "prop": "links|images|iwlinks",
+        "oldid": 1319338548,
+        "origin": "*"
+      }
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "parse": {
+          "title": "Q2",
+          "pageid": 130,
+          "revid": 1319338548,
+          "links": [
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q101949"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q1051665"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q1069"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q1071"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q11081619"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q11176"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q1155470"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q11573"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q11826"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q125465"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q130352"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q1321"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q1323537"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q1348808"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q1349417"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q13955"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q14081"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q1430362"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q1450506"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q1458521"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q146786"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q1491734"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q15"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q15241312"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q15316"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q15545344"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q156312"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q1570289"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q16502"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q17437796"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q17437798"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q17518846"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q17559452"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q1768721"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q1775415"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q1811"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q18589965"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q185969"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q1860"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q188"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q19180675"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q193927"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q1970746"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q1975217"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q200325"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q2003654"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q2041543"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q206855"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q21088638"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q211014"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q21128615"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q21152267"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q215913"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q22828183"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q2293672"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q23538"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q23548"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q238231"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q23859820"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q23876039"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q24206672"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q24206689"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q24206694"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q24206696"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q24732074"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q2513"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q25267"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q25271"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q253276"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q25426699"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q2586548"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q25935139"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q265049"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q277155"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q2792544"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q2796622"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q28231576"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q28390"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q3152127"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q3230"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q3241540"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q3270674"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q328"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q33056464"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q3504248"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q36133"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q39385179"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q39893449"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q399984"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q405"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q408"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q4086271"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q41719"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q4173137"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q4228961"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q4243638"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q426529"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q42762"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q43182"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q437882"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q459173"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q460907"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q46255"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q47005776"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q48"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q48183"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q48546"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q48604"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q4879166"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q499327"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q5107"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q513"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q525"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q527"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q544"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q5460604"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q573"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q590232"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q60070514"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q602358"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q613726"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q64139102"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q6500960"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q6508336"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q652"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q660936"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q7066"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q712226"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q737809"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q7737"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q7879772"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q8008"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q825"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q828"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q828224"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q830106"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q83169"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q83296"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q838611"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q8449"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q846030"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q84652023"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q867541"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q89345680"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q898312"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q9035"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q9184"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q933"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q934"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q935310"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q96594012"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q967966"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P1036"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P1051"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P1065"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P1082"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P1096"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P1102"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P1225"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P123"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P1245"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P1281"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P1296"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P1310"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P1332"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P1333"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P1334"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P1335"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P1343"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P138"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P1417"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P1419"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P143"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P1476"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P1480"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P1549"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P1552"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P1557"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P1566"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P1589"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P1617"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P163"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P1667"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P1683"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P170"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P18"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P180"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P1810"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P1814"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P1889"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2043"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2044"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2045"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2046"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2067"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2069"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2096"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2120"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P214"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2146"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2163"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2184"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2210"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2213"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2233"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2234"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2243"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2244"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2248"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P227"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2325"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2347"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2386"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P244"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P248"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2547"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2573"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2579"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2581"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2583"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2633"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P268"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P276"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2924"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2956"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2959"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2960"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P304"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P31"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P3219"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P3222"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P3308"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P3417"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P3452"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P349"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P3553"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P3569"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P361"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P3630"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P367"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P3680"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P373"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P3827"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P3847"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P3916"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P397"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P398"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P407"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P4211"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P4342"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P4390"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P4427"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P443"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P4466"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P459"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P460"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P461"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P4613"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P4656"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P4839"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P486"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P487"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P4896"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P5008"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P5019"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P5063"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P5076"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P508"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P5125"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P5168"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P518"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P522"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P5247"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P527"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P528"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P5337"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P5357"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P5555"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P5573"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P571"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P576"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P577"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P580"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P582"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P585"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P5905"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P610"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P625"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P6262"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P6363"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P642"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P646"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P6573"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P6591"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P6706"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P6766"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P6839"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P6900"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P691"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P7015"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P7033"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P706"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P7314"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P7422"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P7818"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P7822"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P7827"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P7829"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P7832"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P7859"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P805"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P813"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P8408"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P854"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P910"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P913"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P935"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P949"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P972"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P989"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P998"
+            }
+          ],
+          "images": [
+            "Earth_symbol.svg",
+            "The_Earth_seen_from_Apollo_17.jpg",
+            "Jordens_inre.jpg",
+            "Планета_Земли_фотография_КА_Юноны.jpg",
+            "Abu_Reyhan_Biruni-Earth_Circumference.svg",
+            "It-Terra.oga",
+            "Fr-terre-ca-Montréal.ogg",
+            "Ru-земля.ogg",
+            "De-Erde.ogg",
+            "En-Earth.ogg",
+            "Ar-الأرض.ogg",
+            "LL-Q188_(deu)-Sebastian_Wallroth-Erde.wav",
+            "Earth.stl",
+            "Earth_dry_elevation.stl",
+            "Jordens_inre.svg",
+            "Es-tierra_1of4-article.ogg",
+            "Jorden.ogg"
+          ],
+          "iwlinks": []
+        }
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://wikidata.org/w/api.php",
+      "params": {
+        "action": "query",
+        "format": "json",
+        "prop": "revisions",
+        "revids": 1319338547,
+        "origin": "*"
+      }
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "batchcomplete": "",
+        "query": {
+          "pages": {
+            "99420038": {
+              "pageid": 99420038,
+              "ns": 0,
+              "title": "Q103909945",
+              "revisions": [
+                {
+                  "revid": 1319338547,
+                  "parentid": 1318859394,
+                  "user": "Watty62",
+                  "timestamp": "2020-12-07T09:38:51Z",
+                  "comment": "/* wbsetlabel-set:1|en */ Anne  And  Jane, #quickstatements; #temporary_batch_1607333095929"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://wikidata.org/w/api.php",
+      "params": {
+        "action": "compare",
+        "format": "json",
+        "origin": "*",
+        "fromrev": 1319338547,
+        "torelative": "prev"
+      }
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "compare": {
+          "fromid": 99420038,
+          "fromrevid": 1318859394,
+          "fromns": 0,
+          "fromtitle": "Q103909945",
+          "toid": 99420038,
+          "torevid": 1319338547,
+          "tons": 0,
+          "totitle": "Q103909945",
+          "*": "<tr><td colspan=\"2\" class=\"diff-lineno\">label / en</td><td colspan=\"2\" class=\"diff-lineno\">label / en</td></tr><tr><td class=\"diff-marker\">-</td><td class=\"diff-deletedline\"><div><del class=\"diffchange diffchange-inline\">Anne  and  jane</del></div></td><td class=\"diff-marker\">+</td><td class=\"diff-addedline\"><div><ins class=\"diffchange diffchange-inline\">Anne  And  Jane</ins></div></td></tr>\n<!-- diff cache key wikidatawiki:diff:wikidiff2:1.12:old-1318859394:rev-1319338547:1.10.0:lang-en -->\n"
+        }
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://wikidata.org/w/api.php",
+      "params": {
+        "action": "parse",
+        "format": "json",
+        "prop": "links|images|iwlinks",
+        "oldid": 1319338547,
+        "origin": "*"
+      }
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "parse": {
+          "title": "Q103909945",
+          "pageid": 99420038,
+          "revid": 1319338547,
+          "links": [
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q11446"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q145"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q2379199"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q5032525"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q852190"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q906512"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P131"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P1343"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P17"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P31"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P625"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P718"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P793"
+            }
+          ],
+          "images": [],
+          "iwlinks": []
+        }
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://wikidata.org/w/api.php",
+      "params": {
+        "action": "query",
+        "format": "json",
+        "prop": "revisions",
+        "revids": 1319338546,
+        "origin": "*"
+      }
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "batchcomplete": "",
+        "query": {
+          "pages": {
+            "99449896": {
+              "pageid": 99449896,
+              "ns": 0,
+              "title": "Q103949971",
+              "revisions": [
+                {
+                  "revid": 1319338546,
+                  "parentid": 1319093050,
+                  "user": "Watty62",
+                  "timestamp": "2020-12-07T09:38:51Z",
+                  "comment": "/* wbsetdescription-set:1|en */ Shipwreck off the Scottish Coast, imported from Canmore Nov 2020, #quickstatements; #temporary_batch_1607333335266"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://wikidata.org/w/api.php",
+      "params": {
+        "action": "compare",
+        "format": "json",
+        "origin": "*",
+        "fromrev": 1319338546,
+        "torelative": "prev"
+      }
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "compare": {
+          "fromid": 99449896,
+          "fromrevid": 1319093050,
+          "fromns": 0,
+          "fromtitle": "Q103949971",
+          "toid": 99449896,
+          "torevid": 1319338546,
+          "tons": 0,
+          "totitle": "Q103949971",
+          "*": "<tr><td colspan=\"2\" class=\"diff-lineno\">description / en</td><td colspan=\"2\" class=\"diff-lineno\">description / en</td></tr><tr><td class=\"diff-marker\">-</td><td class=\"diff-deletedline\"><div><del class=\"diffchange diffchange-inline\">Shipwreck added as part of CTC21</del></div></td><td class=\"diff-marker\">+</td><td class=\"diff-addedline\"><div><ins class=\"diffchange diffchange-inline\">Shipwreck off the Scottish Coast, imported from Canmore Nov 2020</ins></div></td></tr>\n<!-- diff cache key wikidatawiki:diff:wikidiff2:1.12:old-1319093050:rev-1319338546:1.10.0:lang-en -->\n"
+        }
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://wikidata.org/w/api.php",
+      "params": {
+        "action": "parse",
+        "format": "json",
+        "prop": "links|images|iwlinks",
+        "oldid": 1319338546,
+        "origin": "*"
+      }
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "parse": {
+          "title": "Q103949971",
+          "pageid": 99449896,
+          "revid": 1319338546,
+          "links": [
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q11446"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q145"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q211106"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q5032525"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q852190"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q906512"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P131"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P1343"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P17"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P31"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P625"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P718"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P793"
+            }
+          ],
+          "images": [],
+          "iwlinks": []
+        }
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://wikidata.org/w/api.php",
+      "params": {
+        "action": "query",
+        "format": "json",
+        "prop": "revisions",
+        "revids": 1319338545,
+        "origin": "*"
+      }
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "batchcomplete": "",
+        "query": {
+          "pages": {
+            "13985": {
+              "pageid": 13985,
+              "ns": 0,
+              "title": "Q12401",
+              "revisions": [
+                {
+                  "revid": 1319338545,
+                  "parentid": 1289231576,
+                  "user": "EmausBot",
+                  "timestamp": "2020-12-07T09:38:51Z",
+                  "comment": "/* wbeditentity-update:0| */ Updated: [[tr:Şablon:Nauru konum haritası]] -> [[tr:Modül:Konum haritası/veri/Nauru]]"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://wikidata.org/w/api.php",
+      "params": {
+        "action": "compare",
+        "format": "json",
+        "origin": "*",
+        "fromrev": 1319338545,
+        "torelative": "prev"
+      }
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "compare": {
+          "fromid": 13985,
+          "fromrevid": 1289231576,
+          "fromns": 0,
+          "fromtitle": "Q12401",
+          "toid": 13985,
+          "torevid": 1319338545,
+          "tons": 0,
+          "totitle": "Q12401",
+          "*": "<tr><td colspan=\"2\" class=\"diff-lineno\">links / trwiki / name</td><td colspan=\"2\" class=\"diff-lineno\">links / trwiki / name</td></tr><tr><td class=\"diff-marker\">-</td><td class=\"diff-deletedline\"><div><del class=\"diffchange diffchange-inline\"><a dir=\"auto\" href=\"https://tr.wikipedia.org/wiki/%C5%9Eablon:Nauru_konum_haritas%C4%B1\" hreflang=\"tr\">Şablon:Nauru konum haritası</a></del></div></td><td class=\"diff-marker\">+</td><td class=\"diff-addedline\"><div><ins class=\"diffchange diffchange-inline\"><a dir=\"auto\" href=\"https://tr.wikipedia.org/wiki/Mod%C3%BCl:Konum_haritas%C4%B1/veri/Nauru\" hreflang=\"tr\">Modül:Konum haritası/veri/Nauru</a></ins></div></td></tr>\n<!-- diff cache key wikidatawiki:diff:wikidiff2:1.12:old-1289231576:rev-1319338545:1.10.0:lang-en -->\n"
+        }
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://wikidata.org/w/api.php",
+      "params": {
+        "action": "parse",
+        "format": "json",
+        "prop": "links|images|iwlinks",
+        "oldid": 1319338545,
+        "origin": "*"
+      }
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "parse": {
+          "title": "Q12401",
+          "pageid": 13985,
+          "revid": 1319338545,
+          "links": [
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q36330215"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P31"
+            }
+          ],
+          "images": [],
+          "iwlinks": []
+        }
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://wikidata.org/w/api.php",
+      "params": {
+        "action": "query",
+        "format": "json",
+        "prop": "revisions",
+        "revids": 1319338544,
+        "origin": "*"
+      }
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "batchcomplete": "",
+        "query": {
+          "pages": {
+            "98366965": {
+              "pageid": 98366965,
+              "ns": 0,
+              "title": "Q100863363",
+              "revisions": [
+                {
+                  "revid": 1319338544,
+                  "parentid": 1319337775,
+                  "user": "Jura1",
+                  "timestamp": "2020-12-07T09:38:51Z",
+                  "comment": "/* wbsetlabel-add:1|pt */ economia de Sergipe"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://wikidata.org/w/api.php",
+      "params": {
+        "action": "compare",
+        "format": "json",
+        "origin": "*",
+        "fromrev": 1319338544,
+        "torelative": "prev"
+      }
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "compare": {
+          "fromid": 98366965,
+          "fromrevid": 1319337775,
+          "fromns": 0,
+          "fromtitle": "Q100863363",
+          "toid": 98366965,
+          "torevid": 1319338544,
+          "tons": 0,
+          "totitle": "Q100863363",
+          "*": "<tr><td colspan=\"2\" class=\"diff-lineno\">label / pt</td><td colspan=\"2\" class=\"diff-lineno\">label / pt</td></tr><tr><td colspan=\"2\">&nbsp;</td><td class=\"diff-marker\">+</td><td class=\"diff-addedline\"><div><ins class=\"diffchange diffchange-inline\">economia de Sergipe</ins></div></td></tr>\n<!-- diff cache key wikidatawiki:diff:wikidiff2:1.12:old-1319337775:rev-1319338544:1.10.0:lang-en -->\n"
+        }
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://wikidata.org/w/api.php",
+      "params": {
+        "action": "parse",
+        "format": "json",
+        "prop": "links|images|iwlinks",
+        "oldid": 1319338544,
+        "origin": "*"
+      }
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "parse": {
+          "title": "Q100863363",
+          "pageid": 98366965,
+          "revid": 1319338544,
+          "links": [
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q100773131"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q10270051"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q155"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q43783"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q9653507"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P17"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P276"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P279"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P31"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P373"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P910"
+            }
+          ],
+          "images": [],
+          "iwlinks": []
+        }
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://wikidata.org/w/api.php",
+      "params": {
+        "action": "query",
+        "format": "json",
+        "prop": "revisions",
+        "revids": 1319338543,
+        "origin": "*"
+      }
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "batchcomplete": "",
+        "query": {
+          "pages": {
+            "23336029": {
+              "pageid": 23336029,
+              "ns": 0,
+              "title": "Q21289110",
+              "revisions": [
+                {
+                  "revid": 1319338543,
+                  "parentid": 1279044918,
+                  "user": "Lockal",
+                  "timestamp": "2020-12-07T09:38:51Z",
+                  "comment": "/* wbcreateclaim-create:1| */ [[Property:P2671]]: /g/11bxjblv1w"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://wikidata.org/w/api.php",
+      "params": {
+        "action": "compare",
+        "format": "json",
+        "origin": "*",
+        "fromrev": 1319338543,
+        "torelative": "prev"
+      }
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "compare": {
+          "fromid": 23336029,
+          "fromrevid": 1279044918,
+          "fromns": 0,
+          "fromtitle": "Q21289110",
+          "toid": 23336029,
+          "torevid": 1319338543,
+          "tons": 0,
+          "totitle": "Q21289110",
+          "*": "<tr><td colspan=\"2\" class=\"diff-lineno\"></td><td colspan=\"2\" class=\"diff-lineno\">Property / <a title=\"Property:P2671\" href=\"/wiki/Property:P2671\">Google Knowledge Graph ID</a></td></tr><tr><td colspan=\"2\">&nbsp;</td><td class=\"diff-marker\">+</td><td class=\"diff-addedline\"><div><ins class=\"diffchange diffchange-inline\"><span><a class=\"wb-external-id external\" href=\"https://www.google.com/search?kgmid=/g/11bxjblv1w&amp;hl=en\" rel=\"nofollow\">/g/11bxjblv1w</a></span></ins></div></td></tr><tr><td colspan=\"2\" class=\"diff-lineno\"></td><td colspan=\"2\" class=\"diff-lineno\">Property / <a title=\"Property:P2671\" href=\"/wiki/Property:P2671\">Google Knowledge Graph ID</a>: <a class=\"wb-external-id external\" href=\"https://www.google.com/search?kgmid=/g/11bxjblv1w&amp;hl=en\" rel=\"nofollow\">/g/11bxjblv1w</a> / rank</td></tr><tr><td colspan=\"2\">&nbsp;</td><td class=\"diff-marker\">+</td><td class=\"diff-addedline\"><div><ins class=\"diffchange diffchange-inline\"><span>Normal rank</span></ins></div></td></tr>\n<!-- diff cache key wikidatawiki:diff:wikidiff2:1.12:old-1279044918:rev-1319338543:1.10.0:lang-en -->\n"
+        }
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://wikidata.org/w/api.php",
+      "params": {
+        "action": "parse",
+        "format": "json",
+        "prop": "links|images|iwlinks",
+        "oldid": 1319338543,
+        "origin": "*"
+      }
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "parse": {
+          "title": "Q21289110",
+          "pageid": 23336029,
+          "revid": 1319338543,
+          "links": [
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q13219454"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q18402099"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q2494649"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q30"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q328"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q42973"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q4651894"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q5"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q54919"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q620946"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q6581097"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q969026"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P106"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P143"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P18"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P1810"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P19"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2031"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P21"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P213"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P214"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2163"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P244"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P245"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P248"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2671"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P27"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P31"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P4656"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P509"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P569"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P570"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P735"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P7859"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P813"
+            }
+          ],
+          "images": [
+            "Horace_gifford_portrait.jpg"
+          ],
+          "iwlinks": []
+        }
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://wikidata.org/w/api.php",
+      "params": {
+        "action": "query",
+        "format": "json",
+        "prop": "revisions",
+        "revids": 1319338542,
+        "origin": "*"
+      }
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "batchcomplete": "",
+        "query": {
+          "pages": {
+            "6843832": {
+              "pageid": 6843832,
+              "ns": 0,
+              "title": "Q6973733",
+              "revisions": [
+                {
+                  "revid": 1319338542,
+                  "parentid": 1314021213,
+                  "user": "MatSuBot",
+                  "timestamp": "2020-12-07T09:38:50Z",
+                  "comment": "/* wbeditentity-update-languages-short:0||sd */ add missing labels"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://wikidata.org/w/api.php",
+      "params": {
+        "action": "compare",
+        "format": "json",
+        "origin": "*",
+        "fromrev": 1319338542,
+        "torelative": "prev"
+      }
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "compare": {
+          "fromid": 6843832,
+          "fromrevid": 1314021213,
+          "fromns": 0,
+          "fromtitle": "Q6973733",
+          "toid": 6843832,
+          "torevid": 1319338542,
+          "tons": 0,
+          "totitle": "Q6973733",
+          "*": "<tr><td colspan=\"2\" class=\"diff-lineno\">label / sd</td><td colspan=\"2\" class=\"diff-lineno\">label / sd</td></tr><tr><td colspan=\"2\">&nbsp;</td><td class=\"diff-marker\">+</td><td class=\"diff-addedline\"><div><ins class=\"diffchange diffchange-inline\">زمرو:ليسوٿو ۾ رابطا</ins></div></td></tr>\n<!-- diff cache key wikidatawiki:diff:wikidiff2:1.12:old-1314021213:rev-1319338542:1.10.0:lang-en -->\n"
+        }
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://wikidata.org/w/api.php",
+      "params": {
+        "action": "parse",
+        "format": "json",
+        "prop": "links|images|iwlinks",
+        "oldid": 1319338542,
+        "origin": "*"
+      }
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "parse": {
+          "title": "Q6973733",
+          "pageid": 6843832,
+          "revid": 1319338542,
+          "links": [
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q1013"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q11024"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q328"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q4167836"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P143"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P31"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P971"
+            }
+          ],
+          "images": [],
+          "iwlinks": []
+        }
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://wikidata.org/w/api.php",
+      "params": {
+        "action": "query",
+        "format": "json",
+        "prop": "revisions",
+        "revids": 1319338541,
+        "origin": "*"
+      }
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "batchcomplete": "",
+        "query": {
+          "pages": {
+            "87820376": {
+              "pageid": 87820376,
+              "ns": 0,
+              "title": "Q88588233",
+              "revisions": [
+                {
+                  "revid": 1319338541,
+                  "parentid": 1319338518,
+                  "user": "BotMultichill",
+                  "timestamp": "2020-12-07T09:38:50Z",
+                  "comment": "/* wbsetqualifier-add:1| */ [[Property:P2699]]: https://artuk.org/discover/artworks/say-please-dites-donc-sil-vous-plait-209427"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://wikidata.org/w/api.php",
+      "params": {
+        "action": "compare",
+        "format": "json",
+        "origin": "*",
+        "fromrev": 1319338541,
+        "torelative": "prev"
+      }
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "compare": {
+          "fromid": 87820376,
+          "fromrevid": 1319338518,
+          "fromns": 0,
+          "fromtitle": "Q88588233",
+          "toid": 87820376,
+          "torevid": 1319338541,
+          "tons": 0,
+          "totitle": "Q88588233",
+          "*": "<tr><td colspan=\"2\" class=\"diff-lineno\"></td><td colspan=\"2\" class=\"diff-lineno\">Property / <a title=\"Property:P4765\" href=\"/wiki/Property:P4765\">Commons compatible image available at URL</a>: <a rel=\"nofollow\" class=\"external free\" href=\"https://artuk.org/download/say-please-dites-donc-sil-vous-plait-209427\">https://artuk.org/download/say-please-dites-donc-sil-vous-plait-209427</a> / qualifier</td></tr><tr><td colspan=\"2\">&nbsp;</td><td class=\"diff-marker\">+</td><td class=\"diff-addedline\"><div><ins class=\"diffchange diffchange-inline\"><span><a title=\"Property:P2699\" href=\"/wiki/Property:P2699\">URL</a>: <a rel=\"nofollow\" class=\"external free\" href=\"https://artuk.org/discover/artworks/say-please-dites-donc-sil-vous-plait-209427\">https://artuk.org/discover/artworks/say-please-dites-donc-sil-vous-plait-209427</a></span></ins></div></td></tr>\n<!-- diff cache key wikidatawiki:diff:wikidiff2:1.12:old-1319338518:rev-1319338541:1.10.0:lang-en -->\n"
+        }
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://wikidata.org/w/api.php",
+      "params": {
+        "action": "parse",
+        "format": "json",
+        "prop": "links|images|iwlinks",
+        "oldid": 1319338541,
+        "origin": "*"
+      }
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "parse": {
+          "title": "Q88588233",
+          "pageid": 87820376,
+          "revid": 1319338541,
+          "links": [
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q127171"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q1327919"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q174728"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q2195"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q296955"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q3305213"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q4259259"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q5727902"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q861259"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P1480"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P1679"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P170"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P186"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P195"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2048"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2049"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P217"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2699"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2701"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P276"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P31"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P4144"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P4765"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P518"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P571"
+            }
+          ],
+          "images": [],
+          "iwlinks": []
+        }
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://wikidata.org/w/api.php",
+      "params": {
+        "action": "query",
+        "format": "json",
+        "prop": "revisions",
+        "revids": 1319338540,
+        "origin": "*"
+      }
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "batchcomplete": "",
+        "query": {
+          "pages": {
+            "83690212": {
+              "pageid": 83690212,
+              "ns": 0,
+              "title": "Q84389328",
+              "revisions": [
+                {
+                  "revid": 1319338540,
+                  "parentid": 1255004179,
+                  "user": "Twofivesixbot",
+                  "timestamp": "2020-12-07T09:38:50Z",
+                  "comment": "/* wbeditentity-update-languages-short:0||bn */ TYC"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://wikidata.org/w/api.php",
+      "params": {
+        "action": "compare",
+        "format": "json",
+        "origin": "*",
+        "fromrev": 1319338540,
+        "torelative": "prev"
+      }
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "compare": {
+          "fromid": 83690212,
+          "fromrevid": 1255004179,
+          "fromns": 0,
+          "fromtitle": "Q84389328",
+          "toid": 83690212,
+          "torevid": 1319338540,
+          "tons": 0,
+          "totitle": "Q84389328",
+          "*": "<tr><td colspan=\"2\" class=\"diff-lineno\">label / bn</td><td colspan=\"2\" class=\"diff-lineno\">label / bn</td></tr><tr><td colspan=\"2\">&nbsp;</td><td class=\"diff-marker\">+</td><td class=\"diff-addedline\"><div><ins class=\"diffchange diffchange-inline\">টিওয়াইসি ৩২৬৮-৮৫৪-১</ins></div></td></tr>\n<!-- diff cache key wikidatawiki:diff:wikidiff2:1.12:old-1255004179:rev-1319338540:1.10.0:lang-en -->\n"
+        }
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://wikidata.org/w/api.php",
+      "params": {
+        "action": "parse",
+        "format": "json",
+        "prop": "links|images|iwlinks",
+        "oldid": 1319338540,
+        "origin": "*"
+      }
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "parse": {
+          "title": "Q84389328",
+          "pageid": 83690212,
+          "revid": 1319338540,
+          "links": [
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q12129"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q1264450"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q13442"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q1454942"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q15991308"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q16556693"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q21500224"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q22137107"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q2520419"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q2725928"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q28390"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q3674704"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q37859523"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q4892529"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q51905050"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q523"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q54196608"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q654724"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q66309067"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q66659648"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q67206691"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q6746395"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q76287"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q9256"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P1215"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P1227"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2214"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2215"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2216"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P248"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P2583"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P3083"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P31"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P528"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P59"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P6257"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P6258"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P6259"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P642"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P972"
+            }
+          ],
+          "images": [],
+          "iwlinks": []
+        }
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://wikidata.org/w/api.php",
+      "params": {
+        "action": "query",
+        "format": "json",
+        "prop": "revisions",
+        "revids": 1319338539,
+        "origin": "*"
+      }
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "batchcomplete": "",
+        "query": {
+          "pages": {
+            "99475882": {
+              "pageid": 99475882,
+              "ns": 0,
+              "title": "Q103980575",
+              "revisions": [
+                {
+                  "revid": 1319338539,
+                  "parentid": 1319338516,
+                  "user": "BotMultichill",
+                  "timestamp": "2020-12-07T09:38:50Z",
+                  "comment": "/* wbsetclaim-create:2||1 */ [[Property:P31]]: [[Q3305213]]"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://wikidata.org/w/api.php",
+      "params": {
+        "action": "compare",
+        "format": "json",
+        "origin": "*",
+        "fromrev": 1319338539,
+        "torelative": "prev"
+      }
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "compare": {
+          "fromid": 99475882,
+          "fromrevid": 1319338516,
+          "fromns": 0,
+          "fromtitle": "Q103980575",
+          "toid": 99475882,
+          "torevid": 1319338539,
+          "tons": 0,
+          "totitle": "Q103980575",
+          "*": "<tr><td colspan=\"2\" class=\"diff-lineno\"></td><td colspan=\"2\" class=\"diff-lineno\">Property / <a title=\"Property:P31\" href=\"/wiki/Property:P31\">instance of</a></td></tr><tr><td colspan=\"2\">&nbsp;</td><td class=\"diff-marker\">+</td><td class=\"diff-addedline\"><div><ins class=\"diffchange diffchange-inline\"><span><a title=\"Q3305213\" href=\"/wiki/Q3305213\">painting</a></span></ins></div></td></tr><tr><td colspan=\"2\" class=\"diff-lineno\"></td><td colspan=\"2\" class=\"diff-lineno\">Property / <a title=\"Property:P31\" href=\"/wiki/Property:P31\">instance of</a>: <a title=\"Q3305213\" href=\"/wiki/Q3305213\">painting</a> / rank</td></tr><tr><td colspan=\"2\">&nbsp;</td><td class=\"diff-marker\">+</td><td class=\"diff-addedline\"><div><ins class=\"diffchange diffchange-inline\"><span>Normal rank</span></ins></div></td></tr>\n<!-- diff cache key wikidatawiki:diff:wikidiff2:1.12:old-1319338516:rev-1319338539:1.10.0:lang-en -->\n"
+        }
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://wikidata.org/w/api.php",
+      "params": {
+        "action": "parse",
+        "format": "json",
+        "prop": "links|images|iwlinks",
+        "oldid": 1319338539,
+        "origin": "*"
+      }
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "parse": {
+          "title": "Q103980575",
+          "pageid": 99475882,
+          "revid": 1319338539,
+          "links": [
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q1142334"
+            },
+            {
+              "ns": 0,
+              "exists": "",
+              "*": "Q3305213"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P195"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P217"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P31"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P580"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P813"
+            },
+            {
+              "ns": 120,
+              "exists": "",
+              "*": "Property:P854"
+            }
+          ],
+          "images": [],
+          "iwlinks": []
+        }
+      }
+    }
+  }
+]

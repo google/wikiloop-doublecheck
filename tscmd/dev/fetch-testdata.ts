@@ -2,30 +2,49 @@
 import axios from 'axios';
 import { initDotEnv } from '~/server/init-util';
 import { MwActionApiClient2 } from '~/shared/mwapi2';
+import * as fse from 'fs-extra';
 
 import {
   MwApiPair,
   MwApiRequest,
   MwApiResponse,
 } from '~/test/testdata/mwapi2.testdata';
+import { parseWikiRevId } from '~/shared/utility-shared';
+import Bottleneck from 'bottleneck';
 
-const createNoticeMain = async function() {
-  await initDotEnv();
-  const url = MwActionApiClient2.endPoint('enwiki');
-  const parsedPairs = [];
+const bottleneck = new Bottleneck({
+  minTime: 200
+});
 
-  for (let i = 0; i < 10; i++) {
-    const revId = 920429244 + i;
+/**
+ * Default number of revisions to fetch in each type of test data.
+ */
+const NUM_REVS_TO_FETHC = 1000;
+
+const start = new Date();
+
+/**
+ * Given wiki and revId, the function fetch a number of {@link NUM_REVS_TO_FETHC} of Request and Response from MediaWiki API.
+ * @param wiki 
+ * @param seedRevId 
+ */
+async function getReqResPairs(wiki:string, seedRevId:number) {
+  
+  const url = MwActionApiClient2.endPoint(wiki);
+  const reqResPairs = [];
+
+  for (let i = 0; i < NUM_REVS_TO_FETHC; i++) {
+    const revId = seedRevId - i;
     await Promise.all([
       MwActionApiClient2.infoParams,
       MwActionApiClient2.diffParams,
       MwActionApiClient2.parsedParams,
     ].map(async (paramFunc) => {
       try {
-        const params = paramFunc(revId);
-        const result = await axios.get(url, {
+        const params:any = paramFunc(revId);
+        const result:any = await bottleneck.schedule(async () => await axios.get(url, {
           params,
-        });
+        }));
         const pair: MwApiPair = {
           req: {
             url,
@@ -36,13 +55,36 @@ const createNoticeMain = async function() {
             data: result.data,
           } as MwApiResponse,
         };
-        parsedPairs.push(pair);
+        reqResPairs.push(pair);
+        console.log(`At ${new Date().getTime() - start.getTime()}ms fetched `, params, result.status, 'length', JSON.stringify(result.data, null, 2).length);
       } catch (err) {
         console.warn(err);
       }
     }));
   }
-  console.log(JSON.stringify(parsedPairs, null, 2));
+  return reqResPairs;
+}
+
+async function writeFile(filename, jsonObj) {
+  await fse.outputJSON(`./test/testdata/mwapi/large/${filename}`, jsonObj, {spaces: 2});
+}
+
+const createNoticeMain = async function() {
+  await initDotEnv();
+
+  const wikiRevIds = [
+    "enwiki:920429244", 
+    "zhwiki:63095995",
+    "wikidatawiki:1319338548",
+  ];
+
+  await Promise.all(wikiRevIds.map(async wikiRevId=> {
+    let [wiki, revId] = parseWikiRevId(wikiRevId);
+    const data = await getReqResPairs(wiki, revId);
+    await writeFile(`${wiki}:${revId}.json`, data);
+    console.log(`Done for ${wikiRevId}`);
+  }));
+  console.log('Done all');
 };
 
 createNoticeMain().then(() => {
