@@ -1,21 +1,25 @@
 <template>
-  <div class="card shadow container-md mt-md-3 py-md-3">
-    <div class="card-body pure-feed2--wrapper">
-      <pure-revision-panel
-        class="pure-feed2--item"
-        :info-loaded="infoLoaded"
-        :diff-loaded="diffLoaded"
-        :item="item"
-      />
-      <div v-if="showJudgementPanel" class="pure-feed2--item">
-        <div class="pure-feed2--judgpan__label">
-          {{ $t('Label-Judgement') }}
-        </div>
-        <pure-judgement-panel2
-          class="pure-feed2--item pure-feed2--judgpan"
-          :interactions="interactions"
+  <div class="pure-feed2-main">
+    <div class="card shadow container-md mt-md-3 py-md-3">
+      <div class="card-body pure-feed2--wrapper">
+        <pure-revision-panel
+          class="pure-feed2--item"
+          :info-loaded="infoLoaded"
+          :diff-loaded="diffLoaded"
+          :item="item"
         />
+        <div v-if="showJudgementPanel" class="pure-feed2--item">
+          <div class="pure-feed2--judgpan__label">
+            {{ $t('Label-Judgement') }}
+          </div>
+          <pure-judgement-panel2
+            class="pure-feed2--item pure-feed2--judgpan"
+            :interactions="interactions"
+          />
+        </div>
       </div>
+    </div>
+    <div class="pure-feed2--bottom">
       <pure-action-panel2
         v-if="infoLoaded && diffLoaded"
         class="pure-feed2--actpan"
@@ -92,6 +96,14 @@ export default class PureFeed2 extends Vue {
   font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 1rem;
+}
+
+.pure-feed2--bottom {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  display:flex;
+  justify-content: center;
 }
 
 </style>

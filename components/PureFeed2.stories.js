@@ -1,8 +1,19 @@
 import PureFeed2 from '~/components/PureFeed2';
+import ITEM_DATA_MAP from '~/test/testdata/mwapi/small/datamap.json';
 
 export default {
   title: 'PureFeed2',
   component: PureFeed2,
+  argTypes: {
+    itemKey: {
+      control: {
+        type: 'select',
+        options: Object.keys(ITEM_DATA_MAP)
+      },
+      name: 'Revision picker',
+      description: 'This control selects different revisions to show'
+    }
+  }
 };
 
 const Template = (args, { argTypes }) => ({
@@ -11,13 +22,18 @@ const Template = (args, { argTypes }) => ({
   template: `<PureFeed2 
     :infoLoaded="infoLoaded"
     :diffLoaded="diffLoaded"
-    :item="item" 
+    :item="item || itemDataMap[itemKey]" 
     
     :judgement="judgement"
     :judgementPending="judgementPending"
     :interactions="interactions"
     :showJudgementPanel="showJudgementPanel"
     />`,
+  data() {
+    return {
+      itemDataMap: ITEM_DATA_MAP,
+    };
+  }
 });
 
 export const basic = Template.bind({});
@@ -80,3 +96,22 @@ judgementDone.args = {
     { userGaId: 'GA1.2.1021694750.160718274', judgement: 'ShouldRevert' },
   ],
 };
+
+export const selectableData = Template.bind({});
+selectableData.args = {
+  infoLoaded: true,
+  diffLoaded: true,
+  itemKey: Object.keys(ITEM_DATA_MAP)[0],
+  judgement: 'LooksGood',
+  judgementPending: false,
+  showJudgementPanel: true,
+  interactions: [
+    { wikiUserName: 'Xinbenlv', userGaId: 'GA1.2.1021694750.1607134727', judgement: 'LooksGood' },
+    { wikiUserName: 'XinbenlvSandBox', userGaId: 'GA1.2.1021694750.1607134727', judgement: 'LooksGood' },
+    { wikiUserName: 'Alpha', userGaId: 'GA1.2.1021694750.1607134827', judgement: 'NotSure' },
+    { wikiUserName: 'Bella', userGaId: 'GA1.2.1021694750.160718372', judgement: 'ShouldRevert' },
+    { userGaId: 'GA1.2.1021694750.160718144', judgement: 'ShouldRevert' },
+    { userGaId: 'GA1.2.1021694750.160718274', judgement: 'ShouldRevert' },
+  ],
+};
+

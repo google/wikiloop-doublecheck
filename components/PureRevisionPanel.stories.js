@@ -1,11 +1,6 @@
 import PureRevisionPanel from '~/components/PureRevisionPanel';
 import ITEM_DATA_MAP from '~/test/testdata/mwapi/small/datamap.json';
 
-function range(start, count) {
-  return Array.apply(0, Array(count))
-      .map((element, index) => index + start);
-}
-
 export default {
   title: 'PureRevisionPanel',
   component: PureRevisionPanel,
@@ -15,8 +10,8 @@ export default {
         type: 'select',
         options: Object.keys(ITEM_DATA_MAP)
       },
-      name: 'Revision',
-      description: 'This control selects different revisions to be shown'
+      name: 'Revision picker',
+      description: 'This control selects different revisions to show.'
     }
   }
 };
