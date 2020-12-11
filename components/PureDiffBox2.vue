@@ -40,7 +40,7 @@ export default class PureDiffBox2 extends Vue {
 <style lang="scss" scoped>
 .diff-box {
   min-height: 10rem;
-  min-width: 20rem;
+  min-width: 16rem;
   display:flex;
   align-items: center;
   justify-content: center;

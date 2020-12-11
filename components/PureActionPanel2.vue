@@ -77,7 +77,28 @@ export default class PureActionPanel2 extends Vue {
 
     .btn {
         transition: .1s;
+        box-shadow: 0 0 0.25rem .25rem #aaaa;
     }
+
+    $levels: success, secondary, danger;
+
+    @each $level in $levels {
+      .btn-outline-#{$level} {
+        background-color:white; 
+        &:hover {
+          background: var(--#{$level})
+        }
+      }
+    }
+
+    // .btn-outline-secondary {
+    //   background-color:white; 
+    //   &:hover {
+    //     background: var(--secondary)
+    //   }
+    // }
+ 
+ 
 
     .btn.selected:not(.pending) {
         transform: scale(1.2);

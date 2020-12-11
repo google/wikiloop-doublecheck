@@ -95,7 +95,11 @@ export default class PureFeed2 extends Vue {
 .pure-feed2--judgpan__label {
   font-size: 1.2rem;
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.pure-feed2-main {
+  margin-bottom: 6.15rem;
 }
 
 .pure-feed2--bottom {
@@ -104,6 +108,7 @@ export default class PureFeed2 extends Vue {
   bottom: 0;
   display:flex;
   justify-content: center;
+  z-index:100;
 }
 
 </style>
