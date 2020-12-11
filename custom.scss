@@ -15,17 +15,17 @@
 // );
 
 // $enable-responsive-font-sizes: true;
-// $enable-shadows: true;
-// $enable-gradients: true;
+$enable-shadows: true;
+$enable-gradients: true;
 
 // Then include the following
 @import 'bootstrap/scss/bootstrap.scss';
 @import 'bootstrap-vue/src/index.scss';
 
-// :root {
-//     -webkit-font-smoothing: antialiased;
-//     -moz-osx-font-smoothing: grayscale;
-// }
+:root {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
 
 // And define any of your custom or additional CSS/SCSS here,
 // or via an @import
