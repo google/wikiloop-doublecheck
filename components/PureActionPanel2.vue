@@ -1,40 +1,43 @@
 <template>
-  <div>
-    <div
-      class="looks-good btn"
-      :class="{
-        selected: isSelected('LooksGood'),
-        pending: pending,
-        'btn-success': isSelected('LooksGood'),
-        'btn-outline-success': !isSelected('LooksGood')
-      }"
-    >
-      <i v-if="isSelected('LooksGood') && pending" class="fas fa-spinner" />
-      <i v-else class="fas fa-thumbs-up" />
-    </div>
-    <div
-      class="not-sure btn"
-      :class="{
-        selected: isSelected('NotSure'),
-        pending: pending,
-        'btn-secondary': isSelected('NotSure'),
-        'btn-outline-secondary': !isSelected('NotSure')
-      }"
-    >
-      <i v-if="isSelected('NotSure') && pending" class="fas fa-spinner" />
-      <i v-else class="fas fa-question" />
-    </div>
-    <div
-      class="should-revert btn"
-      :class="{
-        selected: isSelected('ShouldRevert'),
-        pending: pending,
-        'btn-danger': isSelected('ShouldRevert'),
-        'btn-outline-danger': !isSelected('ShouldRevert')
-      }"
-    >
-      <i v-if="isSelected('ShouldRevert') && pending" class="fas fa-spinner" />
-      <i v-else class="fas fa-thumbs-down" />
+  <div class="actpan">
+
+    <div class="actpan--main">
+      <div
+        class="looks-good btn"
+        :class="{
+          selected: isSelected('LooksGood'),
+          pending: pending,
+          'btn-success': isSelected('LooksGood'),
+          'btn-outline-success': !isSelected('LooksGood')
+        }"
+      >
+        <i v-if="isSelected('LooksGood') && pending" class="fas fa-spinner" />
+        <i v-else class="fas fa-thumbs-up" />
+      </div>
+      <div
+        class="not-sure btn"
+        :class="{
+          selected: isSelected('NotSure'),
+          pending: pending,
+          'btn-secondary': isSelected('NotSure'),
+          'btn-outline-secondary': !isSelected('NotSure')
+        }"
+      >
+        <i v-if="isSelected('NotSure') && pending" class="fas fa-spinner" />
+        <i v-else class="fas fa-question" />
+      </div>
+      <div
+        class="should-revert btn"
+        :class="{
+          selected: isSelected('ShouldRevert'),
+          pending: pending,
+          'btn-danger': isSelected('ShouldRevert'),
+          'btn-outline-danger': !isSelected('ShouldRevert')
+        }"
+      >
+        <i v-if="isSelected('ShouldRevert') && pending" class="fas fa-spinner" />
+        <i v-else class="fas fa-thumbs-down" />
+      </div>
     </div>
   </div>
 </template>
@@ -77,7 +80,10 @@ export default class PureActionPanel2 extends Vue {
 
     .btn {
         transition: .1s;
-        box-shadow: 0 0 0.25rem .25rem #aaaa;
+        box-shadow: 0 0 .25rem .25rem #cccc;
+        &:hover {
+          box-shadow: 0 0 .4rem .4rem #7777;
+        }
     }
 
     $levels: success, secondary, danger;
@@ -86,19 +92,10 @@ export default class PureActionPanel2 extends Vue {
       .btn-outline-#{$level} {
         background-color:white; 
         &:hover {
-          background: var(--#{$level})
+          background: var(--#{$level});
         }
       }
     }
-
-    // .btn-outline-secondary {
-    //   background-color:white; 
-    //   &:hover {
-    //     background: var(--secondary)
-    //   }
-    // }
- 
- 
 
     .btn.selected:not(.pending) {
         transform: scale(1.2);

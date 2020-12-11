@@ -34,6 +34,12 @@ basic2.args = {
 };
 
 export const dense = Template.bind({});
+
+dense.parameters = {
+  // Set the viewports in Chromatic at a component level.
+  chromatic: { viewports: [320, 1800] },
+};
+
 dense.args = {
   interactions: [
     { wikiUserName: 'Xinbenlv', userGaId: 'GA1.2.1021694750.1607134727', judgement: 'LooksGood' },

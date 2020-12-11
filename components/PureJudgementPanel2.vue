@@ -69,6 +69,7 @@ export default class PureJudgementPanel2 extends Vue {
         display: flex;
         gap: 12px;
         flex: 1rem;
+        flex-wrap: wrap;
     }
     .judgpan--item {
         display: flex;
