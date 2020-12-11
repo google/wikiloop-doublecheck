@@ -321,9 +321,7 @@ export default {
 };
 </script>
 <style lang="scss">
-@import 'bootstrap/scss/_functions.scss';
-@import 'bootstrap/scss/_variables.scss';
-@import 'bootstrap/scss/_mixins.scss';
+@import 'custom.scss';
 
 html {
   word-spacing: 1px;

@@ -29,7 +29,7 @@ module.exports = {
     title: pkg.name,
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1, shrink-to-fit=no' },
       { hid: 'description', name: 'description', content: pkg.description },
       { uptimerobot_verify_uuid: '89d70f81-d069-43cf-ad7f-b932f7e3a24b' }, // a random uuid for verification purpose
     ],
@@ -116,7 +116,8 @@ module.exports = {
 
   bootstrapVue: {
     config: {
-      // Custom config options here
+      bootstrapCSS: false, // Or `css: false`
+      bootstrapVueCSS: false // Or `bvCSS: false`
     },
   },
   /*

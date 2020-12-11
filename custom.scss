@@ -1,0 +1,31 @@
+
+// Custom Bootstrap variable overrides go first
+// $grid-breakpoints: (
+//   xs: 0,
+//   sm: 480px,
+//   md: 640px,
+//   lg: 992px,
+//   xl: 1300px
+// );
+
+// $theme-colors: (
+//   "primary": #0063BF,
+//   "success": #339966,
+//   "danger": #990000
+// );
+
+// $enable-responsive-font-sizes: true;
+// $enable-shadows: true;
+// $enable-gradients: true;
+
+// Then include the following
+@import 'bootstrap/scss/bootstrap.scss';
+@import 'bootstrap-vue/src/index.scss';
+
+// :root {
+//     -webkit-font-smoothing: antialiased;
+//     -moz-osx-font-smoothing: grayscale;
+// }
+
+// And define any of your custom or additional CSS/SCSS here,
+// or via an @import
