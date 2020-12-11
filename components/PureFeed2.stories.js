@@ -13,7 +13,11 @@ export default {
       name: 'Revision picker',
       description: 'This control selects different revisions to show'
     }
-  }
+  },
+  parameters: {
+    // Set the viewports in Chromatic at a component level.
+    chromatic: { viewports: [320, 375, 428, 768, 1024, 1280, 1800] },
+  },
 };
 
 const Template = (args, { argTypes }) => ({
