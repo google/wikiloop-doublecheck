@@ -14,11 +14,14 @@
         <div 
           class="actpan--more-btn__label"
         >
-          <template v-if="gCanDirectEdit">
-            {{ $t('Button-RevertNow') }}
+          <template v-if="followUpStatus === 'DONE'">
+            {{ $t('Label-DirectReverted') }}
           </template>
           <template v-else>
-            {{ $t('Button-OpenedUrlToRevert') }}
+            {{ $t('Button-RevertNow') }}
+            <template v-if="!gCanDirectEdit">
+              <i class="fas fa-link" />
+            </template>
           </template>
         </div>
       </button>
@@ -100,7 +103,7 @@ export default class PureActionPanel2 extends Vue {
   /**
    * A boolean to determine whether the revision is eligible.
    */
-  @Prop({ type: Boolean, required: false })
+  @Prop({ type: String, required: false })
   readonly followUpStatus?: ApiStatus;
   
   isSelected(judgement: string): boolean {

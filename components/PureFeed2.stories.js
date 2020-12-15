@@ -35,7 +35,7 @@ const Template = (args, { argTypes }) => ({
     :judgementPending="judgementPending"
     :interactions="interactions"
     :showJudgementPanel="showJudgementPanel"
-
+    v-bind="$props"
     @judgement="onJudgement"
     @revert="onRevert"
     @next="onNext" 
@@ -116,6 +116,27 @@ selectableData.args = {
   judgement: 'LooksGood',
   judgementPending: false,
   showJudgementPanel: true,
+  interactions: [
+    { wikiUserName: 'Xinbenlv', userGaId: 'GA1.2.1021694750.1607134727', judgement: 'LooksGood' },
+    { wikiUserName: 'XinbenlvSandBox', userGaId: 'GA1.2.1021694750.1607134727', judgement: 'LooksGood' },
+    { wikiUserName: 'Alpha', userGaId: 'GA1.2.1021694750.1607134827', judgement: 'NotSure' },
+    { wikiUserName: 'Bella', userGaId: 'GA1.2.1021694750.160718372', judgement: 'ShouldRevert' },
+    { userGaId: 'GA1.2.1021694750.160718144', judgement: 'ShouldRevert' },
+    { userGaId: 'GA1.2.1021694750.160718274', judgement: 'ShouldRevert' },
+  ],
+};
+
+export const selectableDataShouldRevert = Template.bind({});
+selectableDataShouldRevert.args = {
+  infoLoaded: true,
+  diffLoaded: true,
+  itemKey: Object.keys(ITEM_DATA_MAP)[0],
+  judgement: 'ShouldRevert',
+  judgementPending: false,
+  showJudgementPanel: true,
+  eligibleForRevert: true,
+  gCanDirectEdit: true,
+  followUpStatus: 'PENDING',
   interactions: [
     { wikiUserName: 'Xinbenlv', userGaId: 'GA1.2.1021694750.1607134727', judgement: 'LooksGood' },
     { wikiUserName: 'XinbenlvSandBox', userGaId: 'GA1.2.1021694750.1607134727', judgement: 'LooksGood' },

@@ -25,6 +25,9 @@
         class="pure-feed2--actpan"
         :selected="judgement"
         :pending="judgementPending"
+        :eligibleForRevert="eligibleForRevert"
+        :followUpStatus="followUpStatus"
+        :gCanDirectEdit="gCanDirectEdit"
         @judgement="$emit('judgement', $event)"
         @next="$emit('next')"
         @revert="$emit('revert')"
@@ -35,7 +38,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'nuxt-property-decorator';
-import { RevisionPanelItem } from '~/shared/interfaces';
+import { RevisionPanelItem, ApiStatus } from '~/shared/interfaces';
 import { InteractionProps } from '~/shared/models/interaction-item.model';
 import PureRevisionPanel from '~/components/PureRevisionPanel.vue';
 import PureActionPanel2 from '~/components/PureActionPanel2.vue';
@@ -56,6 +59,10 @@ export default class PureFeed2 extends Vue {
     @Prop({ type: Boolean, required: false }) readonly judgementPending?: boolean;
     @Prop({ type: Array, required: false }) readonly interactions:InteractionProps[];
     @Prop({ type: Boolean, required: false }) readonly showJudgementPanel:boolean;
+
+    @Prop({ type: Boolean, required: false }) readonly eligibleForRevert?: boolean;
+    @Prop({ type: String, required: false }) readonly followUpStatus?: ApiStatus;
+    @Prop({ type: Boolean, required: false }) readonly gCanDirectEdit?: boolean;
 }
 </script>
 
@@ -96,7 +103,7 @@ export default class PureFeed2 extends Vue {
 }
 
 .pure-feed2-main {
-  margin-bottom: 6.15rem;
+  margin-bottom: 12.15rem;
 }
 
 .pure-feed2--bottom {
