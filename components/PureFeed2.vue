@@ -86,12 +86,6 @@ export default class PureFeed2 extends Vue {
   }
 }
 
-.pure-feed2--actpan {
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-
 .pure-feed2--judgpan__label {
   font-size: 1.2rem;
   font-weight: 600;

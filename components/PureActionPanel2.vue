@@ -112,9 +112,11 @@ export default class PureActionPanel2 extends Vue {
 @import 'custom.scss';
 
 .actpan {
-  display: grid;
-  grid-template-columns: max-content;
-  align-items: flex-start;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction: column;
+  
   $levels: primary, secondary, success, info, danger;
 
   @each $level in $levels {
