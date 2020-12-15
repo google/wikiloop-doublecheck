@@ -1,11 +1,5 @@
 <template>
   <div class="actpan">
-    <div class="actpan--badges">
-      <span class="badge badge-pill badge-success">thankworthy <i class="fas fa-times" /></span>
-      <span class="badge badge-pill badge-warning">second opinion needed <i class="fas fa-times" /></span>
-      <span class="badge badge-pill badge-danger">blanking <i class="fas fa-times" /></span>
-      <span class="badge badge-pill badge-light text-danger">gibberish <i class="fas fa-plus" /></span>
-    </div>
     <div class="actpan--more">
       <div 
         v-if="eligibleForRevert"
@@ -150,17 +144,6 @@ export default class PureActionPanel2 extends Vue {
     }
     to {
       transform: rotate(359deg);
-    }
-  }
-  &--badges {
-    display:flex;
-    justify-content: center;
-    
-    & > .badge {
-      padding: 0.5rem;
-      &:not(:last-child) {
-        margin-right: 0.5rem;
-      }
     }
   }
 
