@@ -162,7 +162,7 @@ module.exports = {
   buildModules: ['@nuxt/typescript-build'],
   storybook: {
     parameters: {
-      layout: 'centered',
+      layout: 'fullscreen',
       chromatic: {
         viewports: [
           320,
@@ -173,10 +173,10 @@ module.exports = {
         ],
       },
       backgrounds: {
-        default: 'white',
+        default: 'gray',
         values: [
           { name: 'white', value: '#ffffff' },
-          // { name: 'gray', value: '#aaaaaa' },
+          { name: 'gray', value: '#aaaaaa' },
         ],
       },
     },
