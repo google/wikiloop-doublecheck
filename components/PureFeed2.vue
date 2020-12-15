@@ -25,6 +25,9 @@
         class="pure-feed2--actpan"
         :selected="judgement"
         :pending="judgementPending"
+        @judgement="$emit('judgement', $event)"
+        @next="$emit('next')"
+        @revert="$emit('revert')"
       />
     </div>
   </div>

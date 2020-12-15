@@ -3,12 +3,23 @@ import PureActionPanel2 from '~/components/PureActionPanel2';
 export default {
   title: 'PureActionPanel2',
   component: PureActionPanel2,
+  argTypes: { 
+    onRevert: { action: 'revert' },
+    onJudgement: { action: 'judgement' },
+    onNext: { action: 'next' },
+  },
 };
 
 const Template = (args, { argTypes }) => ({
   components: { PureActionPanel2 },
   props: Object.keys(argTypes),
-  template: '<PureActionPanel2 v-bind="$props" />',
+  template: 
+    `<PureActionPanel2 
+        @revert="onRevert"
+        @judgement="onJudgement"
+        @next="onNext"
+        v-bind="$props"
+    />`,
 });
 
 export const basic = Template.bind({});

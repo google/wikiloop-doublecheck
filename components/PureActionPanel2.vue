@@ -1,16 +1,19 @@
 <template>
   <div class="actpan">
     <div class="actpan--more">
-      <div 
+      <button
         v-if="eligibleForRevert"
         class="actpan--more-btn btn btn-outline-primary"
+        @click="$emit('revert')"
       >
         <div v-if="followUpStatus" class="actpan--more-btn__status">
           <i v-if="followUpStatus ==='PENDING'" class="fas fa-spinner text-primary" />
           <i v-else-if="followUpStatus === 'DONE'" class="fas fa-check text-success" />
           <i v-else-if="followUpStatus === 'ERROR'" class="fas fa-times text-danger" />
         </div>
-        <div class="actpan--more-btn__label">
+        <div 
+          class="actpan--more-btn__label"
+        >
           <template v-if="gCanDirectEdit">
             {{ $t('Button-RevertNow') }}
           </template>
@@ -18,10 +21,10 @@
             {{ $t('Button-OpenedUrlToRevert') }}
           </template>
         </div>
-      </div>
+      </button>
     </div>
     <div class="actpan--main">
-      <div
+      <button
         class="looks-good btn"
         :class="{
           selected: isSelected('LooksGood'),
@@ -29,11 +32,12 @@
           'btn-success': isSelected('LooksGood'),
           'btn-outline-success': !isSelected('LooksGood'),
         }"
+        @click="$emit('judgement', 'LooksGood')"
       >
         <i v-if="isSelected('LooksGood') && pending" class="fas fa-spinner" />
         <i v-else class="fas fa-thumbs-up" />
-      </div>
-      <div
+      </button>
+      <button
         class="not-sure btn"
         :class="{
           selected: isSelected('NotSure'),
@@ -41,11 +45,12 @@
           'btn-secondary': isSelected('NotSure'),
           'btn-outline-secondary': !isSelected('NotSure'),
         }"
+        @click="$emit('judgement', 'NotSure')"
       >
         <i v-if="isSelected('NotSure') && pending" class="fas fa-spinner" />
         <i v-else class="fas fa-question" />
-      </div>
-      <div
+      </button>
+      <button
         class="should-revert btn"
         :class="{
           selected: isSelected('ShouldRevert'),
@@ -53,16 +58,18 @@
           'btn-danger': isSelected('ShouldRevert'),
           'btn-outline-danger': !isSelected('ShouldRevert'),
         }"
+        @click="$emit('judgement', 'ShouldRevert')"
       >
         <i v-if="isSelected('ShouldRevert') && pending" class="fas fa-spinner" />
         <i v-else class="fas fa-thumbs-down" />
-      </div>
-      <div 
+      </button>
+      <button
         v-if="selected && !pending"
         class="next btn btn-outline-secondary"
+        @click="$emit('next')"
       >
         <i class="fas fa-arrow-right" />
-      </div>
+      </button>
     </div>
   </div>
 </template>
@@ -153,13 +160,16 @@ export default class PureActionPanel2 extends Vue {
     margin-bottom: 2rem;
 
     &-btn {
+      border-radius: 3rem;
+      height: 3rem;
+      padding: 1rem;
       display:flex;
       justify-content: center;
       align-items: center;
 
       &__status {
         margin-right: 0.5rem;
-        width: 1.5rem;
+        width: 1rem;
         height: 1.5rem;
       }
     }

@@ -12,7 +12,10 @@ export default {
       },
       name: 'Revision picker',
       description: 'This control selects different revisions to show'
-    }
+    },
+    onRevert: { action: 'revert' },
+    onJudgement: { action: 'judgement' },
+    onNext: { action: 'next' },
   },
   parameters: {
     // Set the viewports in Chromatic at a component level.
@@ -32,6 +35,10 @@ const Template = (args, { argTypes }) => ({
     :judgementPending="judgementPending"
     :interactions="interactions"
     :showJudgementPanel="showJudgementPanel"
+
+    @judgement="onJudgement"
+    @revert="onRevert"
+    @next="onNext" 
     />`,
   data() {
     return {
