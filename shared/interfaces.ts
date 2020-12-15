@@ -14,6 +14,13 @@ export enum BasicJudgement {
   ShouldRevert = 'ShouldRevert'
 }
 
+export enum ApiStatus {
+  NONE = '',
+  PENDING = 'PENDING',
+  ERROR = 'ERROR',
+  SUCCEEDED = 'DONE'
+}
+
 export interface Score {
   type: ScoreType,
   score: number,

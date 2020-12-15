@@ -8,7 +8,7 @@ export default {
 const Template = (args, { argTypes }) => ({
   components: { PureActionPanel2 },
   props: Object.keys(argTypes),
-  template: '<PureActionPanel2 :selected="selected" :pending="pending"/>',
+  template: '<PureActionPanel2 v-bind="$props" />',
 });
 
 export const basic = Template.bind({});
@@ -27,4 +27,33 @@ export const done = Template.bind({});
 done.args = {
   selected: 'ShouldRevert',
   pending: false,
+};
+
+export const doneWithEligibleRevert = Template.bind({});
+doneWithEligibleRevert.args = {
+  selected: 'ShouldRevert',
+  pending: false,
+  eligibleForRevert: true,
+};
+export const doneWithFollowUpPending = Template.bind({});
+doneWithFollowUpPending.args = {
+  selected: 'ShouldRevert',
+  pending: false,
+  eligibleForRevert: true,
+  followUpStatus: 'PENDING'
+};
+export const doneWithFollowUpDone = Template.bind({});
+doneWithFollowUpDone.args = {
+  selected: 'ShouldRevert',
+  pending: false,
+  eligibleForRevert: true,
+  followUpStatus: 'DONE'
+};
+
+export const doneWithFollowUpError = Template.bind({});
+doneWithFollowUpError.args = {
+  selected: 'ShouldRevert',
+  pending: false,
+  eligibleForRevert: true,
+  followUpStatus: 'ERROR'
 };
