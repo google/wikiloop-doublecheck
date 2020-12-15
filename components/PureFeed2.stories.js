@@ -17,27 +17,6 @@ export default {
   parameters: {
     // Set the viewports in Chromatic at a component level.
     chromatic: { viewports: [320, 375, 428, 768, 1024, 1280, 1800] },
-    backgrounds: {
-      default: 'twitter',
-      values: [
-        {
-          name: 'white',
-          value: '#fff',
-        },
-        {
-          name: 'grey',
-          value: '#aaa',
-        },
-        {
-          name: 'twitter',
-          value: '#00aced',
-        },
-        {
-          name: 'facebook',
-          value: '#3b5998',
-        },
-      ],
-    },
   },
 };
 

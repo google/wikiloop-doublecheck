@@ -29,16 +29,31 @@ module.exports = {
     title: pkg.name,
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1, shrink-to-fit=no' },
+      {
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1, shrink-to-fit=no',
+      },
       { hid: 'description', name: 'description', content: pkg.description },
       { uptimerobot_verify_uuid: '89d70f81-d069-43cf-ad7f-b932f7e3a24b' }, // a random uuid for verification purpose
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://www.mediawiki.org/w/load.php?modules=mediawiki.legacy.shared|mediawiki.diff.styles&only=styles' },
-      { rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v5.13.0/css/all.css', crossorigin: 'anonymous' },
+      {
+        rel: 'stylesheet',
+        href:
+          'https://www.mediawiki.org/w/load.php?modules=mediawiki.legacy.shared|mediawiki.diff.styles&only=styles',
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://use.fontawesome.com/releases/v5.13.0/css/all.css',
+        crossorigin: 'anonymous',
+      },
       { rel: 'preconnect', href: 'http://https://fonts.gstatic.com' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Noto+Sans&family=Open+Sans&family=Roboto&display=swap' },
+      {
+        rel: 'stylesheet',
+        href:
+          'https://fonts.googleapis.com/css2?family=Noto+Sans&family=Open+Sans&family=Roboto&display=swap',
+      },
     ],
     script: [
       {
@@ -76,21 +91,27 @@ module.exports = {
     // Doc: https://bootstrap-vue.js.org/docs/
     'bootstrap-vue/nuxt',
     '@nuxtjs/pwa',
-    ['@nuxtjs/google-analytics', {
-      asyncID(ctx) {
-        return ctx.app.$env?.GA_WLBF_ID_CLIENT;
+    [
+      '@nuxtjs/google-analytics',
+      {
+        asyncID(ctx) {
+          return ctx.app.$env?.GA_WLBF_ID_CLIENT;
+        },
       },
-    }],
+    ],
     ['cookie-universal-nuxt', { alias: 'cookiez' }],
-    ['nuxt-env', {
-      keys: [
-        'HOST',
-        'PORT',
-        'GA_WLBF_ID_CLIENT',
-        'MIXER_RAMP_UP_PERCENT',
-        'CROSS_EDIT_CHECK',
-      ],
-    }],
+    [
+      'nuxt-env',
+      {
+        keys: [
+          'HOST',
+          'PORT',
+          'GA_WLBF_ID_CLIENT',
+          'MIXER_RAMP_UP_PERCENT',
+          'CROSS_EDIT_CHECK',
+        ],
+      },
+    ],
     [
       'nuxt-i18n',
       {
@@ -104,7 +125,6 @@ module.exports = {
         },
       },
     ],
-
   ],
   /*
    ** Axios module configuration
@@ -117,7 +137,7 @@ module.exports = {
   bootstrapVue: {
     config: {
       bootstrapCSS: false, // Or `css: false`
-      bootstrapVueCSS: false // Or `bvCSS: false`
+      bootstrapVueCSS: false, // Or `bvCSS: false`
     },
   },
   /*
@@ -141,7 +161,25 @@ module.exports = {
   },
   buildModules: ['@nuxt/typescript-build'],
   storybook: {
-    // Options
+    parameters: {
+      layout: 'centered',
+      chromatic: {
+        viewports: [
+          320,
+          // 375, 428,
+          768, 
+          // 1024, 1280,
+          1800,
+        ],
+      },
+      backgrounds: {
+        default: 'white',
+        values: [
+          { name: 'white', value: '#ffffff' },
+          // { name: 'gray', value: '#aaaaaa' },
+        ],
+      },
+    },
   },
 };
 
