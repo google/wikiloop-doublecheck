@@ -192,6 +192,7 @@ export class MwActionApiClient {
         rclimit: '1',
         rctype: 'edit',
         rctoponly: '1',
+        origin: "*" // TODO(xinbenlv, #371): for some reason it doesn't work for wikidatawiki. We need to further debug it.
       });
     if (bad) {searchParams.set('rcshow', '!bot|oresreview');}
     if (isLast) {searchParams.set('rctoponly', '1');}

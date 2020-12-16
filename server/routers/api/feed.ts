@@ -9,6 +9,17 @@ const express = require('express');
 
 export const feedRouter = express.Router();
 
+export interface FeedResponse {
+  useMixer: boolean,
+  feed: string,
+  wikiRevIds: string[],
+}
+
+export interface FeedRequest {
+  wiki: string, 
+  limit: number,
+}
+
 feedRouter.get('/mix', async (req, res) => {
   const weighted = require('weighted');
 
@@ -54,6 +65,12 @@ feedRouter.get('/mix', async (req, res) => {
   });
 });
 
+/**
+ * Endpoint: `GET api/feed/recent`, `* GET api/feed/lastbad`
+ * 
+ * Get {@link FeedReponse} from feeds of [recent, lastbad]. 
+ * 
+ */
 feedRouter.get(/(recent|lastbad)/, async (req, res) => {
   if (req.query.wiki && !Object.keys(wikiToDomain).includes(req.query.wiki)) {
     res.status(400).send(`The wiki ${req.query.wiki} is not supported`);
@@ -61,7 +78,7 @@ feedRouter.get(/(recent|lastbad)/, async (req, res) => {
     const ctx:any = {
       wiki: req.query.wiki || 'enwiki',
       limit: (parseInt(req.query.limit)) || 50,
-    };
+    } as FeedRequest;
     const feed = req.path.split('/')[1];
     if (feed === 'lastbad') {
       ctx.bad = true;
@@ -73,7 +90,7 @@ feedRouter.get(/(recent|lastbad)/, async (req, res) => {
       useMixer: false,
       feed,
       wikiRevIds,
-    });
+    } as FeedResponse);
   }
 });
 

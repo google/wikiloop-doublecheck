@@ -166,6 +166,7 @@
     "sass": "^1.30.0",
     "sass-loader": "^10.1.0",
     "standard-version": "8.0.1",
+    "supertest": "^6.0.1",
     "ts-jest": "^26.4.4",
     "ts-node": "^8.10.2",
     "tsconfig-paths": "^3.9.0",
