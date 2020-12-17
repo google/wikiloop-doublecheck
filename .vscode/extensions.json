@@ -6,7 +6,6 @@
 	"recommendations": [
 		"antfu.i18n-ally",
 		"christian-kohler.path-intellisense",
-		"esbenp.prettier-vscode",
 		"formulahendry.auto-rename-tag",
 		"formulahendry.auto-close-tag",
 		"github.vscode-pull-request-github",

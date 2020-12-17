@@ -3,9 +3,9 @@ env:
   es2021: true
   node: true
 extends:
+  - google
   - 'plugin:vue/essential'
   - '@nuxtjs/eslint-config-typescript'
-  - google
   - prettier
 parserOptions:
   ecmaVersion: 12
