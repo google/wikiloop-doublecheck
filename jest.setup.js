@@ -1,5 +1,5 @@
-import { Nuxt, Builder } from "nuxt";
-import nuxtConfig from "./nuxt.config";
+import { Nuxt, Builder } from 'nuxt';
+import nuxtConfig from './nuxt.config';
 
 // these boolean switches turn off the build for all but the store
 const resetConfig = {
@@ -36,7 +36,7 @@ const resetConfig = {
 const config = Object.assign({}, nuxtConfig, resetConfig, {
   ssr: false,
   srcDir: nuxtConfig.srcDir,
-  ignore: ["**/components/**/*", "**/layouts/**/*", "**/pages/**/*"]
+  ignore: ['**/components/**/*', '**/layouts/**/*', '**/pages/**/*']
 });
 
 const buildNuxt = async () => {

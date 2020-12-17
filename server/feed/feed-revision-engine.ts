@@ -97,7 +97,7 @@ export class FeedRevisionEngine {
             JSON.stringify(ret, null, 2),
           );
         } catch (e) {
-          if (e.code == 11000 && /^E11000 duplicate key error collection.*/.test(e.errmsg)) {
+          if (e.code === 11000 && /^E11000 duplicate key error collection.*/.test(e.errmsg)) {
             feedRevisionEngineLogger.debug('BulkWrite E11000 issue potentially caused by\n\nhttps://jira.mongodb.org/browse/SERVER-14322.\n\nWe are skipping the suggested retry documented by https://jira.mongodb.org/browse/DOCS-12234 ');
           } else { // otherwise rethrow
             throw e;
@@ -184,7 +184,7 @@ export class FeedRevisionEngine {
         .limit(limit);
 
     const results = await Promise.all(
-      feedRevisions.map(async (fr) => {
+      feedRevisions.map((fr) => {
         const now = new Date();
 
         fr.claimerInfo = {
@@ -248,7 +248,7 @@ export class FeedRevisionEngine {
         visitedFeedPages[currentFeedPage.pageId] = currentFeedPage;
       }
       feedRevisionEngineLogger.debug(`Current numReq=${numReq}`, currentFeedPage);
-      if (currentFeedPage.namespace == 14) {
+      if (currentFeedPage.namespace === 14) {
         const mwPageInfos = await MwActionApiClient.getCategoryChildren(wiki, currentFeedPage.title);
         numReq++;
         const children:FeedPageProps[] = mwPageInfos.map((mwPageInfo) => {
@@ -290,7 +290,7 @@ export class FeedRevisionEngine {
       }));
       feedRevisionEngineLogger.debug('Done bulkUpdateResult = ', bulkUpdateResult);
     } catch (e) {
-      if (e.code == 11000 && /^E11000 duplicate key error collection.*/.test(e.errmsg)) {
+      if (e.code === 11000 && /^E11000 duplicate key error collection.*/.test(e.errmsg)) {
         feedRevisionEngineLogger.debug('BulkWrite E11000 issue potentially caused by\n\nhttps://jira.mongodb.org/browse/SERVER-14322.\n\nWe are skipping the suggested retry documented by https://jira.mongodb.org/browse/DOCS-12234 ');
       } else { // otherwise rethrow
         throw e;

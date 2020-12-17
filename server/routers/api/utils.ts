@@ -23,7 +23,7 @@ const express = require('express');
 
 export const utilsRouter = express.Router();
 
-const avatar = async (req, res) => {
+const avatar = (req, res) => {
   logger.debug('avatar requested with seed', req.params.seed);
   const svg = avatars.create(req.params.seed);
   res.send(svg);
@@ -34,7 +34,7 @@ const avatar = async (req, res) => {
 // TODO build batch api for avatar until performance is an issue. We have cache anyway should be fine.
 utilsRouter.get('/avatar/:seed', asyncHandler(avatar));
 
-const flags = async (req, res) => {
+const flags = (req, res) => {
   res.send({
     useStiki,
     useOauth,
@@ -47,7 +47,7 @@ const flags = async (req, res) => {
 };
 utilsRouter.get('/flags', asyncHandler(flags));
 
-const root = async (req, res) => {
+const root = (req, res) => {
   res.send('API root > v4.0 with typescript');
   req.visitor
       .event({ ec: 'api', ea: '/' })
@@ -55,7 +55,7 @@ const root = async (req, res) => {
 };
 utilsRouter.get('/root', asyncHandler(root));
 
-export const version = async (req, res) => {
+export const version = (req, res) => {
   const packageson = require('@/package.json');
   res.send(packageson.version);
   req.visitor

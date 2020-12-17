@@ -5,7 +5,7 @@ import { WatchCollectionItem } from '@/shared/schema';
 import { FeedEnum } from '@/server/feed/watch-collection-feed';
 
 function arraySum(arr: any[]): string {
-  if (!arr || arr.length == 0) {return '[]';}
+  if (!arr || arr.length === 0) {return '[]';}
   return `Array {
   start: ${arr[0]}, 
   end: ${arr[arr.length - 1]}, 
@@ -58,7 +58,7 @@ async function main() {
               revIds.length ? revIds[revIds.length - 1] - 1 : null/* we start from the one earlier */);
       });
       console.log(`NewRevIds = ${arraySum(newRevIds)}`);
-      if (newRevIds.length == 0) {break;} else {revIds = revIds.concat(newRevIds);}
+      if (newRevIds.length === 0) {break;} else {revIds = revIds.concat(newRevIds);}
       console.log(`RevIds = ${arraySum(revIds)}`);
     }
     console.log(`Done Fetching RevIds for ${item.title}, RevIds ${arraySum(revIds)}`);

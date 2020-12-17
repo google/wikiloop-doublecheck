@@ -7,6 +7,7 @@
           <h5>{{ $t('Label-ChangedWikitext') }}</h5> -->
         </div>
         <table class="diff-box__table">
+          <!-- eslint-disable-next-line vue/no-v-html -->
           <tbody v-html="diffSafeHtml" />
         </table>
       </template>

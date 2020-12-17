@@ -21,8 +21,8 @@ export default class FeedPage2 extends Vue {
   // wikiRevId = "enwiki:989699374" // TODO update
   async asyncData({ store }) {
     store.commit('revpan2/setWikiRevId', 'enwiki:989699374');
-    store.dispatch('revpan2/loadInfo');
-    store.dispatch('revpan2/loadDiff');
+    await store.dispatch('revpan2/loadInfo');
+    await store.dispatch('revpan2/loadDiff');
   }
 
   get infoLoaded() {

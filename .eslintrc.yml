@@ -7,6 +7,7 @@ extends:
   - 'plugin:vue/essential'
   - '@nuxtjs/eslint-config-typescript'
   - prettier
+  - eslint:recommended
 parserOptions:
   ecmaVersion: 12
   parser: '@typescript-eslint/parser'
@@ -15,44 +16,30 @@ plugins:
   - vue
   - '@typescript-eslint'
 rules:
+  '@typescript-eslint/no-unused-vars': off
+  no-unused-vars: off # This is needed to define vars in Vue Typescript and used in Vue template
+
   indent: ["error", 2, { "ArrayExpression": 1, "MemberExpression": 2 }]
   semi: ["error", "always"]
+  quotes: ["warn", "single"]
+  # Th following section of rules are specific to this Project
+  comma-dangle: off
+  guard-for-in: off
+  no-console: off
+  vue/attribute-hyphenation: off
+
+  # Buggy / not working rules
+  no-invalid-this: off # This Eslint rule doesn't work well with Vue
+  vue/no-unused-components: off
+
+  ## TO remove
+  import/named: off
+  require-jsdoc: off
+  valid-jsdoc: off
 
   ## The following rules are temp disabled before we fully enforce.
-  '@typescript-eslint/no-unused-vars': off
-  array-callback-return: off
-  brace-style: off
-  dot-notation: off
-  eqeqeq: off
-  guard-for-in: off
-  import/named: off
-  max-len: off
-  no-console: off
-  no-empty: off
-  no-fallthrough: off
-  no-invalid-this: off
-  no-mixed-operator: off
-  no-mixed-operators: off
-  no-redeclare: off
-  no-return-assign: off
-  no-tabs: off
-  no-template-curly-in-string: off
-  no-throw-literal: off
-  no-undef: off
-  no-unreachable-loop: off
-  no-unused-expressions: off
-  no-unused-vars: off
-  no-useless-escape: off
-  no-var: off
+
+  # The following rules are deprecated in ESLint v7.0.0
   node/handle-callback-err: off
   node/no-new-require: off
   node/no-path-concat: off
-  require-await: off
-  require-jsdoc: off
-  valid-jsdoc: off
-  vue/attribute-hyphenation: off
-  vue/no-mutating-props: off
-  vue/no-unused-components: off
-  vue/no-unused-vars: off
-  vue/no-v-html: off
-  vue/require-v-for-key: off

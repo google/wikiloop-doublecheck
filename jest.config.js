@@ -13,7 +13,7 @@
 // limitations under the License.
 
 module.exports = {
-  globalSetup: "<rootDir>/jest.setup.js", // TODO update it to run only at a TestSuite
+  globalSetup: '<rootDir>/jest.setup.js', // TODO update it to run only at a TestSuite
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
     '^~/(.*)$': '<rootDir>/$1',

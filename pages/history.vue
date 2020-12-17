@@ -12,12 +12,14 @@
             <div class="d-flex justify-content--start">
               <user-avatar-with-name :wiki-user-name="item.wikiUserName" :user-ga-id="item.userGaId" />
               <div style="line-height: 32px">
+                <!-- eslint-disable vue/no-v-html-->
                 <span
                   v-html="$t('Label-ReviewedAndSays', {
                     wikiRevId: item.wikiRevId,
                     href: `/revision/${item.wikiRevId.split(':')[0]}/${item.wikiRevId.split(':')[1]}`
                   })"
                 />
+                <!-- eslint-enable vue/no-v-html-->
                 <span
                   :class="['badge', {
                     'badge-success': item.judgement === 'LooksGood',
@@ -64,7 +66,7 @@ export default class HistoryPage extends Vue {
     public parseWikiRevId = parseWikiRevId;
     filter:any = {};
     mounted() {
-      socket.on('interaction-props', async (interaction: InteractionProps) => {
+      socket.on('interaction-props', (interaction: InteractionProps) => {
         this.loading = true;
         this.interactions = [interaction].concat(this.interactions); // push at the head.
         this.loading = false;

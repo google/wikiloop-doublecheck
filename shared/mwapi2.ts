@@ -15,8 +15,10 @@
 // This folder includes api convenience  that we use for accessing
 // MediaWiki Action API and REST API
 
-import { wikiToDomain } from "@/shared/utility-shared";
-import Bottleneck from "bottleneck";
+import { strict as assert } from 'assert';
+import { wikiToDomain } from '@/shared/utility-shared';
+import Bottleneck from 'bottleneck';
+
 /**
  * An interface for the page info when fetching from MediaWiki Action API.
 
@@ -54,12 +56,12 @@ export interface MwRevisionInfo extends MwPageInfo {
 
 export function wikiUrl(wiki, { title, revId, user }) {
   if (title) {
-    const encodedTitle = title.replace(" ", "_");
+    const encodedTitle = title.replace(' ', '_');
     return `https://${wikiToDomain[wiki]}/wiki/${encodedTitle}`;
   } else if (revId) {
     return `https://${wikiToDomain[wiki]}/wiki/Special:Diff/${revId}`;
   } else if (user) {
-    const encodedUser = user.replace(" ", "_");
+    const encodedUser = user.replace(' ', '_');
     return `https://${wikiToDomain[wiki]}/wiki/User:${user}`;
   }
 }
@@ -72,7 +74,7 @@ export class MwActionApiClient2 {
   private bottleneck;
 
   constructor(axios) {
-    this.axios = axios || require("axios");
+    this.axios = axios || require('axios');
     this.bottleneck = new Bottleneck({
       minTime: 500
     });
@@ -100,11 +102,11 @@ export class MwActionApiClient2 {
 
   public static infoParams(revId) {
     const params = {
-      action: "query",
-      format: "json",
-      prop: "revisions",
+      action: 'query',
+      format: 'json',
+      prop: 'revisions',
       revids: revId,
-      origin: "*"
+      origin: '*'
     };
     return params;
   }
@@ -117,6 +119,11 @@ export class MwActionApiClient2 {
       return null;
     } else if (Object.keys(result.data?.query?.pages)) {
       const pageIds = Object.keys(result.data.query.pages);
+      
+      // We expect only one or less pages in response, and thus we use a a for-loop to 
+      // get the maybe-exist page.
+      assert(pageIds.length <= 1);
+      // eslint-disable-next-line no-unreachable-loop
       for (const pageId of pageIds) {
         const page = result.data.query.pages[pageId];
         const mwRevisionInfo = {
@@ -163,9 +170,9 @@ export class MwActionApiClient2 {
 
   public static diffParams(revId: number, prevRevId: number = null) {
     const params: any = {
-      action: "compare",
-      format: "json",
-      origin: "*"
+      action: 'compare',
+      format: 'json',
+      origin: '*'
     };
 
     if (prevRevId) {
@@ -173,7 +180,7 @@ export class MwActionApiClient2 {
       params.fromrev = prevRevId;
     } else {
       params.fromrev = revId; // When using torelative:prev, the compare API will swap fromrev with torev.
-      params.torelative = "prev";
+      params.torelative = 'prev';
     }
     return params;
   }
@@ -191,16 +198,16 @@ export class MwActionApiClient2 {
         `Error fetching Diff, error: ${JSON.stringify(ret.data, null, 2)}`
       );
     }
-    return ret.data.compare["*"];
+    return ret.data.compare['*'];
   }
 
   public static parsedParams(revId) {
     return {
-      action: "parse",
-      format: "json",
-      prop: "links|images|iwlinks",
+      action: 'parse',
+      format: 'json',
+      prop: 'links|images|iwlinks',
       oldid: revId,
-      origin: "*"
+      origin: '*'
     };
   }
 

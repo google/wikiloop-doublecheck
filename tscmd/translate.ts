@@ -1,4 +1,6 @@
-// Usage: npx ts-node -r tsconfig-paths/register tscmd/translate.ts
+/**
+ * Usage: npx ts-node -r tsconfig-paths/register tscmd/translate.ts
+ */
 
 const fs = require('fs');
 const yaml = require('js-yaml');
@@ -56,12 +58,14 @@ async function translateCmd() {
       if (forceUpdatedKeys.includes(key)) {keyArray.push(key);} else if (sourceKeyMsgMap[key] && !targetKeyMsgMap[key]) {
         const segments = key.split('.');
         const postfix = segments[segments.length - 1];
-        if (ignoredMetaPostfix.includes(postfix)) { } // ignore
+        if (ignoredMetaPostfix.includes(postfix)) {
+          // do nothing
+        } // ignore
         else {keyArray.push(key);}
       }
     }
     const now = new Date();
-    if (keyArray.length != 0) {
+    if (keyArray.length !== 0) {
       const translations:string[] = await translateText(keyArray.map((key) => sourceKeyMsgMap[key]), targetLang);
       for (const i in keyArray) {
         const key = keyArray[i];

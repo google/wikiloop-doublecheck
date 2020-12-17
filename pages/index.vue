@@ -17,6 +17,7 @@
 
     <b-modal id="modal-promote-login" :title="$t('Label-PromptLogin')">
       {{ $t('Message-PromptLogin') }} <br>
+      <!-- eslint-disable-next-line vue/no-unused-vars -->
       <template #modal-footer="{ ok, hide }">
         <a class="btn-sm btn btn-primary" href="/auth/mediawiki/login">{{
           $t('Label-Login')
@@ -76,7 +77,7 @@ export default {
       },
     },
   },
-  async beforeMount() {
+  beforeMount() {
     const dice = Math.random() * 100;
     const threshold = parseInt(this.$env.MIXER_RAMP_UP_PERCENT) || 0;
     if (
@@ -96,7 +97,7 @@ export default {
     });
     this.showNext();
 
-    document.addEventListener('judgement-event', async () => {
+    document.addEventListener('judgement-event', () => {
       if (!(this.$store.state.user && this.$store.state.user.profile)) {
         if (this.tipLoginCountDown === 0) {
           this.$bvModal.show('modal-promote-login');
@@ -141,7 +142,7 @@ export default {
     });
   },
   methods: {
-    async showNext() {
+    showNext() {
       this.currentWikiRevId = this.$store.state.revisions.nextWikiRevIdsHeap.peek();
       this.$store.commit('revisions/pop');
       // await this.$store.dispatch(`revisions/loadMoreWikiRevs`).then();

@@ -73,9 +73,9 @@ const createNoticeMain = async function() {
   await initDotEnv();
 
   const wikiRevIds = [
-    "enwiki:920429244", 
-    "zhwiki:63095995",
-    "wikidatawiki:1319338548",
+    'enwiki:920429244', 
+    'zhwiki:63095995',
+    'wikidatawiki:1319338548',
   ];
 
   await Promise.all(wikiRevIds.map(async wikiRevId=> {

@@ -72,7 +72,7 @@ scoreRouter.get('/ores/badfaith/:wikiRevId', asyncHandler(async (req, res) => {
   res.send(score);
 }));
 
-let fetchStikiAndCbng = async function(wikiRevId, type:ScoreType) {
+let fetchStikiAndCbng = function(wikiRevId, type:ScoreType) {
   return null;
 };
 
@@ -113,12 +113,12 @@ if (useStiki) {
     }
   };
 
-  scoreRouter.get('/stiki/:wikiRevId', asyncHandler(async (req, res) => {
+  scoreRouter.get('/stiki/:wikiRevId', asyncHandler((req, res) => {
     const wikiRevId = req.params.wikiRevId;
     res.send(fetchOresScore(wikiRevId, ScoreType.STIKI));
   }));
 
-  scoreRouter.get('/cbng/:wikiRevId', asyncHandler(async (req, res) => {
+  scoreRouter.get('/cbng/:wikiRevId', asyncHandler((req, res) => {
     const wikiRevId = req.params.wikiRevId;
     res.send(fetchOresScore(wikiRevId, ScoreType.CLUEBOTNG));
   }));

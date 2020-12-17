@@ -92,7 +92,7 @@ export default class TimeSeriesBarChart extends Vue {
           stats.forEach((d) => {
             datesMap[d._id.date] = 1;
             let breakdownKey = null;
-            Object.keys(d._id).map((k) => {
+            Object.keys(d._id).forEach((k) => {
               if (k !== 'date') {
                 breakdownKey = d._id[k];
                 if (breakdownKey == null) {breakdownKey = '(other)';}
@@ -106,8 +106,10 @@ export default class TimeSeriesBarChart extends Vue {
               // noinspection JSUnusedAssignment
               breakdownDateCountMap[breakdownKey][date] = d.count;
             } else {
+              /* eslint-disable dot-notation */
               if (!breakdownDateCountMap['All']) {breakdownDateCountMap['All'] = {};}
               breakdownDateCountMap['All'][date] = d.count;
+              /* eslint-enable dot-notation */
             }
           });
 

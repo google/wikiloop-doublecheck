@@ -47,7 +47,7 @@ const listLabels = async function(req, res) {
 
   if (req.query.csv === '1') {
     res.setHeader('Content-Type', 'text/csv');
-    res.setHeader('Content-Disposition', 'attachment; filename=\"' + 'labels-' + Date.now() + '.csv\"');
+    res.setHeader('Content-Disposition', 'attachment; filename="' + 'labels-' + Date.now() + '.csv"');
     const stringify = require('csv-stringify');
     const ret = [[
       'wikiRevId',

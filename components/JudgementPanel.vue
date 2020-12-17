@@ -112,11 +112,11 @@ export default class JudgementPanel extends Vue {
   }
 
   public async refresh() {
-    this.getScores(this.wikiRevId).then((items) => { // we don't use await here, because we want to fetch everything nonblocking
+    await this.getScores(this.wikiRevId).then((items) => { // we don't use await here, because we want to fetch everything nonblocking
       this.scores = items;
     });
 
-    this.getInteractionPropsList(this.wikiRevId).then((items) => { // we don't use await here, because we want to fetch everything nonblocking
+    await this.getInteractionPropsList(this.wikiRevId).then((items) => { // we don't use await here, because we want to fetch everything nonblocking
       this.interactionPropsList = items;
     });
   }

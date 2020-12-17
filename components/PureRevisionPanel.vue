@@ -52,7 +52,6 @@
 <script lang="ts">
 import PureDiffBox2 from '@/components/PureDiffBox2.vue';
 import LoadingIndicator from '@/components/LoadingIndicator.vue';
-import { mapState } from 'vuex';
 
 import { Component, Prop, Vue } from 'nuxt-property-decorator';
 import { RevisionPanelItem } from '~/shared/interfaces';

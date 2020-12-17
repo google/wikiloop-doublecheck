@@ -54,7 +54,7 @@ async function fetchOres(wikiRevIds) {
     }
   }
   return oresResults;
-};
+}
 
 const ores = async (req, res) => {
   const wikiRevIds = req.query.wikiRevIds;

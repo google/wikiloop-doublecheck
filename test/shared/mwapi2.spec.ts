@@ -115,7 +115,7 @@ describe('MOCKED MwActionApiClient2.fetchRevisionInfo', () => {
       ];
     }).onAny().reply(500); // Any other response are going to yield 500
     const info = await mwapi2.fetchRevisionInfo(wiki, invalidRevId);
-    expect(info).toBeNull;
+    expect(info).toBeNull();
   });
 });
 

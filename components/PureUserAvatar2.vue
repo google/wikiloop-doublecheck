@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- eslint-disable-next-line vue/no-v-html -->
     <div ref="svgWrapper" class="avatar-img" v-html="svgSrc" />
   </div>
 </template>

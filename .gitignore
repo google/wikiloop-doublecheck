@@ -92,6 +92,7 @@ dev.env
 .creds/
 
 # Storybook // https://storybook.nuxtjs.org/setup
+.nuxt
 .nuxt-storybook
 storybook-static
 

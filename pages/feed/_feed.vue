@@ -56,10 +56,12 @@
           <div class="card-body">
             <div class="card-body w-100 text-center">
               <h5 m-5>
+                <!-- eslint-disable vue/no-v-html-->
                 <span
                   v-html="$t('Message-FeedHasNoNewRevisionsClickNextBelow', [
                     `<div class='badge badge-success'>${wikiRevIdfromFeeds[currentWikiRevId] || feedName}</div>`])"
                 />
+                <!-- eslint-enable vue/no-v-html-->
               </h5>
               <button v-if="feedName==='mix'" class="m-5 btn btn-outline-success" @click="showNext()">
                 {{ $t(`Button-Next`) }}(→)
@@ -107,7 +109,7 @@ export default {
   validate({ params }) {
     return (['us2020', 'covid19', 'recent', 'ores', 'mix', 'wikitrust', 'lastbad'].includes(params.feed));
   },
-  async asyncData({ params, $axios }) {
+  asyncData({ params, $axios }) {
     return { feedName: params.feed };
   },
   data() {
@@ -134,7 +136,7 @@ export default {
       await this.refillQueue();
     });
 
-    document.addEventListener('judgement-event', async () => {
+    document.addEventListener('judgement-event', () => {
       if (!(this.$store.state.user && this.$store.state.user.profile)) {
         if (this.tipLoginCountDown === 0) {
           this.$bvModal.show('modal-promote-login');
@@ -190,7 +192,7 @@ export default {
       this.loading = false;
       this.refillQueue().then(() => {console.log('Quietly refilled the queue.');});
     },
-    async clearQueue() {
+    clearQueue() {
       this.loading = true;
       this.showJudgementPanel = false;
       this.feedQueue = [];
@@ -208,7 +210,9 @@ export default {
       const params = new URLSearchParams(queryObj);
       const result = await this.$axios.$get(`/api/feed/${this.feedName}?${params.toString()}`);
       const feed = result.feed;
-      result.wikiRevIds.forEach((wikiRevId) => this.wikiRevIdfromFeeds[wikiRevId] = feed);
+      result.wikiRevIds.forEach((wikiRevId) => {
+        this.wikiRevIdfromFeeds[wikiRevId] = feed;
+      });
       return result.wikiRevIds;
     },
     async refillQueue() {

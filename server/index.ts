@@ -20,7 +20,6 @@ import { debugRouter } from '@/server/routers/debug';
 import { CronJob } from 'cron';
 import { FeedRevisionEngine } from '@/server/feed/feed-revision-engine';
 import { AwardBarnStarCronJob } from '../cronjobs/award-barnstar.cron';
-import { UsageReportCronJob } from '../cronjobs/usage-report.cron';
 import { apiRouter as newApiRouter } from './routers/api';
 import { getMetrics } from './routers/api/metrics';
 import { apiLogger, asyncHandler, ensureAuthenticated, fetchRevisions, isWhitelistedFor, logger, perfLogger, useOauth, colorizeMaybe, latencyColor, statusColor } from './common';
@@ -124,22 +123,6 @@ function setupCronJobs() {
     logger.info('Skipping Barnstar cronjobs because of lack of CRON_BARNSTAR_TIMES which is: ', process.env.CRON_BARNSTAR_TIMES);
   }
 
-  if (process.env.CRON_USAGE_REPORT_TIMES) {
-    logger.info('Setting up CRON_USAGE_REPORT_TIMES raw value = ', process.env.CRON_USAGE_REPORT_TIMES);
-    const cronTimePairs =
-      process.env.CRON_USAGE_REPORT_TIMES
-          .split('|')
-          .map((pairStr) => {
-            const pair = pairStr.split(';');
-            return { cronTime: pair[0], frequency: pair[1] };
-          }).forEach((pair) => {
-            const usageReportCronJob = new UsageReportCronJob(pair.cronTime, pair.frequency);
-            usageReportCronJob.startCronJob();
-          });
-  } else {
-    logger.info('Skipping UsageReportCronJob because of lack of CRON_BARNSTAR_TIMES which is: ', process.env.CRON_BARNSTAR_TIMES);
-  }
-
   if (process.env.CRON_CATEGORY_TRAVERSE_TIME) {
     logger.info(`Setting up CronJob for traversing category tree to run at ${process.env.CRON_CATEGORY_TRAVERSE_TIME}`);
     const traverseCategoryTreeCronJob = new CronJob(process.env.CRON_CATEGORY_TRAVERSE_TIME, async () => {
@@ -168,7 +151,7 @@ function setupHooks() {
   installHook('postToJade', async function(i:InteractionProps) {
     const revId = i.wikiRevId.split(':')[1];
     const wiki = i.wikiRevId.split(':')[0];
-    if (wiki == 'enwiki' && // we only handle enwiki for now. See https://github.com/google/wikiloop-doublecheck/issues/234
+    if (wiki === 'enwiki' && // we only handle enwiki for now. See https://github.com/google/wikiloop-doublecheck/issues/234
     [
       BasicJudgement.ShouldRevert.toString(),
       BasicJudgement.LooksGood.toString(),
@@ -210,7 +193,7 @@ function setupHooks() {
         NotSure: 7107965, // 6c757d /
         LooksGood: 2664261, // #28a745 / Bootstrap Success
       };
-      rp.post(
+      await rp.post(
         {
           url: `https://discordapp.com/api/webhooks/${process.env.DISCORD_WEBHOOK_ID}/${process.env.DISCORD_WEBHOOK_TOKEN}`,
           json: {
@@ -333,7 +316,7 @@ function setupAuthApi(db, app) {
 
   app.get('/auth/mediawiki/login', passport.authenticate('mediawiki'));
 
-  app.get('/auth/mediawiki/logout', asyncHandler(async (req, res) => {
+  app.get('/auth/mediawiki/logout', asyncHandler((req, res) => {
     req.logout();
     res.redirect('/');
   }));
@@ -388,7 +371,7 @@ function setupAuthApi(db, app) {
           undo: revId,
           token,
         };
-        if (wiki == 'enwiki') { // currently only enwiki has the manually created tag of WikiLoop DoubleCheck
+        if (wiki === 'enwiki') { // currently only enwiki has the manually created tag of WikiLoop DoubleCheck
           (payload as any).tags = 'WikiLoop Battlefield'; // TODO(xinbenlv@, #307) Update the name to "WikiLoop DoubleCheck", and also request to support it on other language
         }
         const retData = await oauthFetch(apiUrl, payload, { method: 'POST' }, req.user.oauth); // assuming request succeeded;

@@ -12,7 +12,7 @@ export class OresStream {
 
   public filterBasic(data) {
     const matchWiki = data.database === this.wiki;
-    const matchNamespace = data.page_namespace == 0;
+    const matchNamespace = data.page_namespace === 0;
     return matchWiki && matchNamespace;
   }
 

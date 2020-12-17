@@ -24,8 +24,8 @@ export class MwMailer {
     };
 
     public mail = async (pageTitle, newContent, editSummary = 'Deliver a new message.', append = true) => {
-      if (!/\:/.test(pageTitle)) { // if colon is not in the pageTitle, it's in a default page.
-        throw `We don't allow changing any page article at default namespace! pageTile = ${pageTitle}`;
+      if (!/:/.test(pageTitle)) { // if colon is not in the pageTitle, it's in a default page.
+        throw new Error(`We don't allow changing any page article at default namespace! pageTile = ${pageTitle}`);
       }
 
       let content;

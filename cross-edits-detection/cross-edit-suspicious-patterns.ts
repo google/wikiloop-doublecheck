@@ -70,10 +70,10 @@ export class CrossEditSuspiciousPatterns implements Revision {
   }
 
   async sleep(milliseconds: number) {
-    return new Promise((resolve) => setTimeout(resolve, milliseconds));
+    return await new Promise((resolve) => setTimeout(resolve, milliseconds));
   }
 
-  public async resetDecisionLog() {
+  public resetDecisionLog() {
     // Simulating a real database in demo
     this.db = {};
   }
@@ -94,9 +94,10 @@ export class CrossEditSuspiciousPatterns implements Revision {
     const responseJson = await response.json();
 
     const pagesObject = responseJson.query.pages;
-
+    
+    let pageObject;
     for (const v in pagesObject) {
-      var pageObject = pagesObject[v];
+      pageObject = pagesObject[v];
     }
 
     const title = pageObject.title;
@@ -200,23 +201,23 @@ export class CrossEditSuspiciousPatterns implements Revision {
     return true;
   }
 
-  async sendWarningMessage(recipient: string) {
+  sendWarningMessage(recipient: string) {
     console.log('Warning message sent to ' + recipient);
   }
 
-  async sendBlockMessage(recipient: string) {
+  sendBlockMessage(recipient: string) {
     console.log('Block message sent to ' + recipient);
   }
 
-  async sendProtectMessage(recipient: string) {
+  sendProtectMessage(recipient: string) {
     console.log('Protect message sent to ' + recipient);
   }
 
-  async getRecipientForBlock() {
+  getRecipientForBlock() {
     return 'BlockRecipientPlaceholder';
   }
 
-  async getRecipientForProtect() {
+  getRecipientForProtect() {
     return 'ProtectRecipientPlaceholder';
   }
 
@@ -224,8 +225,8 @@ export class CrossEditSuspiciousPatterns implements Revision {
     userId: string,
     endTimestamp: number,
   ) {
-    var url = '/api/decisionLog/author/';
-    var url = url + userId + '/' + endTimestamp + '/' + this.warningTimeframe + '/' + this.warningThreshold;
+    let url = '/api/decisionLog/author/';
+    url = url + userId + '/' + endTimestamp + '/' + this.warningTimeframe + '/' + this.warningThreshold;
     console.log(url);
     const events = await this.axiosClient.$get(url);
     console.log('Get ' + events.length + ' past events for ' + userId);
@@ -237,8 +238,8 @@ export class CrossEditSuspiciousPatterns implements Revision {
     title: string,
     endTimestamp: number,
   ) {
-    var url = '/api/decisionLog/article/';
-    var url = url + title + '/' + endTimestamp + '/' + this.warningTimeframe + '/' + this.warningThreshold;
+    let url = '/api/decisionLog/article/';
+    url = url + title + '/' + endTimestamp + '/' + this.warningTimeframe + '/' + this.warningThreshold;
     console.log(url);
     const events = await this.axiosClient.$get(url);
     console.log('Get ' + events.length + ' past events for ' + title);
@@ -301,13 +302,13 @@ export class CrossEditSuspiciousPatterns implements Revision {
     for (let i = 0; i < scores.length; i++) {
       // Only take ORES_DAMAGING score
       // If ORES Scores are missing, skip this edit entirely.
-      if (editsList[i].oresscores.damaging == undefined) {
+      if (editsList[i].oresscores.damaging === undefined) {
         let missingScoreString = '';
         missingScoreString += 'Title: ' + title + ' Author: ' + author + '\n';
         missingScoreString += 'ORES Scores are missing. Hence no detection is performed. \n';
         missingScoreString += 'Timestamp: ' + editsList[0].timestamp + '\n';
         console.log(missingScoreString);
-        var decisionInfo = {
+        const decisionInfo = {
           mode: this.mode,
           type: this.type,
           author: this.author,
@@ -318,16 +319,17 @@ export class CrossEditSuspiciousPatterns implements Revision {
         return decisionInfo;
       }
       scores[i] = editsList[i].oresscores.damaging.true;
-      if (this.mode == 'author') {
-        var editInfo = {
+      let editInfo = null;
+      if (this.mode === 'author') {
+        editInfo = {
           author: this.author,
           title: String(editsList[i].title),
           score: (scores[i] * 100).toFixed(0),
           timestamp: editsList[i].timestamp,
           parentid: editsList[i].parentid,
         };
-      } else if (this.mode == 'article') {
-        var editInfo = {
+      } else if (this.mode === 'article') {
+        editInfo = {
           author: String(editsList[i].user),
           title: this.title,
           score: (scores[i] * 100).toFixed(0),
@@ -351,8 +353,8 @@ export class CrossEditSuspiciousPatterns implements Revision {
     this.previousRevisionInfos = previousRevisionInfos;
 
     if (diff > this.margin) {
-      if (this.mode == 'author') {
-        var warnings = await this.getPreviousWarningsAuthor(author, windowEnd);
+      if (this.mode === 'author') {
+        const warnings = await this.getPreviousWarningsAuthor(author, windowEnd);
         if (warnings.length > this.warningThreshold) {
           this.type = 'block';
           this.recipient = await this.getRecipientForBlock();
@@ -361,8 +363,8 @@ export class CrossEditSuspiciousPatterns implements Revision {
           this.recipient = author;
         }
         this.writeNewDecisionAuthor(author, title, this.type, windowEndDate, this.recipient, windowStartDate, avg);
-      } else if (this.mode == 'article') {
-        var warnings = await this.getPreviousWarningsArticle(title, windowEnd);
+      } else if (this.mode === 'article') {
+        const warnings = await this.getPreviousWarningsArticle(title, windowEnd);
         if (warnings.length > this.warningThreshold) {
           this.type = 'protect';
           this.recipient = await this.getRecipientForProtect();
@@ -372,9 +374,9 @@ export class CrossEditSuspiciousPatterns implements Revision {
         }
         this.writeNewDecisionArticle(author, title, this.type, windowEndDate, this.recipient, windowStartDate, avg);
       }
-    } else if (this.mode == 'author') {
+    } else if (this.mode === 'author') {
       console.log('Author ' + author + 'is not engaged in suspicious behavior.');
-    } else if (this.mode == 'article') {
+    } else if (this.mode === 'article') {
       console.log('Article ' + title + 'is not affected by suspicious activity.');
     }
 
@@ -387,7 +389,7 @@ export class CrossEditSuspiciousPatterns implements Revision {
     resultString += 'Starting time of window is: ' + windowStart + '\n';
     resultString += 'Ending time of window is: ' + windowEnd + '\n';
     console.log(resultString);
-    var decisionInfo = {
+    const decisionInfo = {
       mode: this.mode,
       type: this.type,
       author: this.author,
@@ -398,16 +400,16 @@ export class CrossEditSuspiciousPatterns implements Revision {
     return decisionInfo;
   }
 
-  public async executeDecision() {
-    if (this.mode == 'author') {
-      if (this.type == 'block') {
+  public executeDecision() {
+    if (this.mode === 'author') {
+      if (this.type === 'block') {
         this.sendBlockMessage(this.recipient);
       }
-      if (this.type == 'warning') {
+      if (this.type === 'warning') {
         this.sendWarningMessage(this.recipient);
       }
-    } else if (this.mode == 'article') {
-      if (this.type == 'protect') {
+    } else if (this.mode === 'article') {
+      if (this.type === 'protect') {
         this.sendProtectMessage(this.recipient);
       }
     }
@@ -415,9 +417,9 @@ export class CrossEditSuspiciousPatterns implements Revision {
 
   public async analyze() {
     await this.getUserAndTitle();
-    if (this.mode == 'author') {
+    if (this.mode === 'author') {
       await this.findEditHistoryAuthor();
-    } else if (this.mode == 'article') {
+    } else if (this.mode === 'article') {
       await this.findEditHistoryArticle();
     }
     const decisionInfo = await this.getScoreAndProcess();

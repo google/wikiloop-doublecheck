@@ -5,7 +5,7 @@
  */
 
 import { Interaction } from '@/shared/models/interaction-item.model';
-import mongoose, { Document, Schema } from 'mongoose';
+import mongoose from 'mongoose';
 
 async function main() {
   console.log('Start...');
@@ -25,7 +25,7 @@ async function main() {
   console.log('Done');
 }
 
-main().then(async () => {
+main().then(() => {
   console.log('CMD Done!');
   process.exit(0);
 });

@@ -26,6 +26,7 @@
           <th colspan="2" />
         </tr>
       </thead>
+      <!-- eslint-disable-next-line vue/no-v-html -->
       <tbody v-html="processedDiffContent" />
     </table>
   </div>

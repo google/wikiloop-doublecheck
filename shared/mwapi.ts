@@ -89,7 +89,7 @@ export class MwActionApiClient {
     const ret = {};
     const result = await MwActionApiClient.bottleneck.schedule(
       async () => await axios.get(endpoint, { params, headers: { 'User-Agent': userAgent } }));
-    console.assert(Object.keys(result.data.query?.pages).length == titles.length);
+    console.assert(Object.keys(result.data.query?.pages).length === titles.length);
     for (let i = 0; i < Object.keys(result.data.query.pages).length; i++) {
       const pageId = Object.keys(result.data.query.pages)[i];
       const pageviewsOfPage = result.data.query.pages[pageId].pageviews;
@@ -192,7 +192,7 @@ export class MwActionApiClient {
         rclimit: '1',
         rctype: 'edit',
         rctoponly: '1',
-        origin: "*" // TODO(xinbenlv, #371): for some reason it doesn't work for wikidatawiki. We need to further debug it.
+        origin: '*' // TODO(xinbenlv, #371): for some reason it doesn't work for wikidatawiki. We need to further debug it.
       });
     if (bad) {searchParams.set('rcshow', '!bot|oresreview');}
     if (isLast) {searchParams.set('rctoponly', '1');}
@@ -380,7 +380,7 @@ export class MwActionApiClient {
             }
         }
         */
-        if (ret.data?.query?.pages && Object.keys(ret.data?.query?.pages).length == 1) {
+        if (ret.data?.query?.pages && Object.keys(ret.data?.query?.pages).length === 1) {
           const pageId = Object.keys(ret.data?.query?.pages)[0];
           const links = ret.data.query.pages[pageId].links;
           if (links) {result.push(...links.map((link) => link.title));}

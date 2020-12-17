@@ -12,9 +12,9 @@ const createNoticeMain = async function() {
   await initDotEnv();
 
   const wikiRevIds = [
-    "enwiki:920429244", 
-    "zhwiki:63095995",
-    "wikidatawiki:1319338548",
+    'enwiki:920429244', 
+    'zhwiki:63095995',
+    'wikidatawiki:1319338548',
   ];
 
   const wikiRevIdToData = {};
@@ -24,7 +24,7 @@ const createNoticeMain = async function() {
     const filename = `${wiki}:${seedRevId}.json`;
     const pairs:MwApiPair[] = await fse.readJSON(`./test/testdata/mwapi/small/${filename}`);
     pairs.forEach((pair:MwApiPair) => {
-      if (!(pair.res.status != 200 || pair.res.data?.error || pair.res.data?.query?.badrevids)) {
+      if (!(pair.res.status !== 200 || pair.res.data?.error || pair.res.data?.query?.badrevids)) {
         if (pair.res.data?.query?.pages) {
           const revInfo = MwActionApiClient2.extractRevisionInfo(wiki, pair.res);
           const existed = wikiRevIdToData[`${wiki}:${revInfo.revId}`];
@@ -46,7 +46,7 @@ const createNoticeMain = async function() {
       }
     });
   }));
-  await fse.outputJSON(`./test/testdata/mwapi/small/datamap.json`, wikiRevIdToData, {spaces: 2});
+  await fse.outputJSON('./test/testdata/mwapi/small/datamap.json', wikiRevIdToData, {spaces: 2});
   console.log('Done all');
 };
 

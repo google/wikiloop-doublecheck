@@ -250,7 +250,7 @@ export default {
         return this.$store.state.wiki;
       },
       set(wiki: string) {
-        if (wiki != this.$store.state.wiki) {
+        if (wiki !== this.$store.state.wiki) {
           // Probably Wiki language doesn't have to be tied to UI language.
           // For example, people can edit wikidata in any language. Or,
           // they might prefer editing the Indonesian wiki using English interface
@@ -266,13 +266,13 @@ export default {
       },
     },
   },
-  async mounted() {
+  mounted() {
     this.commitFlagsFromUrlQuery(this.$route.query);
-    socket.on('metrics-update', async (metrics) => {
+    socket.on('metrics-update', (metrics) => {
       this.$store.commit('setMetrics', metrics);
     });
 
-    socket.on('interaction-item', async (interaction: InteractionItem) => {
+    socket.on('interaction-item', (interaction: InteractionItem) => {
       if (interaction.userGaId === this.$cookiez.get('_ga')) {
         this.$bvToast.toast(
           this.$t('Message-YourJudgementLogged', [

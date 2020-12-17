@@ -14,7 +14,6 @@
 
 import { MwActionApiClient2 } from '~/shared/mwapi2';
 import { parseWikiRevId } from '~/shared/utility-shared';
-
 export const state = () => ({
   wikiRevId: null,
   item: {},
@@ -56,7 +55,7 @@ export const mutations = {
 };
 
 export const actions = {
-  async loadInfo({ commit, state }) {
+  async loadInfo({ commit, state, axios }) {
     commit('setInfoLoaded', false);
     try {
       const revision = (await axios.get(`/api/revision/${state.wikiRevId}`)).data;

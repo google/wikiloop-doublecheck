@@ -40,6 +40,7 @@ feedRouter.get('/mix', async (req, res) => {
     limit: parseInt(req.query.limit) || 50,
   };
 
+  /* eslint-disable no-fallthrough */
   switch (feed) {
   case 'us2020':
   case 'covid19': // fall through
@@ -52,12 +53,14 @@ feedRouter.get('/mix', async (req, res) => {
     break;
   case 'lastbad': // fall through
     ctx.bad = true;
-  case 'recent': // fall through
+  case 'recent': // fall through 
   default:
     wikiRevIds = (await MwActionApiClient.getLatestRevisionIds(ctx))
         .map((revId) => `${ctx.wiki}:${revId}`);
     break;
   }
+  /* eslint-enable no-fallthrough */
+
   res.send({
     useMixer: true,
     feed,
@@ -136,8 +139,8 @@ feedRouter.post('/:feed', async (req, res) => {
   // Validation
   // TODO(xinbenlv): consider use `express-validator`
   // TODO(xinbenlv): change to MongoDB
-  if (req.params.feed == 'wikitrust' &&
-    (process.env.FEED_WIKITRUST_TOKEN && req.header('WikiLoopToken') == process.env.FEED_WIKITRUST_TOKEN)) {
+  if (req.params.feed === 'wikitrust' &&
+    (process.env.FEED_WIKITRUST_TOKEN && req.header('WikiLoopToken') === process.env.FEED_WIKITRUST_TOKEN)) {
     const mongoose = require('mongoose');
     await mongoose.connection.db.collection('WatchCollection_WIKITRUST')
         .insertMany(req.body.content);
@@ -168,8 +171,8 @@ const ingestRevisionHandler = asyncHandler(async (req, res) => {
   feedRevisionItem.pageId = parseInt(req.query.pageId);
 
   const now = new Date();
-  if (req.query.feed == 'wikitrust' &&
-    (process.env.FEED_WIKITRUST_TOKEN && req.header('WikiLoopToken') == process.env.FEED_WIKITRUST_TOKEN)) {
+  if (req.query.feed === 'wikitrust' &&
+    (process.env.FEED_WIKITRUST_TOKEN && req.header('WikiLoopToken') === process.env.FEED_WIKITRUST_TOKEN)) {
     /* TODO: deprecate the WatchCollection W */
     const mongoose = require('mongoose');
     await mongoose.connection.db.collection('WatchCollection_WIKITRUST')
@@ -205,7 +208,7 @@ feedRouter.delete('/:feed', async (req, res) => {
   // Validation
   // TODO(xinbenlv): consider use `express-validator`
   // TODO(xinbenlv): change to MongoDB
-  if (req.params.feed == 'wikitrust' && req.header('WikiLoopToken') == process.env.FEED_WIKITRUST_TOKEN) {
+  if (req.params.feed === 'wikitrust' && req.header('WikiLoopToken') === process.env.FEED_WIKITRUST_TOKEN) {
     const mongoose = require('mongoose');
     try {
       await mongoose.connection.db.collection('WatchCollection_WIKITRUST').drop();

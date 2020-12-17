@@ -184,7 +184,9 @@ const basic = async (req, res) => {
         wikiRevId: 1,
       }).toArray();
   const revSet = {};
-  allInteractions.forEach((item) => revSet[item.wikiRevId] = true);
+  allInteractions.forEach((item: { wikiRevId: string }) => {
+    revSet[item.wikiRevId] = true;
+  });
   const ret:any = {
     totalJudgement: allInteractions.length,
     totalRevJudged: Object.keys(revSet).length,
@@ -194,7 +196,9 @@ const basic = async (req, res) => {
   if (myGaId) {
     const myInteractions = allInteractions.filter((i) => i.userGaId === myGaId);
     const myRevSet = {};
-    myInteractions.forEach((item) => myRevSet[item.wikiRevId] = true);
+    myInteractions.forEach((item: { wikiRevId: string }) => {
+      myRevSet[item.wikiRevId] = true;
+    });
     ret.totalMyJudgement = myInteractions.length;
     ret.totalMyRevJudged = Object.keys(myRevSet).length;
     ret.totalMyShouldRevert = myInteractions.filter((item) => item.judgement === 'ShouldRevert').length;

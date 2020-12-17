@@ -316,7 +316,7 @@ const mainTraverseLinkGraph = async function() {
   const toCrawl = [];
   toCrawl.push(...seed.map((article) => [article, HOP_LIMIT]));
 
-  await Promise.all(seed.map(async (a) => insertLinkEdge(db, '', a, 'seed', HOP_LIMIT, iterationTime)));
+  await Promise.all(seed.map(async (a) => await insertLinkEdge(db, '', a, 'seed', HOP_LIMIT, iterationTime)));
   seed.forEach((article) => stored.add(article));
   while (toCrawl.length > 0) {
     console.log(`${(new Date().getTime() - started.getTime()) / 1000}s crawled ${crawled.size} pages, ${toCrawl.length} left to crawl, stored ${stored.size}, stored/craweld = ${Math.floor(stored.size / crawled.size)}, toCrawl/crawled = ${Math.floor(toCrawl.length / crawled.size)}, time per crawl = ${(new Date().getTime() - started.getTime()) / 1000 / crawled.size}s, ETA ${Math.floor(toCrawl.length * ((new Date().getTime() - started.getTime()) / 1000 / crawled.size) / 60)}min`);

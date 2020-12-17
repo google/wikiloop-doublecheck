@@ -50,7 +50,7 @@ const mainTraverseCategoryTree = async function() {
   const toCrawl = [];
   toCrawl.push(...seed.map((article) => [article, HOP_LIMIT]));
 
-  await Promise.all(seed.map(async (a) => insertLinkEdge(db, '', a, 'seed', HOP_LIMIT, iterationTime)));
+  await Promise.all(seed.map(async (a) => await insertLinkEdge(db, '', a, 'seed', HOP_LIMIT, iterationTime)));
   seed.forEach((article) => stored.add(article));
   while (toCrawl.length > 0) {
     console.log(`crawled ${crawled.size} categories, ${toCrawl.length} left to crawl, stored ${stored.size}, stored/craweld = ${stored.size / crawled.size}, toVisit/visited = ${toCrawl.length / crawled.size}`);

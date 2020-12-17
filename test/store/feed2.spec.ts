@@ -27,7 +27,7 @@ describe('store/feed2', () => {
       expect((reviewQueue as []).length).toBe(0);
     });
 
-    test('can setFeed', async () => {
+    test('can setFeed', () => {
       expect(store.state.feed2.feed).toEqual('lastbad');
       store.commit('feed2/setFeed', 'recent');
       expect(store.state.feed2.feed).toEqual('recent');
@@ -57,7 +57,7 @@ describe('store/feed2', () => {
             return [200, mockedRes];
           });
       mock.onAny(/.*/).reply(500); // Any other response are going to yield 500
-    };
+    }
 
     test('can loadMoreWikiRevIds', async () => {
       mockFeed('lastbad', [
@@ -79,7 +79,7 @@ describe('store/feed2', () => {
       expect(store.state.feed2.reviewQueue[9]).toBe('enwiki:9990010');
     });
 
-    test('can clear wikiRevIds', async () => { 
+    test('can clear wikiRevIds', () => { 
       expect(store.state.feed2.reviewQueue.length).toBe(0);
       store.commit('feed2/addToReviewQueue', [
         'enwiki:9990001',

@@ -48,6 +48,7 @@
     </table>
     <h2 v-else>
       <br>:(<br>
+      <!-- eslint-disable-next-line vue/no-v-html-->
       <p v-html="$t('Message-NoActiveUsersPleaseStartReview', [`<a class='btn btn-outline-primary' href='/'>`, `</a>`])" />
     </h2>
   </section>

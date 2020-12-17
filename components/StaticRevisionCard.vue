@@ -195,7 +195,7 @@ between Client-Side-Rendering and Server-Side-Rendering -->
   </section>
 </template>
 <script lang="ts">
-import { fetchDiffWithWikiRevId, supportedWikis, getUrlBaseByWiki } from '@/shared/utility-shared';
+import { fetchDiffWithWikiRevId, getUrlBaseByWiki } from '@/shared/utility-shared';
 import DiffBox from '@/components/DiffBox.vue';
 import socket from '@/plugins/socket.io.js';
 export default {
@@ -231,17 +231,18 @@ export default {
   data() {
     return { myJudgement: null };
   },
-  async beforeMount() {
+  beforeMount() {
     // TODO(xinbenlv): after marking "shouldRevert" query to see if this revesion is top and can be reverted.
-    socket.on('interaction', async (interaction) => {
+    socket.on('interaction', (interaction) => {
       if (interaction.wikiRevId === this.wikiRevId) {
+        // eslint-disable-next-line vue/no-mutating-props
         this.interaction = interaction;
       }
     });
   },
   beforeCreate() {
-    this['getUrlBaseByWiki'] = getUrlBaseByWiki.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
-    this['fetchDiffWithWikiRevId'] = fetchDiffWithWikiRevId.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
+    (this as any).getUrlBaseByWiki = getUrlBaseByWiki.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
+    (this as any).fetchDiffWithWikiRevId = fetchDiffWithWikiRevId.bind(this); // now you can call this.getUrlBaseByWiki() (in your functions/template)
   },
   methods: {
     isMine(judgement) {
@@ -279,7 +280,7 @@ export default {
         return null;
       }
     },
-    async enableRevertRedirect() {
+    enableRevertRedirect() {
       return this.myJudgement === 'ShouldRevert' && !this.isOverriden();
     },
     async directRevert() {

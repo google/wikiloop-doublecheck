@@ -28,7 +28,7 @@ export const markedRevsCsv = async (req, res) => {
   const newJudgementCounts = await getNewJudgementCounts(
     mongoose.connection.db, {}, 0, 10000000/* as many as possible to download all */);
   res.setHeader('Content-Type', 'text/csv');
-  res.setHeader('Content-Disposition', 'attachment; filename=\"' + 'download-' + Date.now() + '.csv\"');
+  res.setHeader('Content-Disposition', 'attachment; filename="' + 'download-' + Date.now() + '.csv"');
   const stringify = require('csv-stringify');
   const ret = [[
     'WikiRevId',
