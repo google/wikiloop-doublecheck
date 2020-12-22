@@ -43,3 +43,4 @@ rules:
   node/handle-callback-err: off
   node/no-new-require: off
   node/no-path-concat: off
+ignorePatterns: ["docs"]

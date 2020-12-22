@@ -1,0 +1,21 @@
+{
+  "inputFiles": [
+    "layouts",
+    "mailer",
+    "middleware",
+    "plugins",
+    "scripts",
+    "server",
+    "shared",
+    "store",
+    "test",
+    "tscmd"
+  ],
+  "media": ["./assets"],
+  "mode": "modules",
+  "out": "docs",
+  "toc": [
+    "EntryClass",
+    "ImportantInterface"
+  ]
+}
