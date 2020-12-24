@@ -1,7 +1,9 @@
 import _ from 'lodash';
 import Vuex from 'vuex';
 import { createLocalVue } from '@vue/test-utils';
-import { FeedResponse } from '../../server/routers/api/feed';
+import { FeedResponse } from '~/server/routers/api/feed';
+import { parseWikiRevId } from '~/shared/utility-shared';
+
 describe('store/feed2', () => {
   const localVue = createLocalVue();
   localVue.use(Vuex);
@@ -34,12 +36,77 @@ describe('store/feed2', () => {
     });
   });
 
-  describe('loadMoreWikiRevIds', () => {
+  describe('reviewQueue', () => {
+    test('can add and clear reviewQueue', () => { 
+      expect(store.state.feed2.reviewQueue.length).toBe(0);
+      store.commit('feed2/addToReviewQueue', [
+        'enwiki:9990001',
+        'enwiki:9990002',
+        'enwiki:9990003'
+      ]);
+      expect(store.state.feed2.reviewQueue.length).toBe(3);
+      store.commit('feed2/clearReviewQueue');
+      expect(store.state.feed2.reviewQueue.length).toBe(0);
+    });
+
+    test('should skip revisions that is already in the queue.', () => {
+      // The test beging with an empty queue.
+      expect(store.state.feed2.reviewQueue.length).toBe(0);
+      store.commit('feed2/addToReviewQueue', [
+        'enwiki:9990001',
+        'enwiki:9990002',
+        'enwiki:9990003'
+      ]);
+
+      // After adding 3 revisions, the reviewQueue becomes an array of 3.
+      expect(store.state.feed2.reviewQueue.length).toBe(3);
+      expect(store.state.feed2.reviewQueue).toEqual([
+        'enwiki:9990001',
+        'enwiki:9990002',
+        'enwiki:9990003'
+      ]);
+
+      store.commit('feed2/addToReviewQueue', [
+        'enwiki:9990002',
+      ]);
+      
+      // The review queue maintains the same length after adding a repeated revision
+      expect(store.state.feed2.reviewQueue.length).toBe(3);
+      expect(store.state.feed2.reviewQueue).toEqual([
+        'enwiki:9990001',
+        'enwiki:9990002',
+        'enwiki:9990003'
+      ]);
+   
+      store.commit('feed2/addToReviewQueue', [
+        'enwiki:9990004',
+      ]);
+
+      expect(store.state.feed2.reviewQueue.length).toBe(4);
+      expect(store.state.feed2.reviewQueue).toEqual([
+        'enwiki:9990001',
+        'enwiki:9990002',
+        'enwiki:9990003',
+        'enwiki:9990004',
+      ]);
+    });
+
+    test('should handle enqueue and dequeue', async () => {
+      store.commit('feed2/addToReviewQueue', ['enwiki:9990001']);
+      store.commit('feed2/addToReviewQueue', ['enwiki:9990002']);
+      const wikiRevId1 = await store.dispatch('feed2/deReviewQueue');
+      expect(wikiRevId1).toBe('enwiki:9990001');
+      const wikiRevId2 = await store.dispatch('feed2/deReviewQueue');
+      expect(wikiRevId2).toBe('enwiki:9990002');
+    });
+  });
+
+  describe('MOCK loadMoreWikiRevIds', () => {
+    const axios = require('axios');
+    const MockAdapter = require('axios-mock-adapter');
+    const mock = new MockAdapter(axios);
 
     function mockFeed(feed, wikiRevIds) {
-      const axios = require('axios');
-      const MockAdapter = require('axios-mock-adapter');
-      const mock = new MockAdapter(axios);
       const mockedRes = {
         useMixer: false,
         feed,
@@ -56,10 +123,29 @@ describe('store/feed2', () => {
           .reply(function(_) {
             return [200, mockedRes];
           });
-      mock.onAny(/.*/).reply(500); // Any other response are going to yield 500
     }
 
-    test('can loadMoreWikiRevIds', async () => {
+    function mockRevision(wikiRevId, { title, pageId, comment, user, timestampStr }) {
+      const [wiki, revid] = parseWikiRevId(wikiRevId);
+      const mockedRes = {
+        wiki,
+        revid,
+        title,
+        pageId,
+        comment,
+        user,
+        timestamp:timestampStr
+      };
+
+      mock
+          .onGet(`/api/revision/${wikiRevId}`)
+          .reply(function(_) {
+            return [200, mockedRes];
+          });
+    }
+    
+
+    test('MOCK can load more wikiRevIds', async () => {
       mockFeed('lastbad', [
         'enwiki:9990001',
         'enwiki:9990002',
@@ -72,6 +158,15 @@ describe('store/feed2', () => {
         'enwiki:9990009',
         'enwiki:9990010',
       ]);
+
+      mockRevision('enwiki:9990001', {
+        title: 'John Smith',
+        pageId: 10001,
+        comment: 'Some good edits',
+        user: 'GoodGuy',
+        timestampStr: '2020-11-10T00:18:07‎'
+      });
+
       expect(store.state.feed2.reviewQueue.length).toBe(0);
       await store.dispatch('feed2/loadMoreWikiRevIds');
       expect(store.state.feed2.reviewQueue.length).toBe(10);
@@ -79,20 +174,54 @@ describe('store/feed2', () => {
       expect(store.state.feed2.reviewQueue[9]).toBe('enwiki:9990010');
     });
 
-    test('can clear wikiRevIds', () => { 
-      expect(store.state.feed2.reviewQueue.length).toBe(0);
-      store.commit('feed2/addToReviewQueue', [
+    test('MOCK should kickoff prefetching for reviewQueueHead', async () => {
+      mockFeed('lastbad', [
         'enwiki:9990001',
         'enwiki:9990002',
-        'enwiki:9990003'
       ]);
-      expect(store.state.feed2.reviewQueue.length).toBe(3);
-      store.commit('feed2/clearReviewQueue');
-      expect(store.state.feed2.reviewQueue.length).toBe(0);
-    });
 
-    test('(TODO implement) should skip revisions that is already reviewed or should be skipped.', async () => { });
-    test('(TODO implement) should merge WikiRevIds should there be already existing.', async () => { });
-    test('(TODO implement) should kickoff prefetching', async () => { });
+      mockRevision('enwiki:9990001', {
+        title: 'John Smith',
+        pageId: 10001,
+        comment: 'Some good edits',
+        user: 'GoodGuy',
+        timestampStr: '2020-11-10T00:18:07‎'
+      });
+
+      expect(store.state.feed2.reviewQueue.length).toBe(0);
+      await store.dispatch('feed2/loadMoreWikiRevIds');
+      expect(store.state.feed2.reviewQueue.length).toBe(2);
+      expect(store.state.feed2.reviewQueue).toEqual([
+        'enwiki:9990001',
+        'enwiki:9990002'
+      ]);
+      const cachedItem = store.state.feed2.cached['enwiki:9990001'];
+      expect(cachedItem.wiki).toBe('enwiki');
+      expect(cachedItem.revId).toBe(9990001);
+      expect(cachedItem.title).toBe('John Smith');
+      expect(cachedItem.summary).toBe('Some good edits');
+      expect(cachedItem.author).toBe('GoodGuy');
+      expect(cachedItem.timestamp).toBe(new Date('2020-11-10T00:18:07‎').getTime() / 1000);
+    });
   });
+
+  describe('cache', () => { 
+    test('should handle caching', () => {
+      const item = {
+        wiki: 'enwiki',
+        revId: 9990001,
+        title: 'John Smith',
+        pageId: 10001,
+        summary: 'Some good edits',
+        author: 'GoodGuy',
+        timestamp: new Date('2020-11-10T00:18:07‎').getTime() / 1000
+      };
+      store.commit('feed2/addToCache', item);
+      const wikiRevId = 'enwiki:9990001';
+      const cachedItem = store.state.feed2.cached[wikiRevId];
+      expect(wikiRevId).toBe('enwiki:9990001');
+      expect(cachedItem.pageId).toBe(10001);
+    });
+  });
+
 });
