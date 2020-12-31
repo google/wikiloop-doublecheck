@@ -8,7 +8,7 @@
   ],
   "configurations": [
     {
-      "name": "Current TS file",
+      "name": "Run current TS file",
       "type": "node",
       "request": "launch",
       "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/ts-node",
@@ -17,8 +17,23 @@
       "cwd": "${workspaceRoot}",
       "internalConsoleOptions": "openOnSessionStart",
       "skipFiles": ["<node_internals>/**", "node_modules/**"],
-      // "protocol": "inspector",
-      // "sourceMaps": true
+      "sourceMaps": true
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Test current TS file",
+      "program": "${workspaceRoot}/node_modules/jest/bin/jest.js",
+      "env": { "CI": "true" },
+      "args": [
+        "-c",
+        "./jest.config.js",
+        "--verbose",
+        "-i",
+        "--no-cache"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
     },
     {
       "name": "server",
