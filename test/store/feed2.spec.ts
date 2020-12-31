@@ -37,7 +37,7 @@ describe('store/feed2', () => {
   });
 
   describe('reviewQueue', () => {
-    test('can add and clear reviewQueue', () => { 
+    test('can add and clear reviewQueue', () => {
       expect(store.state.feed2.reviewQueue.length).toBe(0);
       store.commit('feed2/addToReviewQueue', [
         'enwiki:9990001',
@@ -69,7 +69,7 @@ describe('store/feed2', () => {
       store.commit('feed2/addToReviewQueue', [
         'enwiki:9990002',
       ]);
-      
+
       // The review queue maintains the same length after adding a repeated revision
       expect(store.state.feed2.reviewQueue.length).toBe(3);
       expect(store.state.feed2.reviewQueue).toEqual([
@@ -77,7 +77,7 @@ describe('store/feed2', () => {
         'enwiki:9990002',
         'enwiki:9990003'
       ]);
-   
+
       store.commit('feed2/addToReviewQueue', [
         'enwiki:9990004',
       ]);
@@ -143,7 +143,7 @@ describe('store/feed2', () => {
             return [200, mockedRes];
           });
     }
-    
+
 
     test('MOCK can load more wikiRevIds', async () => {
       mockFeed('lastbad', [
@@ -195,17 +195,20 @@ describe('store/feed2', () => {
         'enwiki:9990001',
         'enwiki:9990002'
       ]);
-      const cachedItem = store.state.feed2.cached['enwiki:9990001'];
+
+      const cachedItem = store.getters['feed2/getFromCache']('enwiki:9990001');
       expect(cachedItem.wiki).toBe('enwiki');
       expect(cachedItem.revId).toBe(9990001);
       expect(cachedItem.title).toBe('John Smith');
       expect(cachedItem.summary).toBe('Some good edits');
       expect(cachedItem.author).toBe('GoodGuy');
       expect(cachedItem.timestamp).toBe(new Date('2020-11-10T00:18:07‎').getTime() / 1000);
+
     });
+
   });
 
-  describe('cache', () => { 
+  describe('cache', () => {
     test('should handle caching', () => {
       const item = {
         wiki: 'enwiki',
@@ -216,11 +219,15 @@ describe('store/feed2', () => {
         author: 'GoodGuy',
         timestamp: new Date('2020-11-10T00:18:07‎').getTime() / 1000
       };
-      store.commit('feed2/addToCache', item);
+      store.commit('feed2/addToCache', { key: 'enwiki:9990001', value: item });
       const wikiRevId = 'enwiki:9990001';
-      const cachedItem = store.state.feed2.cached[wikiRevId];
+      const cachedItem = store.getters['feed2/getFromCache'](wikiRevId);
       expect(wikiRevId).toBe('enwiki:9990001');
       expect(cachedItem.pageId).toBe(10001);
+      expect(cachedItem.summary).toBe('Some good edits');
+      store.commit('feed2/clearCache');
+      const nullItem = store.getters['feed2/getFromCache'](wikiRevId);
+      expect(nullItem).toBe(undefined);
     });
   });
 

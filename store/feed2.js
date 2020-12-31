@@ -22,10 +22,16 @@ export const state = () => ({
   skipMap: {},
 
   /**
-   * Cached 
+   * Cached key value pair
    */
-  cached: {},
+  cache: {},
 });
+
+export const getters =  {
+  getFromCache: (state) => (key) => {
+    return state.cache[key];
+  }
+};
 
 export const mutations = {
   _dequeue(state) {
@@ -35,7 +41,7 @@ export const mutations = {
     state.feed = feed;
   },
   /**
-   * 
+   *
    * @param {any} state vue state
    * @param {string} wikiRevIds strings in format of WikiRevId to be enqued.
    */
@@ -58,17 +64,19 @@ export const mutations = {
   clearSkipMap(state) {
     state.skipMap = {};
   },
-  addToCache(state, item) {
-    state.cached[`${item.wiki}:${item.revId}`] = item;
+  addToCache(state, pair) {
+    state.cache[pair.key] = pair.value;
+  },
+  removeFromCache(state, key) {
+    delete state.cache[key];
   },
   clearCache(state) {
-    state.cached = {};
+    state.cache = {};
   }
 };
 
 export const actions = {
-  async prefetchQueueHead({commit, state}) {
-    const wikiRevId = state.reviewQueue[0];
+  async fetchRevision({commit, state}, wikiRevId) {
     const revision = (await axios.get(`/api/revision/${wikiRevId}`)).data;
     const item = {
       wiki: revision.wiki,
@@ -79,10 +87,9 @@ export const actions = {
       author: revision.user,
       timestamp: new Date(revision.timestamp).getTime() / 1000,
     };
-    commit('addToCache', item);
     return item;
   },
-  async loadMoreWikiRevIds({ commit, state, dispatch }) {
+  async loadMoreWikiRevIds({ commit, state, dispatch, getters }) {
     const params = {
       wiki: 'enwiki', // TODO update to the current Wiki selected by users
       limit: 10, // TODO update feed
@@ -93,7 +100,8 @@ export const actions = {
       const wikiRevIds = feedResponse.wikiRevIds;
       if (wikiRevIds) {
         commit('addToReviewQueue', wikiRevIds);
-        await dispatch('prefetchQueueHead');
+        const item = await dispatch('fetchRevision', state.reviewQueue[0]);
+        commit('addToCache', { key: `${item.wiki}:${item.revId}`, value: item });
       }
     } catch (err) {
       console.log('We encountered a problem in prefetching,', err);
