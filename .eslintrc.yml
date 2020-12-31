@@ -6,8 +6,9 @@ extends:
   - google
   - 'plugin:vue/essential'
   - '@nuxtjs/eslint-config-typescript'
-  - prettier
   - eslint:recommended
+  - prettier
+  - prettier/prettier
 parserOptions:
   ecmaVersion: 12
   parser: '@typescript-eslint/parser'
@@ -15,6 +16,7 @@ parserOptions:
 plugins:
   - vue
   - '@typescript-eslint'
+  - prettier
 rules:
   '@typescript-eslint/no-unused-vars': off
   no-unused-vars: off # This is needed to define vars in Vue Typescript and used in Vue template
