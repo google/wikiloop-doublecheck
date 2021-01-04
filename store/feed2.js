@@ -30,6 +30,10 @@ export const state = () => ({
 export const getters =  {
   getFromCache: (state) => (key) => {
     return state.cache[key];
+  },
+  getHead: (state) => () => {
+    const head = state.reviewQueue[0];
+    return state.cache[head];
   }
 };
 
@@ -77,17 +81,23 @@ export const mutations = {
 
 export const actions = {
   async fetchRevision({commit, state}, wikiRevId) {
-    const revision = (await axios.get(`/api/revision/${wikiRevId}`)).data;
-    const item = {
-      wiki: revision.wiki,
-      revId: revision.revid,
-      title: revision.title,
-      pageId: revision.pageId,
-      summary: revision.comment,
-      author: revision.user,
-      timestamp: new Date(revision.timestamp).getTime() / 1000,
-    };
-    return item;
+    try {
+      const revision = (await axios.get(`/api/revision/${wikiRevId}`)).data;
+      const item = {
+        wiki: revision.wiki,
+        revId: revision.revid,
+        title: revision.title,
+        // pageId: revision.pageid, TODO add back pageId if exist
+        summary: revision.comment,
+        author: revision.user,
+        timestamp: new Date(revision.timestamp).getTime() / 1000,
+      };
+      return item;
+    } catch(err) {
+      // TODO: add test for handling error
+      console.warn('fetch revision returns error: ',err);
+      return null;
+    }
   },
   async loadMoreWikiRevIds({ commit, state, dispatch, getters }) {
     const params = {
@@ -100,8 +110,12 @@ export const actions = {
       const wikiRevIds = feedResponse.wikiRevIds;
       if (wikiRevIds) {
         commit('addToReviewQueue', wikiRevIds);
-        const item = await dispatch('fetchRevision', state.reviewQueue[0]);
-        commit('addToCache', { key: `${item.wiki}:${item.revId}`, value: item });
+        /* no await */ wikiRevIds
+            // .filter(wikiRevId => getters.getFromCache(wikiRevId)) TODO filter already existing wikiRevId
+            .map(async (wikiRevId) => {
+              const item = await dispatch('fetchRevision', wikiRevId);
+              if (item) commit('addToCache', { key: `${item.wiki}:${item.revId}`, value: item });
+            });
       }
     } catch (err) {
       console.log('We encountered a problem in prefetching,', err);
