@@ -100,6 +100,26 @@ export class MwActionApiClient2 {
     }
   }
 
+  /**
+   * Given a valid {@link wiki} this function returns a MediaWiki web instance endpoint.
+   *
+   * @throws an error if wiki is not valid.
+   * @return a MediaWiki instance endpoint URL
+   *
+   * @param wiki
+   */
+  public static webEndPoint(wiki: string) {
+    if (wiki in wikiToDomain) {
+      return `https://${wikiToDomain[wiki]}/w/index.php`;
+    } else {
+      throw new Error(
+        `Error: wiki "${wiki}" was not available in wikiToDomain, which supports only ${Object.keys(
+          wikiToDomain
+        )}`
+      );
+    }
+  }
+
   public static infoParams(revId) {
     const params = {
       action: 'query',

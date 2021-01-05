@@ -11,6 +11,8 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+import { parseWikiRevId } from '~/shared/utility-shared';
+import { MwActionApiClient2 } from '~/shared/mwapi2';
 
 const axios = require('axios');
 export const state = () => ({
@@ -76,11 +78,23 @@ export const mutations = {
   },
   clearCache(state) {
     state.cache = {};
+  },
+  setDiffHtml(state, payload) {
+    const wikiRevId = payload.wikiRevId;
+    const diffHtml = payload.diffHtml;
+    state.cache[wikiRevId] = {... state.cache[wikiRevId], diffHtml};
   }
 };
 
 export const actions = {
-  async fetchRevision({commit, state}, wikiRevId) {
+  async fetchDiff({commit, state}, wikiRevId) {
+    const mwapi2 = new MwActionApiClient2(axios);
+    const [wiki, revId] = parseWikiRevId(wikiRevId);
+    const diffHtml = await mwapi2.fetchDiff(wiki, revId);
+    return diffHtml;
+  },
+
+  async fetchRevision({commit, state, dispatch}, wikiRevId) {
     try {
       const revision = (await axios.get(`/api/revision/${wikiRevId}`)).data;
       const item = {
@@ -92,6 +106,12 @@ export const actions = {
         author: revision.user,
         timestamp: new Date(revision.timestamp).getTime() / 1000,
       };
+      /* no await */ dispatch('fetchDiff', wikiRevId)
+          .then(diffHtml=> {
+            commit('setDiffHtml', {wikiRevId, diffHtml});
+          }).catch(err => {
+            console.warn('Error occurred in fetchRevision', err);
+          }); 
       return item;
     } catch(err) {
       // TODO: add test for handling error
@@ -111,7 +131,7 @@ export const actions = {
       if (wikiRevIds) {
         commit('addToReviewQueue', wikiRevIds);
         /* no await */ wikiRevIds
-            // .filter(wikiRevId => getters.getFromCache(wikiRevId)) TODO filter already existing wikiRevId
+            .filter(wikiRevId => !getters.getFromCache(wikiRevId))
             .map(async (wikiRevId) => {
               const item = await dispatch('fetchRevision', wikiRevId);
               if (item) commit('addToCache', { key: `${item.wiki}:${item.revId}`, value: item });
