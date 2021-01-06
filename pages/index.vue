@@ -79,7 +79,7 @@ export default {
   },
   beforeMount() {
     const dice = Math.random() * 100;
-    const threshold = parseInt(this.$env.MIXER_RAMP_UP_PERCENT) || 0;
+    const threshold = parseInt(this.$config.MIXER_RAMP_UP_PERCENT) || 0;
     if (
       ['enwiki', 'testwiki'].includes(this.$store.state.wiki) &&
       dice < threshold

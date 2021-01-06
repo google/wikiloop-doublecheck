@@ -128,9 +128,9 @@ export default class ActionPanel extends Vue {
         @Prop({ type: String, required: true }) readonly feed!: string;
 
         $cookiez: NuxtCookies; // TODO remove after dep resolved https://github.com/microcipcip/cookie-universal/issues/63
+        $config:any;
         $axios: NuxtAxiosInstance;
         $t:any;
-        $env:any;
         $bvModal:any;
         $ga:any;
         $bvToast:any;
@@ -202,7 +202,7 @@ export default class ActionPanel extends Vue {
               [
                 '[[:m:WikiLoop DoubleCheck]]',
                 `${version}`,
-                `http://${this.$env.PUBLIC_HOST || 'doublecheck.wikiloop.org'}/revision/${this.wiki}/${this.revId}`,
+                `http://${this.$config.PUBLIC_HOST || 'doublecheck.wikiloop.org'}/revision/${this.wiki}/${this.revId}`,
               ]);
             this.wikiActionProps = {
               fromUserGaId: this.$cookiez.get('_ga'),

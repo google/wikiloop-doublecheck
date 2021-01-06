@@ -95,23 +95,11 @@ module.exports = {
       '@nuxtjs/google-analytics',
       {
         asyncID(ctx) {
-          return ctx.app.$env?.GA_WLBF_ID_CLIENT;
+          return ctx.app.$config?.GA_WLBF_ID_CLIENT;
         },
       },
     ],
     ['cookie-universal-nuxt', { alias: 'cookiez' }],
-    [
-      'nuxt-env',
-      {
-        keys: [
-          'HOST',
-          'PORT',
-          'GA_WLBF_ID_CLIENT',
-          'MIXER_RAMP_UP_PERCENT',
-          'CROSS_EDIT_CHECK',
-        ],
-      },
-    ],
     [
       'nuxt-i18n',
       {
@@ -181,6 +169,15 @@ module.exports = {
       },
     },
   },
+  publicRuntimeConfig: {
+    baseURL: process.env.BASE_URL || 'https://nuxtjs.org',
+    HOST: process.env.HOST,
+    PORT: process.env.PORT,
+    PUBLIC_HOST: process.env.PUBLIC_HOST,
+    GA_WLBF_ID_CLIENT: process.env.GA_WLBF_ID_CLIENT,
+    MIXER_RAMP_UP_PERCENT: process.env.MIXER_RAMP_UP_PERCENT,
+    CROSS_EDIT_CHECK: process.env.CROSS_EDIT_CHECK,
+  }
 };
 
 console.log('nuxt.config.js is done executed!');

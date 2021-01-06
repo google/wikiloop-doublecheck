@@ -398,7 +398,7 @@ export default {
     });
   },
   async mounted() {
-    if (this.$env.CROSS_EDIT_CHECK === '1' || this.$route.query.cesp === '1') {
+    if (this.$config.CROSS_EDIT_CHECK === '1' || this.$route.query.cesp === '1') {
       this.enableCesp = true;
       console.log('Cross-edit features is eanbled!');
     } else {

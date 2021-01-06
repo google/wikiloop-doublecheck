@@ -15120,8 +15120,8 @@ number-is-nan@^1.0.0:
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
 
 nuxt-env@xinbenlv/nuxt-env#master:
-  version "0.1.1-0"
-  resolved "https://codeload.github.com/xinbenlv/nuxt-env/tar.gz/736539cb0a7858c882d475d51c15034fb39c8427"
+  version "0.1.0"
+  resolved "https://codeload.github.com/xinbenlv/nuxt-env/tar.gz/48629a6c6697b106db0a9a5644763ed140f0348e"
 
 nuxt-i18n@^6.4.1:
   version "6.15.4"

@@ -3,7 +3,7 @@ export default ({ $axios, app }) => {
     if (process.client) {
       config.baseURL = '';
     } else {
-      config.baseURL = `http://${app.$env.HOST}:${app.$env.PORT}`;
+      config.baseURL = `http://${app.$config.HOST}:${app.$config.PORT}`;
     }
   });
 };
