@@ -23,7 +23,10 @@
     </section>
 </template>
 <script lang="ts">
-export default {
-  layout: 'empty', // not using any layout
-};
+import { Component, Vue } from 'nuxt-property-decorator';
+
+  @Component({
+    layout: 'EmptyPage',
+  })
+export default class EmptyPage extends Vue {}
 </script>

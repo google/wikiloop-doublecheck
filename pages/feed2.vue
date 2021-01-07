@@ -27,6 +27,7 @@ import { BasicJudgement } from '~/shared/interfaces';
 import { InteractionProps } from '~/shared/models/interaction-item.model';
 
   @Component({
+    name: 'FeedPage2',
     components: {
       PureRevisionPanel,
     },
