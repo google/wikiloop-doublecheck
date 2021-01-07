@@ -28,7 +28,7 @@ jobs:
       - store_test_results:
           path: reports/jest
       - store_artifacts:
-          path: reports/jest
+          path: reports
       - run:
           name: Run integration test
           command: yarn test:integration
