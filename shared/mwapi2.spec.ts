@@ -1,4 +1,4 @@
-import { PARSE_API_DATA } from '../testdata/mwapi2.testdata';
+import { PARSE_API_DATA } from '~/test/testdata/mwapi2.testdata';
 import { MwActionApiClient2 } from '~/shared/mwapi2';
 
 const axios = require('axios');
