@@ -35,6 +35,18 @@ module.exports = {
   ],
   reporters: [
     'default',
+    [
+      'jest-stare',
+      {
+        'resultDir': 'reports/jest-stare',
+        'reportTitle': 'jest-stare!',
+        'additionalResultsProcessors': [
+          'jest-junit'
+        ],
+        'coverageLink': '../../coverage/lcov-report/index.html',
+        'jestStareConfigJson': 'jest-stare.json'
+      }
+    ],
     ['jest-junit', {
       outputDirectory: './reports/jest/',
       outputName: 'junit.xml',
