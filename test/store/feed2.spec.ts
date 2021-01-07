@@ -9,7 +9,7 @@ describe('store/feed2', () => {
   localVue.use(Vuex);
   let NuxtStore;
   let store;
-
+  let mock;
   beforeAll(async () => {
     // note the store will mutate across tests
     const storePath = `${process.env.buildDir}/store.js`;
@@ -18,6 +18,10 @@ describe('store/feed2', () => {
 
   beforeEach(async () => {
     store = await NuxtStore.createStore();
+    const axios = require('axios');
+    const MockAdapter = require('axios-mock-adapter');
+    mock = new MockAdapter(axios);
+    store.$axios = axios;
   });
 
   describe('after setup', () => {
@@ -102,9 +106,6 @@ describe('store/feed2', () => {
   });
 
   describe('MOCK loadMoreWikiRevIds', () => {
-    const axios = require('axios');
-    const MockAdapter = require('axios-mock-adapter');
-    const mock = new MockAdapter(axios);
 
     function mockFeed(feed, wikiRevIds) {
       const mockedRes = {
@@ -168,7 +169,15 @@ describe('store/feed2', () => {
       });
 
       expect(store.state.feed2.reviewQueue.length).toBe(0);
-      await store.dispatch('feed2/loadMoreWikiRevIds');
+      await new Promise((resolve, reject) => {
+        const mutations = [];
+        const unsubscribe = store.subscribe((mutation, state) => {
+          unsubscribe();
+          resolve(mutations);
+        });
+        store.dispatch('feed2/loadMoreWikiRevIds');
+      });
+
       expect(store.state.feed2.reviewQueue.length).toBe(10);
       expect(store.state.feed2.reviewQueue[0]).toBe('enwiki:9990001');
       expect(store.state.feed2.reviewQueue[9]).toBe('enwiki:9990010');
@@ -195,6 +204,7 @@ describe('store/feed2', () => {
         user: 'GoodGuy 2',
         timestampStr: '2020-11-20T00:18:07‎'
       });
+
       const commits = [];
       store.subscribe((mutation, state) => {
         commits.push(mutation);
@@ -202,6 +212,7 @@ describe('store/feed2', () => {
 
       expect(store.state.feed2.reviewQueue.length).toBe(0);
       await store.dispatch('feed2/loadMoreWikiRevIds');
+      
       expect(store.state.feed2.reviewQueue.length).toBe(2);
       expect(store.state.feed2.reviewQueue).toStrictEqual([
         'enwiki:9990001',

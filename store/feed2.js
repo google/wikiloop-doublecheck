@@ -14,7 +14,6 @@
 import { parseWikiRevId } from '~/shared/utility-shared';
 import { MwActionApiClient2 } from '~/shared/mwapi2';
 
-const axios = require('axios');
 export const state = () => ({
   feed: 'lastbad', // TODO consider use enum
   reviewQueue: [],
@@ -79,16 +78,26 @@ export const mutations = {
   clearCache(state) {
     state.cache = {};
   },
-  setDiffHtml(state, payload) {
+  cacheDiffHtml(state, payload) {
     const wikiRevId = payload.wikiRevId;
     const diffHtml = payload.diffHtml;
     state.cache[wikiRevId] = {... state.cache[wikiRevId], diffHtml};
+  },
+  cacheInteractions(state, payload) {
+    const wikiRevId = payload.wikiRevId;
+    const interactions = payload.interactions;
+    state.cache[wikiRevId] = {... state.cache[wikiRevId], interactions};
   }
 };
 
 export const actions = {
+  async fetchInteractions({commit, state}, wikiRevId) {
+    // await axios.get('/api/judgement/')
+    const interactions = await this.$axios.get(`/api/interaction/beta/${wikiRevId}`);
+    return interactions;
+  },
   async fetchDiff({commit, state}, wikiRevId) {
-    const mwapi2 = new MwActionApiClient2(axios);
+    const mwapi2 = new MwActionApiClient2(this.$axios);
     const [wiki, revId] = parseWikiRevId(wikiRevId);
     const diffHtml = await mwapi2.fetchDiff(wiki, revId);
     return diffHtml;
@@ -96,7 +105,7 @@ export const actions = {
 
   async fetchRevision({commit, state, dispatch}, wikiRevId) {
     try {
-      const revision = (await axios.get(`/api/revision/${wikiRevId}`)).data;
+      const revision = (await this.$axios.get(`/api/revision/${wikiRevId}`)).data;
       const item = {
         wiki: revision.wiki,
         revId: revision.revid,
@@ -108,14 +117,20 @@ export const actions = {
       };
       /* no await */ dispatch('fetchDiff', wikiRevId)
           .then(diffHtml=> {
-            commit('setDiffHtml', {wikiRevId, diffHtml});
+            commit('cacheDiffHtml', {wikiRevId, diffHtml});
           }).catch(err => {
-            console.warn('Error occurred in fetchRevision', err);
+            console.log('fetchRevision encountered an issue', err.response?.status || err);
+          }); 
+      /* no await */ dispatch('fetchInteractions', wikiRevId)
+          .then(interactions=> {
+            commit('cacheInteractions', {wikiRevId, interactions});
+          }).catch(err => {
+            console.log('fetchInteractions encountered an issue', err.response?.status || err);
           }); 
       return item;
     } catch(err) {
       // TODO: add test for handling error
-      console.warn('fetch revision returns error: ',err);
+      console.log('fetch revision returns error: ',err.response?.status || err);
       return null;
     }
   },
@@ -126,7 +141,7 @@ export const actions = {
     };
 
     try {
-      const feedResponse = (await axios.get(`/api/feed/${state.feed}`, { params })).data;
+      const feedResponse = (await this.$axios.get(`/api/feed/${state.feed}`, { params })).data;
       const wikiRevIds = feedResponse.wikiRevIds;
       if (wikiRevIds) {
         commit('addToReviewQueue', wikiRevIds);
@@ -138,7 +153,7 @@ export const actions = {
             });
       }
     } catch (err) {
-      console.log('We encountered a problem in prefetching,', err);
+      console.log('We encountered a issue in prefetching,', err.response?.status || err);
     }
   },
 

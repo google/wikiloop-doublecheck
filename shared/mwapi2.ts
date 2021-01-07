@@ -211,7 +211,8 @@ export class MwActionApiClient2 {
     prevRevId: number = null
   ) {
     const ret = await this.axios.get(MwActionApiClient2.endPoint(wiki), {
-      params: MwActionApiClient2.diffParams(revId, prevRevId)
+      params: MwActionApiClient2.diffParams(revId, prevRevId),
+      withCredentials: false,
     });
     if (ret.data.error) {
       throw new Error(

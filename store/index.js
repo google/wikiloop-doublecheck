@@ -46,29 +46,32 @@ export const mutations = {
 
 export const actions = {
   async nuxtServerInit({ commit, state, dispatch }, { req }) {
-    console.log('nuxtServerInit start');
-    const flags = await this.$axios.$get('/api/flags');
-    commit('setFlags', flags);
-    const version = await this.$axios.$get('/api/version');
-    commit('setVersion', version);
-    const metrics = await this.$axios.$get('/api/metrics');
-    commit('setMetrics', metrics);
+
+    const fetchOrClearUserPreferences = async () => {
+      if (req.user) {
+        commit('user/setProfile', req.user);
+        const userPreferences = await this.$axios.$get('/api/auth/user/preferences');
+        commit('user/setPreferences', userPreferences);
+        if (userPreferences.wiki) {
+          commit('setWiki', userPreferences.wiki);
+        }
+      } else {
+        console.log('nuxtServerInit store state clearProfile because req.user is not defined');
+        commit('user/clearProfile');
+      }
+    };
+
+    await Promise.all([
+      await this.$axios.$get('/api/flags').then(flags => commit('setFlags', flags)),
+      await this.$axios.$get('/api/version').then(version => commit('setVersion', version)),
+      await this.$axios.$get('/api/metrics').then(metrics => commit('setMetrics', metrics)),
+      await fetchOrClearUserPreferences()
+    ]);
 
     if (req.session && req.session.id) {
       commit('setSessionId', req.session.id);
       console.log('nuxtServerInit req.session.id', req.session.id);
-    }
-    if (req.user) {
-      commit('user/setProfile', req.user);
-      const userPreferences = await this.$axios.$get('/api/auth/user/preferences');
-      commit('user/setPreferences', userPreferences);
-      if (userPreferences.wiki) {
-        commit('setWiki', userPreferences.wiki);
-      }
-    } else {
-      console.log('nuxtServerInit store state clearProfile because req.user is not defined');
-      commit('user/clearProfile');
-    }
+    } else console.warn('There is no req.session');
 
     console.log('nuxtServerInit done');
   },

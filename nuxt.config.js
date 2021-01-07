@@ -19,7 +19,7 @@ require('dotenv').config();
 console.log('=================================');
 console.log('nuxt.config.js is being executed!');
 module.exports = {
-  mode: 'spa', // TODO change back to spa once we fix the client-side-render and server-side-render inconsistency
+  ssr: true,
   telemetry: false,
   components: true, // used in nuxt storybook
   /*

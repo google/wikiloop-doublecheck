@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`REMOTE MwActionApiClient2.fetchDiff should match snapshot 1`] = `
+"<tr>
+  <td colspan=\\"2\\" class=\\"diff-lineno\\">Line 93:</td>
+  <td colspan=\\"2\\" class=\\"diff-lineno\\">Line 93:</td>
+</tr>
+<tr>
+  <td class=\\"diff-marker\\">&#160;</td>
+  <td class=\\"diff-context\\"></td>
+  <td class=\\"diff-marker\\">&#160;</td>
+  <td class=\\"diff-context\\"></td>
+</tr>
+<tr>
+  <td class=\\"diff-marker\\">&#160;</td>
+  <td class=\\"diff-context\\"><div>== Multiprocessor system featuring global data multiplication ==</div></td>
+  <td class=\\"diff-marker\\">&#160;</td>
+  <td class=\\"diff-context\\"><div>== Multiprocessor system featuring global data multiplication ==</div></td>
+</tr>
+<tr>
+  <td class=\\"diff-marker\\"><a class=\\"mw-diff-movedpara-left\\" title=\\"Paragraph was moved. Click to jump to new location.\\" href=\\"#movedpara_5_1_rhs\\">&#x26AB;</a></td>
+  <td class=\\"diff-deletedline\\"><div><a name=\\"movedpara_1_0_lhs\\"></a>[[File:Multiprocessor System Featuring Global Data Multiplication.svg|thumb|<del class=\\"diffchange diffchange-inline\\">right</del>|upright=2|Multiprocessor System Featuring Global Data Multiplication]]</div></td>
+  <td colspan=\\"2\\" class=\\"diff-empty\\">&#160;</td>
+</tr>
+<tr>
+  <td class=\\"diff-marker\\">−</td>
+  <td class=\\"diff-deletedline\\"></td>
+  <td colspan=\\"2\\" class=\\"diff-empty\\">&#160;</td>
+</tr>
+<tr>
+  <td class=\\"diff-marker\\">&#160;</td>
+  <td class=\\"diff-context\\"><div>An intermediate approach of the two previous architectures is having common resources and local resources such as local memories (LM) in each processor. </div></td>
+  <td class=\\"diff-marker\\">&#160;</td>
+  <td class=\\"diff-context\\"><div>An intermediate approach of the two previous architectures is having common resources and local resources such as local memories (LM) in each processor. </div></td>
+</tr>
+<tr>
+  <td class=\\"diff-marker\\">&#160;</td>
+  <td class=\\"diff-context\\"></td>
+  <td class=\\"diff-marker\\">&#160;</td>
+  <td class=\\"diff-context\\"></td>
+</tr>
+<tr>
+  <td colspan=\\"2\\" class=\\"diff-lineno\\">Line 100:</td>
+  <td colspan=\\"2\\" class=\\"diff-lineno\\">Line 98:</td>
+</tr>
+<tr>
+  <td class=\\"diff-marker\\">&#160;</td>
+  <td class=\\"diff-context\\"></td>
+  <td class=\\"diff-marker\\">&#160;</td>
+  <td class=\\"diff-context\\"></td>
+</tr>
+<tr>
+  <td class=\\"diff-marker\\">&#160;</td>
+  <td class=\\"diff-context\\"><div>This system (patented F. Zulian &lt;ref&gt;{{cite web|url=https://patents.google.com/patent/US4928224A/en|title=Multiprocessor system featuring global data multiplation|publisher=}}&lt;/ref&gt;) used on the DPX/2 300 Unix based system (Bull Hn Information Systems Italia (ex Honeywell)) &lt;ref&gt;{{cite web|url=http://www.feb-patrimoine.com/english/unix_and_bull.htm|title=UNIX and Bull|website=www.feb-patrimoine.com}}&lt;/ref&gt;&lt;ref&gt;{{cite web|url=http://www.feb-patrimoine.com/english/bull_dpx2.htm|title=Bull DPX|website=www.feb-patrimoine.com}}&lt;/ref&gt;, is a mix of tightly coupled and loose coupled systems and takes all the advancements of these two architectures.</div></td>
+  <td class=\\"diff-marker\\">&#160;</td>
+  <td class=\\"diff-context\\"><div>This system (patented F. Zulian &lt;ref&gt;{{cite web|url=https://patents.google.com/patent/US4928224A/en|title=Multiprocessor system featuring global data multiplation|publisher=}}&lt;/ref&gt;) used on the DPX/2 300 Unix based system (Bull Hn Information Systems Italia (ex Honeywell)) &lt;ref&gt;{{cite web|url=http://www.feb-patrimoine.com/english/unix_and_bull.htm|title=UNIX and Bull|website=www.feb-patrimoine.com}}&lt;/ref&gt;&lt;ref&gt;{{cite web|url=http://www.feb-patrimoine.com/english/bull_dpx2.htm|title=Bull DPX|website=www.feb-patrimoine.com}}&lt;/ref&gt;, is a mix of tightly coupled and loose coupled systems and takes all the advancements of these two architectures.</div></td>
+</tr>
+<tr>
+  <td class=\\"diff-marker\\">−</td>
+  <td class=\\"diff-deletedline\\"></td>
+  <td colspan=\\"2\\" class=\\"diff-empty\\">&#160;</td>
+</tr>
+<tr>
+  <td class=\\"diff-marker\\"><a class=\\"mw-diff-movedpara-left\\" title=\\"Paragraph was moved. Click to jump to new location.\\" href=\\"#movedpara_5_2_rhs\\">&#x26AB;</a></td>
+  <td class=\\"diff-deletedline\\"><div><a name=\\"movedpara_3_1_lhs\\"></a>[[File:Multiprocessor System - Global Data Write-Broadcasting.svg|thumb|right|upright=1.8|Multiprocessor System Featuring Global Data Multiplation - Global Data Write-Broadcasting]]</div></td>
+  <td colspan=\\"2\\" class=\\"diff-empty\\">&#160;</td>
+</tr>
+<tr>
+  <td class=\\"diff-marker\\">&#160;</td>
+  <td class=\\"diff-context\\"></td>
+  <td class=\\"diff-marker\\">&#160;</td>
+  <td class=\\"diff-context\\"></td>
+</tr>
+<tr>
+  <td class=\\"diff-marker\\">&#160;</td>
+  <td class=\\"diff-context\\"><div>The Local memory is divided into two sectors, global data (GD) and local data (LD).</div></td>
+  <td class=\\"diff-marker\\">&#160;</td>
+  <td class=\\"diff-context\\"><div>The Local memory is divided into two sectors, global data (GD) and local data (LD).</div></td>
+</tr>
+<tr>
+  <td colspan=\\"2\\" class=\\"diff-lineno\\">Line 110:</td>
+  <td colspan=\\"2\\" class=\\"diff-lineno\\">Line 106:</td>
+</tr>
+<tr>
+  <td class=\\"diff-marker\\">&#160;</td>
+  <td class=\\"diff-context\\"></td>
+  <td class=\\"diff-marker\\">&#160;</td>
+  <td class=\\"diff-context\\"></td>
+</tr>
+<tr>
+  <td class=\\"diff-marker\\">&#160;</td>
+  <td class=\\"diff-context\\"><div>Local data can be exchanged like in loosely coupled system via [[message-passing]]</div></td>
+  <td class=\\"diff-marker\\">&#160;</td>
+  <td class=\\"diff-context\\"><div>Local data can be exchanged like in loosely coupled system via [[message-passing]]</div></td>
+</tr>
+<tr>
+  <td colspan=\\"2\\" class=\\"diff-empty\\">&#160;</td>
+  <td class=\\"diff-marker\\">+</td>
+  <td class=\\"diff-addedline\\"></td>
+</tr>
+<tr>
+  <td colspan=\\"2\\" class=\\"diff-empty\\">&#160;</td>
+  <td class=\\"diff-marker\\"><a class=\\"mw-diff-movedpara-right\\" title=\\"Paragraph was moved. Click to jump to old location.\\" href=\\"#movedpara_1_0_lhs\\">&#x26AB;</a></td>
+  <td class=\\"diff-addedline\\"><div><a name=\\"movedpara_5_1_rhs\\"></a>[[File:Multiprocessor System Featuring Global Data Multiplication.svg|thumb|<ins class=\\"diffchange diffchange-inline\\">left</ins>|upright=2|Multiprocessor System Featuring Global Data Multiplication]]</div></td>
+</tr>
+<tr>
+  <td colspan=\\"2\\" class=\\"diff-empty\\">&#160;</td>
+  <td class=\\"diff-marker\\"><a class=\\"mw-diff-movedpara-right\\" title=\\"Paragraph was moved. Click to jump to old location.\\" href=\\"#movedpara_3_1_lhs\\">&#x26AB;</a></td>
+  <td class=\\"diff-addedline\\"><div><a name=\\"movedpara_5_2_rhs\\"></a>[[File:Multiprocessor System - Global Data Write-Broadcasting.svg|thumb|right|upright=1.8|Multiprocessor System Featuring Global Data Multiplation - Global Data Write-Broadcasting]]</div></td>
+</tr>
+<tr>
+  <td colspan=\\"2\\" class=\\"diff-empty\\">&#160;</td>
+  <td class=\\"diff-marker\\">+</td>
+  <td class=\\"diff-addedline\\"><div>{{clear}}</div></td>
+</tr>
+<tr>
+  <td class=\\"diff-marker\\">&#160;</td>
+  <td class=\\"diff-context\\"></td>
+  <td class=\\"diff-marker\\">&#160;</td>
+  <td class=\\"diff-context\\"></td>
+</tr>
+<tr>
+  <td class=\\"diff-marker\\">&#160;</td>
+  <td class=\\"diff-context\\"><div>== References ==</div></td>
+  <td class=\\"diff-marker\\">&#160;</td>
+  <td class=\\"diff-context\\"><div>== References ==</div></td>
+</tr>
+
+<!-- diff cache key enwiki:diff:wikidiff2:1.12:old-904395753:rev-904396518:1.10.0 -->
+"
+`;
+
+exports[`REMOTE MwActionApiClient2.fetchRevisionInfo should match snapshot 1`] = `
+Object {
+  "author": "Dhtwiki",
+  "comment": "/* Multiprocessor system featuring global data multiplication */ putting images at bottom, side by side, to prevent impinging on References section",
+  "namespace": 0,
+  "pageId": 58955273,
+  "parentRevId": 904395753,
+  "revId": 904396518,
+  "timestampStr": "2019-07-01T21:49:32Z",
+  "title": "Multiprocessor system architecture",
+  "wiki": "enwiki",
+}
+`;

@@ -22,6 +22,9 @@ import { Component, Vue } from 'nuxt-property-decorator';
 import PureRevisionPanel from '~/components/PureRevisionPanel.vue';
 import { MwActionApiClient2 } from '~/shared/mwapi2';
 import { wikiToDomain } from '~/shared/utility-shared';
+import { NuxtCookies } from '~/node_modules/cookie-universal-nuxt';
+import { BasicJudgement } from '~/shared/interfaces';
+import { InteractionProps } from '~/shared/models/interaction-item.model';
 
   @Component({
     components: {
@@ -29,6 +32,7 @@ import { wikiToDomain } from '~/shared/utility-shared';
     },
   })
 export default class FeedPage2 extends Vue {
+  public feed:string; // TODO add feed
   public judgement:string = '';
   public judgementPending:boolean = false;
   public showJudgementPanel:boolean = false;
@@ -36,23 +40,27 @@ export default class FeedPage2 extends Vue {
   public unsubscribe = null;
   public item = null;
   $t: any;
-  $env: any;
+  $config: any;
+  $cookiez: NuxtCookies; // TODO remove after dep resolved https://github.com/microcipcip/cookie-universal/issues/63
 
-  private beforeCreate() {
-
-  }
-
-  async mounted() {
-    const started = new Date();
+  private beforeMount() {
     this.unsubscribe = this.$store.subscribe((mutation, state) => {
       this.item = this.$store.getters['feed2/getHead']();
     });
     this.item = this.$store.getters['feed2/getHead']();
+  }
+
+  async mounted() {
     await this.$store.dispatch('feed2/loadMoreWikiRevIds');
+    
   }
 
   beforeDestroy() {
     this.unsubscribe();
+  }
+
+  get wikiRevId() {
+    return this.item ? `${this.item.wiki}:${this.item.revId}` : null;
   }
 
   get infoLoaded() {
@@ -64,7 +72,10 @@ export default class FeedPage2 extends Vue {
   }
 
   get eligibleForRevert() {
-    return this.judgement === 'ShouldRevert'; // TODO add
+    // TODO add logic to check that 
+    //   1. the revision is the last revision
+    //   2. the 2nd last revision is not from the same author.
+    return this.judgement === 'ShouldRevert';
   }
 
   get gCanDirectEdit() {
@@ -76,8 +87,8 @@ export default class FeedPage2 extends Vue {
       'Message-RevertEditSummary',
       [
         '[[:m:WikiLoop DoubleCheck]]',
-        `${'v5.0.0'}`, // TODO set version
-        `http://${this.$env?.PUBLIC_HOST || 'doublecheck.wikiloop.org'}/revision/${this.item.wiki}/${this.item.revId}`,
+        `${this.$store.state.version}`, // TODO set version
+        `http://${this.$config?.PUBLIC_HOST || 'doublecheck.wikiloop.org'}/revision/${this.item.wiki}/${this.item.revId}`,
       ]);
     const params = new URLSearchParams({
       title: this.item.title,
@@ -90,7 +101,10 @@ export default class FeedPage2 extends Vue {
     return `${MwActionApiClient2.webEndPoint(this.item.wiki)}?${params.toString()}`;
   }
 
-  onJudgement(judgement) {
+  async onJudgement(judgement) {
+    this.judgementPending = true;
+    await this.postJudgement(judgement);
+    this.judgementPending = false;
     this.judgement = judgement;
   }
 
@@ -104,6 +118,28 @@ export default class FeedPage2 extends Vue {
 
   onNext() {
     // TODO send next request
+  }
+
+  private async postJudgement(judgement: string) {
+    const userGaId = this.$cookiez.get('_ga');
+
+    // TODO: should we require so much information? Or should we just use simplified data
+    const postBody = {
+      userGaId,
+      judgement,
+      timestamp: Math.floor(new Date().getTime() / 1000), // timestamp for interaction
+      wikiRevId: this.wikiRevId,
+      feed: this.$store.state.feed2.feed,
+      title: this.item.title,
+      wiki: this.item.wiki,
+    } as InteractionProps;
+
+    if (this.$store.state?.user?.profile) {
+      const wikiUserName = this.$store.state.user.profile.displayName;
+      postBody.wikiUserName = wikiUserName;
+    }
+    
+    await this.$axios.$post(`/api/interaction/${this.wikiRevId}`, postBody);
   }
 }
 </script>

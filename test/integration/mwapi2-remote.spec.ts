@@ -13,6 +13,11 @@ describe('REMOTE MwActionApiClient2.fetchRevisionInfo', () => {
     const _axios = require('axios');
     mwapi2 = new MwActionApiClient2(_axios);
   });
+  test('should match snapshot', async () => { 
+    const wiki = 'enwiki';
+    const info= await mwapi2.fetchRevisionInfo(wiki, 904396518);
+    expect(info).toMatchSnapshot();
+  });
 
   test('should return revision full information when given a valid revId. REMOTE', async () => {
     const wiki = 'enwiki';
@@ -201,5 +206,11 @@ describe('REMOTE MwActionApiClient2.fetchDiff', () => {
     // }
     const invalidRevId = 123456789012345;
     await expect(mwapi2.fetchDiff(wiki, invalidRevId)).rejects.toThrow(/nosuchrevid/);
+  });
+
+  test('should match snapshot', async () => { 
+    const wiki = 'enwiki';
+    const fetchedHtml = await mwapi2.fetchDiff(wiki, 904396518, 904395753);
+    expect(fetchedHtml).toMatchSnapshot();
   });
 });
