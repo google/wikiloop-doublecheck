@@ -29,11 +29,8 @@ jobs:
           path: reports/jest
       - store_artifacts:
           path: reports
-      - run:
-          name: Run integration test
-          command: yarn test:integration
-          environment:
-            JEST_JUNIT_OUTPUT: "reports/jest/integration/results.xml"
+      - store_artifacts:
+          path: coverage
   chromatic-deployment: 
     docker:
       - image: circleci/node:12.19.1
