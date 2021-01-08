@@ -288,4 +288,10 @@ describe('store/feed2', () => {
     });
   });
 
+  describe('Upon fetch revision action', () => {
+    it.todo('should dispatch action to fetching diff and diffMeta');
+    it.todo('should handle failure of diff fetching.');
+    it.todo('should handle failure of diffMeta');
+  });
+
 });
