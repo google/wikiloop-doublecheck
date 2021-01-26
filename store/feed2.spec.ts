@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import { createLocalVue } from '@vue/test-utils';
 import { FeedResponse } from '~/server/routers/api/feed';
 import { parseWikiRevId } from '~/shared/utility-shared';
+import { InteractionProps } from '~/shared/models/interaction-item.model';
 
 describe('store/feed2', () => {
   const localVue = createLocalVue();
@@ -22,7 +23,46 @@ describe('store/feed2', () => {
     const MockAdapter = require('axios-mock-adapter');
     mock = new MockAdapter(axios);
     store.$axios = axios;
+    store.$mock = mock;
   });
+
+  function mockFeed(feed, wikiRevIds) {
+    const mockedRes = {
+      useMixer: false,
+      feed,
+      wikiRevIds,
+    } as FeedResponse;
+
+    store.$mock
+        .onGet('/api/feed/lastbad', {
+          params: {
+            wiki: 'enwiki',
+            limit: 10,
+          },
+        })
+        .reply(function(_) {
+          return [200, mockedRes];
+        });
+  }
+
+  function mockRevision(wikiRevId, { title, pageId, comment, user, timestampStr }) {
+    const [wiki, revid] = parseWikiRevId(wikiRevId);
+    const mockedRes = {
+      wiki,
+      revid,
+      title,
+      pageId,
+      comment,
+      user,
+      timestamp:timestampStr
+    };
+
+    store.$mock
+        .onGet(`/api/revision/${wikiRevId}`)
+        .reply(function(_) {
+          return [200, mockedRes];
+        });
+  }
 
   describe('after setup', () => {
     test('has current default value.', () => {
@@ -106,45 +146,6 @@ describe('store/feed2', () => {
   });
 
   describe('MOCK loadMoreWikiRevIds', () => {
-
-    function mockFeed(feed, wikiRevIds) {
-      const mockedRes = {
-        useMixer: false,
-        feed,
-        wikiRevIds,
-      } as FeedResponse;
-
-      mock
-          .onGet('/api/feed/lastbad', {
-            params: {
-              wiki: 'enwiki',
-              limit: 10,
-            },
-          })
-          .reply(function(_) {
-            return [200, mockedRes];
-          });
-    }
-
-    function mockRevision(wikiRevId, { title, pageId, comment, user, timestampStr }) {
-      const [wiki, revid] = parseWikiRevId(wikiRevId);
-      const mockedRes = {
-        wiki,
-        revid,
-        title,
-        pageId,
-        comment,
-        user,
-        timestamp:timestampStr
-      };
-
-      mock
-          .onGet(`/api/revision/${wikiRevId}`)
-          .reply(function(_) {
-            return [200, mockedRes];
-          });
-    }
-
 
     test('MOCK can load more wikiRevIds', async () => {
       mockFeed('lastbad', [
@@ -289,9 +290,7 @@ describe('store/feed2', () => {
   });
 
   describe('Upon fetch revision action', () => {
-    it.todo('should dispatch action to fetching diff and diffMeta');
     it.todo('should handle failure of diff fetching.');
     it.todo('should handle failure of diffMeta');
   });
-
 });
