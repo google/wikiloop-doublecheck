@@ -119,13 +119,13 @@ export const actions = {
           .then(diffHtml=> {
             commit('cacheDiffHtml', {wikiRevId, diffHtml});
           }).catch(err => {
-            console.log('fetchRevision encountered an issue', err.response?.status || err);
+            console.log(`fetchDiff ${wikiRevId} encountered an issue`, err.response?.status || err);
           }); 
       /* no await */ dispatch('fetchInteractions', wikiRevId)
           .then(interactions=> {
             commit('cacheInteractions', {wikiRevId, interactions});
           }).catch(err => {
-            console.log('fetchInteractions encountered an issue', err.response?.status || err);
+            console.log(`fetchInteractions ${wikiRevId} encountered an issue`, err.response?.status || err);
           }); 
       return item;
     } catch(err) {

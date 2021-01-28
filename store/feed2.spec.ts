@@ -4,6 +4,8 @@ import { createLocalVue } from '@vue/test-utils';
 import { FeedResponse } from '~/server/routers/api/feed';
 import { parseWikiRevId } from '~/shared/utility-shared';
 import { InteractionProps } from '~/shared/models/interaction-item.model';
+import { state as feed2State, getters as feed2Getters, mutations as feed2Mutations, actions as feed2Actions } from '~/store/feed2';
+import { MwActionApiClient2 } from '~/shared/mwapi2';
 
 describe('store/feed2', () => {
   const localVue = createLocalVue();
@@ -23,6 +25,12 @@ describe('store/feed2', () => {
     const MockAdapter = require('axios-mock-adapter');
     mock = new MockAdapter(axios);
     store.$axios = axios;
+
+    // axios.interceptors.request.use(request => {
+    //   console.log('Starting Request', JSON.stringify(request, null, 2));
+    //   return request;
+    // });
+    
     store.$mock = mock;
   });
 
@@ -60,6 +68,35 @@ describe('store/feed2', () => {
     store.$mock
         .onGet(`/api/revision/${wikiRevId}`)
         .reply(function(_) {
+          return [200, mockedRes];
+        });
+  }
+
+  function mockInteractions(wikiRevId, items:InteractionProps[]) {
+    const mockedRes = items;
+    store.$mock
+        .onGet(`/api/interaction/beta/${wikiRevId}`)
+        .reply(function(_) {
+          return [200, mockedRes];
+        });
+  }
+
+  function mockFetchDiff(wikiRevId, diffHtml) {
+    const mockedRes = { compare: { '*' : diffHtml } };
+    const [wiki, revId] = parseWikiRevId(wikiRevId);
+    store.$mock
+        .onGet(MwActionApiClient2.endPoint(wiki), {
+          params: { 
+            'action': 'compare',
+            'format': 'json',
+            'origin': '*',
+            'fromrev': revId,
+            'torelative': 'prev'
+          } })
+        .reply(function (_) {
+          // const c = new MwActionApiClient2();
+          // const ret = await c.fetchDiff(wiki, revId);
+
           return [200, mockedRes];
         });
   }
@@ -290,6 +327,45 @@ describe('store/feed2', () => {
   });
 
   describe('Upon fetch revision action', () => {
+    test('should dispatch action to fetching diff and interaction and commit them.', done => {
+      const wikiRevId = 'enwiki:9990001';
+      const actions = [];
+      const mutations = [];
+
+      store.subscribeAction((action, state) => actions.push(action));
+      store.subscribe((mutation, state) => mutations.push(mutation));
+      mockRevision('enwiki:9990001', {
+        title: 'John Smith',
+        pageId: 10001,
+        comment: 'Some good edits',
+        user: 'GoodGuy',
+        timestampStr: '2020-11-10T00:18:07‎'
+      });
+
+      mockInteractions(wikiRevId, [{
+        feed: 'lastbad',
+        wikiRevId,
+        judgement: 'ShouldRevert',
+      } as InteractionProps]);
+
+      mockFetchDiff(wikiRevId, '<tr></tr>');  // XXX
+
+      store.dispatch('feed2/fetchRevision', wikiRevId);
+      setTimeout(() => {
+        expect(mutations.length).toBe(2);
+        expect(mutations[0].type).toBe('feed2/cacheInteractions');
+        expect(mutations[1].type).toBe('feed2/cacheDiffHtml');
+
+        expect(actions.length).toBe(3);
+        expect(actions[0].type).toBe('feed2/fetchRevision');
+        expect(actions[1].type).toBe('feed2/fetchDiff');
+        expect(actions[2].type).toBe('feed2/fetchInteractions');
+
+        done();
+      }, 2000);
+
+
+    });
     it.todo('should handle failure of diff fetching.');
     it.todo('should handle failure of diffMeta');
   });
