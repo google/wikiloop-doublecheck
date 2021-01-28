@@ -348,7 +348,7 @@ describe('store/feed2', () => {
         judgement: 'ShouldRevert',
       } as InteractionProps]);
 
-      mockFetchDiff(wikiRevId, '<tr></tr>');  // XXX
+      mockFetchDiff(wikiRevId, '<tr></tr>');
 
       store.dispatch('feed2/fetchRevision', wikiRevId);
       setTimeout(() => {
@@ -362,11 +362,82 @@ describe('store/feed2', () => {
         expect(actions[2].type).toBe('feed2/fetchInteractions');
 
         done();
-      }, 2000);
+      }, 500);
 
 
     });
-    it.todo('should handle failure of diff fetching.');
-    it.todo('should handle failure of diffMeta');
+    test('should handle failure of fetchDiff.', (done) => {
+      const wikiRevId = 'enwiki:9990001';
+      const actions = [];
+      const mutations = [];
+
+      store.subscribeAction((action, state) => actions.push(action));
+      store.subscribe((mutation, state) => mutations.push(mutation));
+
+      store.dispatch('feed2/fetchRevision', wikiRevId);
+      mockRevision('enwiki:9990001', {
+        title: 'John Smith',
+        pageId: 10001,
+        comment: 'Some good edits',
+        user: 'GoodGuy',
+        timestampStr: '2020-11-10T00:18:07‎'
+      });
+
+      mockInteractions(wikiRevId, [{
+        feed: 'lastbad',
+        wikiRevId,
+        judgement: 'ShouldRevert',
+      } as InteractionProps]);
+
+      // mockFetchDiff(wikiRevId, '<tr></tr>');  // we are obmitting the mockFetchDiff so it generate a 404
+      setTimeout(() => {
+        expect(mutations.length).toBe(1);
+        expect(mutations[0].type).toBe('feed2/cacheInteractions');
+
+        expect(actions.length).toBe(3);
+        expect(actions[0].type).toBe('feed2/fetchRevision');
+        expect(actions[1].type).toBe('feed2/fetchDiff');
+        expect(actions[2].type).toBe('feed2/fetchInteractions');
+
+        done();
+      }, 1000);
+
+    });
+    it('should handle failure of fetchInteraction', (done) => {
+      const wikiRevId = 'enwiki:9990001';
+      const actions = [];
+      const mutations = [];
+
+      store.subscribeAction((action, state) => actions.push(action));
+      store.subscribe((mutation, state) => mutations.push(mutation));
+
+      store.dispatch('feed2/fetchRevision', wikiRevId);
+      mockRevision('enwiki:9990001', {
+        title: 'John Smith',
+        pageId: 10001,
+        comment: 'Some good edits',
+        user: 'GoodGuy',
+        timestampStr: '2020-11-10T00:18:07‎'
+      });
+
+      // mockInteractions(wikiRevId, [{ // we are obmitting the mockFetchInteraction so it generate a 404
+      //   feed: 'lastbad',
+      //   wikiRevId,
+      //   judgement: 'ShouldRevert',
+      // } as InteractionProps]);
+
+      mockFetchDiff(wikiRevId, '<tr></tr>');  
+      setTimeout(() => {
+        expect(mutations.length).toBe(1);
+        expect(mutations[0].type).toBe('feed2/cacheDiffHtml');
+
+        expect(actions.length).toBe(3);
+        expect(actions[0].type).toBe('feed2/fetchRevision');
+        expect(actions[1].type).toBe('feed2/fetchDiff');
+        expect(actions[2].type).toBe('feed2/fetchInteractions');
+
+        done();
+      }, 1000);
+    });
   });
 });
