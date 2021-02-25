@@ -32,6 +32,12 @@ export const getters =  {
   getFromCache: (state) => (key) => {
     return state.cache[key];
   },
+
+  /**
+   * A shortcut to get the first item in the reviewQueue
+   * @param {} state 
+   * @returns
+   */
   getHead: (state) => () => {
     const head = state.reviewQueue[0];
     return state.cache[head];
@@ -64,7 +70,8 @@ export const mutations = {
     state.skipMap[wikiRevId] = true;
   },
   removeFromSkipMap(state, wikiRevId) {
-    delete state.skipMap[wikiRevId];
+    const map = state.skipMap;
+    delete map[wikiRevId];
   },
   clearSkipMap(state) {
     state.skipMap = {};
@@ -73,7 +80,8 @@ export const mutations = {
     state.cache[pair.key] = pair.value;
   },
   removeFromCache(state, key) {
-    delete state.cache[key];
+    const cache = state.cache;
+    delete cache[key];
   },
   clearCache(state) {
     state.cache = {};

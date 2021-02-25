@@ -32,6 +32,7 @@ module.exports = {
     '<rootDir>/pages/**/*.vue',
     '<rootDir>/server/**/*.ts',
     '<rootDir>/shared/**/*.ts',
+    '<rootDir>/store/**/*.js',
   ],
   reporters: [
     'default',
