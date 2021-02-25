@@ -46,9 +46,9 @@ export default class FeedPage2 extends Vue {
 
   private beforeMount() {
     this.unsubscribe = this.$store.subscribe((mutation, state) => {
-      this.item = this.$store.getters['feed2/getHead']();
+      this.item = this.$store.getters['feed2/getHeadItem']();
     });
-    this.item = this.$store.getters['feed2/getHead']();
+    this.item = this.$store.getters['feed2/getHeadItem']();
   }
 
   async mounted() {

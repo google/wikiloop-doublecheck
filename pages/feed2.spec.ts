@@ -25,12 +25,12 @@ describe('FeedPage2', () => {
     let store;
     let wrapper;
     let getters;
-    let getHeadMock = jest.fn();
+    let getHeadItemMock = jest.fn();
 
     beforeEach(() => {
-      getHeadMock = jest.fn();
+      getHeadItemMock = jest.fn();
       getters = {
-        'feed2/getHead': (state) => getHeadMock
+        'feed2/getHeadItem': (state) => getHeadItemMock
       };
 
       store = new Vuex.Store({
@@ -48,8 +48,15 @@ describe('FeedPage2', () => {
       expect(wrapper.isVisible()).toBe(true);
     });
 
+    test('should load revision from store', () => {
+      wrapper = shallowMount(FeedPage2, {
+        store, localVue,
+        stubs: ['pure-feed-2']
+      });
+      expect(getHeadItemMock.mock.calls.length > 0).toBe(true);
+    });
+
     [
-      'should load revision from store',
       'should load revision diff from store',
       'should load interactions from store',
       'should load set props based on revision and interaction',

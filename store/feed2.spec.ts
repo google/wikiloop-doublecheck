@@ -4,7 +4,6 @@ import { createLocalVue } from '@vue/test-utils';
 import { FeedResponse } from '~/server/routers/api/feed';
 import { parseWikiRevId } from '~/shared/utility-shared';
 import { InteractionProps } from '~/shared/models/interaction-item.model';
-import { state as feed2State, getters as feed2Getters, mutations as feed2Mutations, actions as feed2Actions } from '~/store/feed2';
 import { MwActionApiClient2 } from '~/shared/mwapi2';
 
 describe('store/feed2', () => {
@@ -120,14 +119,18 @@ describe('store/feed2', () => {
   describe('reviewQueue', () => {
     test('can add and clear reviewQueue', () => {
       expect(store.state.feed2.reviewQueue.length).toBe(0);
+
       store.commit('feed2/addToReviewQueue', [
         'enwiki:9990001',
         'enwiki:9990002',
         'enwiki:9990003'
       ]);
+      expect(store.getters['feed2/getHeadItem']()).toBe(undefined);
+
       expect(store.state.feed2.reviewQueue.length).toBe(3);
       store.commit('feed2/clearReviewQueue');
       expect(store.state.feed2.reviewQueue.length).toBe(0);
+
     });
 
     test('should skip revisions that is already in the queue.', () => {
@@ -278,6 +281,23 @@ describe('store/feed2', () => {
 
     });
 
+    it('MOCK should handle failed loadMoreWikiRevIds', async () => {
+      store.$mock
+          .onAny()
+          .reply(function(_) {
+            return [404];
+          });
+      expect(store.state.feed2.reviewQueue.length).toBe(0);
+      await store.dispatch('feed2/loadMoreWikiRevIds');
+      expect(store.state.feed2.reviewQueue.length).toBe(0);
+    });
+
+    it('MOCK should handle loadMoreWikiRevIds when there is empty revIds', async () => {
+      mockFeed('lastbad', []);
+      expect(store.state.feed2.reviewQueue.length).toBe(0);
+      await store.dispatch('feed2/loadMoreWikiRevIds');
+      expect(store.state.feed2.reviewQueue.length).toBe(0);
+    });
   });
 
   describe('cache', () => {
@@ -292,6 +312,7 @@ describe('store/feed2', () => {
         timestamp: new Date('2020-11-10T00:18:07‎').getTime() / 1000
       };
 
+      // Verify add to cache
       const [mutation, state] = await new Promise((resolve, reject) => {
         const unsubscribe = store.subscribe((mutation, state) => {
           unsubscribe();
@@ -304,11 +325,22 @@ describe('store/feed2', () => {
       expect(mutation.payload.value).toStrictEqual(item);
       expect(state.feed2.cache['enwiki:9990001']).toStrictEqual(item);
 
+      // Verify cached content
       const wikiRevId = 'enwiki:9990001';
       const cachedItem = store.getters['feed2/getFromCache'](wikiRevId);
       expect(wikiRevId).toBe('enwiki:9990001');
       expect(cachedItem.pageId).toBe(10001);
       expect(cachedItem.summary).toBe('Some good edits');
+
+      expect(state.feed2.cache['enwiki:9990001']).toEqual(cachedItem);
+      store.commit('feed2/removeFromCache', wikiRevId);
+      expect(state.feed2.cache['enwiki:9990001']).toStrictEqual(undefined);
+      expect(state.feed2.cache).toStrictEqual({});
+
+      // re-add to Cache
+      store.commit('feed2/addToCache', { key: 'enwiki:9990001', value: item });
+      
+      // Verify clearCache
       const [mutation2, state2] = await new Promise((resolve, reject) => {
         const unsubscribe = store.subscribe((mutation, state) => {
           unsubscribe();
@@ -363,8 +395,6 @@ describe('store/feed2', () => {
 
         done();
       }, 500);
-
-
     });
     test('should handle failure of fetchDiff.', (done) => {
       const wikiRevId = 'enwiki:9990001';
@@ -438,6 +468,35 @@ describe('store/feed2', () => {
 
         done();
       }, 1000);
+    });
+  });
+
+  describe('skipMap', () => { 
+    it('should handle add, remove and clear skipMap', () => {
+      const wikiRevId1 = 'enwiki:9901';
+      const wikiRevId2 = 'enwiki:9902';
+      const wikiRevId3 = 'enwiki:9903';
+      
+      expect(store.state.feed2.skipMap).toStrictEqual({});      
+      
+      store.commit('feed2/addToSkipMap', wikiRevId1);
+      store.commit('feed2/addToSkipMap', wikiRevId2);
+      store.commit('feed2/addToSkipMap', wikiRevId3);
+      
+      expect(store.state.feed2.skipMap[wikiRevId1]).toEqual(true);     
+      expect(store.state.feed2.skipMap[wikiRevId2]).toEqual(true);      
+      expect(store.state.feed2.skipMap[wikiRevId3]).toEqual(true);       
+      
+      store.commit('feed2/removeFromSkipMap', wikiRevId1);
+
+      expect(store.state.feed2.skipMap[wikiRevId1]).toEqual(undefined);
+      expect(store.state.feed2.skipMap[wikiRevId2]).toEqual(true);      
+      expect(store.state.feed2.skipMap[wikiRevId3]).toEqual(true);     
+
+      store.commit('feed2/clearSkipMap');
+      expect(store.state.feed2.skipMap[wikiRevId1]).toEqual(undefined);
+      expect(store.state.feed2.skipMap[wikiRevId2]).toEqual(undefined);
+      expect(store.state.feed2.skipMap[wikiRevId3]).toEqual(undefined);
     });
   });
 });
