@@ -98,11 +98,8 @@ const listInteractions = async (req, res) => {
 interactionRouter.get('/', asyncHandler(listInteractions));
 
 const updateInteraction = async (req, res) => {
-  const io = req.app.get('socketio');
+
   const interactionProps:InteractionProps = req.body as InteractionProps;
-  const matcher:any = {
-    wikiRevId: interactionProps.wikiRevId,
-  };
 
   if (interactionProps.wikiUserName &&
       !isAuthenticatedWithWikiUserName(req, interactionProps.wikiUserName)) {
@@ -111,15 +108,31 @@ const updateInteraction = async (req, res) => {
     return;
   }
 
-  if (interactionProps.wikiUserName) {matcher.wikiUserName = interactionProps.wikiUserName;} else {matcher.userGaId = interactionProps.userGaId;}
+  const matcher:any = {
+    wikiRevId: interactionProps.wikiRevId,
+  };
+  
+  // Check if the interaction comes from a given WikiUserName
+  if (interactionProps.wikiUserName) {
+    matcher.wikiUserName = interactionProps.wikiUserName;
+  } else {
+    // otherwise use userGaId for anonymous WLDC reviewers.
+    matcher.userGaId = interactionProps.userGaId;
+  }
+
+  // Insert the {interactionProps} into Database.
   await Interaction.findOneAndUpdate(matcher, interactionProps, { upsert: true });
+
+  // If there is a revision in the feed, we also check-off them so they are not distributed to other WLDC reviewers for review.
   await FeedRevisionEngine.checkOff(
     [interactionProps.wikiRevId],
     interactionProps.userGaId,
     interactionProps.wikiUserName || null,
     interactionProps.feed || 'us2020',
   );
-  // new way
+  
+  // the new way
+  const io = req.app.get('socketio');
   io.sockets.emit('interaction-item', interactionProps);
   io.sockets.emit('interaction-props', interactionProps);
   apicache.clear(req.originalUrl);

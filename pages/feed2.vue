@@ -46,14 +46,17 @@ export default class FeedPage2 extends Vue {
 
   private beforeMount() {
     this.unsubscribe = this.$store.subscribe((mutation, state) => {
+      // When there is a mutation, we update {item} to new reference. TODO, check Mutation if it's relevant to the HeadItem, though.
       this.item = this.$store.getters['feed2/getHeadItem']();
+      this.interactions = this.item?.interactions;
     });
+    // We set item first, to ensure it's always called.
     this.item = this.$store.getters['feed2/getHeadItem']();
+    this.interactions = this.item?.interactions;
   }
 
   async mounted() {
     await this.$store.dispatch('feed2/loadMoreWikiRevIds');
-    
   }
 
   beforeDestroy() {

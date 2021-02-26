@@ -14,6 +14,7 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
 import FeedPage2 from '@/pages/feed2.vue';
+import { InteractionProps } from '~/shared/models/interaction-item.model';
 
 const localVue = createLocalVue();
 
@@ -27,7 +28,7 @@ describe('FeedPage2', () => {
     let getters;
     let getHeadItemMock = jest.fn();
 
-    beforeEach(() => {
+    test('should load revision from store', () => {
       getHeadItemMock = jest.fn();
       getters = {
         'feed2/getHeadItem': (state) => getHeadItemMock
@@ -42,25 +43,69 @@ describe('FeedPage2', () => {
         store, localVue,
         stubs: ['pure-feed-2']
       });
+
+      expect(getHeadItemMock.mock.calls.length > 0)
+          .toBe(true); // one from initialization and one from subscribe to mutation
+
     });
 
-    test('should appear as visible.', () => {
-      expect(wrapper.isVisible()).toBe(true);
-    });
+    test('should props based on the revision on getHeadItem from store cache', () => {
+      getHeadItemMock = jest.fn();
 
-    test('should load revision from store', () => {
+      getHeadItemMock.mockReturnValue({
+        wiki: 'fakewiki',
+        revId: 99900123, // fake revId
+        title: 'Fake article',
+        // pageId: revision.pageid, TODO add back pageId if exist
+        summary: 'Fake edit summary',
+        author: 'FakeEditor',
+        timestamp: 1614284382, // fake Unix Epoch
+        diffHtml: '<tr></tr>',
+        interactions: [
+          {
+            feed: 'fakeFeed',
+            wikiRevId: 'fakewiki:99900123', // fakeWikiRevId
+            userGaId: 'fakeReviewer1GaId',
+            wikiUserName: 'FakeReviewer1',
+            judgement: 'ShouldRevert',
+            timestamp: 1614284382,
+            title: 'Fake article',
+            wiki: 'fakewiki',
+          } as InteractionProps,
+          {
+            feed: 'fakeFeed',
+            wikiRevId: 'fakewiki:99900123', // fakeWikiRevId
+            userGaId: 'fakeReviewer2GaId',
+            wikiUserName: 'FakeReviewer2',
+            judgement: 'LooksGood',
+            timestamp: 1614284382,
+            title: 'Fake article',
+            wiki: 'fakewiki',
+          } as InteractionProps,
+        ],
+      });
+
+      getters = {
+        'feed2/getHeadItem': (state) => getHeadItemMock
+      };
+
+      store = new Vuex.Store({
+        getters,
+        actions: { 'feed2/loadMoreWikiRevIds': () => { } }
+      });
+
       wrapper = shallowMount(FeedPage2, {
         store, localVue,
         stubs: ['pure-feed-2']
       });
-      expect(getHeadItemMock.mock.calls.length > 0).toBe(true);
+
+      expect(wrapper.vm.interactions.length).toBe(2);
+      expect(wrapper.vm.interactions[0].wikiUserName).toBe('FakeReviewer1');
+      expect(wrapper.vm.interactions[0].judgement).toBe('ShouldRevert');
+      expect(wrapper.vm.interactions[1].wikiUserName).toBe('FakeReviewer2');
+      expect(wrapper.vm.interactions[1].judgement).toBe('LooksGood');
     });
 
-    [
-      'should load revision diff from store',
-      'should load interactions from store',
-      'should load set props based on revision and interaction',
-    ].forEach(desc => it.todo(desc));
   });
 
   describe('upon judgement', () => {
