@@ -450,7 +450,10 @@ describe('store/feed2', () => {
         timestampStr: '2020-11-10T00:18:07‎'
       });
 
-      // mockInteractions(wikiRevId, [{ // we are obmitting the mockFetchInteraction so it generate a 404
+      // We comment out the following
+      // to EXPLICITLY obmit the mockFetchInteraction 
+      // so it generate a 404
+      // mockInteractions(wikiRevId, [{ 
       //   feed: 'lastbad',
       //   wikiRevId,
       //   judgement: 'ShouldRevert',

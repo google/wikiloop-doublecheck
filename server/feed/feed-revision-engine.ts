@@ -203,6 +203,17 @@ export class FeedRevisionEngine {
     return results.map((doc) => doc as FeedRevisionProps);
   }
 
+  /**
+   * Given wikiRevIds for revisions potentially pending review in a feed, 
+   * check-off them in the database, and return the number of revisions checked-off
+   *  
+   * @param wikiRevIds 
+   * @param userGaId 
+   * @param wikiUserName 
+   * @param feed 
+   * 
+   * TODO suggest return {Promise<number>} how many wikiRevIds are checked-off.
+   */
   public static async checkOff(
     wikiRevIds: string[],
     userGaId,
@@ -230,7 +241,9 @@ export class FeedRevisionEngine {
           },
         };
       }),
-    );
+    ).then(()=>{
+      
+    });
   }
 
   private static traverse = async function(feed, wiki, entryFeedPage) {
