@@ -21,7 +21,10 @@ jobs:
           paths:
             - ~/.cache/yarn
       - run:
-          name: Run jest with output report
+          name: Run jest small tests
+          command: yarn test:small
+      - run:
+          name: Run jest full tests with report
           command: yarn test:report
           environment:
             JEST_JUNIT_OUTPUT: "reports/jest/results.xml"
