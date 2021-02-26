@@ -26,6 +26,7 @@
     "test:integration": "jest --testPathIgnorePatterns=THIS_SHALL_NEVER_MATCH_ANYTHING --testPathPattern=integration --verbose",
     "test:full": "jest --testPathIgnorePatterns=THIS_SHALL_NEVER_MATCH_ANYTHING --verbose",
     "test:report": "jest --testPathIgnorePatterns=THIS_SHALL_NEVER_MATCH_ANYTHING --verbose --coverage --ci",
+    "test:small": "jest --config=jest-small.config.js",
     "test": "jest --verbose --bail",
     "chromatic": "chromatic --project-token=${CHROMATIC_PROJECT_TOKEN}"
   },
