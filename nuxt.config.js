@@ -95,7 +95,7 @@ module.exports = {
       '@nuxtjs/google-analytics',
       {
         asyncID(ctx) {
-          return ctx.app.$config?.GA_WLBF_ID_CLIENT;
+          if (ctx.app.$config) return ctx.app.$config.GA_WLBF_ID_CLIENT;
         },
       },
     ],
