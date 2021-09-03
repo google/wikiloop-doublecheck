@@ -36,17 +36,16 @@
       "internalConsoleOptions": "neverOpen"
     },
     {
-      "name": "server",
+      "type": "node",
       "request": "launch",
+      "name": "server",
+      "runtimeExecutable": "yarn",
       "runtimeArgs": [
-        "run",
-        "debug"
+        "start"
       ],
-      "runtimeExecutable": "npm",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
-      "type": "pwa-node"
+      "port": 5858,
+      "cwd": "${workspaceRoot}",
+      "timeout": 10000
     },
     {
       "type": "chrome",

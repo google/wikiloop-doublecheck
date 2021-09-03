@@ -78,15 +78,15 @@ export default {
     },
   },
   beforeMount() {
-    const dice = Math.random() * 100;
-    const threshold = parseInt(this.$config.MIXER_RAMP_UP_PERCENT) || 0;
-    if (
-      ['enwiki', 'testwiki'].includes(this.$store.state.wiki) &&
-      dice < threshold
-    ) {
-      this.$router.push('/feed/mix');
-      console.log(`Redirect to /feed/mix dice=${dice}, threshold=${threshold}`);
-    }
+    // const dice = Math.random() * 100;
+    // const threshold = parseInt(this.$config.MIXER_RAMP_UP_PERCENT) || 0;
+    // if (
+    //   ['enwiki', 'testwiki'].includes(this.$store.state.wiki) &&
+    //   dice < threshold
+    // ) {
+    //   this.$router.push('/feed/mix');
+    //   console.log(`Redirect to /feed/mix dice=${dice}, threshold=${threshold}`);
+    // }
   },
   async mounted() {
     await this.$store.dispatch('revisions/loadMoreWikiRevs');

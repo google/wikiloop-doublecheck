@@ -20,7 +20,7 @@ import { wikiToDomain } from '../../../shared/utility-shared';
 
 const rp = require('request-promise');
 
-const MW_LINK_PARSE_API_TIMEOUT_MS = 500; // TODO: Relax the timeout after this logic has been moved to client-side lazy loading.
+const MW_LINK_PARSE_API_TIMEOUT_MS = 5000; // TODO: Relax the timeout after this logic has been moved to client-side lazy loading.
 
 export const diffRouter = require('express').Router();
 const fetchDiffMeta = async (wiki, fromRevId, toRevId) => {
@@ -62,6 +62,7 @@ const diffWikiRevId = async (req, res) => {
   const revId = wikiRevId.split(':')[1];
   const diffApiUrl = `https://${wikiToDomain[wiki]}/w/api.php?action=compare&fromrev=${revId}&torelative=prev&format=json`;
   const diffJson = await rp.get(diffApiUrl, { json: true });
+  console.assert(diffJson.compare.torevid, `Error parsing diffJson.compare.torevid, diffJson=${diffJson}`);
   const fromRevId = diffJson.compare.fromrevid;
   const toRevId = diffJson.compare.torevid;
   const diffMetadata = await fetchDiffMeta(wiki, fromRevId, toRevId);

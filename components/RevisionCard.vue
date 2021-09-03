@@ -57,7 +57,7 @@
               <span data-toggle="tooltip" data-placement="top" title="Damaging Score by WMF ORES">
                 <!-- TODO(xinbenlv) update the following text for for i18n -->
                 <i :class="{ 'text-danger': ores ? ores.damaging.true > 0.5 : false }" class="fas fa-cloud-rain mr-2" />{{ $t('Label-OresDamaging') }}: <a
-                  :href="`https://ores.wikimedia.org/v3/scores/enwiki/?revids=${revision.wikiRevId.split(`:`)[1]}`"
+                  :href="`https://ores.wikimedia.org/v3/scores/${revision.wikiRevId.split(`:`)[0]}/?revids=${revision.wikiRevId.split(`:`)[1]}`"
                   target="_blank"
                 >{{ damagingPercent() }}</a>
               </span>
@@ -70,7 +70,7 @@
               >
                 <!-- TODO(xinbenlv) update the following text for for i18n -->
                 <i :class="{ 'text-warning': ores ? ores.goodfaith.false > 0.5: false }" class="fas fa-theater-masks mr-2" />{{ $t('Label-OresBadfaith') }}:  <a
-                  :href="`https://ores.wikimedia.org/v3/scores/enwiki/?revids=${revision.wikiRevId.split(`:`)[1]}`"
+                  :href="`https://ores.wikimedia.org/v3/scores/${revision.wikiRevId.split(`:`)[0]}/?revids=${revision.wikiRevId.split(`:`)[1]}`"
                   target="_blank"
                 >{{ badfaithPercent() }}</a>
               </span>
