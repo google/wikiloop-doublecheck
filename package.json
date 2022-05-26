@@ -68,7 +68,7 @@
     "csv-stringify": "^5.3.4",
     "d3": "^4.13.0",
     "dotenv": "^7.0.0",
-    "eventsource": "^1.0.7",
+    "eventsource": "^2.0.2",
     "express": "^4.17.1",
     "express-rate-limit": "^5.0.0",
     "express-session": "^1.17.0",
