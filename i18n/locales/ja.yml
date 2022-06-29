@@ -45,7 +45,7 @@ Label-DirectRevertFailed.@meta.@description: >-
 Label-DirectReverted: 直接復帰
 Label-DirectReverted.@meta.@description: >-
   「今すぐ元に戻す」ボタンの新しいステータスを示すラベル。目的は、ユーザーが実行したアクションのステータスを表示することです。この場合、元に戻すアクションが成功しました。
-Label-EditSummary: 概要を編集
+Label-EditSummary: 編集内容の要約
 Label-EditSummary.@meta.@description: >-
   編集概要は、https：//en.wikipedia.org/wiki/Help：Edit_summaryに示されているように、Wikipediaページの編集に関する簡単な説明です。
 Label-EditedAt: 編集済み
