@@ -11,12 +11,12 @@ Button-Next: Suivant
 Button-Next.@meta.@description: >-
   Libellé d'un bouton permettant de passer à la page suivante ou d'afficher les
   informations suivantes.
-Button-OpenedUrlToRevert: URL ouverte pour restaurer
+Button-OpenedUrlToRevert: URL ouverte pour annuler
 Button-OpenedUrlToRevert.@meta.@description: >-
   L'étiquette du bouton "Revenir maintenant" se changera en "URL ouverte pour
   revenir" pour afficher l'état de l'action après avoir cliqué sur le bouton et
   effectué l'action.
-Button-RevertNow: Restaurer maintenant
+Button-RevertNow: Annuler maintenant
 Button-RevertNow.@meta.@description: >-
   Le libellé du bouton pour annuler immédiatement une révision donnée sur
   Wikipédia.
@@ -71,16 +71,16 @@ Label-DiffView: Vue de comparaison
 Label-DiffView.@meta.@description: >-
   Un libellé pour une vue montrant la différence entre des instantanés tels que
   deux instantanés d'articles Wikipédia.
-Label-DirectRevertFailed: Échec de la restauration directe
+Label-DirectRevertFailed: Échec de l'annulation directe
 Label-DirectRevertFailed.@meta.@description: >-
   Une étiquette pour montrer le nouvel état du bouton "Revenir maintenant". Le
   but est de montrer l'état de l'action effectuée par l'utilisateur qui dans ce
-  cas est que l'action de restauration a échoué.
-Label-DirectReverted: Restauré directement
+  cas est que l'action d'annulation a échoué.
+Label-DirectReverted: Annulé directement
 Label-DirectReverted.@meta.@description: >-
   Une étiquette pour montrer le nouvel état du bouton "Revenir maintenant". Le
   but est de montrer l'état de l'action effectuée par l'utilisateur qui dans ce
-  cas est que l'action de restauration a réussi.
+  cas est que l'action d'annulation a réussi.
 Label-EditSummary: Modifier le résumé
 Label-EditSummary.@meta.@description: >-
   Un résumé de modification est une brève explication d'une modification d'une
@@ -165,7 +165,7 @@ Label-NotSure.@meta.@description: >-
   L'étiquette de l'un des 3 principaux types de jugements qui dit que la
   modification de Wikipédia en cours de révision n'est pas sûre et pourrait être
   bonne et constructive ou endommager Wikipédia.
-Label-OresBadfaith: ORES Mauvaise foi
+Label-OresBadfaith: Score ORES de mauvaise foi
 Label-OresBadfaith.@meta.@description: >-
   L'étiquette identifiant le score et le jugement donnés par le système de
   notation WMF Artificial Intelligence ORES. Cette étiquette spécifique fait
@@ -174,7 +174,7 @@ Label-OresBadfaith.@meta.@description: >-
 Label-OresBadfaith.@meta.@isMachineTranslated: true
 Label-OresBadfaith.@meta.@translatedAt: '2020-07-07T01:09:19.143Z'
 Label-OresBadfaith.@meta.@translator: GoogleCloudTranslationAPI project-wikiloop
-Label-OresDamaging: ORES endommageant
+Label-OresDamaging: Score ORES d'endommageant
 Label-OresDamaging.@meta.@description: >-
   L'étiquette identifiant le score et le jugement donnés par le système de
   notation WMF Artificial Intelligence ORES. Cette étiquette spécifique fait
@@ -213,7 +213,7 @@ Label-Result: Résultat
 Label-Result.@meta.@description: >-
   Libellé du résultat d'une action effectuée, par exemple lorsqu'un utilisateur
   annule une modification de Wikipedia.
-Label-RevertSucceeded: La restauration a réussi!
+Label-RevertSucceeded: L'annulation a réussi!
 Label-RevertSucceeded.@meta.@description: >-
   Libellé du résultat d'une action effectuée lorsqu'un utilisateur a annulé une
   modification Wikipédia, l'action a réussi.
@@ -223,7 +223,7 @@ Label-ReviewFeed.@meta.@description: >-
   examiner.
 Label-ReviewedAndSays: 'a examiné <a href="{href}">{wikiRevId}</a> et dit'
 Label-ReviewedAndSays.@meta.@description: L'étiquette pour commencer la sentence et les motifs donnés pour une révision.
-Label-ShouldRevert: Devrait restaurer
+Label-ShouldRevert: Devrait être annulé
 Label-ShouldRevert.@meta.@description: >-
   L'étiquette de l'un des 3 principaux types de jugements qui dit que la
   modification de Wikipédia en cours de révision est préjudiciable à Wikipédia
@@ -291,7 +291,7 @@ Message-AJudgementLogged.@meta.@description: >-
   d'enregistrement. Le paramètre {0} est le nom de l'article Wikipedia. Le
   paramètre {0} est l'identifiant de révision de la révision (modification
   Wikipedia).
-Message-CongratsSuccessfullyReverted: 'Félicitations! vous avez réussi à restaurer directement {0}.'
+Message-CongratsSuccessfullyReverted: 'Félicitations! vous avez réussi à annuler directement {0}.'
 Message-DiffNotAvailable: |-
   Le diff de l'article Wikipédia n'est temporairement pas disponible.
   Vous pouvez essayer de le recharger.
@@ -320,7 +320,7 @@ Message-NoActiveUsersPleaseStartReview.@meta.@description: >-
   paramètres d'URL.
 Message-PromptLogin: >-
   Savez-vous que vous pouvez vous connecter et conserver vos contributions sous
-  votre nom? Nous prenons en charge la connexion avec un compte Wikipedia via
+  votre nom? Nous prenons en charge la connexion avec un compte Wikipédia via
   OAuth.
 Message-RevertEditSummary: |-
   Identifié comme test / vandalisme à l'aide de la version {0} {1}.
@@ -342,7 +342,7 @@ Message-TheRevisionIsSuccessfullyRevertedAs.@meta.@description: >-
   été annulée. Le paramètre {0} est l'identifiant de révision de la modification
   de Wikipédia à annuler. Le paramètre {1} est le deuxième identifiant de
   révision que la nouvelle modification de Wikipédia est au-dessus de la
-  précédente modification de Wikipédia, résultat de la restauration.
+  précédente modification de Wikipédia, résultat de l'annulation.
 Message-ThereIsNoEditSummary: Il n'y a pas de résumé de modification.
 Message-ThereIsNoEditSummary.@meta.@description: >-
   Le message montre qu'une modification Wikipédia donnée n'a pas d'explication,
