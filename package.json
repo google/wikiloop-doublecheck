@@ -69,7 +69,7 @@
     "d3": "^4.13.0",
     "dotenv": "^7.0.0",
     "eventsource": "^1.0.7",
-    "express": "^4.17.1",
+    "express": "^4.19.2",
     "express-rate-limit": "^5.0.0",
     "express-session": "^1.17.0",
     "hash.js": "^1.1.7",
