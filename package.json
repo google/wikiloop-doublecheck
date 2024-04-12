@@ -85,7 +85,7 @@
     "mongodb": "^3.3.5",
     "mongoose": "^5.7.5",
     "mwbot": "^1.0.10",
-    "mysql2": "^1.7.0",
+    "mysql2": "^3.9.4",
     "node-json2html": "^1.4.0",
     "nodemailer": "^6.4.5",
     "nuxt": "2.14.7",
